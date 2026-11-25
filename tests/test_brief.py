@@ -94,9 +94,10 @@ def test_score_et_choix():
 
 def test_entites_cia():
     import collecte_entites as ce
-    l = json.dumps({"schema": "Person", "properties": {"name": ["Emmanuel Macron"], "country": ["fr"],
-                    "positionOccupancies": [{"schema": "Occupancy", "properties": {"post": [{"schema": "Position", "properties": {"name": ["President"]}}]}}]}})
+    l = json.dumps({"schema": "Person", "properties": {"name": ["Emmanuel MACRON"], "country": ["fr"],
+                    "positionOccupancies": [{"schema": "Occupancy", "properties": {"post": [{"schema": "Position", "properties": {"name": ["President"], "topics": ["gov.national", "gov.head"]}}]}}]}})
     l2 = json.dumps({"schema": "Person", "properties": {"name": ["Jean Dupont"], "positionOccupancies": [{"properties": {"post": [{"schema": "Position", "properties": {"name": ["Vice President"]}}]}}]}})
-    p = ce.personnes_cia(l + "\n" + l2)
-    assert p[0]["chef"] and not p[1]["chef"]
-    assert ce.variantes("Emmanuel Macron", True) == ["Emmanuel Macron", "Macron"] and ce.variantes("Jean Dupont", False) == ["Jean Dupont"]
+    l3 = json.dumps({"schema": "Person", "properties": {"name": ["Leonardo VILLAR Gomez"], "positionOccupancies": [{"properties": {"post": [{"schema": "Position", "properties": {"name": ["President, Bank of the Republic"], "topics": ["gov.national"]}}]}}]}})
+    p = ce.personnes_cia(l + "\n" + l2 + "\n" + l3)
+    assert p[0]["chef"] and p[0]["nom"] == "Emmanuel Macron" and p[0]["famille"] == "Macron" and not p[1]["chef"] and not p[2]["chef"]
+    assert ce.variantes("Emmanuel Macron", True) == ["Emmanuel Macron", "Macron"] and ce.variantes("Philip Pierre", True, "Pierre") == ["Philip Pierre"] and ce.variantes("Jean Dupont", False) == ["Jean Dupont"]

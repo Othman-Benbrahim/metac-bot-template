@@ -34,7 +34,15 @@ MANUEL = Path("donnees_manuelles") / "us_cia_world_leaders.targets.nested.json"
 CIA = "https://data.opensanctions.org/datasets/latest/us_cia_world_leaders/targets.nested.json"
 SPARQL = "https://query.wikidata.org/sparql"
 CHEF = re.compile(r"^(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|head of state|"
-                  r"chief executive|taoiseach|grand duke|prince|chairman of the presidium)\b", re.I)
+                  r"taoiseach|grand duke|chairman of the presidium)\b", re.I)
+# noms de famille qui sont aussi des mots courants ou des prénoms fréquents : jamais retenus seuls
+COURANTS = {"pierre", "store", "muhammad", "mohammed", "mohamed", "ahmed", "ahmad", "hassan", "hussein", "abdullah",
+            "abdallah", "hamdan", "james", "john", "grant", "price", "young", "brown", "white", "black", "green", "little",
+            "rose", "hope", "king", "prince", "noble", "power", "rich", "wood", "stone", "rock", "field", "house", "bishop",
+            "baker", "martin", "michel", "thomas", "francis", "louis", "paul", "peter", "george", "charles", "edward",
+            "salman", "faisal", "khalid", "sultan", "said", "saeed", "salem", "ibrahim", "ismail", "yusuf", "joseph",
+            "daniel", "david", "samuel", "moses", "simon", "victor", "felix", "marcel", "michal", "store", "costa",
+            "santos", "silva", "garcia", "lopez", "martinez", "rodriguez", "gonzalez", "hernandez", "perez", "sanchez"}
 PAS_CHEF = re.compile(r"\b(vice|deputy|first deputy|acting)\b", re.I)
 # 2026-11-25, premier passage : data.opensanctions.org refuse notre agent par robots.txt (« refuse_robots », non forcé).
 # Les dirigeants publics viennent donc aussi de Wikidata (source validée) : chefs d'État et de gouvernement actuels des
@@ -68,17 +76,27 @@ REQUETES = {
 }
 
 
-def _postes(x, out: list[str]) -> list[str]:
-    """Noms de tous les postes (schéma Position) trouvés dans une entité imbriquée."""
+def _postes(x, out: list[tuple[str, list[str]]]) -> list[tuple[str, list[str]]]:
+    """(nom du poste, sujets) de tous les postes (schéma Position) trouvés dans une entité imbriquée."""
     if isinstance(x, dict):
         if x.get("schema") == "Position":
-            out += (x.get("properties") or {}).get("name", [])
+            pr = x.get("properties") or {}
+            out += [(n, pr.get("topics") or []) for n in pr.get("name", [])]
         for v in x.values():
             _postes(v, out)
     elif isinstance(x, list):
         for v in x:
             _postes(v, out)
     return out
+
+
+def _forme(nom: str) -> tuple[str, str]:
+    """La CIA écrit le nom de famille en capitales (« Narendra MODI », « ANUTHIN Chanwirakun ») : nom lisible et nom de
+    famille."""
+    mots = nom.split()
+    fam = " ".join(m for m in mots if m.isupper() and len(m) > 1)
+    lisible = " ".join(m.capitalize() if m.isupper() and len(m) > 1 else m for m in mots)
+    return lisible, " ".join(m.capitalize() for m in fam.split())
 
 
 def personnes_cia(texte: str) -> list[dict]:
@@ -91,22 +109,25 @@ def personnes_cia(texte: str) -> list[dict]:
         if e.get("schema") != "Person":
             continue
         pr = e.get("properties") or {}
-        nom = (pr.get("name") or [""])[0].strip()
-        if len(nom) < 5:
+        brut = (pr.get("name") or [""])[0].strip()
+        nom, famille = _forme(brut)
+        if len(nom) < 5 or len(nom.split()) < 2:          # un nom d'un seul mot (« PHILIPPE ») déclencherait à tort
             continue
         postes = _postes(pr, [])
-        topics = pr.get("topics") or []
-        chef = "gov.head" in topics or any(CHEF.search(p) and not PAS_CHEF.search(p) for p in postes)
-        out.append({"nom": nom, "sorte": "dirigeant public", "pays": ";".join(pr.get("country") or []),
-                    "poste": "; ".join(postes)[:120], "chef": chef, "source": "OpenSanctions/CIA World Leaders"})
+        # chef d'État ou de gouvernement : intitulé de chef (sans « vice », « deputy »…), et sujet gov.head d'OpenSanctions
+        # quand il existe (le sujet seul couvre aussi des vice-premiers ministres : 541 « chefs » au premier essai)
+        chef = any(CHEF.search(n) and not PAS_CHEF.search(n) and (not t or "gov.head" in t) for n, t in postes)
+        out.append({"nom": nom, "famille": famille, "sorte": "dirigeant public",
+                    "pays": ";".join(pr.get("citizenship") or pr.get("country") or []),
+                    "poste": "; ".join(n for n, _ in postes)[:120], "chef": chef, "source": "OpenSanctions/CIA World Leaders"})
     return out
 
 
-def variantes(nom: str, chef: bool) -> list[str]:
+def variantes(nom: str, chef: bool, famille: str = "") -> list[str]:
     v = [nom]
-    nom_famille = nom.split()[-1] if len(nom.split()) > 1 else ""
-    if chef and len(nom_famille) >= 4 and nom_famille.isalpha():
-        v.append(nom_famille)
+    fam = famille or (nom.split()[-1] if len(nom.split()) > 1 else "")
+    if chef and len(fam) >= 5 and fam.lower() not in COURANTS and fam.replace(" ", "").replace("-", "").isalpha() and fam != nom:
+        v.append(fam)
     return v
 
 
@@ -160,7 +181,7 @@ def principal() -> int:
             if x["nom"].lower() in vus:
                 continue
             vus.add(x["nom"].lower())
-            w.writerow(["/".join(variantes(x["nom"], x["chef"])), x["nom"], x["sorte"], x["pays"], x["poste"],
+            w.writerow(["/".join(variantes(x["nom"], x["chef"], x.get("famille", ""))), x["nom"], x["sorte"], x["pays"], x["poste"],
                         int(x["chef"]), x["source"]])
     print(len(vus), "entités ->", SORTIE)
     return 0
