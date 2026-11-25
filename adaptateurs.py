@@ -374,7 +374,39 @@ def fts(reg: Path, quoi: str = "couverture") -> list[tuple[str, float]]:
     return [(f"{a}-07-01", round(100 * fonds[a] / besoins[a], 2)) for a in sorted(besoins)]
 
 
-ADAPTATEURS = {"elo": elo, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def wdi(reg: Path, pays: str, quoi: str) -> list[tuple[str, float]]:
+    """2026-11-25 (remarque de l'auteur sur l'âge des populations) : Banque mondiale, WDI (collecte_banque_mondiale.py,
+    registre/banque-mondiale-wdi.csv.gz). « wdi:monde:part65 » et « wdi:monde:part0014 » : part (%) des 65 ans et plus et
+    des moins de 15 ans dans la population de toutes les économies, pondérée par la population ; « wdi:<ISO3>:<code> » :
+    l'indicateur d'un pays. Un point par année, daté du 1er juillet."""
+    import csv as _c
+    import gzip as _g
+    f = reg / "banque-mondiale-wdi.csv.gz"
+    if not f.exists():
+        return []
+    num = {"part65": "SP.POP.65UP.TO", "part0014": "SP.POP.0014.TO"}
+    a, b = {}, {}
+    with _g.open(f, "rt", encoding="utf-8") as h:
+        for r in _c.DictReader(h):
+            an = r["annee"]
+            if pays == "monde" and quoi in num:
+                try:
+                    x, t = float(r[num[quoi]]), float(r["SP.POP.TOTL"])
+                except (KeyError, ValueError):
+                    continue
+                a[an] = a.get(an, 0.0) + x
+                b[an] = b.get(an, 0.0) + t
+            elif r["pays"] == pays:
+                try:
+                    a[an] = float(r[quoi])
+                    b[an] = 1.0
+                except (KeyError, ValueError):
+                    continue
+    k = 100.0 if pays == "monde" else 1.0
+    return [(f"{an}-07-01", round(k * a[an] / b[an], 4)) for an in sorted(a) if b.get(an)]
+
+
+ADAPTATEURS = {"elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

@@ -191,13 +191,25 @@ compartiments:
   organisation: personne
   elements:
   - âge en fonction, absences et hospitalisations annoncées officiellement ; aucune inférence ni diagnostic
+  - "l'écart d'âge avec la population gouvernée : Afrique, âge médian d'environ 19 ans pour sa population et d'environ 63 ans pour ses dirigeants ; le président ougandais avait près de 63 ans de plus que son administré moyen en 2023 (Wilson Center, 14 mars 2023)"
+  - "l'âge situe le dirigeant dans son cycle de vie au pouvoir ; la table des dirigeants du bot donne l'année de naissance et le début du mandat en cours (ecosystemes/dirigeants-maintien.csv)"
   niveau:
     espace: pays
     temps: années
     vitesse: jours à années
     taille: micro
+    objet: personnes
   traces:
   - *id001
+cycles:
+- id: vie_au_pouvoir
+  nom: Cycle de vie au pouvoir (arrivée, consolidation, usure, succession)
+  sorte: endogene
+  mecanisme: "un dirigeant arrive, consolide, s'use puis doit passer la main ; l'âge et la durée au pouvoir situent sa position dans ce cycle ; plus il avance en âge sans successeur désigné, plus la succession devient une source d'incertitude"
+  periode: "de quelques années à plusieurs décennies selon le régime"
+  phase_vulnerable: "la fin du cycle : âge avancé, longue durée au pouvoir, succession non réglée"
+  compartiments: [executifs, mandats_succession, departs, age_sante]
+  statut: mecanisme
 relations:
 - de: popularite
   vers: departs

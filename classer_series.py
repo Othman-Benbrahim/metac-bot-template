@@ -58,6 +58,7 @@ PAR_TYPE = {
     "epoch": ("flux", "modèles publiés par mois"),
     "rss_matiere": ("flux", "articles par jour qui nomment le sujet"),
     "rss_famille": ("flux", "articles nouveaux par jour de la famille de flux"),
+    "wdi": ("stock", "indicateur annuel de la Banque mondiale (part de la population par âge, ou indicateur d’un pays)"),
     "fts": ("gradient", "part des besoins humanitaires financés dans l'année (%)"),
     "elo": ("stock", "note de force Elo à la fin du mois (ou dispersion, ou variation, des meilleurs)"),
     "publications_nbs": ("flux", "publications parues par jour"),

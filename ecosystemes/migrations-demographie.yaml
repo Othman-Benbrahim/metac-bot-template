@@ -19,6 +19,8 @@ compartiments:
   - âge moyen
   - pyramide des âges
   - dépendance des plus âgés
+  - "« gonflement de la jeunesse » (youth bulge) : une forte part de jeunes adultes accroît nettement le risque de conflit armé interne (1950-2000), de terrorisme et d'émeutes (1984-1995), par le faible coût d'opportunité et l'engorgement des institutions, surtout le chômage (Urdal, International Studies Quarterly 50(3), 2006)"
+  - "à l'autre bout, le vieillissement pèse sur la main-d'œuvre, les retraites et la dépendance (Chine, Japon, Europe)"
   acteurs:
   - nom: un ménage qui décide d'avoir ou non un enfant
     taille: micro
@@ -37,9 +39,12 @@ compartiments:
     temps: générations
     vitesse: décennie
     taille: macro
+    objet: personnes
   traces:
   - source: perspectives démographiques de l'ONU (données publiques)
     statut: a_brancher
+  - {source: "part des 65 ans et plus dans la population mondiale, par année (Banque mondiale, WDI, CC BY 4.0 ; pondérée par la population)", statut: collecte, fichier: collecte_banque_mondiale.py, adaptateur: "wdi:monde:part65"}
+  - {source: "part des moins de 15 ans dans la population mondiale, par année (Banque mondiale, WDI)", statut: collecte, fichier: collecte_banque_mondiale.py, adaptateur: "wdi:monde:part0014"}
 - id: mortalite
   nom: Mortalité
   organisation: societe
@@ -247,6 +252,16 @@ compartiments:
     statut: collecte
     fichier: collecte_fred.py
     adaptateur: fred:UNRATE
+cycles:
+- id: transition_demographique
+  nom: Transition démographique (de la jeunesse au vieillissement)
+  sorte: endogene
+  mecanisme: "la mortalité baisse d'abord, puis la natalité ; une population passe d'une jeunesse nombreuse (risque de conflit et de troubles quand l'emploi manque) à un âge actif majoritaire (dividende démographique), puis au vieillissement (main-d'œuvre, retraites) ; chaque pays est à une position différente de ce cycle"
+  periode: "un à deux siècles"
+  phase_vulnerable: "le gonflement de la jeunesse sans emplois (Urdal 2006), puis le vieillissement rapide"
+  compartiments: [natalite_vieillissement, mortalite, migrations]
+  sources: ["Urdal, A Clash of Generations? Youth Bulges and Political Violence, International Studies Quarterly 50(3), 2006"]
+  statut: mecanisme
 relations:
 - de: natalite_vieillissement
   vers: economie
@@ -379,6 +394,12 @@ relations:
   statut: a_verifier
   texte: les vagues de chaleur tuent au-delà d'un seuil, surtout les plus âgés
 ponts:
+- depuis: natalite_vieillissement
+  vers: politique-interieure:contestation
+  nature: "une jeunesse nombreuse sans emploi accroît le risque d'émeutes et de violences politiques (Urdal 2006)"
+- depuis: natalite_vieillissement
+  vers: dirigeants-elus:age_sante
+  nature: "l'écart d'âge entre une population jeune et des dirigeants âgés : en Afrique, âge médian de la population d'environ 19 ans, de ses dirigeants d'environ 63 ans (Wilson Center, mars 2023)"
 - depuis: climat_milieu
   vers: climat-extremes:exposes
   nature: les populations exposées aux extrêmes
