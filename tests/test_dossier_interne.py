@@ -123,3 +123,10 @@ def test_juge_hors_domaine_exige_une_brique():
     D = {"question": {"titre": "Will the Fed cut rates at its December 2026 meeting?"}, "briques": {"silence": "aucune_brique"}}
     rep = '{"decision": "ecart", "motif": "brique_hors_domaine", "preuve": "cut rates at its December 2026 meeting", "p_juge": 0.9}'
     assert jg.analyser(rep, D, "", 0.3, "", J)["rejet"] == "aucune_brique"
+
+
+def test_domaine_de_manipulation_rejete():
+    """2026-11-25 : un domaine Portal Kombat (Viginum) n'est jamais une preuve, sous-domaine compris."""
+    a, b = "https://fr.news-pravda.com/x", "https://www.reuters.com/y"
+    f = sp.force([{"url": a, "date": "2026-11-20"}, {"url": b, "date": "2026-11-20"}], f"{a} {b}", "x", J, _lecteur({a: "t", b: "t"}))
+    assert f["sources"][0]["rejet"] == "domaine_de_manipulation" and f["independantes"] == 1

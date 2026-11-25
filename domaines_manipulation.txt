@@ -1,0 +1,15 @@
+# Domaines refusés comme preuve par le juge (sources_preuve.py), décision de l'auteur du 2026-11-25 (risque de « LLM grooming » :
+# contenus trompeurs produits en masse pour être absorbés par les modèles de langage, Méta-Media n°25, France Télévisions, 2026).
+# Seuls des domaines nommés par un rapport public, un par ligne, domaine enregistrable (sous-domaines compris).
+# Viginum (SGDSN), « Portal Kombat », rapport du 12 février 2024, annexe I (écosystème Pravda, cible occidentale) :
+pravda-fr.com
+pravda-de.com
+pravda-pl.com
+pravda-es.com
+pravda-en.com
+# DFRLab, « Russia's so-called "Pravda" network expands worldwide », 24 février 2025 (centre actuel, 140 sous-domaines) :
+news-pravda.com
+# Viginum, Portal Kombat, annexe I (écosystème « historique » orienté Russie, extrait des domaines en .com) :
+crimea-news.com
+moskva-news.com
+sevastopol-news.com

@@ -22,6 +22,9 @@ compartiments:
   - contre-récits
   - rumeurs
   - campagnes de désinformation (en agrégat)
+  - "modes opératoires nommés par des rapports publics : Doppelgänger (clonage de sites de médias), Matriochka (saturation des vérificateurs par de faux contenus), Storm-1516, Portal Kombat (réseau « Pravda », au moins 193 sites, Viginum, février 2024), Spamouflage (prochinois) ; « LLM grooming » : contenus produits en masse pour être absorbés par les modèles de langage (glossaire de Méta-Media n°25, France Télévisions, 2026)"
+  - "contre-propagande iranienne en vidéos générées par IA, façon Lego et rap, depuis fin mars 2026 : deux groupes (PersiaBoi, Explosive Media, moins de dix personnes, l'État iranien pour « client »), réponse en quelques heures, reprise des récits de l'opposition américaine, relais par les médias d'État iraniens et russes (Arnaud Mercier, The Conversation, repris par Méta-Media n°25)"
+  - "France : opérations d'ingérence détectées multipliées par 23 depuis août 2023, plus de 100 faux sites en .fr ; 2e pays européen le plus visé après l'Ukraine (rapport du SEAE, mars 2026) ; mais 7e seulement pour les actions susceptibles de causer des dommages matériels ou humains (Fondation Descartes, août 2026) ; chiffres relayés par Méta-Media n°25, sources primaires non lues"
   acteurs:
   - nom: un média d'État
     taille: méso
@@ -185,6 +188,8 @@ compartiments:
   - modération
   - migrations d'utilisateurs
   - messageries chiffrées
+  - "ingérences à but lucratif : des opérateurs exploitent la monétisation des plateformes avec des contenus hypersensationnalistes, sans motif idéologique (opération Hydras Danbau, acteurs vietnamiens, municipales françaises ; Viginum, entretien dans Méta-Media n°25)"
+  - "les plateformes sociales et vidéo dépassent les sites des éditeurs comme porte d'accès à l'information en ligne : 54 % contre 51 % ; 10 % s'informent chaque semaine par un assistant d'IA, contre 7 % en 2025 (Reuters Institute, Digital News Report 2026, 48 marchés, 97 520 personnes)"
   acteurs:
   - nom: une grande plateforme
     taille: macro
@@ -304,6 +309,10 @@ compartiments:
   - "la guerre cognitive exploite surtout les fragilités de la société visée : confiance faible dans les institutions, messages officiels contradictoires (« dissonance d'autorité »), sens partagé fragmenté (Russo et al., Defense & Security Analysis, 2026, doi 10.1080/14751798.2026.2714711, CC BY 4.0 ; cadre conceptuel, non validé)"
   - "cinq mécanismes en chaîne : exposition, interprétation, activation affective, amplification sociale, réponse collective ; chacun est une faille et un point d'intervention (même source)"
   - "ce qui protège : canaux de confiance redondants, cohérence entre autorités, reconnaissance de l'incertitude, principes CERC (être premier, juste, crédible, empathique, pousser à l'action, respecter)"
+  - "Arcom, mars 2026 (2 000 personnes, novembre 2025) : 22 % jugent exactes au moins quatre de sept fausses affirmations, 23 % les repèrent toutes ; les moins perméables s'informent davantage par la télévision et la presse, les plus vulnérables par les médias algorithmiques (réseaux sociaux, plateformes, IA)"
+  - "un effet mesuré de la riposte : la vérification par l'AFP réduit d'environ 8 % la circulation d'une fausse information sur Facebook (Cagé, Gallo, Hengel, Henry, Huang, CEPR Discussion Paper 20895, décembre 2025)"
+  - "confiance dans l'actualité : 37 %, plus bas niveau depuis 2015 ; évitement de l'actualité : 42 % (Reuters Institute, Digital News Report 2026)"
+  - "dénoncer une manipulation en la relayant l'amplifie ; il vaut mieux expliquer le mécanisme et distinguer viralité et effet réel (Viginum et Chloé Debiève, Méta-Media n°25)"
   - "modèle : la défense psychologique nordique (Suède, Finlande : sécurité globale, responsabilité partagée)"
   niveau:
     espace: individu à pays
@@ -485,6 +494,13 @@ relations:
   force: moyenne
   statut: a_verifier
   texte: une confiance stable et des autorités cohérentes réduisent la prise des récits hostiles ; déclaré par un cadre conceptuel, non mesuré (Russo et al. 2026)
+- de: resilience_informationnelle
+  vers: attention
+  effet: '-'
+  delai: jours
+  force: faible
+  statut: a_verifier
+  texte: "choisir de ne pas relayer une manipulation et d'expliquer son mécanisme lui retire l'écho que cherchent ses auteurs ; la vérification réduit d'environ 8 % la circulation des fausses informations (Cagé et al. 2025)"
 - de: resilience_informationnelle
   vers: foules
   effet: '-'

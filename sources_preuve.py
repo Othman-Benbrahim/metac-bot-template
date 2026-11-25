@@ -45,6 +45,15 @@ def domaine(url: str) -> str:
 
 
 @lru_cache(1)
+def domaines_manipulation() -> frozenset:
+    """2026-11-25 : domaines d'opérations de manipulation nommés par des rapports publics (domaines_manipulation.txt)."""
+    f = ICI / "domaines_manipulation.txt"
+    if not f.exists():
+        return frozenset()
+    return frozenset(l.strip().lower() for l in f.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#"))
+
+
+@lru_cache(1)
 def _domaines_fiches() -> frozenset:
     out = set()
     for f in (ICI / "ecosystemes").glob("*.yaml"):
@@ -106,6 +115,8 @@ def force(preuves: list[dict], recherche: str, titre: str, aujourdhui: dt.date, 
             x["rejet"] = "absente_de_la_recherche"
         elif d is None or d > aujourdhui:
             x["rejet"] = "date_absente_ou_future"
+        elif x["domaine"] in domaines_manipulation():
+            x["rejet"] = "domaine_de_manipulation"
         elif x["domaine"] in vus_dom:
             x["rejet"] = "meme_domaine"
         else:

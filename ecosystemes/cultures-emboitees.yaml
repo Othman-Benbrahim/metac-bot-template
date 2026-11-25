@@ -72,6 +72,7 @@ compartiments:
   organisation: economie
   elements:
   - "industries culturelles américaines (cinéma, séries, plateformes de diffusion, musique) et d'Asie orientale (Corée du Sud, Japon, Chine) ; elles voyagent avec les échanges économiques"
+  - "Chine : Bilibili (376 millions d'utilisateurs) traduit par IA ses animés et fictions pour conquérir le public occidental ; Qwen d'Alibaba dépasse 2 milliards de téléchargements sur Hugging Face en 2026 (Méta-Media n°25, France Télévisions, 2026)"
   - "Corée du Sud : 18,98 milliards de dollars d'exportations liées à la vague coréenne en 2025 (+15,9 %), dont la musique +84 % et l'audiovisuel +29,7 % ; enquête auprès de 27 400 consommateurs dans 30 pays (Korean Foundation for International Cultural Exchange et ministère de la Culture, juillet 2026, d'après The Star)"
   niveau:
     espace: monde
