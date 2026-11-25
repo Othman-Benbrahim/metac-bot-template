@@ -66,6 +66,14 @@ REQUETES = {
   ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2012)
   ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. OPTIONAL {{ ?o wdt:P297 ?iso }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,fr". }} }}""" for classe in ("Q83307", "Q7330070", "Q15966511")],
+    # 2026-11-25, 14 h 18 : le gouvernement américain (absent de la CIA, mal rangé dans Wikidata) ; postes rattachés au
+    # cabinet (Q639738 « a pour partie »), directement ou par le département qu'ils dirigent ; mandat commencé depuis 2021,
+    # en cours ; on garde le titulaire le plus récent de chaque poste.
+    "cabinet américain": """SELECT DISTINCT ?p ?pLabel ?pos ?posLabel ?debut WHERE {
+  wd:Q639738 wdt:P527 ?x. { BIND(?x AS ?pos) } UNION { ?pos wdt:P2389 ?x } UNION { ?x wdt:P2388 ?pos }
+  ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
+  ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2021)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
     "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?secteurLabel ?debut WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
@@ -197,12 +205,13 @@ def principal() -> int:
                     org = b.get("oLabel", {}).get("value", "")[:120]
                     k = (nom, org)
                     if k not in par:
-                        public = sorte in ("ministre", "chef d'État ou de gouvernement")
+                        public = sorte in ("ministre", "chef d'État ou de gouvernement", "cabinet américain")
                         poste = b.get("posLabel", {}).get("value", "") or ("chef d'État ou de gouvernement" if chef else org)
-                        par[k] = {"nom": nom, "sorte": "dirigeant public" if public else sorte, "pays": b.get("iso", {}).get("value", ""),
+                        par[k] = {"nom": nom, "sorte": "dirigeant public" if public else sorte,
+                                  "pays": "US" if sorte == "cabinet américain" else b.get("iso", {}).get("value", ""),
                                   "pays_nom": b.get("paysLabel", {}).get("value", ""), "organisation": "gouvernement" if public else org,
                                   "poste": poste[:120], "chef": chef, "source": "Wikidata", "secteurs": [],
-                                  "debut": b.get("debut", {}).get("value", "")[:10]}
+                                  "debut": b.get("debut", {}).get("value", "")[:10], "pos": b.get("pos", {}).get("value", "")}
                     sec = b.get("secteurLabel", {}).get("value", "")
                     if sec and not re.fullmatch(r"Q\d+", sec) and sec not in par[k]["secteurs"]:
                         par[k]["secteurs"].append(sec)
@@ -215,12 +224,18 @@ def principal() -> int:
                     for xs in parorg.values():
                         dat = [x for x in xs if x["debut"]]
                         vals += [max(dat, key=lambda x: x["debut"])] if dat else xs[:1]
+                if sorte == "cabinet américain":              # titulaire le plus récent de chaque poste
+                    parpos = {}
+                    for x in vals:
+                        if x["debut"] >= parpos.get(x["pos"], {"debut": ""})["debut"]:
+                            parpos[x["pos"]] = x
+                    vals = list(parpos.values())
                 lignes += vals
                 n = len(vals)
                 bilan[sorte] = n
             except Exception as ex:
                 bilan[sorte] = f"erreur {type(ex).__name__}: {str(ex)[:120]} ; lignes précédentes gardées"
-                cible = "dirigeant public" if sorte in ("ministre", "chef d'État ou de gouvernement") else sorte
+                cible = "dirigeant public" if sorte in ("ministre", "chef d'État ou de gouvernement", "cabinet américain") else sorte
                 gardees = [r for r in _precedent() if r["sorte"] in (sorte, cible) and r["source"] == "Wikidata"]
                 lignes += gardees
     print(json.dumps(bilan, ensure_ascii=False))
