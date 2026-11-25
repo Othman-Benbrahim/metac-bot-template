@@ -1,0 +1,53 @@
+name: "Briefs standardisés"
+
+# 2026-11-25 (demande de l'auteur à 12 h 38) : flux choisis → filtre mécanique (termes validés de la carte) → brief court
+# rempli par un modèle (relais OpenRouter, Gemini, Mistral, Cerebras), chiffres contrôlés par le code. Chaque nuit avant le
+# comptage de lecteur-local (2 h 41 UTC), qui publie les briefs sur la page « briefs » de la carte ; aussi à la main.
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "nombre maximal de briefs"
+        default: "10"
+  schedule:
+    - cron: "53 1 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  briefs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Listes validées de lecteur-local (filtre et compartiments)
+        uses: actions/checkout@v4
+        with:
+          repository: Othman-Benbrahim/lecteur-local
+          path: lecteur
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Briefs
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+        run: uv run python -u brief.py --max "${{ github.event.inputs.max || '10' }}"
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d briefs ]; then git add briefs; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "briefs du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
