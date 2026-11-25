@@ -195,7 +195,9 @@ TYPES_PONT = ("meme", "influence", "voisinage")
 # - evenement : un événement daté relie les deux (incident, frappe, trêve) ;
 # - comparaison : tient aux grandeurs des deux côtés (prix relatifs, écarts) ;
 # - definition : vraie par construction (un indicateur défini comme un rapport).
-# Champ facultatif. Premier échantillon de 60 relations classé par Claude, à valider par l'auteur.
+# Champ facultatif. Premier échantillon de 60 relations classé par Claude, validé par l'auteur le 2026-11-25 à 19 h 14
+# (« ça se vérifiera sur le terrain »). Remarque de l'auteur : un fondement « evenement » est CONJONCTUREL ; il peut
+# changer selon la phase des cycles (une trêve, une rencontre, une frappe valent pour un moment, pas pour la structure).
 FONDEMENTS = ("lien", "mecanisme_physique", "causalite_sociale", "evenement", "comparaison", "definition")
 
 
