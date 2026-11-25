@@ -130,10 +130,9 @@ def _lecteurs():
     return Carte(), sondes.Sondes()
 
 
-def _carte(titre: str, horizon: int) -> dict | list:
-    """R-carte : compartiments rattachés par les termes de la question (jamais par le pays seul) ; relations entrantes
-    dont le délai tient dans l'horizon ; au plus 5, par force décroissante."""
-    from mise_au_point.lecture_mecanique import DELAI_JOURS
+def rattachement(titre: str) -> tuple[set, list]:
+    """Compartiments rattachés par les termes d'un titre (jamais par le pays seul) et pays reconnus ; partagé par
+    R-carte et par le signalement des questions touchées par les briefs (briefs_questions.py, 2026-11-25)."""
     carte, _ = _lecteurs()
     theme = set()
     for m, rs in carte.mt:
@@ -145,6 +144,15 @@ def _carte(titre: str, horizon: int) -> dict | list:
         geo = set().union(*carte.par_pays.values())
         lies = set().union(*(carte.par_pays[p] for p in pays))
         theme = {c for c in theme if c not in geo or c in lies}
+    return theme, pays
+
+
+def _carte(titre: str, horizon: int) -> dict | list:
+    """R-carte : compartiments rattachés par les termes de la question (jamais par le pays seul) ; relations entrantes
+    dont le délai tient dans l'horizon ; au plus 5, par force décroissante."""
+    from mise_au_point.lecture_mecanique import DELAI_JOURS
+    carte, _ = _lecteurs()
+    theme, pays = rattachement(titre)
     if not theme:
         return silence("rattachement_insuffisant", pays=pays)
     verif = _verifications()

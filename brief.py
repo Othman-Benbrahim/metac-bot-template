@@ -35,7 +35,13 @@ sys.path.insert(0, str(ICI / "mise_au_point"))
 
 DOSSIER = ICI / "briefs"
 JOURNAL = DOSSIER / "journal.jsonl"
-FAMILLES = {"geopolitique_europe": 4, "analyse": 2, "surveillance": 2, "defense": 1, "tech": 1}   # flux de collecte_rss.FLUX
+# flux de collecte_rss.FLUX, nombre maximal de briefs par famille et par passage. 2026-11-25, 13 h 01 (demande de
+# l'auteur) : regards diversifiés pour limiter le biais occidental des premiers flux — Asie (Dawn, The Diplomat,
+# Korea.net), Afrique (AllAfrica, presse burkinabè et marocaine de « presse »), voix citoyennes du monde entier (Global
+# Voices), Amériques (InSight Crime), tech hors Occident (Rest of World). Les familles sont servies à tour de rôle.
+FAMILLES = {"geopolitique_europe": 2, "asie": 2, "voix_citoyennes": 2, "afrique": 1, "analyse": 1, "tech": 1,
+            "crime": 1, "surveillance": 1, "defense": 1}
+FLUX_PRESSE_SUD = ("burkina24.com", "lefaso", "hespress")   # flux de « presse » retenus pour les briefs (Afrique)
 RELAIS = [("openrouter/openai/gpt-oss-120b", "OPENROUTER_API_KEY"),
           ("gemini/gemini-flash-latest", "GEMINI_API_KEY"),    # alias de Google vers le Flash courant
           ("mistral/mistral-small-latest", "MISTRAL_API_KEY"),
@@ -269,7 +275,7 @@ def traiter(item: dict, routage, noms: dict, aujourdhui: str, appel=None, lecteu
 
 def principal() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--max", type=int, default=10)
+    ap.add_argument("--max", type=int, default=12)
     ap.add_argument("--url", nargs="*", default=[])
     ap.add_argument("--sec", action="store_true", help="sans appel au modèle : liste seulement ce qui passerait le filtre")
     a = ap.parse_args()
@@ -281,17 +287,24 @@ def principal() -> int:
     aujourdhui = dt.datetime.now(dt.timezone.utc).date().isoformat()
     routage, noms, vus = lm.routage()[0], noms_compartiments(), deja_traites()
     items = [{"url": u, "titre": u, "resume": ""} for u in a.url]
+    files = {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=30) as c:
-        for fam, n in FAMILLES.items():
-            for flux in cr.FLUX.get(fam, []):
+        sources = {f: list(cr.FLUX.get(f, [])) for f in FAMILLES}
+        sources["afrique"] = sources.get("afrique", []) + [u for u in cr.FLUX.get("presse", []) if any(k in u for k in FLUX_PRESSE_SUD)]
+        for fam, liste in sources.items():
+            pris = []
+            for flux in liste:
                 if not politesse.autorise(c, flux):
                     continue
                 try:
-                    pris = [x for x in items_flux(cr.lire(c, flux).content) if x["url"] not in vus]
+                    pris += [x for x in items_flux(cr.lire(c, flux).content) if x["url"] not in vus]
                 except Exception as ex:
                     print("flux illisible :", flux, type(ex).__name__)
-                    continue
-                items += [x for x in pris if candidats(x["titre"] + " " + x["resume"], routage)][:n]
+            files[fam] = [dict(x, famille=fam) for x in pris if candidats(x["titre"] + " " + x["resume"], routage)][:FAMILLES[fam]]
+    while any(files.values()):                       # à tour de rôle : chaque famille a sa place avant le plafond
+        for fam in FAMILLES:
+            if files.get(fam):
+                items.append(files[fam].pop(0))
     lignes = []
     for it in items[:a.max]:
         if a.sec:
@@ -299,6 +312,7 @@ def principal() -> int:
             continue
         r = traiter(it, routage, noms, aujourdhui)
         r["jour"] = aujourdhui
+        r["famille"] = it.get("famille", "url")
         lignes.append(r)
         print(json.dumps(r, ensure_ascii=False))
     if lignes:

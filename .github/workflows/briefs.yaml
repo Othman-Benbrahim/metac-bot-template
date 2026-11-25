@@ -8,7 +8,7 @@ on:
     inputs:
       max:
         description: "nombre maximal de briefs"
-        default: "10"
+        default: "12"
   schedule:
     - cron: "53 1 * * *"
 
@@ -39,13 +39,17 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
-        run: uv run python -u brief.py --max "${{ github.event.inputs.max || '10' }}"
+        run: uv run python -u brief.py --max "${{ github.event.inputs.max || '12' }}"
+      - name: Questions ouvertes touchées par un brief (signal pour l'auteur, sans effet sur les prévisions)
+        if: always()
+        run: uv run python -u briefs_questions.py || true
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d briefs ]; then git add briefs; fi
+          if [ -f registre/briefs-questions.json ]; then git add -f registre/briefs-questions.json; fi
           if ! git diff --cached --quiet; then
             git commit -m "briefs du $(date -u +%Y-%m-%d)"
             git pull --rebase

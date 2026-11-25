@@ -65,3 +65,13 @@ def test_traiter_bout_en_bout(tmp_path, monkeypatch):
 def test_meme_media():
     assert b._meme_media("Le Grand Continent", "legrandcontinent.eu") and b._meme_media("Atlantic Council", "atlanticcouncil.org")
     assert b._meme_media("le média", "x.com") and not b._meme_media("Reuters", "atlanticcouncil.org")
+
+
+def test_croiser_questions():
+    import briefs_questions as bq
+    qs = {"1": {"question_id": "1", "titre": "Will nuclear stockpiles rise?", "url": "u", "echeance": "2027-01-01"},
+          "2": {"question_id": "2", "titre": "Will it rain?", "url": "v", "echeance": "2027-01-01"}}
+    briefs = [{"jour": "2026-11-25", "url": "https://x", "fichier": "f.md", "compartiments": ["militaire:arsenaux_nucleaires"],
+               "brief": {"titre": "Ogives"}}]
+    r = bq.croiser(qs, briefs, lambda t: ({"militaire:arsenaux_nucleaires"} if "nuclear" in t else set(), []))
+    assert [x["question_id"] for x in r] == ["1"] and r[0]["briefs"][0]["titre"] == "Ogives"

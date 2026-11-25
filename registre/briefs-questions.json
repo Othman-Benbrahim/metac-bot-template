@@ -1,0 +1,174 @@
+{
+ "calcule_le": "2026-11-25",
+ "fenetre_jours": 7,
+ "questions": [
+  {
+   "question_id": "46867",
+   "titre": "What will Anthropic (ANT) close at on Friday, November 27, 2026?",
+   "url": "https://www.metaculus.com/questions/46607",
+   "echeance": "2026-11-27",
+   "compartiments": [
+    "sciences-techniques:ia"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "The Biometric Dragnet",
+     "url": "https://citizenlab.ca/the-biometric-dragnet/",
+     "fichier": "2026-11-25/the-biometric-dragnet.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Signal bloque par défaut les agents IA dans ses chats privés",
+     "url": "https://www.eff.org/deeplinks/2026/11/signal-now-blocks-ai-agents",
+     "fichier": "2026-11-25/signal-bloque-par-d-faut-les-agents-ia-dans-ses-chats-priv-s.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46889",
+   "titre": "Will any of these AI companies (Lovable, DeepSeek, or Perplexity) have a funding round in December 2026?",
+   "url": "https://www.metaculus.com/questions/46629",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "sciences-techniques:ia"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "The Biometric Dragnet",
+     "url": "https://citizenlab.ca/the-biometric-dragnet/",
+     "fichier": "2026-11-25/the-biometric-dragnet.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Signal bloque par défaut les agents IA dans ses chats privés",
+     "url": "https://www.eff.org/deeplinks/2026/11/signal-now-blocks-ai-agents",
+     "fichier": "2026-11-25/signal-bloque-par-d-faut-les-agents-ia-dans-ses-chats-priv-s.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46892",
+   "titre": "Will a US governor, congressperson or cabinet member formally declare a 2028 presidential run before 2027?",
+   "url": "https://www.metaculus.com/questions/46632",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "dirigeants-elus:mandats_succession",
+    "politique-americaine:congres"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
+     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    }
+   ]
+  },
+  {
+   "question_id": "43325",
+   "titre": "What will be Donald Trump's net approval on December 31, 2026?",
+   "url": "https://www.metaculus.com/questions/43323",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "dirigeants-elus:executifs"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Moscou est la troisième Rome, il n’y en aura pas de quatrième",
+     "url": "https://legrandcontinent.eu/fr/2026/11/24/moscou-est-la-troisieme-rome-il-ny-en-aura-pas-de-quatrieme/",
+     "fichier": "2026-11-25/moscou-est-la-troisi-me-rome-il-n-y-en-aura-pas-de-quatri-me.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46450",
+   "titre": "Which party's nominee will win the 2028 US presidential election?",
+   "url": "https://www.metaculus.com/questions/46223",
+   "echeance": "2028-11-08",
+   "compartiments": [
+    "dirigeants-elus:mandats_succession",
+    "politique-americaine:congres"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
+     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46831",
+   "titre": "Which of Nvidia, AMD, Broadcom, or Micron will post the highest percentage change in closing share price from the November 13, 2026 close to the November 27, 2026 close?",
+   "url": "https://www.metaculus.com/questions/46571",
+   "echeance": "2026-11-27",
+   "compartiments": [
+    "economie-entreprises:entreprises"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
+     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46862",
+   "titre": "What will Nvidia's (NVDA) closing share price be on Friday, November 27, 2026?",
+   "url": "https://www.metaculus.com/questions/46602",
+   "echeance": "2026-11-27",
+   "compartiments": [
+    "economie-entreprises:entreprises"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
+     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    }
+   ]
+  },
+  {
+   "question_id": "43326",
+   "titre": "When will martial law be lifted in at least 3/4 of Ukraine?",
+   "url": "https://www.metaculus.com/questions/43324",
+   "echeance": "2027-05-28",
+   "compartiments": [
+    "politique-interieure:contestation"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "Comment Moscou exploite les manifestations de la jeunesse en Europe pour nourrir sa guerre informationnelle",
+     "url": "https://legrandcontinent.eu/fr/2026/11/24/comment-moscou-exploite-les-manifestations-de-la-jeunesse-en-europe-pour-nourrir-sa-guerre-informationnelle/",
+     "fichier": "2026-11-25/comment-moscou-exploite-les-manifestations-de-la-jeunesse-en.md"
+    }
+   ]
+  }
+ ]
+}
