@@ -1,0 +1,265 @@
+{
+ "candidats": [
+  "CTR@6",
+  "PRO@6",
+  "CRO@6"
+ ],
+ "contre_candidate": [
+  "CTR@6"
+ ],
+ "mots": [
+  {
+   "carte": "CTR",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "Broadcom a déclaré des charges non opérationnelles matérielles (amortissement lié aux acquisitions, restructuring, autres charges) récurrentes dans ses rapprochements GAAP→non‑GAAP ; plusieurs trimestres et exercices 2023‑2025 montrent des montants significatifs qui affectent le GAAP EPS.",
+   "date": "2016‑2025 (exemples ponctuels cités dans les sources)",
+   "objet": "charges non‑opérationnelles affectant le GAAP diluted EPS",
+   "source": "Communiqués / rapprochements GAAP→non‑GAAP et 10‑K/10‑Q compilés dans les résultats fournis (ex. Broadcom press releases & filings cités dans les recherches)",
+   "source_url": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025",
+   "date_consultation": "2026-11-25",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Rapprochement GAAP→non‑GAAP, Q4/FY2025 press release / filing",
+     "relation": "soutient",
+     "extrait": "amortization of acquisition‑related intangibles, restructuring & other charges listés comme éléments non‑opérationnels (montants matérialisés dans le rapprochement)"
+    }
+   ],
+   "test": "paille",
+   "contre_observation": "Dans plusieurs périodes (p. ex. certains trimestres 2021‑2023) Broadcom a aussi présenté EPS GAAP > $3.45 malgré la présence d'amortissements/charges non‑opérationnelles.",
+   "portee": "marginale",
+   "garantie": {
+    "mecanisme": "les charges non‑opérationnelles réduisent directement le résultat net comptable et donc le GAAP diluted EPS au trimestre/année où elles sont comptabilisées.",
+    "support": {
+     "type": "texte",
+     "reference": "Extraits des rapprochements GAAP→non‑GAAP et tableaux de charges (présentés dans les communiqués et filings listés dans les recherches fournies).",
+     "disponible_le": "2026-11-25"
+    },
+    "attendu": "la présence de charges non‑opérationnelles significatives au trimestre peut abaisser le GAAP diluted EPS sous un seuil donné même si l'activité sous‑jacente est solide.",
+    "contredirait": "des cas documentés où, malgré de fortes charges non‑opérationnelles, le GAAP EPS reste au‑dessus du seuil (preuves présentes dans les recherches)."
+   },
+   "corroboration": "unique",
+   "corroboration_sources": [
+    "Investors Broadcom – Q4/FY2025 press release and GAAP→Non‑GAAP reconciliation (cited in search results)"
+   ],
+   "option": {
+    "acteur": "Broadcom Inc. (Corporate reporting)",
+    "avant": "GAAP EPS sans charges additionnelles spécifiques au trimestre",
+    "apres": "GAAP EPS incorporant charges non‑opérationnelles listées dans le rapprochement"
+   },
+   "contre_observation_portee": "marginale"
+  },
+  {
+   "carte": "PRO",
+   "strate": 6,
+   "intensite": "f",
+   "fait": "Le nombre moyen dilué d'actions (weighted‑average diluted shares) et l'activité de rachat ont évolué en 2024‑2025 : l'exercice FY2025 affiche un weighted‑average dilué ≈ 4.828 M (année) et des rachats massifs (Q2‑FY2025 repurchases et effets de retenue d'actions) documentés dans les communiqués, ce qui influence le dénominateur de l'EPS.",
+   "date": "FY2025 (données et opérations mentionnées dans les communiqués 2025)",
+   "objet": "évolution du nombre d'actions diluées moyennes et rachats d'actions",
+   "source": "Broadcom press releases / financial releases cités dans les recherches ; compilations fournies dans les résultats",
+   "source_url": "https://www.broadcom.com/company/news/financial-releases/63151 ; https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025",
+   "date_consultation": "2026-11-25",
+   "classe_source": "contemporain",
+   "passage": [
+    {
+     "localisation": "Q2 FY2025 financial release (repurchase disclosure) / FY2025 annual figures",
+     "relation": "soutient",
+     "extrait": "repurchases – cash and shares disclosed (montants et nombre d'actions repurchased) ; weighted‑average diluted shares for FY2025 reported ≈ 4.828M"
+    }
+   ],
+   "test": "cerceau",
+   "contre_observation": "La corrélation n'est pas parfaite : des périodes montrent EPS élevé sans changement matériel de la base d'actions, donc les rachats ne sont pas l'unique moteur.",
+   "portee": "marginale",
+   "corroboration": "independantes",
+   "corroboration_sources": [
+    "Broadcom financial release Q2 FY2025 (repurchase disclosure) – https://www.broadcom.com/company/news/financial-releases/63151",
+    "Investors Broadcom Q4/FY2025 press release (FY diluted shares & EPS) – https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-fourth-quarter-and-fiscal-year-2025"
+   ],
+   "contre_observation_portee": "marginale"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le communiqué officiel couvrant le quatrième trimestre FY2026 (divulgation Broadcom attendue en décembre 2026) publiera‑t‑il un GAAP diluted EPS strictement supérieur à $3.45 pour Q4 FY2026 ?",
+   "si_oui": "PRO@6",
+   "si_non": "CTR@6",
+   "resolution": "Le communiqué de Broadcom et tout 8‑K/filing associés publiés le 9 décembre 2026 (press release et dépôt SEC couvrant Q4 FY2026) contiendront la figure GAAP diluted EPS pour le trimestre ; l'observation de ce chiffre dans ces documents résoudra la question.",
+   "justification": {
+    "oui": "Si GAAP EPS > $3.45, l'effet combiné d'un numérateur (résultat) suffisant et d'un dénominateur (weighted‑average diluted shares) influencé par les rachats rendra PRO@6 la lecture pertinente (les rachats/support de la proportion auront contribué au franchissement).",
+    "non": "Si GAAP EPS ≤ $3.45, cela indiquera que, malgré d'éventuels rachats, les charges non‑opérationnelles ou d'autres éléments ont neutralisé ou réduit l'EPS — rendant CTR@6 (impact des charges) la lecture explicative dominante."
+   },
+   "statut": "ouverte",
+   "date": "question datée 2026-11-25 (résolution attendue 2026-12-09)"
+  }
+ ],
+ "rejets": {
+  "CRO@6": "[marqueur_non_rempli] [marqueur_non_rempli] les données trimestrielles et annuelles disponibles montrent des variations importantes (forte hausse en 2024, modération en 2025) mais pas une hausse systématique qui s'accélère ni une série datée démontrant une dynamique de croissance auto‑alimentée requise par le marqueur observable de CROISSANCE. Le mot a été retiré des 'mots' pour manque d'éléments probants."
+ },
+ "etat": "[2026-11-25 | 16 jours] CONTRAINTE@6[f] + PROPORTION@6[f]",
+ "disponible_le": "2026-11-25",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Broadcom quarterly revenue and GAAP diluted EPS growth rates by quarter 2016-2025 (time series of revenue and GAAP EPS)",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Correlation between Broadcom quarter-over-quarter revenue growth and quarters where GAAP diluted EPS exceeded $3.45, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Instances where Broadcom reported strong revenue growth but GAAP diluted EPS was less than or equal to $3.45, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Broadcom quarterly reported one-time charges, restructuring charges or material non-operating expenses appearing in 10-Q/8-K filings, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Impact of material non-operating charges on Broadcom GAAP diluted EPS in reported quarters: how often did charges push GAAP EPS below a $3.45 threshold? 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Quarters where Broadcom recorded significant non-operating charges but still reported GAAP diluted EPS greater than $3.45, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "Broadcom quarterly diluted weighted-average shares outstanding and GAAP diluted EPS by quarter 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "Association between changes in Broadcom diluted share count (share repurchases, issuances) and quarters where GAAP diluted EPS crossed $3.45, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "PRO@6"
+   ],
+   "requete": "Quarters where Broadcom's GAAP diluted EPS crossed $3.45 without material change in diluted share count, 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "CTR@6"
+   ],
+   "requete": "Which factor better predicts Broadcom GAAP diluted EPS > $3.45: revenue growth versus occurrence of material non-operating charges? Historical comparison 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "PRO@6"
+   ],
+   "requete": "Which factor better predicts Broadcom GAAP diluted EPS > $3.45: revenue growth versus changes in diluted share count (buybacks/issuances)? Broadcom 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "PRO@6"
+   ],
+   "requete": "Which factor better predicts Broadcom GAAP diluted EPS > $3.45: presence of material non-operating charges versus changes in diluted share count? Broadcom 2016-2025",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La réponse sera OUI si et seulement si le GAAP diluted EPS initialement publié par Broadcom pour le trimestre Q4 FY2026 est strictement supérieur à $3.45.",
+   "source_resolution": {
+    "emetteur": "Broadcom Inc. Investor Relations / Broadcom Inc. (SEC filings)",
+    "document": "le communiqué de résultats trimestriels couvrant Q4 FY2026 et/ou le rapport 10-Q/press release initial publiés par Broadcom pour ce trimestre",
+    "regle_ambiguite": "Utiliser la valeur initialement annoncée et publiée par Broadcom (communiqué officiel ou filing SEC) pour Q4 FY2026 ; ne pas prendre en compte révisions ou retraitements ultérieurs."
+   },
+   "vue_exterieure": {
+    "frequence": 0.016427554484722374,
+    "classe_de_reference": "Fenêtres d'une durée égale à un trimestre fiscal de Broadcom pour lesquelles la GAAP diluted EPS, telle que reportée dans les communiqués/SEC filings de Broadcom, augmente d'au moins le facteur (3.45 ÷ EPS_dernière_valeur_connue) — c.-à-d. une progression suffisante pour porter la valeur au‑dessus de 3,45 $",
+    "source": "R2 (compilation/exa2 : compte des trimestres 2010–2025 avec GAAP diluted EPS > $3.45)",
+    "periode": "2010-2025",
+    "disponible_le": "2026-11-25",
+    "classe_alternative": {
+     "frequence": null,
+     "classe_de_reference": "Même définition — compter trimestres 2010–2025 satisfaisant l'augmentation menant à > $3.45",
+     "source": "R1 (tableau de séries trimestrielles 2010–2025 fourni par exa2/macrotrends-like)",
+     "pourquoi_ecartee": "Les valeurs numériques de R1 sont incohérentes avec les chiffres publiés dans les communiqués/SEC filings référencés par R3/R2 (ex. R1 donne 0.88 pour Q1 2023 alors que R3/R2 montrent 8.80). R1 semble affecté d'une mise à l'échelle erronée ; son usage conduirait à un comptage manifestement incorrect."
+    },
+    "ecart_critere": "identique : la condition multiplicative (3.45 ÷ EPS_précédent) se simplifie à exiger que l'EPS reporté du trimestre considéré soit > $3.45, donc le comptage utilisé (trimestres avec EPS > $3.45) est conforme au critère."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CTR@6",
+   "vers": "cible",
+   "extrait": "The relationship between Broadcom’s quarter‑over‑quarter (QoQ) revenue growth and the occurrence of a GAAP diluted EPS that exceeds $3.45 (2016‑2025) is very weak and slightly negative.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "PRO@6",
+   "vers": "CTR@6",
+   "extrait": "Correlation ≈ ‑0.10 – a very weak negative relationship.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "PRO@6",
+   "vers": "cible",
+   "extrait": "In the six quarters where EPS topped $3.45, Broadcom’s revenue growth was generally modest or negative (‑0.2 % to +4.5 %).",
+   "source": ""
+  }
+ ]
+}
