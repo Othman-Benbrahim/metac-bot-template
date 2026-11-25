@@ -33,7 +33,20 @@ SPARQL = "https://query.wikidata.org/sparql"
 CHEF = re.compile(r"^(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|head of state|"
                   r"chief executive|taoiseach|grand duke|prince|chairman of the presidium)\b", re.I)
 PAS_CHEF = re.compile(r"\b(vice|deputy|first deputy|acting)\b", re.I)
+# 2026-11-25, premier passage : data.opensanctions.org refuse notre agent par robots.txt (« refuse_robots », non forcé).
+# Les dirigeants publics viennent donc aussi de Wikidata (source validée) : chefs d'État et de gouvernement actuels des
+# États souverains, et ministres en fonction (poste rattaché à un État souverain, sans date de fin).
+REQUETES_CHEFS = {
+    "chef d'État ou de gouvernement": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
+  ?o wdt:P31 wd:Q3624078. VALUES ?prop { p:P35 p:P6 } ?o ?prop ?st. ?st (ps:P35|ps:P6) ?p.
+  FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
+}
 REQUETES = {
+    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
+  ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  ?pos wdt:P279 ?classe. VALUES ?classe { wd:Q83307 wd:Q7330070 wd:Q15966511 } ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
     "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
@@ -108,7 +121,8 @@ def principal() -> int:
                 bilan["cia"] = f"erreur {type(ex).__name__}: {str(ex)[:120]}"
         else:
             bilan["cia"] = "refuse_robots"
-        for sorte, q in REQUETES.items():
+        for sorte, q in list(REQUETES_CHEFS.items()) + list(REQUETES.items()):
+            chef = sorte in REQUETES_CHEFS
             try:
                 r = c.get(SPARQL, params={"query": q, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
                 r.raise_for_status()
@@ -119,7 +133,7 @@ def principal() -> int:
                     if len(nom) < 5 or re.fullmatch(r"Q\d+", nom):
                         continue
                     lignes.append({"nom": nom, "sorte": sorte, "pays": "", "poste": b.get("oLabel", {}).get("value", "")[:120],
-                                   "chef": False, "source": "Wikidata"})
+                                   "chef": chef, "source": "Wikidata"})
                     n += 1
                 bilan[sorte] = n
             except Exception as ex:
