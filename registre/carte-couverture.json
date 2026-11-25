@@ -4,13 +4,13 @@
  "avancement": {
   "compartiments": 855,
   "par_statut": {
-   "a_trouver": 613,
-   "vide": 35,
-   "fraiche": 171,
-   "ancienne": 36
+   "a_trouver": 614,
+   "ancienne": 47,
+   "fraiche": 179,
+   "vide": 15
   },
   "relations": 1014,
-  "relations_testables": 206,
+  "relations_testables": 213,
   "relations_par_verdict": {
    "non_controlee": 788,
    "non_tranche": 63,
@@ -57,8 +57,9 @@
    "statut": "a_trouver"
   },
   "afrique-subsaharienne:acces_electricite": {
-   "statut": "vide",
-   "serie": "owid:share-of-the-population-with-access-to-electricity:Sub-Saharan Africa (WB)"
+   "statut": "ancienne",
+   "serie": "owid:share-of-the-population-with-access-to-electricity:Sub-Saharan Africa (WB)",
+   "derniere": "2024-07-01"
   },
   "afrique-subsaharienne:alternances": {
    "statut": "a_trouver"
@@ -192,15 +193,17 @@
    "statut": "a_trouver"
   },
   "antarctique:glace_mer": {
-   "statut": "vide",
-   "serie": "owid:antarctica-sea-ice-extent:unique"
+   "statut": "ancienne",
+   "serie": "owid:antarctica-sea-ice-extent:unique",
+   "derniere": "2026-07-01"
   },
   "antarctique:calotte": {
    "statut": "a_trouver"
   },
   "arctique:glace_arctique": {
-   "statut": "vide",
-   "serie": "owid:arctic-sea-ice:Arctic Ocean"
+   "statut": "ancienne",
+   "serie": "owid:arctic-sea-ice:Arctic Ocean",
+   "derniere": "2026-07-01"
   },
   "arctique:groenland": {
    "statut": "a_trouver"
@@ -574,8 +577,9 @@
    "statut": "a_trouver"
   },
   "corruption:perception": {
-   "statut": "vide",
-   "serie": "owid:ti-corruption-perception-index:moyenne"
+   "statut": "ancienne",
+   "serie": "owid:ti-corruption-perception-index:moyenne",
+   "derniere": "2024-07-01"
   },
   "corruption:grande_corruption": {
    "statut": "a_trouver"
@@ -903,12 +907,14 @@
    "statut": "a_trouver"
   },
   "eau-douce-potable:acces": {
-   "statut": "vide",
-   "serie": "owid:proportion-using-safely-managed-drinking-water:World"
+   "statut": "ancienne",
+   "serie": "owid:proportion-using-safely-managed-drinking-water:World",
+   "derniere": "2024-07-01"
   },
   "eau-douce-potable:assainissement": {
-   "statut": "vide",
-   "serie": "owid:share-using-safely-managed-sanitation:World"
+   "statut": "ancienne",
+   "serie": "owid:share-using-safely-managed-sanitation:World",
+   "derniere": "2024-07-01"
   },
   "eau-douce-potable:qualite": {
    "statut": "a_trouver"
@@ -1172,12 +1178,12 @@
    "statut": "a_trouver"
   },
   "environnement-dechets:ozone": {
-   "statut": "vide",
-   "serie": "owid:ozone-depleting-substance-consumption:World"
+   "statut": "ancienne",
+   "serie": "owid:ozone-depleting-substance-consumption:World",
+   "derniere": "2021-07-01"
   },
   "environnement-dechets:qualite_air": {
-   "statut": "vide",
-   "serie": "owid:death-rates-from-air-pollution:World"
+   "statut": "a_trouver"
   },
   "environnement-dechets:traites": {
    "statut": "a_trouver"
@@ -1918,8 +1924,9 @@
    "statut": "a_trouver"
   },
   "militaire:arsenaux_nucleaires": {
-   "statut": "vide",
-   "serie": "owid:nuclear-warhead-stockpiles:somme"
+   "statut": "ancienne",
+   "serie": "owid:nuclear-warhead-stockpiles:somme",
+   "derniere": "2026-07-01"
   },
   "militaire:industrie_armement": {
    "statut": "a_trouver"
@@ -2164,8 +2171,9 @@
    "derniere": "2026-11-09"
   },
   "oceans-et-fleuves:peche": {
-   "statut": "vide",
-   "serie": "owid:capture-and-aquaculture-production:World:somme"
+   "statut": "ancienne",
+   "serie": "owid:capture-and-aquaculture-production:World:somme",
+   "derniere": "2024-07-01"
   },
   "oceans-et-fleuves:recifs": {
    "statut": "a_trouver"
@@ -2174,8 +2182,9 @@
    "statut": "a_trouver"
   },
   "oceans-et-fleuves:plastiques": {
-   "statut": "vide",
-   "serie": "owid:global-plastics-production:World"
+   "statut": "ancienne",
+   "serie": "owid:global-plastics-production:World",
+   "derniere": "2019-07-01"
   },
   "oceans-et-fleuves:haute_mer": {
    "statut": "a_trouver"
@@ -2208,8 +2217,9 @@
    "statut": "a_trouver"
   },
   "organisations-internationales:humanitaire": {
-   "statut": "vide",
-   "serie": "fts:couverture"
+   "statut": "ancienne",
+   "serie": "fts:couverture",
+   "derniere": "2026-07-01"
   },
   "ormuz:milieu": {
    "statut": "fraiche",
@@ -2756,7 +2766,7 @@
   "securite-europeenne:otan_ue": {
    "statut": "fraiche",
    "serie": "rss:RU:conseil_ue",
-   "derniere": "2026-11-16"
+   "derniere": "2026-11-25"
   },
   "securite-europeenne:industrie": {
    "statut": "a_trouver"
@@ -2882,32 +2892,39 @@
    "statut": "a_trouver"
   },
   "surveillance-espionnage:renseignement_etats": {
-   "statut": "vide",
-   "serie": "rss_matiere:interceptions"
+   "statut": "fraiche",
+   "serie": "rss_matiere:interceptions",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:espionnage_etats": {
-   "statut": "vide",
-   "serie": "rss_matiere:espionnage"
+   "statut": "fraiche",
+   "serie": "rss_matiere:espionnage",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:industrie_intrusion": {
-   "statut": "vide",
-   "serie": "rss_matiere:spyware"
+   "statut": "fraiche",
+   "serie": "rss_matiere:spyware",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:courtiers_donnees": {
-   "statut": "vide",
-   "serie": "rss_matiere:courtiers"
+   "statut": "fraiche",
+   "serie": "rss_matiere:courtiers",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:biometrie": {
-   "statut": "vide",
-   "serie": "rss_matiere:biometrie"
+   "statut": "fraiche",
+   "serie": "rss_matiere:biometrie",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:cibles": {
-   "statut": "vide",
-   "serie": "rss_matiere:cibles"
+   "statut": "fraiche",
+   "serie": "rss_matiere:cibles",
+   "derniere": "2026-11-25"
   },
   "surveillance-espionnage:contre_mesures": {
-   "statut": "vide",
-   "serie": "rss_matiere:chiffrement"
+   "statut": "fraiche",
+   "serie": "rss_matiere:chiffrement",
+   "derniere": "2026-11-25"
   },
   "transport-maritime:detroits": {
    "statut": "fraiche",
@@ -3019,8 +3036,9 @@
    "statut": "a_trouver"
   },
   "union-europeenne:relations_exterieures": {
-   "statut": "vide",
-   "serie": "rss_famille:geopolitique_europe"
+   "statut": "fraiche",
+   "serie": "rss_famille:geopolitique_europe",
+   "derniere": "2026-11-25"
   },
   "union-europeenne:budget": {
    "statut": "a_trouver"
@@ -8847,43 +8865,43 @@
   {
    "de": "surveillance-espionnage:renseignement_etats",
    "vers": "surveillance-espionnage:industrie_intrusion",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:contre_mesures",
    "vers": "surveillance-espionnage:industrie_intrusion",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:industrie_intrusion",
    "vers": "surveillance-espionnage:cibles",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:biometrie",
    "vers": "surveillance-espionnage:cibles",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:espionnage_etats",
    "vers": "surveillance-espionnage:contre_mesures",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:cibles",
    "vers": "surveillance-espionnage:contre_mesures",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {
    "de": "surveillance-espionnage:courtiers_donnees",
    "vers": "surveillance-espionnage:renseignement_etats",
-   "testable": false,
+   "testable": true,
    "verdict": null
   },
   {

@@ -16,7 +16,7 @@
   ],
   [
    "série sans état récent",
-   425
+   424
   ],
   [
    "aucun compartiment rattaché",
@@ -437,10 +437,6 @@
    6
   ],
   [
-   "arctique:glace_arctique → arctique:route_nord",
-   6
-  ],
-  [
    "russie-ukraine:capacites → russie-ukraine:front",
    6
   ],
@@ -482,6 +478,10 @@
   ],
   [
    "epidemies:convention → epidemies:autorites",
+   5
+  ],
+  [
+   "arctique:glace_arctique → arctique:route_nord",
    5
   ],
   [
