@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 import httpx
@@ -28,12 +29,32 @@ SORTIE = Path("registre") / "sondes"
 # 5e passage (18 h 30) : liste publique des élections à venir d'IFES ElectionGuide (adresse donnée par l'auteur).
 # 6e passage (22 h 21) : bne IntelliNews (adresse donnée par l'auteur) ; mur payant, on cherche seulement un flux de
 # TITRES gratuit (règles du site, liens RSS annoncés par l'accueil, adresses de flux usuelles). Aucun article lu.
-# 7e passage (22 h 38) : Just Security (validé par l'auteur à 22 h 38) : règles du site, flux de titres, et format des
-# pages « tracker » (tableaux ? fichiers ? Google Sheets ?), repérées par les liens de l'accueil. Aucun article gardé.
+# 8e passage (22 h 42, décision de l'auteur « banco ») : structure des tableaux des trackers Just Security (en-têtes,
+# 3 premières lignes, cellules coupées à 300 caractères, liens de cellule relevés) et glossaire des statuts. robots.txt :
+# permis, « Crawl-delay: 3 » respecté. Rien d'autre n'est gardé.
 ADRESSES = {
-    "js_robots": "https://www.justsecurity.org/robots.txt",
-    "js_accueil": "https://www.justsecurity.org/",
+    "jst_proces": "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/",
+    "jst_glossaire": "https://www.justsecurity.org/161783/litigation-tracker-case-status-key-glossary/",
+    "jst_habeas": "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
+    "jst_corruption": "https://www.justsecurity.org/117267/anti-corruption-tracker/",
 }
+
+
+def _cellules(ligne: str) -> list[dict]:
+    out = []
+    for c in re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", ligne, re.S | re.I):
+        texte = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", c)).strip()
+        out.append({"texte": texte[:300], "liens": re.findall(r'href="([^"]+)"', c)[:3]})
+    return out
+
+
+def structure_tableaux(texte: str, n: int = 3) -> list[dict]:
+    res = []
+    for t in re.findall(r"<table.*?</table>", texte, re.S | re.I)[:6]:
+        lignes = re.findall(r"<tr.*?</tr>", t, re.S | re.I)
+        res.append({"lignes": len(lignes), "attributs_table": re.match(r"<table[^>]*>", t, re.I).group(0)[:300],
+                    "entete": _cellules(lignes[0]) if lignes else [], "exemples": [_cellules(l) for l in lignes[1:1 + n]]})
+    return res
 IN_FLUX_USUELS = ["https://www.intellinews.com/feed/", "https://www.intellinews.com/rss/",
                   "https://www.intellinews.com/rss.xml", "https://www.intellinews.com/feed.xml"]
 BASE_IW = "https://www.integritywatch.eu/"
@@ -60,6 +81,10 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
+            if texte and nom.startswith("jst_"):
+                etat[nom]["tableaux"] = structure_tableaux(texte, 8 if nom == "jst_glossaire" else 3)
+                (SORTIE / f"{nom}.txt").unlink(missing_ok=True)   # pas de texte de page gardé
+                time.sleep(3)                                      # Crawl-delay: 3 du site
             if texte and nom == "js_robots":
                 (SORTIE / "js_robots.txt").write_text(texte[:20000], encoding="utf-8")
             if texte and nom == "js_accueil":
