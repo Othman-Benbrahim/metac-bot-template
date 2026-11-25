@@ -2,5 +2,10 @@
  "source": "IFES ElectionGuide (liste publique des élections à venir)",
  "url": "https://electionguide.org/elections/type/upcoming/",
  "http": 200,
- "statut": "tableau introuvable"
+ "statut": "ok",
+ "scrutins": 28,
+ "pays": 19,
+ "anticipes": 6,
+ "premier": "2026-11-29",
+ "dernier": "2027-07-18"
 }

@@ -1,0 +1,30 @@
+# Élections à venir, IFES ElectionGuide (electionguide.org) ; collecte_elections_ifes.py
+id,pays,scrutin,debut,debut_precision,fin,fin_precision,statut,anticipe
+5097,Switzerland,Referendum,2026-11-29,d,2026-11-29,d,Confirmed,No
+5255,Spain,Spanish Senate,2026-11-29,d,2026-11-29,d,Confirmed,Yes
+5256,Spain,Spanish Congress of Deputies,2026-11-29,d,2026-11-29,d,Confirmed,Yes
+5106,"Gambia, The",Gambian Presidency,2026-12-05,d,2026-12-05,d,Confirmed,No
+5208,Northern Cyprus,Northern Cypriot Assembly of the Republic,2026-12-06,d,2026-12-06,d,Confirmed,Yes
+5329,Dominica,Dominican House of Assembly,2026-12-16,d,2026-12-16,d,Date not confirmed,Yes
+5206,Fiji,Fijian Parliament,2026-12-24,t,2027-02-06,t,Date not confirmed,No
+5295,Serbia,Serbian Presidency,2026-12-27,t,2026-12-27,t,Date not confirmed,Yes
+5202,Nigeria,Nigerian House of Representatives,2027-01-16,d,2027-01-16,d,Confirmed,No
+5203,Nigeria,Nigerian Senate,2027-01-16,d,2027-01-16,d,Confirmed,No
+5204,Nigeria,Nigerien Presidency,2027-01-16,d,2027-01-16,d,Confirmed,No
+5205,Kyrgyzstan,Kyrgyz Presidency,2027-01-27,t,2027-01-27,t,Date not confirmed,No
+5110,South Sudan,South Sudanese Presidency,2027-02-11,d,2027-02-11,d,Date not confirmed,No
+5109,South Sudan,South Sudanese Council of States,2027-02-11,d,2027-02-11,d,Date not confirmed,No
+5108,South Sudan,South Sudanese National Legislative Assembly,2027-02-11,d,2027-02-11,d,Date not confirmed,No
+5209,Switzerland,Referendum,2027-02-28,t,2027-02-28,t,Date not confirmed,No
+5207,El Salvador,Salvadoran Legislative Assembly,2027-02-28,t,2027-02-28,t,Date not confirmed,No
+5210,"Micronesia, Federated States of",Micronesian Congress,2027-03-02,t,2027-03-02,t,Date not confirmed,No
+5211,Estonia,Estonian Parliament,2027-03-07,d,2027-03-07,d,Confirmed,No
+5328,Mongolia,Mongolian Presidency,2027-03-19,t,2027-03-19,t,Date not confirmed,Yes
+5248,"Gambia, The",Gambian National Assembly,2027-04-10,t,2027-04-10,t,Date not confirmed,No
+5113,Somalia,Somali House of the People,2027-04-15,t,2027-04-15,t,Date not confirmed,No
+5249,Finland,Finnish Parliament,2027-04-18,t,2027-04-18,t,Date not confirmed,No
+5250,France,French Presidency,2027-04-18,t,2027-04-18,t,Date not confirmed,No
+5251,Timor-Leste,Timorese Presidency,2027-04-30,t,2027-04-30,t,Date not confirmed,No
+4665,Haiti,Haitian Senate,2027-07-18,d,2027-07-18,d,Confirmed,No
+4664,Haiti,Haitian Chamber of Deputies,2027-07-18,d,2027-07-18,d,Confirmed,No
+4663,Haiti,Haitian Presidency,2027-07-18,d,2027-07-18,d,Confirmed,No
