@@ -1,0 +1,127 @@
+[
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "23-01-2024",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "Polskie Stowarzyszenie Przetwórców Ryb",
+        "lobbyistsArray": [
+            "Polskie Stowarzyszenie Przetwórców Ryb"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "The Situation of the Fish Processing Market in the EU and individual Member States"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "10-10-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "Federacja Przedsiębiorców Polskich",
+        "lobbyistsArray": [
+            "Federacja Przedsiębiorców Polskich"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "Blue Deal as a solution to Europe’s water crisis?"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "15-06-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "Polska Izba Spedycji i Logistyki",
+        "lobbyistsArray": [
+            "Polska Izba Spedycji i Logistyki"
+        ],
+        "location": "online",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "Challenges for the Polish transport and logistics sector in the EU"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "07-03-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "South African Ambassador to the Kingdom of Belgium, the Grand Duchy of Luxembourg and the Mission to the European Union",
+        "lobbyistsArray": [
+            "South African Ambassador to the Kingdom of Belgium, the Grand Duchy of Luxembourg and the Mission to the European Union"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "EU-South Africa Relations"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "07-03-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "Re-Imagine Europa",
+        "lobbyistsArray": [
+            "Re-Imagine Europa"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "Disinformation and polarization of the society"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "01-03-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "Federacja Przedsiębiorców Polskich",
+        "lobbyistsArray": [
+            "Federacja Przedsiębiorców Polskich"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "Challenges for Polish business in the EU"
+    },
+    {
+        "committees": [],
+        "country": "Poland",
+        "date": "01-02-2023",
+        "dossier": "",
+        "epid": "197490",
+        "group": "EPP",
+        "lobbyists": "University of Cape Town",
+        "lobbyistsArray": [
+            "University of Cape Town"
+        ],
+        "location": "Brussels",
+        "mep": "Magdalena ADAMOWICZ",
+        "role": "Member",
+        "title": "Higher education and research in South Africa"
+    },
+    {
+        "committees": [
+            "IMCO"
+        ],
+        "country": "Malta",
+        "date": "07-03-2024",
+        "dossier": "",
+        "epid": "197403",
+        "group": "S&D",
+        "lobbyists": "DG COMP and Cabinet of EVP Vestager",
+        "lobbyistsArray": [
+            "DG COMP and Cabinet of EVP Vestager"
+        ],
+        "location": "Brus

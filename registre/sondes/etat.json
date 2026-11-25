@@ -1,38 +1,47 @@
 {
- "iw_reunions": {
-  "url": "https://www.integritywatch.eu/mepmeetings",
+ "iw_script": {
+  "url": "https://www.integritywatch.eu/static/mepmeetings.js?v=9",
   "statut": 200,
-  "type": "text/html; charset=UTF-8",
-  "taille": 20043,
-  "donnees": [],
-  "scripts": [
-   "https://www.googletagmanager.com/gtag/js?id=UA-55613514-1",
-   "static/mepmeetings.js?v=9",
-   "vendor/js/crossfilter.min.js",
-   "vendor/js/d3.layout.cloud.js",
-   "vendor/js/d3.v5.min.js",
-   "vendor/js/dc.cloud.js",
-   "vendor/js/dc.js"
+  "type": "application/javascript",
+  "taille": 421688,
+  "chemins": [
+   "./data/mepmeetings/legislature_9/mepmeetings.json?",
+   "./data/mepmeetings/legislature_9/mepmeetings_lobbysts_tr_match.json?",
+   "./data/meps/dpi_legislature_10/meps.json?",
+   "./data/meps/dpi_legislature_9/meps.json?",
+   "https://integritywatch.eu/autoupdate_data_eu/mepmeetings/backups.json",
+   "mepmeetings.json?",
+   "mepmeetings_lobbysts_tr_match.json?"
   ]
  },
- "iw_reunions_php": {
-  "url": "https://www.integritywatch.eu/mepmeetings.php",
+ "iw_donnees_0": {
+  "url": "https://www.integritywatch.eu/data/mepmeetings/legislature_9/mepmeetings.json?",
   "statut": 200,
-  "type": "text/html; charset=UTF-8",
-  "taille": 20043,
-  "donnees": [],
-  "scripts": [
-   "https://www.googletagmanager.com/gtag/js?id=UA-55613514-1",
-   "static/mepmeetings.js?v=9",
-   "vendor/js/crossfilter.min.js",
-   "vendor/js/d3.layout.cloud.js",
-   "vendor/js/d3.v5.min.js",
-   "vendor/js/dc.cloud.js",
-   "vendor/js/dc.js"
-  ]
+  "type": "application/json",
+  "taille": 32498471
  },
- "ember_annuel": {
-  "url": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
-  "statut": "refuse_robots"
+ "iw_donnees_1": {
+  "url": "https://www.integritywatch.eu/data/mepmeetings/legislature_9/mepmeetings_lobbysts_tr_match.json?",
+  "statut": 200,
+  "type": "application/json",
+  "taille": 1806010
+ },
+ "iw_donnees_2": {
+  "url": "https://www.integritywatch.eu/data/meps/dpi_legislature_10/meps.json?",
+  "statut": 200,
+  "type": "application/json",
+  "taille": 951048
+ },
+ "iw_donnees_3": {
+  "url": "https://www.integritywatch.eu/data/meps/dpi_legislature_9/meps.json?",
+  "statut": 200,
+  "type": "application/json",
+  "taille": 885858
+ },
+ "iw_donnees_4": {
+  "url": "https://integritywatch.eu/autoupdate_data_eu/mepmeetings/backups.json",
+  "statut": 200,
+  "type": "application/json",
+  "taille": 965
  }
 }

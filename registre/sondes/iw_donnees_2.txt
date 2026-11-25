@@ -1,0 +1,109 @@
+[
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 16-07-2024",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/10/71e080cf-64b5-4e99-916e-b45752c41272_1721085713702.pdf"
+            },
+            {
+                "title": "Revision no 1 - 21-10-2025",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/10/4acee794-5ace-460b-926d-48aac88466b7_1761123360677.pdf"
+            }
+        ],
+        "birthdate": "02-05-1969",
+        "committee": [
+            "AFET",
+            "EUDS"
+        ],
+        "country": "Finland",
+        "delegation": [
+            "D-UK",
+            "DEEA",
+            "D-US"
+        ],
+        "email": "mika.aaltola@europarl.europa.eu",
+        "epid": "256810",
+        "eugroup": "EPP",
+        "events_declaration_docs": [
+            {
+                "title": "Event - 18-07-2026(18 KB)",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DAT/10/809b9299-fef4-42cf-ba75-1ccf65a19858_1786524480949.pdf"
+            },
+            {
+                "title": "Event - 14-07-2026(18 KB)",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DAT/10/446e5614-72cd-4d18-b3e5-5927a1f55c41_1786347240883.pdf"
+            },
+            {
+                "title": "Event - 06-04-2026(19 KB)",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DAT/10/514e06a4-0740-469c-b6a7-f6a04d5b7c20_1778157360627.pdf"
+            },
+            {
+                "title": "Event - 06-06-2025(18 KB)",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DAT/10/473de237-aa0e-40ec-b6ee-9d99a75c6313_1750923061874.pdf"
+            },
+            {
+                "title": "Event - 08-05-2025(18 KB)",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DAT/10/92f17433-1a6a-4a42-879e-0e939c081683_1750923060665.pdf"
+            }
+        ],
+        "events_declaration_num": 5,
+        "first_name": "Mika",
+        "full_name": "Mika AALTOLA",
+        "gender": "M",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 2,
+        "last_name": "AALTOLA",
+        "party": "Kansallinen Kokoomus",
+        "substitute": [
+            "INTA"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 16-07-2024",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/10/ca9eb9c6-7fc8-4e1b-b546-38ba50ca3317_1721085704747.pdf"
+            }
+        ],
+        "birthdate": "08-12-1981",
+        "committee": [
+            "EMPL",
+            "JURI"
+        ],
+        "country": "Spain",
+        "delegation": [
+            "DPAL",
+            "DMED"
+        ],
+        "email": "maravillas.abadiajover@europarl.europa.eu",
+        "epid": "257043",
+        "eugroup": "EPP",
+        "first_name": "Maravillas",
+        "full_name": "Maravillas ABADÍA JOVER",
+        "gender": "F",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 1,
+        "last_name": "ABADÍA JOVER",
+        "party": "Partido Popular",
+        "substitute": [
+            "REGI",
+            "HOUS"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 16-07-2024",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/10/37b6d6f9-8d23-4d6c-8dd0-14bb5472a06e_1720532466901.pdf"
+            }
+        ],
+        "birthdate": "",
+        "committee": [
+            "LIBE"
+        ],
+        "country": "Poland",
+        "delegation": [
+            "DSAS",
+            "DCAS"
+        ],
+        "email": "magdalena.adamowicz@europarl.europa.e

@@ -1,0 +1,133 @@
+[
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 13-12-2023",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/9/01169c16-2aa8-499d-b0ab-9381983c6c49_1702588800397.pdf"
+            }
+        ],
+        "birthdate": "",
+        "committee": [
+            "TRAN",
+            "LIBE"
+        ],
+        "country": "Poland",
+        "delegation": [
+            "D-ZA",
+            "DACP",
+            "DAFR"
+        ],
+        "email": "magdalena.adamowicz@europarl.europa.eu",
+        "epid": "197490",
+        "eugroup": "EPP",
+        "first_name": "Magdalena",
+        "full_name": "Magdalena ADAMOWICZ",
+        "gender": "F",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 1,
+        "last_name": "ADAMOWICZ",
+        "party": "Independent",
+        "substitute": [
+            "JURI"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 29-11-2023",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/9/027de8a7-e88a-454e-ba36-b29a22f87ceb_1701858000438.pdf"
+            }
+        ],
+        "birthdate": "03-12-1968",
+        "committee": [
+            "CULT"
+        ],
+        "country": "Bulgaria",
+        "delegation": [
+            "DMAG",
+            "DMED",
+            "D-RS"
+        ],
+        "email": "asim.ademov@europarl.europa.eu",
+        "epid": "189525",
+        "eugroup": "EPP",
+        "first_name": "Asim",
+        "full_name": "Asim ADEMOV",
+        "gender": "M",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 1,
+        "last_name": "ADEMOV",
+        "party": "Citizens for European Development of Bulgaria",
+        "substitute": [
+            "AGRI",
+            "PETI"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 18-12-2023",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/9/8afdd8af-18a1-461b-acc0-c7a528bc90a9_1702995600768.pdf"
+            }
+        ],
+        "birthdate": "",
+        "committee": [
+            "FEMM"
+        ],
+        "country": "Italy",
+        "delegation": [
+            "D-US",
+            "DANZ"
+        ],
+        "email": "isabella.adinolfi@europarl.europa.eu",
+        "epid": "124831",
+        "eugroup": "EPP",
+        "first_name": "Isabella",
+        "full_name": "Isabella ADINOLFI",
+        "gender": "F",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 1,
+        "last_name": "ADINOLFI",
+        "party": "Forza Italia",
+        "substitute": [
+            "CULT"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 11-12-2023",
+                "url": "https://www.europarl.europa.eu/erpl-app-public/mep-documents/DPI/9/2b9667b6-f408-4a8e-9929-9b4212f75db9_1702317600351.pdf"
+            }
+        ],
+        "birthdate": "24-12-1963",
+        "committee": [
+            "CONT",
+            "ITRE",
+            "REGI"
+        ],
+        "country": "Italy",
+        "delegation": [
+            "DARP",
+            "DACP",
+            "DCAB"
+        ],
+        "email": "matteo.adinolfi@europarl.europa.eu",
+        "epid": "197826",
+        "eugroup": "ID",
+        "first_name": "Matteo",
+        "full_name": "Matteo ADINOLFI",
+        "gender": "M",
+        "has_general_expenditure_allowance": "false",
+        "has_private_interests_declarations": 1,
+        "last_name": "ADINOLFI",
+        "party": "Lega",
+        "substitute": [
+            "ENVI"
+        ]
+    },
+    {
+        "DPI_links": [
+            {
+                "title": "Original declaration - 14-12-2023",
+                
