@@ -215,6 +215,7 @@ CLDR = "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/c
 COMPTES = Path("registre") / "rss-comptes.csv"
 VUS = Path("registre") / "rss-vus.txt"
 TITRES = Path("registre") / "rss-titres.csv"  # 0.10.198 : empreintes de titres (jamais les titres), pour les reprises
+VILLES_CSV = Path("registre") / "rss-villes.csv"  # 2026-11-25 : pays par noms, adjectifs ET villes (GeoNames), en ombre
 REGIONS = Path("registre") / "rss-regions.csv"   # 0.10.219 : macro-régions (dictionnaire Grasland-Toureille), en ombre
 ACCORD = Path("registre") / "rss-accord.csv"     # 0.10.219 : accord entre nos pays et ceux du second codeur
 TROIS = Path("registre") / "rss-trois-codeurs.csv"  # 0.10.221 : profils de réponse des trois codeurs (Newsmap en 3e)
@@ -510,6 +511,11 @@ def principal() -> int:
         for x in csv.DictReader(TITRES.open(encoding="utf-8")):
             titres[x["empreinte"]] = x["jour"]
     reprises: dict[str, int] = {}
+    villes_c: dict[tuple, int] = {}
+    if VILLES_CSV.exists():
+        for x in csv.DictReader(VILLES_CSV.open(encoding="utf-8")):
+            villes_c[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
+    import villes_pays
     regions: dict[tuple, int] = {}
     if REGIONS.exists():
         for x in csv.DictReader(REGIONS.open(encoding="utf-8")):
@@ -601,6 +607,10 @@ def principal() -> int:
                     for p in pays:
                         for fa in familles:
                             comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
+                    # 2026-11-25, en ombre : un article qui cite « Kharkiv » ou « Goma » sans nommer le pays compte aussi
+                    for p in (pays_large or pays) | villes_pays.pays(a["texte"]):
+                        for fa in familles:
+                            villes_c[(p, a["jour"], fa)] = villes_c.get((p, a["jour"], fa), 0) + 1
                     for p in pays_large:
                         for fa in familles_larges:
                             comptes[(p, a["jour"], fa)] = comptes.get((p, a["jour"], fa), 0) + 1
@@ -659,6 +669,12 @@ def principal() -> int:
             w.writerow(["matiere", "jour", "famille", "articles"])
             for (m, j, fa), n in sorted(matieres.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
                 w.writerow([m, j, fa, n])
+    if villes_c:
+        with VILLES_CSV.open("w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["pays", "jour", "famille", "articles"])
+            for (p, j, fa), n in sorted(villes_c.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
+                w.writerow([p, j, fa, n])
     if regions:
         with REGIONS.open("w", encoding="utf-8", newline="") as f:
             w = csv.writer(f)

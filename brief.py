@@ -197,6 +197,7 @@ def noms_compartiments() -> dict[str, str]:
 
 # ---------- modèle (relais) ----------
 
+P_PAYS: list = []        # motifs des noms de pays de la carte (lecture_mecanique.routage), posés par principal()
 ESSAIS: list[str] = []   # échecs des fournisseurs précédents pour le dernier appel (écrits au journal)
 
 
@@ -346,10 +347,16 @@ def traiter(item: dict, routage, noms: dict, aujourdhui: str, appel=None, lecteu
     base = unicodedata.normalize("NFKD", (b["titre"] or item["titre"]).lower()).encode("ascii", "ignore").decode()
     nom = re.sub(r"[^a-z0-9]+", "-", base)[:60].strip("-") or hashlib.sha1(url.encode()).hexdigest()[:10]
     (jour / f"{nom}.md").write_text(md, encoding="utf-8")
+    # 2026-11-25 : pays du brief (noms de pays de la carte et villes GeoNames), en ISO2, pour la vue des entités
+    import villes_pays as vp
+    texte_b = " ".join([item["titre"], item.get("resume", ""), b["titre"]] + [f["fait"] for f in b["faits"]])
+    iso2 = {v[1]: v[0] for v in vp.table().values()}
+    pays_b = vp.pays(texte_b) | {iso2[i] for m, i in (P_PAYS or []) if m.search(texte_b) and i in iso2}
     # le journal garde le brief structuré : la page « briefs » de la carte (lecteur-local, carte/briefs.py) le lit
     return {"url": url, "statut": "ok", "fichier": f"{aujourdhui}/{nom}.md", "modele": modele, "page_lue": page_lue,
             "media": media, "classe": sp.classe(url, item["titre"]), "titre_source": item["titre"],
-            "brief": b, "compartiments": b["compartiments"], "mots": len(md.split()), "echecs_relais": list(ESSAIS)}
+            "brief": b, "compartiments": b["compartiments"], "mots": len(md.split()), "echecs_relais": list(ESSAIS),
+            "pays": sorted(pays_b)}
 
 
 def principal() -> int:
@@ -366,6 +373,8 @@ def principal() -> int:
     aujourdhui = dt.datetime.now(dt.timezone.utc).date().isoformat()
     routage, noms, vus = lm.routage()[0], noms_compartiments(), deja_traites()
     P = priorites()
+    global P_PAYS
+    P_PAYS = lm.routage()[1]
     items = [{"url": u, "titre": u, "resume": ""} for u in a.url]
     files = {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=30) as c:

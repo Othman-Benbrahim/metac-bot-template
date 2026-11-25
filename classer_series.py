@@ -57,6 +57,7 @@ PAR_TYPE = {
     "certificats": ("flux", "certificats émis par jour"),
     "epoch": ("flux", "modèles publiés par mois"),
     "rss_matiere": ("flux", "articles par jour qui nomment le sujet"),
+    "rss_villes": ("flux", "articles nouveaux par jour citant un pays par son nom, son adjectif ou une de ses villes (en ombre)"),
     "rss_famille": ("flux", "articles nouveaux par jour de la famille de flux"),
     "owid": ("stock", "graphique d’Our World in Data (série annuelle ou datée, selon le graphique)"),
     "confiance_actualite": ("stock", "confiance dans l’actualité par pays (Reuters Institute, Digital News Report)"),

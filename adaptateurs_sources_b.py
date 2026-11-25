@@ -198,6 +198,15 @@ def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
     return sorted(c.items())
 
 
+def rss_villes(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
+    """2026-11-25, en ombre : articles citant un pays (ISO2) par son nom, son adjectif ou une de ses villes (GeoNames)."""
+    c: dict[str, float] = {}
+    for r in _lignes(reg, "rss-villes.csv"):
+        if r["pays"] == pays and ((famille == "tout" and not r["famille"].startswith(HORS_TOUT)) or r["famille"] == famille):
+            c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
+    return sorted(c.items())
+
+
 def rss_region(reg: Path, region: str, famille: str = "tout") -> list[tuple[str, float]]:
     """Articles des flux RSS suivis rattachés à une région ou organisation (code de région du collecteur), par jour."""
     c: dict[str, float] = {}
@@ -251,5 +260,5 @@ _ad.ADAPTATEURS.update({
     "hostilites": hostilites, "manifestations": manifestations, "paire": paire, "paire_mois": paire_mois,
     "sanctions_chine": sanctions_chine, "ucdp": ucdp, "voisins": voisins, "conflictforecast": conflictforecast,
     "prix_alimentaires": prix_alimentaires, "acaps": acaps, "acaps_risques": acaps_risques, "telegram": telegram,
-    "recit_russe": recit_russe, "rss": rss, "rss_matiere": rss_matiere, "rss_famille": rss_famille, "rss_region": rss_region, "routines": routines, "wikipedia": wikipedia,
+    "recit_russe": recit_russe, "rss": rss, "rss_villes": rss_villes, "rss_matiere": rss_matiere, "rss_famille": rss_famille, "rss_region": rss_region, "routines": routines, "wikipedia": wikipedia,
 })
