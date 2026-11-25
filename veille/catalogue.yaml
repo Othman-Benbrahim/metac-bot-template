@@ -443,6 +443,13 @@ fiches:
       mousson: [carbon_brief, the_hindu]
       nucleaire_defense: [bulletin, the_hindu]
       chine_frontiere: [the_hindu, scmp_chine]
+  flux-mondiaux:
+    region: monde
+    liens:
+    - {titre: "FMI PortWatch (détroits et ports)", url: "https://portwatch.imf.org/"}
+    - {titre: "CNUCED, Review of Maritime Transport", url: "https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport"}
+    - {titre: "OONI Explorer (censure et coupures)", url: "https://explorer.ooni.org/"}
+    flux: [lm_economie, lm_international]
   turquie:
     region: moyen_orient
     liens:

@@ -1,0 +1,241 @@
+# 2026-11-26, 0 h 32 (décision de l'auteur) : « interconnexion, interrelation et mondialisation des flux d'argent, de
+# marchandises légales ou illégales, et de tout ce qui passe par le virtuel » ; situer ces situations structurelles dans
+# un écosystème, avec les quatre axes (espace, temps, vitesse, taille) et les séries chiffrées quand elles existent,
+# associées à leur flux d'information, pour donner au bot une plus-value sur les questions à moyen et long terme.
+# Deux apports de la discussion du 26 novembre :
+# - l'interdépendance devient une arme : qui tient un nœud du réseau peut couper ou taxer le passage (Farrell et Newman,
+#   « Weaponized Interdependence », International Security, 2019) ;
+# - mécanisme de l'auteur : la pénétration extérieure érode, l'érosion est perçue comme une menace, la menace provoque
+#   une réaction identitaire (« elles se durcissent justement car elles s'érodent ») ; formulé sans jugement moral, à
+#   vérifier par les séries ;
+# - critère neutre d'expansion (auteur, 0 h 28, appliqué à tous les acteurs sans exception) : présence militaire ou
+#   contrôle hors de son territoire reconnu.
+# Les compartiments renvoient aux fiches qui détaillent chaque flux (ponts) ; cette fiche porte la logique transversale.
+theme: flux-mondiaux
+nom: Flux mondiaux, nœuds et réactions
+declaration:
+  but: lire le monde comme un réseau de flux (énergie, marchandises, argent, drogue et armes, information) qui passent par quelques nœuds ; comprendre comment ces nœuds deviennent des armes, comment les perturbations se propagent avec retard vers des séries mesurées, et comment la pénétration des flux extérieurs provoque des réactions identitaires et des projections de puissance
+  limites: dedans les nœuds de passage (détroits, canaux, monnaie, raffinage, câbles), les flux d'énergie, de marchandises, d'argent, illicites et d'information, la pénétration extérieure, la réaction identitaire et la projection hors du territoire ; dehors le détail de chaque flux, laissé aux fiches transport-maritime, energie-mondiale, monnaie-pouvoir, minerais-critiques, crime-organise, information-cyber, sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; séries publiques (FMI PortWatch, FRED, EIA, Banque mondiale, OONI, listes de sanctions, GDELT, UCDP) ; aucun jugement moral sur les acteurs, le même critère pour tous
+  date: '2026-11-26'
+  espace: les nœuds (goulets, places financières, raffineries, câbles) et les pays qu'ils relient
+  temps: de la perturbation (jours) aux cycles de dépendance et de réaction (années à décennies)
+  vitesse: le jour pour un nœud coupé, le mois pour la propagation aux prix, l'année pour les réactions politiques
+  taille: un nœud, une paire de pays, le système mondial
+compartiments:
+- id: noeuds_passages
+  nom: Nœuds de passage maritimes
+  organisation: technique
+  elements:
+  - 'quelques goulets portent une grande part du commerce : Suez et Bab-el-Mandeb (environ 10 % du volume maritime mondial, 22 % des conteneurs), Ormuz, Malacca, Panama (CNUCED 2024, voir transport-maritime)'
+  - 'mécanisme : un nœud coupé ne fait pas disparaître le flux, il l''allonge (détour par le Cap, + 10 à 14 jours) et le renchérit (fret, assurance), avec un délai mesurable jusqu''aux prix'
+  - 'à mesurer pour chaque nœud (taux de base) : fréquence des perturbations, durée, délai de propagation vers les séries de prix'
+  niveau:
+    espace: goulets
+    temps: années
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: passages quotidiens à Bab-el-Mandeb (FMI PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:bab_el_mandeb:navires
+  - source: porte-conteneurs à Suez (FMI PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:suez:porte_conteneurs
+  - source: passages à Ormuz (FMI PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:ormuz:navires
+  - source: passages à Panama (FMI PortWatch)
+    statut: collecte
+    fichier: collecte_portwatch.py
+    adaptateur: portwatch:panama:navires
+- id: flux_energie
+  nom: Flux d'énergie
+  organisation: economie
+  elements:
+  - 'mécanisme : le prix du pétrole intègre l''état des nœuds (Ormuz, Bab-el-Mandeb) et des quotas (OPEP+) ; les stocks amortissent un choc avant qu''il touche les prix'
+  niveau:
+    espace: monde
+    temps: mois à années
+    vitesse: jours à semaines
+    taille: macro
+  traces:
+  - source: prix du Brent, quotidien (FRED, DCOILBRENTEU)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DCOILBRENTEU
+- id: flux_financiers
+  nom: Flux financiers et monnaie
+  organisation: economie
+  elements:
+  - 'mécanisme : le dollar (environ 59 % des réserves mondiales, 89 % des opérations de change) et SWIFT sont des nœuds ; les sanctions s''en servent comme arme, ce qui crée la demande d''alternatives (voir monnaie-pouvoir)'
+  niveau:
+    espace: places financières
+    temps: années à décennies
+    vitesse: jours
+    taille: macro
+  traces:
+  - source: indice large du dollar (FRED, DTWEXBGS)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:DTWEXBGS
+  - source: désignations de sanctions visant la Russie (toutes sources)
+    statut: collecte
+    fichier: collecte_sanctions.py
+    adaptateur: sanctions:RU
+- id: flux_alimentaires
+  nom: Flux alimentaires
+  organisation: economie
+  elements:
+  - 'mécanisme : les pays importateurs de blé (Égypte, Liban, Libye à plus de 50 % sur la Russie et l''Ukraine en 2020) reçoivent les chocs des nœuds et des guerres sous forme d''inflation alimentaire, avec un délai de quelques mois (voir alimentation-mondiale)'
+  niveau:
+    espace: pays importateurs
+    temps: mois à années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: inflation alimentaire en Égypte, mensuelle
+    statut: collecte
+    fichier: collecte_prix_alimentaires.py
+    adaptateur: prix_alimentaires:EG
+  - source: indice mondial des prix alimentaires, variation sur 12 mois (FRED)
+    statut: collecte
+    fichier: collecte_fred.py
+    adaptateur: fred:PFOODINDEXM:var12
+- id: flux_illicites
+  nom: Flux illicites (drogues, armes, argent sale)
+  organisation: economie
+  elements:
+  - 'mécanisme : les flux illicites empruntent les mêmes nœuds que les flux légaux (conteneurs de bananes en Équateur, ports d''Anvers et de Rotterdam, fentanyl par conteneurs et colis) ; la dollarisation et l''argent mobile facilitent le blanchiment (voir crime-organise)'
+  niveau:
+    espace: routes et ports
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces:
+  - source: saisies et routes de la drogue (ONUDC, rapport mondial)
+    statut: a_brancher
+- id: flux_information
+  nom: Flux d'information
+  organisation: technique
+  elements:
+  - 'mécanisme : l''information circule par des nœuds aussi (câbles sous-marins, plateformes, fournisseurs d''accès) ; un État peut les couper ou filtrer (censure, coupures), ce qui se mesure'
+  niveau:
+    espace: réseaux
+    temps: jours à années
+    vitesse: heures
+    taille: macro
+  traces:
+  - source: part des mesures en anomalie, censure et coupures en Russie (OONI)
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:RU
+  - source: part des mesures en anomalie, Iran (OONI)
+    statut: collecte
+    fichier: collecte_ooni.py
+    adaptateur: ooni:IR
+- id: penetration_exterieure
+  nom: Pénétration extérieure
+  organisation: societe
+  elements:
+  - 'indice à construire, pays par pays et année par année, à partir des séries de la Banque mondiale déjà collectées : part du commerce dans le PIB (NE.TRD.GNFS.ZS), investissements étrangers entrants (BX.KLT.DINV.WD.GD.ZS), envois de fonds reçus (BX.TRF.PWKR.DT.GD.ZS), usagers d''internet (IT.NET.USER.ZS), migration nette (SM.POP.NETM)'
+  - 'mécanisme de l''auteur : la pénétration extérieure érode les cultures ; l''érosion est perçue comme une menace'
+  niveau:
+    espace: pays
+    temps: années à décennies
+    vitesse: années
+    taille: macro
+  traces:
+  - source: indice de pénétration extérieure (Banque mondiale, WDI ; à construire)
+    statut: a_brancher
+- id: reaction_identitaire
+  nom: Réaction identitaire
+  organisation: ideologie
+  elements:
+  - 'mécanisme de l''auteur : face à une érosion perçue comme menace, l''identité se durcit (« elles se durcissent justement car elles s''érodent ») ; formes observables : votes nationalistes, putschs souverainistes, lois sur la langue et l''identité, discours contre l''étranger'
+  - 'exemples tirés de l''atlas, sans jugement : « rêve chinois » et carte à dix traits, juntes souverainistes du Sahel, nationalisme hindou, régionalismes espagnols'
+  niveau:
+    espace: pays et régions
+    temps: années
+    vitesse: mois à années
+    taille: méso à macro
+  traces:
+  - source: GDELT, manifestations par jour (Turquie, exemple)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:TR
+- id: projection_exterieure
+  nom: Projection hors du territoire
+  organisation: geopolitique
+  elements:
+  - 'critère neutre (auteur) : présence militaire ou contrôle hors de son territoire reconnu, appliqué à tous les acteurs ; aujourd''hui notamment les États-Unis, la Russie en Ukraine, la Chine en mer de Chine, la Turquie en Syrie et en Irak, l''Azerbaïdjan au Haut-Karabagh, et dans l''histoire les puissances coloniales, France comprise'
+  - 'à mesurer : bases à l''étranger, troupes déployées, territoires contrôlés, frappes hors frontières, datés'
+  niveau:
+    espace: territoires extérieurs
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: bases et troupes à l'étranger (IISS Military Balance, SIPRI ; à trouver en source libre)
+    statut: a_brancher
+relations:
+- de: noeuds_passages
+  vers: flux_energie
+  fondement: lien
+  effet: '+'
+  delai: jours à semaines
+  force: forte
+  statut: a_verifier
+  texte: un nœud coupé ou menacé (Ormuz, Bab-el-Mandeb) fait monter le prix du pétrole ; le délai et l'ampleur sont à mesurer sur l'historique
+- de: noeuds_passages
+  vers: flux_alimentaires
+  fondement: lien
+  effet: '+'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: un nœud coupé renchérit le fret et, avec retard, l'inflation alimentaire des pays importateurs
+- de: penetration_exterieure
+  vers: reaction_identitaire
+  fondement: causalite_sociale
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: mécanisme de l'auteur — la pénétration extérieure érode, l'érosion est perçue comme menace, la menace provoque une réaction identitaire ; à tester pays par pays avec l'indice de pénétration et des marqueurs datés de réaction
+- de: projection_exterieure
+  vers: reaction_identitaire
+  fondement: causalite_sociale
+  effet: '+'
+  delai: mois à années
+  force: forte
+  statut: a_verifier
+  texte: la présence d'une puissance étrangère sur son sol provoque une réaction identitaire chez ceux qui la subissent ; supposé, à vérifier
+- de: reaction_identitaire
+  vers: flux_information
+  fondement: causalite_sociale
+  effet: '-'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: un pouvoir qui se replie sur l'identité tend à filtrer ou couper les flux d'information venus de l'extérieur (censure mesurée par OONI) ; supposé
+ponts:
+- depuis: noeuds_passages
+  vers: transport-maritime:detroits
+  type: meme
+  nature: les détroits et canaux, détaillés dans la fiche maritime
+- depuis: flux_financiers
+  vers: monnaie-pouvoir:dedollarisation
+  type: influence
+  nature: l'usage du dollar comme arme nourrit la dédollarisation
+- depuis: flux_illicites
+  vers: crime-organise:drogues
+  type: meme
+  nature: les routes de la drogue
+- depuis: flux_energie
+  vers: energie-mondiale:decisions
+  type: voisinage
+  nature: les décisions des producteurs (OPEP+)
