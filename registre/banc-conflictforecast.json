@@ -4,7 +4,7 @@
  "questions": 1018,
  "avec_conflictforecast": 806,
  "k_juges": 12,
- "risque_corrige": 0.000347,
+ "risque_corrige": 0.002083,
  "cellules": [
   {
    "indicateur": "ESC",
@@ -18,8 +18,8 @@
    "perte_ajustee": 0.599,
    "ecart_moyen": -0.0007,
    "intervalle_corrige": [
-    -0.0031,
-    0.0024
+    -0.0027,
+    0.0017
    ],
    "verdict": "non confirmé"
   },
@@ -35,8 +35,8 @@
    "perte_ajustee": 0.5406,
    "ecart_moyen": 0.0107,
    "intervalle_corrige": [
-    -0.0236,
-    0.0396
+    -0.0177,
+    0.0371
    ],
    "verdict": "non confirmé"
   },
@@ -52,8 +52,8 @@
    "perte_ajustee": 0.7919,
    "ecart_moyen": -0.0145,
    "intervalle_corrige": [
-    -0.0839,
-    0.0563
+    -0.0689,
+    0.0415
    ],
    "verdict": "non confirmé"
   },
@@ -69,8 +69,8 @@
    "perte_ajustee": 0.6055,
    "ecart_moyen": 0.0112,
    "intervalle_corrige": [
-    -0.021,
-    0.0493
+    -0.0187,
+    0.0426
    ],
    "verdict": "non confirmé"
   },
@@ -86,8 +86,8 @@
    "perte_ajustee": 0.6961,
    "ecart_moyen": 0.004,
    "intervalle_corrige": [
-    -0.0466,
-    0.0597
+    -0.0397,
+    0.0555
    ],
    "verdict": "non confirmé"
   },
@@ -103,8 +103,8 @@
    "perte_ajustee": 0.3821,
    "ecart_moyen": -0.0006,
    "intervalle_corrige": [
-    -0.0031,
-    0.0022
+    -0.0028,
+    0.0018
    ],
    "verdict": "non confirmé"
   },
@@ -120,8 +120,8 @@
    "perte_ajustee": 0.6132,
    "ecart_moyen": 0.0008,
    "intervalle_corrige": [
-    -0.0249,
-    0.0229
+    -0.0208,
+    0.0218
    ],
    "verdict": "non confirmé"
   },
@@ -137,8 +137,8 @@
    "perte_ajustee": 0.5346,
    "ecart_moyen": 0.0124,
    "intervalle_corrige": [
-    -0.0112,
-    0.0308
+    -0.0068,
+    0.0298
    ],
    "verdict": "non confirmé"
   },
@@ -154,8 +154,8 @@
    "perte_ajustee": 0.8115,
    "ecart_moyen": 0.0049,
    "intervalle_corrige": [
-    -0.1283,
-    0.111
+    -0.1127,
+    0.0974
    ],
    "verdict": "non confirmé"
   },
@@ -171,8 +171,8 @@
    "perte_ajustee": 0.6028,
    "ecart_moyen": 0.0009,
    "intervalle_corrige": [
-    -0.0101,
-    0.0116
+    -0.0092,
+    0.0107
    ],
    "verdict": "non confirmé"
   },
@@ -188,8 +188,8 @@
    "perte_ajustee": 0.7365,
    "ecart_moyen": -0.0044,
    "intervalle_corrige": [
-    -0.0736,
-    0.0546
+    -0.0648,
+    0.047
    ],
    "verdict": "non confirmé"
   },
@@ -205,8 +205,8 @@
    "perte_ajustee": 0.3706,
    "ecart_moyen": -0.0021,
    "intervalle_corrige": [
-    -0.0096,
-    0.0038
+    -0.0076,
+    0.0028
    ],
    "verdict": "non confirmé"
   }
