@@ -1,0 +1,206 @@
+# Fiche créée le 2026-11-25 (angle mort signalé par l'auteur, 7 h 04 : « quand on surveille on observe, c'est la partie
+# passive, mais elle permet aussi d'agir » ; trois niveaux : États, entreprises spécialisées, individus). Chiffres vérifiés
+# le 2026-11-25 sur les sources citées. Relations à vérifier par les séries.
+theme: surveillance-espionnage
+nom: Surveillance et espionnage
+declaration:
+  but: "voir la surveillance comme un écosystème à double face : observer (passif) et agir sur ce qu'on observe (actif) ; trois niveaux : les États (renseignement, interceptions, espionnage entre États), le privé (vendeurs de logiciels espions et d'outils d'intrusion, courtiers en données), les individus (cibles : journalistes, élus, opposants ; et surveillance entre particuliers) ; le droit qui l'encadre, et la résistance qu'elle suscite (chiffrement, alertes, contentieux)"
+  limites: "dedans le renseignement d'État et ses lois, l'espionnage entre États, l'industrie commerciale de l'intrusion, les courtiers en données, la surveillance biométrique, les cibles et les contre-mesures ; dehors la cybercriminalité ordinaire (information-cyber:cyber), la censure (information-cyber:censure), les armées (militaire), sauf par les ponts ; aucune personne privée nommée"
+  observateur: "notre carte, regard extérieur ; sources publiques (presse, rapports d'ONG et d'instituts, documents officiels) ; seuls les faits publics et les figures publiques dans leur rôle public"
+  date: '2026-11-25'
+  espace: le monde
+  temps: du jour (une intrusion) à la décennie (une loi, une doctrine)
+  vitesse: l'heure (une alerte, une fuite), le mois (une loi prorogée), l'année (un marché, une campagne d'espionnage)
+  taille: de l'individu ciblé à l'appareil d'État
+compartiments:
+- id: renseignement_etats
+  nom: Renseignement d'État et lois de surveillance
+  organisation: geopolitique
+  elements:
+  - "États-Unis : la section 702 du FISA (interceptions de communications d'étrangers hors du territoire) a expiré le 12 juin 2026 après plusieurs prorogations courtes, dont une de 45 jours votée le 30 avril 2026 (261 voix contre 111 à la Chambre) ; la collecte continue sous les autorisations annuelles du tribunal FISC, valables jusqu'en mars 2027 (NPR, 12 juin 2026 ; Washington Times, 30 avril 2026 ; RealClearDefense, 18 novembre 2026)"
+  - "toujours expirée au 18 novembre 2026 ; sans nouvelle loi, les autorisations tombent en mars 2027 (RealClearDefense, 18 novembre 2026)"
+  acteurs:
+  - nom: Congrès des États-Unis
+    taille: macro
+    espace: pays
+    vitesse: mois
+    organisation: geopolitique
+    facette: collectif
+  niveau:
+    espace: pays à monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: "échéances législatives (prorogations, expiration, autorisations du FISC) ; relevé manuel sourcé"
+    statut: a_brancher
+- id: espionnage_etats
+  nom: Espionnage entre États
+  organisation: geopolitique
+  elements:
+  - "Salt Typhoon (groupe lié au renseignement chinois) : intrusions dans les réseaux de télécommunications, plus de 80 pays touchés selon le FBI, menace « toujours très en cours » (CyberScoop, 19 février 2026)"
+  - "attributions publiques d'opérations d'espionnage d'un État par un autre"
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: "attributions publiques et avis conjoints des agences (CISA, FBI, ANSSI, NCSC) ; via les flux déjà collectés des CERT"
+    statut: a_brancher
+- id: industrie_intrusion
+  nom: Industrie commerciale de l'intrusion (logiciels espions)
+  organisation: economie
+  elements:
+  - "vendeurs de logiciels espions et d'outils d'intrusion vendus aux États ; marché concentré en Israël, en Inde et en Italie ; les vendeurs sanctionnés reviennent sous d'autres noms et par des filiales (Dark Reading, 6 septembre 2024, d'après le DFRLab de l'Atlantic Council)"
+  - "sanctions américaines : NSO Group et Candiru (2021), Intellexa (2023), sept entités au Trésor (mars 2024) (Dark Reading, 2024)"
+  - "processus de Pall Mall (France, Royaume-Uni) : code de pratique pour les États (2024) soutenu par 27 pays ; lignes directrices volontaires pour l'industrie adoptées par 14 gouvernements au Forum de Paris sur la paix ; l'IA abaisse les barrières d'entrée (Stimson Center, 19 novembre 2026)"
+  - "alertes de menace d'Apple envoyées dans 99 pays (Stimson Center, 2026)"
+  acteurs:
+  - nom: un vendeur de logiciel espion
+    taille: méso
+    espace: monde
+    vitesse: mois
+    organisation: economie
+    facette: collectif
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: méso
+  traces:
+  - source: "rapports publics de laboratoires (Citizen Lab, Amnesty Tech, Google TAG) : nombre par mois"
+    statut: a_brancher
+- id: courtiers_donnees
+  nom: Courtiers en données et surveillance commerciale
+  organisation: economie
+  elements:
+  - "achat et revente de données de localisation et de navigation ; un moyen pour des agences d'obtenir sans mandat ce qu'une loi encadrerait"
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: méso à macro
+  traces:
+  - source: "décisions des régulateurs (FTC, CNIL) contre des courtiers ; à brancher"
+    statut: a_brancher
+- id: biometrie
+  nom: Surveillance biométrique et vidéo
+  organisation: technique
+  elements:
+  - "Union européenne : la loi sur l'IA interdit, depuis le 2 février 2025, l'identification biométrique à distance en temps réel dans l'espace public par la police, sauf exceptions encadrées (Commission européenne, cadre réglementaire de l'IA)"
+  niveau:
+    espace: pays à monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: "textes et décisions (Commission européenne, autorités nationales)"
+    statut: a_brancher
+- id: cibles
+  nom: Les surveillés (journalistes, élus, opposants, particuliers)
+  organisation: societe
+  elements:
+  - "cibles documentées des logiciels espions : législateurs, fonctionnaires, journalistes (Stimson Center, 2026)"
+  - "surveillance entre particuliers (logiciels de traque, données partagées)"
+  niveau:
+    espace: individu à pays
+    temps: mois
+    vitesse: jours
+    taille: micro
+  traces:
+  - source: "cas publics documentés par des laboratoires indépendants"
+    statut: a_brancher
+- id: contre_mesures
+  nom: Contre-mesures (chiffrement, alertes, contentieux, contrôle parlementaire)
+  organisation: technique
+  elements:
+  - "chiffrement de bout en bout et moindre privilège, recommandés par le FBI face à Salt Typhoon (CyberScoop, 2026)"
+  - "alertes de menace des fabricants ; contentieux contre les vendeurs ; déclassification de décisions du tribunal FISC obtenue au Sénat en avril 2026 (Washington Times, 30 avril 2026)"
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: semaines
+    taille: méso
+  traces:
+  - source: "à brancher"
+    statut: a_brancher
+relations:
+- de: renseignement_etats
+  vers: industrie_intrusion
+  effet: '+'
+  delai: années
+  force: forte
+  statut: a_verifier
+  texte: les États sont les clients de l'industrie de l'intrusion ; la demande croît avec les tensions géopolitiques (Stimson Center, 2026)
+- de: industrie_intrusion
+  vers: cibles
+  effet: '+'
+  delai: mois
+  force: forte
+  statut: a_verifier
+  texte: plus d'outils vendus, plus de cibles touchées (journalistes, élus, opposants) ; observer devient agir sur la personne observée
+- de: espionnage_etats
+  vers: contre_mesures
+  effet: '+'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: une campagne révélée (Salt Typhoon) pousse au chiffrement et au durcissement des réseaux (CyberScoop, 2026)
+- de: contre_mesures
+  vers: industrie_intrusion
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  coupure: changement de nom des vendeurs, filiales, nouveaux pays clients
+  texte: sanctions, alertes et codes freinent les vendeurs, qui contournent par des sociétés écrans et de nouveaux pays (Dark Reading, 2024)
+- de: courtiers_donnees
+  vers: renseignement_etats
+  effet: '+'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: les données achetées aux courtiers suppléent ce que la loi encadre, surtout quand une autorisation légale expire
+- de: cibles
+  vers: contre_mesures
+  effet: '+'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: un scandale de surveillance d'élus ou de journalistes déclenche enquêtes, contentieux et contrôle parlementaire
+- de: biometrie
+  vers: cibles
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la reconnaissance faciale étend la surveillance de quelques cibles à tout un espace public, d'où l'interdiction européenne
+ponts:
+- depuis: renseignement_etats
+  vers: politique-americaine:congres
+  nature: la loi de surveillance (section 702) se joue au Congrès, par prorogations courtes et expiration
+- depuis: espionnage_etats
+  vers: rivalite-sino-americaine:commerce
+  nature: l'espionnage chinois des télécoms nourrit la rivalité technologique et les restrictions
+- depuis: espionnage_etats
+  vers: information-cyber:cyber
+  nature: les intrusions d'État passent par les mêmes failles que la cybercriminalité
+  type: voisinage
+- depuis: industrie_intrusion
+  vers: information-cyber:plateformes
+  nature: les logiciels espions passent par les plateformes et les messageries (publicités ciblées, failles sans clic)
+- depuis: courtiers_donnees
+  vers: information-cyber:plateformes
+  nature: les plateformes produisent les données que revendent les courtiers
+  type: voisinage
+- depuis: biometrie
+  vers: union-europeenne:politiques_communes
+  nature: la loi européenne sur l'IA et l'interdiction de la reconnaissance biométrique en temps réel
+- depuis: cibles
+  vers: medias-diffusion:presse
+  nature: la surveillance des journalistes et de leurs sources
+- depuis: renseignement_etats
+  vers: information-cyber:censure
+  nature: observer puis restreindre ; la surveillance précède souvent la censure
+  type: voisinage
