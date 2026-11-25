@@ -449,8 +449,9 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     f = reg / "owid" / f"{slug}.csv.gz"
     if not f.exists():
         return []
-    with _g.open(f, "rt", encoding="utf-8") as h:
-        r = list(_c.DictReader(h))
+    with _g.open(f, "rt", encoding="utf-8-sig") as h:
+        norm = {"entity": "Entity", "code": "Code", "year": "Year", "day": "Day", "date": "Day"}
+        r = [{norm.get(k.lower(), k): v for k, v in x.items()} for x in _c.DictReader(h)]   # noms courts en minuscules
     if not r:
         return []
     cles = list(r[0])

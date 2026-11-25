@@ -22,3 +22,8 @@ def test_monde_pays_moyenne_somme(tmp_path):
 def test_jour(tmp_path):
     _ecrit(tmp_path, "j", "Entity,Code,Day,x\nArctic Ocean,,2026-09-15,4.5\n")
     assert ad.lire("owid:j:Arctic Ocean", tmp_path) == [("2026-09-15", 4.5)]
+
+
+def test_noms_courts_minuscules(tmp_path):
+    _ecrit(tmp_path, "m", "﻿entity,code,year,v\nWorld,OWID_WRL,2021,7\n")
+    assert ad.owid(tmp_path, "m") == [("2021-07-01", 7.0)]
