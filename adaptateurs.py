@@ -452,6 +452,48 @@ def ucdb(reg: Path, pays: str, variable: str) -> list[tuple[str, float]]:
                       if x["iso2"] == pays and x["variable"] == variable)
 
 
+def successions(reg: Path, zone: str = "monde", mesure: str = "changements", poste: str = "") -> list[tuple[str, float]]:
+    """2026-11-25 (validé par l'auteur, 18 h 12 ; exception Wikidata décidée à 18 h 36) : successions des chefs d'État et
+    de gouvernement d'après Wikidata (registre/successions/mandats.csv, collecte_successions.py).
+    « successions:<monde|ISO2>:changements[:etat|gouvernement] » : nouveaux titulaires par mois (une reconduction de la même
+    personne ne compte pas) ; « successions:<monde|ISO2>:anciennete[:poste] » : ancienneté médiane (années) des titulaires
+    au 15 du mois, le titulaire étant le DERNIER entré en fonction (les dates de fin manquent souvent dans Wikidata).
+    Commence en 2012 : avant, Wikidata est nettement moins complet (230 mandats commencés dans les années 1990 contre 481
+    dans les années 2010, lu le 2026-11-25) ; une hausse apparente avant 2012 serait un effet de saisie."""
+    import csv as _c
+    import datetime as _d
+    import statistics as _st
+    f = reg / "successions" / "mandats.csv"
+    if not f.exists():
+        return []
+    with f.open(encoding="utf-8") as h:
+        L = [x for x in _c.DictReader(h) if (zone == "monde" or x["iso2"] == zone) and (not poste or x["poste"] == poste)
+             and x["debut"][:4].isdigit()]
+    par: dict = {}
+    for x in sorted(L, key=lambda x: x["debut"]):
+        par.setdefault((x["iso2"], x["poste"]), []).append(x)
+    auj = _d.date.today()
+    mois = [f"{a}-{m:02d}" for a in range(2012, auj.year + 1) for m in range(1, 13) if f"{a}-{m:02d}" <= auj.isoformat()[:7]]
+    if mesure == "changements":
+        n: dict = {}
+        for v in par.values():
+            for a, b in zip([None] + v, v):
+                if a is None or a["qid"] != b["qid"]:
+                    n[b["debut"][:7]] = n.get(b["debut"][:7], 0) + 1
+        return [(f"{m}-15", float(n.get(m, 0))) for m in mois[:-1]]          # le mois en cours est incomplet
+    out = []
+    for m in mois:
+        jour = f"{m}-15"
+        anc = []
+        for v in par.values():
+            entres = [x for x in v if x["debut"] <= jour]
+            if entres:
+                anc.append((_d.date.fromisoformat(jour) - _d.date.fromisoformat(entres[-1]["debut"])).days / 365.25)
+        if anc:
+            out.append((jour, round(_st.median(anc), 2)))
+    return out
+
+
 def bis_taux(reg: Path, pays: str, freq: str = "D") -> list[tuple[str, float]]:
     """2026-11-25 (source validée par l'auteur) : taux directeur d'une banque centrale, BIS (registre/bis/taux-directeurs.csv.gz,
     collecte_bis.py ; la BIS citée comme source). « bis_taux:<ISO2>[:M] », XM = zone euro. Quotidien par défaut ; les
@@ -521,7 +563,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     return [(d, round(sum(v) / len(v) if entite == "moyenne" else sum(v), 6)) for d, v in sorted(agr.items())]
 
 
-ADAPTATEURS = {"bis_taux": bis_taux, "lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+ADAPTATEURS = {"successions": successions, "bis_taux": bis_taux, "lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

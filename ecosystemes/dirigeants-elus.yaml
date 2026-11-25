@@ -93,6 +93,7 @@ compartiments:
   organisation: convention
   elements:
   - limites de mandats, réformes constitutionnelles pour les prolonger, successions familiales ou désignées
+  - "nouveaux chefs d'État ou de gouvernement : 38 en 2012, 81 en 2022, 68 en 2025 (Wikidata, calcul du projet) ; la hausse 2012-2022 mêle un vrai mouvement et une saisie plus complète des années récentes, et les derniers mois sont sous-comptés tant que Wikidata n'est pas à jour"
   niveau:
     espace: pays
     temps: mandats à décennies
@@ -100,6 +101,8 @@ compartiments:
     taille: macro
   traces:
   - *id001
+  - {source: "nouveaux chefs d'État ou de gouvernement par mois, monde, depuis 2012 (Wikidata ; reconductions exclues)", statut: collecte, fichier: collecte_successions.py, adaptateur: "successions:monde:changements"}
+  - {source: "ancienneté médiane des chefs de gouvernement en poste, années, depuis 2012 (Wikidata)", statut: collecte, fichier: collecte_successions.py, adaptateur: "successions:monde:anciennete:gouvernement"}
 - id: departs
   nom: Départs du pouvoir et ce qui suit
   organisation: convention
