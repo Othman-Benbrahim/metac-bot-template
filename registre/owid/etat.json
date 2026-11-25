@@ -1,0 +1,38 @@
+{
+ "military-expenditure-share-gdp": {
+  "statut": "http 200"
+ },
+ "nuclear-warhead-stockpiles": {
+  "statut": "http 200"
+ },
+ "arctic-sea-ice": {
+  "statut": "http 200"
+ },
+ "antarctica-sea-ice-extent": {
+  "statut": "http 200"
+ },
+ "ti-corruption-perception-index": {
+  "statut": "http 200"
+ },
+ "share-of-the-population-with-access-to-electricity": {
+  "statut": "http 200"
+ },
+ "death-rates-from-air-pollution": {
+  "statut": "http 403"
+ },
+ "global-plastics-production": {
+  "statut": "http 200"
+ },
+ "capture-and-aquaculture-production": {
+  "statut": "http 200"
+ },
+ "proportion-using-safely-managed-drinking-water": {
+  "statut": "http 200"
+ },
+ "share-using-safely-managed-sanitation": {
+  "statut": "http 200"
+ },
+ "ozone-depleting-substance-consumption": {
+  "statut": "http 200"
+ }
+}
