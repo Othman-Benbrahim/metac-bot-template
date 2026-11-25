@@ -28,6 +28,9 @@ import httpx
 import politesse
 
 SORTIE = Path("registre") / "entites" / "entites.csv"
+# 2026-11-25, 13 h 25 : l'auteur télécharge lui-même le fichier CIA World Leaders d'OpenSanctions une fois par mois et le
+# dépose ici (le robots.txt d'OpenSanctions refuse les robots, pas un téléchargement manuel) ; il est lu s'il existe.
+MANUEL = Path("donnees_manuelles") / "us_cia_world_leaders.targets.nested.json"
 CIA = "https://data.opensanctions.org/datasets/latest/us_cia_world_leaders/targets.nested.json"
 SPARQL = "https://query.wikidata.org/sparql"
 CHEF = re.compile(r"^(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|head of state|"
@@ -110,7 +113,13 @@ def variantes(nom: str, chef: bool) -> list[str]:
 def principal() -> int:
     lignes, bilan = [], {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=180) as c:
-        if politesse.autorise(c, CIA):
+        if MANUEL.exists():
+            import datetime as _dt
+            age = (_dt.date.today() - _dt.date.fromtimestamp(MANUEL.stat().st_mtime)).days
+            cia = personnes_cia(MANUEL.read_text(encoding="utf-8"))
+            lignes += cia
+            bilan["cia"] = {"fichier_manuel": str(MANUEL), "personnes": len(cia), "chefs": sum(x["chef"] for x in cia)}
+        elif politesse.autorise(c, CIA):
             try:
                 r = c.get(CIA)
                 r.raise_for_status()
