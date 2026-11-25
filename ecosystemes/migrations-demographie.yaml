@@ -117,6 +117,7 @@ compartiments:
   traces:
   - source: données publiques d'urbanisation (ONU-Habitat)
     statut: a_brancher
+  - {source: "population des centres urbains du monde, 1975-2025 (2025 estimé ; GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:pop_centres"}
 - id: diasporas
   nom: Diasporas et transferts d'argent
   organisation: economie

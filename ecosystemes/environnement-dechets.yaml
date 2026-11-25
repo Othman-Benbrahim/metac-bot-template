@@ -148,6 +148,8 @@ compartiments:
     odd: ['11.6.2']
   - source: OpenAQ (licence à vérifier) ; OMS
     statut: a_brancher
+  - {source: "concentration de PM2,5 pondérée par la population, centres urbains du monde, 2000-2020 (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:pm25"}
+  - {source: "décès prématurés attribués aux PM2,5, centres urbains du monde, 2000-2020 (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:deces_pm25"}
   - *id002
 - id: traites
   nom: Conventions et traités (Montréal, Stockholm, Minamata, traité sur le plastique)

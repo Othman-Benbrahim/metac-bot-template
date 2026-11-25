@@ -253,6 +253,7 @@ compartiments:
   - villes
   - santé
   - transports
+  - "chaleur urbaine : dans les centres urbains du monde, 159 jours par an de chaleur ressentie UTCI > 32 °C dans les années 1970, 173 dans la décennie 2020 ; France 11 → 24 jours, Japon 44 → 67 (années 1980 → 2020 ; GHS-UCDB R2024A, calcul du projet à population fixe)"
   acteurs:
   - nom: un réseau électrique régional
     taille: méso
@@ -279,6 +280,8 @@ compartiments:
   - source: interdictions de survol pour danger (feux, catastrophes ; FAA)
     statut: collecte
     adaptateur: tfr:HAZARDS
+  - {source: "jours par an de chaleur ressentie UTCI > 32 °C dans les centres urbains du monde, moyenne par décennie 1970-2020, pondérée par la population 2020 (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:jours_utci32"}
+  - {source: "part de la population des centres urbains exposée à une crue fluviale centennale, monde (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:part_crue_fluviale_100"}
 - id: chimie_atmosphere
   organisation: chimique
   nom: Chimie de l'atmosphère (gaz à effet de serre, aérosols)

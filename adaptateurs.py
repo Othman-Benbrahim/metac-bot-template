@@ -439,6 +439,19 @@ def confiance_actualite(reg: Path, pays: str) -> list[tuple[str, float]]:
     return [(f"{x['annee']}-06-15", float(x["confiance"])) for x in r if x["pays"] == pays]
 
 
+def ucdb(reg: Path, pays: str, variable: str) -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : GHS-UCDB R2024A (JRC), agrégats par pays des centres urbains
+    (ecosystemes/ucdb-pays.csv, mise_au_point/ucdb_pays.py ; définitions dans ce script). « ucdb:<ISO2|WLD>:<variable> ».
+    Année → 1er juillet. Série de structure à pas de 5 ou 10 ans, jamais fraîche : pas de signal court."""
+    import csv as _c
+    f = Path(__file__).resolve().parent / "ecosystemes" / "ucdb-pays.csv"
+    if not f.exists():
+        return []
+    with f.open(encoding="utf-8") as h:
+        return sorted((f"{x['annee']}-07-01", float(x["valeur"])) for x in _c.DictReader(l for l in h if not l.startswith("#"))
+                      if x["iso2"] == pays and x["variable"] == variable)
+
+
 def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tuple[str, float]]:
     """2026-11-25 (source validée par l'auteur) : un graphique d'Our World in Data (registre/owid/<slug>.csv.gz,
     collecte_owid.py). « owid:<graphique>[:<entité>[:<colonne>]] » ; entité = nom (World, Arctic Ocean…), code ISO3, ou
@@ -477,7 +490,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     return [(d, round(sum(v) / len(v) if entite == "moyenne" else sum(v), 6)) for d, v in sorted(agr.items())]
 
 
-ADAPTATEURS = {"owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+ADAPTATEURS = {"ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

@@ -53,6 +53,7 @@ compartiments:
   - fonte des glaces
   - submersions
   - deltas qui s'enfoncent
+  - "villes basses : 24 % des habitants des centres urbains du monde vivent à moins de 10 m d'altitude près des côtes ; 3 % sont exposés à une submersion centennale, 49 % aux Pays-Bas, 16 % au Japon (2020 ; GHS-UCDB R2024A, calcul du projet)"
   niveau:
     espace: côtes
     temps: décennies
@@ -61,6 +62,8 @@ compartiments:
   traces:
   - source: altimétrie satellitaire publique (NASA, Copernicus)
     statut: a_brancher
+  - {source: "part de la population des centres urbains exposée à une submersion côtière centennale, monde (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:part_submersion_100"}
+  - {source: "part de la population des centres urbains vivant à moins de 10 m d'altitude près des côtes, monde (GHS-UCDB R2024A, JRC)", statut: collecte, fichier: mise_au_point/ucdb_pays.py, adaptateur: "ucdb:WLD:part_lecz_10"}
 - id: glaces
   nom: Glaces et glaciers
   organisation: eau

@@ -25,12 +25,15 @@ jobs:
       - run: uv sync --locked
       - name: Collecte
         run: uv run python -u collecte_ucdb.py
+      - name: Agrégats par pays (ecosystemes/ucdb-pays.csv)
+        run: uv run --with geonamescache==3.0.2 python -u mise_au_point/ucdb_pays.py
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/ucdb ]; then git add -f registre/ucdb; fi
+          git add ecosystemes/ucdb-pays.csv
           if ! git diff --cached --quiet; then
             git commit -m "registre : UCDB du $(date -u +%Y-%m-%d)"
             git pull --rebase
