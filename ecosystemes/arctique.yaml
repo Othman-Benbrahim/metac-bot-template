@@ -30,6 +30,8 @@ compartiments:
     temps: saisons
     vitesse: semaines
     taille: macro
+  traces:
+  - {source: "étendue de la glace de mer arctique (NSIDC, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:arctic-sea-ice:Arctic Ocean"}
 - id: groenland
   nom: Groenland
   organisation: geopolitique

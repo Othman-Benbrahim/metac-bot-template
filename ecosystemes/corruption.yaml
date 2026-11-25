@@ -44,6 +44,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "indice de perception de la corruption, moyenne des pays notés (Transparency International, via Our World in Data ; l'échantillon de pays varie selon les années)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:ti-corruption-perception-index:moyenne"}
   - source: Indice de perception de la corruption (Transparency International, données téléchargeables)
     statut: a_brancher
   - &id001

@@ -439,7 +439,44 @@ def confiance_actualite(reg: Path, pays: str) -> list[tuple[str, float]]:
     return [(f"{x['annee']}-06-15", float(x["confiance"])) for x in r if x["pays"] == pays]
 
 
-ADAPTATEURS = {"confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : un graphique d'Our World in Data (registre/owid/<slug>.csv.gz,
+    collecte_owid.py). « owid:<graphique>[:<entité>[:<colonne>]] » ; entité = nom (World, Arctic Ocean…), code ISO3, ou
+    « somme » / « moyenne » des pays (codes à trois lettres), ou « unique » (graphique à une seule entité) ; colonne = rang de la colonne de valeurs (0 par défaut) ou
+    « somme » de toutes. Année → 1er juillet ; une colonne Day garde sa date."""
+    import csv as _c
+    import gzip as _g
+    f = reg / "owid" / f"{slug}.csv.gz"
+    if not f.exists():
+        return []
+    with _g.open(f, "rt", encoding="utf-8") as h:
+        r = list(_c.DictReader(h))
+    if not r:
+        return []
+    cles = list(r[0])
+    temps = "Day" if "Day" in cles else ("Year" if "Year" in cles else None)
+    if temps is None:
+        return []
+    vals = [k for k in cles if k not in ("Entity", "Code", "Year", "Day")]
+    choix = vals if col == "somme" else vals[int(col):int(col) + 1]
+    agr: dict[str, list[float]] = {}
+    for x in r:
+        code = x.get("Code") or ""
+        if entite in ("somme", "moyenne"):
+            if len(code) != 3:
+                continue
+        elif entite != "unique" and x["Entity"] != entite and code != entite:
+            continue
+        try:
+            v = sum(float(x[k]) for k in choix)
+        except (ValueError, KeyError):
+            continue
+        d = x[temps] if temps == "Day" else f"{int(x[temps]):04d}-07-01"
+        agr.setdefault(d, []).append(v)
+    return [(d, round(sum(v) / len(v) if entite == "moyenne" else sum(v), 6)) for d, v in sorted(agr.items())]
+
+
+ADAPTATEURS = {"owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

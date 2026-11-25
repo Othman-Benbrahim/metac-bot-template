@@ -58,6 +58,7 @@ PAR_TYPE = {
     "epoch": ("flux", "modèles publiés par mois"),
     "rss_matiere": ("flux", "articles par jour qui nomment le sujet"),
     "rss_famille": ("flux", "articles nouveaux par jour de la famille de flux"),
+    "owid": ("stock", "graphique d’Our World in Data (série annuelle ou datée, selon le graphique)"),
     "confiance_actualite": ("stock", "confiance dans l’actualité par pays (Reuters Institute, Digital News Report)"),
     "ages_dirigeants": ("stock", "âge des dirigeants en poste au 1er juillet, par région (Archigos 4.1, 1946-2015)"),
     "wdi": ("stock", "indicateur annuel de la Banque mondiale (part de la population par âge, ou indicateur d’un pays)"),

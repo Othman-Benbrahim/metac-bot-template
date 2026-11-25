@@ -327,6 +327,7 @@ compartiments:
     vitesse: mois
     taille: micro (un foyer) à macro
   traces:
+  - {source: "part de la population ayant accès à l'électricité, Afrique subsaharienne (Banque mondiale, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:share-of-the-population-with-access-to-electricity:Sub-Saharan Africa (WB)"}
   - source: Suivi de l'ODD 7 (données publiques, indicateur 7.1.1)
     statut: a_brancher
     odd: ['7.1.1']

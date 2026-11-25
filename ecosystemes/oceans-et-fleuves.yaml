@@ -272,6 +272,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "production halieutique mondiale, pêche et aquaculture (FAO, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:capture-and-aquaculture-production:World:somme"}
   - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 14.4.1
     statut: a_brancher
     odd: ['14.4.1']
@@ -331,6 +332,7 @@ compartiments:
     vitesse: années
     taille: micro à macro
   traces:
+  - {source: "production mondiale de plastiques (via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:global-plastics-production:World"}
   - source: PNUE (série mesurable à chercher)
     statut: a_brancher
   - *id001

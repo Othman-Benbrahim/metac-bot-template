@@ -127,6 +127,7 @@ compartiments:
     vitesse: saisons à décennies
     taille: macro
   traces:
+  - {source: "consommation de substances appauvrissant la couche d'ozone, monde (PNUE, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:ozone-depleting-substance-consumption:World"}
   - source: bulletins de l'OMM ; surveillance Copernicus (CAMS)
     statut: a_brancher
   - *id002
@@ -142,6 +143,7 @@ compartiments:
     vitesse: jours
     taille: micro à macro
   traces:
+  - {source: "taux de décès liés à la pollution de l'air, monde (IHME, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:death-rates-from-air-pollution:World"}
   - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 11.6.2
     statut: a_brancher
     odd: ['11.6.2']

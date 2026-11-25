@@ -103,6 +103,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "part de la population disposant d'eau potable gérée en toute sécurité, monde (OMS/UNICEF, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:proportion-using-safely-managed-drinking-water:World"}
   - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 6.1.1
     statut: a_brancher
     odd: ['6.1.1']
@@ -121,6 +122,7 @@ compartiments:
     vitesse: années
     taille: macro
   traces:
+  - {source: "part de la population disposant d'un assainissement géré en toute sécurité, monde (OMS/UNICEF, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:share-using-safely-managed-sanitation:World"}
   - source: base de données mondiale des ODD (ONU, unstats.un.org/sdgs/dataportal), indicateur 6.2.1
     statut: a_brancher
     odd: ['6.2.1']
