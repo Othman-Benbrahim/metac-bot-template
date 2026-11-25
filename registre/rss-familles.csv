@@ -333,6 +333,7 @@ psyche,2026-10-20,1
 voix_citoyennes,2026-10-20,2
 enquete,2026-10-21,1
 parlement_ue,2026-10-21,11
+surveillance,2026-10-21,5
 voix_citoyennes,2026-10-21,3
 crime,2026-10-22,5
 economie,2026-10-22,1
@@ -341,6 +342,7 @@ lettres_fr,2026-10-22,4
 parlement_ue,2026-10-22,11
 psyche,2026-10-22,2
 religion,2026-10-22,3
+surveillance,2026-10-22,2
 tech,2026-10-22,1
 voix_citoyennes,2026-10-22,3
 crime,2026-10-23,5
@@ -349,6 +351,7 @@ parlement_ue,2026-10-23,5
 psyche,2026-10-23,2
 religion,2026-10-23,1
 sante,2026-10-23,3
+surveillance,2026-10-23,4
 voix_citoyennes,2026-10-23,3
 religion,2026-10-24,1
 voix_citoyennes,2026-10-24,2
@@ -361,6 +364,7 @@ crime,2026-10-26,3
 enquete,2026-10-26,1
 parlement_ue,2026-10-26,1
 religion,2026-10-26,1
+surveillance,2026-10-26,2
 tech,2026-10-26,1
 voix_citoyennes,2026-10-26,2
 crime,2026-10-27,2
@@ -369,6 +373,7 @@ enquete,2026-10-27,2
 inegalites,2026-10-27,2
 lettres_fr,2026-10-27,5
 religion,2026-10-27,1
+surveillance,2026-10-27,4
 transport,2026-10-27,1
 voix_citoyennes,2026-10-27,2
 crime,2026-10-28,4
@@ -380,6 +385,7 @@ parlement_ue,2026-10-28,4
 psyche,2026-10-28,1
 religion,2026-10-28,2
 sante,2026-10-28,1
+surveillance,2026-10-28,4
 voix_citoyennes,2026-10-28,1
 crime,2026-10-29,3
 economie,2026-10-29,1
@@ -390,6 +396,7 @@ officiel,2026-10-29,2
 parlement_ue,2026-10-29,2
 psyche,2026-10-29,2
 sante,2026-10-29,1
+surveillance,2026-10-29,1
 tech,2026-10-29,1
 transport,2026-10-29,2
 verification,2026-10-29,1
@@ -400,6 +407,7 @@ enquete,2026-10-30,4
 psyche,2026-10-30,1
 religion,2026-10-30,1
 sante,2026-10-30,1
+surveillance,2026-10-30,2
 voix_citoyennes,2026-10-30,3
 psyche,2026-10-31,1
 religion,2026-10-31,2
@@ -412,6 +420,7 @@ inegalites,2026-11-02,1
 monnaie,2026-11-02,1
 psyche,2026-11-02,1
 sante,2026-11-02,1
+surveillance,2026-11-02,1
 tech,2026-11-02,1
 voix_citoyennes,2026-11-02,2
 analyse,2026-11-03,6
@@ -422,6 +431,7 @@ parlement_ue,2026-11-03,8
 psyche,2026-11-03,2
 religion,2026-11-03,2
 sante,2026-11-03,1
+surveillance,2026-11-03,3
 transport,2026-11-03,1
 voix_citoyennes,2026-11-03,2
 analyse,2026-11-04,6
@@ -434,6 +444,7 @@ parlement_ue,2026-11-04,2
 presse,2026-11-04,1
 psyche,2026-11-04,1
 religion,2026-11-04,2
+surveillance,2026-11-04,2
 transport,2026-11-04,1
 voix_citoyennes,2026-11-04,2
 analyse,2026-11-05,5
@@ -446,6 +457,7 @@ presse,2026-11-05,1
 psyche,2026-11-05,1
 religion,2026-11-05,2
 sante,2026-11-05,1
+surveillance,2026-11-05,2
 tech,2026-11-05,1
 transport,2026-11-05,2
 voix_citoyennes,2026-11-05,2
@@ -456,6 +468,7 @@ officiel,2026-11-06,1
 parlement_ue,2026-11-06,3
 religion,2026-11-06,4
 sante,2026-11-06,2
+surveillance,2026-11-06,4
 transport,2026-11-06,1
 voix_citoyennes,2026-11-06,2
 analyse,2026-11-07,1
@@ -480,6 +493,7 @@ presse,2026-11-09,1
 psyche,2026-11-09,1
 religion,2026-11-09,5
 renseignement,2026-11-09,1
+surveillance,2026-11-09,3
 tech,2026-11-09,1
 transport,2026-11-09,1
 voix_citoyennes,2026-11-09,3
@@ -496,6 +510,7 @@ presse,2026-11-10,7
 psyche,2026-11-10,1
 religion,2026-11-10,4
 renseignement,2026-11-10,5
+surveillance,2026-11-10,1
 transport,2026-11-10,1
 voix_citoyennes,2026-11-10,2
 analyse,2026-11-11,1
@@ -507,6 +522,7 @@ parlement_ue_presse,2026-11-11,3
 presse,2026-11-11,4
 religion,2026-11-11,3
 renseignement,2026-11-11,5
+surveillance,2026-11-11,1
 transport,2026-11-11,1
 verification,2026-11-11,1
 voix_citoyennes,2026-11-11,1
@@ -524,6 +540,7 @@ psyche,2026-11-12,1
 religion,2026-11-12,4
 renseignement,2026-11-12,6
 sante_afrique,2026-11-12,1
+surveillance,2026-11-12,6
 tech,2026-11-12,1
 voix_citoyennes,2026-11-12,3
 analyse,2026-11-13,8
@@ -541,6 +558,7 @@ religion,2026-11-13,5
 renseignement,2026-11-13,5
 sante,2026-11-13,1
 sante_afrique,2026-11-13,1
+surveillance,2026-11-13,2
 tech,2026-11-13,1
 transport,2026-11-13,2
 voix_citoyennes,2026-11-13,2
@@ -573,6 +591,7 @@ psyche,2026-11-16,2
 religion,2026-11-16,3
 renseignement,2026-11-16,15
 sante_afrique,2026-11-16,1
+surveillance,2026-11-16,4
 tech,2026-11-16,1
 transport,2026-11-16,1
 verification,2026-11-16,1
@@ -595,6 +614,7 @@ psyche,2026-11-17,3
 renseignement,2026-11-17,15
 sante,2026-11-17,2
 sante_afrique,2026-11-17,1
+surveillance,2026-11-17,17
 transport,2026-11-17,1
 voix_citoyennes,2026-11-17,2
 analyse,2026-11-18,8
@@ -616,6 +636,7 @@ psyche,2026-11-18,2
 religion,2026-11-18,3
 renseignement,2026-11-18,16
 sante_afrique,2026-11-18,2
+surveillance,2026-11-18,4
 transport,2026-11-18,2
 voix_citoyennes,2026-11-18,1
 analyse,2026-11-19,12
@@ -638,6 +659,7 @@ presse,2026-11-19,72
 religion,2026-11-19,2
 renseignement,2026-11-19,18
 sante_afrique,2026-11-19,5
+surveillance,2026-11-19,4
 tech,2026-11-19,1
 transport,2026-11-19,2
 voix_citoyennes,2026-11-19,2
@@ -664,6 +686,7 @@ religion,2026-11-20,1
 renseignement,2026-11-20,16
 sante,2026-11-20,1
 sante_afrique,2026-11-20,2
+surveillance,2026-11-20,2
 transport,2026-11-20,1
 voix_citoyennes,2026-11-20,2
 afrique,2026-11-21,34
@@ -698,6 +721,7 @@ cyber,2026-11-23,10
 defense,2026-11-23,2
 economie,2026-11-23,14
 enquete,2026-11-23,4
+geopolitique_europe,2026-11-23,3
 lettres_fr,2026-11-23,6
 matieres_presse,2026-11-23,49
 minerais,2026-11-23,15
@@ -710,38 +734,53 @@ psyche,2026-11-23,1
 religion,2026-11-23,2
 renseignement,2026-11-23,15
 sante,2026-11-23,1
+surveillance,2026-11-23,3
 tech,2026-11-23,1
 transport,2026-11-23,4
 voix_citoyennes,2026-11-23,1
 afrique,2026-11-24,30
 analyse,2026-11-24,8
-asie,2026-11-24,35
+asie,2026-11-24,36
 biodiversite,2026-11-24,15
 conseil_ue,2026-11-24,5
 crime,2026-11-24,4
 cyber,2026-11-24,7
 defense,2026-11-24,1
 economie,2026-11-24,28
+geopolitique_europe,2026-11-24,5
 inegalites,2026-11-24,2
 lettres_fr,2026-11-24,13
-matieres_presse,2026-11-24,76
+matieres_presse,2026-11-24,78
 minerais,2026-11-24,14
 monnaie,2026-11-24,2
 officiel,2026-11-24,24
 parlement_ue,2026-11-24,49
 parlement_ue_presse,2026-11-24,4
-presse,2026-11-24,114
+presse,2026-11-24,115
 psyche,2026-11-24,4
 religion,2026-11-24,2
 renseignement,2026-11-24,16
 sante,2026-11-24,1
 sante_afrique,2026-11-24,2
+surveillance,2026-11-24,11
 transport,2026-11-24,8
 voix_citoyennes,2026-11-24,1
-asie,2026-11-25,14
-biodiversite,2026-11-25,3
-economie,2026-11-25,15
-matieres_presse,2026-11-25,2
-officiel,2026-11-25,12
-presse,2026-11-25,17
-transport,2026-11-25,2
+afrique,2026-11-25,9
+asie,2026-11-25,42
+biodiversite,2026-11-25,6
+conseil_ue,2026-11-25,1
+economie,2026-11-25,36
+enquete,2026-11-25,1
+geopolitique_europe,2026-11-25,2
+lettres_fr,2026-11-25,8
+matieres_presse,2026-11-25,28
+monnaie,2026-11-25,1
+officiel,2026-11-25,15
+parlement_ue,2026-11-25,4
+parlement_ue_presse,2026-11-25,1
+presse,2026-11-25,67
+religion,2026-11-25,1
+renseignement,2026-11-25,16
+surveillance,2026-11-25,1
+transport,2026-11-25,8
+voix_citoyennes,2026-11-25,1
