@@ -156,6 +156,7 @@ compartiments:
   organisation: ideologie
   elements:
   - 'mécanisme de l''auteur : face à une érosion perçue comme menace, l''identité se durcit (« elles se durcissent justement car elles s''érodent ») ; formes observables : votes nationalistes, putschs souverainistes, lois sur la langue et l''identité, discours contre l''étranger'
+  - 'dans la littérature : le « retour de bâton culturel » (Norris et Inglehart) ; distinct de la défiance politique (case suivante), avec laquelle il interagit (décision de l''auteur, 2026-11-26, 0 h 45)'
   - 'exemples tirés de l''atlas, sans jugement : « rêve chinois » et carte à dix traits, juntes souverainistes du Sahel, nationalisme hindou, régionalismes espagnols'
   niveau:
     espace: pays et régions
@@ -167,6 +168,52 @@ compartiments:
     statut: collecte
     fichier: gdelt_bq.py
     adaptateur: manifestations:TR
+- id: defiance_politique
+  nom: Défiance politique
+  organisation: ideologie
+  elements:
+  - 'réactance : réaction à une liberté qu''on sent retirée ou à un choix imposé — par exemple une politique européenne décidée loin et vécue comme imposée (normes agricoles : révolte de 2024 et recul obtenu)'
+  - 'défiance envers les élites : sentiment que le pouvoir n''écoute pas ou se sert ; la crise de 2008 et l''austérité ont fait chuter la confiance, et cette chute a nourri le vote populiste (Algan et al., 2017 ; synthèse de Guriev et Papaioannou, Journal of Economic Literature, 2022) ; l''insécurité économique (concurrence chinoise, désindustrialisation) passe souvent par ce canal'
+  - 'corruption : on mesure la corruption PERÇUE, sans trancher qui est corrompu ; les affaires touchent tous les bords (Qatargate au Parlement européen en 2022, jugement de 2025 contre la Commission sur les SMS Pfizer, condamnations d''élus en France dont le RN en 2025 dans l''affaire des assistants parlementaires)'
+  - 'interaction (littérature) : le choc économique fait baisser la confiance, et la défiance s''exprime ensuite dans un vote identitaire'
+  niveau:
+    espace: pays et Union européenne
+    temps: années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: contrôle de la corruption, France (Banque mondiale, indicateurs de gouvernance, annuel)
+    statut: collecte
+    fichier: collecte_banque_mondiale.py
+    adaptateur: wdi:FRA:GOV_WGI_CC_EST
+  - source: voix citoyenne et responsabilité, France (Banque mondiale, indicateurs de gouvernance, annuel)
+    statut: collecte
+    fichier: collecte_banque_mondiale.py
+    adaptateur: wdi:FRA:GOV_WGI_VA_EST
+  - source: confiance dans les institutions (Eurobaromètre ; source à valider par l'auteur)
+    statut: a_brancher
+- id: vote_contestataire
+  nom: Vote contestataire et polarisation
+  organisation: statut
+  elements:
+  - 'montée des partis aux extrêmes et des partis contre « le système », et les contre-mobilisations qu''elle provoque (fronts républicains, gauche radicale) : la polarisation est un mécanisme symétrique'
+  - 'alimenté par la réaction identitaire et par la défiance politique (décision de l''auteur, 2026-11-26)'
+  niveau:
+    espace: pays
+    temps: cycles électoraux
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: polarisation de la chambre (série ouverte, États-Unis)
+    statut: collecte
+    fichier: collecte_ouvertes.py
+    adaptateur: ouvert:polarisation_chambre
+  - source: calendrier des élections, France (Wikidata, jours avant la prochaine élection)
+    statut: collecte
+    fichier: collecte_elections.py
+    adaptateur: elections:FR
+  - source: résultats électoraux par parti (ParlGov ou équivalent libre ; à valider par l'auteur)
+    statut: a_brancher
 - id: projection_exterieure
   nom: Projection hors du territoire
   organisation: geopolitique
@@ -214,6 +261,38 @@ relations:
   force: forte
   statut: a_verifier
   texte: la présence d'une puissance étrangère sur son sol provoque une réaction identitaire chez ceux qui la subissent ; supposé, à vérifier
+- de: reaction_identitaire
+  vers: vote_contestataire
+  fondement: causalite_sociale
+  effet: '+'
+  delai: mois à années
+  force: moyenne
+  statut: a_verifier
+  texte: la réaction identitaire se traduit en votes pour les partis aux extrêmes
+- de: defiance_politique
+  vers: vote_contestataire
+  fondement: causalite_sociale
+  effet: '+'
+  delai: mois à années
+  force: forte
+  statut: a_verifier
+  texte: la défiance envers les élites et la réactance face aux politiques imposées nourrissent le vote contre « le système » (Algan et al. 2017 ; Guriev et Papaioannou 2022)
+- de: defiance_politique
+  vers: reaction_identitaire
+  fondement: causalite_sociale
+  effet: '+'
+  delai: mois à années
+  force: moyenne
+  statut: a_verifier
+  texte: la défiance s'exprime souvent dans un registre identitaire ; les deux mécanismes se renforcent
+- de: flux_financiers
+  vers: defiance_politique
+  fondement: causalite_sociale
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: les chocs financiers et l'austérité qui suit font baisser la confiance dans les institutions (crise de 2008)
 - de: reaction_identitaire
   vers: flux_information
   fondement: causalite_sociale
