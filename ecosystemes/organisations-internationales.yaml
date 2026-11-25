@@ -146,6 +146,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
+    objet: argent
   traces:
   - {source: "taux de couverture des appels humanitaires coordonnés (fonds reçus / besoins, tous appels confondus, par année), OCHA Financial Tracking Service via le Humanitarian Data Exchange (source validée par l’auteur le 2026-11-25 à 5 h 57)", statut: collecte, fichier: collecte_fts.py, adaptateur: "fts:couverture"}
 relations:

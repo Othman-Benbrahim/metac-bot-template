@@ -1,0 +1,195 @@
+# Fiche créée le 2026-11-25 (réflexion de l'auteur, 9 h 24 : « on a sous-évalué le poids de la culture ») : les cultures
+# héritées d'une histoire et d'une région, emboîtées comme des matriochkas (aire, État, local, individu), leur dilution
+# dans une culture mondiale (États-Unis, Asie orientale, par les échanges économiques) et la culture algorithmique (la
+# bulle de chacun, tenue par les grandes plateformes). Chiffres vérifiés le 2026-11-25 sur les sources citées.
+theme: cultures-emboitees
+nom: Cultures emboîtées (héritage, diffusion, algorithmes)
+declaration:
+  but: "voir la culture comme un héritage emboîté (aire de civilisation, État, région ou communauté, individu), qui pèse sur la façon dont un peuple lit un événement et y répond ; suivre sa dilution dans une culture mondiale dominée par les industries culturelles des États-Unis et de l'Asie orientale, portée par les échanges économiques ; et l'apparition d'une culture algorithmique, où chacun vit dans une bulle de recommandations tenue par de grandes entreprises"
+  limites: "dedans l'héritage culturel (langues, valeurs, codes), l'emboîtement des échelles, la diffusion mondiale des industries culturelles, la culture algorithmique, les politiques de protection culturelle ; dehors la création, le patrimoine et la mémoire (culture-memoire), les religions (croyances-religions), les compétitions et prix (competitions-culture), les plateformes comme acteurs économiques (information-cyber:plateformes), sauf par les ponts"
+  observateur: "notre carte, regard extérieur ; sources publiques (Ethnologue, UNESCO, statistiques officielles, études publiées) ; aucune personne privée"
+  date: '2026-11-25'
+  espace: de l'aire de civilisation à l'individu
+  temps: du jour (une tendance) au siècle (une langue, des valeurs)
+  vitesse: lente pour l'héritage (générations), rapide pour la diffusion et les algorithmes (semaines à années)
+  taille: de l'individu à l'aire de civilisation
+compartiments:
+- id: aires_culturelles
+  nom: Aires culturelles (héritage d'une histoire et d'une région du monde)
+  organisation: societe
+  elements:
+  - "grandes aires de langues, de valeurs et de codes hérités d'une histoire longue ; elles changent sur des générations"
+  - "7 159 langues parlées ; 3 193 (44 %) menacées ; 487 (7 %) seulement servent aux États, à l'école et aux médias ; 25 pays réunissent environ 80 % des langues menacées (Al Jazeera, 21 février 2026, d'après Ethnologue)"
+  niveau:
+    espace: monde
+    temps: siècles
+    vitesse: générations
+    taille: macro
+    objet: information
+  traces:
+  - {source: "langues menacées par pays (Ethnologue) ; relevé à brancher", statut: a_brancher}
+- id: cultures_nationales
+  nom: Cultures nationales (l'État, sa langue, son école, ses médias)
+  organisation: geopolitique
+  elements:
+  - "l'État transmet une culture commune par la langue officielle, l'école et les médias publics ; c'est l'échelle où se décident quotas et protections"
+  niveau:
+    espace: pays
+    temps: décennies
+    vitesse: années
+    taille: macro
+    objet: normes
+  traces:
+  - {source: "politiques culturelles nationales (quotas, financement) ; à brancher", statut: a_brancher}
+- id: cultures_locales
+  nom: Cultures locales (régions, langues régionales, communautés)
+  organisation: societe
+  elements:
+  - "langues régionales, traditions et sociabilités locales ; elles portent la plus grande part des langues menacées"
+  niveau:
+    espace: région à site
+    temps: décennies
+    vitesse: années
+    taille: méso
+    objet: information
+  traces:
+  - {source: "à brancher", statut: a_brancher}
+- id: individu_identites
+  nom: L'individu et ses appartenances superposées
+  organisation: societe
+  elements:
+  - "chacun hérite de plusieurs couches (aire, nation, région, famille) et en choisit d'autres (diasporas, communautés en ligne)"
+  niveau:
+    espace: individu
+    temps: vie
+    vitesse: années
+    taille: micro
+    objet: personnes
+  traces:
+  - {source: "enquêtes de valeurs (World Values Survey) ; à brancher", statut: a_brancher}
+- id: diffusion_mondiale
+  nom: Culture mondiale (industries culturelles dominantes, échanges économiques)
+  organisation: economie
+  elements:
+  - "industries culturelles américaines (cinéma, séries, plateformes de diffusion, musique) et d'Asie orientale (Corée du Sud, Japon, Chine) ; elles voyagent avec les échanges économiques"
+  - "Corée du Sud : 18,98 milliards de dollars d'exportations liées à la vague coréenne en 2025 (+15,9 %), dont la musique +84 % et l'audiovisuel +29,7 % ; enquête auprès de 27 400 consommateurs dans 30 pays (Korean Foundation for International Cultural Exchange et ministère de la Culture, juillet 2026, d'après The Star)"
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+    objet: information
+  traces:
+  - {source: "exportations culturelles de la Corée du Sud (rapport annuel) ; échanges de biens et services culturels (UNESCO) ; à brancher", statut: a_brancher}
+- id: culture_algorithmique
+  nom: Culture algorithmique (la bulle de recommandations de chacun)
+  organisation: technique
+  elements:
+  - "chaque individu reçoit un flux choisi par l'algorithme d'une plateforme ; la bulle se forme vite et appartient à quelques grandes entreprises"
+  - "étude contrôlée sur Facebook et Instagram (élection américaine de 2020, environ 3 mois) : passer au fil chronologique réduit nettement le temps passé et change ce qu'on voit (plus de contenus politiques et douteux, moins d'insultes, plus de sources mixtes), mais ne change pas significativement la polarisation ni les attitudes (Guess et al., Science 381, 2023)"
+  - "ChatGPT : 100 millions d'utilisateurs en deux mois environ, contre neuf mois pour TikTok et deux ans et demi pour Instagram (UBS, d'après TechSpot, février 2023) ; les assistants d'IA deviennent une nouvelle couche de cette culture"
+  niveau:
+    espace: individu à monde
+    temps: mois
+    vitesse: jours
+    taille: micro à macro
+    objet: information
+  traces:
+  - {source: "articles qui nomment les algorithmes de recommandation, la bulle de filtre ou la chambre d'écho (flux RSS déjà suivis) ; à brancher", statut: a_brancher}
+- id: protections_culturelles
+  nom: Protections et résistances culturelles (quotas, exception culturelle, langues)
+  organisation: geopolitique
+  elements:
+  - "Convention de l'UNESCO de 2005 sur la protection et la promotion de la diversité des expressions culturelles : base des quotas, aides et exceptions culturelles dans les accords de commerce"
+  niveau:
+    espace: pays à monde
+    temps: décennies
+    vitesse: années
+    taille: macro
+    objet: normes
+  traces:
+  - {source: "États parties à la Convention de 2005 (UNESCO) ; à brancher", statut: a_brancher}
+relations:
+- de: aires_culturelles
+  vers: cultures_nationales
+  effet: '+'
+  delai: décennies
+  force: forte
+  statut: a_verifier
+  texte: l'héritage d'une aire donne à chaque culture nationale sa langue, ses valeurs et ses codes (emboîtement)
+- de: cultures_nationales
+  vers: cultures_locales
+  effet: '-'
+  delai: décennies
+  force: moyenne
+  statut: a_verifier
+  texte: l'école et la langue officielle unifient, au détriment des langues régionales ; d'où la plus grande part des langues menacées (Ethnologue)
+- de: cultures_locales
+  vers: individu_identites
+  effet: '+'
+  delai: années
+  force: forte
+  statut: a_verifier
+  texte: la culture locale et familiale forme la première couche de l'identité de chacun
+- de: diffusion_mondiale
+  vers: cultures_nationales
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la culture mondiale dilue les cultures nationales, surtout chez les jeunes ; elle voyage avec les échanges économiques
+- de: diffusion_mondiale
+  vers: protections_culturelles
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la dilution suscite une réaction (quotas, aides, exception culturelle)
+- de: protections_culturelles
+  vers: diffusion_mondiale
+  effet: '-'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: les quotas et les aides freinent la part des industries dominantes, sans l'inverser
+- de: culture_algorithmique
+  vers: individu_identites
+  effet: '+'
+  delai: semaines
+  force: moyenne
+  statut: a_verifier
+  texte: le flux de recommandations change ce que chacun voit et le temps qu'il y passe ; son effet sur les attitudes est plus faible que supposé (Guess et al., Science, 2023)
+- de: culture_algorithmique
+  vers: diffusion_mondiale
+  effet: '+'
+  delai: mois
+  force: forte
+  statut: a_verifier
+  texte: les algorithmes des grandes plateformes portent les contenus mondiaux (musique coréenne +84 % à l'export en 2025, d'après le rapport coréen)
+- de: aires_culturelles
+  vers: individu_identites
+  effet: '+'
+  delai: générations
+  force: moyenne
+  statut: a_verifier
+  texte: l'héritage le plus ancien agit encore à travers la famille et la langue, même quand l'échelle nationale s'affaiblit
+ponts:
+- depuis: culture_algorithmique
+  vers: information-cyber:plateformes
+  nature: la culture algorithmique appartient aux plateformes qui la calculent
+- depuis: culture_algorithmique
+  vers: sciences-techniques:adoption
+  nature: les assistants d'IA, nouvelle couche de la culture algorithmique, se diffusent plus vite que toute application avant eux
+- depuis: diffusion_mondiale
+  vers: culture-memoire:creation
+  nature: la création circule dans un marché mondial dominé par quelques industries
+- depuis: protections_culturelles
+  vers: union-europeenne:politiques_communes
+  nature: exception culturelle dans les accords commerciaux et quotas audiovisuels européens
+- depuis: diffusion_mondiale
+  vers: rivalite-sino-americaine:commerce
+  nature: la culture voyage avec le commerce ; puissance d'influence des deux rivaux
+- depuis: cultures_nationales
+  vers: humain:symboles
+  nature: une culture nationale fournit les symboles qui mobilisent
+  type: voisinage

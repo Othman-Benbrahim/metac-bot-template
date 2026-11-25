@@ -32,6 +32,9 @@ SCHEMA = Path("registre/ecosystemes-schema.json")
 A_FAIRE = Path("registre/ecosystemes-a-faire.md")
 
 AXES = ("espace", "temps", "vitesse", "taille")
+# 2026-11-25 (proposition reprise par l'auteur, 9 h 24) : cinquième variable, facultative, « objet » : ce qui circule ou
+# change dans le compartiment ; liste fermée
+OBJETS_NIVEAU = ("matière", "énergie", "vivant", "personnes", "argent", "information", "normes")
 EFFETS = ("+", "-", "0", "±")
 FORMES = ("competition", "predation", "mutualisme", "commensalisme", "amensalisme", "neutralisme", "forcage",
           "contrainte", "ambivalent")
@@ -171,7 +174,7 @@ def charger(dossier: Path = DOSSIER, transversaux: bool = True) -> dict[str, dic
 # pas = une occurrence) ou qNN (quantile NN des 365 jours, ou 12 mois, qui précèdent la date de la question).
 CLES_EVENEMENT = {"type", "termes", "serie", "seuil", "pas", "occurrence", "statut", "note"}
 CLES_PERMISES = {
-    "niveau": set(AXES), "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
+    "niveau": set(AXES) | {"objet"}, "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
                  "module", "parametres", "series", "verification"},
@@ -298,6 +301,9 @@ def valider(fiche: dict) -> list[str]:
         for a in AXES:
             if a not in (c.get("niveau") or {}):
                 err.append(f"{t}:{c.get('id')} : niveau d'action sans « {a} »")
+        o = (c.get("niveau") or {}).get("objet")
+        if o is not None and o not in OBJETS_NIVEAU:
+            err.append(f"{t}:{c.get('id')} : objet « {o} » hors liste {OBJETS_NIVEAU}")
         g = c.get("geopolitique")
         if g is not None and (not isinstance(g, dict) or set(g) - {"pays"} or
                               not all(isinstance(x, str) and re.fullmatch(r"[A-Z]{3}", x) for x in g.get("pays") or [])):

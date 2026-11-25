@@ -31,6 +31,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
+    objet: information
   traces:
   - {source: "articles qui nomment les interceptions légales (FISA, section 702, écoutes, surveillance de masse), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:interceptions"}
   - source: "échéances législatives (prorogations, expiration, autorisations du FISC) ; relevé manuel sourcé"
@@ -46,6 +47,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
+    objet: information
   traces:
   - {source: "articles qui nomment l'espionnage d'État (espionnage, Salt Typhoon, Volt Typhoon, groupes APT), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:espionnage"}
   - source: "attributions publiques et avis conjoints des agences (CISA, FBI, ANSSI, NCSC) ; via les flux déjà collectés des CERT"
@@ -70,6 +72,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: méso
+    objet: argent
   traces:
   - {source: "articles qui nomment un logiciel espion ou un vendeur (Pegasus, Predator, Paragon, NSO, Intellexa, Candiru, sans clic), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:spyware"}
   - source: "rapports publics de laboratoires (Citizen Lab, Amnesty Tech, Google TAG) : nombre par mois"
@@ -84,6 +87,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: méso à macro
+    objet: information
   traces:
   - {source: "articles qui nomment les courtiers en données ou les données de localisation, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:courtiers"}
   - source: "décisions des régulateurs (FTC, CNIL) contre des courtiers ; à brancher"
@@ -98,6 +102,7 @@ compartiments:
     temps: années
     vitesse: mois
     taille: macro
+    objet: information
   traces:
   - {source: "articles qui nomment la reconnaissance faciale ou la biométrie, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:biometrie"}
   - source: "textes et décisions (Commission européenne, autorités nationales)"
@@ -113,6 +118,7 @@ compartiments:
     temps: mois
     vitesse: jours
     taille: micro
+    objet: personnes
   traces:
   - {source: "articles où une cible (journaliste, militant, opposant, élu) est rapprochée d'un logiciel espion ou d'une surveillance, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:cibles"}
   - source: "cas publics documentés par des laboratoires indépendants"
@@ -128,6 +134,7 @@ compartiments:
     temps: années
     vitesse: semaines
     taille: méso
+    objet: normes
   traces:
   - {source: "articles qui nomment le chiffrement de bout en bout, les portes dérobées ou les alertes de menace, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:chiffrement"}
   - source: "à brancher"

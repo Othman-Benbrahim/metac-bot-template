@@ -44,6 +44,16 @@ compartiments:
     niveau: {espace: "mondial", temps: "années", vitesse: "mois à décennies", taille: "micro à macro"}
     traces:
       - {source: "prépublications en apprentissage automatique par jour (arXiv cs.LG)", statut: "collecte", fichier: "collecte_series_publiques.py", adaptateur: "pub:arxiv_cs_lg"}
+  - id: "developpement"
+    nom: "Développement, essais et autorisation (de la découverte au produit)"
+    organisation: "technique"
+    elements:
+      - "le passage de l'idée au produit prend d'ordinaire des années, voire des décennies ; un nouveau vaccin demande en temps normal environ dix mois d'examen à la FDA (Science News, 2020)"
+      - "vaccins contre la covid : génome du virus disponible début janvier 2020, premiers vaccins mis au point, testés et autorisés en urgence en 11 mois ; examen de la FDA en 21 jours (Pfizer) et 19 jours (Moderna) ; environ quatre ans gagnés, surtout sur les attentes, grâce à des décennies de recherche préalable (ARN messager, SARS, MERS), au recrutement rapide des volontaires, à l'examen prioritaire et à la fabrication menée en parallèle des essais (Science News, 2020)"
+      - "la durée du cycle dépend de l'urgence, des intérêts économiques et du contexte (financements, régulation, concurrence)"
+    niveau: {espace: "mondial", temps: "années", vitesse: "mois à décennies", taille: "méso à macro", objet: "information"}
+    traces:
+      - {source: "autorisations de mise sur le marché (FDA, EMA) par mois ; à brancher", statut: "a_brancher"}
   - id: "capitaux"
     nom: "Capitaux et valorisations"
     organisation: "economie"
@@ -54,7 +64,7 @@ compartiments:
   - id: "adoption"
     nom: "Diffusion et adoption"
     organisation: "societe"
-    elements: ["premiers utilisateurs", "entreprises clientes", "usages quotidiens"]
+    elements: ["premiers utilisateurs", "entreprises clientes", "usages quotidiens", "ChatGPT : 100 millions d'utilisateurs en deux mois environ après son lancement (30 novembre 2022), contre neuf mois pour TikTok et deux ans et demi pour Instagram (UBS, d'après TechSpot, février 2023)"]
     acteurs:
       - {nom: "un utilisateur", taille: "micro", espace: "local", vitesse: "jours", organisation: "psychologique", facette: "psyche"}
     niveau: {espace: "pays à mondial", temps: "années", vitesse: "mois", taille: "micro à macro"}
@@ -135,7 +145,45 @@ compartiments:
     traces:
     - source: "EDGAR (SEC), dépôts S-1 (gratuit ; validée par l’auteur le 2026-11-24 à 14 h 35, à brancher)"
       statut: a_brancher
+cycles:
+  - id: cycle_innovation
+    nom: "Cycle de l'innovation (recherche, développement, diffusion)"
+    sorte: endogene
+    mecanisme: "une découverte passe par le développement, les essais et l'autorisation, puis se diffuse ; la durée va de quelques mois (urgence, argent abondant, recherche préalable) à plusieurs décennies (sans intérêt économique ni urgence) ; la diffusion elle-même s'accélère (ChatGPT, deux mois pour 100 millions d'utilisateurs)"
+    periode: "de quelques mois à plusieurs décennies selon l'urgence et les intérêts économiques"
+    phase_vulnerable: "le passage du développement à la diffusion : financement, autorisation, fabrication"
+    compartiments: [recherche, developpement, adoption, capitaux, regulation]
+    sources: ["Science News, How COVID-19 vaccines were made so quickly without cutting corners (2020)", "UBS, d'après TechSpot (février 2023)"]
+    statut: mecanisme
 relations:
+  - de: recherche
+    vers: developpement
+    effet: +
+    delai: années
+    force: forte
+    statut: a_verifier
+    texte: "une découverte ne devient un produit qu'après des années de développement ; la recherche accumulée avant raccourcit tout (ARN messager et vaccins contre la covid)"
+  - de: developpement
+    vers: adoption
+    effet: +
+    delai: mois
+    force: forte
+    statut: a_verifier
+    texte: "un produit autorisé se diffuse ; la vitesse de diffusion s'est accélérée (ChatGPT, 100 millions d'utilisateurs en deux mois)"
+  - de: capitaux
+    vers: developpement
+    effet: +
+    delai: mois
+    force: forte
+    statut: a_verifier
+    texte: "l'argent et l'urgence raccourcissent le cycle (essais menés en parallèle, fabrication avant l'autorisation) ; sans intérêt économique, il s'allonge"
+  - de: regulation
+    vers: developpement
+    effet: '-'
+    delai: mois
+    force: moyenne
+    statut: a_verifier
+    texte: "l'examen et l'autorisation allongent le cycle ; l'examen prioritaire en cas d'urgence le raccourcit (19 à 21 jours pour les vaccins contre la covid)"
   - de: calcul
     vers: sorties_modeles
     effet: +
