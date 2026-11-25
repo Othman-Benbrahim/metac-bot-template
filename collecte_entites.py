@@ -33,8 +33,10 @@ SORTIE = Path("registre") / "entites" / "entites.csv"
 MANUEL = Path("donnees_manuelles") / "us_cia_world_leaders.targets.nested.json"
 CIA = "https://data.opensanctions.org/datasets/latest/us_cia_world_leaders/targets.nested.json"
 SPARQL = "https://query.wikidata.org/sparql"
-CHEF = re.compile(r"^(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|head of state|"
-                  r"taoiseach|grand duke|chairman of the presidium)\b", re.I)
+# intitulés de chef ; « President, Bundesbank » (virgule : président d'une institution) n'en est pas un ; « Fed. President »
+# (Allemagne) en est un
+CHEF = re.compile(r"^((fed\.|federal) )?(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|"
+                  r"head of state|taoiseach|grand duke|chairman of the presidium)\b(?!,)", re.I)
 # noms de famille qui sont aussi des mots courants ou des prénoms fréquents : jamais retenus seuls
 COURANTS = {"pierre", "store", "muhammad", "mohammed", "mohamed", "ahmed", "ahmad", "hassan", "hussein", "abdullah",
             "abdallah", "hamdan", "james", "john", "grant", "price", "young", "brown", "white", "black", "green", "little",
@@ -48,29 +50,29 @@ PAS_CHEF = re.compile(r"\b(vice|deputy|first deputy|acting)\b", re.I)
 # Les dirigeants publics viennent donc aussi de Wikidata (source validée) : chefs d'État et de gouvernement actuels des
 # États souverains, et ministres en fonction (poste rattaché à un État souverain, sans date de fin).
 REQUETES_CHEFS = {
-    "chef d'État ou de gouvernement": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
-  ?o wdt:P31 wd:Q3624078. VALUES ?prop { p:P35 p:P6 } ?o ?prop ?st. ?st (ps:P35|ps:P6) ?p.
+    "chef d'État ou de gouvernement": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
+  ?o wdt:P31 wd:Q3624078. BIND(?o AS ?pays) OPTIONAL { ?o wdt:P297 ?iso } VALUES ?prop { p:P35 p:P6 } ?o ?prop ?st. ?st (ps:P35|ps:P6) ?p.
   FILTER NOT EXISTS { ?st pq:P582 ?fin }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
 REQUETES = {
-    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
+    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
   ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin }
-  ?pos wdt:P279 ?classe. VALUES ?classe { wd:Q83307 wd:Q7330070 wd:Q15966511 } ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078.
+  ?pos wdt:P279 ?classe. VALUES ?classe { wd:Q83307 wd:Q7330070 wd:Q15966511 } ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. BIND(?o AS ?pays) OPTIONAL { ?o wdt:P297 ?iso }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
-    "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
+    "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
-  ?o wdt:P414 ?ex; p:P169 ?st. ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  ?o wdt:P414 ?ex; p:P169 ?st. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # banques centrales : président ou gouverneur actuel
-    "banque centrale": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
-  ?o wdt:P31 wd:Q66344. VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
+    "banque centrale": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
+  ?o wdt:P31 wd:Q66344. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
   FILTER NOT EXISTS { ?st pq:P582 ?fin }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # organisations internationales : dirigeant actuel
-    "organisation internationale": """SELECT DISTINCT ?p ?pLabel ?oLabel WHERE {
-  ?o wdt:P31 wd:Q484652. VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
+    "organisation internationale": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
+  ?o wdt:P31 wd:Q484652. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
   FILTER NOT EXISTS { ?st pq:P582 ?fin }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
@@ -117,8 +119,10 @@ def personnes_cia(texte: str) -> list[dict]:
         # chef d'État ou de gouvernement : intitulé de chef (sans « vice », « deputy »…), et sujet gov.head d'OpenSanctions
         # quand il existe (le sujet seul couvre aussi des vice-premiers ministres : 541 « chefs » au premier essai)
         chef = any(CHEF.search(n) and not PAS_CHEF.search(n) and (not t or "gov.head" in t) for n, t in postes)
-        out.append({"nom": nom, "famille": famille, "sorte": "dirigeant public",
-                    "pays": ";".join(pr.get("citizenship") or pr.get("country") or []),
+        url = (pr.get("sourceUrl") or [""])[0]
+        pays_nom = url.rstrip("/").split("/")[-1].replace("-", " ").title() if "foreign-governments" in url else ""
+        out.append({"nom": nom, "famille": famille, "sorte": "dirigeant public", "pays_nom": pays_nom, "organisation": "gouvernement",
+                    "pays": ";".join(pr.get("citizenship") or pr.get("country") or []).upper(),
                     "poste": "; ".join(n for n, _ in postes)[:120], "chef": chef, "source": "OpenSanctions/CIA World Leaders"})
     return out
 
@@ -129,6 +133,14 @@ def variantes(nom: str, chef: bool, famille: str = "") -> list[str]:
     if chef and len(fam) >= 5 and fam.lower() not in COURANTS and fam.replace(" ", "").replace("-", "").isalpha() and fam != nom:
         v.append(fam)
     return v
+
+
+def _precedent() -> list[dict]:
+    """Lignes du fichier précédent (une source en échec ne vide pas la liste)."""
+    if not SORTIE.exists():
+        return []
+    with SORTIE.open(encoding="utf-8") as h:
+        return [{**r, "chef": r.get("chef") == "1", "famille": ""} for r in csv.DictReader(h)]
 
 
 def principal() -> int:
@@ -162,12 +174,16 @@ def principal() -> int:
                     nom = b.get("pLabel", {}).get("value", "")
                     if len(nom) < 5 or re.fullmatch(r"Q\d+", nom):
                         continue
-                    lignes.append({"nom": nom, "sorte": sorte, "pays": "", "poste": b.get("oLabel", {}).get("value", "")[:120],
-                                   "chef": chef, "source": "Wikidata"})
+                    org = b.get("oLabel", {}).get("value", "")[:120]
+                    lignes.append({"nom": nom, "sorte": sorte, "pays": b.get("iso", {}).get("value", ""),
+                                   "pays_nom": b.get("paysLabel", {}).get("value", ""), "organisation": org,
+                                   "poste": org, "chef": chef, "source": "Wikidata"})
                     n += 1
                 bilan[sorte] = n
             except Exception as ex:
-                bilan[sorte] = f"erreur {type(ex).__name__}: {str(ex)[:120]}"
+                bilan[sorte] = f"erreur {type(ex).__name__}: {str(ex)[:120]} ; lignes précédentes gardées"
+                gardees = [r for r in _precedent() if r["sorte"] == sorte]
+                lignes += gardees
     print(json.dumps(bilan, ensure_ascii=False))
     if not lignes:
         print("aucune entité : fichier précédent conservé")
@@ -176,13 +192,13 @@ def principal() -> int:
     SORTIE.parent.mkdir(parents=True, exist_ok=True)
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["variantes", "nom", "sorte", "pays", "poste", "chef", "source"])
+        w.writerow(["variantes", "nom", "sorte", "pays", "pays_nom", "organisation", "poste", "chef", "source"])
         for x in lignes:
             if x["nom"].lower() in vus:
                 continue
             vus.add(x["nom"].lower())
-            w.writerow(["/".join(variantes(x["nom"], x["chef"], x.get("famille", ""))), x["nom"], x["sorte"], x["pays"], x["poste"],
-                        int(x["chef"]), x["source"]])
+            w.writerow(["/".join(variantes(x["nom"], x["chef"], x.get("famille", ""))), x["nom"], x["sorte"], x.get("pays", ""),
+                        x.get("pays_nom", ""), x.get("organisation", ""), x["poste"], int(x["chef"]), x["source"]])
     print(len(vus), "entités ->", SORTIE)
     return 0
 
