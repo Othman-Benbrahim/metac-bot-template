@@ -80,3 +80,13 @@ def test_croiser_questions():
 def test_media_etat():
     d = {"faits": [{"fait": "La Russie annonce un accord.", "chiffre": "", "origine": "TASS"}]}
     assert b.controler(d, "texte", "tass.com", [])["faits"][0]["statut"].startswith("affirmé par un média d'État")
+
+
+def test_score_et_choix():
+    P = {"dec": [(b._motifs(["coup", "coup d'État"]), False), (b._motifs(["ban"]), True)],
+         "ent": [b._motifs(["Nvidia"])], "pays": [re.compile(r"Mali")], "ouvertes": {"x:y"}}
+    assert b.score("Coup in Mali", [], P) == 5 and b.score("Coup rumours", [], P) == 2
+    assert b.score("Nvidia ban", [], P) == 5 and b.score("Total ban", [], P) == 0 and b.score("Nvidia earnings", [], P) == 0
+    assert b.score("rien", ["x:y"], P) == 3
+    files = {"a": [{"t": 1, "score": 0}, {"t": 2, "score": 5}], "b": [{"t": 3, "score": 0}], "c": [{"t": 4, "score": 8}, {"t": 5, "score": 7}]}
+    assert [x["t"] for x in b.choisir(files, 4)] == [4, 2, 3, 5]

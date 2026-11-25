@@ -113,6 +113,71 @@ def candidats(texte: str, routage=None) -> list[str]:
     return vus[:25]
 
 
+# ---------- priorité (2026-11-25, décision de l'auteur à 13 h 16) ----------
+# Score calculé par le code sur le titre (et le résumé du flux) :
+#   mot déclencheur validé (type de bascule)                     +2
+#   + entité validée ou pays du registre dans le même texte     +3
+#   compartiment candidat partagé avec une question ouverte      +3
+# Un déclencheur marqué « seulement associé à une entité » ne compte qu'avec une entité. Une entité seule ne compte pas.
+# Seules les lignes validées (« + ») de listes/declencheurs-proposes.txt et listes/entites-prioritaires-proposees.txt
+# sont actives. Sélection : la meilleure de chaque famille d'abord (diversité), puis les meilleurs scores.
+
+def _liste_validee(nom: str) -> list[tuple[list[str], str]]:
+    import lecture_mecanique as lm
+    f = lm.LISTES / nom
+    if not f.exists():
+        return []
+    out = []
+    for l in f.read_text(encoding="utf-8").splitlines():
+        p = [x.strip() for x in l.split("|")]
+        if len(p) >= 3 and p[0] == "+":
+            out.append(([t.strip() for t in p[1].split("/") if t.strip()], " ".join(p[2:])))
+    return out
+
+
+def _motifs(variantes: list[str]):
+    return re.compile(r"(?<![\w-])(" + "|".join(re.escape(v) for v in sorted(variantes, key=len, reverse=True)) + r")(?![\w-])", re.I)
+
+
+def priorites(routage_pays=None) -> dict:
+    dec = [(_motifs(v), "seulement associé" in r) for v, r in _liste_validee("declencheurs-proposes.txt")]
+    ent = [_motifs(v) for v, _ in _liste_validee("entites-prioritaires-proposees.txt")]
+    if routage_pays is None:
+        import lecture_mecanique as lm
+        routage_pays = [m for m, _ in lm.routage()[1]]
+    ouvertes = set()
+    f = ICI / "registre" / "briefs-questions.json"
+    try:
+        import dossier_interne as di
+        import briefs_questions as bq
+        for q in bq.questions_ouvertes(dt.date.today().isoformat()).values():
+            ouvertes |= di.rattachement(q["titre"])[0]
+    except Exception:
+        pass
+    return {"dec": dec, "ent": ent, "pays": routage_pays, "ouvertes": ouvertes}
+
+
+def score(texte: str, comps: list[str], P: dict) -> int:
+    entite = any(m.search(texte) for m in P["ent"]) or any(m.search(texte) for m in P["pays"])
+    s = 0
+    for m, seulement_entite in P["dec"]:
+        if m.search(texte) and (entite or not seulement_entite):
+            s = max(s, 2 + (3 if entite else 0))
+    if set(comps) & P["ouvertes"]:
+        s += 3
+    return s
+
+
+def choisir(files: dict[str, list[dict]], plafond: int) -> list[dict]:
+    """La meilleure de chaque famille d'abord, puis les meilleurs scores toutes familles confondues."""
+    for v in files.values():
+        v.sort(key=lambda x: -x.get("score", 0))
+    choisis = [v.pop(0) for v in files.values() if v]
+    choisis.sort(key=lambda x: -x.get("score", 0))
+    reste = sorted((x for v in files.values() for x in v), key=lambda x: -x.get("score", 0))
+    return (choisis + reste)[:plafond]
+
+
 def noms_compartiments() -> dict[str, str]:
     import ecosystemes as e
     out = {}
@@ -292,6 +357,7 @@ def principal() -> int:
     import politesse
     aujourdhui = dt.datetime.now(dt.timezone.utc).date().isoformat()
     routage, noms, vus = lm.routage()[0], noms_compartiments(), deja_traites()
+    P = priorites()
     items = [{"url": u, "titre": u, "resume": ""} for u in a.url]
     files = {}
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=30) as c:
@@ -306,19 +372,23 @@ def principal() -> int:
                     pris += [x for x in items_flux(cr.lire(c, flux).content) if x["url"] not in vus]
                 except Exception as ex:
                     print("flux illisible :", flux, type(ex).__name__)
-            files[fam] = [dict(x, famille=fam) for x in pris if candidats(x["titre"] + " " + x["resume"], routage)][:FAMILLES[fam]]
-    while any(files.values()):                       # à tour de rôle : chaque famille a sa place avant le plafond
-        for fam in FAMILLES:
-            if files.get(fam):
-                items.append(files[fam].pop(0))
+            files[fam] = []
+            for x in pris:
+                t = x["titre"] + " " + x["resume"]
+                comps = candidats(t, routage)
+                if comps:
+                    files[fam].append(dict(x, famille=fam, score=score(t, comps, P)))
+            files[fam] = sorted(files[fam], key=lambda x: -x["score"])[:max(FAMILLES[fam], 5)]
+    items += choisir(files, max(0, a.max - len(items)))
     lignes = []
     for it in items[:a.max]:
         if a.sec:
-            print("passerait :", it["titre"][:90], "→", candidats(it["titre"] + " " + it["resume"], routage)[:3])
+            print("passerait :", it.get("score"), it.get("famille"), it["titre"][:90], "→", candidats(it["titre"] + " " + it["resume"], routage)[:3])
             continue
         r = traiter(it, routage, noms, aujourdhui)
         r["jour"] = aujourdhui
         r["famille"] = it.get("famille", "url")
+        r["score"] = it.get("score")
         lignes.append(r)
         print(json.dumps(r, ensure_ascii=False))
     if lignes:
