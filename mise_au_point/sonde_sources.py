@@ -20,11 +20,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import politesse  # noqa: E402
 
 SORTIE = Path("registre") / "sondes"
+# 2e passage (16 h 45) : le site du Parlement répond 403 (CloudFront) aux machines de GitHub : non forcé.
+# Integrity Watch EU (Transparency International EU) republie les mêmes réunions sous licence ODbL 1.0 ;
+# l'ancien fichier Ember renvoie vers une nouvelle adresse.
 ADRESSES = {
-    "ep_liste_xml": "https://www.europarl.europa.eu/meps/en/full-list/xml",
-    "ep_reunions_1": "https://www.europarl.europa.eu/meps/en/197606/ZARZALEJOS%20Javier/meetings/past",
-    "ep_reunions_2": "https://www.europarl.europa.eu/meps/en/197778/TOM_BERENDSEN/meetings/past",
-    "ember_annuel": "https://storage.googleapis.com/emb-prod-bkt-publicdata/public-downloads/yearly_full_release_long_format.csv",
+    "iw_reunions": "https://www.integritywatch.eu/mepmeetings",
+    "iw_reunions_php": "https://www.integritywatch.eu/mepmeetings.php",
+    "ember_annuel": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
 }
 
 
@@ -49,6 +51,10 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
+            if texte and nom.startswith("iw_"):
+                # liens de données dans la page (fichiers .json, .csv, dossiers data/)
+                etat[nom]["donnees"] = sorted(set(re.findall(r'["\']([^"\']+\.(?:json|csv)(?:\?[^"\']*)?)["\']', texte)))[:40]
+                etat[nom]["scripts"] = sorted(set(re.findall(r'<script[^>]+src="([^"]+)"', texte)))[:20]
             if texte and nom.startswith("ep_reunions"):
                 # les liens et attributs qui ressemblent à une suite de liste ou à un export
                 indices = sorted(set(re.findall(r'(?:href|data-[\w-]+)="([^"]*(?:meeting|load|page|xml|csv|json)[^"]*)"', texte, re.I)))
