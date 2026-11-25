@@ -52,7 +52,7 @@ compartiments:
   - id: "etats_du_seuil"
     nom: "États proches du seuil ou hors traité"
     organisation: "geopolitique"
-    elements: ["États qui ne sont pas parties au traité", "programmes sous inspection contestée", "menaces de retrait"]
+    elements: ["États qui ne sont pas parties au traité", "programmes sous inspection contestée", "menaces de retrait", "mécanisme : la prolifération balistique précède le nucléaire sans y conduire forcément (un arsenal précis peut suffire à une dissuasion conventionnelle) et échappe aux restrictions du TNP ; l'Arabie saoudite agite la menace de se doter de l'arme si l'Iran le fait, pour obtenir des garanties américaines (Atlas géopolitique mondial 2025, d'après H. Fayet, Moyen-Orient n° 59)"]
     niveau: {espace: "régions", temps: "années", vitesse: "mois", taille: "macro"}
     traces:
       - {source: "nombre de gestes américains envers l'Iran (GDELT)", statut: "collecte", fichier: "gdelt_bq.py", adaptateur: "gestes:USA:IRN"}

@@ -75,6 +75,7 @@ compartiments:
   - autorités et groupes armés présents (en agrégat)
   - Autorité palestinienne
   - Cisjordanie
+  - 'mécanisme : un soulèvement palestinien généralisé suppose une direction unifiée ; la division Fatah-Hamas et le refus des groupes locaux de Cisjordanie (Brigade de Jénine, Tanière des lions) d''affronter les forces de l''Autorité, qui en incarcèrent les militants, le retiennent à l''état d''« intifada rampante » ; ces groupes sont transpartisans, locaux et issus de familles modestes (unité « par le bas ») (Atlas géopolitique mondial 2025, Carto/Areion, rédigé de mai 2023 à avril 2024)'
   acteurs:
   - nom: Hamas (en agrégat)
     taille: méso
@@ -113,6 +114,7 @@ compartiments:
   - frontière sud
   - crise économique
   - institutions et justice
+  - 'mécanisme : le Hezbollah est à la fois milice et pilier du fonctionnement d''un État défaillant (services sociaux, santé, éducation, députés et ministres) ; ce rôle intérieur bride son escalade, et son sort dépend davantage de l''Iran que de la cause palestinienne (Atlas géopolitique mondial 2025, Carto/Areion, rédigé de mai 2023 à avril 2024 ; situation de 2024 dépassée depuis la guerre de l''automne 2024)'
   acteurs:
   - nom: Hezbollah (en agrégat)
     taille: méso
@@ -185,6 +187,8 @@ compartiments:
   - gouvernement reconnu
   - attaques contre la navigation
   - Bab-el-Mandeb
+  - 'mécanisme : les attaques houthistes en mer Rouge servent aussi un but intérieur, restaurer une popularité entamée par la misère (20,5 millions de personnes en insécurité alimentaire sur 31,5 millions en 2023, PAM), en capitalisant sur la cause palestinienne (Atlas géopolitique mondial 2025, Carto/Areion, rédigé de mai 2023 à avril 2024)'
+  - 'mécanisme : conflit gelé ; l''Arabie saoudite cherche une sortie (trêve d''avril 2022, négociation directe avec les houthistes en 2023) ; le camp loyaliste est fracturé par les séparatistes du Sud soutenus par les Émirats, reflet de la rivalité saoudo-émirienne (Atlas géopolitique mondial 2025, Carto/Areion, rédigé de mai 2023 à avril 2024 ; situation des séparatistes à vérifier pour 2025-2026)'
   acteurs:
   - nom: Houthis (en agrégat)
     taille: méso
@@ -311,6 +315,7 @@ compartiments:
   - Turquie
   - Nations unies
   - plans de cessez-le-feu
+  - 'mécanisme : l''Égypte refuse tout transfert de Gazaouis vers le Sinaï (souveraineté, menace sur le traité de paix de 1979, corridor de Philadelphie), mais sa dette extérieure l''expose aux offres financières du Golfe et de Washington, sur le précédent de l''effacement de dette de 1991 (Atlas géopolitique mondial 2025, Carto/Areion, rédigé de mai 2023 à avril 2024)'
   acteurs:
   - nom: Égypte
     taille: macro
