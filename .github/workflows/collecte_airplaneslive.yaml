@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
-          for f in registre/militaires-airplaneslive.csv registre/urgences-airplaneslive.csv registre/airplaneslive-releves.txt; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in registre/militaires-airplaneslive.csv registre/urgences-airplaneslive.csv registre/airplaneslive-releves.txt registre/airplaneslive-refus.txt; do if [ -e "$f" ]; then git add -f "$f"; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "registre : airplanes.live du $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase || (sleep 20 && git pull --rebase)

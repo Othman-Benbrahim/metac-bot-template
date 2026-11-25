@@ -14,7 +14,8 @@ demandent la discrétion) ne sont jamais interrogés. robots.txt vérifié. Aucu
 Registres (ajout à chaque relevé) :
 - registre/militaires-airplaneslive.csv (releve, pays, appareils) ;
 - registre/urgences-airplaneslive.csv (releve, code, pays, appareils) ;
-- registre/airplaneslive-releves.txt : relevés réussis.
+- registre/airplaneslive-releves.txt : relevés réussis ;
+- registre/airplaneslive-refus.txt : refus du site (401, 403, 429), notés sans échec (2026-11-25).
 """
 from __future__ import annotations
 
@@ -34,6 +35,7 @@ BASE = "https://api.airplanes.live/v2"
 MIL = Path("registre") / "militaires-airplaneslive.csv"
 URG = Path("registre") / "urgences-airplaneslive.csv"
 RELEVES = Path("registre") / "airplaneslive-releves.txt"
+REFUS = Path("registre") / "airplaneslive-refus.txt"   # 2026-11-25 : refus du site (401, 403, 429), datés
 CODES = {"7700": "urgence", "7600": "panne_radio", "7500": "detournement"}
 PAUSE = 1.5
 
@@ -67,6 +69,17 @@ def principal() -> int:
                 r = c.get(f"{BASE}/squawk/{code}")
                 r.raise_for_status()
                 urg[code] = cm.compter(r.json(), polys)
+        except httpx.HTTPStatusError as e:
+            # 2026-11-25 (décision de l'auteur, 22 h 54) : depuis le 22 novembre le site répond 403 à chaque passage.
+            # Un refus du site n'est pas une panne de notre côté : on ne le force pas, on le note (refus.txt) et on
+            # sort sans échec, pour ne plus envoyer de courriel d'échec deux fois par jour. Le relevé réessaie seul.
+            if e.response.status_code in (401, 403, 429):
+                with REFUS.open("a", encoding="utf-8") as f:
+                    f.write(f"{releve} {e.response.status_code} {e.request.url}\n")
+                print(f"::warning::airplanes.live refuse l'accès ({e.response.status_code}) ; noté, non forcé.")
+                return 0
+            print(f"Relevé impossible : {type(e).__name__}: {str(e)[:150]}")
+            return 1
         except Exception as e:
             print(f"Relevé impossible : {type(e).__name__}: {str(e)[:150]}")
             return 1
