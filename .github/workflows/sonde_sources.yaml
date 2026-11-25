@@ -1,0 +1,36 @@
+name: "Sonde de sources (avant collecte)"
+
+# 2026-11-25 : regarde la vraie réponse des sources validées (Parlement européen, Ember) avant d'écrire leur collecte.
+# À la main seulement.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Sonde
+        run: uv run python -u mise_au_point/sonde_sources.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d registre/sondes ]; then git add -f registre/sondes; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : sonde de sources du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi

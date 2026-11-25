@@ -29,6 +29,10 @@ GRAPHIQUES = (
     "proportion-using-safely-managed-drinking-water",       # eau-douce-potable:acces (OMS/UNICEF JMP)
     "share-using-safely-managed-sanitation",       # eau-douce-potable:assainissement (OMS/UNICEF JMP)
     "ozone-depleting-substance-consumption",       # environnement-dechets:ozone (PNUE)
+    # 2026-11-25 (validé par l'auteur à 16 h 32) : Global Carbon Budget et capacités renouvelables
+    "annual-co2-emissions-per-country",            # climat-extremes:tendance (Global Carbon Budget)
+    "installed-solar-pv-capacity",                 # energie-mondiale:production (IRENA, Ember)
+    "cumulative-installed-wind-energy-capacity-gigawatts",  # energie-mondiale:production (IRENA)
 )
 URL = "https://ourworldindata.org/grapher/{slug}.csv?useColumnShortNames=true"
 DOSSIER = Path("registre") / "owid"

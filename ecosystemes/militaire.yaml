@@ -36,6 +36,7 @@ compartiments:
     taille: macro
   traces:
   - {source: "dépenses militaires en part du PIB, moyenne des pays (SIPRI, via Our World in Data ; pas d'agrégat mondial dans ce graphique)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:military-expenditure-share-gdp:moyenne"}
+  - {source: "dépenses militaires de la Pologne en part du PIB (SIPRI, via Our World in Data) ; réarmement accéléré depuis 2022, 4,6 % du PIB prévus en 2026 (Challenges, 19 novembre 2026, relayé)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:military-expenditure-share-gdp:POL"}
   - {source: "flux RSS Defense One, famille « defense » (0.10.455, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - source: base de données du SIPRI sur les dépenses militaires (publique, annuelle)
     statut: a_brancher
