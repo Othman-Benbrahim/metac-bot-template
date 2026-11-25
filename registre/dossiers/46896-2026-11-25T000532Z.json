@@ -1,0 +1,287 @@
+{
+ "candidats": [
+  "CRO@5",
+  "EME@5",
+  "INC@5"
+ ],
+ "contre_candidate": [
+  "INC@5"
+ ],
+ "mots": [
+  {
+   "carte": "CRO",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Les présidences et certains États 'frugaux' ont mis des chiffrages de coupes au centre des négociations (Irish Presidency 'nego box' proposant ~8% de coupe par rapport à la proposition de la Commission); des analyses rapportent une pression nette pour réduire la taille du MFF (référence à propositions chiffrées et débats publics fin octobre–novembre 2026).",
+   "objet": "pression de pays contributeurs nets en faveur d'une réduction de l'enveloppe MFF",
+   "source": "Institut Jacques Delors — MFF negotiations: What to expect from the October European council ; Irish Presidency (press note on the negotiating box) ; (résumés fournis dans les résultats)",
+   "source_url": "https://institutdelors.eu/en/publications/mff-negotiations-what-to-expect-from-the-october-european-council",
+   "date_consultation": "2026-11-25",
+   "classe_source": "contemporain",
+   "contre_observation": "Des acteurs (Parlement européen, think tanks) réclament au contraire de nouveaux 'own resources' et un MFF plus ambitieux, et la Commission et le Parlement poussent pour maintenir/incrémenter la proposition initiale.",
+   "portee": "substantielle",
+   "force_initiale": "F",
+   "test": "double",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "producteur",
+    "motif": "un article d'un institut d'analyse (Institut Jacques Delors) et la publication officielle de la Présidence irlandaise : producteurs distincts, l'un analytique, l'autre institutionnel."
+   },
+   "passage": [
+    {
+     "localisation": "Institut Jacques Delors, extrait",
+     "relation": "soutient",
+     "extrait": "Responding to strong pressure from the five ‘frugal’ countries, the Irish Presidency has put on the table an 8% cut in real terms to the Commission’s €2 trillion MFF proposal."
+    },
+    {
+     "localisation": "Irish Presidency (press summary), extrait",
+     "relation": "soutient",
+     "extrait": "In the coming week, Member States will have the opportunity to reflect on the Irish Presidency’s revised Negotiating Box, and this will culminate with a discussion amongst leaders at the October European Council meeting."
+    }
+   ],
+   "garantie": {
+    "mecanisme": "Des propositions chiffrées et publiques de la présidence et de groupes d'États encadrent le cadre politique et forcent des arbitrages numériques (réduction de la 'taille de la tarte').",
+    "support": {
+     "type": "texte",
+     "reference": "Institut Jacques Delors analysis (MFF negotiations: What to expect) ; Irish Presidency press note (Negotiating Box with figures)",
+     "disponible_le": "2026-10-01"
+    },
+    "attendu": "les préférences des États contributeurs nets se traduisent par une proposition chiffrée réduisant l'enveloppe globale, qui contraint les options ultérieures de redistribution entre rubriques.",
+    "contredirait": "l'absence de propositions chiffrées des États et des présidences, ou l'adoption d'une proposition commune visant à augmenter significativement l'enveloppe."
+   },
+   "option": {
+    "acteur": "European Council (leaders et présidence)",
+    "avant": "négociation sans chiffrage public ferme (plus d'incertitude sur l'enveloppe)",
+    "apres": "les discussions se structurent autour d'un chiffre de référence (réduction proposée) qui oriente concessions et réallocations"
+   },
+   "a6": "EME@5 → (contredit : l'architecture est portée par décisions/propositions centrales, pas émergée spontanément) ; PRO → (pas recherché dans cette lecture) ; TRA → (pas pertinent ici)"
+  },
+  {
+   "carte": "INC",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Les comptes rendus et analyses de novembre 2026 soulignent des positions non rapprochées au niveau des dirigeants et une visée d'accord mais sans consensus: le Conseil européen n'avait pas tranché l'enveloppe globale avant la convocation spéciale de 26‑27 novembre 2026, et les journalistes et think tanks signalent des divisions importantes entre pays partisans de coupes et pays demandeurs de maintien/augmentation.",
+   "objet": "incertitude au niveau des chefs d'État/gouvernement sur le plafond global du MFF",
+   "source": "Consilium — Timeline / 'EU leaders aim for MFF agreement before the end of 2026' ; Eastflank analysis — 'exposed deep divisions... failed to bridge differences' (résumés fournis dans les résultats)",
+   "source_url": "https://www.consilium.europa.eu/en/policies/the-eu-s-long-term-budget-2028-2034",
+   "date_consultation": "2026-11-25",
+   "classe_source": "contemporain",
+   "contre_observation": "Le Président du Conseil (António Costa) a présenté le 21 novembre 2026 une proposition révisée et invité à un sommet spécial 26–27 novembre visant à parvenir à un accord, ce qui est un signe que la présidence tente de clore l'incertitude rapidement.",
+   "portee": "substantielle",
+   "force_initiale": "F",
+   "test": "pistolet",
+   "corroboration": "independantes",
+   "independance": {
+    "critere": "origine",
+    "motif": "un document institutionnel officiel (Consilium timeline) et une analyse externe (Eastflank) : origines distinctes, l'une institutionnelle, l'autre analytique/journalistique."
+   },
+   "passage": [
+    {
+     "localisation": "Consilium timeline (extrait)",
+     "relation": "soutient",
+     "extrait": "EU leaders aim for MFF agreement before the end of 2026 ... They called on the incoming Irish presidency to advance work by the European Council meeting on 15 October 2026."
+    },
+    {
+     "localisation": "Eastflank analysis (extrait)",
+     "relation": "soutient",
+     "extrait": "The latest European Council meeting in Brussels exposed deep divisions over the size and structure of the EU’s next Multiannual Financial Framework (MFF). Despite lengthy discussions, leaders failed to bridge differences..."
+    }
+   ],
+   "garantie": {
+    "mecanisme": "Lorsque les dirigeants ne partagent pas une position commune, leurs conduites (bilatérales, report de décision, convocations spéciales) témoignent d'une incertitude qui organise l'action politique et les délais.",
+    "support": {
+     "type": "texte",
+     "reference": "Consilium timeline on MFF ; Eastflank analysis summarising leader-level divisions",
+     "disponible_le": "2026-11-01"
+    },
+    "attendu": "les décisions au sommet sont repoussées ou accompagnées d'invitations à négociations bilatérales et d'une convocation d'un sommet spécial pour tenter de rapprocher les positions.",
+    "contredirait": "une conclusion claire et datée du Conseil européen indiquant un accord politique sur le plafond global."
+   },
+   "option": {
+    "acteur": "European Council (President + 27 leaders)",
+    "avant": "positions nationales non rapprochées, discussions préparatoires",
+    "apres": "soit accord contraignant adopté, soit report / renvoi au prochain sommet en raison d'un désaccord persistant"
+   },
+   "a6": "CTR@5 → (événement principal : l'incertitude avertit qu'aucune contrainte n'a encore été adoptée) ; EME@5 → (contredit : l'architecture discutée est portée par décisions, pas émergée spontanément)"
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le Conseil européen spécial des 26–27 novembre 2026 a-t-il adopté des conclusions politiques incluant un plafond chiffré (overall spending ceiling) pour le MFF 2028–2034 avant le 1er janvier 2027 ?",
+   "si_oui": "CTR@5",
+   "si_non": "INC@5",
+   "resolution": "la publication des conclusions formelles du Conseil européen (European Council conclusions) datées 27 novembre 2026 sur le site du Consilium qui mentionnent explicitement un plafond global chiffré pour le MFF 2028–2034.",
+   "justification": {
+    "oui": "la parution des conclusions formelles avec un chiffre constituerait la preuve qu'un accord politique sur l'enveloppe globale (contrainte) a été adopté par les dirigeants avant la date-limite.",
+    "non": "l'absence de conclusions chiffrées ou la formulation 'les travaux se poursuivent' montrerait que l'incertitude perdure au niveau des dirigeants et que l'enveloppe globale n'a pas été arrêtée."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "EME@5": "[contredit] [contredit] Des faits de la situation montrent explicitement que la réorganisation de l'architecture budgétaire est conduite par des décisions et propositions centrales (Commission, présidences du Conseil, Council), donc ce n'est pas une régularité apparue sans prescripteur comme l'exigerait ÉMERGENCE."
+ },
+ "_categories_rejet": {
+  "EME@5": "contredit"
+ },
+ "_details_rejet": {},
+ "etat": "[2026-11-25 | 37 jours] CROISSANCE@5[f] + INCERTITUDE@5[f]",
+ "disponible_le": "2026-11-25",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "evidence of member states pushing for overall MFF cuts or consolidation in 2026 negotiations 'budget cuts' 'frugal states' 'Costa proposed €180 billion cut' November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@5",
+    "EME@5"
+   ],
+   "requete": "signs that 2026 MFF dynamics are driven by zero-sum bargaining over figures (size of pie) versus emergence of new budget architecture or priorities 'negotiating box' 'architecture reform' October-November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@5"
+   ],
+   "requete": "evidence that there is a sustained push for a larger MFF in 2026 (calls to increase overall ceiling) 'new own resources' 'Parliament proposals' 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "proposals in 2026 for reorganising EU funding architecture or new instruments for 2028-2034 'National and Regional Partnership Plan' 'consolidation of funds' negotiating box October 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "INC@5"
+   ],
+   "requete": "evidence that a nascent consensus on reforming budget architecture exists versus persistent leader-level uncertainty preventing such consensus in late 2026 'Irish presidency negotiating box' 'leaders discussed key elements 15-16 Oct 2026' November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "documents or statements denying any new common architecture proposals in MFF 2026 'no agreement on architecture' 'only figures discussed' October-November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "statements and reporting in Nov 2026 emphasising unresolved positions and uncertainty among leaders about the overall MFF ceiling 'exchange of views' 'no agreement yet' 'called on incoming presidency to advance work' November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "INC@5",
+    "CRO@5"
+   ],
+   "requete": "evidence that uncertainty among leaders (no common position) is the main obstacle rather than converging budget consolidation pressures in late 2026 MFF talks 'leaders aim for agreement before end 2026' 'bilaterals' 24-27 Nov 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "INC@5"
+   ],
+   "requete": "signs in Nov 2026 that leader-level positions are converging and uncertainty is receding ahead of the November European Council 'President presented overall proposal' 'indicative timetable' 21-26 Nov 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@5",
+    "EME@5"
+   ],
+   "requete": "reports comparing whether late-2026 MFF progress is driven more by demands to cut/defend budget lines (figures) or by emergence of cross-cutting compromises on priorities and instruments 'negotiating box with figures' 'compromise on architecture' October-November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@5",
+    "INC@5"
+   ],
+   "requete": "analysis contrasting strong frugal-state pressure to reduce overall MFF versus continuing leader uncertainty preventing a deal in late 2026 'frugal vs net recipients' 'no agreement yet' November 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "CRO@5"
+   ],
+   "requete": "sources assessing whether proposals in 2026 indicate substantive reform of funding architecture (emergence) or are tactical reallocation attempts within a contested fixed overall ceiling 'consolidation' 'partnership plan' 'figures presented' 2026",
+   "executee": true,
+   "date_execution": "2026-11-25"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "CONTRAINTE@5 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "Le questionnement sera résolu OUI si, avant le 1er janvier 2027, le European Council publie des conclusions ou un communiqué officiel indiquant qu'un accord politique a été atteint sur l'ensemble du MFF 2028-2034 et donnant explicitement un plafond global de dépenses.",
+   "source_resolution": {
+    "emetteur": "European Council (présidence et membres du European Council)",
+    "document": "Conclusions du European Council / communiqué de presse officiel du European Council indiquant qu'un accord politique a été atteint sur l'ensemble du MFF 2028-2034 et mentionnant explicitement le plafond global de dépenses.",
+    "regle_ambiguite": "Ne compter que les déclarations formelles du European Council (conclusions ou communiqué de presse signé par le président et approuvé par les membres) qui affirment explicitement un « accord politique » sur l'ENSEMBLE du MFF 2028-2034 et donnent un plafond global ; ne pas compter les annonces de la Commission, du Conseil de l'UE ou du Parlement sans confirmation expresse du European Council, ni les accords partiels portant sur des rubriques seulement."
+   },
+   "vue_exterieure": {
+    "frequence": 0.014471497017698249,
+    "classe_de_reference": "Occurrences où le European Council (chefs d'État ou de gouvernement) annonce, avant une date-coupure donnée, qu'un accord politique a été atteint sur l'ENSEMBLE du Multiannual Financial Framework (période de 7 ans) visé, et que cet accord inclut explicitement un plafond global de dépenses. Ne pas compter les accords partiels, ni les décisions d'autres institutions sans confirmation explicite d'un accord politique du European Council.",
+    "source": "Registre historique : historiques des accords MFF tels que consignés dans les conclusions du European Council et les règlements du Conseil (histoire des MFF 1988-2020).",
+    "periode": "1988-2020",
+    "disponible_le": "2026-11-25",
+    "classe_alternative": null,
+    "motif_sans_alternative": "La classe de référence est directement applicable au registre historique des cycles MFF ; le comptage donne en pratique un événement par cycle pour la période 1988-2020, donc aucune classe alternative nécessaire.",
+    "ecart_critere": "identique : la classe compte uniquement les annonces politiques explicites du European Council sur l'intégralité d'un MFF 7 ans incluant un plafond global, conformément au critère de résolution."
+   }
+  }
+ ],
+ "_reparations": [],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CRO@5",
+   "vers": "cible",
+   "extrait": "The proposal will be discussed at the special European Council meeting on 26–27 November, with the challenging goal of reaching an agreement by the end of the year.",
+   "source": "https://newunionpost.eu/2026/11/21/costa-nego-box-eu-mff-global-europe"
+  },
+  {
+   "instruction": "lien",
+   "de": "INC@5",
+   "vers": "cible",
+   "extrait": "While no substantive decisions were taken, the Negotiating Box has now become the central reference point, marking the transition towards more explicit political positioning by member states across the whole package. From this point onwards, discussions across individual budget headings and sectoral instruments will be increasingly framed and constrained by horizontal budget politics and governance questions.",
+   "source": "https://ecdpm.org/work/whats-next-global-europe-2026-mff-negotiations"
+  }
+ ]
+}
