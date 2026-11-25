@@ -1,0 +1,84 @@
+<tr>
+            <th></th>
+            <th></th>
+        </tr>
+<tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/switzerland.gif" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Nov 29 2026</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/5097/">Referendum</a><br>
+    <a href="/countries/id/207/">Switzerland</a><br>
+
+
+    </td></tr>
+<tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/spain.gif" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Nov 29 2026</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/5255/">Spanish Senate</a><br>
+    <a href="/countries/id/200/">Spain</a><br>
+
+
+    </td></tr>
+<tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/spain.gif" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Nov 29 2026</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/5256/">Spanish Congress of Deputies</a><br>
+    <a href="/countries/id/200/">Spain</a><br>
+
+
+    </td></tr>
+<tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/gambia.gif" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Dec 5 2026</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/5106/">Gambian Presidency</a><br>
+    <a href="/countries/id/80/">Gambia, The</a><br>
+
+
+    </td></tr>
+<tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/northercyprus.gif" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Dec 6 2026</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/5208/">Northern Cypriot Assembly of the Republic</a><br>
+    <a href="/countries/id/252/">Northern Cyprus</a><br>
+
+
+    </td></tr>
