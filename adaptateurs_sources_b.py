@@ -183,7 +183,8 @@ def recit_russe(reg: Path, pays: str, colonne: str = "articles") -> list[tuple[s
 # 0.10.455 : familles en ombre exclues du total « tout », qui garde sa composition d'avant (les variantes _large,
 # _grasland, _fusion le sont aussi, par le préfixe).
 HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversite", "defense", "sante_afrique", "crime",
-             "genre", "psyche", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique")   # 0.10.456
+             "genre", "psyche", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique",   # 0.10.456
+             "surveillance")   # 2026-11-25
 
 
 def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
@@ -227,9 +228,27 @@ def wikipedia(reg: Path, article: str) -> list[tuple[str, float]]:
     return sorted(out.items())
 
 
+def rss_matiere(reg: Path, matiere: str) -> list[tuple[str, float]]:
+    """2026-11-25 : articles par jour dont le titre ou le résumé nomme une matière ou un sujet (collecte_rss.MATIERES),
+    toutes familles lues pour ce sujet ; jours sans article comptés à zéro depuis le premier relevé."""
+    toutes = _lignes(reg, "rss-matieres.csv")
+    c: dict[str, float] = {}
+    for r in toutes:
+        if r["matiere"] == matiere:
+            c[r["jour"]] = c.get(r["jour"], 0.0) + _f(r["articles"])
+    return _avec_zeros(c, _plage([r["jour"] for r in toutes]) if c else [])
+
+
+def rss_famille(reg: Path, famille: str) -> list[tuple[str, float]]:
+    """2026-11-25 : articles nouveaux par jour d'une famille de flux (rss-familles.csv), avec ou sans pays reconnu."""
+    toutes = _lignes(reg, "rss-familles.csv")
+    c = {r["jour"]: _f(r["articles"]) for r in toutes if r["famille"] == famille}
+    return _avec_zeros(c, _plage([r["jour"] for r in toutes if r["famille"] == famille]) if c else [])
+
+
 _ad.ADAPTATEURS.update({
     "hostilites": hostilites, "manifestations": manifestations, "paire": paire, "paire_mois": paire_mois,
     "sanctions_chine": sanctions_chine, "ucdp": ucdp, "voisins": voisins, "conflictforecast": conflictforecast,
     "prix_alimentaires": prix_alimentaires, "acaps": acaps, "acaps_risques": acaps_risques, "telegram": telegram,
-    "recit_russe": recit_russe, "rss": rss, "rss_region": rss_region, "routines": routines, "wikipedia": wikipedia,
+    "recit_russe": recit_russe, "rss": rss, "rss_matiere": rss_matiere, "rss_famille": rss_famille, "rss_region": rss_region, "routines": routines, "wikipedia": wikipedia,
 })

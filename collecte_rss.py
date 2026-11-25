@@ -168,6 +168,13 @@ FLUX = {
     "tech": ["https://restofworld.org/feed/latest"],                             # Rest of World (tech hors Occident)
     "minerais": ["https://www.mining.com/feed/"],                                # MINING.COM
     "inegalites": ["https://feeds.feedburner.com/Inequalityorg"],                # Inequality.org
+    # 2026-11-25 (fiche « surveillance et espionnage », demande de l'auteur à 7 h 15 : « complète-le maintenant ») : en
+    # ombre, hors « tout » ; comptes seulement. Flux absents ou refusés notés dans rss-sante.csv, jamais forcés.
+    "surveillance": ["https://citizenlab.ca/feed/",                                # Citizen Lab (Université de Toronto)
+                     "https://www.eff.org/rss/updates.xml",                        # Electronic Frontier Foundation
+                     "https://therecord.media/feed",                               # The Record (Recorded Future News)
+                     "https://blog.google/threat-analysis-group/rss/",             # Google Threat Analysis Group
+                     "https://www.cisa.gov/cybersecurity-advisories/all.xml"],     # CISA : avis (dont avis conjoints)
     "analyse": ["https://www.atlanticcouncil.org/feed"],                         # Atlantic Council (dont DFRLab)
     "afrique": ["https://fr.allafrica.com/tools/headlines/rdf/westafrica/headlines.rdf"],  # AllAfrica, Afrique de l'Ouest
     "presse": [
@@ -307,15 +314,24 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
     "acier": r"\bsteel\b", "minerai_fer": r"iron ore", "petrole": r"\b(crude|oil|brent|wti)\b", "gaz": r"natural gas|\blng\b",
     "charbon": r"\bcoal\b", "electricite": r"\bpower prices?|electricity", "engrais": r"fertili[sz]er|\burea\b|potash|ammonia",
     "ble": r"\bwheat", "mais": r"\bcorn\b|\bmaize", "soja": r"\bsoy", "fret_maritime": r"freight|tanker|container|shipping",
-    "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen"}.items()}
-FAMILLES_MATIERES = {"economie", "matieres_presse"}
+    "carbone": r"carbon (market|price|credit)|emissions trading|\bets\b", "hydrogene": r"hydrogen",
+    # 2026-11-25 : sujets de la fiche « surveillance et espionnage » (titres et résumés ; comptes seulement)
+    "spyware": r"spyware|stalkerware|\bpegasus\b|\bpredator\b|\bparagon\b|\bnso group|intellexa|candiru|zero-click",
+    "espionnage": r"espionage|\bspying\b|\bspies\b|cyber-?espionage|salt typhoon|volt typhoon|\bAPT ?\d+",
+    "interceptions": r"\bfisa\b|section 702|wiretap|lawful interception|bulk collection|mass surveillance",
+    "biometrie": r"facial recognition|face recognition|biometric",
+    "courtiers": r"data brokers?|location data",
+    "cibles": r"(journalist|activist|dissident|lawmaker|opposition|human rights defender)\w*\W+(?:\w+\W+){0,8}?(spyware|hack\w*|surveil\w*|target\w*)"
+              r"|(spyware|surveil\w*)\W+(?:\w+\W+){0,8}?(journalist|activist|dissident|lawmaker)",
+    "chiffrement": r"end-to-end encrypt|encryption backdoor|threat notification"}.items()}
+FAMILLES_MATIERES = {"economie", "matieres_presse", "surveillance", "cyber", "renseignement", "tech", "defense"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 # 0.10.457 (décision de l'auteur, 2026-11-22, 11 h 36) : articles nouveaux par famille et par jour, avec ou sans pays
 # reconnu, pour la carte des écosystèmes (lecteur-local) ; compte seulement, jamais le texte
 FAMILLES_CSV = Path("registre") / "rss-familles.csv"
 FAMILLES_VUS = Path("registre") / "rss-familles-vus.txt"   # 0.10.458 : empreintes déjà comptées dans rss-familles.csv
 
-DEDOUBLONNER = {"crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
+DEDOUBLONNER = {"surveillance", "crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 

@@ -32,6 +32,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "articles qui nomment les interceptions légales (FISA, section 702, écoutes, surveillance de masse), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:interceptions"}
   - source: "échéances législatives (prorogations, expiration, autorisations du FISC) ; relevé manuel sourcé"
     statut: a_brancher
 - id: espionnage_etats
@@ -46,6 +47,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "articles qui nomment l'espionnage d'État (espionnage, Salt Typhoon, Volt Typhoon, groupes APT), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:espionnage"}
   - source: "attributions publiques et avis conjoints des agences (CISA, FBI, ANSSI, NCSC) ; via les flux déjà collectés des CERT"
     statut: a_brancher
 - id: industrie_intrusion
@@ -69,6 +71,7 @@ compartiments:
     vitesse: mois
     taille: méso
   traces:
+  - {source: "articles qui nomment un logiciel espion ou un vendeur (Pegasus, Predator, Paragon, NSO, Intellexa, Candiru, sans clic), par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:spyware"}
   - source: "rapports publics de laboratoires (Citizen Lab, Amnesty Tech, Google TAG) : nombre par mois"
     statut: a_brancher
 - id: courtiers_donnees
@@ -82,6 +85,7 @@ compartiments:
     vitesse: mois
     taille: méso à macro
   traces:
+  - {source: "articles qui nomment les courtiers en données ou les données de localisation, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:courtiers"}
   - source: "décisions des régulateurs (FTC, CNIL) contre des courtiers ; à brancher"
     statut: a_brancher
 - id: biometrie
@@ -95,6 +99,7 @@ compartiments:
     vitesse: mois
     taille: macro
   traces:
+  - {source: "articles qui nomment la reconnaissance faciale ou la biométrie, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:biometrie"}
   - source: "textes et décisions (Commission européenne, autorités nationales)"
     statut: a_brancher
 - id: cibles
@@ -109,6 +114,7 @@ compartiments:
     vitesse: jours
     taille: micro
   traces:
+  - {source: "articles où une cible (journaliste, militant, opposant, élu) est rapprochée d'un logiciel espion ou d'une surveillance, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:cibles"}
   - source: "cas publics documentés par des laboratoires indépendants"
     statut: a_brancher
 - id: contre_mesures
@@ -123,6 +129,7 @@ compartiments:
     vitesse: semaines
     taille: méso
   traces:
+  - {source: "articles qui nomment le chiffrement de bout en bout, les portes dérobées ou les alertes de menace, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence Online, Rest of World, Defense One (comptes seulement ; 2026-11-25, demande de l’auteur)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_matiere:chiffrement"}
   - source: "à brancher"
     statut: a_brancher
 relations:
