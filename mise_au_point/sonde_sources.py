@@ -28,9 +28,11 @@ SORTIE = Path("registre") / "sondes"
 # 5e passage (18 h 30) : liste publique des élections à venir d'IFES ElectionGuide (adresse donnée par l'auteur).
 # 6e passage (22 h 21) : bne IntelliNews (adresse donnée par l'auteur) ; mur payant, on cherche seulement un flux de
 # TITRES gratuit (règles du site, liens RSS annoncés par l'accueil, adresses de flux usuelles). Aucun article lu.
+# 7e passage (22 h 38) : Just Security (validé par l'auteur à 22 h 38) : règles du site, flux de titres, et format des
+# pages « tracker » (tableaux ? fichiers ? Google Sheets ?), repérées par les liens de l'accueil. Aucun article gardé.
 ADRESSES = {
-    "in_robots": "https://www.intellinews.com/robots.txt",
-    "in_accueil": "https://www.intellinews.com/",
+    "js_robots": "https://www.justsecurity.org/robots.txt",
+    "js_accueil": "https://www.justsecurity.org/",
 }
 IN_FLUX_USUELS = ["https://www.intellinews.com/feed/", "https://www.intellinews.com/rss/",
                   "https://www.intellinews.com/rss.xml", "https://www.intellinews.com/feed.xml"]
@@ -58,6 +60,28 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
+            if texte and nom == "js_robots":
+                (SORTIE / "js_robots.txt").write_text(texte[:20000], encoding="utf-8")
+            if texte and nom == "js_accueil":
+                etat[nom]["flux_annonces"] = re.findall(r'<link[^>]+(?:rss|atom)[^>]*>', texte, re.I)[:10]
+                trackers = sorted(set(u for u in re.findall(r'href="(https://www\.justsecurity\.org/[^"#?]+)"', texte)
+                                      if "tracker" in u.lower()))[:8]
+                etat[nom]["trackers"] = trackers
+                flux = [m for a in etat[nom]["flux_annonces"] for m in re.findall(r'href="([^"]+)"', a)][:1] or \
+                       ["https://www.justsecurity.org/feed/"]
+                t = sonder(c, "js_flux", flux[0], etat)
+                if t:
+                    etat["js_flux"]["items"] = len(re.findall(r"<item|<entry", t))
+                    etat["js_flux"]["titres"] = [re.sub(r"<!\[CDATA\[|\]\]>", "", x).strip()
+                                                 for x in re.findall(r"<title>(.*?)</title>", t, re.S)[:6]]
+                for i, u in enumerate(trackers):
+                    t = sonder(c, f"js_tracker_{i}", u, etat)
+                    if t:
+                        e = etat[f"js_tracker_{i}"]
+                        e["tableaux"] = len(re.findall(r"<table", t, re.I))
+                        e["lignes_tableaux"] = len(re.findall(r"<tr", t, re.I))
+                        e["integres"] = sorted(set(re.findall(r'(?:src|href)="([^"]*(?:docs\.google|airtable|datawrapper|flourish|\.csv|\.xlsx|\.json|tableau)[^"]*)"', t, re.I)))[:10]
+                        (SORTIE / f"js_tracker_{i}.txt").unlink(missing_ok=True)   # on ne garde pas le texte des pages
             if texte and nom == "in_robots":
                 (SORTIE / "in_robots.txt").write_text(texte[:20000], encoding="utf-8")
             if texte and nom == "in_accueil":
