@@ -4,9 +4,9 @@ Source : citizenlab.ca (autre) · 2026-11-25 · https://citizenlab.ca/the-biomet
 Carte : surveillance-espionnage:biometrie (Surveillance biométrique et vidéo), sciences-techniques:ia (Intelligence artificielle (modèles, laboratoires, produits))
 
 ## Faits
-- Emile Dirks et Moses Karanja, chercheurs du Citizen Lab, ont rédigé « The Biometric Dragnet ». — *relayé (attribué à Citizen Lab)*
-- Ce texte figure dans le rapport « State of AI Ethics ». — *relayé (attribué à Citizen Lab)*
-- Le billet a été publié initialement sur le site du Citizen Lab. — *relayé (attribué à Citizen Lab)*
+- Emile Dirks et Moses Karanja, chercheurs du Citizen Lab, ont rédigé « The Biometric Dragnet ». — *affirmé par le média (résumé du flux)*
+- Ce texte figure dans le rapport « State of AI Ethics ». — *affirmé par le média (résumé du flux)*
+- Le billet a été publié initialement sur le site du Citizen Lab. — *affirmé par le média (résumé du flux)*
 
 ## Ce que ça change
 Le texte introduit la problématique de la surveillance biométrique dans le débat sur l’éthique de l’IA, soulignant l’implication du Citizen Lab dans la réflexion publique.

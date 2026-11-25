@@ -4,7 +4,7 @@ Source : citizenlab.ca (autre) · 2026-11-25 · https://citizenlab.ca/gangsters-
 Carte : surveillance-espionnage:cibles (Les surveillés (journalistes, élus, opposants, particuliers)), surveillance-espionnage:industrie_intrusion (Industrie commerciale de l'intrusion (logiciels espions))
 
 ## Faits
-- Ron Deibert, fondateur du Citizen Lab, a alerté sur une « pandémie » d’abus de logiciels espions à l’échelle mondiale. — *relayé (attribué à Ron Deibert, directeur du Citizen Lab, interviewé par IRPI Media)*
+- Ron Deibert, fondateur du Citizen Lab, a alerté sur une « pandémie » d’abus de logiciels espions à l’échelle mondiale. — *affirmé par le média (résumé du flux)*
 
 ## Ce que ça change
 Le message souligne la diffusion mondiale de logiciels espions sans contrôle, incitant les acteurs publics et privés à envisager davantage de surveillance et de régulation.

@@ -60,3 +60,8 @@ def test_traiter_bout_en_bout(tmp_path, monkeypatch):
     assert "relayé (attribué à SIPRI)" in md and "Arsenaux nucléaires" in md and r["mots"] < 200
     assert b.traiter({"url": "https://fr.news-pravda.com/x", "titre": "nucléaire", "resume": ""}, ROUTAGE, NOMS, "2026-11-25")["statut"] == "domaine_de_manipulation"
     assert b.traiter({"url": "https://exemple.com/b", "titre": "météo", "resume": ""}, ROUTAGE, NOMS, "2026-11-25")["statut"] == "filtre_aucun_terme"
+
+
+def test_meme_media():
+    assert b._meme_media("Le Grand Continent", "legrandcontinent.eu") and b._meme_media("Atlantic Council", "atlanticcouncil.org")
+    assert b._meme_media("le média", "x.com") and not b._meme_media("Reuters", "atlanticcouncil.org")

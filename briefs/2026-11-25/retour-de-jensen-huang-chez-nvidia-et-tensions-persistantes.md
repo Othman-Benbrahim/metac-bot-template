@@ -4,9 +4,9 @@ Source : atlanticcouncil.org (primaire) · 2026-11-25 · https://www.atlanticcou
 Carte : economie-entreprises:entreprises (Entreprises nommées), politique-americaine:congres (Congrès)
 
 ## Faits
-- Jensen Huang a été réinstallé comme PDG de Nvidia après des semaines de scandales, malgré des soupçons de détournement de puces vers la Chine. — *relayé (attribué à Atlantic Council)*
+- Jensen Huang a été réinstallé comme PDG de Nvidia après des semaines de scandales, malgré des soupçons de détournement de puces vers la Chine. — *vérifié dans la source*
 - Une nouvelle règle du département du Commerce américain, publiée le 16 novembre, impose des licences pour exporter des puces avancées vers des centres de données étrangers. — *relayé (attribué à Département du Commerce américain)*
-- Le Congrès américain envisage d’intégrer plusieurs projets de loi sur le contrôle des exportations de puces dans la loi de finances 2027. — *relayé (attribué à Atlantic Council)*
+- Le Congrès américain envisage d’intégrer plusieurs projets de loi sur le contrôle des exportations de puces dans la loi de finances 2027. — *vérifié dans la source*
 
 ## Ce que ça change
 Ce document révèle une divergence persistante entre l’administration Trump et le Congrès sur la régulation des exportations de puces avancées. Il souligne aussi l’incertitude des entreprises face à des règles changeantes et des enquêtes en cours, notamment sur Nvidia et Megaspeed.

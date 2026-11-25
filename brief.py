@@ -49,7 +49,8 @@ CONSIGNE = """Tu rédiges un brief factuel et court en français à partir d'UN 
 - Au plus 3 faits, les plus importants. Chaque fait : une phrase de 25 mots au plus.
 - "chiffre" : le nombre exact tel qu'il apparaît dans le document (ex. "9 745", "37 %"), ou "" s'il n'y en a pas.
 - "origine" : qui avance ce fait selon le document (une institution, une étude, une personne publique, ou le média lui-même).
-- "ce_que_ca_change" : une ou deux phrases, 40 mots au plus, sur la portée du document, sans prédiction.
+- "ce_que_ca_change" : une ou deux phrases, 40 mots au plus, sur la portée du document, sans prédiction, ton neutre,
+  sans superlatif ni jugement (pas de « révolutionne », « historique », « majeur ») ; dis ce que le document affirme, pas ce qui est vrai.
 - "compartiments" : au plus 2 identifiants choisis UNIQUEMENT dans la liste fournie ; [] si aucun ne convient.
 - "limites" : ce que le document ne dit pas ou ne prouve pas (1 ou 2 points courts).
 Réponds par un objet JSON seul, sans texte autour :
@@ -113,6 +114,9 @@ def noms_compartiments() -> dict[str, str]:
 
 # ---------- modèle (relais) ----------
 
+ESSAIS: list[str] = []   # échecs des fournisseurs précédents pour le dernier appel (écrits au journal)
+
+
 def appeler(messages: list[dict], relais=None, appel=None) -> tuple[str, str]:
     """Rend (texte, modèle utilisé). appel(model, messages) est injectable pour les tests."""
     if appel is None:
@@ -130,6 +134,7 @@ def appeler(messages: list[dict], relais=None, appel=None) -> tuple[str, str]:
         try:
             t = appel(modele, messages)
             if extraire_json(t) is not None:
+                ESSAIS[:] = erreurs
                 return t, modele
             erreurs.append(f"{modele}: réponse non JSON")
         except Exception as ex:                                  # quota, réseau, modèle retiré : on passe au suivant
@@ -169,7 +174,18 @@ def recopie(fait: str, texte: str, n: int = 10) -> bool:
     return any(" ".join(m[i:i + n]) in plat for i in range(0, max(0, len(m) - n + 1)))
 
 
-def controler(d: dict, texte: str, media: str, permis: list[str]) -> dict:
+def _plat(t: str) -> str:
+    import unicodedata
+    return re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKD", t.lower()).encode("ascii", "ignore").decode())
+
+
+def _meme_media(origine: str, media: str) -> bool:
+    """« Le Grand Continent » = legrandcontinent.eu ; « Atlantic Council » = atlanticcouncil.org ; « le média » aussi."""
+    o, m = _plat(origine), _plat(media.split(".")[0])
+    return o in ("lemedia", "ledocument", "media", "document", "auteur", "lauteur") or (len(m) >= 4 and (m in o or o.removeprefix("le").removeprefix("la") in m))
+
+
+def controler(d: dict, texte: str, media: str, permis: list[str], page_lue: bool = True) -> dict:
     faits = []
     for f in (d.get("faits") or [])[:3]:
         fait = str(f.get("fait", "")).strip()
@@ -178,10 +194,10 @@ def controler(d: dict, texte: str, media: str, permis: list[str]) -> dict:
         chiffre, origine = str(f.get("chiffre", "")).strip(), str(f.get("origine", "")).strip()
         if chiffre and not chiffre_present(chiffre, texte):
             statut = "chiffre non retrouvé dans la source"
-        elif origine and media.split(".")[0].lower() not in origine.lower() and origine.lower() not in ("le média", "le document"):
+        elif origine and not _meme_media(origine, media):
             statut = f"relayé (attribué à {origine})"
         else:
-            statut = "vérifié dans la source"
+            statut = "vérifié dans la source" if page_lue else "affirmé par le média (résumé du flux)"
         faits.append({"fait": fait, "chiffre": chiffre, "origine": origine, "statut": statut})
     change = " ".join(str(d.get("ce_que_ca_change", "")).split()[:MOTS_MAX_CHANGE])
     comps = [c for c in (d.get("compartiments") or []) if c in permis][:2]
@@ -233,16 +249,18 @@ def traiter(item: dict, routage, noms: dict, aujourdhui: str, appel=None, lecteu
         rep, modele = appeler(msgs, relais=relais, appel=appel)
     except RuntimeError as ex:
         return {"url": url, "statut": "echec_relais", "erreur": str(ex)[:500]}
-    b = controler(extraire_json(rep), texte, media, perm)
+    b = controler(extraire_json(rep), texte, media, perm, page_lue)
     md = rendre(b, url, media, sp.classe(url, item["titre"]), aujourdhui, modele, page_lue, noms)
     jour = DOSSIER / aujourdhui
     jour.mkdir(parents=True, exist_ok=True)
-    nom = re.sub(r"[^a-z0-9]+", "-", (b["titre"] or item["titre"]).lower())[:60].strip("-") or hashlib.sha1(url.encode()).hexdigest()[:10]
+    import unicodedata
+    base = unicodedata.normalize("NFKD", (b["titre"] or item["titre"]).lower()).encode("ascii", "ignore").decode()
+    nom = re.sub(r"[^a-z0-9]+", "-", base)[:60].strip("-") or hashlib.sha1(url.encode()).hexdigest()[:10]
     (jour / f"{nom}.md").write_text(md, encoding="utf-8")
     # le journal garde le brief structuré : la page « briefs » de la carte (lecteur-local, carte/briefs.py) le lit
     return {"url": url, "statut": "ok", "fichier": f"{aujourdhui}/{nom}.md", "modele": modele, "page_lue": page_lue,
             "media": media, "classe": sp.classe(url, item["titre"]), "titre_source": item["titre"],
-            "brief": b, "compartiments": b["compartiments"], "mots": len(md.split())}
+            "brief": b, "compartiments": b["compartiments"], "mots": len(md.split()), "echecs_relais": list(ESSAIS)}
 
 
 def principal() -> int:

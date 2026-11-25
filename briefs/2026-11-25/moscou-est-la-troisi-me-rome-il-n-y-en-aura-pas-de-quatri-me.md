@@ -4,7 +4,7 @@ Source : legrandcontinent.eu (autre) · 2026-11-25 · https://legrandcontinent.e
 Carte : dirigeants-elus:executifs (Chefs d'État et de gouvernement)
 
 ## Faits
-- L’article a été publié en premier sur le site Le Grand Continent. — *relayé (attribué à Le Grand Continent)*
+- L’article a été publié en premier sur le site Le Grand Continent. — *affirmé par le média (résumé du flux)*
 
 ## Ce que ça change
 Le texte signale une réflexion sur la perception de la Russie comme « troisième Rome », ce qui peut influencer la compréhension du positionnement géopolitique de Moscou.

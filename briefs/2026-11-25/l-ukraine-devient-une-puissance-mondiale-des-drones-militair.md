@@ -4,9 +4,9 @@ Source : atlanticcouncil.org (primaire) · 2026-11-25 · https://www.atlanticcou
 Carte : militaire:technologies (Technologies militaires (drones, missiles, IA, espace, cyber))
 
 ## Faits
-- L'Ukraine a développé une industrie nationale de drones produisant des millions d'unités par an, passant de quelques unités à une production massive. — millions — *relayé (attribué à Atlantic Council)*
+- L'Ukraine a développé une industrie nationale de drones produisant des millions d'unités par an, passant de quelques unités à une production massive. — millions — *vérifié dans la source*
 - Les drones ukrainiens ont réduit de 45 % la capacité de raffinage de pétrole de la Russie en un mois, selon Reuters. — 45 % — *relayé (attribué à Reuters)*
-- L'Ukraine a créé en 2024 la première force militaire dédiée aux drones, les Unmanned Systems Forces (USF), avec un jour férié dédié en 2026. — *relayé (attribué à Atlantic Council)*
+- L'Ukraine a créé en 2024 la première force militaire dédiée aux drones, les Unmanned Systems Forces (USF), avec un jour férié dédié en 2026. — *vérifié dans la source*
 
 ## Ce que ça change
 Ce document montre que l'Ukraine a révolutionné la guerre moderne par son usage massif et innovant des drones, transformant les stratégies militaires et forçant une adaptation internationale. La maîtrise de ces technologies redéfinit les rapports de force sur le terrain et dans les alliances.
