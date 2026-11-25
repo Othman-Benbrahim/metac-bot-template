@@ -91,7 +91,7 @@ compartiments:
     vitesse: semaines
     taille: macro
   traces:
-  - {source: "étendue de la glace de mer antarctique (NSIDC, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:antarctica-sea-ice-extent:unique"}
+  - {source: "étendue de la glace de mer antarctique (NSIDC, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:antarctica-sea-ice-extent:unique:1"}
 - id: calotte
   nom: Calotte glaciaire et niveau des mers
   organisation: physique

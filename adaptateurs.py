@@ -458,7 +458,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     temps = "Day" if "Day" in cles else ("Year" if "Year" in cles else None)
     if temps is None:
         return []
-    vals = [k for k in cles if k not in ("Entity", "Code", "Year", "Day")]
+    vals = [k for k in cles if k not in ("Entity", "Code", "Year", "Day", "owid_region")]   # owid_region : texte
     choix = vals if col == "somme" else vals[int(col):int(col) + 1]
     agr: dict[str, list[float]] = {}
     for x in r:

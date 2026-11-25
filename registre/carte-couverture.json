@@ -5,9 +5,9 @@
   "compartiments": 855,
   "par_statut": {
    "a_trouver": 614,
-   "ancienne": 47,
+   "ancienne": 48,
    "fraiche": 179,
-   "vide": 15
+   "vide": 14
   },
   "relations": 1014,
   "relations_testables": 213,
@@ -194,7 +194,7 @@
   },
   "antarctique:glace_mer": {
    "statut": "ancienne",
-   "serie": "owid:antarctica-sea-ice-extent:unique",
+   "serie": "owid:antarctica-sea-ice-extent:unique:1",
    "derniere": "2026-07-01"
   },
   "antarctique:calotte": {
@@ -1179,7 +1179,7 @@
   },
   "environnement-dechets:ozone": {
    "statut": "ancienne",
-   "serie": "owid:ozone-depleting-substance-consumption:World",
+   "serie": "owid:ozone-depleting-substance-consumption:World:somme",
    "derniere": "2021-07-01"
   },
   "environnement-dechets:qualite_air": {
@@ -1917,8 +1917,9 @@
    "derniere": "2026-10-01"
   },
   "militaire:depenses": {
-   "statut": "vide",
-   "serie": "owid:military-expenditure-share-gdp:World"
+   "statut": "ancienne",
+   "serie": "owid:military-expenditure-share-gdp:moyenne",
+   "derniere": "2025-07-01"
   },
   "militaire:forces": {
    "statut": "a_trouver"

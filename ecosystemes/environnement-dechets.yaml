@@ -127,7 +127,7 @@ compartiments:
     vitesse: saisons à décennies
     taille: macro
   traces:
-  - {source: "consommation de substances appauvrissant la couche d'ozone, monde (PNUE, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:ozone-depleting-substance-consumption:World"}
+  - {source: "consommation de substances appauvrissant la couche d'ozone, monde (PNUE, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:ozone-depleting-substance-consumption:World:somme"}
   - source: bulletins de l'OMM ; surveillance Copernicus (CAMS)
     statut: a_brancher
   - *id002
