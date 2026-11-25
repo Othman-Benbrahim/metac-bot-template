@@ -1,8 +1,8 @@
 {
  "decision_v2_nouvelles": {
-  "n": 427,
+  "n": 428,
   "couverture_80": 0.766,
-  "couverture_60": 0.595,
+  "couverture_60": 0.596,
   "entreprises": {
    "ABT": {
     "n": 22,
@@ -10,9 +10,9 @@
     "couverture_60": 0.682
    },
    "ADI": {
-    "n": 18,
-    "couverture_80": 0.611,
-    "couverture_60": 0.5
+    "n": 19,
+    "couverture_80": 0.632,
+    "couverture_60": 0.526
    },
    "ADP": {
     "n": 20,
@@ -107,9 +107,9 @@
   }
  },
  "descriptif_v1_nouvelles": {
-  "n": 604,
+  "n": 605,
   "couverture_80": 0.704,
-  "couverture_60": 0.533,
+  "couverture_60": 0.534,
   "entreprises": {
    "ABT": {
     "n": 30,
@@ -117,9 +117,9 @@
     "couverture_60": 0.567
    },
    "ADI": {
-    "n": 26,
-    "couverture_80": 0.385,
-    "couverture_60": 0.269
+    "n": 27,
+    "couverture_80": 0.407,
+    "couverture_60": 0.296
    },
    "ADP": {
     "n": 28,
