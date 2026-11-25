@@ -34,6 +34,10 @@ jobs:
       - name: Taux directeurs (BIS)
         if: always()
         run: uv run python -u collecte_bis.py
+      # 2026-11-25 (validé par l'auteur à 18 h 29) : élections à venir, liste publique d'IFES ElectionGuide
+      - name: Élections à venir (IFES)
+        if: always()
+        run: uv run python -u collecte_elections_ifes.py
       - name: Enregistrer
         if: always()
         run: |
@@ -42,6 +46,7 @@ jobs:
           if [ -d registre/owid ]; then git add -f registre/owid; fi
           if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
           if [ -d registre/bis ]; then git add -f registre/bis; fi
+          if [ -d registre/elections-ifes ]; then git add -f registre/elections-ifes; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : OWID du $(date -u +%Y-%m-%d)"
             git pull --rebase
