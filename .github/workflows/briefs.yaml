@@ -8,7 +8,7 @@ on:
     inputs:
       max:
         description: "nombre maximal de briefs"
-        default: "12"
+        default: "16"
   schedule:
     - cron: "53 1 * * *"
 
@@ -39,7 +39,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
-        run: uv run python -u brief.py --max "${{ github.event.inputs.max || '12' }}"
+        run: uv run python -u brief.py --max "${{ github.event.inputs.max || '16' }}"
       - name: Questions ouvertes touchées par un brief (signal pour l'auteur, sans effet sur les prévisions)
         if: always()
         run: uv run python -u briefs_questions.py || true

@@ -39,8 +39,12 @@ JOURNAL = DOSSIER / "journal.jsonl"
 # l'auteur) : regards diversifiés pour limiter le biais occidental des premiers flux — Asie (Dawn, The Diplomat,
 # Korea.net), Afrique (AllAfrica, presse burkinabè et marocaine de « presse »), voix citoyennes du monde entier (Global
 # Voices), Amériques (InSight Crime), tech hors Occident (Rest of World). Les familles sont servies à tour de rôle.
-FAMILLES = {"geopolitique_europe": 2, "asie": 2, "voix_citoyennes": 2, "afrique": 1, "analyse": 1, "tech": 1,
-            "crime": 1, "surveillance": 1, "defense": 1}
+FAMILLES = {"geopolitique_europe": 1, "moyen_orient": 2, "chine": 1, "russie": 1, "amerique_latine": 2, "asie": 1,
+            "inde": 1, "afrique": 1, "voix_citoyennes": 1, "voix_etat": 1, "analyse": 1, "tech": 1, "crime": 1,
+            "surveillance": 1, "defense": 1}   # 2026-11-25, 13 h 09 : zones ajoutées (sources validées par l'auteur)
+# médias d'État : leurs faits ne sont jamais « vérifiés », seulement « affirmé par un média d'État »
+MEDIAS_ETAT = {"tass.com": "TASS, agence d'État russe", "chinadaily.com.cn": "China Daily, quotidien d'État chinois",
+               "xinhuanet.com": "Xinhua, agence d'État chinoise", "news.cn": "Xinhua, agence d'État chinoise"}
 FLUX_PRESSE_SUD = ("burkina24.com", "lefaso", "hespress")   # flux de « presse » retenus pour les briefs (Afrique)
 RELAIS = [("openrouter/openai/gpt-oss-120b", "OPENROUTER_API_KEY"),
           ("gemini/gemini-flash-latest", "GEMINI_API_KEY"),    # alias de Google vers le Flash courant
@@ -204,6 +208,8 @@ def controler(d: dict, texte: str, media: str, permis: list[str], page_lue: bool
         chiffre, origine = str(f.get("chiffre", "")).strip(), str(f.get("origine", "")).strip()
         if chiffre and not chiffre_present(chiffre, texte):
             statut = "chiffre non retrouvé dans la source"
+        elif media in MEDIAS_ETAT:
+            statut = f"affirmé par un média d'État ({MEDIAS_ETAT[media]})"
         elif origine and not _meme_media(origine, media):
             statut = f"relayé (attribué à {origine})"
         else:
@@ -275,7 +281,7 @@ def traiter(item: dict, routage, noms: dict, aujourdhui: str, appel=None, lecteu
 
 def principal() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--max", type=int, default=12)
+    ap.add_argument("--max", type=int, default=16)
     ap.add_argument("--url", nargs="*", default=[])
     ap.add_argument("--sec", action="store_true", help="sans appel au modèle : liste seulement ce qui passerait le filtre")
     a = ap.parse_args()

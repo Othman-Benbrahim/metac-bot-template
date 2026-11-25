@@ -75,3 +75,8 @@ def test_croiser_questions():
                "brief": {"titre": "Ogives"}}]
     r = bq.croiser(qs, briefs, lambda t: ({"militaire:arsenaux_nucleaires"} if "nuclear" in t else set(), []))
     assert [x["question_id"] for x in r] == ["1"] and r[0]["briefs"][0]["titre"] == "Ogives"
+
+
+def test_media_etat():
+    d = {"faits": [{"fait": "La Russie annonce un accord.", "chiffre": "", "origine": "TASS"}]}
+    assert b.controler(d, "texte", "tass.com", [])["faits"][0]["statut"].startswith("affirmé par un média d'État")

@@ -177,6 +177,21 @@ FLUX = {
                      "https://www.cisa.gov/cybersecurity-advisories/all.xml"],     # CISA : avis (dont avis conjoints)
     "analyse": ["https://www.atlanticcouncil.org/feed"],                         # Atlantic Council (dont DFRLab)
     "geopolitique_europe": ["https://legrandcontinent.eu/fr/feed/"],            # Le Grand Continent (revue géopolitique européenne), source ajoutée par l'auteur le 2026-11-25
+    # 2026-11-25, 13 h 09 (sources validées par l'auteur) : regards régionaux pour diversifier les briefs ; en ombre.
+    "moyen_orient": ["https://www.aljazeera.com/xml/rss/all.xml",                # Al Jazeera (Qatar)
+                     "https://www.middleeasteye.net/rss",                         # Middle East Eye (Londres, indépendant)
+                     "https://orientxxi.info/?page=backend&lang=fr"],             # Orient XXI (analyse, français)
+    "chine": ["https://www.scmp.com/rss/91/feed",                                 # South China Morning Post : Chine
+              "https://chinamediaproject.org/feed/"],                             # China Media Project (discours officiel)
+    "russie": ["https://meduza.io/rss/en/all",                                    # Meduza (indépendant, en exil)
+               "https://www.themoscowtimes.com/rss/news"],                        # The Moscow Times (indépendant, en exil)
+    "amerique_latine": ["https://en.mercopress.com/rss/",                         # MercoPress (cône Sud)
+                        "https://www.americasquarterly.org/feed/",                # Americas Quarterly
+                        "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada"],  # El País, international
+    "inde": ["https://www.thehindu.com/news/international/feeder/default.rss"],   # The Hindu : international
+    # voix d'État, étiquetées comme telles dans les briefs (Xinhua n'a pas de flux : China Daily, quotidien d'État)
+    "voix_etat": ["https://tass.com/rss/v2.xml",                                  # TASS (agence d'État russe)
+                  "https://www.chinadaily.com.cn/rss/world_rss.xml"],             # China Daily (quotidien d'État chinois)
     "afrique": ["https://fr.allafrica.com/tools/headlines/rdf/westafrica/headlines.rdf"],  # AllAfrica, Afrique de l'Ouest
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
