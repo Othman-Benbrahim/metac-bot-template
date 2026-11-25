@@ -449,6 +449,18 @@ fiches:
     - {titre: "OCDE, prix à la consommation", url: "https://www.oecd.org/fr/data/"}
     - {titre: "FAO, indice des prix alimentaires", url: "https://www.fao.org/worldfoodsituation/foodpricesindex/fr/"}
     flux: [fed, bce, fmi]
+  cultures-emboitees:
+    region: monde
+    liens:
+    - {titre: "UNESCO, culture et diversité des expressions culturelles", url: "https://www.unesco.org/fr/culture"}
+    - {titre: "Global Voices (médias citoyens, toutes langues)", url: "https://fr.globalvoices.org/"}
+    flux: [un_culture, lm_culture, global_voices]
+  surveillance-espionnage:
+    region: monde
+    liens:
+    - {titre: "Citizen Lab (université de Toronto)", url: "https://citizenlab.ca/"}
+    - {titre: "Electronic Frontier Foundation", url: "https://www.eff.org/"}
+    flux: [the_record, krebs, rest_of_world]
   information-cyber:
     region: monde
     liens:

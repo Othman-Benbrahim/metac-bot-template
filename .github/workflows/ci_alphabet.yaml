@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # 2026-11-25 : les tests du dossier interne lisent les listes validées de lecteur-local (dépôt public), dans « lecteur/ »
+      - uses: actions/checkout@v4
+        with:
+          repository: Othman-Benbrahim/lecteur-local
+          path: lecteur
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
