@@ -365,6 +365,7 @@ compartiments:
   - *id001
 relations:
 - de: climat
+  fondement: mecanisme_physique
   vers: oceans
   effet: +
   retour: +
@@ -374,6 +375,7 @@ relations:
   statut: a_verifier
   texte: 'l''océan absorbe l''essentiel de la chaleur ajoutée, puis la rend : il amortit et prolonge le réchauffement'
 - de: oceans
+  fondement: mecanisme_physique
   vers: cycle
   effet: +
   delai: saisons
@@ -385,6 +387,7 @@ relations:
   statut: a_verifier
   texte: les oscillations océaniques déplacent les pluies sur des continents entiers
 - de: climat
+  fondement: mecanisme_physique
   vers: glaces
   effet: '-'
   delai: années
@@ -396,6 +399,7 @@ relations:
   statut: a_verifier
   texte: les glaces fondent ; elles ne se reconstituent pas au même rythme
 - de: glaces
+  fondement: mecanisme_physique
   vers: niveau_mer
   effet: '-'
   delai: décennie
@@ -404,6 +408,7 @@ relations:
   statut: a_verifier
   texte: moins de glace sur les terres, plus de mer (au sein du système eau-océan)
 - de: glaces
+  fondement: mecanisme_physique
   vers: fleuves
   effet: +
   delai: saisons
@@ -415,6 +420,7 @@ relations:
   statut: a_verifier
   texte: les glaciers nourrissent les fleuves l'été ; quand ils ont trop fondu, l'étiage s'effondre
 - de: cycle
+  fondement: mecanisme_physique
   vers: fleuves
   effet: +
   delai: jours à saisons
@@ -426,6 +432,7 @@ relations:
   statut: a_verifier
   texte: des pluies au-delà d'un seuil font déborder les fleuves
 - de: cycle
+  fondement: mecanisme_physique
   vers: nappes
   effet: +
   delai: années
@@ -434,6 +441,7 @@ relations:
   statut: a_verifier
   texte: les pluies rechargent lentement les nappes
 - de: barrages
+  fondement: mecanisme_physique
   vers: fleuves
   effet: '-'
   retour: +
@@ -443,6 +451,7 @@ relations:
   statut: a_verifier
   texte: le barrage prend l'eau et les sédiments du fleuve (prédation) ; les deltas en aval s'enfoncent
 - de: barrages
+  fondement: mecanisme_physique
   vers: nappes
   effet: '-'
   delai: années
@@ -454,6 +463,7 @@ relations:
   statut: a_verifier
   texte: l'irrigation vide les nappes plus vite qu'elles ne se remplissent
 - de: fleuves
+  fondement: mecanisme_physique
   vers: navigation_fluviale
   effet: +
   delai: jours
@@ -465,6 +475,7 @@ relations:
   statut: a_verifier
   texte: sous un niveau critique, les péniches ne passent plus ou passent à moitié pleines (passage de l'eau à l'économie)
 - de: fleuves
+  fondement: mecanisme_physique
   vers: refroidissement
   effet: +
   delai: jours
@@ -476,6 +487,7 @@ relations:
   statut: a_verifier
   texte: un fleuve trop chaud ou trop bas fait réduire la production des centrales
 - de: oceans
+  fondement: mecanisme_physique
   vers: vivant_aquatique
   effet: ±
   delai: saisons à décennie
@@ -488,6 +500,7 @@ relations:
   texte: chaleur et acidité blanchissent les récifs et déplacent les poissons ; les remontées d'eaux froides nourrissent le
     plancton
 - de: niveau_mer
+  fondement: mecanisme_physique
   vers: fleuves
   effet: '-'
   delai: décennie
@@ -496,6 +509,7 @@ relations:
   statut: a_verifier
   texte: la mer remonte dans les deltas et sale les eaux douces
 - de: oceans
+  fondement: mecanisme_physique
   vers: recifs
   effet: '-'
   delai: semaines
@@ -504,6 +518,7 @@ relations:
   statut: a_verifier
   texte: une eau trop chaude fait blanchir les coraux (NOAA)
 - de: oceans
+  fondement: mecanisme_physique
   vers: desoxygenation
   effet: +
   delai: années
@@ -512,6 +527,7 @@ relations:
   statut: a_verifier
   texte: le réchauffement explique environ la moitié de la perte d'oxygène dans les 1 000 premiers mètres (UICN)
 - de: peche
+  fondement: mecanisme_physique
   vers: vivant_aquatique
   effet: '-'
   delai: années
@@ -520,6 +536,7 @@ relations:
   statut: a_verifier
   texte: la surpêche réduit les populations de poissons
 - de: haute_mer
+  fondement: lien
   vers: peche
   effet: '-'
   delai: années
@@ -528,6 +545,7 @@ relations:
   statut: a_verifier
   texte: la gouvernance des océans peut limiter la pêche illégale et la surpêche
 - de: desoxygenation
+  fondement: mecanisme_physique
   vers: vivant_aquatique
   effet: '-'
   delai: mois

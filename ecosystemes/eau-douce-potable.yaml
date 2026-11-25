@@ -235,6 +235,7 @@ compartiments:
   - *id001
 relations:
 - de: prelevements
+  fondement: definition
   vers: stress
   effet: +
   delai: années
@@ -243,6 +244,7 @@ relations:
   statut: a_verifier
   texte: le stress hydrique est par définition le rapport des prélèvements à l'eau disponible
 - de: ressources
+  fondement: definition
   vers: stress
   effet: '-'
   delai: saisons
@@ -251,6 +253,7 @@ relations:
   statut: a_verifier
   texte: moins d'eau disponible, plus de stress à prélèvements égaux
 - de: prelevements
+  fondement: mecanisme_physique
   vers: nappes
   effet: '-'
   delai: années
@@ -268,6 +271,7 @@ relations:
   statut: a_verifier
   texte: un meilleur assainissement fait reculer les maladies hydriques
 - de: qualite
+  fondement: mecanisme_physique
   vers: maladies
   effet: '-'
   delai: semaines
@@ -276,6 +280,7 @@ relations:
   statut: a_verifier
   texte: une eau de meilleure qualité fait reculer les maladies hydriques
 - de: acces
+  fondement: mecanisme_physique
   vers: corps
   effet: +
   delai: heures
@@ -294,6 +299,7 @@ relations:
   texte: le manque d'eau peut être source de tensions, et l'eau sert de déclencheur de violence (catégorie « déclencheur »
     du Pacific Institute) ; remarque de l'auteur du 2026-11-22
 - de: tensions
+  fondement: causalite_sociale
   vers: acces
   effet: '-'
   delai: jours
@@ -302,6 +308,7 @@ relations:
   statut: a_verifier
   texte: en guerre, l'eau sert d'arme et les installations sont touchées (catégories « arme » et « victime » du Pacific Institute)
 - de: gouvernance
+  fondement: lien
   vers: tensions
   effet: '-'
   delai: années

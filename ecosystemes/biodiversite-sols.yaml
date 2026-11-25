@@ -256,6 +256,7 @@ compartiments:
   - *id001
 relations:
 - de: habitats
+  fondement: mecanisme_physique
   vers: populations
   effet: +
   delai: années
@@ -264,6 +265,7 @@ relations:
   statut: a_verifier
   texte: moins d'habitats, moins de populations sauvages (première menace citée par le WWF, 2024)
 - de: populations
+  fondement: mecanisme_physique
   vers: especes
   effet: '-'
   delai: décennies
@@ -272,6 +274,7 @@ relations:
   statut: a_verifier
   texte: des populations qui s'effondrent font monter le risque d'extinction des espèces
 - de: surexploitation
+  fondement: mecanisme_physique
   vers: populations
   effet: '-'
   delai: années
@@ -280,6 +283,7 @@ relations:
   statut: a_verifier
   texte: la chasse, la pêche et le commerce au-delà du renouvellement font baisser les populations
 - de: envahissantes
+  fondement: mecanisme_physique
   vers: especes
   effet: +
   delai: années à décennies
@@ -289,6 +293,7 @@ relations:
   texte: les espèces envahissantes font monter les extinctions, surtout sur les îles (rôle clé dans 60 % des extinctions
     recensées, IPBES 2023) ; le compartiment cible lit ici le risque d'extinction
 - de: sols_vivants
+  fondement: mecanisme_physique
   vers: habitats
   effet: +
   delai: décennies
@@ -307,6 +312,7 @@ relations:
   texte: les aires protégées freinent la perte d'habitats, à condition d'être bien gérées et reliées (effet conditionnel ;
     moins de 5 % des terres couvertes par des aires dont la gestion a été évaluée, Protected Planet Report 2024)
 - de: accords
+  fondement: lien
   vers: aires_protegees
   effet: +
   delai: années

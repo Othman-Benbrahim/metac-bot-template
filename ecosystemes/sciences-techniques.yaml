@@ -158,6 +158,7 @@ cycles:
     statut: mecanisme
 relations:
   - de: recherche
+    fondement: causalite_sociale
     vers: developpement
     effet: +
     delai: années
@@ -165,6 +166,7 @@ relations:
     statut: a_verifier
     texte: "une découverte ne devient un produit qu'après des années de développement ; la recherche accumulée avant raccourcit tout (ARN messager et vaccins contre la covid)"
   - de: developpement
+    fondement: causalite_sociale
     vers: adoption
     effet: +
     delai: mois
@@ -172,6 +174,7 @@ relations:
     statut: a_verifier
     texte: "un produit autorisé se diffuse ; la vitesse de diffusion s'est accélérée (ChatGPT, 100 millions d'utilisateurs en deux mois)"
   - de: capitaux
+    fondement: causalite_sociale
     vers: developpement
     effet: +
     delai: mois
@@ -179,6 +182,7 @@ relations:
     statut: a_verifier
     texte: "l'argent et l'urgence raccourcissent le cycle (essais menés en parallèle, fabrication avant l'autorisation) ; sans intérêt économique, il s'allonge"
   - de: regulation
+    fondement: lien
     vers: developpement
     effet: '-'
     delai: mois
@@ -186,6 +190,7 @@ relations:
     statut: a_verifier
     texte: "l'examen et l'autorisation allongent le cycle ; l'examen prioritaire en cas d'urgence le raccourcit (19 à 21 jours pour les vaccins contre la covid)"
   - de: calcul
+    fondement: mecanisme_physique
     vers: sorties_modeles
     effet: +
     delai: mois
@@ -193,6 +198,7 @@ relations:
     statut: a_verifier
     texte: "sans capacité de calcul pour servir un modèle, sa sortie publique attend"
   - de: regulation
+    fondement: lien
     vers: sorties_modeles
     effet: "-"
     delai: mois
@@ -201,6 +207,7 @@ relations:
     statut: a_verifier
     texte: "la régulation retarde ou restreint géographiquement une sortie (disponibilité par pays)"
   - de: sorties_modeles
+    fondement: lien
     vers: bancs_ia
     effet: +
     delai: semaines
@@ -208,26 +215,27 @@ relations:
     statut: a_verifier
     texte: "un nouveau modèle fait bouger les classements, avec le délai d'inscription au classement public"
   - de: attentes
+    fondement: causalite_sociale
     vers: sorties_modeles
     effet: +
     delai: semaines
     force: faible
     statut: a_verifier
     texte: "l'engouement fait annoncer tôt ; l'annonce précède souvent de loin la sortie publique"
-  - {de: "calcul", vers: "ia", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "disponibilité des puces avancées", regle: "seuil"}, coupure: "méthodes plus économes en calcul", statut: "a_verifier", texte: "sans assez de calcul, pas de nouveau modèle : la puce borne le produit"}
-  - {de: "ia", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "chaque génération de modèles réclame plus de calcul (boucle propre au niveau technique)"}
-  - {de: "calcul", vers: "energie_eau", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "chaleur de l'été, niveau des fleuves", regle: "seuil"}, coupure: "refroidissement à l'air, sites froids", statut: "a_verifier", texte: "le calcul consomme électricité et eau ; une vague de chaleur peut brider un centre"}
-  - {de: "energie_eau", vers: "calcul", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "tension sur le réseau électrique", regle: "seuil"}, coupure: "production propre sur site", statut: "a_verifier", texte: "le physique borne le technique : sans électricité ni eau, le calcul s'arrête"}
-  - {de: "capitaux", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "taux élevés, déception", statut: "a_verifier", texte: "les levées de fonds financent les centres de calcul"}
-  - {de: "attentes", vers: "capitaux", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "engouement médiatique", regle: "hysteresis"}, coupure: "déception des résultats", statut: "a_verifier", texte: "l'engouement attire les capitaux ; la déception les retire plus vite qu'il ne les a attirés"}
-  - {de: "ia", vers: "attentes", effet: "+", delai: "jours", force: "moyenne", coupure: "lancement décevant", statut: "a_verifier", texte: "un lancement réussi nourrit l'engouement"}
-  - {de: "ia", vers: "adoption", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "part d'utilisateurs déjà acquis", regle: "seuil"}, coupure: "coût, méfiance", statut: "a_verifier", texte: "la diffusion suit une courbe en S : lente, puis rapide au-delà d'un seuil d'adoption"}
-  - {de: "course_etats", vers: "regulation", effet: "±", delai: "mois", force: "forte", coupure: "accords internationaux", statut: "a_verifier", texte: "la course pousse à des contrôles d'exportation contre le rival et à des règles plus souples chez soi"}
-  - {de: "regulation", vers: "calcul", effet: "-", delai: "mois", force: "forte", coupure: "contournement, production locale", statut: "a_verifier", texte: "les contrôles d'exportation privent le rival de puces avancées"}
-  - {de: "regulation", vers: "ia", effet: "±", delai: "mois", force: "moyenne", coupure: "juridiction plus souple ailleurs", statut: "a_verifier", texte: "les règles retardent ou orientent certains lancements selon les pays"}
-  - {de: "talents", vers: "ia", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "départs de chercheurs clés", regle: "seuil"}, coupure: "équipes nombreuses", statut: "a_verifier", texte: "au niveau de l'entourage : une vague de départs peut changer le rythme d'un laboratoire"}
-  - {de: "recherche", vers: "ia", effet: "+", delai: "années", force: "moyenne", coupure: "secret industriel", statut: "a_verifier", texte: "la recherche ouverte nourrit les produits, avec retard"}
-  - {de: "course_etats", vers: "capitaux", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les subventions publiques s'ajoutent aux capitaux privés"}
+  - {fondement: mecanisme_physique, de: "calcul", vers: "ia", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "disponibilité des puces avancées", regle: "seuil"}, coupure: "méthodes plus économes en calcul", statut: "a_verifier", texte: "sans assez de calcul, pas de nouveau modèle : la puce borne le produit"}
+  - {fondement: mecanisme_physique, de: "ia", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "chaque génération de modèles réclame plus de calcul (boucle propre au niveau technique)"}
+  - {fondement: mecanisme_physique, de: "calcul", vers: "energie_eau", effet: "+", delai: "mois", force: "forte", intensite: {mesure: "chaleur de l'été, niveau des fleuves", regle: "seuil"}, coupure: "refroidissement à l'air, sites froids", statut: "a_verifier", texte: "le calcul consomme électricité et eau ; une vague de chaleur peut brider un centre"}
+  - {fondement: mecanisme_physique, de: "energie_eau", vers: "calcul", effet: "-", delai: "jours", force: "moyenne", intensite: {mesure: "tension sur le réseau électrique", regle: "seuil"}, coupure: "production propre sur site", statut: "a_verifier", texte: "le physique borne le technique : sans électricité ni eau, le calcul s'arrête"}
+  - {fondement: lien, de: "capitaux", vers: "calcul", effet: "+", delai: "mois", force: "forte", coupure: "taux élevés, déception", statut: "a_verifier", texte: "les levées de fonds financent les centres de calcul"}
+  - {fondement: causalite_sociale, de: "attentes", vers: "capitaux", effet: "+", delai: "semaines", force: "forte", intensite: {mesure: "engouement médiatique", regle: "hysteresis"}, coupure: "déception des résultats", statut: "a_verifier", texte: "l'engouement attire les capitaux ; la déception les retire plus vite qu'il ne les a attirés"}
+  - {fondement: causalite_sociale, de: "ia", vers: "attentes", effet: "+", delai: "jours", force: "moyenne", coupure: "lancement décevant", statut: "a_verifier", texte: "un lancement réussi nourrit l'engouement"}
+  - {fondement: causalite_sociale, de: "ia", vers: "adoption", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "part d'utilisateurs déjà acquis", regle: "seuil"}, coupure: "coût, méfiance", statut: "a_verifier", texte: "la diffusion suit une courbe en S : lente, puis rapide au-delà d'un seuil d'adoption"}
+  - {fondement: causalite_sociale, de: "course_etats", vers: "regulation", effet: "±", delai: "mois", force: "forte", coupure: "accords internationaux", statut: "a_verifier", texte: "la course pousse à des contrôles d'exportation contre le rival et à des règles plus souples chez soi"}
+  - {fondement: lien, de: "regulation", vers: "calcul", effet: "-", delai: "mois", force: "forte", coupure: "contournement, production locale", statut: "a_verifier", texte: "les contrôles d'exportation privent le rival de puces avancées"}
+  - {fondement: lien, de: "regulation", vers: "ia", effet: "±", delai: "mois", force: "moyenne", coupure: "juridiction plus souple ailleurs", statut: "a_verifier", texte: "les règles retardent ou orientent certains lancements selon les pays"}
+  - {fondement: causalite_sociale, de: "talents", vers: "ia", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "départs de chercheurs clés", regle: "seuil"}, coupure: "équipes nombreuses", statut: "a_verifier", texte: "au niveau de l'entourage : une vague de départs peut changer le rythme d'un laboratoire"}
+  - {fondement: causalite_sociale, de: "recherche", vers: "ia", effet: "+", delai: "années", force: "moyenne", coupure: "secret industriel", statut: "a_verifier", texte: "la recherche ouverte nourrit les produits, avec retard"}
+  - {fondement: lien, de: "course_etats", vers: "capitaux", effet: "+", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les subventions publiques s'ajoutent aux capitaux privés"}
 ponts:
 - depuis: sorties_modeles
   vers: observateur-mesure:questionneur_metaculus

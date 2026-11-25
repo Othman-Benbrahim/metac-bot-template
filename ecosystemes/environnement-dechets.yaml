@@ -278,6 +278,7 @@ compartiments:
   traces: *id001
 relations:
 - de: dechets_menagers
+  fondement: mecanisme_physique
   vers: qualite_air
   effet: '-'
   delai: jours
@@ -286,6 +287,7 @@ relations:
   statut: a_verifier
   texte: le brûlage à l'air libre des déchets dégrade la qualité de l'air (le compartiment cible lit ici sa qualité)
 - de: dechets_menagers
+  fondement: mecanisme_physique
   vers: pollution_sols
   effet: +
   delai: années
@@ -294,6 +296,7 @@ relations:
   statut: a_verifier
   texte: les décharges non contrôlées polluent les sols
 - de: dechets_electroniques
+  fondement: mecanisme_physique
   vers: pollution_chimique
   effet: +
   delai: années
@@ -302,6 +305,7 @@ relations:
   statut: a_verifier
   texte: le démantèlement informel des déchets électroniques libère métaux lourds et substances toxiques
 - de: pollution_chimique
+  fondement: mecanisme_physique
   vers: pollution_sols
   effet: +
   delai: années
@@ -310,6 +314,7 @@ relations:
   statut: a_verifier
   texte: pesticides, métaux et PFAS s'accumulent dans les sols
 - de: droit_contentieux
+  fondement: causalite_sociale
   vers: climat_politique
   effet: +
   delai: années
@@ -318,6 +323,7 @@ relations:
   statut: a_verifier
   texte: l'avis de la CIJ et les procès climatiques poussent les États à relever leurs engagements
 - de: environnement
+  fondement: causalite_sociale
   vers: dechets_menagers
   effet: '-'
   delai: années
@@ -326,6 +332,7 @@ relations:
   statut: a_verifier
   texte: des politiques publiques (collecte, recyclage, réduction à la source) font baisser les déchets non gérés
 - de: environnement
+  fondement: causalite_sociale
   vers: eaux_usees
   effet: '-'
   delai: années
@@ -334,6 +341,7 @@ relations:
   statut: a_verifier
   texte: l'investissement dans l'épuration réduit les rejets non traités
 - de: traites
+  fondement: lien
   vers: ozone
   effet: +
   delai: décennies
@@ -342,6 +350,7 @@ relations:
   statut: a_verifier
   texte: le protocole de Montréal fait baisser les substances appauvrissant l'ozone et refermer le trou (OMM)
 - de: dechets
+  fondement: mecanisme_physique
   vers: pollution_chimique
   effet: +
   delai: années
@@ -350,6 +359,7 @@ relations:
   statut: a_verifier
   texte: les plastiques portent plus de 10 000 additifs chimiques dans l'environnement (Persson et al., 2022)
 - de: traites
+  fondement: lien
   vers: dechets
   effet: '-'
   delai: années
@@ -359,6 +369,7 @@ relations:
   texte: un traité contraignant limiterait la production et la fuite de plastique ; l'opposition des États producteurs de
     pétrole a fait échouer Genève en 2025
 - de: pollution_chimique
+  fondement: mecanisme_physique
   vers: biodiversite
   effet: '-'
   delai: années

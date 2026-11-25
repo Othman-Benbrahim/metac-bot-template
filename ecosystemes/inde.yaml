@@ -211,6 +211,7 @@ compartiments:
     taille: macro
 relations:
 - de: mousson
+  fondement: mecanisme_physique
   vers: agriculture
   effet: +
   delai: semaines à saisons
@@ -230,6 +231,7 @@ relations:
   statut: a_verifier
   texte: une vague de chaleur au mauvais moment abîme les récoltes (blé en mars-avril)
 - de: agriculture
+  fondement: causalite_sociale
   vers: politique_interieure
   effet: +
   delai: mois
@@ -237,6 +239,7 @@ relations:
   statut: a_verifier
   texte: la détresse rurale pèse sur les votes et les mobilisations ; les gouvernements y répondent par des aides et des restrictions d'exportation
 - de: economie_commerce
+  fondement: causalite_sociale
   vers: population_jeunesse
   effet: +
   delai: trimestres à années
@@ -245,6 +248,7 @@ relations:
   statut: a_verifier
   texte: la croissance ne crée pas assez d'emplois pour les jeunes diplômés des villes
 - de: energie_petrole_russe
+  fondement: lien
   vers: economie_commerce
   effet: '-'
   delai: semaines à mois
@@ -252,6 +256,7 @@ relations:
   statut: a_verifier
   texte: les achats de pétrole russe exposent l'Inde à des droits de douane américains punitifs
 - de: chine_frontiere
+  fondement: causalite_sociale
   vers: nucleaire_defense
   effet: +
   delai: années
@@ -259,6 +264,7 @@ relations:
   statut: a_verifier
   texte: la frontière disputée avec la Chine entretient la dépense militaire et la dissuasion
 - de: manipur
+  fondement: lien
   vers: politique_interieure
   effet: +
   delai: mois
@@ -266,6 +272,7 @@ relations:
   statut: a_verifier
   texte: des violences prolongées dans un État conduisent l'Union à reprendre la main (régime présidentiel de février 2025 à février 2026)
 - de: politique_interieure
+  fondement: evenement
   vers: maoisme
   effet: '-'
   delai: années

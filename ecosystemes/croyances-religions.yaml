@@ -407,6 +407,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: rapports_de_force
+  fondement: causalite_sociale
   vers: aires_geographiques
   effet: +
   delai: décennies
@@ -415,6 +416,7 @@ relations:
   statut: a_verifier
   texte: la démographie déplace le centre de gravité des religions (le christianisme vers l'Afrique)
 - de: religion_politique
+  fondement: causalite_sociale
   vers: extremes_islam
   effet: +
   delai: années
@@ -433,6 +435,7 @@ relations:
   statut: a_verifier
   texte: un pouvoir qui s'appuie sur l'identité religieuse peut couvrir ses franges violentes
 - de: religion_politique
+  fondement: causalite_sociale
   vers: extremes_bouddhisme
   effet: +
   delai: années
@@ -441,6 +444,7 @@ relations:
   statut: a_verifier
   texte: en Birmanie, le régime militaire s'appuie sur des moines nationalistes radicaux
 - de: extremes_islam
+  fondement: causalite_sociale
   vers: islam
   effet: '-'
   delai: années
@@ -450,6 +454,7 @@ relations:
   texte: les violences jihadistes frappent d'abord des musulmans et nourrissent la défiance envers l'ensemble (le
     compartiment cible lit ici l'image et la sécurité des communautés)
 - de: sans_religion
+  fondement: causalite_sociale
   vers: christianisme
   effet: '-'
   delai: générations
@@ -458,6 +463,7 @@ relations:
   statut: a_verifier
   texte: les sorties de religion font baisser la part chrétienne en Europe et dans les Amériques
 - de: rapports_de_force
+  fondement: causalite_sociale
   vers: religion_politique
   effet: +
   delai: décennies
@@ -466,6 +472,7 @@ relations:
   statut: a_verifier
   texte: un groupe qui grandit pèse davantage dans la politique de son pays
 - de: sectes
+  fondement: causalite_sociale
   vers: sans_religion
   effet: '0'
   delai: années

@@ -151,6 +151,7 @@ compartiments:
   - {source: "taux de couverture des appels humanitaires coordonnés (fonds reçus / besoins, tous appels confondus, par année), OCHA Financial Tracking Service via le Humanitarian Data Exchange (source validée par l’auteur le 2026-11-25 à 5 h 57)", statut: collecte, fichier: collecte_fts.py, adaptateur: "fts:couverture"}
 relations:
 - de: retraits
+  fondement: lien
   vers: humanitaire
   effet: '-'
   delai: années
@@ -166,6 +167,7 @@ relations:
   statut: a_verifier
   texte: la légitimité humanitaire est adossée aux institutions multilatérales ; quand elles sont contournées ou vidées, les normes perdent leur échafaudage (Russo et al. 2026)
 - de: retraits
+  fondement: lien
   vers: onu
   effet: '-'
   delai: années
@@ -174,6 +176,7 @@ relations:
   statut: a_verifier
   texte: les retraits et les arriérés privent l'ONU de moyens (budget 2026 en baisse de 15 %)
 - de: retraits
+  fondement: lien
   vers: sante_mondiale
   effet: '-'
   delai: années
@@ -182,6 +185,7 @@ relations:
   statut: a_verifier
   texte: le départ du premier contributeur affaiblit l'OMS
 - de: conseil_securite
+  fondement: lien
   vers: justice_internationale
   effet: '-'
   delai: années
@@ -190,6 +194,7 @@ relations:
   statut: a_verifier
   texte: le veto empêche des renvois devant la justice internationale
 - de: retraits
+  fondement: causalite_sociale
   vers: justice_internationale
   effet: '-'
   delai: mois
@@ -198,6 +203,7 @@ relations:
   statut: a_verifier
   texte: les sanctions et la pression américaines poussent des États à quitter la CPI
 - de: clubs_puissances
+  fondement: causalite_sociale
   vers: onu
   effet: '-'
   delai: décennies
@@ -206,6 +212,7 @@ relations:
   statut: a_verifier
   texte: les décisions se déplacent vers des clubs restreints
 - de: droit_international
+  fondement: lien
   vers: justice_internationale
   effet: '+'
   delai: décennies

@@ -181,6 +181,7 @@ compartiments:
   - *id001
 relations:
 - de: alliances
+  fondement: lien
   vers: depenses
   effet: +
   delai: années
@@ -189,6 +190,7 @@ relations:
   statut: a_verifier
   texte: les engagements d'alliance (5 % en 2035) tirent les budgets militaires
 - de: depenses
+  fondement: lien
   vers: industrie_armement
   effet: +
   delai: années
@@ -197,6 +199,7 @@ relations:
   statut: a_verifier
   texte: les budgets se traduisent en commandes et en chiffre d'affaires de l'industrie (Europe +13 % en 2024)
 - de: industrie_armement
+  fondement: causalite_sociale
   vers: commerce_armes
   effet: +
   delai: années
@@ -205,6 +208,7 @@ relations:
   statut: a_verifier
   texte: une industrie qui produit plus exporte plus
 - de: depenses
+  fondement: lien
   vers: forces
   effet: +
   delai: années
@@ -213,6 +217,7 @@ relations:
   statut: a_verifier
   texte: les budgets financent les effectifs, l'entraînement et l'équipement
 - de: technologies
+  fondement: causalite_sociale
   vers: doctrines
   effet: +
   delai: années
@@ -221,6 +226,7 @@ relations:
   statut: a_verifier
   texte: les drones et l'IA obligent à revoir les doctrines (le compartiment cible lit ici leur renouvellement)
 - de: arsenaux_nucleaires
+  fondement: causalite_sociale
   vers: doctrines
   effet: +
   delai: années
@@ -229,6 +235,7 @@ relations:
   statut: a_verifier
   texte: la croissance des arsenaux durcit les postures de dissuasion
 - de: depenses
+  fondement: causalite_sociale
   vers: technologies
   effet: +
   delai: années
@@ -237,6 +244,7 @@ relations:
   statut: a_verifier
   texte: la recherche militaire finance les technologies nouvelles
 - de: bases_projection
+  fondement: lien
   vers: alliances
   effet: +
   delai: années

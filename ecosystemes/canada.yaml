@@ -95,6 +95,7 @@ compartiments:
     taille: macro
 relations:
 - de: commerce_usa
+  fondement: causalite_sociale
   vers: economie_can
   effet: '-'
   delai: semaines à mois
@@ -102,6 +103,7 @@ relations:
   statut: a_verifier
   texte: les droits américains frappent les exportations et l'emploi
 - de: economie_can
+  fondement: causalite_sociale
   vers: politique_can
   effet: +
   delai: mois
@@ -109,6 +111,7 @@ relations:
   statut: a_verifier
   texte: la crise commerciale structure la vie politique
 - de: energie_minerais_can
+  fondement: causalite_sociale
   vers: commerce_usa
   effet: +
   delai: mois

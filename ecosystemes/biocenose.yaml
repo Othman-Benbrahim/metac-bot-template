@@ -176,6 +176,7 @@ compartiments:
   - *id001
 relations:
 - de: biotope
+  fondement: mecanisme_physique
   vers: producteurs
   effet: +
   delai: saisons
@@ -184,6 +185,7 @@ relations:
   statut: a_verifier
   texte: lumière, eau, chaleur et nutriments du biotope font la production des plantes
 - de: producteurs
+  fondement: mecanisme_physique
   vers: consommateurs
   effet: +
   delai: saisons
@@ -193,6 +195,7 @@ relations:
   texte: les plantes nourrissent les herbivores, qui nourrissent les prédateurs
   retour: '-'
 - de: producteurs
+  fondement: mecanisme_physique
   vers: decomposeurs
   effet: +
   delai: saisons
@@ -201,6 +204,7 @@ relations:
   statut: a_verifier
   texte: feuilles mortes, bois et racines nourrissent les décomposeurs
 - de: decomposeurs
+  fondement: mecanisme_physique
   vers: biotope
   effet: +
   delai: saisons à années
@@ -210,6 +214,7 @@ relations:
   texte: la décomposition rend au sol les nutriments (le compartiment cible lit ici la fertilité du sol) — le cycle se
     ferme
 - de: biotope
+  fondement: mecanisme_physique
   vers: cycle_vivant
   effet: +
   delai: saisons
@@ -218,6 +223,7 @@ relations:
   statut: a_verifier
   texte: les saisons du biotope règlent floraisons, reproductions et migrations
 - de: espece_humaine
+  fondement: mecanisme_physique
   vers: biomes
   effet: '-'
   delai: décennies
@@ -226,6 +232,7 @@ relations:
   statut: a_verifier
   texte: le changement d'usage des terres et des mers est le premier facteur de perte de nature (IPBES 2019)
 - de: espece_humaine
+  fondement: mecanisme_physique
   vers: diversite_especes
   effet: '-'
   delai: décennies
@@ -234,6 +241,7 @@ relations:
   statut: a_verifier
   texte: exploitation, pollution, climat et espèces envahissantes réduisent la diversité
 - de: diversite_especes
+  fondement: mecanisme_physique
   vers: apports_vivant
   effet: +
   delai: années
@@ -242,6 +250,7 @@ relations:
   statut: a_verifier
   texte: plus d'espèces, plus de fonctions assurées (pollinisation, filtration, fertilité)
 - de: apports_vivant
+  fondement: mecanisme_physique
   vers: espece_humaine
   effet: +
   delai: années
@@ -250,6 +259,7 @@ relations:
   statut: a_verifier
   texte: les humains vivent de ce que le vivant produit ; la boucle se referme sur eux
 - de: biomes
+  fondement: mecanisme_physique
   vers: biotope
   effet: +
   delai: décennies

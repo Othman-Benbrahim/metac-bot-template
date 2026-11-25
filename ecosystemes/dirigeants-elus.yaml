@@ -218,6 +218,7 @@ cycles:
   statut: mecanisme
 relations:
 - de: popularite
+  fondement: causalite_sociale
   vers: departs
   effet: '-'
   delai: mois
@@ -227,6 +228,7 @@ relations:
   texte: une forte impopularité rapproche le départ (défaite, démission, destitution) dans les régimes ouverts (le
     compartiment cible lit ici le maintien au pouvoir)
 - de: departs
+  fondement: causalite_sociale
   vers: mandats_succession
   effet: '-'
   delai: années
@@ -236,6 +238,7 @@ relations:
   texte: quand perdre le pouvoir expose à l'exil, à la prison ou à la mort, le dirigeant s'accroche (le compartiment
     source lit ici le risque après le départ, la cible le respect des limites de mandat)
 - de: justice_immunites
+  fondement: causalite_sociale
   vers: departs
   effet: +
   delai: mois
@@ -244,6 +247,7 @@ relations:
   statut: a_verifier
   texte: les poursuites précipitent des démissions, ou retiennent au pouvoir celui que l'immunité protège
 - de: entourage
+  fondement: causalite_sociale
   vers: executifs
   effet: +
   delai: semaines
@@ -252,6 +256,7 @@ relations:
   statut: a_verifier
   texte: l'entourage filtre l'information et oriente les décisions du dirigeant
 - de: age_sante
+  fondement: causalite_sociale
   vers: mandats_succession
   effet: +
   delai: mois à années
@@ -260,6 +265,7 @@ relations:
   statut: a_verifier
   texte: l'âge et la santé déclarée ouvrent la question de la succession
 - de: programmes
+  fondement: causalite_sociale
   vers: popularite
   effet: +
   delai: mois
@@ -268,6 +274,7 @@ relations:
   statut: a_verifier
   texte: les idées portées et leur mise en œuvre font la popularité (le sens dépend du programme)
 - de: diplomatie_personnelle
+  fondement: evenement
   vers: popularite
   effet: +
   delai: semaines
@@ -276,6 +283,7 @@ relations:
   statut: a_verifier
   texte: un sommet réussi peut relever brièvement la popularité (effet de stature)
 - de: parlementaires
+  fondement: lien
   vers: ministres
   effet: +
   delai: semaines

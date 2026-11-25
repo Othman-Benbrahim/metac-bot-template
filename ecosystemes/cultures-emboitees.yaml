@@ -112,6 +112,7 @@ compartiments:
   - {source: "États parties à la Convention de 2005 (UNESCO) ; à brancher", statut: a_brancher}
 relations:
 - de: aires_culturelles
+  fondement: causalite_sociale
   vers: cultures_nationales
   effet: '+'
   delai: décennies
@@ -119,6 +120,7 @@ relations:
   statut: a_verifier
   texte: l'héritage d'une aire donne à chaque culture nationale sa langue, ses valeurs et ses codes (emboîtement)
 - de: cultures_nationales
+  fondement: causalite_sociale
   vers: cultures_locales
   effet: '-'
   delai: décennies
@@ -126,6 +128,7 @@ relations:
   statut: a_verifier
   texte: l'école et la langue officielle unifient, au détriment des langues régionales ; d'où la plus grande part des langues menacées (Ethnologue)
 - de: cultures_locales
+  fondement: causalite_sociale
   vers: individu_identites
   effet: '+'
   delai: années
@@ -133,6 +136,7 @@ relations:
   statut: a_verifier
   texte: la culture locale et familiale forme la première couche de l'identité de chacun
 - de: diffusion_mondiale
+  fondement: causalite_sociale
   vers: cultures_nationales
   effet: '-'
   delai: années
@@ -140,6 +144,7 @@ relations:
   statut: a_verifier
   texte: la culture mondiale dilue les cultures nationales, surtout chez les jeunes ; elle voyage avec les échanges économiques
 - de: diffusion_mondiale
+  fondement: causalite_sociale
   vers: protections_culturelles
   effet: '+'
   delai: années
@@ -147,6 +152,7 @@ relations:
   statut: a_verifier
   texte: la dilution suscite une réaction (quotas, aides, exception culturelle)
 - de: protections_culturelles
+  fondement: causalite_sociale
   vers: diffusion_mondiale
   effet: '-'
   delai: années
@@ -154,6 +160,7 @@ relations:
   statut: a_verifier
   texte: les quotas et les aides freinent la part des industries dominantes, sans l'inverser
 - de: culture_algorithmique
+  fondement: causalite_sociale
   vers: individu_identites
   effet: '+'
   delai: semaines
@@ -161,6 +168,7 @@ relations:
   statut: a_verifier
   texte: le flux de recommandations change ce que chacun voit et le temps qu'il y passe ; son effet sur les attitudes est plus faible que supposé (Guess et al., Science, 2023)
 - de: culture_algorithmique
+  fondement: causalite_sociale
   vers: diffusion_mondiale
   effet: '+'
   delai: mois
@@ -168,6 +176,7 @@ relations:
   statut: a_verifier
   texte: les algorithmes des grandes plateformes portent les contenus mondiaux (musique coréenne +84 % à l'export en 2025, d'après le rapport coréen)
 - de: aires_culturelles
+  fondement: causalite_sociale
   vers: individu_identites
   effet: '+'
   delai: générations

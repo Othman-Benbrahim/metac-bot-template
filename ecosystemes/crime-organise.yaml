@@ -125,6 +125,7 @@ compartiments:
   - *id001
 relations:
 - de: drogues
+  fondement: causalite_sociale
   vers: cartels_mafias
   effet: '+'
   delai: années
@@ -133,6 +134,7 @@ relations:
   statut: a_verifier
   texte: les profits de la drogue financent les cartels
 - de: cartels_mafias
+  fondement: causalite_sociale
   vers: captation_etats
   effet: '+'
   delai: décennies
@@ -141,6 +143,7 @@ relations:
   statut: a_verifier
   texte: l'argent et la violence achètent ou intimident les autorités
 - de: escroqueries_cyber
+  fondement: causalite_sociale
   vers: traite
   effet: '+'
   delai: mois
@@ -149,6 +152,7 @@ relations:
   statut: a_verifier
   texte: les complexes d'escroquerie reposent sur le travail forcé
 - de: cartels_mafias
+  fondement: causalite_sociale
   vers: blanchiment
   effet: '+'
   delai: mois
@@ -157,6 +161,7 @@ relations:
   statut: a_verifier
   texte: les profits doivent être blanchis
 - de: repression
+  fondement: causalite_sociale
   vers: escroqueries_cyber
   effet: '-'
   delai: mois
@@ -165,6 +170,7 @@ relations:
   statut: a_verifier
   texte: les descentes déplacent les réseaux plus qu'elles ne les arrêtent
 - de: repression
+  fondement: causalite_sociale
   vers: drogues
   effet: '-'
   delai: années

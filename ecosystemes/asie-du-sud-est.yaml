@@ -139,6 +139,7 @@ compartiments:
     taille: macro
 relations:
 - de: mer_chine_meridionale
+  fondement: causalite_sociale
   vers: asean
   effet: '-'
   delai: années
@@ -146,6 +147,7 @@ relations:
   statut: a_verifier
   texte: la mer disputée divise l'ASEAN entre riverains et pays continentaux
 - de: birmanie
+  fondement: causalite_sociale
   vers: asean
   effet: '-'
   delai: années
@@ -153,6 +155,7 @@ relations:
   statut: a_verifier
   texte: la guerre en Birmanie paralyse le consensus de l'ASEAN
 - de: economie_region
+  fondement: causalite_sociale
   vers: mer_chine_meridionale
   effet: '-'
   delai: années

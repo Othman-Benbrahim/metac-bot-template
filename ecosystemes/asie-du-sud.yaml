@@ -170,6 +170,7 @@ compartiments:
   - *id001
 relations:
 - de: inde_pakistan
+  fondement: evenement
   vers: indus
   effet: '-'
   delai: semaines
@@ -179,6 +180,7 @@ relations:
   texte: une crise militaire fragilise le partage des eaux (suspension partielle du traité en 2025 ; le compartiment cible
     lit ici la coopération sur l'eau)
 - de: afghanistan_pakistan
+  fondement: causalite_sociale
   vers: pakistan_interieur
   effet: '-'
   delai: mois
@@ -187,6 +189,7 @@ relations:
   statut: a_verifier
   texte: les attentats et les combats à la frontière pèsent sur la sécurité et l'économie du Pakistan
 - de: inde_pakistan
+  fondement: causalite_sociale
   vers: pakistan_interieur
   effet: +
   delai: semaines
@@ -195,6 +198,7 @@ relations:
   statut: a_verifier
   texte: une crise avec l'Inde renforce la place de l'armée au Pakistan (effet de ralliement)
 - de: puissances
+  fondement: causalite_sociale
   vers: inde_pakistan
   effet: '-'
   delai: jours
@@ -204,6 +208,7 @@ relations:
   texte: la pression extérieure, surtout américaine, aide à arrêter les échanges de tirs (le compartiment cible lit ici
     l'intensité de la crise)
 - de: inde_pakistan
+  fondement: causalite_sociale
   vers: inde_puissance
   effet: '-'
   delai: mois

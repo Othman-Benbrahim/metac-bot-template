@@ -474,6 +474,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: capacites
+  fondement: causalite_sociale
   vers: front
   effet: +
   delai: mois
@@ -485,6 +486,7 @@ relations:
   statut: a_verifier
   texte: les capacités décident de ce que le front peut faire ; une pénurie fait basculer
 - de: soutiens
+  fondement: lien
   vers: capacites
   effet: +
   delai: mois
@@ -496,6 +498,7 @@ relations:
   statut: a_verifier
   texte: l'aide extérieure alimente les capacités ukrainiennes (et, en face, les livraisons de munitions et de drones à la Russie)
 - de: sanctions
+  fondement: causalite_sociale
   vers: economie_russe
   effet: '-'
   delai: mois à années
@@ -507,6 +510,7 @@ relations:
   statut: a_verifier
   texte: les sanctions érodent l'économie russe lentement ; chaque paquet ajoute moins
 - de: economie_russe
+  fondement: lien
   vers: capacites
   effet: +
   delai: mois
@@ -527,6 +531,7 @@ relations:
   statut: a_verifier
   texte: les frappes sur l'énergie pèsent surtout en hiver
 - de: front
+  fondement: causalite_sociale
   vers: negociations
   effet: ±
   delai: semaines
@@ -535,6 +540,7 @@ relations:
   statut: a_verifier
   texte: chaque camp négocie selon ce qu'il croit pouvoir encore gagner sur le terrain
 - de: negociations
+  fondement: causalite_sociale
   vers: front
   effet: '-'
   retour: ±
@@ -545,6 +551,7 @@ relations:
   statut: a_verifier
   texte: une négociation sérieuse peut geler des secteurs ; style de la relation à mesurer (paire RUS–UKR au banc de la réciprocité)
 - de: opinions
+  fondement: causalite_sociale
   vers: soutiens
   effet: ±
   delai: mois
@@ -556,6 +563,7 @@ relations:
   statut: a_verifier
   texte: la lassitude des opinions use le soutien ; une fois installée, elle ne recule pas facilement
 - de: soutiens
+  fondement: lien
   vers: sanctions
   effet: +
   delai: semaines à mois
@@ -564,6 +572,7 @@ relations:
   statut: a_verifier
   texte: les soutiens décident des sanctions
 - de: mer_noire
+  fondement: lien
   vers: economie_ukraine
   effet: +
   delai: semaines
@@ -572,6 +581,7 @@ relations:
   statut: a_verifier
   texte: le corridor maritime fait vivre les exportations agricoles
 - de: front
+  fondement: evenement
   vers: mer_noire
   effet: '-'
   delai: jours
@@ -593,6 +603,7 @@ relations:
   statut: a_verifier
   texte: les soutiens pèsent sur les conditions et le calendrier des négociations
 - de: relief_fleuves
+  fondement: mecanisme_physique
   vers: front
   effet: ±
   forme: contrainte
@@ -602,6 +613,7 @@ relations:
   statut: a_verifier
   texte: les fleuves et les marais figent des lignes ; la plaine ouverte laisse les forces exposées
 - de: hiver_saisons
+  fondement: mecanisme_physique
   vers: front
   effet: '-'
   delai: saisons
@@ -613,6 +625,7 @@ relations:
   statut: a_verifier
   texte: la boue du dégel arrête les offensives ; le gel les rouvre
 - de: hiver_saisons
+  fondement: mecanisme_physique
   vers: economie_ukraine
   effet: '-'
   delai: jours
@@ -624,6 +637,7 @@ relations:
   statut: a_verifier
   texte: le froid multiplie l'effet des frappes sur le réseau électrique
 - de: front
+  fondement: mecanisme_physique
   vers: sols_agriculture
   effet: '-'
   delai: jours
@@ -635,6 +649,7 @@ relations:
   statut: a_verifier
   texte: mines et pollution retirent des terres à la culture ; elles ne reviennent pas au rythme où elles sont perdues
 - de: sols_agriculture
+  fondement: lien
   vers: mer_noire
   effet: +
   delai: saisons
@@ -643,6 +658,7 @@ relations:
   statut: a_verifier
   texte: les récoltes remplissent le corridor d'exportation
 - de: front
+  fondement: mecanisme_physique
   vers: atomique
   effet: '-'
   delai: heures
@@ -654,6 +670,7 @@ relations:
   statut: a_verifier
   texte: des combats près d'une centrale menacent son alimentation et sa sûreté
 - de: atomique
+  fondement: lien
   vers: negociations
   effet: ±
   delai: semaines
@@ -662,6 +679,7 @@ relations:
   statut: a_verifier
   texte: la sûreté nucléaire est un des rares sujets discutés par les deux camps, sous l'égide de l'AIEA
 - de: front
+  fondement: causalite_sociale
   vers: soutiens
   effet: ±
   retour: ±

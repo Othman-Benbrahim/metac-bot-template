@@ -138,6 +138,7 @@ compartiments:
   traces: *id001
 relations:
 - de: patrimoine_en_guerre
+  fondement: causalite_sociale
   vers: patrimoine
   effet: '-'
   delai: jours
@@ -146,6 +147,7 @@ relations:
   statut: a_verifier
   texte: les combats détruisent le patrimoine ; l'UNESCO réagit par l'inscription en péril
 - de: patrimoine
+  fondement: causalite_sociale
   vers: tourisme
   effet: +
   delai: années
@@ -154,6 +156,7 @@ relations:
   statut: a_verifier
   texte: une inscription au patrimoine mondial attire des visiteurs
 - de: usages_memoire
+  fondement: causalite_sociale
   vers: histoire_memoire
   effet: +
   delai: années
@@ -163,6 +166,7 @@ relations:
   texte: les pouvoirs mobilisent l'histoire au service d'un récit (le compartiment cible lit ici la place de la mémoire
     dans le débat public)
 - de: restitutions
+  fondement: causalite_sociale
   vers: usages_memoire
   effet: '-'
   delai: années

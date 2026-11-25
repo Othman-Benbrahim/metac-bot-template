@@ -174,6 +174,7 @@ compartiments:
   - *id001
 relations:
 - de: marches_publics
+  fondement: causalite_sociale
   vers: grande_corruption
   effet: +
   delai: années
@@ -182,6 +183,7 @@ relations:
   statut: a_verifier
   texte: les gros contrats publics et les secteurs à rente offrent les occasions de commissions (cas Midas, énergie)
 - de: blanchiment
+  fondement: causalite_sociale
   vers: grande_corruption
   effet: +
   delai: années
@@ -190,6 +192,7 @@ relations:
   statut: a_verifier
   texte: la possibilité de blanchir les fonds rend la grande corruption profitable
 - de: lutte
+  fondement: causalite_sociale
   vers: grande_corruption
   effet: '-'
   delai: mois à années
@@ -198,6 +201,7 @@ relations:
   statut: a_verifier
   texte: des agences indépendantes et des lois appliquées font reculer la grande corruption
 - de: presse_alerte
+  fondement: causalite_sociale
   vers: lutte
   effet: +
   delai: semaines
@@ -206,6 +210,7 @@ relations:
   statut: a_verifier
   texte: les révélations déclenchent des enquêtes et des poursuites
 - de: grande_corruption
+  fondement: causalite_sociale
   vers: confiance
   effet: '-'
   delai: semaines
@@ -214,6 +219,7 @@ relations:
   statut: a_verifier
   texte: un scandale révélé fait chuter la confiance et peut déclencher démissions et manifestations
 - de: grande_corruption
+  fondement: definition
   vers: perception
   effet: '-'
   delai: années
@@ -222,6 +228,7 @@ relations:
   statut: a_verifier
   texte: la corruption perçue fait baisser le score de l'indice, avec retard (le compartiment cible lit ici le score)
 - de: corruption_quotidienne
+  fondement: causalite_sociale
   vers: confiance
   effet: '-'
   delai: années

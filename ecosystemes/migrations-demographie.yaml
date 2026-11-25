@@ -265,6 +265,7 @@ cycles:
   statut: mecanisme
 relations:
 - de: natalite_vieillissement
+  fondement: causalite_sociale
   vers: economie
   effet: '-'
   delai: décennies
@@ -273,6 +274,7 @@ relations:
   statut: a_verifier
   texte: une population qui vieillit manque de bras et pèse sur les retraites
 - de: economie
+  fondement: causalite_sociale
   vers: migrations
   effet: +
   delai: années
@@ -284,6 +286,7 @@ relations:
   statut: a_verifier
   texte: on part quand l'écart de revenu dépasse le coût du départ
 - de: climat_milieu
+  fondement: causalite_sociale
   vers: migrations
   effet: +
   delai: saisons à décennies
@@ -295,6 +298,7 @@ relations:
   statut: a_verifier
   texte: un milieu qui ne nourrit plus pousse au départ au-delà d'un seuil de pertes répétées (passage du climat à la société)
 - de: migrations
+  fondement: causalite_sociale
   vers: diasporas
   effet: +
   retour: +
@@ -305,6 +309,7 @@ relations:
   statut: a_verifier
   texte: les départs créent des diasporas, qui attirent et financent les départs suivants (réseaux)
 - de: diasporas
+  fondement: lien
   vers: economie
   effet: +
   delai: mois
@@ -313,6 +318,7 @@ relations:
   statut: a_verifier
   texte: les envois de fonds soutiennent les économies de départ
 - de: migrations
+  fondement: causalite_sociale
   vers: psychologie
   effet: ±
   delai: mois
@@ -336,6 +342,7 @@ relations:
   statut: a_verifier
   texte: la peur collective ferme les frontières au-delà d'un seuil d'opinion (passage du psychologique au statut)
 - de: politiques_migratoires
+  fondement: causalite_sociale
   vers: migrations
   effet: '-'
   retour: '-'
@@ -345,6 +352,7 @@ relations:
   statut: a_verifier
   texte: fermer une route en ouvre une autre, plus dangereuse ; les flux et les contrôles se répondent
 - de: convention
+  fondement: definition
   vers: migrations
   effet: ±
   delai: mois
@@ -353,6 +361,7 @@ relations:
   statut: a_verifier
   texte: 'la même personne est réfugiée, migrante ou clandestine selon la définition : le statut change ce qui est compté et protégé'
 - de: convention
+  fondement: lien
   vers: politiques_migratoires
   effet: ±
   delai: années
@@ -361,6 +370,7 @@ relations:
   statut: a_verifier
   texte: au sein du droit, les conventions internationales bornent les politiques nationales (relation entre convention et statut)
 - de: mortalite
+  fondement: causalite_sociale
   vers: natalite_vieillissement
   effet: ±
   delai: décennies
@@ -378,6 +388,7 @@ relations:
   statut: a_verifier
   texte: la ville fait baisser la fécondité
 - de: migrations
+  fondement: causalite_sociale
   vers: urbanisation
   effet: +
   delai: années
@@ -386,6 +397,7 @@ relations:
   statut: a_verifier
   texte: l'exode rural et les arrivées gonflent les villes et leurs quartiers précaires
 - de: climat_milieu
+  fondement: mecanisme_physique
   vers: mortalite
   effet: +
   delai: jours à saisons

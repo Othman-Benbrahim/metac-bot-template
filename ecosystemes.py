@@ -198,6 +198,8 @@ TYPES_PONT = ("meme", "influence", "voisinage")
 # Champ facultatif. Premier échantillon de 60 relations classé par Claude, validé par l'auteur le 2026-11-25 à 19 h 14
 # (« ça se vérifiera sur le terrain »). Remarque de l'auteur : un fondement « evenement » est CONJONCTUREL ; il peut
 # changer selon la phase des cycles (une trêve, une rencontre, une frappe valent pour un moment, pas pour la structure).
+# 2026-11-25, 19 h 16 (« on y va ») : étendu à toutes les relations (1 015) ; les 955 hors échantillon sont classées par
+# Claude sans relecture une à une (liste : lecteur-local/listes/fondements-proposes.txt, statut « ? »).
 FONDEMENTS = ("lien", "mecanisme_physique", "causalite_sociale", "evenement", "comparaison", "definition")
 
 

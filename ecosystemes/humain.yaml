@@ -566,6 +566,7 @@ compartiments:
     statut: "a_brancher"
 relations:
 - de: "besoins_fondamentaux"
+  fondement: causalite_sociale
   vers: "stress_chronique"
   effet: "+"
   delai: "jours à mois"
@@ -574,6 +575,7 @@ relations:
   statut: "a_verifier"
   texte: "la privation durable des besoins de survie (faim, insécurité) est la première source de stress chronique (le compartiment source lit ici la privation)"
 - de: "besoins_fondamentaux"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "jours à semaines"
@@ -582,6 +584,7 @@ relations:
   statut: "a_verifier"
   texte: "quand la survie est menacée (prix du pain, pénurie d'eau), le passage à l'acte collectif devient plus probable (émeutes de la faim)"
 - de: "besoins_fondamentaux"
+  fondement: causalite_sociale
   vers: "aspiration"
   effet: "-"
   delai: "mois"
@@ -591,6 +594,7 @@ relations:
   texte: "on survit avant de vivre : tant que la survie n'est pas assurée, les aspirations (estime, réalisation) passent au second plan"
 # --- propres au corps et au psychologique ---
 - de: "indices"
+  fondement: mecanisme_physique
   vers: "instant"
   effet: "+"
   delai: "seconde"
@@ -600,6 +604,7 @@ relations:
   source: "Behave, ch. 2-3"
   texte: "un indice du milieu déclenche l'alerte avant la conscience"
 - de: "instant"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "minutes"
@@ -611,6 +616,7 @@ relations:
   texte: "l'alerte ne devient acte collectif qu'au-delà d'un seuil ; le seuil est ce que les autres compartiments abaissent"
   parametres: {seuil: 2.0}
 - de: "hormones"
+  fondement: mecanisme_physique
   vers: "instant"
   effet: "0"
   module: "instant>passage_acte"
@@ -621,6 +627,7 @@ relations:
   texte: "une hormone ne cause pas l'acte : elle abaisse le seuil auquel l'alerte le déclenche"
   parametres: {gain: 0.5}
 - de: "indices"
+  fondement: mecanisme_physique
   vers: "instant"
   effet: "0"
   module: "instant>passage_acte"
@@ -631,6 +638,7 @@ relations:
   texte: "la chaleur prolongée abaisse aussi le seuil du passage à l'acte (modulation, en plus du déclenchement)"
   parametres: {gain: 0.3}
 - de: "stress_chronique"
+  fondement: mecanisme_physique
   vers: "hormones"
   effet: "+"
   delai: "semaines"
@@ -640,6 +648,7 @@ relations:
   source: "Behave, ch. 4-5"
   texte: "la précarité qui dure entretient l'état de stress ; au-delà, l'usure plutôt que la mobilisation"
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "mois"
@@ -650,6 +659,7 @@ relations:
   texte: "la rareté et l'insécurité durcissent la frontière de groupe et cherchent un coupable"
   parametres: {seuil: 1.5}
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "attente"
   effet: "-"
   delai: "semaines"
@@ -660,6 +670,7 @@ relations:
   texte: "la précarité assombrit l'attente"
   parametres: {lambda_pertes: 2.0, sens_perte: 1}
 - de: "attente"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "-"
   delai: "mois"
@@ -670,6 +681,7 @@ relations:
   texte: "une attente qui s'effondre mobilise (rue, vote sanction) plus qu'une misère attendue"
   parametres: {seuil: 1.5, lambda_pertes: 2.0, sens_perte: -1}
 - de: "attente"
+  fondement: causalite_sociale
   vers: "hierarchie"
   effet: "-"
   delai: "mois"
@@ -679,6 +691,7 @@ relations:
   texte: "une attente déçue retire du crédit à ceux qui tiennent le rang"
 # --- âges de la vie ---
 - de: "jeunesse"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "années"
@@ -688,6 +701,7 @@ relations:
   source: "Behave, ch. 6"
   texte: "une population jeune prend plus de risques collectifs, surtout entre pairs"
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "enfance"
   effet: "+"
   delai: "années"
@@ -697,6 +711,7 @@ relations:
   source: "Behave, ch. 7"
   texte: "la violence d'aujourd'hui est l'adversité précoce de la génération qui la subit"
 - de: "enfance"
+  fondement: causalite_sociale
   vers: "stress_chronique"
   effet: "+"
   delai: "décennie"
@@ -706,6 +721,7 @@ relations:
   source: "Behave, ch. 7"
   texte: "une génération marquée tôt réagit plus fort au stress une fois adulte : la boucle se ferme sur des décennies"
 - de: "genes_milieu"
+  fondement: mecanisme_physique
   vers: "hormones"
   effet: "±"
   delai: "permanent"
@@ -714,6 +730,7 @@ relations:
   source: "Behave, ch. 8"
   texte: "les gènes règlent la sensibilité, dans un sens ou l'autre selon le milieu"
 - de: "enfance"
+  fondement: mecanisme_physique
   vers: "genes_milieu"
   effet: "±"
   delai: "décennie"
@@ -723,6 +740,7 @@ relations:
   texte: "l'adversité précoce change l'expression des gènes, parfois sur plusieurs générations"
 # --- culture, évolution, groupe ---
 - de: "culture_ecologie"
+  fondement: causalite_sociale
   vers: "morale"
   effet: "+"
   delai: "décennie"
@@ -731,6 +749,7 @@ relations:
   source: "Behave, ch. 9"
   texte: "l'écologie d'origine façonne ce qui paraît moral"
 - de: "culture_ecologie"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "±"
   delai: "permanent"
@@ -740,6 +759,7 @@ relations:
   source: "Behave, ch. 9"
   texte: "dans une culture de l'honneur, un affront public déclenche plus facilement la riposte"
 - de: "reciprocite"
+  fondement: causalite_sociale
   vers: "treve"
   effet: "+"
   delai: "semaines"
@@ -749,6 +769,7 @@ relations:
   source: "Behave, ch. 10 et 17 ; Axelrod"
   texte: "des adversaires qui se font face longtemps et peuvent se rendre la pareille inventent la retenue"
 - de: "treve"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "-"
   delai: "mois"
@@ -757,6 +778,7 @@ relations:
   source: "Behave, ch. 11 et 17 (hypothèse du contact)"
   texte: "le contact prolongé et un but commun estompent la frontière"
 - de: "treve"
+  fondement: causalite_sociale
   vers: "passage_acte"
   series: ["gestes:RUS:UKR", "hostilites:UA"]
   effet: "-"
@@ -766,6 +788,7 @@ relations:
   source: "Behave, ch. 17"
   texte: "une trêve tenue fait baisser les hostilités"
 - de: "nous_eux"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "semaines"
@@ -776,6 +799,7 @@ relations:
   source: "Behave, ch. 11"
   texte: "propre au niveau psychologique : la frontière s'entretient elle-même (polarisation), jusqu'à saturation"
 - de: "symboles"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "jours"
@@ -786,6 +810,7 @@ relations:
   texte: "une métaphore de dégoût appliquée à un groupe ouvre la voie à la déshumanisation"
   parametres: {seuil: 2.0}
 - de: "nous_eux"
+  fondement: causalite_sociale
   vers: "empathie"
   effet: "-"
   delai: "jours"
@@ -794,6 +819,7 @@ relations:
   source: "Behave, ch. 11 et 14"
   texte: "plus la frontière est dure, moins la douleur des autres compte"
 - de: "empathie"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "-"
   delai: "jours"
@@ -802,6 +828,7 @@ relations:
   source: "Behave, ch. 14"
   texte: "l'empathie retient, mais faiblement : ressentir n'est pas agir"
 - de: "nous_eux"
+  fondement: causalite_sociale
   vers: "passage_acte"
   series: ["telegram:tout", "hostilites:UA"]
   effet: "+"
@@ -813,6 +840,7 @@ relations:
   texte: "une frontière durcie rend la violence collective acceptable"
   parametres: {seuil: 2.0}
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "0"
   module: "nous_eux>passage_acte"
@@ -823,6 +851,7 @@ relations:
   texte: "la précarité abaisse le seuil auquel la frontière de groupe devient violence"
   parametres: {gain: 0.4}
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "nous_eux"
   series: ["hostilites:UA", "telegram:tout"]
   effet: "+"
@@ -844,6 +873,7 @@ relations:
   source: "Behave, ch. 4 et 12"
   texte: "une hiérarchie qui vacille stresse ceux d'en haut ; stable, elle stresse ceux d'en bas"
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "±"
   delai: "jours"
@@ -852,6 +882,7 @@ relations:
   source: "Behave, ch. 12"
   texte: "l'autorité proche et légitime obtient l'obéissance, pour la violence comme pour la retenue ; un seul dissident visible la fragilise"
 - de: "morale"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "±"
   delai: "mois"
@@ -860,6 +891,7 @@ relations:
   source: "Behave, ch. 13"
   texte: "la morale intuitive justifie après coup autant qu'elle retient"
 - de: "symboles"
+  fondement: causalite_sociale
   vers: "treve"
   effet: "±"
   delai: "semaines"
@@ -870,6 +902,7 @@ relations:
   texte: "sur une valeur sacrée, une offre matérielle durcit le refus ; un geste symbolique peut ouvrir la trêve"
 # --- Schelling, Micromotives and Macrobehavior (0.10.326) ---
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "jours"
@@ -881,6 +914,7 @@ relations:
   texte: "propre au niveau social : chacun agit quand assez d'autres agissent ; les seuils individuels sont distribués, d'où une masse critique et un point de bascule"
   parametres: {mu: 1.5, sigma: 0.5}
 - de: "nous_eux"
+  fondement: causalite_sociale
   vers: "tri"
   effet: "+"
   delai: "mois"
@@ -891,6 +925,7 @@ relations:
   texte: "une préférence modérée pour les siens suffit, par départs en chaîne, à séparer les groupes"
   parametres: {mu: 1.0, sigma: 0.5}
 - de: "tri"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "années"
@@ -899,6 +934,7 @@ relations:
   source: "Schelling, ch. 4 ; Behave, ch. 11 (contact)"
   texte: "des groupes séparés n'ont plus de contact : la frontière durcit, et la séparation s'entretient"
 - de: "tri"
+  fondement: causalite_sociale
   vers: "treve"
   effet: "-"
   delai: "années"
@@ -907,6 +943,7 @@ relations:
   source: "Schelling, ch. 4"
   texte: "sans lieux communs, moins d'occasions de trêve"
 - de: "conventions"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "-"
   delai: "permanent"
@@ -915,6 +952,7 @@ relations:
   source: "Schelling, ch. 3 et 8"
   texte: "une convention ou un tabou tenus retiennent l'acte parce que chacun s'attend à ce que les autres les respectent"
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "conventions"
   effet: "-"
   delai: "semaines"
@@ -924,6 +962,7 @@ relations:
   source: "Schelling, ch. 8"
   texte: "chaque violation use la norme ; une fois rompue, elle ne revient pas à son niveau d'avant"
 - de: "symboles"
+  fondement: causalite_sociale
   vers: "conventions"
   effet: "+"
   delai: "mois"
@@ -932,6 +971,7 @@ relations:
   source: "Schelling, ch. 3 (point focal)"
   texte: "un symbole partagé sert de point focal où les attentes se rejoignent"
 - de: "reciprocite"
+  fondement: causalite_sociale
   vers: "dilemme"
   effet: "+"
   delai: "mois"
@@ -941,6 +981,7 @@ relations:
   source: "Schelling, ch. 7 ; Axelrod"
   texte: "la répétition et la réputation font coopérer dans un dilemme à plusieurs"
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "dilemme"
   effet: "±"
   delai: "mois"
@@ -949,6 +990,7 @@ relations:
   source: "Schelling, ch. 7"
   texte: "une autorité qui fait respecter la règle rend la coopération rationnelle ; contestée, elle ne la garantit plus"
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "dilemme"
   effet: "-"
   delai: "mois"
@@ -959,6 +1001,7 @@ relations:
   texte: "la rareté pousse chacun à prendre avant les autres"
   parametres: {seuil: 1.5}
 - de: "dilemme"
+  fondement: causalite_sociale
   vers: "treve"
   effet: "+"
   delai: "mois"
@@ -968,6 +1011,7 @@ relations:
   texte: "une coopération qui tient dans un domaine rend la trêve plus probable dans les autres"
 # --- Kuran, Private Truths, Public Lies (0.10.327) ---
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "falsification"
   effet: "±"
   delai: "semaines"
@@ -976,6 +1020,7 @@ relations:
   source: "Kuran, ch. 5"
   texte: "une autorité qui punit la dissidence élargit l'écart ; une autorité contestée le réduit"
 - de: "conventions"
+  fondement: causalite_sociale
   vers: "falsification"
   effet: "+"
   delai: "mois"
@@ -984,6 +1029,7 @@ relations:
   source: "Kuran, ch. 2 et 5"
   texte: "une norme sociale dominante fait dire ce qui est attendu (sanction sociale, pas seulement politique)"
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "opinion_privee"
   effet: "+"
   delai: "mois"
@@ -1004,6 +1050,7 @@ relations:
   texte: "la dissidence privée ne s'exprime qu'au-delà du seuil politique de chacun ; seuils distribués et cachés : cascade possible à tout moment"
   parametres: {mu: 2.0, sigma: 0.75}
 - de: "falsification"
+  fondement: causalite_sociale
   vers: "opinion_publique"
   effet: "-"
   delai: "jours"
@@ -1012,6 +1059,7 @@ relations:
   source: "Kuran, ch. 3"
   texte: "plus l'écart est grand, moins l'opinion publique dit l'opinion privée"
 - de: "opinion_publique"
+  fondement: causalite_sociale
   vers: "opinion_publique"
   effet: "+"
   delai: "jours"
@@ -1022,6 +1070,7 @@ relations:
   texte: "propre au niveau social : chaque voix exprimée abaisse le coût de la suivante (effet d'entraînement)"
   parametres: {mu: 1.5, sigma: 0.5}
 - de: "opinion_publique"
+  fondement: causalite_sociale
   vers: "falsification"
   effet: "-"
   delai: "jours"
@@ -1030,6 +1079,7 @@ relations:
   source: "Kuran, ch. 4 et 16"
   texte: "quand beaucoup parlent, dire vrai ne coûte plus : l'écart se referme d'un coup, d'où la surprise des révolutions"
 - de: "falsification"
+  fondement: causalite_sociale
   vers: "opinion_privee"
   effet: "-"
   delai: "décennie"
@@ -1039,6 +1089,7 @@ relations:
   source: "Kuran, ch. 10-11"
   texte: "falsification de la connaissance : un discours public sans contradiction façonne, à la longue, les croyances privées des générations suivantes (conservatisme collectif)"
 - de: "opinion_publique"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "jours"
@@ -1048,6 +1099,7 @@ relations:
   texte: "une opinion publique qui bascule descend dans la rue"
 # --- Kahneman, Système 1 / Système 2 (0.10.328) ---
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1056,6 +1108,7 @@ relations:
   source: "Kahneman, ch. 12-13"
   texte: "un acte collectif spectaculaire devient l'exemple qui revient à l'esprit"
 - de: "disponibilite"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1066,6 +1119,7 @@ relations:
   source: "Kahneman, ch. 13 (Kuran et Sunstein)"
   texte: "propre au niveau psychologique : cascade de disponibilité, jusqu'à saturation de l'attention"
 - de: "disponibilite"
+  fondement: causalite_sociale
   vers: "risque_percu"
   effet: "+"
   delai: "jours"
@@ -1076,6 +1130,7 @@ relations:
   texte: "ce qui vient facilement à l'esprit paraît probable ; un événement rare et vif est surpondéré"
   verification: "série à revoir (2026-11-24) : ouvert:attention_crise → fred:T10YIE donne r = -0.2433 (n = 568), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: "risque_percu"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "semaines"
@@ -1084,6 +1139,7 @@ relations:
   source: "Kahneman, ch. 13 ; Behave, ch. 11"
   texte: "la peur cherche un responsable dans l'autre groupe"
 - de: "risque_percu"
+  fondement: causalite_sociale
   vers: "attente"
   effet: "-"
   delai: "jours"
@@ -1092,6 +1148,7 @@ relations:
   source: "Kahneman, ch. 26-28"
   texte: "un risque perçu plus grand assombrit l'attente"
 - de: "symboles"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1101,6 +1158,7 @@ relations:
   texte: "une date, un mot, une image ramènent les exemples associés"
 # --- Simon, rationalité limitée (article de C. Parthenay ; 0.10.329) ---
 - de: "attente"
+  fondement: causalite_sociale
   vers: "aspiration"
   effet: "+"
   delai: "mois"
@@ -1109,6 +1167,7 @@ relations:
   source: "Simon 1955, d'après Parthenay"
   texte: "l'aspiration suit l'expérience, avec retard : elle monte après les succès, baisse après les échecs"
 - de: "aspiration"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "mois"
@@ -1117,6 +1176,7 @@ relations:
   source: "Simon ; March et Simon (recherche déclenchée par l'insatisfaction)"
   texte: "à attente égale, une aspiration plus haute fait plus d'insatisfaits : passage_acte suit l'écart aspiration − attente"
 - de: "aspiration"
+  fondement: causalite_sociale
   vers: "opinion_privee"
   effet: "+"
   delai: "mois"
@@ -1125,6 +1185,7 @@ relations:
   source: "Simon"
   texte: "le mécontentement privé est relatif à ce qu'on attendait"
 - de: "disponibilite"
+  fondement: causalite_sociale
   vers: "agenda"
   effet: "+"
   delai: "jours"
@@ -1135,6 +1196,7 @@ relations:
   texte: "un problème n'entre à l'agenda des décideurs qu'au-delà d'un seuil d'attention"
   parametres: {seuil: 2.0}
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "agenda"
   effet: "+"
   delai: "jours"
@@ -1143,6 +1205,7 @@ relations:
   source: "Simon"
   texte: "la rue force l'agenda"
 - de: "agenda"
+  fondement: causalite_sociale
   vers: "agenda"
   effet: "-"
   delai: "semaines"
@@ -1152,6 +1215,7 @@ relations:
   texte: "propre au niveau statut : un problème qui occupe l'agenda en chasse d'autres ; l'attention retombe vers les routines"
 # --- Ajzen, Attitudes, Personality and Behavior (2025 ; théorie du comportement planifié ; 0.10.330) ---
 - de: "opinion_privee"
+  fondement: causalite_sociale
   vers: "attitude"
   effet: "+"
   delai: "semaines"
@@ -1160,6 +1224,7 @@ relations:
   source: "Ajzen, ch. 4 (compatibilité)"
   texte: "une opinion sur une cause ne devient attitude envers un acte précis que par les conséquences attendues de cet acte"
 - de: "opinion_publique"
+  fondement: causalite_sociale
   vers: "norme_percue"
   effet: "+"
   delai: "jours"
@@ -1168,6 +1233,7 @@ relations:
   source: "Ajzen, ch. 6"
   texte: "ce qui se dit et se fait autour de soi fixe la norme perçue"
 - de: "conventions"
+  fondement: causalite_sociale
   vers: "norme_percue"
   effet: "+"
   delai: "mois"
@@ -1176,6 +1242,7 @@ relations:
   source: "Ajzen, ch. 6"
   texte: "les conventions établies sont la norme par défaut"
 - de: "falsification"
+  fondement: causalite_sociale
   vers: "norme_percue"
   effet: "+"
   delai: "semaines"
@@ -1184,6 +1251,7 @@ relations:
   source: "Ajzen, ch. 6 ; Kuran"
   texte: "quand chacun cache ce qu'il pense, chacun surestime l'adhésion des autres à la norme officielle (ignorance collective)"
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "controle_percu"
   effet: "±"
   delai: "jours"
@@ -1192,6 +1260,7 @@ relations:
   source: "Ajzen, ch. 5"
   texte: "une autorité qui réprime réduit le contrôle perçu ; une autorité qui autorise ou faiblit l'accroît"
 - de: "stress_chronique"
+  fondement: causalite_sociale
   vers: "controle_percu"
   effet: "-"
   delai: "mois"
@@ -1200,6 +1269,7 @@ relations:
   source: "Ajzen, ch. 5"
   texte: "la précarité retire temps et moyens"
 - de: "attitude"
+  fondement: definition
   vers: "intention"
   effet: "+"
   delai: "jours"
@@ -1209,6 +1279,7 @@ relations:
   texte: "premier pilier de l'intention"
   parametres: {poids: 0.6}
 - de: "norme_percue"
+  fondement: definition
   vers: "intention"
   effet: "±"
   delai: "jours"
@@ -1218,6 +1289,7 @@ relations:
   texte: "deuxième pilier : pousse vers l'acte ou en détourne selon ce que la norme approuve"
   parametres: {poids: 0.4}
 - de: "controle_percu"
+  fondement: definition
   vers: "intention"
   effet: "+"
   delai: "jours"
@@ -1227,6 +1299,7 @@ relations:
   texte: "troisième pilier : on n'a l'intention que de ce qu'on se croit capable de faire"
   parametres: {poids: 0.5}
 - de: "intention"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "jours"
@@ -1248,6 +1321,7 @@ relations:
   texte: "le contrôle perçu abaisse le seuil du passage de l'intention à l'acte (il le modère, en plus de nourrir l'intention)"
   parametres: {gain: 0.4}
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "intention"
   effet: "+"
   delai: "semaines"
@@ -1257,6 +1331,7 @@ relations:
   texte: "l'acte répété dans un contexte stable devient habitude et nourrit l'intention suivante"
 # --- Haidt, The Righteous Mind (éd. roumaine Mintea moralistă, 2015 ; ch. 12 et conclusion ; 0.10.331) ---
 - de: "tri"
+  fondement: causalite_sociale
   vers: "polarisation"
   effet: "+"
   delai: "années"
@@ -1265,6 +1340,7 @@ relations:
   source: "Haidt, ch. 12"
   texte: "le tri en enclaves de mode de vie supprime les voisins de l'autre camp et durcit l'écart"
 - de: "morale"
+  fondement: causalite_sociale
   vers: "polarisation"
   effet: "+"
   delai: "années"
@@ -1273,6 +1349,7 @@ relations:
   source: "Haidt, ch. 12 et conclusion"
   texte: "chaque camp tourne autour de valeurs sacrées différentes et justifie après coup ; chacun voit l'autre aveugle"
 - de: "polarisation"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "mois"
@@ -1281,6 +1358,7 @@ relations:
   source: "Haidt, ch. 12"
   texte: "l'adversaire politique devient un ennemi permanent plutôt qu'un collègue"
 - de: "nous_eux"
+  fondement: causalite_sociale
   vers: "polarisation"
   effet: "+"
   delai: "années"
@@ -1290,6 +1368,7 @@ relations:
   source: "Haidt, ch. 12"
   texte: "une frontière de groupe dure se fixe en camps idéologiques"
 - de: "treve"
+  fondement: causalite_sociale
   vers: "polarisation"
   effet: "-"
   delai: "années"
@@ -1298,6 +1377,7 @@ relations:
   source: "Haidt, ch. 12"
   texte: "des liens personnels entre camps (amitiés, familles qui se fréquentent) changent les intuitions avant les idées : remède indirect"
 - de: "polarisation"
+  fondement: causalite_sociale
   vers: "agenda"
   effet: "-"
   delai: "mois"
@@ -1306,6 +1386,7 @@ relations:
   source: "Haidt, ch. 12"
   texte: "blocage : moins de solutions communes, l'agenda se remplit de combats"
 - de: "polarisation"
+  fondement: causalite_sociale
   vers: "hierarchie"
   effet: "+"
   delai: "mois"
@@ -1315,6 +1396,7 @@ relations:
   texte: "la contestation du rang devient permanente"
 # --- Croyances, réseaux discrets, complots (décision d'auteur du 2026-11-19, 12 h 00 ; réseaux discrets EN OMBRE) ---
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "mois"
@@ -1323,6 +1405,7 @@ relations:
   source: "Haidt, conclusion ; Behave, ch. 9"
   texte: "une croyance partagée soude le nous et trace la frontière avec ceux qui ne la partagent pas"
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "morale"
   effet: "+"
   delai: "décennie"
@@ -1331,6 +1414,7 @@ relations:
   source: "Behave, ch. 9 ; Haidt"
   texte: "la religion porte et transmet les fondements moraux d'un groupe"
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "conventions"
   effet: "+"
   delai: "décennie"
@@ -1339,6 +1423,7 @@ relations:
   source: "Schelling, ch. 3 ; Haidt"
   texte: "les rites fixent des conventions et des points focaux"
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "symboles"
   effet: "+"
   delai: "jours"
@@ -1347,6 +1432,7 @@ relations:
   source: "Behave, ch. 15"
   texte: "lieux saints, dates sacrées, figures : les symboles les plus chargés sont religieux"
 - de: "reseaux_discrets"
+  fondement: causalite_sociale
   vers: "hierarchie"
   effet: "±"
   delai: "années"
@@ -1355,6 +1441,7 @@ relations:
   source: "hypothèse de l'auteur (2026-11-19), à étudier"
   texte: "cooptation et capital social : un réseau discret peut stabiliser ou contester le rang de ceux qui en sont ; mécanisme supposé, non testé"
 - de: "reseaux_discrets"
+  fondement: causalite_sociale
   vers: "agenda"
   effet: "±"
   delai: "mois"
@@ -1363,6 +1450,7 @@ relations:
   source: "hypothèse de l'auteur (2026-11-19), à étudier"
   texte: "accès aux décideurs : un sujet porté par un réseau discret entre plus vite à l'agenda ; mécanisme documenté dans sa FORME (questions à l'étude des loges, consultations sur la bioéthique au début des années 2000), pas dans son EFFET : en ombre tant qu'il n'est pas mesuré"
 - de: "reseaux_discrets"
+  fondement: causalite_sociale
   vers: "conventions"
   effet: "+"
   delai: "décennie"
@@ -1371,6 +1459,7 @@ relations:
   source: "hypothèse de l'auteur (2026-11-19), à étudier"
   texte: "défense de normes de long terme (laïcité en France) par des institutions qui s'en réclament publiquement ; mécanisme supposé, non testé"
 - de: "reseaux_discrets"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "années"
@@ -1379,6 +1468,7 @@ relations:
   source: "littérature sur les théories du complot (à lire)"
   texte: "le secret réel d'un réseau, même petit, donne prise à la croyance en un pouvoir caché immense"
 - de: "risque_percu"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "semaines"
@@ -1387,6 +1477,7 @@ relations:
   source: "Kahneman ; littérature sur les théories du complot"
   texte: "l'incertitude et la peur cherchent une intention derrière l'événement"
 - de: "falsification"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "mois"
@@ -1395,6 +1486,7 @@ relations:
   source: "Kuran"
   texte: "quand on sait que la parole publique ment, on suppose une vérité cachée"
 - de: "croyance_complot"
+  fondement: causalite_sociale
   vers: "nous_eux"
   effet: "+"
   delai: "semaines"
@@ -1403,6 +1495,7 @@ relations:
   source: "Behave, ch. 11 ; Haidt"
   texte: "un ennemi caché durcit la frontière"
 - de: "croyance_complot"
+  fondement: causalite_sociale
   vers: "hierarchie"
   effet: "+"
   delai: "mois"
@@ -1412,6 +1505,7 @@ relations:
   texte: "la croyance en un pouvoir occulte conteste les autorités visibles (élections dites truquées, institutions dites captées)"
 # --- Norenzayan, Big Gods (2013), lu par la critique de Soler (Cliodynamics, 2016) : deux hypothèses CONCURRENTES ---
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "dilemme"
   effet: "+"
   delai: "décennie"
@@ -1420,6 +1514,7 @@ relations:
   source: "Norenzayan, Big Gods (2013), d'après Soler (2016)"
   texte: "hypothèse A : des dieux qui surveillent et punissent remplacent la surveillance mutuelle et rendent la coopération possible dans les grands groupes (« de grands dieux pour de grands groupes ») ; preuves surtout expérimentales et occidentales"
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "hierarchie"
   effet: "-"
   delai: "décennie"
@@ -1428,6 +1523,7 @@ relations:
   source: "Soler (2016) ; Soler et Lenfesty (2016)"
   texte: "hypothèse B, concurrente : la religion des grands groupes sert d'abord à maintenir l'inégalité ; les élites exploitent des biais cognitifs, et la contestation du rang baisse"
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "croyances"
   effet: "±"
   delai: "décennie"
@@ -1437,6 +1533,7 @@ relations:
   texte: "une hiérarchie qui exploite par la religion provoque des défenses : schismes, apostasie, sectes millénaristes, incroyance"
 # --- Bronner, La démocratie des crédules (2013) ---
 - de: "marche_cognitif"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "semaines"
@@ -1447,6 +1544,7 @@ relations:
   texte: "plus l'offre est abondante et concurrentielle, plus il est facile de ne trouver que ce qui confirme ; au-delà d'un seuil de concurrence, la fiabilité baisse (courbe FIC)"
   parametres: {seuil: 1.5}
 - de: "croyance_complot"
+  fondement: causalite_sociale
   vers: "marche_cognitif"
   effet: "+"
   delai: "jours"
@@ -1456,6 +1554,7 @@ relations:
   source: "Bronner, ch. II (paradoxe d'Olson)"
   texte: "les croyants motivés occupent l'offre ; les sceptiques, nombreux mais peu motivés, laissent faire : la boucle s'entretient"
 - de: "passage_acte"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "jours"
@@ -1464,6 +1563,7 @@ relations:
   source: "Bronner, ch. II (temps d'incubation réduit)"
   texte: "après un événement spectaculaire, une version conspirationniste paraît en quelques jours"
 - de: "disponibilite"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "jours"
@@ -1472,6 +1572,7 @@ relations:
   source: "Bronner, ch. II-III (effet râteau, négligence de la taille de l'échantillon) ; Kahneman"
   texte: "des coïncidences saillantes sont lues comme un dessein (« comme par hasard »)"
 - de: "symboles"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "jours"
@@ -1480,6 +1581,7 @@ relations:
   source: "Bronner, ch. IV (effet Othello)"
   texte: "un récit qui unifie des faits disparates rend crédible une conclusion improbable"
 - de: "marche_cognitif"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1489,6 +1591,7 @@ relations:
   texte: "la concurrence entre médias fabrique des emballements : un fait isolé devient une vague"
 # --- Barkun, A Culture of Conspiracy (2e éd., 2013) ---
 - de: "croyances"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "mois"
@@ -1497,6 +1600,7 @@ relations:
   source: "Barkun, ch. 2 et 15 (millénarisme improvisé)"
   texte: "l'attente d'une fin des temps cherche un ennemi caché qui l'annonce ou la prépare ; complot et millénarisme se fondent"
 - de: "hierarchie"
+  fondement: causalite_sociale
   vers: "croyance_complot"
   effet: "+"
   delai: "mois"
@@ -1505,6 +1609,7 @@ relations:
   source: "Barkun, ch. 2 (savoir stigmatisé)"
   texte: "quand les autorités sont contestées, leur démenti devient une preuve : ce qui est rejeté par l'institution passe pour vrai"
 - de: "croyance_complot"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "mois"
@@ -1516,6 +1621,7 @@ relations:
   parametres: {seuil: 2.5}
 # --- Bauer, Dachez et al., Au cœur des loges (Que sais-je ?, 2021) ---
 - de: "croyance_complot"
+  fondement: evenement
   vers: "reseaux_discrets"
   effet: "-"
   delai: "mois"
@@ -1527,6 +1633,7 @@ relations:
   parametres: {seuil: 2.0}
 # --- Influence × connexion (recherche du 2026-11-19 ; modèle reseau_influence.py) ---
 - de: "convergence_editoriale"
+  fondement: causalite_sociale
   vers: "opinion_privee"
   effet: "0"
   module: "opinion_privee>opinion_publique"
@@ -1537,6 +1644,7 @@ relations:
   texte: "les médias convaincent peu directement (1,6 % dans le modèle) mais abaissent partout le seuil : la cascade entre proches fait le reste"
   parametres: {gain: 0.4}
 - de: "convergence_editoriale"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1545,6 +1653,7 @@ relations:
   source: "agenda-setting ; Bronner"
   texte: "plusieurs titres d'un même propriétaire mettent le même sujet en avant"
 - de: "amplification_algorithmique"
+  fondement: causalite_sociale
   vers: "marche_cognitif"
   effet: "+"
   delai: "heures"
@@ -1553,6 +1662,7 @@ relations:
   source: "Huszár et al. 2022"
   texte: "le fil choisit ce qui engage et en multiplie la portée"
 - de: "amplification_algorithmique"
+  fondement: causalite_sociale
   vers: "disponibilite"
   effet: "+"
   delai: "jours"
@@ -1561,6 +1671,7 @@ relations:
   source: "Huszár et al. 2022 ; Bronner"
   texte: "ce que le fil amplifie revient à l'esprit"
 - de: "amplification_algorithmique"
+  fondement: causalite_sociale
   vers: "polarisation"
   effet: "+"
   delai: "mois"
@@ -1569,6 +1680,7 @@ relations:
   source: "Guess et al. 2023 (aucun effet mesuré en trois mois) contre l'hypothèse courante"
   texte: "effet sur la polarisation non établi : l'expérience de 2020 ne le trouve pas à trois mois"
 - de: "liens"
+  fondement: causalite_sociale
   vers: "opinion_publique"
   effet: "+"
   delai: "jours"
@@ -1577,6 +1689,7 @@ relations:
   source: "Bond et al. 2012 ; modèle reseau_influence.py"
   texte: "ce qui se dit passe par les proches ; les liens lointains relient les foyers de la cascade"
 - de: "liens"
+  fondement: causalite_sociale
   vers: "passage_acte"
   effet: "+"
   delai: "jours"

@@ -260,6 +260,7 @@ compartiments:
     adaptateur: fred:DFF
 relations:
 - de: publications
+  fondement: causalite_sociale
   vers: banques_centrales
   effet: '+'
   delai: semaines
@@ -269,6 +270,7 @@ relations:
   texte: les chiffres publiés entre deux réunions (inflation, emploi) fixent ce que la banque centrale décidera à la réunion suivante
   source: "Réserve fédérale, déclarations du FOMC (« the Committee will carefully assess incoming data »), https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm ; complété le 2026-11-24"
 - de: anticipations
+  fondement: causalite_sociale
   vers: anticipations
   effet: +
   delai: jours
@@ -280,6 +282,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau psychologique : plus la date approche, plus l''attente fige les décisions, puis tout se décide à la dernière minute'
 - de: elections
+  fondement: causalite_sociale
   vers: anticipations
   effet: +
   delai: semaines
@@ -291,6 +294,7 @@ relations:
   statut: a_verifier
   texte: un scrutin proche gèle les grandes décisions et pousse aux annonces
 - de: elections
+  fondement: lien
   vers: parlements
   effet: ±
   delai: semaines à mois
@@ -299,6 +303,7 @@ relations:
   statut: a_verifier
   texte: 'propre aux conventions et statuts : le résultat recompose les majorités et le calendrier législatif'
 - de: banques_centrales
+  fondement: causalite_sociale
   vers: marches
   effet: ±
   delai: heures
@@ -310,6 +315,7 @@ relations:
   statut: a_verifier
   texte: les marchés bougent à la date de réunion selon la surprise, pas selon la décision
 - de: publications
+  fondement: causalite_sociale
   vers: marches
   effet: ±
   delai: heures
@@ -321,6 +327,7 @@ relations:
   statut: a_verifier
   texte: une publication surprenante fait bouger les prix le jour même
 - de: publications
+  fondement: causalite_sociale
   vers: publications
   effet: '-'
   delai: mois
@@ -329,6 +336,7 @@ relations:
   statut: a_verifier
   texte: 'propre à la convention : un chiffre gênant peut être retardé, suspendu ou redéfini, et le silence devient lui-même un signal'
 - de: memoire
+  fondement: causalite_sociale
   vers: anticipations
   effet: +
   delai: jours
@@ -340,6 +348,7 @@ relations:
   statut: a_verifier
   texte: les dates symboliques sont choisies pour agir, manifester ou réprimer
 - de: memoire
+  fondement: causalite_sociale
   vers: memoire
   effet: +
   delai: années
@@ -348,6 +357,7 @@ relations:
   statut: a_verifier
   texte: 'propre à l''idéologie : chaque commémoration renforce la suivante, surtout aux anniversaires ronds'
 - de: fetes
+  fondement: causalite_sociale
   vers: saisons
   effet: '0'
   delai: jours
@@ -356,6 +366,7 @@ relations:
   statut: a_verifier
   texte: 'neutralisme : les calendriers religieux et les saisons coexistent sans s''influencer (sauf fêtes agricoles)'
 - de: fetes
+  fondement: causalite_sociale
   vers: marches
   effet: '-'
   delai: jours
@@ -364,6 +375,7 @@ relations:
   statut: a_verifier
   texte: les longs jours fériés ralentissent l'activité et les échanges, puis rattrapage
 - de: saisons
+  fondement: causalite_sociale
   vers: elections
   effet: ±
   delai: mois
@@ -372,6 +384,7 @@ relations:
   statut: a_verifier
   texte: une mauvaise récolte ou une saison de catastrophes avant un scrutin pèse sur le vote
 - de: saisons
+  fondement: causalite_sociale
   vers: anticipations
   effet: +
   delai: semaines
@@ -383,6 +396,7 @@ relations:
   statut: a_verifier
   texte: 'la saison de combat ou de récolte impose son rythme : on attend le gel, on agit avant la boue'
 - de: dates_limites
+  fondement: definition
   vers: anticipations
   effet: +
   delai: jours
@@ -391,6 +405,7 @@ relations:
   statut: a_verifier
   texte: une question qui se résout à date fixe juge l'événement à ce jour-là ; ce qui arrive le lendemain ne compte pas
 - de: dates_limites
+  fondement: lien
   vers: publications
   effet: ±
   delai: jours

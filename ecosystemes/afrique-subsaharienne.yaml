@@ -360,6 +360,7 @@ compartiments:
   - *id001
 relations:
 - de: groupes_armes
+  fondement: causalite_sociale
   vers: deplacements
   effet: +
   delai: semaines
@@ -368,6 +369,7 @@ relations:
   statut: a_verifier
   texte: les attaques et les blocus chassent les populations
 - de: groupes_armes
+  fondement: evenement
   vers: juntes_sahel
   effet: '-'
   delai: mois
@@ -376,6 +378,7 @@ relations:
   statut: a_verifier
   texte: un blocus ou une offensive affaiblit l'autorité des juntes (cas du blocus de Bamako, 2025-2026)
 - de: juntes_sahel
+  fondement: evenement
   vers: institutions_regionales
   effet: '-'
   delai: mois
@@ -384,6 +387,7 @@ relations:
   statut: a_verifier
   texte: les juntes ont quitté la CEDEAO et affaiblissent l'intégration régionale
 - de: puissances_exterieures
+  fondement: causalite_sociale
   vers: juntes_sahel
   effet: +
   delai: mois
@@ -392,6 +396,7 @@ relations:
   statut: a_verifier
   texte: le soutien militaire russe conforte les juntes
 - de: puissances_exterieures
+  fondement: causalite_sociale
   vers: grands_lacs
   effet: '-'
   delai: mois
@@ -401,6 +406,7 @@ relations:
   texte: les médiations américaine et qatarie cherchent à faire baisser les combats (le compartiment cible lit ici
     l'intensité des combats)
 - de: ressources
+  fondement: causalite_sociale
   vers: grands_lacs
   effet: +
   delai: années
@@ -409,6 +415,7 @@ relations:
   statut: a_verifier
   texte: les minerais financent et motivent les combats dans l'est de la RDC
 - de: demographie_jeunesse
+  fondement: causalite_sociale
   vers: croissance
   effet: +
   delai: décennies
@@ -417,6 +424,7 @@ relations:
   statut: a_verifier
   texte: une population active qui grossit peut porter la croissance (dividende démographique), si les emplois suivent
 - de: acces_electricite
+  fondement: causalite_sociale
   vers: croissance
   effet: +
   delai: années
@@ -425,6 +433,7 @@ relations:
   statut: a_verifier
   texte: l'électricité permet d'irriguer, de conserver, de produire et de travailler le soir
 - de: argent_mobile
+  fondement: causalite_sociale
   vers: croissance
   effet: +
   delai: années
@@ -442,6 +451,7 @@ relations:
   statut: a_verifier
   texte: le commerce entre pays africains, encore faible, peut entraîner l'industrie
 - de: integration_commerciale
+  fondement: lien
   vers: institutions_regionales
   effet: +
   delai: années
@@ -450,6 +460,7 @@ relations:
   statut: a_verifier
   texte: la zone de libre-échange donne aux institutions régionales un projet commun
 - de: groupes_armes
+  fondement: causalite_sociale
   vers: croissance
   effet: '-'
   delai: mois
@@ -458,6 +469,7 @@ relations:
   statut: a_verifier
   texte: les blocus et l'insécurité freinent l'activité dans les pays touchés
 - de: alternances
+  fondement: causalite_sociale
   vers: institutions_regionales
   effet: +
   delai: années

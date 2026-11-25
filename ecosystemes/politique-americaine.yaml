@@ -559,6 +559,7 @@ cycles:
   statut: mecanisme
 relations:
 - de: congres
+  fondement: lien
   vers: nominations_interim
   effet: ±
   delai: semaines
@@ -567,6 +568,7 @@ relations:
   statut: a_verifier
   texte: "le Sénat confirme ou bloque ; son calendrier fixe le délai"
 - de: tribunaux
+  fondement: lien
   vers: nominations_interim
   effet: "-"
   delai: semaines
@@ -574,6 +576,7 @@ relations:
   statut: a_verifier
   texte: "les tribunaux peuvent juger illégal un intérim prolongé (procureurs fédéraux)"
 - de: tribunaux
+  fondement: lien
   vers: poursuites_personnalites
   effet: ±
   delai: mois
@@ -581,6 +584,7 @@ relations:
   statut: a_verifier
   texte: "chaque étape d'une poursuite passe par le tribunal et son calendrier"
 - de: executif
+  fondement: lien
   vers: poursuites_personnalites
   effet: +
   delai: mois
@@ -603,6 +607,7 @@ relations:
   statut: a_verifier
   texte: quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient
 - de: tribunaux
+  fondement: lien
   vers: executif
   effet: '-'
   retour: ±
@@ -612,6 +617,7 @@ relations:
   statut: a_verifier
   texte: injonctions et arrêts suspendent ou annulent des décrets ; l'exécutif fait appel ou réécrit
 - de: etats_federes
+  fondement: lien
   vers: tribunaux
   effet: +
   delai: jours à semaines
@@ -620,6 +626,7 @@ relations:
   statut: a_verifier
   texte: les États portent une part des recours contre les décisions fédérales
 - de: elections
+  fondement: lien
   vers: congres
   effet: ±
   delai: mois à années
@@ -628,6 +635,7 @@ relations:
   statut: a_verifier
   texte: les élections recomposent les majorités à dates fixes
 - de: elections
+  fondement: causalite_sociale
   vers: executif
   effet: ±
   delai: mois
@@ -639,6 +647,7 @@ relations:
   statut: a_verifier
   texte: à l'approche d'une élection, les décisions visibles (prix à la pompe, droits de douane) suivent l'opinion
 - de: congres
+  fondement: lien
   vers: budget
   effet: ±
   delai: semaines à mois
@@ -650,6 +659,7 @@ relations:
   statut: a_verifier
   texte: sans accord à l'échéance, fermeture des services fédéraux ou risque sur la dette
 - de: budget
+  fondement: causalite_sociale
   vers: reserve_federale
   effet: '-'
   retour: '-'
@@ -661,6 +671,7 @@ relations:
   texte: des déficits élevés et une banque centrale qui freine se neutralisent en partie
   verification: "série à revoir (2026-11-24) : fred:DGS10 → fred:DFF donne r = 0.2627 (n = 141), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: executif
+  fondement: causalite_sociale
   vers: reserve_federale
   effet: ±
   retour: '0'
@@ -673,6 +684,7 @@ relations:
   statut: a_verifier
   texte: les nominations et la pression publique pèsent sur une institution conçue pour y résister
 - de: executif
+  fondement: lien
   vers: commerce
   effet: ±
   delai: jours
@@ -685,6 +697,7 @@ relations:
   source: "TiRADE v1.11 × Federal Register, codage à la main (registre/annonces/codage-manuel.csv) ; preenregistrements/taux-execution-annonces.md"
   texte: "les droits de douane se décident vite par décret, sous réserve de contestation en justice. Une annonce sur deux est appliquée telle quelle ; le recul ordinaire n'est pas l'abandon (8 % sans suite) mais la modification après accord (25 %). 77 des 130 premières déclarations sont déjà des actes : le décret accomplit ce qu'il dit"
 - de: tribunaux
+  fondement: lien
   vers: commerce
   effet: '-'
   delai: semaines à mois
@@ -693,6 +706,7 @@ relations:
   statut: a_verifier
   texte: des recours peuvent suspendre des droits de douane
 - de: executif
+  fondement: lien
   vers: sanctions
   effet: +
   delai: jours
@@ -701,6 +715,7 @@ relations:
   statut: a_verifier
   texte: les désignations relèvent de l'exécutif et se décident sans vote
 - de: executif
+  fondement: lien
   vers: energie
   effet: ±
   delai: semaines
@@ -712,6 +727,7 @@ relations:
   statut: a_verifier
   texte: ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral
 - de: congres
+  fondement: lien
   vers: executif
   effet: ±
   delai: semaines à mois
@@ -720,6 +736,7 @@ relations:
   statut: a_verifier
   texte: confirmations des nominations et contrôle parlementaire
 - de: entourage
+  fondement: causalite_sociale
   vers: executif
   effet: ±
   retour: ±
@@ -732,6 +749,7 @@ relations:
   statut: a_verifier
   texte: l'entourage filtre l'information et pèse sur les décisions ; une vague de départs ou de disgrâces le recompose et change la ligne
 - de: elections
+  fondement: causalite_sociale
   vers: entourage
   effet: ±
   delai: mois
@@ -750,6 +768,7 @@ relations:
   statut: a_verifier
   texte: règles et découpages bornent ce qu'un même vote produit en sièges
 - de: tribunaux
+  fondement: lien
   vers: regles_electorales
   effet: ±
   delai: mois
@@ -758,6 +777,7 @@ relations:
   statut: a_verifier
   texte: les recours redessinent les cartes et les règles de vote
 - de: executif
+  fondement: lien
   vers: etats_federes
   effet: ±
   retour: ±
@@ -767,6 +787,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau statut : le fédéralisme, où l''État fédéral ordonne et les États résistent, appliquent ou contournent'
 - de: climat_risques
+  fondement: lien
   vers: etats_federes
   effet: '-'
   delai: jours
@@ -778,6 +799,7 @@ relations:
   statut: a_verifier
   texte: une catastrophe majeure franchit le seuil de la déclaration fédérale et appelle l'aide de l'État fédéral
 - de: eau_fleuves
+  fondement: causalite_sociale
   vers: etats_federes
   effet: '-'
   retour: '-'

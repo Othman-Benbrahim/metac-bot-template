@@ -111,6 +111,7 @@ compartiments:
     taille: macro
 relations:
 - de: commerce_chine
+  fondement: causalite_sociale
   vers: aukus
   effet: '-'
   delai: années
@@ -118,6 +119,7 @@ relations:
   statut: a_verifier
   texte: la dépendance commerciale à la Chine tempère l'engagement militaire
 - de: minerais_aus
+  fondement: lien
   vers: commerce_chine
   effet: +
   delai: mois
@@ -125,6 +127,7 @@ relations:
   statut: a_verifier
   texte: les minerais font le commerce avec la Chine
 - de: climat_aus
+  fondement: causalite_sociale
   vers: politique_aus
   effet: +
   delai: saisons à années

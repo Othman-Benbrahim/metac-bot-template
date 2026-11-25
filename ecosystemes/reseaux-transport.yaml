@@ -106,6 +106,7 @@ compartiments:
   - *id001
 relations:
 - de: noeuds
+  fondement: lien
   vers: maritime
   effet: +
   delai: jours
@@ -114,6 +115,7 @@ relations:
   statut: a_verifier
   texte: l'ouverture des détroits et des ports conditionne le trafic (le compartiment cible lit ici la fluidité)
 - de: noeuds
+  fondement: lien
   vers: aerien
   effet: +
   delai: jours
@@ -122,6 +124,7 @@ relations:
   statut: a_verifier
   texte: les grands aéroports-pivots organisent le réseau aérien
 - de: maritime
+  fondement: lien
   vers: interconnexion
   effet: +
   delai: semaines
@@ -130,6 +133,7 @@ relations:
   statut: a_verifier
   texte: les retards en mer se répercutent sur le rail et la route
 - de: rail
+  fondement: lien
   vers: interconnexion
   effet: +
   delai: jours
@@ -138,6 +142,7 @@ relations:
   statut: a_verifier
   texte: le rail relie les ports à l'intérieur des continents
 - de: route
+  fondement: lien
   vers: interconnexion
   effet: +
   delai: jours
@@ -146,6 +151,7 @@ relations:
   statut: a_verifier
   texte: la route assure le premier et le dernier kilomètre
 - de: interconnexion
+  fondement: lien
   vers: noeuds
   effet: +
   delai: semaines

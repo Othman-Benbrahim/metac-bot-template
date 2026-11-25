@@ -139,6 +139,7 @@ compartiments:
   - *id001
 relations:
 - de: blocs
+  fondement: causalite_sociale
   vers: etats
   effet: +
   delai: années
@@ -147,6 +148,7 @@ relations:
   statut: a_verifier
   texte: l'appartenance à un bloc oriente les choix d'un État (le compartiment cible lit ici l'alignement)
 - de: afrique_disputee
+  fondement: evenement
   vers: blocs
   effet: +
   delai: années
@@ -155,6 +157,7 @@ relations:
   statut: a_verifier
   texte: la compétition pour l'Afrique redessine les blocs (BRICS élargis à l'Égypte et à l'Éthiopie)
 - de: frontieres_contestees
+  fondement: causalite_sociale
   vers: etats
   effet: '-'
   delai: mois
@@ -163,6 +166,7 @@ relations:
   statut: a_verifier
   texte: une frontière contestée fragilise les États qui la partagent
 - de: etats
+  fondement: lien
   vers: passages
   effet: +
   delai: mois
@@ -171,6 +175,7 @@ relations:
   statut: a_verifier
   texte: chaque État décide qui passe et comment
 - de: local
+  fondement: causalite_sociale
   vers: administratives
   effet: +
   delai: décennies
@@ -179,6 +184,7 @@ relations:
   statut: a_verifier
   texte: les identités locales pèsent sur le découpage (régions autonomes, statuts particuliers)
 - de: administratives
+  fondement: causalite_sociale
   vers: local
   effet: '-'
   delai: générations
@@ -187,6 +193,7 @@ relations:
   statut: a_verifier
   texte: la centralisation uniformise les particularismes (le compartiment cible lit ici leur vitalité)
 - de: continents
+  fondement: comparaison
   vers: blocs
   effet: +
   delai: décennies

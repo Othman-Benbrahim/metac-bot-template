@@ -451,6 +451,7 @@ compartiments:
     adaptateur: seismes:iran_m45
 relations:
 - de: etats_unis
+  fondement: causalite_sociale
   vers: pouvoir_iranien
   effet: '-'
   retour: '-'
@@ -464,6 +465,7 @@ relations:
   statut: a_verifier
   texte: rivalité de long terme ; chacun réduit les options de l'autre
 - de: etats_unis
+  fondement: lien
   vers: sanctions
   effet: +
   delai: semaines
@@ -472,6 +474,7 @@ relations:
   statut: a_verifier
   texte: l'exécutif américain décide l'essentiel des sanctions primaires et secondaires
 - de: sanctions
+  fondement: causalite_sociale
   vers: societe_iranienne
   effet: '-'
   delai: mois
@@ -483,6 +486,7 @@ relations:
   statut: a_verifier
   texte: les sanctions pèsent sur la monnaie, les prix et l'emploi ; l'effet plafonne quand tout est déjà sanctionné
 - de: societe_iranienne
+  fondement: causalite_sociale
   vers: pouvoir_iranien
   effet: ±
   retour: '-'
@@ -495,6 +499,7 @@ relations:
   statut: a_verifier
   texte: la pression sociale pousse le pouvoir soit vers un accord qui allège les sanctions, soit vers le durcissement
 - de: pouvoir_iranien
+  fondement: causalite_sociale
   vers: negociations
   effet: ±
   retour: ±
@@ -514,6 +519,7 @@ relations:
   statut: a_verifier
   texte: la ligne de l'exécutif américain ouvre ou ferme la voie d'un accord
 - de: negociations
+  fondement: lien
   vers: sanctions
   effet: '-'
   delai: mois
@@ -525,6 +531,7 @@ relations:
   statut: a_verifier
   texte: un accord ne se traduit en levée de sanctions qu'au-delà d'un seuil d'engagements vérifiés
 - de: verification
+  fondement: lien
   vers: negociations
   effet: ±
   delai: trimestre
@@ -533,6 +540,7 @@ relations:
   statut: a_verifier
   texte: les rapports de l'agence donnent la base factuelle commune, ou la mettent en doute
 - de: pouvoir_iranien
+  fondement: causalite_sociale
   vers: verification
   effet: ±
   retour: ±
@@ -542,6 +550,7 @@ relations:
   statut: a_verifier
   texte: l'accès des inspecteurs sert de levier dans les deux sens
 - de: verification
+  fondement: lien
   vers: conseil_securite
   effet: +
   delai: mois
@@ -550,6 +559,7 @@ relations:
   statut: a_verifier
   texte: une résolution du conseil de l'agence peut porter le dossier au Conseil de sécurité
 - de: russie_chine
+  fondement: lien
   vers: conseil_securite
   effet: '-'
   forme: contrainte
@@ -559,6 +569,7 @@ relations:
   statut: a_verifier
   texte: le veto possible de la Russie ou de la Chine borne ce que le Conseil peut décider
 - de: russie_chine
+  fondement: lien
   vers: societe_iranienne
   effet: +
   retour: +
@@ -569,6 +580,7 @@ relations:
   statut: a_verifier
   texte: commerce et soutien diplomatique qui amortissent les sanctions
 - de: europe
+  fondement: causalite_sociale
   vers: negociations
   effet: +
   delai: mois
@@ -577,6 +589,7 @@ relations:
   statut: a_verifier
   texte: les Européens servent de médiateurs et de signataires, avec une marge propre limitée
 - de: voisins
+  fondement: causalite_sociale
   vers: etats_unis
   effet: ±
   delai: semaines
@@ -585,6 +598,7 @@ relations:
   statut: a_verifier
   texte: Israël et les monarchies du Golfe pèsent sur la ligne américaine, dans un sens ou dans l'autre
 - de: recits
+  fondement: causalite_sociale
   vers: negociations
   effet: ±
   delai: jours
@@ -596,6 +610,7 @@ relations:
   statut: a_verifier
   texte: lignes rouges publiques et démentis compliquent ou préparent les concessions
 - de: sismicite
+  fondement: mecanisme_physique
   vers: surete_atomique
   effet: '-'
   delai: permanent
@@ -607,6 +622,7 @@ relations:
   statut: a_verifier
   texte: un pays sismique fait peser un risque de sûreté sur ses installations ; le passage du niveau minéral au niveau atomique demande un séisme fort
 - de: sismicite
+  fondement: evenement
   vers: societe_iranienne
   effet: '-'
   delai: heures
@@ -618,6 +634,7 @@ relations:
   statut: a_verifier
   texte: un grand séisme frappe la société d'un coup
 - de: surete_atomique
+  fondement: lien
   vers: verification
   effet: ±
   delai: semaines
@@ -629,6 +646,7 @@ relations:
   statut: a_verifier
   texte: un incident de sûreté attire missions et rapports de l'AIEA
 - de: surete_atomique
+  fondement: mecanisme_physique
   vers: voisins
   effet: '-'
   delai: jours
@@ -640,6 +658,7 @@ relations:
   statut: a_verifier
   texte: 'une contamination ne s''arrête pas aux frontières : les voisins s''en inquiètent au-delà d''un seuil'
 - de: relief_sites
+  fondement: mecanisme_physique
   vers: verification
   effet: '-'
   forme: contrainte
@@ -649,6 +668,7 @@ relations:
   statut: a_verifier
   texte: ce qui est abrité sous le relief est plus difficile à vérifier de l'extérieur
 - de: europe
+  fondement: causalite_sociale
   vers: etats_unis
   effet: +
   retour: +
@@ -659,6 +679,7 @@ relations:
   statut: a_verifier
   texte: 'relation propre au niveau géopolitique : coordination occidentale (mutualisme), plus ou moins serrée'
 - de: russie_chine
+  fondement: causalite_sociale
   vers: etats_unis
   effet: '-'
   retour: '-'

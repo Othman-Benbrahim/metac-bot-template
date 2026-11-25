@@ -169,6 +169,7 @@ compartiments:
   traces: *id001
 relations:
 - de: contestation
+  fondement: causalite_sociale
   vers: gouvernement
   effet: '-'
   delai: semaines
@@ -186,6 +187,7 @@ relations:
   statut: a_verifier
   texte: une élection désigne ou renouvelle le gouvernement, avec le délai des coalitions
 - de: procedures
+  fondement: causalite_sociale
   vers: partis
   effet: '-'
   delai: semaines
@@ -194,6 +196,7 @@ relations:
   statut: a_verifier
   texte: une affaire ou une procédure fait baisser le soutien d'un parti
 - de: regime
+  fondement: definition
   vers: elections
   effet: +
   delai: années
@@ -203,6 +206,7 @@ relations:
   texte: la qualité du régime fait la liberté des élections ; l'autocratisation les vide (le compartiment cible lit ici
     leur liberté)
 - de: coups_transitions
+  fondement: evenement
   vers: regime
   effet: '-'
   delai: jours

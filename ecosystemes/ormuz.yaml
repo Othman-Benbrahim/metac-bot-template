@@ -389,6 +389,7 @@ compartiments:
     adaptateur: climat:bandar_abbas
 relations:
 - de: milieu
+  fondement: mecanisme_physique
   vers: flux_energie
   effet: '-'
   forme: contrainte
@@ -398,6 +399,7 @@ relations:
   statut: a_verifier
   texte: le goulet concentre le flux sur un seul passage étroit
 - de: flux_energie
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: jours
@@ -409,6 +411,7 @@ relations:
   statut: a_verifier
   texte: une baisse du flux fait monter les prix mondiaux
 - de: force
+  fondement: evenement
   vers: navigation
   effet: '-'
   retour: +
@@ -421,6 +424,7 @@ relations:
   statut: a_verifier
   texte: 'saisies, menaces et mines pèsent sur la navigation (prédation : la force gagne un levier)'
 - de: navigation
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: jours à semaines
@@ -429,6 +433,7 @@ relations:
   statut: a_verifier
   texte: assurance et fret transmettent le risque aux prix avant tout arrêt physique
 - de: puissances
+  fondement: causalite_sociale
   vers: riverains
   effet: '-'
   retour: '-'
@@ -439,6 +444,7 @@ relations:
   statut: a_verifier
   texte: rivalité États-Unis–Iran (style à mesurer au banc de la réciprocité, paire USA–IRN)
 - de: puissances
+  fondement: lien
   vers: interieur_iran
   effet: +
   retour: +
@@ -449,6 +455,7 @@ relations:
   statut: a_verifier
   texte: Chine–Iran, pétrole contre devises et soutien diplomatique (relation propre à la Chine, pas à toutes les puissances)
 - de: droit
+  fondement: lien
   vers: flux_energie
   effet: '-'
   delai: semaines à mois
@@ -457,6 +464,7 @@ relations:
   statut: a_verifier
   texte: les sanctions réduisent et détournent les exportations iraniennes sans les arrêter
 - de: prix
+  fondement: definition
   vers: interieur_iran
   effet: ±
   delai: mois
@@ -465,6 +473,7 @@ relations:
   statut: a_verifier
   texte: les recettes de l'Iran dépendent du prix autant que des volumes vendus
 - de: interieur_iran
+  fondement: causalite_sociale
   vers: force
   effet: ±
   delai: semaines
@@ -473,6 +482,7 @@ relations:
   statut: a_verifier
   texte: une pression intérieure peut pousser à l'escalade extérieure ou à la retenue
 - de: milieu
+  fondement: causalite_sociale
   vers: interieur_iran
   effet: '-'
   delai: saisons à années
@@ -484,6 +494,7 @@ relations:
   statut: a_verifier
   texte: chaleur et rareté de l'eau pèsent sur la vie et la contestation
 - de: recits
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: heures
@@ -506,6 +517,7 @@ relations:
   statut: a_verifier
   texte: démonstrations de force et récits se nourrissent (signalisation)
 - de: climat_regime
+  fondement: mecanisme_physique
   vers: mer_golfe
   effet: +
   delai: décennies
@@ -517,6 +529,7 @@ relations:
   statut: a_verifier
   texte: le réchauffement du climat réchauffe une mer déjà chaude et peu profonde
 - de: mer_golfe
+  fondement: mecanisme_physique
   vers: riverains
   effet: '-'
   delai: jours à mois
@@ -528,6 +541,7 @@ relations:
   statut: a_verifier
   texte: une mer trop chaude ou polluée gêne le dessalement dont dépendent les villes riveraines
 - de: force
+  fondement: evenement
   vers: pollution_marine
   effet: +
   delai: heures à jours
@@ -539,6 +553,7 @@ relations:
   statut: a_verifier
   texte: une attaque ou un accident sur un pétrolier peut provoquer une marée noire
 - de: pollution_marine
+  fondement: mecanisme_physique
   vers: mer_golfe
   effet: '-'
   delai: jours à années
@@ -547,6 +562,7 @@ relations:
   statut: a_verifier
   texte: les hydrocarbures et la saumure dégradent une mer qui se renouvelle lentement
 - de: navigation
+  fondement: lien
   vers: flux_energie
   effet: +
   delai: jours
@@ -555,6 +571,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau économique : sans navires disponibles et assurés, le flux d''énergie ne passe pas'
 - de: milieu
+  fondement: mecanisme_physique
   vers: force
   effet: ±
   forme: contrainte

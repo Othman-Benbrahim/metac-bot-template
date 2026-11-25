@@ -238,6 +238,7 @@ compartiments:
     fichier: collecte_gdelt.py
 relations:
 - de: agent
+  fondement: mecanisme_physique
   vers: agent
   effet: +
   delai: semaines
@@ -246,6 +247,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau microbiologique : réplication et sélection font apparaître des variants plus transmissibles'
 - de: reservoirs
+  fondement: mecanisme_physique
   vers: reservoirs
   effet: +
   delai: semaines
@@ -257,6 +259,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau animal : un élevage dense amplifie une épizootie'
 - de: reservoirs
+  fondement: mecanisme_physique
   vers: agent
   effet: +
   delai: mois
@@ -268,6 +271,7 @@ relations:
   statut: a_verifier
   texte: le passage de l'animal à l'humain (zoonose) est rare et demande un contact assez fort
 - de: agent
+  fondement: mecanisme_physique
   vers: malades
   effet: +
   retour: '-'
@@ -280,6 +284,7 @@ relations:
   statut: a_verifier
   texte: l'agent vit aux dépens des hôtes (prédation) ; l'immunité qu'ils acquièrent le freine
 - de: malades
+  fondement: mecanisme_physique
   vers: malades
   effet: +
   delai: jours
@@ -291,6 +296,7 @@ relations:
   statut: a_verifier
   texte: 'propre à la contagion : au-dessus d''un seuil de contacts, la croissance devient exponentielle'
 - de: milieu
+  fondement: mecanisme_physique
   vers: malades
   effet: ±
   delai: semaines
@@ -299,6 +305,7 @@ relations:
   statut: a_verifier
   texte: les saisons rythment les vagues (hiver pour les virus respiratoires, chaleur et pluies pour les maladies à moustiques)
 - de: comportements
+  fondement: causalite_sociale
   vers: malades
   effet: '-'
   retour: '-'
@@ -311,6 +318,7 @@ relations:
   statut: a_verifier
   texte: les gestes barrières freinent la contagion ; la lassitude, une fois installée, ne recule pas vite
 - de: malades
+  fondement: definition
   vers: convention
   effet: +
   delai: jours à semaines
@@ -322,6 +330,7 @@ relations:
   statut: a_verifier
   texte: la maladie n'existe socialement qu'une fois nommée, définie et comptée ; une déclaration ne vient qu'au-delà d'un seuil
 - de: convention
+  fondement: lien
   vers: autorites
   effet: +
   delai: jours
@@ -330,6 +339,7 @@ relations:
   statut: a_verifier
   texte: une déclaration d'urgence déclenche les pouvoirs exceptionnels
 - de: convention
+  fondement: definition
   vers: malades
   effet: ±
   delai: jours
@@ -338,6 +348,7 @@ relations:
   statut: a_verifier
   texte: changer la définition de cas change le nombre compté sans changer la maladie
 - de: autorites
+  fondement: causalite_sociale
   vers: comportements
   effet: +
   retour: ±
@@ -350,6 +361,7 @@ relations:
   statut: a_verifier
   texte: les consignes changent les comportements, d'autant plus que la confiance est haute
 - de: autorites
+  fondement: causalite_sociale
   vers: economie
   effet: '-'
   delai: jours
@@ -358,6 +370,7 @@ relations:
   statut: a_verifier
   texte: fermetures et restrictions pèsent sur l'activité
 - de: technique
+  fondement: mecanisme_physique
   vers: malades
   effet: '-'
   delai: mois
@@ -366,6 +379,7 @@ relations:
   statut: a_verifier
   texte: vaccins et traitements réduisent la sévérité
 - de: recits
+  fondement: causalite_sociale
   vers: comportements
   effet: ±
   delai: jours
@@ -377,6 +391,7 @@ relations:
   statut: a_verifier
   texte: rumeurs et polarisation font accepter ou refuser les mesures
 - de: economie
+  fondement: lien
   vers: technique
   effet: ±
   delai: mois

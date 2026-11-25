@@ -171,6 +171,7 @@ compartiments:
   - *id001
 relations:
 - de: emotions
+  fondement: causalite_sociale
   vers: cognition
   effet: '+'
   delai: secondes
@@ -179,6 +180,7 @@ relations:
   statut: a_verifier
   texte: l'émotion colore le jugement et la mémoire (le compartiment cible lit ici la part d'intuition)
 - de: attachement
+  fondement: causalite_sociale
   vers: identite_estime
   effet: '+'
   delai: années
@@ -187,6 +189,7 @@ relations:
   statut: a_verifier
   texte: un attachement sûr nourrit l'estime de soi
 - de: developpement
+  fondement: causalite_sociale
   vers: personnalite
   effet: '+'
   delai: années
@@ -195,6 +198,7 @@ relations:
   statut: a_verifier
   texte: les expériences de chaque âge façonnent les traits
 - de: solitude_lien
+  fondement: causalite_sociale
   vers: sante_mentale
   effet: '+'
   delai: mois
@@ -203,6 +207,7 @@ relations:
   statut: a_verifier
   texte: la solitude augmente l'anxiété et la dépression (le compartiment cible lit ici la fréquence des troubles)
 - de: habitudes
+  fondement: causalite_sociale
   vers: soi
   effet: '+'
   delai: années
@@ -211,6 +216,7 @@ relations:
   statut: a_verifier
   texte: on devient ce que l'on répète
 - de: valeurs_sens
+  fondement: causalite_sociale
   vers: cognition
   effet: '+'
   delai: jours
@@ -219,6 +225,7 @@ relations:
   statut: a_verifier
   texte: les valeurs filtrent ce qu'on remarque et ce qu'on croit
 - de: inconscient_defenses
+  fondement: causalite_sociale
   vers: emotions
   effet: '-'
   delai: secondes
@@ -227,6 +234,7 @@ relations:
   statut: a_verifier
   texte: les défenses tiennent à distance les émotions pénibles
 - de: identite_estime
+  fondement: causalite_sociale
   vers: valeurs_sens
   effet: '+'
   delai: années
@@ -235,6 +243,7 @@ relations:
   statut: a_verifier
   texte: l'identité porte des valeurs
 - de: sante_mentale
+  fondement: causalite_sociale
   vers: soi
   effet: '-'
   delai: mois
@@ -243,6 +252,7 @@ relations:
   statut: a_verifier
   texte: un trouble mental atteint toute la vie du soi (le compartiment source lit ici la fréquence des troubles)
 - de: emotions
+  fondement: causalite_sociale
   vers: soi
   effet: '+'
   delai: secondes
@@ -251,6 +261,7 @@ relations:
   statut: a_verifier
   texte: les émotions sont la façon dont le soi vit ce qui lui arrive
 - de: cognition
+  fondement: causalite_sociale
   vers: soi
   effet: '+'
   delai: secondes

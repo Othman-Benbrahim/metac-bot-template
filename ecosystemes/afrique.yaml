@@ -209,6 +209,7 @@ compartiments:
     taille: macro
 relations:
 - de: climat_continent
+  fondement: causalite_sociale
   vers: conflits_continent
   effet: +
   delai: saisons à années
@@ -216,6 +217,7 @@ relations:
   statut: a_verifier
   texte: sécheresses et pertes de récoltes aiguisent les conflits pour la terre et l'eau, sans en être la cause unique
 - de: ressources_continent
+  fondement: causalite_sociale
   vers: puissances_continent
   effet: +
   delai: années
@@ -223,6 +225,7 @@ relations:
   statut: a_verifier
   texte: les minerais attirent les puissances extérieures
 - de: puissances_continent
+  fondement: causalite_sociale
   vers: conflits_continent
   effet: +
   delai: mois à années
@@ -230,6 +233,7 @@ relations:
   statut: a_verifier
   texte: les soutiens extérieurs prolongent les guerres (Soudan, Libye)
 - de: union_africaine
+  fondement: causalite_sociale
   vers: conflits_continent
   effet: '-'
   delai: mois
@@ -237,6 +241,7 @@ relations:
   statut: a_verifier
   texte: médiations de l'Union africaine, d'effet limité
 - de: demographie_continent
+  fondement: causalite_sociale
   vers: afrique_nord
   effet: +
   delai: années

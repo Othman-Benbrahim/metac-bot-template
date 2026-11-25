@@ -192,6 +192,7 @@ compartiments:
   traces: *id001
 relations:
 - de: influence
+  fondement: causalite_sociale
   vers: politiques_communes
   effet: +
   delai: mois
@@ -199,6 +200,7 @@ relations:
   statut: a_verifier
   texte: les réunions sur un dossier précèdent ses amendements ; la reprise mot pour mot de positions d'intérêts est documentée sur l'omnibus X (Corporate Europe Observatory, relayé par Challenges)
 - de: institutions
+  fondement: lien
   vers: sanctions_ue
   effet: +
   delai: mois
@@ -207,6 +209,7 @@ relations:
   statut: a_verifier
   texte: les sanctions passent par le Conseil à l'unanimité ; un seul État peut les retarder
 - de: institutions
+  fondement: lien
   vers: elargissement
   effet: +
   delai: mois à années
@@ -215,6 +218,7 @@ relations:
   statut: a_verifier
   texte: chaque étape de l'adhésion exige l'unanimité ; un veto suffit à geler un candidat (Ukraine, décembre 2025)
 - de: etat_de_droit
+  fondement: lien
   vers: budget
   effet: '-'
   delai: mois
@@ -223,6 +227,7 @@ relations:
   statut: a_verifier
   texte: la conditionnalité peut geler des fonds versés à un État qui ne respecte pas l'État de droit
 - de: budget
+  fondement: lien
   vers: defense_ue
   effet: +
   delai: années
@@ -231,6 +236,7 @@ relations:
   statut: a_verifier
   texte: le prochain budget déplace des moyens vers la sécurité et la défense
 - de: etat_de_droit
+  fondement: lien
   vers: elargissement
   effet: '-'
   delai: années

@@ -185,6 +185,7 @@ compartiments:
   - *id001
 relations:
 - de: capitaux_reproduction
+  fondement: causalite_sociale
   vers: mobilite_sociale
   effet: '-'
   delai: générations
@@ -193,6 +194,7 @@ relations:
   statut: a_verifier
   texte: les capitaux hérités freinent la mobilité des autres
 - de: tres_riches
+  fondement: causalite_sociale
   vers: classes_moyennes
   effet: '-'
   delai: décennies
@@ -201,6 +203,7 @@ relations:
   statut: a_verifier
   texte: la concentration du patrimoine au sommet comprime la part des classes moyennes
 - de: travail_informel
+  fondement: causalite_sociale
   vers: pauvrete_extreme
   effet: +
   delai: années
@@ -209,6 +212,7 @@ relations:
   statut: a_verifier
   texte: sans contrat ni protection, un choc fait basculer dans la pauvreté
 - de: mobilite_sociale
+  fondement: causalite_sociale
   vers: classes_moyennes
   effet: +
   delai: générations
@@ -217,6 +221,7 @@ relations:
   statut: a_verifier
   texte: l'ascenseur social nourrit les classes moyennes
 - de: hierarchies_heritees
+  fondement: causalite_sociale
   vers: mobilite_sociale
   effet: '-'
   delai: générations
@@ -225,6 +230,7 @@ relations:
   statut: a_verifier
   texte: un rang de naissance bloque l'ascension
 - de: paysannerie
+  fondement: causalite_sociale
   vers: classes_populaires
   effet: +
   delai: générations

@@ -345,6 +345,7 @@ compartiments:
     adaptateur: climat:delhi
 relations:
 - de: energie
+  fondement: causalite_sociale
   vers: prix_conso
   effet: +
   delai: semaines à mois
@@ -357,6 +358,7 @@ relations:
   texte: l'énergie passe vite dans les prix, d'abord par les carburants
   verification: "vérifiée le 2026-11-24 (preenregistrements/verification-relations.md) : Brent → inflation américaine sur 12 mois, r = 0.2666, n = 128 mois, seuil 0.221"
 - de: alimentation
+  fondement: causalite_sociale
   vers: prix_conso
   effet: +
   delai: mois
@@ -368,6 +370,7 @@ relations:
   statut: a_verifier
   texte: les prix alimentaires pèsent plus lourd dans les pays pauvres
 - de: prix_conso
+  fondement: causalite_sociale
   vers: salaires
   effet: +
   retour: +
@@ -381,6 +384,7 @@ relations:
   statut: a_verifier
   texte: 'boucle prix-salaires : chacun nourrit l''autre quand le travail manque'
 - de: prix_conso
+  fondement: causalite_sociale
   vers: anticipations
   effet: +
   delai: mois
@@ -392,6 +396,7 @@ relations:
   statut: a_verifier
   texte: une inflation qui dure désancre les anticipations ; elles ne redescendent pas par le même chemin
 - de: anticipations
+  fondement: causalite_sociale
   vers: prix_conso
   effet: +
   delai: mois
@@ -400,6 +405,7 @@ relations:
   statut: a_verifier
   texte: des anticipations hautes font fixer des prix et des salaires plus hauts
 - de: prix_conso
+  fondement: causalite_sociale
   vers: banques_centrales
   effet: +
   retour: '-'
@@ -409,6 +415,7 @@ relations:
   statut: a_verifier
   texte: 'boucle de régulation : l''inflation fait monter les taux, les taux freinent l''inflation'
 - de: banques_centrales
+  fondement: causalite_sociale
   vers: salaires
   effet: '-'
   delai: mois à années
@@ -417,6 +424,7 @@ relations:
   statut: a_verifier
   texte: la hausse des taux refroidit l'activité et le marché du travail, avec un long retard
 - de: banques_centrales
+  fondement: causalite_sociale
   vers: monnaies
   effet: +
   delai: jours
@@ -426,6 +434,7 @@ relations:
   texte: des taux américains plus hauts renforcent le dollar
   verification: "série à revoir (2026-11-24) : fred:DFF → fred:DTWEXBGS donne r = -0.1047 (n = 620), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: monnaies
+  fondement: causalite_sociale
   vers: prix_conso
   effet: ±
   delai: mois
@@ -437,6 +446,7 @@ relations:
   statut: a_verifier
   texte: un dollar fort importe de l'inflation chez les autres et en exporte peu aux États-Unis
 - de: approvisionnement
+  fondement: causalite_sociale
   vers: prix_conso
   effet: +
   delai: mois
@@ -448,6 +458,7 @@ relations:
   statut: a_verifier
   texte: des chaînes bloquées font monter les prix des biens
 - de: budget
+  fondement: causalite_sociale
   vers: prix_conso
   effet: ±
   delai: mois
@@ -456,6 +467,7 @@ relations:
   statut: a_verifier
   texte: subventions et boucliers baissent les prix mesurés ; déficits et droits de douane les montent
 - de: budget
+  fondement: causalite_sociale
   vers: banques_centrales
   effet: '-'
   retour: '-'
@@ -467,6 +479,7 @@ relations:
   texte: quand le budget relance et la banque centrale freine, chacun réduit l'effet de l'autre
   verification: "série à revoir (2026-11-24) : fred:DGS10 → fred:DFF donne r = 0.2627 (n = 141), contraire à l'effet écrit ; la série représente sans doute mal le compartiment, relation non contestée"
 - de: statistiques
+  fondement: causalite_sociale
   vers: banques_centrales
   effet: ±
   delai: jours
@@ -475,6 +488,7 @@ relations:
   statut: a_verifier
   texte: les décisions suivent le chiffre publié, convention qui peut être révisée ou contestée
 - de: epidemies
+  fondement: mecanisme_physique
   vers: elevage_cultures
   effet: '-'
   delai: semaines
@@ -486,6 +500,7 @@ relations:
   statut: a_verifier
   texte: 'une épizootie (grippe aviaire, peste porcine) décime des élevages : l''effet passe du microbe à l''animal'
 - de: elevage_cultures
+  fondement: causalite_sociale
   vers: alimentation
   effet: ±
   delai: semaines à mois
@@ -497,6 +512,7 @@ relations:
   statut: a_verifier
   texte: des pertes d'élevage ou de récolte font monter certains prix alimentaires (œufs, porc, céréales)
 - de: epidemies
+  fondement: causalite_sociale
   vers: approvisionnement
   effet: '-'
   delai: semaines
@@ -508,6 +524,7 @@ relations:
   statut: a_verifier
   texte: une épidémie humaine ferme usines, ports et frontières
 - de: epidemies
+  fondement: definition
   vers: statistiques
   effet: ±
   delai: jours à mois
@@ -516,6 +533,7 @@ relations:
   statut: a_verifier
   texte: 'un virus existe, mais ce qui en est compté dépend de conventions : définition d''un cas, déclaration d''urgence, méthode des indices de prix'
 - de: climat_regime
+  fondement: mecanisme_physique
   vers: elevage_cultures
   effet: '-'
   delai: années
@@ -527,6 +545,7 @@ relations:
   statut: a_verifier
   texte: un climat plus chaud et plus sec réduit rendements et pâturages
 - de: monnaies
+  fondement: definition
   vers: energie
   effet: ±
   delai: jours à semaines
@@ -535,6 +554,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau économique : un dollar fort renchérit l''énergie, payée en dollars, pour les autres pays'
 - de: budget
+  fondement: definition
   vers: statistiques
   effet: ±
   delai: mois

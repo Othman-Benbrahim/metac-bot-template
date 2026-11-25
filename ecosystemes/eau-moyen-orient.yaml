@@ -385,6 +385,7 @@ compartiments:
     adaptateur: climat:teheran
 relations:
 - de: pluies
+  fondement: mecanisme_physique
   vers: fleuves
   effet: +
   delai: semaines à saisons
@@ -396,6 +397,7 @@ relations:
   statut: a_verifier
   texte: pluies et fonte des neiges font les crues des fleuves
 - de: pluies
+  fondement: mecanisme_physique
   vers: nappes
   effet: +
   delai: années
@@ -404,6 +406,7 @@ relations:
   statut: a_verifier
   texte: les pluies rechargent lentement les seules nappes renouvelables
 - de: chaleur
+  fondement: mecanisme_physique
   vers: barrages
   effet: '-'
   delai: semaines
@@ -415,6 +418,7 @@ relations:
   statut: a_verifier
   texte: la chaleur évapore les retenues
 - de: chaleur
+  fondement: causalite_sociale
   vers: rarete
   effet: +
   delai: jours à semaines
@@ -426,6 +430,7 @@ relations:
   statut: a_verifier
   texte: au-delà d'un seuil de chaleur, la demande dépasse ce que les réseaux fournissent
 - de: fleuves
+  fondement: mecanisme_physique
   vers: barrages
   effet: +
   retour: '-'
@@ -435,6 +440,7 @@ relations:
   statut: a_verifier
   texte: 'prédation : les barrages prennent au fleuve l''eau qu''ils stockent'
 - de: barrages
+  fondement: mecanisme_physique
   vers: etats_riverains
   effet: ±
   retour: ±
@@ -447,6 +453,7 @@ relations:
   statut: a_verifier
   texte: remplir un barrage d'amont en année sèche retire de l'eau à l'aval et tend les relations
 - de: etats_riverains
+  fondement: causalite_sociale
   vers: etats_riverains
   effet: '-'
   retour: '-'
@@ -458,6 +465,7 @@ relations:
   statut: a_verifier
   texte: 'amont et aval se disputent un même fleuve (style à mesurer : Égypte–Éthiopie, Irak–Turquie)'
 - de: irrigation
+  fondement: mecanisme_physique
   vers: nappes
   effet: '-'
   delai: années
@@ -469,6 +477,7 @@ relations:
   statut: a_verifier
   texte: l'irrigation vide les nappes plus vite qu'elles ne se remplissent ; une nappe affaissée ne se reconstitue pas
 - de: nappes
+  fondement: mecanisme_physique
   vers: irrigation
   effet: +
   delai: saisons
@@ -477,6 +486,7 @@ relations:
   statut: a_verifier
   texte: les nappes portent l'agriculture là où les fleuves manquent
 - de: fleuves
+  fondement: mecanisme_physique
   vers: irrigation
   effet: +
   delai: semaines
@@ -485,6 +495,7 @@ relations:
   statut: a_verifier
   texte: les plaines du Tigre, de l'Euphrate et du Nil vivent de l'eau du fleuve
 - de: irrigation
+  fondement: mecanisme_physique
   vers: rarete
   effet: +
   delai: saisons
@@ -493,6 +504,7 @@ relations:
   statut: a_verifier
   texte: l'agriculture consomme l'essentiel de l'eau douce (part à vérifier) et laisse peu aux villes
 - de: dessalement
+  fondement: mecanisme_physique
   vers: rarete
   effet: '-'
   delai: jours
@@ -501,6 +513,7 @@ relations:
   statut: a_verifier
   texte: le dessalement fournit l'eau des villes du Golfe ; une usine arrêtée crée une pénurie immédiate
 - de: rarete
+  fondement: causalite_sociale
   vers: villes
   effet: '-'
   delai: jours à semaines
@@ -512,6 +525,7 @@ relations:
   statut: a_verifier
   texte: des coupures qui durent font descendre les gens dans la rue (lien à vérifier par pays)
 - de: villes
+  fondement: causalite_sociale
   vers: rarete
   effet: +
   delai: années
@@ -520,6 +534,7 @@ relations:
   statut: a_verifier
   texte: la croissance urbaine accroît la demande et les fuites
 - de: relief
+  fondement: mecanisme_physique
   vers: pluies
   effet: +
   forme: forcage
@@ -529,6 +544,7 @@ relations:
   statut: a_verifier
   texte: les montagnes captent les pluies et la neige qui nourrissent les fleuves ; l'autre versant reste sec
 - de: relief
+  fondement: mecanisme_physique
   vers: fleuves
   effet: ±
   forme: contrainte
@@ -538,6 +554,7 @@ relations:
   statut: a_verifier
   texte: les lignes de partage des eaux décident quels pays partagent quel fleuve, et lequel est en amont
 - de: climat_regime
+  fondement: mecanisme_physique
   vers: pluies
   effet: '-'
   delai: années
@@ -549,6 +566,7 @@ relations:
   statut: a_verifier
   texte: la dérive du climat réduit la neige et les pluies utiles
 - de: fleuves
+  fondement: mecanisme_physique
   vers: nappes
   effet: +
   delai: mois à années
@@ -557,6 +575,7 @@ relations:
   statut: a_verifier
   texte: 'relation propre au niveau de l''eau : les crues rechargent les nappes'
 - de: irrigation
+  fondement: mecanisme_physique
   vers: chimie_eau
   effet: +
   delai: années
@@ -568,6 +587,7 @@ relations:
   statut: a_verifier
   texte: irriguer sans drainer sale les sols ; un sol salé ne redevient pas fertile par le même chemin
 - de: dessalement
+  fondement: mecanisme_physique
   vers: chimie_eau
   effet: +
   delai: années
@@ -576,6 +596,7 @@ relations:
   statut: a_verifier
   texte: la saumure rejetée rend le Golfe plus salé autour des usines
 - de: rarete
+  fondement: mecanisme_physique
   vers: maladies_hydriques
   effet: +
   delai: jours à semaines

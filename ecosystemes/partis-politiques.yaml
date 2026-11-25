@@ -216,6 +216,7 @@ compartiments:
   - *id001
 relations:
 - de: systemes_partisans
+  fondement: definition
   vers: partis_uniques
   effet: +
   delai: décennies
@@ -224,6 +225,7 @@ relations:
   statut: a_verifier
   texte: un régime fermé ne laisse qu'un parti
 - de: droite_radicale_populiste
+  fondement: causalite_sociale
   vers: groupes_internationales
   effet: '-'
   delai: années
@@ -251,6 +253,7 @@ relations:
   statut: a_verifier
   texte: moins de militants, plus de partis bâtis autour d'un chef (le compartiment source lit ici le militantisme)
 - de: ecologistes
+  fondement: causalite_sociale
   vers: gauche_sociale_democrate
   effet: '0'
   delai: années
@@ -259,6 +262,7 @@ relations:
   statut: a_verifier
   texte: concurrence et alliances au sein de la gauche — sens à établir
 - de: partis_dominants
+  fondement: causalite_sociale
   vers: systemes_partisans
   effet: '-'
   delai: années

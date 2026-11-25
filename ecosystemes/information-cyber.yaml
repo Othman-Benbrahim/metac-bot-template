@@ -344,6 +344,7 @@ compartiments:
   - {source: "lois sur la désinformation adoptées par an et par pays (base CIMA / NED) ; à brancher", statut: a_brancher}
 relations:
 - de: recits
+  fondement: causalite_sociale
   vers: attention
   effet: +
   delai: heures
@@ -355,6 +356,7 @@ relations:
   statut: a_verifier
   texte: un récit chargé d'émotion capte l'attention
 - de: attention
+  fondement: causalite_sociale
   vers: foules
   effet: +
   retour: +
@@ -368,6 +370,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau psychologique : attention et contagion émotionnelle s''entretiennent jusqu''à l''emballement'
 - de: foules
+  fondement: causalite_sociale
   vers: foules
   effet: +
   delai: minutes
@@ -379,6 +382,7 @@ relations:
   statut: a_verifier
   texte: au-delà d'un seuil, la panique ou l'indignation se propage d'elle-même
 - de: foules
+  fondement: causalite_sociale
   vers: etats
   effet: ±
   delai: jours
@@ -390,6 +394,7 @@ relations:
   statut: a_verifier
   texte: une indignation assez large passe du niveau psychologique au géopolitique
 - de: etats
+  fondement: causalite_sociale
   vers: censure
   effet: +
   delai: jours
@@ -398,6 +403,7 @@ relations:
   statut: a_verifier
   texte: un État menacé durcit la censure
 - de: etats
+  fondement: causalite_sociale
   vers: coupures
   effet: +
   delai: heures
@@ -409,6 +415,7 @@ relations:
   statut: a_verifier
   texte: les coupures d'internet suivent les manifestations et les scrutins contestés
 - de: censure
+  fondement: causalite_sociale
   vers: recits
   effet: '-'
   retour: +
@@ -418,6 +425,7 @@ relations:
   statut: a_verifier
   texte: la censure étouffe les contre-récits et renforce le récit officiel (prédation)
 - de: censure
+  fondement: causalite_sociale
   vers: coupures
   effet: +
   delai: jours
@@ -426,6 +434,7 @@ relations:
   statut: a_verifier
   texte: 'propre aux mêmes acteurs : quand le filtrage ne suffit plus, on coupe'
 - de: cyber
+  fondement: mecanisme_physique
   vers: infrastructure
   effet: '-'
   delai: heures
@@ -437,6 +446,7 @@ relations:
   statut: a_verifier
   texte: une attaque réussie paralyse un service ; l'effet ne passe au physique qu'au-delà d'un seuil
 - de: infrastructure
+  fondement: mecanisme_physique
   vers: coupures
   effet: '-'
   delai: heures
@@ -445,6 +455,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau technique : un câble coupé provoque une coupure régionale'
 - de: plateformes
+  fondement: causalite_sociale
   vers: attention
   effet: +
   delai: heures
@@ -453,6 +464,7 @@ relations:
   statut: a_verifier
   texte: les algorithmes amplifient ce qui retient l'attention
 - de: plateformes
+  fondement: lien
   vers: recits
   effet: ±
   delai: jours
@@ -461,6 +473,7 @@ relations:
   statut: a_verifier
   texte: la modération et les règles des plateformes décident de quels récits circulent
 - de: langues_biais
+  fondement: causalite_sociale
   vers: attention
   effet: ±
   delai: jours
@@ -469,6 +482,7 @@ relations:
   statut: a_verifier
   texte: 'ce qui n''est pas écrit en anglais est moins vu : nos mesures d''attention en héritent'
 - de: recits
+  fondement: causalite_sociale
   vers: etats
   effet: ±
   delai: semaines
@@ -488,6 +502,7 @@ relations:
   statut: a_verifier
   texte: un énoncé d'autorité répété devient le récit officiel
 - de: censure
+  fondement: lien
   vers: effacement_mots
   effet: +
   delai: semaines à mois
@@ -495,6 +510,7 @@ relations:
   statut: a_verifier
   texte: une loi ou une consigne fait sortir des mots des textes et des médias
 - de: effacement_mots
+  fondement: definition
   vers: langues_biais
   effet: +
   delai: semaines
@@ -502,6 +518,7 @@ relations:
   statut: a_verifier
   texte: un mot effacé des textes officiels fausse les comptes par listes de mots ; on mesure alors le silence, pas l'absence de la chose
 - de: inversion_reecriture
+  fondement: causalite_sociale
   vers: foules
   effet: +
   delai: semaines à années
@@ -509,6 +526,7 @@ relations:
   statut: a_verifier
   texte: retourner l'accusation nourrit la polarisation
 - de: resilience_informationnelle
+  fondement: causalite_sociale
   vers: recits
   effet: '-'
   delai: semaines
@@ -524,6 +542,7 @@ relations:
   statut: a_verifier
   texte: "choisir de ne pas relayer une manipulation et d'expliquer son mécanisme lui retire l'écho que cherchent ses auteurs ; la vérification réduit d'environ 8 % la circulation des fausses informations (Cagé et al. 2025)"
 - de: resilience_informationnelle
+  fondement: causalite_sociale
   vers: foules
   effet: '-'
   delai: jours
@@ -531,6 +550,7 @@ relations:
   statut: a_verifier
   texte: reconnaître l'incertitude et parler avec empathie limite la panique et la polarisation (littérature de communication de crise, COVID-19, Ebola, Fukushima, citée par Russo et al. 2026)
 - de: recits
+  fondement: causalite_sociale
   vers: resilience_informationnelle
   effet: '-'
   delai: années
@@ -538,6 +558,7 @@ relations:
   statut: a_verifier
   texte: la saturation et la fragmentation prolongées usent la confiance et l'espace commun d'interprétation
 - de: politiques_anti_desinformation
+  fondement: causalite_sociale
   vers: resilience_informationnelle
   effet: '+'
   delai: années
@@ -545,6 +566,7 @@ relations:
   statut: a_verifier
   texte: en démocratie, détection, exposition publique et éducation aux médias visent à renforcer la résilience ; effet mesuré limité (vérification -8 %, Cagé et al. 2025)
 - de: politiques_anti_desinformation
+  fondement: causalite_sociale
   vers: censure
   effet: '+'
   delai: mois
@@ -552,6 +574,7 @@ relations:
   statut: a_verifier
   texte: dans les régimes autoritaires, les lois sur la « fausse information » servent contre journalistes et opposants (225 journalistes emprisonnés pour ce motif entre 2016 et 2022, CIMA)
 - de: recits
+  fondement: causalite_sociale
   vers: politiques_anti_desinformation
   effet: '+'
   delai: années

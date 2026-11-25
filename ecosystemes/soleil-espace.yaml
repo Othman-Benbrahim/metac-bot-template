@@ -206,6 +206,7 @@ compartiments:
     fichier: collecte_gdelt.py
 relations:
 - de: soleil
+  fondement: mecanisme_physique
   vers: magnetosphere
   effet: +
   delai: jours
@@ -217,6 +218,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau physique : une éjection dirigée vers la Terre déclenche une tempête géomagnétique en un à trois jours (à vérifier)'
 - de: soleil
+  fondement: mecanisme_physique
   vers: radio
   effet: '-'
   delai: heures
@@ -228,6 +230,7 @@ relations:
   statut: a_verifier
   texte: le rayonnement d'une forte éruption coupe la radio haute fréquence côté jour en quelques minutes
 - de: magnetosphere
+  fondement: mecanisme_physique
   vers: gps
   effet: '-'
   delai: heures
@@ -239,6 +242,7 @@ relations:
   statut: a_verifier
   texte: une ionosphère perturbée dégrade la précision du positionnement
 - de: magnetosphere
+  fondement: mecanisme_physique
   vers: reseaux
   effet: '-'
   delai: heures
@@ -250,6 +254,7 @@ relations:
   statut: a_verifier
   texte: une tempête extrême induit des courants qui peuvent endommager des transformateurs ; rien en dessous d'un seuil
 - de: magnetosphere
+  fondement: mecanisme_physique
   vers: satellites
   effet: '-'
   delai: jours
@@ -261,6 +266,7 @@ relations:
   statut: a_verifier
   texte: 'la tempête chauffe la haute atmosphère, qui freine les satellites bas : certains retombent'
 - de: satellites
+  fondement: mecanisme_physique
   vers: debris
   effet: +
   delai: années
@@ -272,6 +278,7 @@ relations:
   statut: a_verifier
   texte: plus de satellites, plus de débris
 - de: debris
+  fondement: mecanisme_physique
   vers: debris
   effet: +
   delai: années
@@ -283,6 +290,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau physique : au-delà d''une densité, chaque collision crée des débris qui en provoquent d''autres'
 - de: debris
+  fondement: mecanisme_physique
   vers: satellites
   effet: '-'
   retour: +
@@ -292,6 +300,7 @@ relations:
   statut: a_verifier
   texte: les débris menacent les satellites, qui en produisent (prédation)
 - de: gps
+  fondement: mecanisme_physique
   vers: radio
   effet: '0'
   delai: heures
@@ -300,6 +309,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau technique : deux systèmes touchés par la même cause, sans effet direct l''un sur l''autre (neutralisme)'
 - de: alertes
+  fondement: lien
   vers: reseaux
   effet: +
   delai: heures
@@ -308,6 +318,7 @@ relations:
   statut: a_verifier
   texte: une alerte permet aux opérateurs de protéger leurs réseaux ; la convention de l'échelle déclenche l'action
 - de: magnetosphere
+  fondement: lien
   vers: alertes
   effet: +
   delai: heures
@@ -316,6 +327,7 @@ relations:
   statut: a_verifier
   texte: la tempête observée fait monter le niveau d'alerte
 - de: magnetosphere
+  fondement: causalite_sociale
   vers: recits
   effet: +
   delai: heures
@@ -327,6 +339,7 @@ relations:
   statut: a_verifier
   texte: des aurores visibles en basses latitudes font exploser l'attention
 - de: recits
+  fondement: causalite_sociale
   vers: alertes
   effet: ±
   delai: jours
@@ -335,6 +348,7 @@ relations:
   statut: a_verifier
   texte: un risque rare est sous-estimé jusqu'à l'événement, puis surestimé
 - de: meteorites
+  fondement: causalite_sociale
   vers: recits
   effet: +
   delai: heures

@@ -306,6 +306,7 @@ compartiments:
   - *id001
 relations:
 - de: questionneur_metaculus
+  fondement: causalite_sociale
   vers: questions_traitees
   effet: +
   delai: jours
@@ -314,6 +315,7 @@ relations:
   source: "Metaculus (70 % de non au fil principal ; 80 % au tournoi du deuxième trimestre) ; corpus du bot (71 % de non sur 272 questions)"
   texte: "le rédacteur choisit les changements discutés ; la plupart n'ont pas lieu dans le délai : le statu quo est le point de départ, le changement doit être justifié par un frein levé, un déclencheur ou une échéance"
 - de: biais
+  fondement: causalite_sociale
   vers: questionneur_metaculus
   effet: +
   delai: jours
@@ -321,6 +323,7 @@ relations:
   statut: a_verifier
   texte: "l'attention suit les médias, pas les faits ; les questions suivent l'attention (52 questions sur 272 en mars 2026, au moment de la guerre avec l'Iran)"
 - de: biais
+  fondement: causalite_sociale
   vers: monde
   effet: ±
   delai: permanent
@@ -329,6 +332,7 @@ relations:
   statut: a_verifier
   texte: nous voyons trop ce dont la presse anglophone parle, et trop peu le reste
 - de: definitions
+  fondement: definition
   vers: monde
   effet: ±
   delai: jours
@@ -337,6 +341,7 @@ relations:
   statut: a_verifier
   texte: 'un chiffre dépend de sa définition : changer la définition change ce que nous voyons sans changer le monde'
 - de: jeunesse_series
+  fondement: causalite_sociale
   vers: monde
   effet: '-'
   delai: permanent
@@ -358,6 +363,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau technique : les lecteurs instables obligent à multiplier les contrôles, qui révèlent leur instabilité'
 - de: fuite
+  fondement: definition
   vers: controles
   effet: '-'
   delai: semaines
@@ -366,6 +372,7 @@ relations:
   statut: a_verifier
   texte: une fuite gonfle les résultats des bancs rétrospectifs si on ne la mesure pas
 - de: biais
+  fondement: causalite_sociale
   vers: couverture
   effet: +
   delai: permanent
@@ -374,6 +381,7 @@ relations:
   statut: a_verifier
   texte: les biais des sources fabriquent les angles morts
 - de: couverture
+  fondement: definition
   vers: controles
   effet: '-'
   delai: semaines
@@ -382,6 +390,7 @@ relations:
   statut: a_verifier
   texte: ce que nous ne voyons pas, aucun contrôle ne peut le vérifier
 - de: lecteurs_ia
+  fondement: causalite_sociale
   vers: definitions
   effet: ±
   delai: secondes
@@ -390,6 +399,7 @@ relations:
   statut: a_verifier
   texte: un modèle qui résume peut changer un chiffre ou sa définition (taux mesuré faible au contrôle de fidélité)
 - de: monde
+  fondement: definition
   vers: jeunesse_series
   effet: +
   delai: mois
@@ -398,6 +408,7 @@ relations:
   statut: a_verifier
   texte: 'le temps qui passe fait mûrir les séries : le monde finit par donner sa référence'
 - de: controles
+  fondement: lien
   vers: resultats
   effet: +
   delai: semaines
@@ -406,6 +417,7 @@ relations:
   statut: a_verifier
   texte: le préenregistrement et le critère fixé d'avance décident du verdict (adopté, non adopté, clos)
 - de: lectures
+  fondement: causalite_sociale
   vers: ontologie_projet
   effet: +
   delai: jours à semaines
@@ -414,6 +426,7 @@ relations:
   statut: a_verifier
   texte: les lectures intégrées ont nourri des cartes, des fiches et des règles
 - de: resultats
+  fondement: lien
   vers: questions_traitees
   effet: +
   delai: semaines

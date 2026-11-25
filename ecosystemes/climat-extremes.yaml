@@ -378,6 +378,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: oceans
+  fondement: mecanisme_physique
   vers: oscillations
   effet: ±
   delai: mois
@@ -386,6 +387,7 @@ relations:
   statut: a_verifier
   texte: la chaleur du Pacifique équatorial fait basculer El Niño ou La Niña
 - de: oscillations
+  fondement: mecanisme_physique
   vers: atmosphere
   effet: ±
   delai: mois
@@ -397,6 +399,7 @@ relations:
   statut: a_verifier
   texte: les oscillations déplacent pluies et chaleurs sur plusieurs continents (télé-connexions)
 - de: atmosphere
+  fondement: mecanisme_physique
   vers: saisons
   effet: ±
   delai: jours à semaines
@@ -408,6 +411,7 @@ relations:
   statut: a_verifier
   texte: un blocage qui dure transforme un temps chaud en vague de chaleur
 - de: atmosphere
+  fondement: mecanisme_physique
   vers: tempetes
   effet: ±
   delai: jours
@@ -416,6 +420,7 @@ relations:
   statut: a_verifier
   texte: la circulation dirige et nourrit les tempêtes
 - de: oceans
+  fondement: mecanisme_physique
   vers: tempetes
   effet: +
   delai: jours à semaines
@@ -427,6 +432,7 @@ relations:
   statut: a_verifier
   texte: une mer chaude au-delà d'un seuil nourrit des cyclones plus intenses
 - de: saisons
+  fondement: mecanisme_physique
   vers: secheresses
   effet: +
   delai: semaines à mois
@@ -435,6 +441,7 @@ relations:
   statut: a_verifier
   texte: chaleur et absence de pluie installent la sécheresse
 - de: secheresses
+  fondement: mecanisme_physique
   vers: vegetation
   effet: '-'
   delai: semaines
@@ -446,6 +453,7 @@ relations:
   statut: a_verifier
   texte: la végétation tient puis décroche d'un coup
 - de: vegetation
+  fondement: mecanisme_physique
   vers: saisons
   effet: '-'
   retour: '-'
@@ -456,6 +464,7 @@ relations:
   statut: a_verifier
   texte: 'boucle : des sols secs chauffent plus l''air, et l''air plus chaud assèche les sols (rétroaction qui entretient la chaleur)'
 - de: vegetation
+  fondement: mecanisme_physique
   vers: feux
   effet: +
   delai: jours
@@ -467,6 +476,7 @@ relations:
   statut: a_verifier
   texte: une végétation desséchée devient combustible
 - de: feux
+  fondement: mecanisme_physique
   vers: vegetation
   effet: '-'
   delai: jours à années
@@ -478,6 +488,7 @@ relations:
   statut: a_verifier
   texte: les feux détruisent la végétation, qui met des années à revenir (ou ne revient pas à l'identique)
 - de: tendance
+  fondement: mecanisme_physique
   vers: saisons
   effet: +
   delai: décennies
@@ -486,6 +497,7 @@ relations:
   statut: a_verifier
   texte: le réchauffement de fond rend les extrêmes chauds plus fréquents
 - de: saisons
+  fondement: mecanisme_physique
   vers: exposes
   effet: '-'
   delai: jours
@@ -497,6 +509,7 @@ relations:
   statut: a_verifier
   texte: au-delà d'un seuil de chaleur ou de froid, réseaux et santé cèdent
 - de: tempetes
+  fondement: mecanisme_physique
   vers: exposes
   effet: '-'
   delai: heures à jours
@@ -505,6 +518,7 @@ relations:
   statut: a_verifier
   texte: cyclones et inondations frappent infrastructures et récoltes
 - de: exposes
+  fondement: mecanisme_physique
   vers: vegetation
   effet: '-'
   delai: années
@@ -513,6 +527,7 @@ relations:
   statut: a_verifier
   texte: urbanisation et défrichement réduisent la végétation qui tamponnait les extrêmes
 - de: chimie_atmosphere
+  fondement: mecanisme_physique
   vers: rayonnement
   effet: +
   delai: années à décennies
@@ -521,6 +536,7 @@ relations:
   statut: a_verifier
   texte: 'les gaz à effet de serre retiennent la chaleur : le bilan d''énergie penche vers le réchauffement'
 - de: rayonnement
+  fondement: mecanisme_physique
   vers: tendance
   effet: +
   delai: décennies
@@ -541,6 +557,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau physique : moins de glace, moins de lumière renvoyée, plus de chaleur, encore moins de glace (rétroaction d''albédo)'
 - de: oceans
+  fondement: mecanisme_physique
   vers: chimie_atmosphere
   effet: '-'
   retour: +
@@ -553,6 +570,7 @@ relations:
   statut: a_verifier
   texte: les océans absorbent une part du CO2 ; plus chauds et plus acides, ils en absorbent moins
 - de: relief
+  fondement: mecanisme_physique
   vers: secheresses
   effet: +
   delai: permanent
@@ -561,6 +579,7 @@ relations:
   statut: a_verifier
   texte: 'une chaîne de montagnes arrête les pluies : un versant arrosé, l''autre sec (ombre pluviométrique)'
 - de: relief
+  fondement: mecanisme_physique
   vers: atmosphere
   effet: ±
   forme: contrainte
@@ -570,6 +589,7 @@ relations:
   statut: a_verifier
   texte: le relief canalise les vents et fixe la place des blocages et des moussons
 - de: tendance
+  fondement: mecanisme_physique
   vers: oscillations
   effet: ±
   delai: décennies

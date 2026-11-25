@@ -61,6 +61,7 @@ compartiments:
   traces: []
 relations:
 - de: composition_air
+  fondement: mecanisme_physique
   vers: bilan_energie
   effet: +
   delai: années

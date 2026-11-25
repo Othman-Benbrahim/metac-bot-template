@@ -201,6 +201,7 @@ compartiments:
   - *id001
 relations:
 - de: travail
+  fondement: causalite_sociale
   vers: pauvrete
   effet: '-'
   delai: mois
@@ -218,6 +219,7 @@ relations:
   statut: a_verifier
   texte: les prestations sociales font baisser la pauvreté
 - de: inegalites
+  fondement: causalite_sociale
   vers: pauvrete
   effet: +
   delai: années
@@ -226,6 +228,7 @@ relations:
   statut: a_verifier
   texte: à croissance égale, des inégalités plus fortes freinent la baisse de la pauvreté
 - de: pauvrete
+  fondement: causalite_sociale
   vers: logement
   effet: '-'
   delai: années
@@ -234,6 +237,7 @@ relations:
   statut: a_verifier
   texte: plus de pauvreté, moins de logements convenables (le compartiment cible lit ici la part de logements convenables)
 - de: pauvrete
+  fondement: causalite_sociale
   vers: acces_energie
   effet: '-'
   delai: années
@@ -242,6 +246,7 @@ relations:
   statut: a_verifier
   texte: la pauvreté freine l'accès à l'électricité et à une cuisson propre
 - de: acces_energie
+  fondement: causalite_sociale
   vers: pauvrete
   effet: '-'
   delai: années

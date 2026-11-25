@@ -152,6 +152,7 @@ compartiments:
     taille: macro
 relations:
 - de: usa_chine_latam
+  fondement: evenement
   vers: venezuela
   effet: +
   delai: mois
@@ -159,6 +160,7 @@ relations:
   statut: a_verifier
   texte: la pression américaine a culminé dans l'intervention de janvier 2026
 - de: violences_criminelles
+  fondement: causalite_sociale
   vers: bascule_politique
   effet: +
   delai: années
@@ -166,6 +168,7 @@ relations:
   statut: a_verifier
   texte: l'insécurité porte au pouvoir des candidats de l'ordre (Colombie)
 - de: ressources_latam
+  fondement: causalite_sociale
   vers: usa_chine_latam
   effet: +
   delai: années
@@ -173,6 +176,7 @@ relations:
   statut: a_verifier
   texte: lithium, cuivre et soja attirent la Chine et les États-Unis
 - de: haiti
+  fondement: causalite_sociale
   vers: violences_criminelles
   effet: +
   delai: mois

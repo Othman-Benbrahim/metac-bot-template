@@ -153,6 +153,7 @@ compartiments:
     taille: méso
 relations:
 - de: montee_eaux
+  fondement: mecanisme_physique
   vers: dependances
   effet: +
   delai: années
@@ -160,6 +161,7 @@ relations:
   statut: a_verifier
   texte: la mer qui monte salinise les sols et les nappes ; l'île dépend davantage de l'extérieur
 - de: cyclones
+  fondement: evenement
   vers: dependances
   effet: +
   delai: jours à années
@@ -167,6 +169,7 @@ relations:
   statut: a_verifier
   texte: chaque cyclone détruit récoltes et infrastructures et accroît la dépendance à l'aide
 - de: zee_cables
+  fondement: causalite_sociale
   vers: pacifique
   effet: +
   delai: années
@@ -174,6 +177,7 @@ relations:
   statut: a_verifier
   texte: zones maritimes et câbles attirent les puissances
 - de: montee_eaux
+  fondement: lien
   vers: pacifique
   effet: +
   delai: années

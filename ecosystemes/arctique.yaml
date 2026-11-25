@@ -109,6 +109,7 @@ compartiments:
     taille: macro
 relations:
 - de: glace_arctique
+  fondement: mecanisme_physique
   vers: route_nord
   effet: '-'
   delai: saisons
@@ -116,6 +117,7 @@ relations:
   statut: a_verifier
   texte: moins de glace, saison de navigation plus longue
 - de: glace_arctique
+  fondement: mecanisme_physique
   vers: ressources_arctique
   effet: '-'
   delai: années
@@ -123,6 +125,7 @@ relations:
   statut: a_verifier
   texte: la fonte rend accessibles des gisements
 - de: ressources_arctique
+  fondement: causalite_sociale
   vers: groenland
   effet: +
   delai: années
@@ -130,6 +133,7 @@ relations:
   statut: a_verifier
   texte: les minerais du Groenland attirent les puissances
 - de: militarisation
+  fondement: causalite_sociale
   vers: conseil_arctique
   effet: '-'
   delai: années

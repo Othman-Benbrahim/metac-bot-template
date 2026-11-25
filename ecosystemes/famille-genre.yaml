@@ -103,6 +103,7 @@ compartiments:
   - *id001
 relations:
 - de: mariage
+  fondement: causalite_sociale
   vers: roles_soin
   effet: '+'
   delai: générations
@@ -111,6 +112,7 @@ relations:
   statut: a_verifier
   texte: un mariage précoce enferme dans le travail domestique
 - de: roles_soin
+  fondement: causalite_sociale
   vers: femmes_pouvoir
   effet: '-'
   delai: générations
@@ -119,6 +121,7 @@ relations:
   statut: a_verifier
   texte: le poids du soin éloigne les femmes des carrières et des mandats
 - de: heritage
+  fondement: causalite_sociale
   vers: parente_clans
   effet: '+'
   delai: générations
@@ -127,6 +130,7 @@ relations:
   statut: a_verifier
   texte: l'héritage entretient la lignée et ses obligations
 - de: structures_familiales
+  fondement: causalite_sociale
   vers: roles_soin
   effet: '0'
   delai: générations
@@ -135,6 +139,7 @@ relations:
   statut: a_verifier
   texte: la forme de la famille change qui prend soin de qui — sens à établir selon les cas
 - de: violences_genre
+  fondement: causalite_sociale
   vers: femmes_pouvoir
   effet: '-'
   delai: années

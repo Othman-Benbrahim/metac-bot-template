@@ -411,6 +411,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: climat
+  fondement: mecanisme_physique
   vers: eau_agricole
   effet: ±
   delai: semaines
@@ -434,6 +435,7 @@ relations:
   statut: a_verifier
   texte: sous un seuil d'eau, les rendements chutent d'un coup
 - de: climat
+  fondement: mecanisme_physique
   vers: cultures
   effet: '-'
   delai: jours à semaines
@@ -445,6 +447,7 @@ relations:
   statut: a_verifier
   texte: quelques jours de chaleur au mauvais moment suffisent à abîmer une récolte
 - de: climat
+  fondement: mecanisme_physique
   vers: ravageurs
   effet: +
   delai: semaines
@@ -453,6 +456,7 @@ relations:
   statut: a_verifier
   texte: chaleur et humidité favorisent criquets et maladies
 - de: ravageurs
+  fondement: mecanisme_physique
   vers: cultures
   effet: '-'
   retour: +
@@ -462,6 +466,7 @@ relations:
   statut: a_verifier
   texte: 'prédation : les ravageurs vivent des cultures'
 - de: sols
+  fondement: mecanisme_physique
   vers: cultures
   effet: +
   delai: saisons à décennies
@@ -470,6 +475,7 @@ relations:
   statut: a_verifier
   texte: la fertilité des sols porte les rendements sur la durée
 - de: cultures
+  fondement: mecanisme_physique
   vers: sols
   effet: '-'
   delai: années
@@ -493,6 +499,7 @@ relations:
   statut: a_verifier
   texte: des engrais trop chers font moins épandre, et la récolte suivante baisse
 - de: cultures
+  fondement: lien
   vers: stocks
   effet: +
   delai: mois
@@ -501,6 +508,7 @@ relations:
   statut: a_verifier
   texte: les récoltes remplissent les stocks
 - de: stocks
+  fondement: causalite_sociale
   vers: prix
   effet: '-'
   delai: semaines
@@ -512,6 +520,7 @@ relations:
   statut: a_verifier
   texte: des stocks abondants amortissent les chocs ; bas, chaque nouvelle fait bondir les prix
 - de: commerce
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: jours à semaines
@@ -523,6 +532,7 @@ relations:
   statut: a_verifier
   texte: les interdictions d'export s'entraînent l'une l'autre et font monter les prix mondiaux
 - de: prix
+  fondement: causalite_sociale
   vers: commerce
   effet: ±
   retour: ±
@@ -532,6 +542,7 @@ relations:
   statut: a_verifier
   texte: quand les prix montent, des exportateurs ferment leurs frontières pour protéger leur marché intérieur
 - de: prix
+  fondement: causalite_sociale
   vers: importateurs
   effet: '-'
   delai: semaines à mois
@@ -543,6 +554,7 @@ relations:
   statut: a_verifier
   texte: au-delà d'un seuil de prix, les ménages pauvres et les budgets publics décrochent (lien documenté avec les émeutes, à vérifier)
 - de: prix
+  fondement: causalite_sociale
   vers: cultures
   effet: +
   delai: saison à année
@@ -551,6 +563,7 @@ relations:
   statut: a_verifier
   texte: des prix hauts font semer plus la saison suivante
 - de: chimie_sols
+  fondement: mecanisme_physique
   vers: cultures
   effet: +
   delai: saison
@@ -562,6 +575,7 @@ relations:
   statut: a_verifier
   texte: 'le rendement suit l''élément qui manque le plus : abondants partout sauf un, il plafonne quand même'
 - de: engrais
+  fondement: mecanisme_physique
   vers: chimie_sols
   effet: +
   delai: saison
@@ -573,6 +587,7 @@ relations:
   statut: a_verifier
   texte: les engrais remplissent le sol en nutriments, jusqu'à saturation ; l'excès part dans l'eau
 - de: elevage
+  fondement: mecanisme_physique
   vers: chimie_sols
   effet: +
   retour: +
@@ -583,6 +598,7 @@ relations:
   statut: a_verifier
   texte: le fumier rend au sol l'azote et le phosphore que l'herbe a pris
 - de: elevage
+  fondement: causalite_sociale
   vers: cultures
   effet: '-'
   retour: +
@@ -592,6 +608,7 @@ relations:
   statut: a_verifier
   texte: les troupeaux nourris aux grains entrent en concurrence avec l'alimentation humaine pour les récoltes
 - de: pathogenes
+  fondement: mecanisme_physique
   vers: elevage
   effet: '-'
   retour: +
@@ -617,6 +634,7 @@ relations:
   statut: a_verifier
   texte: une nouvelle souche de rouille ou de mildiou peut contourner les résistances d'une région entière
 - de: pollinisateurs
+  fondement: mecanisme_physique
   vers: cultures
   effet: +
   retour: +

@@ -418,6 +418,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: commerce
+  fondement: causalite_sociale
   vers: diplomatie
   effet: '-'
   retour: '-'
@@ -444,6 +445,7 @@ relations:
   statut: a_verifier
   texte: les contrôles freinent les filières de pointe, puis poussent à l'autonomie
 - de: technologie
+  fondement: lien
   vers: commerce
   effet: '-'
   retour: '-'
@@ -465,6 +467,7 @@ relations:
   statut: a_verifier
   texte: un incident grave gèle la diplomatie
 - de: diplomatie
+  fondement: evenement
   vers: taiwan
   effet: '-'
   delai: semaines
@@ -473,6 +476,7 @@ relations:
   statut: a_verifier
   texte: un sommet réussi abaisse la température militaire
 - de: energie
+  fondement: causalite_sociale
   vers: commerce
   effet: ±
   delai: mois
@@ -481,6 +485,7 @@ relations:
   statut: a_verifier
   texte: les achats d'énergie américaine servent de monnaie d'échange dans les trêves
 - de: alliances
+  fondement: causalite_sociale
   vers: taiwan
   effet: ±
   delai: mois
@@ -489,6 +494,7 @@ relations:
   statut: a_verifier
   texte: les alliances régionales dissuadent et provoquent à la fois
 - de: commerce
+  fondement: lien
   vers: economie_chine
   effet: '-'
   delai: mois
@@ -500,6 +506,7 @@ relations:
   statut: a_verifier
   texte: des droits très hauts coupent des marchés d'exportation
 - de: economie_chine
+  fondement: causalite_sociale
   vers: diplomatie
   effet: ±
   delai: mois
@@ -508,6 +515,7 @@ relations:
   statut: a_verifier
   texte: une économie sous pression peut pousser à la détente ou au durcissement
 - de: finance
+  fondement: causalite_sociale
   vers: commerce
   effet: ±
   delai: semaines
@@ -528,6 +536,7 @@ relations:
   statut: a_verifier
   texte: les nationalismes réduisent la marge de compromis
 - de: taiwan
+  fondement: causalite_sociale
   vers: energie
   effet: '-'
   delai: jours
@@ -539,6 +548,7 @@ relations:
   statut: a_verifier
   texte: une crise dans le détroit menacerait des routes de l'énergie et du commerce asiatiques
 - de: terres_rares
+  fondement: lien
   vers: technologie
   effet: +
   delai: mois
@@ -559,6 +569,7 @@ relations:
   statut: a_verifier
   texte: les licences d'exportation suivent l'état des négociations
 - de: detroit_relief
+  fondement: mecanisme_physique
   vers: taiwan
   effet: '-'
   forme: contrainte
@@ -571,6 +582,7 @@ relations:
   statut: a_verifier
   texte: la mer et ses saisons bornent ce qui peut être tenté à travers le détroit
 - de: atomique
+  fondement: causalite_sociale
   vers: taiwan
   effet: '-'
   delai: permanent
@@ -579,6 +591,7 @@ relations:
   statut: a_verifier
   texte: la dissuasion borne l'escalade entre les deux puissances
 - de: taiwan
+  fondement: lien
   vers: technologie
   effet: '-'
   delai: jours
@@ -590,6 +603,7 @@ relations:
   statut: a_verifier
   texte: 'la fabrication des puces les plus avancées est concentrée à Taïwan : une crise y touche toute la filière'
 - de: alliances
+  fondement: causalite_sociale
   vers: diplomatie
   effet: ±
   retour: ±
@@ -599,6 +613,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau géopolitique : les alignements des voisins pèsent sur le dialogue au sommet, qui les rassure ou les inquiète'
 - de: recits
+  fondement: causalite_sociale
   vers: taiwan
   effet: ±
   delai: semaines

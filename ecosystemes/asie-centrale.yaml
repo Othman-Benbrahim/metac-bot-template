@@ -106,6 +106,7 @@ compartiments:
     taille: macro
 relations:
 - de: partenaires
+  fondement: causalite_sociale
   vers: etats_c5
   effet: +
   delai: années
@@ -113,6 +114,7 @@ relations:
   statut: a_verifier
   texte: la concurrence des puissances donne de la marge aux cinq États
 - de: eau_region
+  fondement: causalite_sociale
   vers: etats_c5
   effet: '-'
   delai: saisons
@@ -120,6 +122,7 @@ relations:
   statut: a_verifier
   texte: le partage de l'eau entre amont et aval nourrit les tensions frontalières
 - de: migrants_travail
+  fondement: lien
   vers: etats_c5
   effet: +
   delai: mois

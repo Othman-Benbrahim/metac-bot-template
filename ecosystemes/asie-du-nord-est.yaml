@@ -151,6 +151,7 @@ compartiments:
   - *id001
 relations:
 - de: russie_coree
+  fondement: causalite_sociale
   vers: coree_du_nord
   effet: +
   delai: mois
@@ -159,6 +160,7 @@ relations:
   statut: a_verifier
   texte: l'aide militaire russe accroît les capacités nord-coréennes (missiles plus précis, défense aérienne)
 - de: coree_du_nord
+  fondement: causalite_sociale
   vers: alliances
   effet: +
   delai: mois
@@ -176,6 +178,7 @@ relations:
   statut: a_verifier
   texte: les tensions avec la Chine accélèrent le réarmement japonais (le compartiment cible lit ici l'effort de défense)
 - de: japon
+  fondement: causalite_sociale
   vers: chine_japon
   effet: +
   delai: mois
@@ -185,6 +188,7 @@ relations:
   texte: le réarmement et les déclarations japonaises sur Taïwan avivent les tensions avec Pékin (boucle avec la
     relation précédente)
 - de: coree_du_nord
+  fondement: causalite_sociale
   vers: coree_du_sud
   effet: +
   delai: années

@@ -240,6 +240,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: corrosion
+  fondement: causalite_sociale
   vers: desinformation
   effet: +
   delai: semaines
@@ -249,6 +250,7 @@ relations:
   texte: 'phase 2 de la corrosion : injection de contenus (registres factuel et sémantique) ; source : Dabila, Escudier,
     Marti, Sciences Po, 2026'
 - de: graphe_algorithme
+  fondement: causalite_sociale
   vers: corrosion
   effet: +
   delai: jours
@@ -258,6 +260,7 @@ relations:
   texte: 'phase 3 : la recommandation, qui met en avant les contenus les plus clivants, amplifie la corrosion à moindre
     coût (« l''accélérateur numérique ») ; source : idem'
 - de: corrosion
+  fondement: causalite_sociale
   vers: influence_ou_desinformation
   effet: +
   delai: mois
@@ -267,6 +270,7 @@ relations:
   texte: 'la corrosion est un cas tranché de la question ouverte : influence devenue manipulation quand l''origine et la
     finalité sont établies'
 - de: plateformes
+  fondement: lien
   vers: graphe_algorithme
   effet: +
   delai: mois
@@ -275,6 +279,7 @@ relations:
   statut: a_verifier
   texte: chaque plateforme règle son algorithme, qui fait le fil de chacun
 - de: graphe_algorithme
+  fondement: lien
   vers: createurs
   effet: +
   delai: mois
@@ -283,6 +288,7 @@ relations:
   statut: a_verifier
   texte: l'algorithme distribue l'audience aux créateurs
 - de: graphe_algorithme
+  fondement: causalite_sociale
   vers: soulevements
   effet: +
   delai: semaines
@@ -291,6 +297,7 @@ relations:
   statut: a_verifier
   texte: les groupes rapprochent des inconnus qui partagent une colère et coordonnent l'action
 - de: donnees_ciblage
+  fondement: causalite_sociale
   vers: personnalites
   effet: +
   delai: mois
@@ -299,6 +306,7 @@ relations:
   statut: a_verifier
   texte: le ciblage permet d'adresser à chaque public le message qui le touche
 - de: proprietaires_ligne
+  fondement: lien
   vers: moderation_regulation
   effet: '-'
   delai: mois
@@ -307,6 +315,7 @@ relations:
   statut: a_verifier
   texte: un propriétaire peut alléger la modération (fin de la vérification des faits chez Meta, choix de X)
 - de: moderation_regulation
+  fondement: causalite_sociale
   vers: desinformation
   effet: '-'
   delai: semaines
@@ -315,6 +324,7 @@ relations:
   statut: a_verifier
   texte: retirer les réseaux de faux comptes freine les campagnes
 - de: desinformation
+  fondement: causalite_sociale
   vers: complot
   effet: +
   delai: semaines
@@ -323,6 +333,7 @@ relations:
   statut: a_verifier
   texte: les campagnes reprennent et nourrissent les récits complotistes
 - de: moderation_regulation
+  fondement: causalite_sociale
   vers: soulevements
   effet: +
   delai: jours
@@ -331,6 +342,7 @@ relations:
   statut: a_verifier
   texte: bloquer les plateformes peut déclencher la révolte qu'il voulait éviter (Népal, 2025)
 - de: createurs
+  fondement: causalite_sociale
   vers: influence_ou_desinformation
   effet: +
   delai: semaines
@@ -339,6 +351,7 @@ relations:
   statut: a_verifier
   texte: les créateurs sont au cœur de la question - influence assumée, publicité cachée ou relais de fausses nouvelles
 - de: complot
+  fondement: causalite_sociale
   vers: soulevements
   effet: +
   delai: mois

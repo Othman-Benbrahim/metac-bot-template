@@ -151,6 +151,7 @@ compartiments:
   - *id001
 relations:
 - de: liens_faibles
+  fondement: definition
   vers: petit_monde
   effet: +
   delai: années
@@ -159,6 +160,7 @@ relations:
   statut: a_verifier
   texte: quelques liens qui sautent d'un groupe à l'autre suffisent à rapprocher tout le monde
 - de: carrefours
+  fondement: definition
   vers: petit_monde
   effet: +
   delai: années
@@ -167,6 +169,7 @@ relations:
   statut: a_verifier
   texte: les très connectés raccourcissent les chemins
 - de: ressemblance
+  fondement: causalite_sociale
   vers: liens_faibles
   effet: '-'
   delai: années
@@ -175,6 +178,7 @@ relations:
   statut: a_verifier
   texte: se lier à ses semblables raréfie les liens qui sortent du groupe
 - de: ressemblance
+  fondement: causalite_sociale
   vers: cascades
   effet: +
   delai: jours
@@ -183,6 +187,7 @@ relations:
   statut: a_verifier
   texte: dans un groupe fermé, une idée se renforce vite (chambre d'écho)
 - de: passeurs
+  fondement: causalite_sociale
   vers: cascades
   effet: +
   delai: jours
@@ -191,6 +196,7 @@ relations:
   statut: a_verifier
   texte: le passage d'un groupe à l'autre passe par les passeurs
 - de: reseaux_numeriques
+  fondement: causalite_sociale
   vers: petit_monde
   effet: +
   delai: années
@@ -199,6 +205,7 @@ relations:
   statut: a_verifier
   texte: les plateformes réduisent la distance moyenne entre les personnes
 - de: reseaux_numeriques
+  fondement: causalite_sociale
   vers: cascades
   effet: +
   delai: heures
@@ -207,6 +214,7 @@ relations:
   statut: a_verifier
   texte: les cascades vont beaucoup plus vite en ligne
 - de: reseaux_elites
+  fondement: causalite_sociale
   vers: carrefours
   effet: +
   delai: années
@@ -215,6 +223,7 @@ relations:
   statut: a_verifier
   texte: les mêmes lieux d'élite fabriquent les mêmes personnes très connectées
 - de: cercles
+  fondement: definition
   vers: liens_faibles
   effet: +
   delai: années

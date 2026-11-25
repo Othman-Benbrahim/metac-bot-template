@@ -213,6 +213,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: agriculture
+  fondement: lien
   vers: industrie_manufacturiere
   effet: +
   delai: mois
@@ -221,6 +222,7 @@ relations:
   statut: a_verifier
   texte: l'agriculture fournit l'industrie agroalimentaire et les fibres
 - de: extraction
+  fondement: lien
   vers: industrie_manufacturiere
   effet: +
   delai: mois
@@ -229,6 +231,7 @@ relations:
   statut: a_verifier
   texte: minerais et hydrocarbures sont les intrants de l'industrie
 - de: industrie_manufacturiere
+  fondement: lien
   vers: services
   effet: +
   delai: trimestres
@@ -237,6 +240,7 @@ relations:
   statut: a_verifier
   texte: l'industrie achète des services (transport, finance, ingénierie, commerce)
 - de: industrie_manufacturiere
+  fondement: causalite_sociale
   vers: conjoncture
   effet: +
   delai: trimestres
@@ -245,6 +249,7 @@ relations:
   statut: a_verifier
   texte: l'activité industrielle entraîne la conjoncture, surtout dans les pays exportateurs
 - de: services
+  fondement: definition
   vers: conjoncture
   effet: +
   delai: trimestres
@@ -253,6 +258,7 @@ relations:
   statut: a_verifier
   texte: les services font près des deux tiers du PIB mondial ; ils font la conjoncture
 - de: echanges
+  fondement: lien
   vers: industrie_manufacturiere
   effet: +
   delai: trimestres
@@ -261,6 +267,7 @@ relations:
   statut: a_verifier
   texte: l'industrie dépend des marchés d'exportation et des intrants importés
 - de: finance_entreprise
+  fondement: causalite_sociale
   vers: industrie_manufacturiere
   effet: +
   delai: années
@@ -269,6 +276,7 @@ relations:
   statut: a_verifier
   texte: l'investissement financé ouvre des usines et des capacités
 - de: dirigeants_entreprise
+  fondement: causalite_sociale
   vers: entreprises
   effet: +
   delai: mois
@@ -278,6 +286,7 @@ relations:
   texte: les décisions des dirigeants (investir, fermer, délocaliser) orientent les entreprises (le compartiment cible lit
     ici leur activité)
 - de: entreprises
+  fondement: causalite_sociale
   vers: industrie_manufacturiere
   effet: +
   delai: trimestres
@@ -286,6 +295,7 @@ relations:
   statut: a_verifier
   texte: les grandes entreprises nommées portent une part de l'activité industrielle (usines, fermetures, plans sociaux)
 - de: regles_sectorielles
+  fondement: lien
   vers: entreprises
   effet: '-'
   delai: mois à années
@@ -294,6 +304,7 @@ relations:
   statut: a_verifier
   texte: une réglementation nouvelle contraint l'activité des entreprises du secteur (coûts de mise en conformité)
 - de: conjoncture
+  fondement: causalite_sociale
   vers: entreprises
   effet: +
   delai: trimestres
@@ -311,6 +322,7 @@ relations:
   statut: a_verifier
   texte: une croissance faible fait monter les défaillances
 - de: investissement_ia
+  fondement: causalite_sociale
   vers: conjoncture
   effet: +
   delai: trimestres
@@ -319,6 +331,7 @@ relations:
   statut: a_verifier
   texte: l'investissement dans l'IA soutient la croissance mondiale (FMI, octobre 2026)
 - de: defaillances
+  fondement: causalite_sociale
   vers: finance_entreprise
   effet: '-'
   delai: mois
@@ -327,6 +340,7 @@ relations:
   statut: a_verifier
   texte: plus de défaillances rendent le crédit et les opérations plus difficiles
 - de: conjoncture
+  fondement: causalite_sociale
   vers: immobilier_consommation
   effet: +
   delai: trimestres

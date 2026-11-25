@@ -113,6 +113,7 @@ compartiments:
   - {source: "taux directeur effectif de la Réserve fédérale (FRED DFF) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: collecte_fred.py, adaptateur: "fred:DFF"}
 relations:
 - de: banques_centrales_puissance
+  fondement: causalite_sociale
   vers: monnaies_numeriques
   effet: '-'
   delai: mois
@@ -122,6 +123,7 @@ relations:
   texte: le resserrement monétaire pèse sur les cryptoactifs, devenus corrélés aux actions depuis 2020
   source: "FMI, « Crypto Prices Move More in Sync With Stocks, Posing New Risks » (2022), https://www.imf.org/en/Blogs/Articles/2022/01/11/crypto-prices-move-more-in-sync-with-stocks-posing-new-risks ; complété le 2026-11-24"
 - de: sanctions_financieres
+  fondement: causalite_sociale
   vers: dedollarisation
   effet: '+'
   delai: années
@@ -130,6 +132,7 @@ relations:
   statut: a_verifier
   texte: le gel d'avoirs pousse des pays à diversifier hors du dollar et de l'euro
 - de: sanctions_financieres
+  fondement: causalite_sociale
   vers: or
   effet: '+'
   delai: années
@@ -138,6 +141,7 @@ relations:
   statut: a_verifier
   texte: l'or ne peut pas être gelé à distance s'il est rapatrié — achats des banques centrales
 - de: dedollarisation
+  fondement: causalite_sociale
   vers: dollar_reserve
   effet: '-'
   delai: décennies
@@ -146,6 +150,7 @@ relations:
   statut: a_verifier
   texte: la diversification grignote la part du dollar
 - de: monnaies_numeriques
+  fondement: causalite_sociale
   vers: dollar_reserve
   effet: '+'
   delai: années
@@ -154,6 +159,7 @@ relations:
   statut: a_verifier
   texte: les stablecoins adossés au dollar étendent son usage (à confirmer)
 - de: paiements
+  fondement: lien
   vers: sanctions_financieres
   effet: '+'
   delai: jours
@@ -162,6 +168,7 @@ relations:
   statut: a_verifier
   texte: le contrôle des réseaux de paiement rend les sanctions efficaces
 - de: banques_centrales_puissance
+  fondement: lien
   vers: dollar_reserve
   effet: '+'
   delai: décennies

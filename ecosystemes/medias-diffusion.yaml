@@ -205,6 +205,7 @@ compartiments:
   - *id001
 relations:
 - de: plateformes_sociales
+  fondement: causalite_sociale
   vers: presse
   effet: '-'
   delai: années
@@ -213,6 +214,7 @@ relations:
   statut: a_verifier
   texte: audience et publicité passent des journaux aux plateformes (les sites d'information perdent 12 points depuis 2020)
 - de: plateformes_sociales
+  fondement: causalite_sociale
   vers: television
   effet: '-'
   delai: années
@@ -230,6 +232,7 @@ relations:
   statut: a_verifier
   texte: les plateformes donnent leur audience aux créateurs
 - de: geants_mango
+  fondement: causalite_sociale
   vers: plateformes_sociales
   effet: +
   delai: mois
@@ -238,6 +241,7 @@ relations:
   statut: a_verifier
   texte: l'IA et l'infrastructure des géants transforment la diffusion (recommandation, résumés, agents conversationnels)
 - de: proprietaires
+  fondement: lien
   vers: presse
   effet: +
   delai: années
@@ -247,6 +251,7 @@ relations:
   texte: les propriétaires financent les titres et peuvent orienter leur ligne (le compartiment cible lit ici l'alignement
     éditorial sur le propriétaire)
 - de: proprietaires
+  fondement: lien
   vers: television
   effet: +
   delai: années
@@ -264,6 +269,7 @@ relations:
   statut: a_verifier
   texte: rachats de maisons d'édition par les mêmes industriels
 - de: proprietaires
+  fondement: causalite_sociale
   vers: independants
   effet: '-'
   delai: années
@@ -272,6 +278,7 @@ relations:
   statut: a_verifier
   texte: la concentration réduit la place des indépendants (rachats, concurrence pour l'audience)
 - de: jeux_video
+  fondement: causalite_sociale
   vers: createurs
   effet: +
   delai: mois
@@ -280,6 +287,7 @@ relations:
   statut: a_verifier
   texte: diffusion en direct et vidéos de jeux nourrissent l'économie des créateurs
 - de: diffuseurs_internationaux
+  fondement: lien
   vers: presse
   effet: +
   delai: jours

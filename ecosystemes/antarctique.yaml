@@ -105,6 +105,7 @@ compartiments:
     taille: macro
 relations:
 - de: presences
+  fondement: lien
   vers: traite
   effet: '-'
   delai: années
@@ -120,6 +121,7 @@ relations:
   statut: a_verifier
   texte: moins de glace de mer, moins d'habitat pour le krill
 - de: calotte
+  fondement: mecanisme_physique
   vers: glace_mer
   effet: '0'
   delai: années

@@ -478,6 +478,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: immobilier
+  fondement: causalite_sociale
   vers: activite
   effet: '-'
   delai: mois à années
@@ -489,6 +490,7 @@ relations:
   statut: a_verifier
   texte: la crise immobilière pèse longtemps sur l'investissement ; la confiance ne revient pas par le même chemin
 - de: immobilier
+  fondement: causalite_sociale
   vers: consommation
   effet: '-'
   delai: mois
@@ -497,6 +499,7 @@ relations:
   statut: a_verifier
   texte: le logement est l'épargne principale des ménages ; sa baisse les rend prudents
 - de: consommation
+  fondement: causalite_sociale
   vers: activite
   effet: +
   delai: mois
@@ -505,6 +508,7 @@ relations:
   statut: a_verifier
   texte: une consommation faible laisse l'activité dépendre des exportations et de l'investissement
 - de: exportations
+  fondement: causalite_sociale
   vers: activite
   effet: +
   delai: semaines à mois
@@ -513,6 +517,7 @@ relations:
   statut: a_verifier
   texte: les exportations compensent la faiblesse intérieure
 - de: exterieur
+  fondement: lien
   vers: exportations
   effet: '-'
   retour: '-'
@@ -526,6 +531,7 @@ relations:
   statut: a_verifier
   texte: droits de douane et contrôles d'un côté, représailles de l'autre
 - de: politique_monetaire
+  fondement: causalite_sociale
   vers: activite
   effet: +
   delai: mois
@@ -534,6 +540,7 @@ relations:
   statut: a_verifier
   texte: baisses de taux et obligations spéciales soutiennent l'activité, moins quand ménages et entreprises ne veulent plus s'endetter
 - de: pouvoir
+  fondement: causalite_sociale
   vers: politique_monetaire
   effet: ±
   delai: semaines à mois
@@ -542,6 +549,7 @@ relations:
   statut: a_verifier
   texte: les grandes orientations décident de l'ampleur des relances
 - de: pouvoir
+  fondement: lien
   vers: statistiques
   effet: ±
   delai: mois
@@ -562,6 +570,7 @@ relations:
   statut: a_verifier
   texte: le chômage des jeunes monte chaque été et quand l'activité ralentit
 - de: activite
+  fondement: causalite_sociale
   vers: matieres_premieres
   effet: +
   delai: semaines à mois
@@ -570,6 +579,7 @@ relations:
   statut: a_verifier
   texte: la demande chinoise de pétrole, de fer et de cuivre suit l'industrie et la construction
 - de: statistiques
+  fondement: causalite_sociale
   vers: politique_monetaire
   effet: ±
   delai: semaines
@@ -578,6 +588,7 @@ relations:
   statut: a_verifier
   texte: les décisions et les marchés réagissent au chiffre publié, convention dont la fiabilité est débattue
 - de: emploi
+  fondement: causalite_sociale
   vers: pouvoir
   effet: '-'
   delai: mois à années
@@ -586,6 +597,7 @@ relations:
   statut: a_verifier
   texte: le chômage des jeunes est une pression lente sur la légitimité
 - de: eau_fleuves
+  fondement: mecanisme_physique
   vers: activite
   effet: '-'
   delai: semaines
@@ -597,6 +609,7 @@ relations:
   statut: a_verifier
   texte: une sécheresse fait baisser l'hydroélectricité et peut imposer des coupures aux usines
 - de: demographie
+  fondement: causalite_sociale
   vers: immobilier
   effet: '-'
   delai: années
@@ -608,6 +621,7 @@ relations:
   statut: a_verifier
   texte: moins de jeunes ménages, moins de demande de logements, et la confiance ne revient pas au même rythme
 - de: demographie
+  fondement: causalite_sociale
   vers: consommation
   effet: '-'
   delai: années
@@ -616,6 +630,7 @@ relations:
   statut: a_verifier
   texte: le vieillissement pousse à l'épargne de précaution
 - de: epizooties
+  fondement: evenement
   vers: consommation
   effet: '-'
   delai: mois
@@ -639,6 +654,7 @@ relations:
   statut: a_verifier
   texte: la qualité des sols ne remonte au niveau du pouvoir qu'à travers une alerte sur la sécurité alimentaire
 - de: pouvoir
+  fondement: lien
   vers: statistiques
   effet: ±
   retour: ±

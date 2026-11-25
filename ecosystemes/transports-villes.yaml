@@ -214,6 +214,7 @@ compartiments:
   - *id001
 relations:
 - de: forme_urbaine
+  fondement: causalite_sociale
   vers: route
   effet: +
   delai: années
@@ -222,6 +223,7 @@ relations:
   statut: a_verifier
   texte: l'étalement allonge les trajets et fait monter le trafic routier
 - de: transports_publics
+  fondement: causalite_sociale
   vers: route
   effet: '-'
   delai: années
@@ -230,6 +232,7 @@ relations:
   statut: a_verifier
   texte: un accès commode aux transports publics fait baisser le trafic routier, à condition que le réseau soit dense
 - de: route
+  fondement: mecanisme_physique
   vers: securite_routiere
   effet: +
   delai: jours
@@ -238,6 +241,7 @@ relations:
   statut: a_verifier
   texte: plus de trafic, plus de morts et de blessés sur la route (le compartiment cible lit ici le nombre de victimes)
 - de: electrification
+  fondement: mecanisme_physique
   vers: route
   effet: '-'
   delai: années
@@ -247,6 +251,7 @@ relations:
   texte: l'électrification fait baisser la consommation de pétrole de la route, avec le délai du renouvellement du parc
     (le compartiment cible lit ici le pétrole consommé)
 - de: gouvernance_urbaine
+  fondement: lien
   vers: transports_publics
   effet: +
   delai: années

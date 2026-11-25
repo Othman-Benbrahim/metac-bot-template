@@ -342,6 +342,7 @@ compartiments:
     statut: a_brancher
 relations:
 - de: monnaies
+  fondement: definition
   vers: dette_publique
   effet: '-'
   delai: jours à mois
@@ -353,6 +354,7 @@ relations:
   statut: a_verifier
   texte: une dépréciation gonfle la dette en dollars ; au-delà d'un seuil elle devient insoutenable
 - de: monnaies
+  fondement: causalite_sociale
   vers: inflation_locale
   effet: +
   delai: mois
@@ -364,6 +366,7 @@ relations:
   statut: a_verifier
   texte: la dévaluation renchérit les importations, carburants et pain d'abord
 - de: reserves
+  fondement: causalite_sociale
   vers: monnaies
   effet: +
   delai: jours
@@ -375,6 +378,7 @@ relations:
   statut: a_verifier
   texte: des réserves suffisantes défendent la monnaie ; épuisées, la chute est brutale
 - de: dette_publique
+  fondement: causalite_sociale
   vers: creanciers
   effet: '-'
   retour: '-'
@@ -385,6 +389,7 @@ relations:
   statut: a_verifier
   texte: un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient
 - de: fmi
+  fondement: lien
   vers: reserves
   effet: +
   retour: +
@@ -395,6 +400,7 @@ relations:
   statut: a_verifier
   texte: un programme apporte des devises et rassure les autres créanciers, contre des conditions
 - de: fmi
+  fondement: causalite_sociale
   vers: politique_interieure
   effet: '-'
   retour: '-'
@@ -407,6 +413,7 @@ relations:
   statut: a_verifier
   texte: les conditions d'austérité alimentent la contestation, qui peut faire dérailler le programme
 - de: inflation_locale
+  fondement: causalite_sociale
   vers: politique_interieure
   effet: '-'
   delai: semaines à mois
@@ -418,6 +425,7 @@ relations:
   statut: a_verifier
   texte: la hausse des prix de base déclenche des manifestations au-delà d'un seuil
 - de: banques
+  fondement: causalite_sociale
   vers: monnaies
   effet: '-'
   delai: jours
@@ -426,6 +434,7 @@ relations:
   statut: a_verifier
   texte: des retraits massifs convertis en dollars accélèrent la chute de la monnaie
 - de: monnaies
+  fondement: causalite_sociale
   vers: banques
   effet: '-'
   delai: jours à semaines
@@ -437,6 +446,7 @@ relations:
   statut: a_verifier
   texte: une chute de la monnaie fait fuir les déposants (boucle avec la relation inverse)
 - de: matieres_premieres
+  fondement: causalite_sociale
   vers: reserves
   effet: ±
   delai: mois
@@ -445,6 +455,7 @@ relations:
   statut: a_verifier
   texte: les recettes d'exportation remplissent ou vident les réserves selon les prix
 - de: creanciers
+  fondement: causalite_sociale
   vers: monnaies
   effet: ±
   delai: jours
@@ -456,6 +467,7 @@ relations:
   statut: a_verifier
   texte: les flux des investisseurs entrent et sortent avec l'humeur mondiale
 - de: politique_interieure
+  fondement: causalite_sociale
   vers: dette_publique
   effet: ±
   delai: mois
@@ -464,6 +476,7 @@ relations:
   statut: a_verifier
   texte: élections et instabilité changent la volonté de payer ou d'ajuster
 - de: notations_definitions
+  fondement: lien
   vers: creanciers
   effet: ±
   delai: jours
@@ -475,6 +488,7 @@ relations:
   statut: a_verifier
   texte: 'une dégradation sous un seuil de note oblige des fonds à vendre : la convention déclenche le flux'
 - de: notations_definitions
+  fondement: lien
   vers: dette_publique
   effet: ±
   delai: jours à mois
@@ -483,6 +497,7 @@ relations:
   statut: a_verifier
   texte: ce qui « compte comme » défaut change le coût de la dette et l'accès aux marchés
 - de: dette_publique
+  fondement: causalite_sociale
   vers: notations_definitions
   effet: '-'
   retour: ±
@@ -492,6 +507,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du couple économie-convention : la dette qui monte fait baisser la note, qui renchérit la dette'
 - de: recoltes_catastrophes
+  fondement: evenement
   vers: matieres_premieres
   effet: '-'
   delai: saisons
@@ -503,6 +519,7 @@ relations:
   statut: a_verifier
   texte: une sécheresse ou un cyclone coupe les recettes d'exportation agricoles
 - de: recoltes_catastrophes
+  fondement: evenement
   vers: dette_publique
   effet: '-'
   delai: mois
@@ -514,6 +531,7 @@ relations:
   statut: a_verifier
   texte: une catastrophe majeure creuse la dette d'un petit pays d'un coup
 - de: gisements
+  fondement: causalite_sociale
   vers: matieres_premieres
   effet: +
   delai: années

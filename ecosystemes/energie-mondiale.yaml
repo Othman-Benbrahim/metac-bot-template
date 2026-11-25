@@ -329,6 +329,7 @@ compartiments:
     adaptateur: climat:berlin
 relations:
 - de: production
+  fondement: causalite_sociale
   vers: prix
   effet: '-'
   delai: semaines à mois
@@ -340,6 +341,7 @@ relations:
   statut: a_verifier
   texte: plus de production fait baisser les prix ; quand la capacité inutilisée s'épuise, le moindre arrêt fait bondir les prix
 - de: demande
+  fondement: causalite_sociale
   vers: prix
   effet: +
   delai: mois
@@ -348,6 +350,7 @@ relations:
   statut: a_verifier
   texte: une demande forte fait monter les prix
 - de: stocks
+  fondement: causalite_sociale
   vers: prix
   effet: '-'
   delai: semaines
@@ -371,6 +374,7 @@ relations:
   statut: a_verifier
   texte: un goulet fermé ou menacé fait monter les prix
 - de: conflits
+  fondement: evenement
   vers: transport
   effet: '-'
   delai: heures à jours
@@ -379,6 +383,7 @@ relations:
   statut: a_verifier
   texte: attaques et menaces sur les routes
 - de: conflits
+  fondement: evenement
   vers: raffinage
   effet: '-'
   delai: jours
@@ -387,6 +392,7 @@ relations:
   statut: a_verifier
   texte: frappes sur les raffineries et terminaux (drones)
 - de: raffinage
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: semaines
@@ -395,6 +401,7 @@ relations:
   statut: a_verifier
   texte: un arrêt de raffinage fait monter les produits plus que le brut
 - de: decisions
+  fondement: lien
   vers: production
   effet: ±
   delai: mois
@@ -403,6 +410,7 @@ relations:
   statut: a_verifier
   texte: les quotas de l'OPEP+ et les sanctions décident de la production réelle
 - de: prix
+  fondement: causalite_sociale
   vers: decisions
   effet: ±
   retour: ±
@@ -412,6 +420,7 @@ relations:
   statut: a_verifier
   texte: les producteurs réagissent aux prix (baisse de quotas quand les prix chutent) ; boucle de régulation
 - de: prix
+  fondement: causalite_sociale
   vers: demande
   effet: '-'
   delai: mois à années
@@ -420,6 +429,7 @@ relations:
   statut: a_verifier
   texte: des prix hauts finissent par freiner la demande
 - de: climat
+  fondement: causalite_sociale
   vers: demande
   effet: ±
   delai: jours à saisons
@@ -431,6 +441,7 @@ relations:
   statut: a_verifier
   texte: un hiver froid fait monter la demande de gaz et de fioul
 - de: climat
+  fondement: evenement
   vers: production
   effet: '-'
   delai: jours
@@ -439,6 +450,7 @@ relations:
   statut: a_verifier
   texte: ouragans dans le golfe du Mexique, arrêts de plateformes
 - de: recits
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: heures
@@ -450,6 +462,7 @@ relations:
   statut: a_verifier
   texte: annonces et menaces bougent les prix avant les flux
 - de: demande
+  fondement: mecanisme_physique
   vers: chimie_combustion
   effet: +
   delai: jours
@@ -458,6 +471,7 @@ relations:
   statut: a_verifier
   texte: brûler plus d'énergie fossile rejette plus de carbone et de soufre
 - de: chimie_combustion
+  fondement: mecanisme_physique
   vers: climat_regime
   effet: +
   delai: décennies
@@ -493,6 +507,7 @@ relations:
   statut: a_verifier
   texte: des réacteurs disponibles réduisent le besoin de gaz pour l'électricité ; des arrêts imprévus le font bondir
 - de: decisions
+  fondement: lien
   vers: nucleaire_civil
   effet: ±
   delai: mois à années
@@ -501,6 +516,7 @@ relations:
   statut: a_verifier
   texte: autorisations, sorties ou relances du nucléaire décident du parc disponible (une convention qui agit sur l'atomique)
 - de: transport
+  fondement: lien
   vers: raffinage
   effet: +
   delai: jours
@@ -509,6 +525,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau technique : un transport interrompu prive les raffineries de brut'
 - de: decisions
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: jours

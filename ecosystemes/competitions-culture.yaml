@@ -125,6 +125,7 @@ cycles:
     statut: mecanisme
 relations:
   - de: precurseurs_recompenses
+    fondement: causalite_sociale
     vers: public
     effet: +
     delai: semaines
@@ -132,6 +133,7 @@ relations:
     statut: a_verifier
     texte: "les votants des académies suivent en partie les guildes dont ils font partie"
   - de: classements_force
+    fondement: causalite_sociale
     vers: forme
     effet: +
     delai: jours
@@ -139,25 +141,26 @@ relations:
     statut: a_verifier
     texte: "la force classée et la forme récente se combinent ; les blessures annoncées corrigent"
   - de: regles
+    fondement: lien
     vers: classements_force
     effet: ±
     delai: jours
     force: moyenne
     statut: a_verifier
     texte: "le format (élimination, poules, nombre de tours) fixe la part du hasard"
-  - {de: "regles", vers: "forme", effet: "±", delai: "saison", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le format décide de la part du hasard : une élimination directe donne plus de chances au moins fort qu'un championnat long"}
-  - {de: "forme", vers: "psychologie", effet: "+", retour: "+", forme: "mutualisme", delai: "jours", force: "moyenne", intensite: {mesure: "longueur de la série de victoires ou de défaites", regle: "seuil"}, coupure: "blessure, changement d'entraîneur", statut: "a_verifier", texte: "victoires et confiance se nourrissent, jusqu'à un seuil où la série se brise"}
-  - {de: "psychologie", vers: "forme", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "enjeu du match (finale, élimination)", regle: "seuil"}, coupure: "expérience des grands rendez-vous", statut: "a_verifier", texte: "la pression des grands enjeux fait perdre des moyens au-delà d'un seuil"}
-  - {de: "public", vers: "psychologie", effet: "+", delai: "heures", force: "faible", coupure: "huis clos", statut: "a_verifier", texte: "l'avantage du terrain passe par le public (passage de la société au psychologique)"}
-  - {de: "argent", vers: "forme", effet: "+", delai: "saisons", force: "forte", coupure: "règles de plafond salarial", statut: "a_verifier", texte: "les budgets achètent les meilleurs : sur une saison longue, l'argent prédit beaucoup"}
-  - {de: "medias", vers: "public", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "attention médiatique", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "les campagnes et les récits orientent les votes du public"}
-  - {de: "public", vers: "argent", effet: "+", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la ferveur fait les recettes et le box-office"}
-  - {de: "regles", vers: "public", effet: "±", delai: "soirée de vote", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le partage entre jury et public décide de qui compte : une même performance gagne ou perd selon la règle"}
-  - {de: "calendrier", vers: "forme", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "densité des matchs", regle: "seuil"}, coupure: "rotation de l'effectif", statut: "a_verifier", texte: "un calendrier chargé fatigue et blesse au-delà d'un seuil"}
-  - {de: "milieu", vers: "forme", effet: "-", delai: "heures", force: "faible", intensite: {mesure: "chaleur ou altitude inhabituelles", regle: "seuil"}, coupure: "acclimatation", statut: "a_verifier", texte: "la chaleur et l'altitude pèsent sur les organismes non acclimatés (passage de la météo à la personne)"}
-  - {de: "geopolitique", vers: "public", effet: "±", delai: "soirée de vote", force: "moyenne", coupure: "règles de vote", statut: "a_verifier", texte: "votes de voisinage et de diaspora dans les concours (Eurovision)"}
-  - {de: "geopolitique", vers: "regles", effet: "-", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "exclusions et boycotts changent la liste des concurrents"}
-  - {de: "forme", vers: "forme", effet: "-", retour: "-", forme: "competition", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau personne : la compétition elle-même, ce que l'un gagne l'autre le perd"}
+  - {fondement: lien, de: "regles", vers: "forme", effet: "±", delai: "saison", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le format décide de la part du hasard : une élimination directe donne plus de chances au moins fort qu'un championnat long"}
+  - {fondement: causalite_sociale, de: "forme", vers: "psychologie", effet: "+", retour: "+", forme: "mutualisme", delai: "jours", force: "moyenne", intensite: {mesure: "longueur de la série de victoires ou de défaites", regle: "seuil"}, coupure: "blessure, changement d'entraîneur", statut: "a_verifier", texte: "victoires et confiance se nourrissent, jusqu'à un seuil où la série se brise"}
+  - {fondement: causalite_sociale, de: "psychologie", vers: "forme", effet: "-", delai: "heures", force: "moyenne", intensite: {mesure: "enjeu du match (finale, élimination)", regle: "seuil"}, coupure: "expérience des grands rendez-vous", statut: "a_verifier", texte: "la pression des grands enjeux fait perdre des moyens au-delà d'un seuil"}
+  - {fondement: causalite_sociale, de: "public", vers: "psychologie", effet: "+", delai: "heures", force: "faible", coupure: "huis clos", statut: "a_verifier", texte: "l'avantage du terrain passe par le public (passage de la société au psychologique)"}
+  - {fondement: causalite_sociale, de: "argent", vers: "forme", effet: "+", delai: "saisons", force: "forte", coupure: "règles de plafond salarial", statut: "a_verifier", texte: "les budgets achètent les meilleurs : sur une saison longue, l'argent prédit beaucoup"}
+  - {fondement: causalite_sociale, de: "medias", vers: "public", effet: "+", delai: "jours", force: "moyenne", intensite: {mesure: "attention médiatique", regle: "proportionnelle"}, coupure: "inconnue", statut: "a_verifier", texte: "les campagnes et les récits orientent les votes du public"}
+  - {fondement: causalite_sociale, de: "public", vers: "argent", effet: "+", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "la ferveur fait les recettes et le box-office"}
+  - {fondement: lien, de: "regles", vers: "public", effet: "±", delai: "soirée de vote", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le partage entre jury et public décide de qui compte : une même performance gagne ou perd selon la règle"}
+  - {fondement: mecanisme_physique, de: "calendrier", vers: "forme", effet: "-", delai: "semaines", force: "moyenne", intensite: {mesure: "densité des matchs", regle: "seuil"}, coupure: "rotation de l'effectif", statut: "a_verifier", texte: "un calendrier chargé fatigue et blesse au-delà d'un seuil"}
+  - {fondement: mecanisme_physique, de: "milieu", vers: "forme", effet: "-", delai: "heures", force: "faible", intensite: {mesure: "chaleur ou altitude inhabituelles", regle: "seuil"}, coupure: "acclimatation", statut: "a_verifier", texte: "la chaleur et l'altitude pèsent sur les organismes non acclimatés (passage de la météo à la personne)"}
+  - {fondement: causalite_sociale, de: "geopolitique", vers: "public", effet: "±", delai: "soirée de vote", force: "moyenne", coupure: "règles de vote", statut: "a_verifier", texte: "votes de voisinage et de diaspora dans les concours (Eurovision)"}
+  - {fondement: evenement, de: "geopolitique", vers: "regles", effet: "-", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "exclusions et boycotts changent la liste des concurrents"}
+  - {fondement: definition, de: "forme", vers: "forme", effet: "-", retour: "-", forme: "competition", delai: "heures", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "propre au niveau personne : la compétition elle-même, ce que l'un gagne l'autre le perd"}
 ponts:
 - depuis: medias
   vers: information-cyber:recits
