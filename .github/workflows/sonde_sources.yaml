@@ -23,12 +23,17 @@ jobs:
       - run: uv sync --locked
       - name: Sonde
         run: uv run python -u mise_au_point/sonde_sources.py
+      # 2026-11-25 : premier passage de la collecte des réunions eurodéputés, en attendant que GitHub enregistre
+      # le workflow collecte_lobbying.yaml (envoi pas encore traité)
+      - name: Réunions eurodéputés (Integrity Watch EU)
+        run: uv run python -u collecte_lobbying.py
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/sondes ]; then git add -f registre/sondes; fi
+          if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : sonde de sources du $(date -u +%Y-%m-%d)"
             git pull --rebase
