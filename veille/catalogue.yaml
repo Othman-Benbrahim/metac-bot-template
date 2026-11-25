@@ -443,6 +443,13 @@ fiches:
       mousson: [carbon_brief, the_hindu]
       nucleaire_defense: [bulletin, the_hindu]
       chine_frontiere: [the_hindu, scmp_chine]
+  turquie:
+    region: moyen_orient
+    liens:
+    - {titre: "TurkStat, institut turc de la statistique (inflation)", url: "https://www.tuik.gov.tr/"}
+    - {titre: "Banque centrale de la République de Turquie (TCMB)", url: "https://www.tcmb.gov.tr/"}
+    - {titre: "Human Rights Watch, Turquie", url: "https://www.hrw.org/europe/central-asia/turkey"}
+    flux: [un_moyen_orient, bbc_europe, lm_europe]
   inflation-mondiale:
     region: monde
     liens:

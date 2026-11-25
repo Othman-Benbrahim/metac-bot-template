@@ -1,0 +1,176 @@
+# 2026-11-25, 23 h 43 (décision de l'auteur, « les deux ») : une fiche Turquie, absente de la carte, ouverte à partir de
+# l'Atlas géopolitique mondial 2025 (Rocher / Areion, revue Carto ; analyses rédigées de mai 2023 à avril 2024) pour les
+# MÉCANISMES, mise à jour par des sources de 2025-2026 pour la SITUATION (les éléments de l'atlas que les faits ont
+# dépassés ne sont pas repris). La carte sert de terrain d'expérience au bot : les traces sont celles déjà collectées.
+theme: turquie
+nom: Turquie
+declaration:
+  but: comprendre la Turquie comme puissance d'équilibre entre Europe, Russie et Moyen-Orient — un pouvoir présidentiel qui tient par la répression de l'opposition et la gestion d'une économie inflationniste, une question kurde en voie de règlement incertain, et une politique étrangère qui monnaye sa position de carrefour (détroits, énergie, médiation)
+  limites: dedans le pouvoir et l'opposition, l'économie et la monnaie, la question kurde, la politique étrangère et la médiation, l'énergie de transit, la société et les territoires ; dehors la guerre au Levant (guerre-levant), la guerre en Ukraine (russie-ukraine), le passage des détroits comme règle maritime (transport-maritime), sauf par les ponts
+  observateur: notre carte, regard extérieur, depuis l'Europe ; sources publiques (TurkStat, banque centrale TCMB, BIS, HRW, Al-Monitor, presse turque de toutes tendances) ; la presse turque est très polarisée entre médias proches du pouvoir et d'opposition
+  date: '2026-11-25'
+  espace: la Turquie, ses détroits, et ses théâtres extérieurs (nord de l'Irak et de la Syrie, Libye, Caucase, Méditerranée orientale)
+  temps: du mois (inflation, taux) au cycle électoral (présidentielle et législatives prévues en 2028)
+  vitesse: le jour (arrestations, frappes), le mois (inflation, taux), l'année (processus de paix, élections)
+  taille: une ville (Istanbul), une région (le Sud-Est kurde), l'État
+compartiments:
+- id: pouvoir_opposition
+  nom: Pouvoir présidentiel et opposition
+  organisation: statut
+  geopolitique:
+    pays: [TUR]
+  elements:
+  - 'Recep Tayyip Erdoğan au pouvoir depuis 2003 (Premier ministre, puis président depuis 2014, système présidentiel depuis 2018), réélu en mai 2023 ; alliance AKP-MHP'
+  - 'Ekrem İmamoğlu, maire d''Istanbul et candidat du CHP à la présidentielle, détenu depuis le 23 mars 2025 ; procès de la municipalité d''Istanbul (407 accusés) ouvert en mars 2026, inculpation d''espionnage en février 2026 (HRW, 3 mars 2026)'
+  - '18 novembre 2026 : İmamoğlu et huit autres condamnés à deux ans et un mois de prison pour ingérence dans le vote du congrès du CHP de 2023, avec restriction des droits électoraux (Daily Sabah, 19 novembre 2026)'
+  - 'mécanisme : le pouvoir tient en écartant par la voie judiciaire les rivaux capables de gagner ; les grandes villes de l''Ouest votent contre lui (municipales de 2019 et 2024 perdues à Istanbul et Ankara), l''Anatolie et les zones rurales le soutiennent (Atlas géopolitique mondial 2025, rédigé en 2023-2024)'
+  niveau:
+    espace: pays
+    temps: cycles électoraux
+    vitesse: jours à années
+    taille: macro
+  traces:
+  - source: GDELT, manifestations par jour (Turquie)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:TR
+- id: economie_monnaie
+  nom: Économie, inflation et monnaie
+  organisation: economie
+  geopolitique:
+    pays: [TUR]
+  elements:
+  - 'inflation sur un an : 27,8 % en octobre 2026 (29,7 % en septembre), 2,6 % sur le mois (TurkStat, 3 novembre 2026, via Türkiye Today)'
+  - 'taux directeur : 36 % après une baisse de 100 points de base le 22 octobre 2026, qui met fin à neuf mois de pause (TCMB, via Türkiye Today)'
+  - 'mécanisme : une monnaie fragile, une inflation chronique et la difficulté à attirer les investissements étrangers ; après une politique de taux bas, la banque centrale est revenue à l''orthodoxie à partir de juin 2023 (Atlas 2025) ; l''inflation érode le vote pour le pouvoir'
+  - 'mécanisme : PIB par habitant deux à trois fois plus élevé dans les métropoles de l''Ouest (Istanbul, Ankara, Izmir) qu''en Anatolie centrale, sur la mer Noire et dans le Sud-Est kurde (Atlas 2025)'
+  niveau:
+    espace: pays
+    temps: mois à années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: taux directeur de la Banque centrale de Turquie, quotidien (BIS)
+    statut: collecte
+    fichier: collecte_bis.py
+    adaptateur: bis_taux:TR
+- id: question_kurde
+  nom: Question kurde et processus de paix
+  organisation: geopolitique
+  geopolitique:
+    pays: [TUR, IRQ, SYR]
+  elements:
+  - '15 à 20 % de Kurdes dans la population ; guérilla du PKK depuis 1984 (Atlas 2025)'
+  - 'processus « Turquie sans terrorisme » lancé fin 2024 ; appel d''Abdullah Öcalan (emprisonné depuis 1999) à la dissolution en février 2025 ; dissolution annoncée par le PKK le 12 mai 2025 ; remise symbolique d''armes à Souleimaniye en juillet 2025 (The New Arab, 7 mai 2026)'
+  - 'loi-cadre de 12 articles votée le 10 août 2026 (467 voix sur 592), amnistie conditionnelle à la vérification de la dissolution et du désarmement ; conseil de suivi présidé par le vice-président Cevdet Yılmaz depuis le 24 août 2026 ; Öcalan exclu de l''amnistie (Al-Monitor, 25 août 2026)'
+  - 'point de blocage : Ankara exige le désarmement complet avant toute réforme ; le PKK veut des réformes juridiques en parallèle (poursuites, élus destitués, statut d''Öcalan, Selahattin Demirtaş) (The New Arab, mai 2026)'
+  - 'mécanisme : la question kurde est au cœur de la politique étrangère turque (opérations dans le nord de l''Irak, hostilité aux forces kurdes de Syrie tenues pour une branche du PKK) (Atlas 2025)'
+  niveau:
+    espace: Sud-Est, nord de l'Irak et de la Syrie
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: UCDP, morts par mois (Turquie, carte lue chaque mois)
+    statut: collecte
+    fichier: lecture_cartes.py
+    adaptateur: ucdp_mois:TUR
+- id: puissance_pivot
+  nom: Puissance d'équilibre et médiation
+  organisation: geopolitique
+  geopolitique:
+    pays: [TUR]
+  elements:
+  - 'mécanisme : membre de l''OTAN qui garde une relation économique, politique et militaire suivie avec la Russie ; cette position ambivalente en fait un médiateur (accord céréalier avec l''ONU en juillet 2022, échanges de prisonniers) (Atlas 2025)'
+  - 'mécanisme : projection extérieure appuyée sur l''industrie de défense (drones) et des bases à l''étranger ; interventions en Syrie, en Libye (appui à Tripoli contre Haftar en 2019-2020), au Haut-Karabagh aux côtés de l''Azerbaïdjan (Atlas 2025)'
+  - 'mécanisme : contrôle des détroits du Bosphore et des Dardanelles (convention de Montreux) ; revendications en Méditerranée orientale contre la Grèce et Chypre ; mémorandum maritime avec la Libye de 2019, approuvé par le Parlement de l''Est libyen le 20 octobre 2026'
+  niveau:
+    espace: régions voisines
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: nombre de gestes américains envers la Turquie (GDELT)
+    statut: a_brancher
+- id: energie_transit
+  nom: Énergie de transit
+  organisation: technique
+  geopolitique:
+    pays: [TUR, AZE, RUS, IRQ]
+  elements:
+  - 'mécanisme : carrefour d''oléoducs (BTC, Kirkouk-Ceyhan) et de gazoducs (Blue Stream, TANAP, TurkStream) ; principaux fournisseurs de pétrole : Iran, Irak, Russie ; une dépendance à Moscou que la guerre en Ukraine a accrue (Atlas 2025)'
+  - 'centrale nucléaire d''Akkuyu construite par Rosatom (Atlas 2025)'
+  niveau:
+    espace: régions
+    temps: années à décennies
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: fait institutionnel (tracés des conduites)
+    statut: inconnue
+- id: societe_territoires
+  nom: Société et territoires
+  organisation: societe
+  geopolitique:
+    pays: [TUR]
+  elements:
+  - '85,3 millions d''habitants en 2022, 77 % urbains ; Istanbul près de 16 millions (Atlas 2025)'
+  - 'pays qui accueille le plus de déplacés au monde (surtout syriens, aussi irakiens, iraniens, afghans) (Atlas 2025) ; chiffre à actualiser après la chute d''Assad (décembre 2024) et les retours'
+  - 'séisme du 6 février 2023 : 11 des 81 provinces touchées, plus de 50 000 morts (Atlas 2025)'
+  - '20 à 25 % d''alévis ; minorités chrétiennes et juive réduites (Atlas 2025)'
+  niveau:
+    espace: pays
+    temps: années
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: GDELT, manifestations par jour (Turquie)
+    statut: collecte
+    fichier: gdelt_bq.py
+    adaptateur: manifestations:TR
+relations:
+- de: economie_monnaie
+  vers: pouvoir_opposition
+  fondement: causalite_sociale
+  effet: '-'
+  delai: mois à années
+  force: moyenne
+  statut: a_verifier
+  texte: l'inflation et la vie chère érodent le vote pour le pouvoir (municipales de 2024 perdues) ; un mécanisme supposé, à établir par les séries
+- de: question_kurde
+  vers: pouvoir_opposition
+  fondement: causalite_sociale
+  effet: '+'
+  delai: mois à années
+  force: moyenne
+  statut: a_verifier
+  texte: le processus de paix peut rallier des voix kurdes (parti DEM) au pouvoir, utiles pour une réforme constitutionnelle ; supposé, à vérifier
+- de: energie_transit
+  vers: puissance_pivot
+  fondement: lien
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la dépendance énergétique à la Russie (conduites, Akkuyu) limite l'alignement de la Turquie sur l'OTAN et nourrit sa position de médiateur
+- de: question_kurde
+  vers: puissance_pivot
+  fondement: lien
+  effet: '+'
+  delai: mois
+  force: forte
+  statut: a_verifier
+  texte: la question kurde oriente les opérations extérieures (nord de l'Irak, Syrie) et le rapport aux alliés occidentaux
+ponts:
+- depuis: puissance_pivot
+  vers: guerre-levant:mediateurs
+  type: meme
+  nature: la Turquie comme médiatrice régionale
+- depuis: puissance_pivot
+  vers: transport-maritime:detroit_bosphore
+  type: voisinage
+  nature: les détroits turcs
+- depuis: question_kurde
+  vers: guerre-levant:syrie_irak
+  type: influence
+  nature: les opérations turques contre les forces kurdes de Syrie et d'Irak
