@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="profile" href="https://gmpg.org/xfn/11">
+
+   <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v28.9 (Yoast SEO v28.9) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>Just Security - A Forum on Law, Rights, and U.S. National Security</title>
+	<meta name="description" content="Just Security - A Forum on Law, Rights, and U.S. National Security" />
+	<link rel="canonical" href="https://www.justsecurity.org/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Just Security - A Forum on Law, Rights, and U.S. National Security" />
+	<meta property="og:description" content="Just Security - A Forum on Law, Rights, and U.S. National Security" />
+	<meta property="og:url" content="https://www.justsecurity.org/" />
+	<meta property="og:site_name" content="Just Security" />
+	<meta property="article:publisher" content="https://www.facebook.com/JSBlog/" />
+	<meta property="article:modified_time" content="2026-11-25T18:16:45+00:00" />
+	<meta property="og:image" content="https://i0.wp.com/www.justsecurity.org/wp-content/uploads/2017/12/blue-logo.png?fit=178%2C60&ssl=1" />
+	<meta property="og:image:width" content="178" />
+	<meta property="og:image:height" content="60" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@just_security" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/www.justsecurity.org\/","url":"https:\/\/www.justsecurity.org\/","name":"Just Security - A Forum on Law, Rights, and U.S. National Security","isPartOf":{"@id":"https:\/\/www.justsecurity.org\/#website"},"about":{"@id":"https:\/\/www.justsecurity.org\/#organization"},"datePublished":"2017-09-13T18:56:16+00:00","dateModified":"2026-11-25T18:16:45+00:00","description":"Just Security - A Forum on Law, Rights, and U.S. National Security","breadcrumb":{"@id":"https:\/\/www.justsecurity.org\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.justsecurity.org\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/www.justsecurity.org\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https:\/\/www.justsecurity.org\/#website","url":"https:\/\/www.justsecurity.org\/","name":"Just Security","description":"A Forum on Law, Rights, and U.S. National Security","publisher":{"@id":"https:\/\/www.justsecurity.org\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.justsecurity.org\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https:\/\/www.justsecurity.org\/#organization","name":"Just Security","url":"https:\/\/www.justsecurity.org\/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/www.justsecurity.org\/#\/schema\/logo\/image\/","url":"https:\/\/i0.wp.com\/www.justsecurity.org\/wp-content\/uploads\/2024\/03\/just-security-logo-wordmark-font2.png?fit=5371%2C1757&ssl=1","contentUrl":"https:\/\/i0.wp.com\/www.justsecurity.org\/wp-content\/uploads\/2024\/03\/just-security-logo-wordmark-font2.png?fit=5371%2C1757&ssl=1","width":5371,"height":1757,"caption":"Just Security"},"image":{"@id":"https:\/\/www.justsecurity.org\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/www.facebook.com\/JSBlog\/","https:\/\/x.com\/just_security","https:\/\/www.linkedin.com\/company\/just-security-linkedin\/","htt

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Just Security</title>
+	<atom:link href="https://www.justsecurity.org/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.justsecurity.org/</link>
+	<description>A Forum on Law, Rights, and U.S. National Security</description>
+	<lastBuildDate>Wed, 25 Nov 2026 21:01:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://i0.wp.com/www.justsecurity.org/wp-content/uploads/2021/01/cropped-logo_dome_fav.png?fit=32%2C32&#038;ssl=1</url>
+	<title>Just Security</title>
+	<link>https://www.justsecurity.org/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">77857433</site>	<item>
+		<title>Litigation Tracker: Legal Challenges to Trump Administration Actions</title>
+		<link>https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=tracker-litigation-legal-challenges-trump-administration</link>
+		
+		<dc:creator><![CDATA[Just Security]]></dc:creator>
+		<pubDate>Wed, 25 Nov 2026 21:01:19 +0000</pubDate>
+				<category><![CDATA[Courts & Litigation]]></category>
+		<category><![CDATA[Democracy & Rule of Law]]></category>
+		<category><![CDATA[Diplomacy]]></category>
+		<category><![CDATA[Executive Branch]]></category>
+		<category><![CDATA[Human Rights]]></category>
+		<category><![CDATA[Trackers]]></category>
+		<category><![CDATA[Administrative Law]]></category>
+		<category><![CDATA[citizenship]]></category>
+		<category><![CDATA[Civil Liberties]]></category>
+		<category><![CDATA[Executive Orders]]></category>
+		<category><![CDATA[Foreign Aid/Foreign Assistance]]></category>
+		<category><![CDATA[Litigation Tracker]]></category>
+		<category><![CDATA[Trump Administration Executive Actions]]></category>
+		<category><![CDATA[Trump administration second term]]></category>
+		<guid isPermaLink="false">https://www.justsecurity.org/?p=107087</guid>
+
+					<description><![CDATA[<p>A public resource tracking all the legal challenges to the Trump administration's executive orders and actions.</p>
+<p>The post <a href="https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/">Litigation Tracker: Legal Challenges to Trump Administration Actions</a> appeared first on <a href="https://www.justsecurity.org">Just Security</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>This living, searchable resource tracks legal challenges to Trump administration executive actions. If you think we are missing anything, you can email us at <a href="mailto:lte@justsecurity.org">lte@justsecurity.org</a>. The Tracker is <span style="font-weight: 400;">part of </span><i><span style="font-weight: 400;">Just Security</span></i><span style="font-weight: 400;">’s </span><a href="https://www.justsecurity.org/106653/collection-trump-administration-executive-actions/"><span style="font-weight: 400;">Collection: Coverage of the Trump Administration’s Executive Actions</span></a><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">For</span><span style="font-weight: 400;"> important litigation updates delivered to your inbox at the end of every weekday, sign up for </span><a href="https://www.justsecurity.org/newsletter-signup/"><span style="font-weight: 400;">“Today on Just Security,”</span></a><span style="font-weight: 400;"> a weekday newsletter that also includes our articles from the day. Readers may also be interested in </span><a href="https://www.justsecurity.org/early-

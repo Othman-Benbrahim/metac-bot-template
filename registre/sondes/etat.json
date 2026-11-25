@@ -1,80 +1,94 @@
 {
- "in_robots": {
-  "url": "https://www.intellinews.com/robots.txt",
+ "js_robots": {
+  "url": "https://www.justsecurity.org/robots.txt",
   "statut": 200,
   "type": "text/plain",
-  "taille": 405
+  "taille": 541
  },
- "in_accueil": {
-  "url": "https://www.intellinews.com/",
+ "js_accueil": {
+  "url": "https://www.justsecurity.org/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 1652084,
+  "taille": 267278,
   "flux_annonces": [
-   "<link href=\"/feed/\" rel=\"alternate\" type=\"application/rss+xml\" title=\"bne IntelliNews\" />"
+   "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Just Security &raquo; Feed\" href=\"https://www.justsecurity.org/feed/\" />"
   ],
-  "liens_flux": [
-   "/feed/",
-   "/fifteen-years-after-fukushima-asia-is-learning-to-love-the-atom-again-477579/?source=bhutan",
-   "https://feedly.com/i/subscription/feed/https://intellinews.com/feed"
+  "trackers": [
+   "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/",
+   "https://www.justsecurity.org/117267/anti-corruption-tracker/",
+   "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
+   "https://www.justsecurity.org/161783/litigation-tracker-case-status-key-glossary/",
+   "https://www.justsecurity.org/162830/2026-midterms-election-integrity-litigation-tracker/",
+   "https://www.justsecurity.org/category/trackers/"
   ]
  },
- "in_flux_1": {
-  "url": "https://www.intellinews.com/feed/",
+ "js_flux": {
+  "url": "https://www.justsecurity.org/feed/",
   "statut": 200,
-  "type": "text/xml;charset=UTF-8",
-  "taille": 22987,
-  "items": 17,
-  "titres": []
+  "type": "application/rss+xml; charset=UTF-8",
+  "taille": 5400443,
+  "items": 10,
+  "titres": [
+   "Just Security",
+   "Just Security",
+   "Litigation Tracker: Legal Challenges to Trump Administration Actions",
+   "The World Must Act to Deliver on the &#8220;World Court&#8217;s&#8221; Rohingya Ruling",
+   "Puppet Sovereigns and Occupation by Proxy",
+   "In The Gambia v. Myanmar, the ICJ Links Statelessness to Genocide – But Stops Short of Requiring Citizenship for all Members of the Rohingya Group"
+  ]
  },
- "in_flux_2": {
-  "url": "https://www.intellinews.com/fifteen-years-after-fukushima-asia-is-learning-to-love-the-atom-again-477579/?source=bhutan",
+ "js_tracker_0": {
+  "url": "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 1583282,
-  "items": 0,
-  "titres": [
-   "bne IntelliNews - Fifteen years after Fukushima, Asia is learning to love the atom again"
-  ]
+  "taille": 5396096,
+  "tableaux": 1,
+  "lignes_tableaux": 1010,
+  "integres": []
  },
- "in_flux_3": {
-  "url": "https://feedly.com/i/subscription/feed/https://intellinews.com/feed",
+ "js_tracker_1": {
+  "url": "https://www.justsecurity.org/117267/anti-corruption-tracker/",
   "statut": 200,
-  "type": "text/html;charset=UTF-8",
-  "taille": 45516,
-  "items": 0,
-  "titres": [
-   "Stay ahead of the curve with Feedly AI"
-  ]
- },
- "in_flux_4": {
-  "url": "https://www.intellinews.com/rss/",
-  "statut": 404,
   "type": "text/html; charset=UTF-8",
-  "taille": 1392593,
-  "items": 0,
-  "titres": [
-   "bne IntelliNews"
-  ]
+  "taille": 398365,
+  "tableaux": 1,
+  "lignes_tableaux": 126,
+  "integres": []
  },
- "in_flux_5": {
-  "url": "https://www.intellinews.com/rss.xml",
-  "statut": 404,
+ "js_tracker_2": {
+  "url": "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
+  "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 1392593,
-  "items": 0,
-  "titres": [
-   "bne IntelliNews"
-  ]
+  "taille": 5854170,
+  "tableaux": 1,
+  "lignes_tableaux": 805,
+  "integres": []
  },
- "in_flux_6": {
-  "url": "https://www.intellinews.com/feed.xml",
-  "statut": 404,
+ "js_tracker_3": {
+  "url": "https://www.justsecurity.org/161783/litigation-tracker-case-status-key-glossary/",
+  "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 1519529,
-  "items": 0,
-  "titres": [
-   "bne IntelliNews"
-  ]
+  "taille": 228357,
+  "tableaux": 5,
+  "lignes_tableaux": 26,
+  "integres": []
+ },
+ "js_tracker_4": {
+  "url": "https://www.justsecurity.org/162830/2026-midterms-election-integrity-litigation-tracker/",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 236106,
+  "tableaux": 0,
+  "lignes_tableaux": 0,
+  "integres": []
+ },
+ "js_tracker_5": {
+  "url": "https://www.justsecurity.org/category/trackers/",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 192262,
+  "tableaux": 0,
+  "lignes_tableaux": 0,
+  "integres": []
  }
 }
