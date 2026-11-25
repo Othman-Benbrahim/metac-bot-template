@@ -311,6 +311,7 @@ compartiments:
   - "ce qui protège : canaux de confiance redondants, cohérence entre autorités, reconnaissance de l'incertitude, principes CERC (être premier, juste, crédible, empathique, pousser à l'action, respecter)"
   - "Arcom, mars 2026 (2 000 personnes, novembre 2025) : 22 % jugent exactes au moins quatre de sept fausses affirmations, 23 % les repèrent toutes ; les moins perméables s'informent davantage par la télévision et la presse, les plus vulnérables par les médias algorithmiques (réseaux sociaux, plateformes, IA)"
   - "un effet mesuré de la riposte : la vérification par l'AFP réduit d'environ 8 % la circulation d'une fausse information sur Facebook (Cagé, Gallo, Hengel, Henry, Huang, CEPR Discussion Paper 20895, décembre 2025)"
+  - "confiance dans l'actualité, 2026 : la plus forte au Kenya et au Nigeria (68 %), en Finlande (63 %) ; la plus faible en Hongrie (17 %), en Grèce (18 %), en Slovaquie (19 %) ; États-Unis 25 % (32 % en 2015), France 29 % (38 % en 2015) (Reuters Institute, Digital News Report 2026, pages pays)"
   - "confiance dans l'actualité : 37 %, plus bas niveau depuis 2015 ; évitement de l'actualité : 42 % (Reuters Institute, Digital News Report 2026)"
   - "dénoncer une manipulation en la relayant l'amplifie ; il vaut mieux expliquer le mécanisme et distinguer viralité et effet réel (Viginum et Chloé Debiève, Méta-Media n°25)"
   - "modèle : la défense psychologique nordique (Suède, Finlande : sécurité globale, responsabilité partagée)"
@@ -321,6 +322,8 @@ compartiments:
     taille: micro à macro
     objet: information
   traces:
+  - {source: "confiance dans l'actualité, médiane des 48 marchés, 2025-2026 (Reuters Institute, Digital News Report 2026)", statut: collecte, fichier: mise_au_point/dnr_confiance.py, adaptateur: "confiance_actualite:mediane"}
+  - {source: "confiance dans l'actualité en France : 38 % en 2015, 29 % en 2025 et 2026 (Reuters Institute, Digital News Report 2026)", statut: collecte, fichier: mise_au_point/dnr_confiance.py, adaptateur: "confiance_actualite:FRA"}
   - {source: "confiance dans les institutions (enquête de l'OCDE sur la confiance ; Eurobaromètre) ; à brancher", statut: a_brancher}
 - id: politiques_anti_desinformation
   nom: Politiques de lutte contre la désinformation (lois, agences, régulation)

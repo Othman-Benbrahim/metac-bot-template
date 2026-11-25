@@ -419,7 +419,27 @@ def ages_dirigeants(reg: Path, region: str, quoi: str = "age_moyen") -> list[tup
         return [(f"{x['annee']}-07-01", float(x[quoi])) for x in r if x["region"] == region]
 
 
-ADAPTATEURS = {"ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def confiance_actualite(reg: Path, pays: str) -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : confiance dans l'actualité, Reuters Institute, Digital News Report 2026
+    (ecosystemes/confiance-actualite.csv). « confiance_actualite:<ISO3> » ou « confiance_actualite:mediane » (médiane des
+    48 marchés, 2025 et 2026 seulement, même échantillon). Daté du 15 juin, mois de publication du rapport (pas d'avance)."""
+    import csv as _c
+    import statistics as _st
+    f = Path(__file__).resolve().parent / "ecosystemes" / "confiance-actualite.csv"
+    if not f.exists():
+        return []
+    with f.open(encoding="utf-8") as h:
+        r = list(_c.DictReader(l for l in h if not l.startswith("#")))
+    if pays == "mediane":
+        par = {}
+        for x in r:
+            if x["annee"] in ("2025", "2026"):
+                par.setdefault(x["annee"], []).append(float(x["confiance"]))
+        return [(f"{a}-06-15", float(_st.median(v))) for a, v in sorted(par.items())]
+    return [(f"{x['annee']}-06-15", float(x["confiance"])) for x in r if x["pays"] == pays]
+
+
+ADAPTATEURS = {"confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
