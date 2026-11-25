@@ -25,8 +25,9 @@ SORTIE = Path("registre") / "sondes"
 # l'ancien fichier Ember renvoie vers une nouvelle adresse.
 # 3e passage (16 h 50) : la page d'Integrity Watch charge ses données par static/mepmeetings.js ; on lit ce script,
 # on y relève les adresses de données, et on sonde chacune (robots vérifié). Ember : refusé par robots.txt, non forcé.
+# 5e passage (18 h 30) : liste publique des élections à venir d'IFES ElectionGuide (adresse donnée par l'auteur).
 ADRESSES = {
-    "iw_script": "https://www.integritywatch.eu/static/mepmeetings.js?v=9",
+    "eg_avenir": "https://electionguide.org/elections/type/upcoming/",
 }
 BASE_IW = "https://www.integritywatch.eu/"
 
@@ -52,6 +53,11 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
+            if texte and nom == "eg_avenir":
+                etat[nom]["entetes"] = re.findall(r"<th[^>]*>(.*?)</th>", texte, re.S)[:20]
+                etat[nom]["lignes_table"] = len(re.findall(r"<tr", texte))
+                etat[nom]["donnees"] = sorted(set(re.findall(r'["\']([^"\']*(?:api|json|ajax)[^"\']*)["\']', texte)))[:30]
+                (SORTIE / "eg_avenir-table.txt").write_text("\n".join(re.findall(r"<tr.*?</tr>", texte, re.S)[:6]), encoding="utf-8")
             if texte and nom == "iw_script":
                 # 4e passage (16 h 55) : les fichiers sondés sont ceux de la législature 9 (2019-2024) ; la législature
                 # en cours se lit par autoupdate_data_eu + backups.json. On garde le code autour de ces mots pour lire
