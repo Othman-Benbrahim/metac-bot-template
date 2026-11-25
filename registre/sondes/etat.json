@@ -1,28 +1,38 @@
 {
- "ep_liste_xml": {
-  "url": "https://www.europarl.europa.eu/meps/en/full-list/xml",
-  "statut": 403,
-  "type": "text/html",
-  "taille": 919
+ "iw_reunions": {
+  "url": "https://www.integritywatch.eu/mepmeetings",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 20043,
+  "donnees": [],
+  "scripts": [
+   "https://www.googletagmanager.com/gtag/js?id=UA-55613514-1",
+   "static/mepmeetings.js?v=9",
+   "vendor/js/crossfilter.min.js",
+   "vendor/js/d3.layout.cloud.js",
+   "vendor/js/d3.v5.min.js",
+   "vendor/js/dc.cloud.js",
+   "vendor/js/dc.js"
+  ]
  },
- "ep_reunions_1": {
-  "url": "https://www.europarl.europa.eu/meps/en/197606/ZARZALEJOS%20Javier/meetings/past",
-  "statut": 403,
-  "type": "text/html",
-  "taille": 919,
-  "indices": []
- },
- "ep_reunions_2": {
-  "url": "https://www.europarl.europa.eu/meps/en/197778/TOM_BERENDSEN/meetings/past",
-  "statut": 403,
-  "type": "text/html",
-  "taille": 919,
-  "indices": []
+ "iw_reunions_php": {
+  "url": "https://www.integritywatch.eu/mepmeetings.php",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 20043,
+  "donnees": [],
+  "scripts": [
+   "https://www.googletagmanager.com/gtag/js?id=UA-55613514-1",
+   "static/mepmeetings.js?v=9",
+   "vendor/js/crossfilter.min.js",
+   "vendor/js/d3.layout.cloud.js",
+   "vendor/js/d3.v5.min.js",
+   "vendor/js/dc.cloud.js",
+   "vendor/js/dc.js"
+  ]
  },
  "ember_annuel": {
-  "url": "https://storage.googleapis.com/emb-prod-bkt-publicdata/public-downloads/yearly_full_release_long_format.csv",
-  "statut": 200,
-  "type": "text/csv;charset=utf-8",
-  "taille": 320
+  "url": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
+  "statut": "refuse_robots"
  }
 }

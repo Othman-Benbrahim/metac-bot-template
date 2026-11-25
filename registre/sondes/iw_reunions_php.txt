@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55613514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-55613514-1', { 'anonymize_ip': true });
+</script>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEP Meetings</title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@TI_EU" />
+    <meta name="twitter:creator" content="@eucampaign" />
+    <meta property="og:url" content="https://www.integritywatch.eu/mepmeetings" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EU Integrity Watch: monitor potential conflicts of interests" />
+    <meta property="og:description" content="EU Integrity Watch: monitor EU lobbying and potential conflicts of interests. Interactive database that provides a unique overview of the lobby meetings of the European Commission as well as lobby meetings and outside activities of current Members of the European Parliament." />
+    <meta property="og:image" content="http://www.integritywatch.eu/images/thumbnail.jpg" />
+    <meta property="fb:app_id" content="1611680135716224" />
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/oswald.css">
+    <link rel="stylesheet" href="static/mepmeetings.css?v=9">
+</head>
+<body>
+    <div id="app" class="mepmeetings-page">   
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="iw-nav">
+  <a class="navbar-brand-iw" href="https://integritywatch.eu/"><img src="./images/iw_logo.png" alt="" /> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--
+      <li class="nav-item">
+        <a href="./ecmeetings" class="nav-link" :class="{active: page == 'meetings'}">Commission Meetings</a>
+      </li>
+      -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" :class="{active: page == 'meetings'}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Commission Meetings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" :href="'./ecmeetings.php?commission=juncker&s='+supportModalShown" target="_blank">Juncker Commission (2014-2019)</a>
+          <a class="dropdown-item" :href="'./ecmeetings.php?commission=vonderleyen1&s='+supportModalShown" target="_blank">Von der Leyen Commission I (2019 – 2024)</a>
+          <a class="dropdown-item" :href="'./ecmeetings.php?commission=vonderleyen2&s='+supportModalShown" target="_blank">Von der Leyen Commission II (2024 - 2029)</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a :href="'./organizations.php?s='+supportModalShown" class="nav-link" :class="{active: page == 'organizations'}">EU Lobbyists</a>
+      </li>
+      <li class="nav-item">
+        <a :href="'./mepincomes.php?s='+supportModalShown" class="nav-link" :class="{active: page == 'mepincomes'}">MEP transparency</a>
+      </li>
+      <li class="nav-ite
