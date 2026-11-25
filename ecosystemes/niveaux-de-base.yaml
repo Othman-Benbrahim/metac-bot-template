@@ -69,6 +69,7 @@ relations:
   statut: a_verifier
   texte: plus de gaz à effet de serre retiennent plus d'énergie (avec les aérosols et les nuages, qui jouent aussi)
 - de: bilan_energie
+  fondement: mecanisme_physique
   vers: biomasse
   effet: '-'
   delai: décennies

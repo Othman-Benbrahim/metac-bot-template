@@ -258,6 +258,7 @@ relations:
   texte: 'sous-produit : la production de cuivre fixe l''offre de sélénium, de tellure, d''une partie du molybdène et du
     cobalt (Nassar et al., 2015 ; roue des métaux)'
 - de: zinc_plomb
+  fondement: lien
   vers: metaux_compagnons
   effet: +
   retour: '0'

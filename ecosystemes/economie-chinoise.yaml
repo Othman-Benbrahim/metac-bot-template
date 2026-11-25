@@ -550,6 +550,7 @@ relations:
   statut: a_verifier
   texte: un chiffre gênant peut être redéfini ou suspendu (la série du chômage des jeunes a été suspendue puis redéfinie, à vérifier)
 - de: activite
+  fondement: causalite_sociale
   vers: emploi
   effet: +
   delai: mois
@@ -626,6 +627,7 @@ relations:
   statut: a_verifier
   texte: une épizootie qui décime le cheptel porcin fait bondir le prix du porc et pèse sur le budget des ménages
 - de: sols_chimie
+  fondement: causalite_sociale
   vers: pouvoir
   effet: ±
   delai: années

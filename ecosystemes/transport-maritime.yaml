@@ -735,6 +735,7 @@ relations:
   statut: a_verifier
   texte: la capacité de ce passage fait partie de celle du système ; sa fermeture se reporte sur les autres goulets et sur le contournement
 - de: detroit_bosphore
+  fondement: lien
   vers: detroits
   effet: '+'
   retour: '0'

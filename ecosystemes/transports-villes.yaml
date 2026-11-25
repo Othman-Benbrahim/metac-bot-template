@@ -255,6 +255,7 @@ relations:
   statut: a_verifier
   texte: les décisions municipales ouvrent ou ferment des lignes
 - de: gouvernance_urbaine
+  fondement: causalite_sociale
   vers: forme_urbaine
   effet: '-'
   delai: décennies

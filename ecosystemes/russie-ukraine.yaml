@@ -515,6 +515,7 @@ relations:
   statut: a_verifier
   texte: les recettes financent la production militaire
 - de: front
+  fondement: evenement
   vers: economie_ukraine
   effet: '-'
   delai: jours
@@ -582,6 +583,7 @@ relations:
   statut: a_verifier
   texte: les frappes sur Odessa et les navires réduisent les passages
 - de: soutiens
+  fondement: causalite_sociale
   vers: negociations
   effet: ±
   retour: ±

@@ -834,6 +834,7 @@ relations:
   source: "Behave, ch. 11 et 17"
   texte: "la violence subie durcit la frontière, qui appelle la riposte : cycle de vengeance"
 - de: "hierarchie"
+  fondement: mecanisme_physique
   vers: "hormones"
   effet: "±"
   delai: "semaines"
@@ -992,6 +993,7 @@ relations:
   texte: "la précarité nourrit un mécontentement privé qui peut rester muet longtemps"
   parametres: {lambda_pertes: 2.0, sens_perte: 1}
 - de: "opinion_privee"
+  fondement: causalite_sociale
   vers: "opinion_publique"
   effet: "+"
   delai: "jours"
@@ -1235,6 +1237,7 @@ relations:
   texte: "l'intention devient acte quand l'occasion se présente et que le contrôle réel le permet"
   parametres: {seuil: 1.5}
 - de: "controle_percu"
+  fondement: causalite_sociale
   vers: "intention"
   effet: "0"
   module: "intention>passage_acte"

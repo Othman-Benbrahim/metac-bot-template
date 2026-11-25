@@ -209,6 +209,7 @@ relations:
   statut: a_verifier
   texte: un emploi formel et correctement payé fait baisser la pauvreté ; le chômage et l'informalité la font monter
 - de: protection_sociale
+  fondement: lien
   vers: pauvrete
   effet: '-'
   delai: mois à années

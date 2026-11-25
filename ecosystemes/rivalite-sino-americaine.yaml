@@ -432,6 +432,7 @@ relations:
   statut: a_verifier
   texte: chaque hausse de droits appelle une riposte ; le style de la relation est à mesurer (paire USA–CHN au banc de la réciprocité)
 - de: technologie
+  fondement: causalite_sociale
   vers: economie_chine
   effet: '-'
   delai: mois à années
@@ -452,6 +453,7 @@ relations:
   statut: a_verifier
   texte: 'contrôles sur les puces contre restrictions sur les terres rares : chacun use de son levier'
 - de: taiwan
+  fondement: evenement
   vers: diplomatie
   effet: '-'
   delai: jours
@@ -514,6 +516,7 @@ relations:
   statut: a_verifier
   texte: le dollar et le yuan amortissent ou amplifient l'effet des droits de douane
 - de: recits
+  fondement: causalite_sociale
   vers: diplomatie
   effet: ±
   delai: jours
@@ -547,6 +550,7 @@ relations:
   statut: a_verifier
   texte: puces, aimants et batteries dépendent de minerais raffinés surtout en Chine ; une restriction franchit le seuil d'une pénurie
 - de: diplomatie
+  fondement: lien
   vers: terres_rares
   effet: ±
   delai: semaines

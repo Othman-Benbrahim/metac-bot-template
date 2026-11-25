@@ -348,6 +348,7 @@ relations:
   statut: a_verifier
   texte: une habitude mesurée en pleine crise cache la crise (Ormuz)
 - de: lecteurs_ia
+  fondement: lien
   vers: controles
   effet: '-'
   retour: '-'

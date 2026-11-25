@@ -233,6 +233,7 @@ relations:
   texte: la montée des droites radicales menace la coalition centrale du Parlement européen (le compartiment cible lit ici
     la majorité de cette coalition)
 - de: droite_radicale_populiste
+  fondement: causalite_sociale
   vers: conservateurs
   effet: '-'
   delai: années
@@ -241,6 +242,7 @@ relations:
   statut: a_verifier
   texte: la droite radicale prend des électeurs à la droite de gouvernement, qui s'allie à elle ou reprend ses thèmes
 - de: adhesion_militantisme
+  fondement: causalite_sociale
   vers: partis_personnels
   effet: '-'
   delai: décennies

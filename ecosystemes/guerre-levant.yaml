@@ -618,6 +618,7 @@ relations:
   statut: a_verifier
   texte: la situation humanitaire nourrit les récits et la pression internationale
 - de: recits
+  fondement: causalite_sociale
   vers: puissances
   effet: ±
   delai: semaines

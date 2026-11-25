@@ -94,7 +94,7 @@ relations:
   - {de: "fmi", vers: "economie", effet: "±", retour: "±", delai: "mois", force: "moyenne", intensite: {mesure: "objectifs du programme tenus", regle: "seuil"}, coupure: "rupture du programme", statut: "a_verifier", texte: "déboursements contre conditions ; un objectif manqué suspend l'argent"}
   - {de: "fmi", vers: "humeur", effet: "-", delai: "mois", force: "faible", coupure: "inconnue", statut: "a_verifier", texte: "l'austérité demandée pèse sur l'humeur des électeurs"}
   - {de: "recoltes_exports", vers: "economie", effet: "+", delai: "saisons", force: "forte", intensite: {mesure: "sécheresse dans la pampa", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "passage du végétal à l'économie : une sécheresse prive le pays de devises"}
-  - {de: "executif", vers: "economie", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les choix de l'exécutif sur la monnaie et le budget"}
+  - {fondement: causalite_sociale, de: "executif", vers: "economie", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les choix de l'exécutif sur la monnaie et le budget"}
 ponts:
 - depuis: economie
   vers: dette-emergents:politique_interieure

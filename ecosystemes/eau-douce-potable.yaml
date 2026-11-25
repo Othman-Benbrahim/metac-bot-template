@@ -259,6 +259,7 @@ relations:
   statut: a_verifier
   texte: le pompage au-delà de la recharge épuise les nappes
 - de: assainissement
+  fondement: mecanisme_physique
   vers: maladies
   effet: '-'
   delai: mois
@@ -283,6 +284,7 @@ relations:
   statut: a_verifier
   texte: l'accès à l'eau couvre les besoins vitaux du corps
 - de: stress
+  fondement: causalite_sociale
   vers: tensions
   effet: +
   delai: mois à années

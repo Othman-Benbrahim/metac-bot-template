@@ -359,6 +359,7 @@ relations:
   statut: a_verifier
   texte: les stocks amortissent les chocs ; bas, ils n'amortissent plus
 - de: transport
+  fondement: causalite_sociale
   vers: prix
   effet: ±
   delai: jours
@@ -468,6 +469,7 @@ relations:
   statut: a_verifier
   texte: le carbone accumulé réchauffe le climat ; l'effet traverse les niveaux, du chimique au climat, par accumulation lente
 - de: climat_regime
+  fondement: mecanisme_physique
   vers: climat
   effet: +
   delai: années
@@ -479,6 +481,7 @@ relations:
   statut: a_verifier
   texte: le régime climatique rend plus fréquents les hivers anormaux, les vagues de chaleur et les ouragans de la saison
 - de: nucleaire_civil
+  fondement: mecanisme_physique
   vers: demande
   effet: '-'
   delai: mois

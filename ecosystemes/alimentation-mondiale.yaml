@@ -422,6 +422,7 @@ relations:
   statut: a_verifier
   texte: la saison décide de l'eau disponible ; une sécheresse ne compte qu'au-delà d'un seuil
 - de: eau_agricole
+  fondement: mecanisme_physique
   vers: cultures
   effet: +
   delai: semaines à saison
@@ -480,6 +481,7 @@ relations:
   statut: a_verifier
   texte: une exploitation intensive épuise les sols, qui ne se refont pas au même rythme
 - de: engrais
+  fondement: causalite_sociale
   vers: cultures
   effet: +
   delai: saison
@@ -602,6 +604,7 @@ relations:
   statut: a_verifier
   texte: une épizootie décime les troupeaux ; au-delà d'un seuil de foyers, les abattages massifs coupent l'offre
 - de: pathogenes
+  fondement: mecanisme_physique
   vers: cultures
   effet: '-'
   retour: +

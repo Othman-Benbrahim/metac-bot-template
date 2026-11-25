@@ -587,6 +587,7 @@ relations:
   statut: a_verifier
   texte: quand l'eau potable manque assez longtemps, les maladies hydriques reviennent
 - de: maladies_hydriques
+  fondement: mecanisme_physique
   vers: villes
   effet: '-'
   delai: semaines

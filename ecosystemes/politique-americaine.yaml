@@ -589,6 +589,7 @@ relations:
   statut: a_verifier
   texte: "l'exécutif peut annoncer des poursuites ; l'annonce n'est pas l'inculpation"
 - de: executif
+  fondement: lien
   vers: congres
   effet: ±
   retour: ±
@@ -739,6 +740,7 @@ relations:
   statut: a_verifier
   texte: 'alliés et financeurs suivent la dynamique électorale : une défaite les éloigne, une victoire les rapproche'
 - de: regles_electorales
+  fondement: lien
   vers: elections
   effet: ±
   forme: contrainte

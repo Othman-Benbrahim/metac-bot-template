@@ -297,6 +297,7 @@ relations:
   statut: a_verifier
   texte: un sol érodé et appauvri en matière organique dégrade les habitats qu'il porte
 - de: aires_protegees
+  fondement: mecanisme_physique
   vers: habitats
   effet: +
   delai: années

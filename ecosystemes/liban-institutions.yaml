@@ -109,13 +109,13 @@ relations:
   - {de: "confessionnalisme", vers: "gouvernement", effet: "-", forme: "contrainte", delai: "permanent", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "le partage confessionnel donne à chaque bloc un pouvoir de blocage"}
   - {de: "blocs_politiques", vers: "gouvernement", effet: "±", retour: "±", delai: "semaines", force: "forte", coupure: "accord politique global", statut: "a_verifier", texte: "propre au niveau de l'entourage : loyautés et rivalités font et défont les majorités au Conseil"}
   - {de: "blocs_politiques", vers: "justice", effet: "-", delai: "mois", force: "moyenne", coupure: "pression publique forte", statut: "a_verifier", texte: "recours, immunités et dessaisissements freinent les enquêtes qui touchent un bloc"}
-  - {de: "opinion_colere", vers: "gouvernement", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "mobilisation et proximité d'un anniversaire", regle: "seuil"}, coupure: "lassitude", statut: "a_verifier", texte: "passage du psychologique au statut : seule une mobilisation forte pousse le gouvernement à renvoyer une affaire"}
+  - {fondement: causalite_sociale, de: "opinion_colere", vers: "gouvernement", effet: "+", delai: "semaines", force: "moyenne", intensite: {mesure: "mobilisation et proximité d'un anniversaire", regle: "seuil"}, coupure: "lassitude", statut: "a_verifier", texte: "passage du psychologique au statut : seule une mobilisation forte pousse le gouvernement à renvoyer une affaire"}
   - {de: "force_armee", vers: "blocs_politiques", effet: "±", delai: "semaines", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "le rapport de force armé pèse sur le poids politique des blocs"}
   - {de: "exterieur", vers: "blocs_politiques", effet: "±", delai: "mois", force: "moyenne", coupure: "inconnue", statut: "a_verifier", texte: "les soutiens extérieurs renforcent les blocs qui leur sont proches"}
   - {de: "exterieur", vers: "banque_centrale", effet: "±", delai: "mois", force: "moyenne", intensite: {mesure: "réformes exigées réalisées", regle: "seuil"}, coupure: "blocage des réformes", statut: "a_verifier", texte: "l'aide du FMI et des bailleurs ne vient qu'au-delà d'un seuil de réformes"}
   - {de: "banque_centrale", vers: "opinion_colere", effet: "+", delai: "mois", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "des dépôts bloqués nourrissent la colère et la défiance"}
   - {de: "justice", vers: "opinion_colere", effet: "-", delai: "mois", force: "moyenne", coupure: "verdict jugé partial", statut: "a_verifier", texte: "une avancée judiciaire visible apaise en partie l'exigence de justice"}
-  - {de: "internet_information", vers: "opinion_colere", effet: "+", delai: "jours", force: "faible", coupure: "coupures", statut: "a_verifier", texte: "les réseaux amplifient la colère autour d'une affaire"}
+  - {fondement: causalite_sociale, de: "internet_information", vers: "opinion_colere", effet: "+", delai: "jours", force: "faible", coupure: "coupures", statut: "a_verifier", texte: "les réseaux amplifient la colère autour d'une affaire"}
 ponts:
 - depuis: force_armee
   vers: guerre-levant:liban

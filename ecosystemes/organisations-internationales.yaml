@@ -158,6 +158,7 @@ relations:
   statut: a_verifier
   texte: les retraits et les coupes des donateurs réduisent le financement de l'aide humanitaire (Russo et al. 2026 ; série OCHA FTS)
 - de: onu
+  fondement: lien
   vers: humanitaire
   effet: '+'
   delai: années

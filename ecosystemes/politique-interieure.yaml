@@ -177,6 +177,7 @@ relations:
   statut: a_verifier
   texte: une contestation massive peut faire tomber un gouvernement (le compartiment cible lit ici sa stabilité)
 - de: elections
+  fondement: lien
   vers: gouvernement
   effet: +
   delai: mois

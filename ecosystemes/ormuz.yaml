@@ -495,6 +495,7 @@ relations:
   statut: a_verifier
   texte: une menace verbale bouge les prix avant tout fait
 - de: force
+  fondement: causalite_sociale
   vers: recits
   effet: +
   retour: +

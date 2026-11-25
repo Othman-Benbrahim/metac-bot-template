@@ -324,6 +324,7 @@ relations:
   statut: a_verifier
   texte: une arrivée rapide et très médiatisée fait basculer l'opinion de l'hospitalité à la peur
 - de: psychologie
+  fondement: causalite_sociale
   vers: politiques_migratoires
   effet: '-'
   delai: mois à années
@@ -368,6 +369,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau société : la baisse de la mortalité infantile précède la baisse de la natalité (transition démographique)'
 - de: urbanisation
+  fondement: causalite_sociale
   vers: natalite_vieillissement
   effet: '-'
   delai: décennies

@@ -87,7 +87,7 @@ compartiments:
       - {source: "fait géographique", statut: "inconnue"}
 relations:
   - {de: "menace", vers: "peur_confiance", effet: "+", delai: "jours", force: "forte", intensite: {mesure: "incidents récents aux frontières", regle: "seuil"}, coupure: "habituation", statut: "a_verifier", texte: "passage du géopolitique au psychologique : un incident marquant fait monter la peur"}
-  - {de: "peur_confiance", vers: "opinions", effet: "+", delai: "semaines", force: "moyenne", coupure: "lassitude", statut: "a_verifier", texte: "la peur rallie l'opinion aux dépenses de défense"}
+  - {fondement: causalite_sociale, de: "peur_confiance", vers: "opinions", effet: "+", delai: "semaines", force: "moyenne", coupure: "lassitude", statut: "a_verifier", texte: "la peur rallie l'opinion aux dépenses de défense"}
   - {de: "opinions", vers: "defense", effet: "+", delai: "mois", force: "moyenne", coupure: "élections défavorables", statut: "a_verifier", texte: "une opinion favorable rend les budgets votables"}
   - {de: "etats_unis", vers: "defense", effet: "±", delai: "mois", force: "forte", intensite: {mesure: "doute sur la garantie américaine", regle: "seuil"}, coupure: "inconnue", statut: "a_verifier", texte: "le doute sur l'allié pousse à se réarmer ; une garantie sûre laisse se reposer sur lui"}
   - {de: "defense", vers: "industrie", effet: "+", delai: "années", force: "forte", intensite: {mesure: "capacités de production disponibles", regle: "saturation"}, coupure: "goulets industriels", statut: "a_verifier", texte: "les commandes ne se transforment en équipements qu'au rythme de l'industrie"}

@@ -222,6 +222,7 @@ relations:
   statut: a_verifier
   texte: une mousson déficitaire réduit les récoltes d'été ; l'irrigation n'amortit qu'une partie
 - de: chaleur
+  fondement: mecanisme_physique
   vers: agriculture
   effet: '-'
   delai: jours à semaines

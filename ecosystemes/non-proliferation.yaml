@@ -78,7 +78,7 @@ compartiments:
     traces:
       - {source: "base publique des réacteurs (AIEA)", statut: "a_brancher"}
 relations:
-  - {de: "aiea", vers: "regime", effet: "+", delai: "mois", force: "forte", coupure: "accès refusé aux inspecteurs", statut: "a_verifier", texte: "des inspections crédibles entretiennent la confiance dans le régime"}
+  - {fondement: lien, de: "aiea", vers: "regime", effet: "+", delai: "mois", force: "forte", coupure: "accès refusé aux inspecteurs", statut: "a_verifier", texte: "des inspections crédibles entretiennent la confiance dans le régime"}
   - {de: "etats_du_seuil", vers: "aiea", effet: "-", retour: "-", delai: "mois", force: "moyenne", intensite: {mesure: "accès des inspecteurs réduit", regle: "seuil"}, coupure: "accord négocié", statut: "a_verifier", texte: "un État qui réduit l'accès entre en compétition avec l'institution ; au-delà d'un seuil, rapport au Conseil des gouverneurs"}
   - {de: "aiea", vers: "conseil_securite", effet: "+", delai: "mois", force: "moyenne", intensite: {mesure: "gravité du constat de non-respect", regle: "seuil"}, coupure: "veto", statut: "a_verifier", texte: "propre au niveau statut : un constat grave peut être renvoyé au Conseil de sécurité"}
   - {de: "conseil_securite", vers: "sanctions", effet: "+", delai: "semaines", force: "forte", coupure: "veto d'un membre permanent", statut: "a_verifier", texte: "les sanctions multilatérales passent par le Conseil, et s'arrêtent au veto"}

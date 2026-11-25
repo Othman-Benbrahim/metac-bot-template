@@ -433,6 +433,7 @@ relations:
   statut: a_verifier
   texte: payer, épargner et emprunter sans banque élargit les échanges
 - de: integration_commerciale
+  fondement: causalite_sociale
   vers: croissance
   effet: +
   delai: années

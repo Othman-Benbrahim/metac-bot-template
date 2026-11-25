@@ -221,6 +221,7 @@ relations:
   statut: a_verifier
   texte: la vidéo en ligne prend la place de la télévision comme source d'information
 - de: plateformes_sociales
+  fondement: lien
   vers: createurs
   effet: +
   delai: mois
@@ -254,6 +255,7 @@ relations:
   statut: a_verifier
   texte: même effet sur les chaînes rachetées
 - de: proprietaires
+  fondement: lien
   vers: edition
   effet: +
   delai: années

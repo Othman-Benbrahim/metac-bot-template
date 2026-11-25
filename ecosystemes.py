@@ -177,7 +177,7 @@ CLES_PERMISES = {
     "niveau": set(AXES) | {"objet"}, "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
-                 "module", "parametres", "series", "verification"},
+                 "module", "parametres", "series", "verification", "fondement"},
     "pont": {"depuis", "vers", "nature", "type", "canal"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
@@ -187,6 +187,16 @@ CLES_PERMISES = {
 # compartiments se touchent (partie d'un tout, lieu, calendrier, même acteur) sans cause établie : il sert à naviguer
 # et ne transmet rien dans la simulation.
 TYPES_PONT = ("meme", "influence", "voisinage")
+# 2026-11-25, 19 h 00 (décision de l'auteur, d'après Guizzardi et Guarino 2024, « Explanation, semantics, and ontology ») :
+# le FONDEMENT d'une relation, ce qui la rend vraie dans le monde, donc ce qu'il faut aller vérifier.
+# - lien : une chose concrète relie les deux et se constate (règle, traité, institution, contrat, réseau, sous-produit) ;
+# - mecanisme_physique : loi physique, biologique ou technique, mesurée hors de nos séries ;
+# - causalite_sociale : comportement d'acteurs ou de marchés, mécanisme supposé, qui ne s'établit que par les séries ;
+# - evenement : un événement daté relie les deux (incident, frappe, trêve) ;
+# - comparaison : tient aux grandeurs des deux côtés (prix relatifs, écarts) ;
+# - definition : vraie par construction (un indicateur défini comme un rapport).
+# Champ facultatif. Premier échantillon de 60 relations classé par Claude, à valider par l'auteur.
+FONDEMENTS = ("lien", "mecanisme_physique", "causalite_sociale", "evenement", "comparaison", "definition")
 
 
 # 0.10.326 (Schelling, ch. 2, « les mathématiques inéluctables des chaises musicales ») : une IDENTITÉ comptable tient
@@ -276,6 +286,8 @@ def cles_inconnues(fiche: dict) -> list[str]:
             voir(x, "acteur", f"{c.get('id')}.acteurs")
     for r in fiche.get("relations") or []:
         voir(r, "relation", f"relation {r.get('de')} → {r.get('vers')}")
+        if isinstance(r, dict) and r.get("fondement") is not None and r["fondement"] not in FONDEMENTS:
+            err.append(f"{t} relation {r.get('de')} → {r.get('vers')} : fondement inconnu {r['fondement']!r} ({', '.join(FONDEMENTS)})")
     for p in fiche.get("ponts") or []:
         voir(p, "pont", "ponts")
     for x in fiche.get("identites") or []:

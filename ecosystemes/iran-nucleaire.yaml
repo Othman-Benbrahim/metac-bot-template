@@ -504,6 +504,7 @@ relations:
   statut: a_verifier
   texte: les rapports de force internes fixent la marge des négociateurs
 - de: etats_unis
+  fondement: causalite_sociale
   vers: negociations
   effet: ±
   retour: ±

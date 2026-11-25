@@ -480,6 +480,7 @@ relations:
   statut: a_verifier
   texte: un récit ne change une politique qu'au-delà d'une audience très large ; les mots pèsent moins que les actes
 - de: langage_performatif
+  fondement: causalite_sociale
   vers: recits
   effet: +
   delai: jours
@@ -515,6 +516,7 @@ relations:
   statut: a_verifier
   texte: une confiance stable et des autorités cohérentes réduisent la prise des récits hostiles ; déclaré par un cadre conceptuel, non mesuré (Russo et al. 2026)
 - de: resilience_informationnelle
+  fondement: causalite_sociale
   vers: attention
   effet: '-'
   delai: jours

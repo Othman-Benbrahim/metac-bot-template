@@ -65,7 +65,7 @@ compartiments:
       - {source: "prix alimentaires (registre)", statut: "collecte", fichier: "collecte_prix_alimentaires.py"}
 relations:
   - {de: "armee", vers: "mediation", effet: "-", delai: "semaines", force: "forte", coupure: "épuisement militaire ou pression extérieure forte", statut: "a_verifier", texte: "chaque camp affirme gagner ; l'armée est accusée de faire traîner les pourparlers (Al Jazeera, 21 septembre 2026)"}
-  - {de: "fsr", vers: "mediation", effet: "-", delai: "semaines", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les FSR acceptent des trêves sur le papier (novembre 2025) sans qu'elles tiennent sur le terrain"}
+  - {fondement: evenement, de: "fsr", vers: "mediation", effet: "-", delai: "semaines", force: "forte", coupure: "inconnue", statut: "a_verifier", texte: "les FSR acceptent des trêves sur le papier (novembre 2025) sans qu'elles tiennent sur le terrain"}
   - {de: "soutiens", vers: "armee", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions effectives", statut: "a_verifier", texte: "les soutiens extérieurs prolongent la capacité de combat"}
   - {de: "soutiens", vers: "fsr", effet: "+", delai: "mois", force: "moyenne", coupure: "sanctions effectives", statut: "a_verifier", texte: "idem"}
   - {de: "mediation", vers: "humanitaire", effet: "+", delai: "semaines", force: "faible", coupure: "violation de la trêve", statut: "a_verifier", texte: "une trêve ouvre brièvement l'accès humanitaire (Djeddah, mai 2023), puis s'effondre"}

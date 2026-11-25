@@ -302,6 +302,7 @@ relations:
   statut: a_verifier
   texte: la demande générale fait les résultats des entreprises
 - de: conjoncture
+  fondement: causalite_sociale
   vers: defaillances
   effet: '-'
   delai: trimestres

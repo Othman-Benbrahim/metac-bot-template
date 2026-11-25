@@ -112,6 +112,7 @@ relations:
   statut: a_verifier
   texte: des puissances qui bloquent le consensus affaiblissent le système du traité
 - de: glace_mer
+  fondement: mecanisme_physique
   vers: krill_peche
   effet: '-'
   delai: saisons à années

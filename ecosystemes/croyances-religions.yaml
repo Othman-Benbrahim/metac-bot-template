@@ -424,6 +424,7 @@ relations:
   texte: l'instrumentalisation politique d'une religion nourrit ses franges violentes (le compartiment cible lit ici leur
     capacité de recrutement)
 - de: religion_politique
+  fondement: causalite_sociale
   vers: extremes_hindouisme
   effet: +
   delai: années

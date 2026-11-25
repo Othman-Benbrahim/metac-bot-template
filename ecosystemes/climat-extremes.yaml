@@ -529,6 +529,7 @@ relations:
   statut: a_verifier
   texte: un bilan d'énergie positif fait monter les températures de fond
 - de: rayonnement
+  fondement: mecanisme_physique
   vers: rayonnement
   effet: +
   delai: années

@@ -167,6 +167,7 @@ relations:
   statut: a_verifier
   texte: la menace nord-coréenne resserre les alliances avec les États-Unis
 - de: chine_japon
+  fondement: causalite_sociale
   vers: japon
   effet: +
   delai: années
