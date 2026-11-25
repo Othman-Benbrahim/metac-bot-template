@@ -25,12 +25,18 @@ jobs:
       - run: uv sync --locked
       - name: Collecte
         run: uv run python -u collecte_owid.py
+      # 2026-11-25 : réunions eurodéputés - représentants d'intérêts (Integrity Watch EU, ODbL), même rythme hebdomadaire.
+      # Placée ici parce que GitHub n'a jamais enregistré un workflow séparé (collecte_lobbying.yaml, retiré).
+      - name: Réunions eurodéputés
+        if: always()
+        run: uv run python -u collecte_lobbying.py
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/owid ]; then git add -f registre/owid; fi
+          if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : OWID du $(date -u +%Y-%m-%d)"
             git pull --rebase
