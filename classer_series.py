@@ -33,6 +33,7 @@ SORTIE = Path("registre") / "nature-des-series.csv"
 # type d'adaptateur → (nature, raison)
 PAR_TYPE = {
     "portwatch": ("flux", "navires qui traversent le détroit par jour"),
+    "portwatch_long": ("flux", "navires qui traversent le détroit par jour, historique long depuis 2019"),
     "port": ("flux", "escales par jour (entrées dans le port)"),
     "avions": ("flux", "appareils observés par jour"),
     "urgences": ("flux", "appareils affichant un code d'urgence par jour"),

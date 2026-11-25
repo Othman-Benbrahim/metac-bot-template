@@ -28,6 +28,15 @@ def portwatch(reg: Path, detroit: str, colonne: str = "navires") -> list[tuple[s
     return sorted((r["jour"], float(r[colonne] or 0)) for r in _csv(reg, "portwatch-detroits.csv") if r["detroit"] == detroit)
 
 
+def portwatch_long(reg: Path, detroit: str, colonne: str = "navires") -> list[tuple[str, float]]:
+    """2026-11-26 : historique long d'un détroit (2019 à l'an dernier, portwatch-historique.csv) suivi de l'année en
+    cours (portwatch-detroits.csv) ; l'année en cours l'emporte en cas de doublon."""
+    d = {r["jour"]: float(r[colonne] or 0) for r in _csv(reg, "portwatch-historique.csv")
+         if r["detroit"] == detroit and r["jour"]}
+    d.update({r["jour"]: float(r[colonne] or 0) for r in _csv(reg, "portwatch-detroits.csv") if r["detroit"] == detroit})
+    return sorted(d.items())
+
+
 def portwatch_ref(reg: Path, detroit: str, colonne: str = "navires") -> list[tuple[str, float]]:
     """Année de référence d'avant-crise d'un détroit (exception Ormuz, 0.10.335) : sert d'habitude, pas d'état du jour."""
     return sorted((r["jour"], float(r[colonne] or 0)) for r in _csv(reg, "portwatch-reference.csv") if r["detroit"] == detroit)
@@ -565,7 +574,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
 
 ADAPTATEURS = {"successions": successions, "bis_taux": bis_taux, "lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
-               "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
+               "portwatch_ref": portwatch_ref, "portwatch_long": portwatch_long, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
 
 

@@ -36,22 +36,22 @@ compartiments:
     vitesse: jours
     taille: macro
   traces:
-  - source: passages quotidiens à Bab-el-Mandeb (FMI PortWatch)
+  - source: passages quotidiens à Bab-el-Mandeb (FMI PortWatch, historique depuis 2019 en cours de lecture)
     statut: collecte
     fichier: collecte_portwatch.py
-    adaptateur: portwatch:bab_el_mandeb:navires
-  - source: porte-conteneurs à Suez (FMI PortWatch)
+    adaptateur: portwatch_long:bab_el_mandeb:navires
+  - source: porte-conteneurs à Suez (FMI PortWatch, historique depuis 2019 en cours de lecture)
     statut: collecte
     fichier: collecte_portwatch.py
-    adaptateur: portwatch:suez:porte_conteneurs
-  - source: passages à Ormuz (FMI PortWatch)
+    adaptateur: portwatch_long:suez:porte_conteneurs
+  - source: passages à Ormuz (FMI PortWatch, historique depuis 2019 en cours de lecture)
     statut: collecte
     fichier: collecte_portwatch.py
-    adaptateur: portwatch:ormuz:navires
-  - source: passages à Panama (FMI PortWatch)
+    adaptateur: portwatch_long:ormuz:navires
+  - source: passages à Panama (FMI PortWatch, historique depuis 2019 en cours de lecture)
     statut: collecte
     fichier: collecte_portwatch.py
-    adaptateur: portwatch:panama:navires
+    adaptateur: portwatch_long:panama:navires
 - id: flux_energie
   nom: Flux d'énergie
   organisation: economie

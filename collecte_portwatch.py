@@ -19,6 +19,12 @@ deux navires par jour ; mesurée sur la seule année en cours, la crise devient 
 Une RÉFÉRENCE d'avant-crise est donc lue une seule fois : l'année 2025 pour Ormuz seulement (une requête, ≤ 365
 jours, même petite dose), dans registre/portwatch-reference.csv, jamais relue si le fichier existe. Elle ne sert qu'à
 l'habitude (adaptateur portwatch_ref, clé de trace « habitude ») ; l'état du jour vient toujours de l'année en cours.
+
+2026-11-26 — historique long (décision d'auteur, 0 h 49 : « plusieurs petites ponctions, pas un syphonnage ») :
+l'exception d'Ormuz est étendue aux huit détroits pour mesurer les taux de base des perturbations (fréquence, durée,
+délai de propagation vers les prix). UNE seule année d'UN seul détroit par passage (une requête), de 2019 à l'année
+précédente, dans registre/portwatch-historique.csv ; une case déjà lue n'est jamais relue. Deux passages par jour :
+les 56 cases sont lues en un mois environ.
 """
 from __future__ import annotations
 
@@ -43,6 +49,8 @@ PORTS = {"rotterdam": "Rotterdam", "singapour": "Singapore", "shanghai": "Shangh
          "jebel_ali": "Jebel Ali", "los_angeles": "Los Angeles"}
 REFERENCE = Path("registre") / "portwatch-reference.csv"
 REFERENCE_DETROITS = {"ormuz": 2025}            # exception écrite : un détroit, une année d'avant-crise
+HISTORIQUE = Path("registre") / "portwatch-historique.csv"
+PREMIERE_ANNEE = 2019                            # début des séries PortWatch
 DEBUT = "2026-06-01"
 UA = {"User-Agent": "alphabet-situationnel-bot/1.0 (recherche ; GitHub Othman-Benbrahim)"}
 
@@ -142,6 +150,37 @@ def lire() -> dict[tuple, list[int]]:
             for x in csv.DictReader(SORTIE.open(encoding="utf-8"))}
 
 
+def historique(c: httpx.Client, annee_courante: int) -> None:
+    """Une seule case (détroit, année) manquante par passage ; jamais de relecture (voir l'en-tête, 2026-11-26)."""
+    lignes, faites = [], set()
+    if HISTORIQUE.exists():
+        lignes = list(csv.DictReader(HISTORIQUE.open(encoding="utf-8")))
+        faites = {(x["detroit"], x["jour"][:4]) for x in lignes}
+        faites |= {(x["detroit"], x["annee"]) for x in lignes if x.get("annee")}
+    a_faire = [(nom, an) for an in range(PREMIERE_ANNEE, annee_courante) for nom in DETROITS
+               if (nom, str(an)) not in faites]
+    if not a_faire:
+        print("  historique : complet")
+        return
+    nom, an = a_faire[0]
+    nouv = []
+    for a in requete(c, DETROITS[nom][0], an):
+        j = jour(a)
+        if j and j.startswith(str(an)):
+            nouv.append({"detroit": nom, "jour": j, "navires": int(a.get("n_total") or 0),
+                         "petroliers": int(a.get("n_tanker") or 0), "porte_conteneurs": int(a.get("n_container") or 0),
+                         "annee": str(an)})
+    if not nouv:   # case lue mais vide : marquée pour ne pas la relire
+        nouv = [{"detroit": nom, "jour": "", "navires": "", "petroliers": "", "porte_conteneurs": "", "annee": str(an)}]
+    lignes += nouv
+    HISTORIQUE.parent.mkdir(exist_ok=True)
+    with HISTORIQUE.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["detroit", "jour", "navires", "petroliers", "porte_conteneurs", "annee"])
+        w.writeheader()
+        w.writerows(sorted(lignes, key=lambda x: (x["detroit"], x["jour"])))
+    print(f"  historique {nom} {an} : {sum(1 for x in nouv if x['jour'])} jours ; reste {len(a_faire) - 1} cases")
+
+
 def principal() -> int:
     comptes = lire()
     annee = datetime.now(timezone.utc).year
@@ -170,6 +209,10 @@ def principal() -> int:
             ports(c, annee)
         except Exception as e:
             print(f"::warning::ports : {type(e).__name__}")
+        try:
+            historique(c, annee)
+        except Exception as e:
+            print(f"::warning::historique : {type(e).__name__}")
         if not REFERENCE.exists():
             ref = []
             for nom, an in REFERENCE_DETROITS.items():
