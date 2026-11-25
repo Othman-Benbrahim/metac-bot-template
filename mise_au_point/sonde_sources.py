@@ -23,11 +23,12 @@ SORTIE = Path("registre") / "sondes"
 # 2e passage (16 h 45) : le site du Parlement répond 403 (CloudFront) aux machines de GitHub : non forcé.
 # Integrity Watch EU (Transparency International EU) republie les mêmes réunions sous licence ODbL 1.0 ;
 # l'ancien fichier Ember renvoie vers une nouvelle adresse.
+# 3e passage (16 h 50) : la page d'Integrity Watch charge ses données par static/mepmeetings.js ; on lit ce script,
+# on y relève les adresses de données, et on sonde chacune (robots vérifié). Ember : refusé par robots.txt, non forcé.
 ADRESSES = {
-    "iw_reunions": "https://www.integritywatch.eu/mepmeetings",
-    "iw_reunions_php": "https://www.integritywatch.eu/mepmeetings.php",
-    "ember_annuel": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
+    "iw_script": "https://www.integritywatch.eu/static/mepmeetings.js?v=9",
 }
+BASE_IW = "https://www.integritywatch.eu/"
 
 
 def sonder(c: httpx.Client, nom: str, url: str, etat: dict) -> str | None:
@@ -51,7 +52,13 @@ def principal() -> int:
     with httpx.Client(headers={"User-Agent": politesse.UA}, follow_redirects=True, timeout=120) as c:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
-            if texte and nom.startswith("iw_"):
+            if texte and nom == "iw_script":
+                chemins = sorted(set(re.findall(r'["\'`]([^"\'`\s]+\.(?:json|csv)(?:\?[^"\'`]*)?)["\'`]', texte)))
+                etat[nom]["chemins"] = chemins[:40]
+                for i, ch in enumerate(chemins[:5]):
+                    url = ch if ch.startswith("http") else BASE_IW + ch.lstrip("./")
+                    sonder(c, f"iw_donnees_{i}", url, etat)
+            if texte and nom.startswith("iw_") and nom != "iw_script":
                 # liens de données dans la page (fichiers .json, .csv, dossiers data/)
                 etat[nom]["donnees"] = sorted(set(re.findall(r'["\']([^"\']+\.(?:json|csv)(?:\?[^"\']*)?)["\']', texte)))[:40]
                 etat[nom]["scripts"] = sorted(set(re.findall(r'<script[^>]+src="([^"]+)"', texte)))[:20]
