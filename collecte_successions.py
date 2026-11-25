@@ -21,12 +21,16 @@ import politesse
 
 SPARQL = "https://query.wikidata.org/sparql"
 DOSSIER = Path("registre") / "successions"
-REQUETE = """SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {
+# 2026-11-25, 18 h 36 : « petit à petit » : une requête par poste et par décennie (8 requêtes), 10 s entre chacune
+MODELE = """SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {{
   ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.
-  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 "etat") (p:P6 ps:P6 "gouvernement") }
-  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 1990)
-  OPTIONAL { ?st pq:P582 ?fin }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }"""
+  VALUES (?prop ?ps ?poste) {{ ({prop} {ps} "{poste}") }}
+  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= {a} && YEAR(?debut) < {b})
+  OPTIONAL {{ ?st pq:P582 ?fin }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,fr". }} }}"""
+REQUETES = [MODELE.format(prop=f"p:{pid}", ps=f"ps:{pid}", poste=poste, a=a, b=a + 10)
+            for pid, poste in (("P35", "etat"), ("P6", "gouvernement")) for a in (1990, 2000, 2010, 2020)]
+REQUETE = REQUETES[0]
 
 
 def lignes_de(json_rep: dict) -> list[dict]:
@@ -40,22 +44,34 @@ def lignes_de(json_rep: dict) -> list[dict]:
 
 def principal() -> int:
     DOSSIER.mkdir(parents=True, exist_ok=True)
-    etat: dict = {"source": "Wikidata (CC0)", "requete": REQUETE}
+    etat: dict = {"source": "Wikidata (CC0)", "requete": REQUETES}
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=180) as c:
         if not politesse.autorise(c, SPARQL + "?query=x"):
             etat["statut"] = "refuse_robots"
         else:
-            for essai in range(3):
-                try:
-                    r = c.get(SPARQL, params={"query": REQUETE, "format": "json"},
-                              headers={"Accept": "application/sparql-results+json"})
-                    r.raise_for_status()
-                    L = lignes_de(r.json())
-                    break
-                except Exception as ex:
-                    etat["statut"] = f"erreur {type(ex).__name__}: {str(ex)[:150]}"
+            L = []
+            for q in REQUETES:
+                ok = False
+                for essai in range(3):
+                    politesse.pause_api()
+                    try:
+                        r = c.get(SPARQL, params={"query": q, "format": "json"},
+                                  headers={"Accept": "application/sparql-results+json"})
+                        if r.status_code == 429:
+                            politesse.pause_api(r)
+                            continue
+                        r.raise_for_status()
+                        L += lignes_de(r.json())
+                        ok = True
+                        break
+                    except Exception as ex:
+                        etat["statut"] = f"erreur {type(ex).__name__}: {str(ex)[:150]}"
+                        time.sleep(20)
+                if not ok:
                     L = None
-                    time.sleep(20)
+                    break
+            if L is not None:
+                L = sorted({tuple(x.values()): x for x in L}.values(), key=lambda x: (x["iso2"], x["poste"], x["debut"]))
             if L is not None:
                 with (DOSSIER / "mandats.csv").open("w", encoding="utf-8", newline="") as f:
                     w = csv.DictWriter(f, fieldnames=["iso2", "poste", "personne", "qid", "debut", "fin"])

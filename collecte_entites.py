@@ -230,7 +230,10 @@ def principal() -> int:
                     # Wikidata répond parfois 502/504, ou coupe la réponse (JSON tronqué) : deux nouvelles tentatives
                     for essai in range(3):
                         try:
+                            politesse.pause_api()          # 2026-11-25 : « petit à petit », une requête toutes les 10 s
                             r = c.get(SPARQL, params={"query": qq, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
+                            if r.status_code == 429:
+                                politesse.pause_api(r)
                             r.raise_for_status()
                             res += r.json()["results"]["bindings"]
                             break
