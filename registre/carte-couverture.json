@@ -1,18 +1,18 @@
 {
- "genere_le": "2026-11-24",
+ "genere_le": "2026-11-25",
  "fraicheur_jours": 45,
  "avancement": {
-  "compartiments": 837,
+  "compartiments": 845,
   "par_statut": {
-   "a_trouver": 619,
+   "a_trouver": 626,
    "fraiche": 171,
    "ancienne": 33,
-   "vide": 14
+   "vide": 15
   },
-  "relations": 985,
+  "relations": 994,
   "relations_testables": 203,
   "relations_par_verdict": {
-   "non_controlee": 759,
+   "non_controlee": 768,
    "non_tranche": 63,
    "non_testable": 152,
    "conteste": 7,
@@ -74,7 +74,7 @@
   "afrique:afrique_nord": {
    "statut": "fraiche",
    "serie": "manifestations:EG",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "afrique:libye": {
    "statut": "ancienne",
@@ -125,7 +125,7 @@
   "alimentation-mondiale:commerce": {
    "statut": "fraiche",
    "serie": "portwatch:bosphore:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "alimentation-mondiale:prix": {
    "statut": "ancienne",
@@ -140,7 +140,7 @@
   "alimentation-mondiale:importateurs": {
    "statut": "fraiche",
    "serie": "violations:Sudan",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-24"
   },
   "alimentation-mondiale:elevage": {
    "statut": "a_trouver"
@@ -261,12 +261,12 @@
   "asie-du-sud-est:indonesie": {
    "statut": "fraiche",
    "serie": "manifestations:ID",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "asie-du-sud-est:philippines": {
    "statut": "fraiche",
    "serie": "manifestations:PH",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "asie-du-sud-est:economie_region": {
    "statut": "a_trouver"
@@ -401,7 +401,7 @@
   "calendriers-echeances:marches": {
    "statut": "fraiche",
    "serie": "fred:DFF",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "canada:commerce_usa": {
    "statut": "a_trouver"
@@ -481,7 +481,7 @@
   "climat-extremes:feux": {
    "statut": "fraiche",
    "serie": "feux:US",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "climat-extremes:tendance": {
    "statut": "fraiche",
@@ -626,12 +626,12 @@
   "crises-bancaires:confiance": {
    "statut": "fraiche",
    "serie": "fred:VIXCLS",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "crises-bancaires:bilans": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "crises-bancaires:faillites": {
    "statut": "a_trouver"
@@ -647,12 +647,12 @@
   "crises-bancaires:cryptomonnaies": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "crises-bancaires:regulateurs": {
    "statut": "fraiche",
    "serie": "fred:DFF",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "crises-bancaires:convention": {
    "statut": "a_trouver"
@@ -663,7 +663,7 @@
   "crises-bancaires:seuils_de_prix": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "croyances-religions:christianisme": {
    "statut": "a_trouver"
@@ -790,7 +790,7 @@
   "dette-emergents:dette_publique": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "dette-emergents:reserves": {
    "statut": "a_trouver"
@@ -825,7 +825,7 @@
   "dette-emergents:recoltes_catastrophes": {
    "statut": "fraiche",
    "serie": "feux:ZM",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "dette-emergents:gisements": {
    "statut": "a_trouver"
@@ -948,7 +948,7 @@
   "economie-chinoise:activite": {
    "statut": "fraiche",
    "serie": "feux:CN",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "economie-chinoise:immobilier": {
    "statut": "a_trouver"
@@ -956,7 +956,7 @@
   "economie-chinoise:exportations": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "economie-chinoise:consommation": {
    "statut": "fraiche",
@@ -982,7 +982,7 @@
   "economie-chinoise:matieres_premieres": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "economie-chinoise:exterieur": {
    "statut": "fraiche",
@@ -1091,7 +1091,7 @@
   "energie-mondiale:transport": {
    "statut": "fraiche",
    "serie": "portwatch:bab_el_mandeb:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "energie-mondiale:raffinage": {
    "statut": "a_trouver"
@@ -1200,7 +1200,7 @@
   "epidemies:economie": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "epidemies:recits": {
    "statut": "a_trouver"
@@ -1297,22 +1297,22 @@
   "guerre-levant:gaza": {
    "statut": "fraiche",
    "serie": "violations:Palestine",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-24"
   },
   "guerre-levant:liban": {
    "statut": "fraiche",
    "serie": "feux:LB",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "guerre-levant:syrie_irak": {
    "statut": "fraiche",
    "serie": "feux:SY",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "guerre-levant:yemen": {
    "statut": "fraiche",
    "serie": "portwatch:bab_el_mandeb:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "guerre-levant:iran": {
    "statut": "fraiche",
@@ -1333,7 +1333,7 @@
   "guerre-levant:recits": {
    "statut": "fraiche",
    "serie": "telegram:idfofficial",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "guerre-levant:relief": {
    "statut": "a_trouver"
@@ -1391,7 +1391,7 @@
   "humain:nous_eux": {
    "statut": "fraiche",
    "serie": "telegram:tout",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "humain:hierarchie": {
    "statut": "fraiche",
@@ -1412,7 +1412,7 @@
   "humain:passage_acte": {
    "statut": "fraiche",
    "serie": "manifestations:US",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "humain:treve": {
    "statut": "fraiche",
@@ -1442,12 +1442,12 @@
   "humain:disponibilite": {
    "statut": "fraiche",
    "serie": "ouvert:attention_crise",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "humain:risque_percu": {
    "statut": "fraiche",
    "serie": "fred:T10YIE",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "humain:aspiration": {
    "statut": "a_trouver"
@@ -1500,7 +1500,7 @@
   "inde:population_jeunesse": {
    "statut": "fraiche",
    "serie": "manifestations:IN",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "inde:politique_interieure": {
    "statut": "a_trouver"
@@ -1563,12 +1563,12 @@
   "inflation-mondiale:anticipations": {
    "statut": "fraiche",
    "serie": "fred:T10YIE",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "inflation-mondiale:banques_centrales": {
    "statut": "fraiche",
    "serie": "fred:DFF",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "inflation-mondiale:monnaies": {
    "statut": "fraiche",
@@ -1578,12 +1578,12 @@
   "inflation-mondiale:approvisionnement": {
    "statut": "fraiche",
    "serie": "portwatch:suez:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "inflation-mondiale:budget": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "inflation-mondiale:statistiques": {
    "statut": "fraiche",
@@ -1620,7 +1620,7 @@
   "information-cyber:coupures": {
    "statut": "fraiche",
    "serie": "radar",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "information-cyber:cyber": {
    "statut": "vide",
@@ -1721,7 +1721,7 @@
   "iran-nucleaire:sanctions": {
    "statut": "fraiche",
    "serie": "sanctions:IR",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "iran-nucleaire:pouvoir_iranien": {
    "statut": "ancienne",
@@ -1943,7 +1943,7 @@
   "monnaie-pouvoir:monnaies_numeriques": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "monnaie-pouvoir:dedollarisation": {
    "statut": "a_trouver"
@@ -1951,7 +1951,7 @@
   "monnaie-pouvoir:banques_centrales_puissance": {
    "statut": "fraiche",
    "serie": "fred:DFF",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "niveaux-de-base:composition_air": {
    "statut": "a_trouver"
@@ -1974,7 +1974,7 @@
   "non-proliferation:sanctions": {
    "statut": "fraiche",
    "serie": "sanctions:IR",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "non-proliferation:dissuasion": {
    "statut": "fraiche",
@@ -2028,7 +2028,7 @@
   "observateur-mesure:biais": {
    "statut": "fraiche",
    "serie": "telegram:tout",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "observateur-mesure:definitions": {
    "statut": "a_trouver"
@@ -2036,7 +2036,7 @@
   "observateur-mesure:jeunesse_series": {
    "statut": "fraiche",
    "serie": "portwatch:ormuz:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "observateur-mesure:lecteurs_ia": {
    "statut": "a_trouver"
@@ -2108,7 +2108,7 @@
   "oceans-et-fleuves:navigation_fluviale": {
    "statut": "fraiche",
    "serie": "portwatch:panama:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "oceans-et-fleuves:refroidissement": {
    "statut": "ancienne",
@@ -2162,6 +2162,10 @@
   "organisations-internationales:droit_international": {
    "statut": "a_trouver"
   },
+  "organisations-internationales:humanitaire": {
+   "statut": "vide",
+   "serie": "fts:couverture"
+  },
   "ormuz:milieu": {
    "statut": "fraiche",
    "serie": "meteo:bandar_abbas",
@@ -2170,17 +2174,17 @@
   "ormuz:flux_energie": {
    "statut": "fraiche",
    "serie": "portwatch:ormuz:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "ormuz:navigation": {
    "statut": "fraiche",
    "serie": "portwatch:ormuz:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "ormuz:riverains": {
    "statut": "fraiche",
    "serie": "voisins:IR",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "ormuz:puissances": {
    "statut": "fraiche",
@@ -2190,12 +2194,12 @@
   "ormuz:force": {
    "statut": "fraiche",
    "serie": "avions:AE",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "ormuz:droit": {
    "statut": "fraiche",
    "serie": "sanctions:IR",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "ormuz:prix": {
    "statut": "fraiche",
@@ -2210,7 +2214,7 @@
   "ormuz:recits": {
    "statut": "fraiche",
    "serie": "telegram:farsna",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "ormuz:mer_golfe": {
    "statut": "a_trouver"
@@ -2286,7 +2290,7 @@
   "politique-americaine:executif": {
    "statut": "fraiche",
    "serie": "avions:US",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "politique-americaine:congres": {
    "statut": "fraiche",
@@ -2306,7 +2310,7 @@
   "politique-americaine:budget": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "politique-americaine:commerce": {
    "statut": "a_trouver"
@@ -2319,12 +2323,12 @@
   "politique-americaine:sanctions": {
    "statut": "fraiche",
    "serie": "sanctions:IR",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "politique-americaine:reserve_federale": {
    "statut": "fraiche",
    "serie": "fred:DFF",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "politique-americaine:etats_federes": {
    "statut": "a_trouver"
@@ -2332,7 +2336,7 @@
   "politique-americaine:entourage": {
    "statut": "fraiche",
    "serie": "tfr:VIP",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "politique-americaine:regles_electorales": {
    "statut": "a_trouver"
@@ -2435,7 +2439,7 @@
   "relief-et-montagnes:cotes_detroits": {
    "statut": "fraiche",
    "serie": "portwatch:taiwan:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "relief-et-montagnes:sols_versants": {
    "statut": "a_trouver"
@@ -2538,7 +2542,7 @@
   "rivalite-sino-americaine:commerce": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "rivalite-sino-americaine:technologie": {
    "statut": "vide",
@@ -2547,17 +2551,17 @@
   "rivalite-sino-americaine:energie": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "rivalite-sino-americaine:taiwan": {
    "statut": "fraiche",
    "serie": "portwatch:taiwan:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "rivalite-sino-americaine:alliances": {
    "statut": "fraiche",
    "serie": "avions",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "rivalite-sino-americaine:diplomatie": {
    "statut": "fraiche",
@@ -2584,7 +2588,7 @@
   "rivalite-sino-americaine:detroit_relief": {
    "statut": "fraiche",
    "serie": "portwatch:taiwan:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "rivalite-sino-americaine:atomique": {
    "statut": "a_trouver"
@@ -2592,12 +2596,12 @@
   "russie-ukraine:front": {
    "statut": "fraiche",
    "serie": "feux:UA",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "russie-ukraine:capacites": {
    "statut": "fraiche",
    "serie": "paire:RU:UA:force",
-   "derniere": "2026-11-21"
+   "derniere": "2026-11-23"
   },
   "russie-ukraine:soutiens": {
    "statut": "fraiche",
@@ -2627,12 +2631,12 @@
   "russie-ukraine:opinions": {
    "statut": "fraiche",
    "serie": "radar:RU",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "russie-ukraine:mer_noire": {
    "statut": "fraiche",
    "serie": "portwatch:bosphore:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "russie-ukraine:relief_fleuves": {
    "statut": "a_trouver"
@@ -2643,7 +2647,7 @@
   "russie-ukraine:sols_agriculture": {
    "statut": "fraiche",
    "serie": "feux:UA",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "russie-ukraine:atomique": {
    "statut": "a_trouver"
@@ -2654,7 +2658,7 @@
   "sciences-techniques:calcul": {
    "statut": "fraiche",
    "serie": "portwatch:taiwan:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "sciences-techniques:energie_eau": {
    "statut": "fraiche",
@@ -2668,7 +2672,7 @@
   "sciences-techniques:capitaux": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
-   "derniere": "2026-11-20"
+   "derniere": "2026-11-23"
   },
   "sciences-techniques:adoption": {
    "statut": "a_trouver"
@@ -2728,7 +2732,7 @@
   "securite-europeenne:budgets_dette": {
    "statut": "fraiche",
    "serie": "fred:ECBDFR",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-24"
   },
   "securite-europeenne:geographie": {
    "statut": "a_trouver"
@@ -2760,7 +2764,7 @@
   "securite-publique:frontieres": {
    "statut": "fraiche",
    "serie": "portwatch:panama:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "securite-publique:sanctions": {
    "statut": "a_trouver"
@@ -2792,7 +2796,7 @@
   "soleil-espace:satellites": {
    "statut": "fraiche",
    "serie": "tfr:SPACE OPERATIONS",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "soleil-espace:debris": {
    "statut": "a_trouver"
@@ -2829,20 +2833,41 @@
   "soudan:humanitaire": {
    "statut": "a_trouver"
   },
+  "surveillance-espionnage:renseignement_etats": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:espionnage_etats": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:industrie_intrusion": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:courtiers_donnees": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:biometrie": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:cibles": {
+   "statut": "a_trouver"
+  },
+  "surveillance-espionnage:contre_mesures": {
+   "statut": "a_trouver"
+  },
   "transport-maritime:detroits": {
    "statut": "fraiche",
    "serie": "portwatch:suez:porte_conteneurs",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "transport-maritime:contournement": {
    "statut": "fraiche",
    "serie": "portwatch:bonne_esperance:navires",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "transport-maritime:flottes": {
    "statut": "fraiche",
    "serie": "portwatch:malacca:petroliers",
-   "derniere": "2026-11-15"
+   "derniere": "2026-11-22"
   },
   "transport-maritime:fret": {
    "statut": "a_trouver"
@@ -2853,12 +2878,12 @@
   "transport-maritime:ports": {
    "statut": "fraiche",
    "serie": "port:rotterdam",
-   "derniere": "2026-11-13"
+   "derniere": "2026-11-20"
   },
   "transport-maritime:securite": {
    "statut": "fraiche",
    "serie": "avions:mer",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "transport-maritime:climat": {
    "statut": "a_trouver"
@@ -7307,6 +7332,18 @@
   },
   {
    "de": "organisations-internationales:retraits",
+   "vers": "organisations-internationales:humanitaire",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "organisations-internationales:onu",
+   "vers": "organisations-internationales:humanitaire",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "organisations-internationales:retraits",
    "vers": "organisations-internationales:onu",
    "testable": false,
    "verdict": null
@@ -8632,6 +8669,48 @@
    "verdict": null
   },
   {
+   "de": "surveillance-espionnage:renseignement_etats",
+   "vers": "surveillance-espionnage:industrie_intrusion",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:contre_mesures",
+   "vers": "surveillance-espionnage:industrie_intrusion",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:industrie_intrusion",
+   "vers": "surveillance-espionnage:cibles",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:biometrie",
+   "vers": "surveillance-espionnage:cibles",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:espionnage_etats",
+   "vers": "surveillance-espionnage:contre_mesures",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:cibles",
+   "vers": "surveillance-espionnage:contre_mesures",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "surveillance-espionnage:courtiers_donnees",
+   "vers": "surveillance-espionnage:renseignement_etats",
+   "testable": false,
+   "verdict": null
+  },
+  {
    "de": "transport-maritime:securite",
    "vers": "transport-maritime:detroits",
    "testable": true,
@@ -9005,7 +9084,7 @@
   {
    "compartiment": "organisations-internationales:retraits",
    "lectures_manquees": 10,
-   "relations_sortantes": 3
+   "relations_sortantes": 4
   },
   {
    "compartiment": "amerique-latine:usa_chine_latam",

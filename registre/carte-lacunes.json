@@ -1,30 +1,30 @@
 {
- "genere_le": "2026-11-24",
+ "genere_le": "2026-11-25",
  "questions": 2196,
  "par_type": [
   [
    "amont sans série",
-   3142
+   2435
   ],
   [
    "aucune relation entrante",
    2065
   ],
   [
+   "sens du oui illisible",
+   496
+  ],
+  [
+   "série sans état récent",
+   419
+  ],
+  [
    "aucun compartiment rattaché",
    269
   ],
   [
-   "série sans état récent",
-   268
-  ],
-  [
    "aucune relation retenue aux échelles de la question",
    260
-  ],
-  [
-   "sens du oui illisible",
-   192
   ]
  ],
  "par_compartiment": [
@@ -35,14 +35,6 @@
   [
    "competitions-culture:milieu → competitions-culture:forme",
    355
-  ],
-  [
-   "competitions-culture:forme → competitions-culture:forme",
-   355
-  ],
-  [
-   "competitions-culture:classements_force → competitions-culture:forme",
-   352
   ],
   [
    "competitions-culture:calendrier → competitions-culture:forme",
@@ -67,6 +59,10 @@
   [
    "sciences-techniques:ia → sciences-techniques:attentes",
    144
+  ],
+  [
+   "competitions-culture:forme → competitions-culture:forme",
+   135
   ],
   [
    "competitions-culture:precurseurs_recompenses",
@@ -278,6 +274,10 @@
   ],
   [
    "guerre-levant:epidemies → guerre-levant:humanitaire",
+   16
+  ],
+  [
+   "competitions-culture:classements_force → competitions-culture:forme",
    16
   ],
   [
