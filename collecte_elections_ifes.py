@@ -48,28 +48,31 @@ def _date(x: str) -> tuple[str, str]:
     return "", ""
 
 
+NOMS = ["Country", "Election for", "Start Date", "End Date", "Status", "Is Snap?", "Last Held*", "Last Registered"]
+
+
 def analyser(page: str) -> list[dict]:
-    """Le tableau dont un en-tête est « Is Snap? » ; une ligne par scrutin."""
-    for t in re.findall(r"<table.*?</table>", page, re.S):
-        entetes = [_texte(h) for h in re.findall(r"<th[^>]*>(.*?)</th>", t, re.S)]
-        if "Is Snap?" not in entetes:
+    """Lignes du tableau principal. 2026-11-25, premier passage : le HTML de la page n'est pas bien imbriqué (une
+    recherche « <table>…</table> » coupe le tableau) ; on lit donc les lignes <tr> qui suivent l'en-tête « Is Snap? » et
+    ont au moins 8 cellules, et on aligne les 8 DERNIÈRES cellules sur les 8 colonnes nommées (une cellule de drapeau
+    peut précéder)."""
+    k = page.find("Is Snap?")
+    if k < 0:
+        return []
+    out = []
+    for tr in re.findall(r"<tr.*?</tr>", page[k:], re.S):
+        cel = re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)
+        if len(cel) < len(NOMS):
             continue
-        idx = {h: i for i, h in enumerate(entetes) if h}
-        out = []
-        for tr in re.findall(r"<tr.*?</tr>", t, re.S):
-            cel = re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)
-            if len(cel) < len(idx):
-                continue
-            g = lambda h: cel[idx[h]] if h in idx and idx[h] < len(cel) else ""
-            m = re.search(r"/elections/id/(\d+)/", g("Election for"))
-            d1, p1 = _date(_texte(g("Start Date")))
-            d2, p2 = _date(_texte(g("End Date")))
-            out.append({"id": m.group(1) if m else "", "pays": _texte(g("Country")), "scrutin": _texte(g("Election for")),
-                        "debut": d1, "debut_precision": p1, "fin": d2, "fin_precision": p2, "statut": _texte(g("Status")),
-                        "anticipe": _texte(g("Is Snap?")), "derniere": _texte(g("Last Held*")),
-                        "inscrits": _texte(g("Last Registered"))})
-        return out
-    return []
+        c = dict(zip(NOMS, cel[-len(NOMS):]))
+        m = re.search(r"/elections/id/(\d+)/", c["Election for"])
+        d1, p1 = _date(_texte(c["Start Date"]))
+        d2, p2 = _date(_texte(c["End Date"]))
+        out.append({"id": m.group(1) if m else "", "pays": _texte(c["Country"]), "scrutin": _texte(c["Election for"]),
+                    "debut": d1, "debut_precision": p1, "fin": d2, "fin_precision": p2, "statut": _texte(c["Status"]),
+                    "anticipe": _texte(c["Is Snap?"]), "derniere": _texte(c["Last Held*"]),
+                    "inscrits": _texte(c["Last Registered"])})
+    return out
 
 
 def principal() -> int:
@@ -96,6 +99,9 @@ def principal() -> int:
                              "dernier": max((x["debut"] for x in L if x["debut"]), default=None)})
             else:
                 etat["statut"] = "tableau introuvable"
+                k = r.text.find("Is Snap?")
+                (DOSSIER / "page-extrait.txt").write_text(r.text[max(0, k - 1500): k + 4000] if k >= 0 else r.text[:5000],
+                                                          encoding="utf-8")
     (DOSSIER / "etat.json").write_text(json.dumps(etat, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(etat, ensure_ascii=False, indent=1))
     return 0 if etat.get("statut") == "ok" else 1
