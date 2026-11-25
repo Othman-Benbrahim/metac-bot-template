@@ -38,6 +38,11 @@ jobs:
       - name: Élections à venir (IFES)
         if: always()
         run: uv run python -u collecte_elections_ifes.py
+      # 2026-11-25 (source validée par l'auteur à 22 h 38, collecte à 22 h 45) : procès contre l'administration Trump,
+      # tracker de Just Security (faits seulement : affaire, tribunal, statut, dates) ; une page par semaine.
+      - name: Procès (Just Security)
+        if: always()
+        run: uv run python -u collecte_justsecurity.py
       - name: Enregistrer
         if: always()
         run: |
@@ -47,6 +52,7 @@ jobs:
           if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
           if [ -d registre/bis ]; then git add -f registre/bis; fi
           if [ -d registre/elections-ifes ]; then git add -f registre/elections-ifes; fi
+          if [ -d registre/justsecurity ]; then git add -f registre/justsecurity; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : OWID du $(date -u +%Y-%m-%d)"
             git pull --rebase
