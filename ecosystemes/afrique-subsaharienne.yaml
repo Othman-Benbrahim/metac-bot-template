@@ -50,6 +50,8 @@ compartiments:
     vitesse: mois
     organisation: statut
     facette: statut
+  - 'mécanisme : l''insécurité djihadiste use les gouvernements civils et sert de justification aux putschs ; les foules qui fêtent les militaires disent la défiance envers des dirigeants jugés incapables, et les juntes adoptent un discours souverainiste et anti-français qui accompagne le remplacement de la France par la Russie (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
+  - 'mécanisme : au Niger, les sanctions de la CEDEAO et de l''UEMOA après le putsch de juillet 2023 ont fait monter les prix ; l''aide suspendue (1,17 milliard de dollars, 6,45 % du PIB) a imposé une baisse de 40 % du budget et l''électricité venue du Nigeria (70 % des besoins) a été coupée ; la junte a abrogé la loi de 2015 qui criminalisait le transport des migrants, regagnant le Nord qui vivait de cette économie de transit et privant l''UE d''un levier (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: région
     temps: années
@@ -136,6 +138,7 @@ compartiments:
   - insurrection d'al-Chabab en Somalie
   - tensions entre l'Éthiopie et l'Érythrée, accès à la mer
   - environ 4,4 millions de Somaliens déplacés de force (ACSS, septembre 2026)
+  - 'mécanisme : al-Chabab tient par une fiscalité organisée, comme une mafia — postes de péage routiers taxant selon la marchandise et la destination, avec un reçu qui évite d''être taxé à nouveau, aumône obligatoire de 2,5 %, argent mobile et hawala, placements dans des entreprises légales et le foncier ; les milices de clans ont permis au gouvernement de reprendre près d''un tiers de son territoire depuis août 2022 (Global Initiative, 2022, via Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: région
     temps: années
@@ -229,6 +232,7 @@ compartiments:
   elements:
   - or du Sahel, uranium du Niger
   - cobalt et coltan de l'est de la RDC, enjeu des combats et des accords
+  - 'mécanisme : « malédiction des ressources » en RDC — premier producteur mondial de cobalt et grand producteur des « 3T » (étain, tungstène, tantale), PIB par habitant sous 700 dollars ; contrat sino-congolais de 2008 jugé défavorable ; les monarchies du Golfe (Émirats, Qatar, Arabie saoudite) arrivent dans les mines et les ports (port en eau profonde de Banana) ; dans l''Est, les groupes armés se financent par les minerais (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: pays
     temps: années
@@ -339,6 +343,7 @@ compartiments:
     Botswana), à Maurice et au Ghana ; l'ANC perd sa majorité absolue en Afrique du Sud pour la première fois en 30 ans
     (Al Jazeera, 11 décembre 2024)
   - contestations postélectorales ailleurs (Mozambique, octobre 2024) (même source)
+  - 'mécanisme : un putsch peut être une « révolution de palais » qui renouvelle le personnel sans changer le système (Gabon, août 2023 : le chef de la garde présidentielle, proche de la famille Bongo, prend le pouvoir ; le parti au pouvoir reste en place) (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: pays
     temps: mandats
