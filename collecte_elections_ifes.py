@@ -26,8 +26,7 @@ import politesse
 
 URL = "https://electionguide.org/elections/type/upcoming/"
 DOSSIER = Path("registre") / "elections-ifes"
-CHAMPS = ["id", "pays", "scrutin", "debut", "debut_precision", "fin", "fin_precision", "statut", "anticipe",
-          "derniere", "inscrits"]
+CHAMPS = ["id", "pays", "scrutin", "debut", "debut_precision", "fin", "fin_precision", "statut", "anticipe"]
 
 
 def _texte(x: str) -> str:
@@ -48,20 +47,22 @@ def _date(x: str) -> tuple[str, str]:
     return "", ""
 
 
-NOMS = ["Country", "Election for", "Start Date", "End Date", "Status", "Is Snap?", "Last Held*", "Last Registered"]
+NOMS = ["Country", "Election for", "Start Date", "End Date", "Status", "Is Snap?"]
 
 
 def analyser(page: str) -> list[dict]:
-    """Lignes du tableau principal. 2026-11-25, premier passage : le HTML de la page n'est pas bien imbriqué (une
-    recherche « <table>…</table> » coupe le tableau) ; on lit donc les lignes <tr> qui suivent l'en-tête « Is Snap? » et
-    ont au moins 8 cellules, et on aligne les 8 DERNIÈRES cellules sur les 8 colonnes nommées (une cellule de drapeau
-    peut précéder)."""
-    k = page.find("Is Snap?")
+    """Lignes du tableau id="electionsTable". 2026-11-25, vu dans la vraie page : les colonnes « Last Held* » et « Last
+    Registered » sont en commentaire HTML (non affichées) ; la cellule « Election for » n'est pas fermée (pas de
+    </td>). On retire les commentaires, on découpe chaque ligne sur « <td », et on aligne les 6 dernières cellules sur
+    les 6 colonnes affichées (la première est le drapeau)."""
+    k = page.find('id="electionsTable"')
     if k < 0:
         return []
+    corps = re.sub(r"<!--.*?-->", "", page[k:], flags=re.S)
+    corps = corps[: corps.find("</table>")] if "</table>" in corps else corps
     out = []
-    for tr in re.findall(r"<tr.*?</tr>", page[k:], re.S):
-        cel = re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)
+    for tr in re.findall(r"<tr.*?</tr>", corps, re.S):
+        cel = [re.sub(r"</td>.*$", "", x, flags=re.S) for x in re.split(r"<td[^>]*>", tr)[1:]]
         if len(cel) < len(NOMS):
             continue
         c = dict(zip(NOMS, cel[-len(NOMS):]))
@@ -70,8 +71,7 @@ def analyser(page: str) -> list[dict]:
         d2, p2 = _date(_texte(c["End Date"]))
         out.append({"id": m.group(1) if m else "", "pays": _texte(c["Country"]), "scrutin": _texte(c["Election for"]),
                     "debut": d1, "debut_precision": p1, "fin": d2, "fin_precision": p2, "statut": _texte(c["Status"]),
-                    "anticipe": _texte(c["Is Snap?"]), "derniere": _texte(c["Last Held*"]),
-                    "inscrits": _texte(c["Last Registered"])})
+                    "anticipe": _texte(c["Is Snap?"])})
     return out
 
 
