@@ -56,14 +56,14 @@ REQUETES_CHEFS = {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
 REQUETES = {
-    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
+    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?posLabel WHERE {
   ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin }
   ?pos wdt:P279 ?classe. VALUES ?classe { wd:Q83307 wd:Q7330070 wd:Q15966511 } ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. BIND(?o AS ?pays) OPTIONAL { ?o wdt:P297 ?iso }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
-    "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
+    "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?secteurLabel WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
-  ?o wdt:P414 ?ex; p:P169 ?st. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  ?o wdt:P414 ?ex; p:P169 ?st. OPTIONAL { ?o wdt:P452 ?secteur } OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # banques centrales : président ou gouverneur actuel
     "banque centrale": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
@@ -170,19 +170,32 @@ def principal() -> int:
                 r.raise_for_status()
                 res = r.json()["results"]["bindings"]
                 n = 0
+                # 2026-11-25, 13 h 52 : un dirigeant public de Wikidata (chef ou ministre) est un « dirigeant public » comme
+                # ceux de la CIA, avec l'intitulé de son poste ; une entreprise garde ses secteurs (P452), plusieurs lignes
+                # par entreprise réunies ici
+                par = {}
                 for b in res:
                     nom = b.get("pLabel", {}).get("value", "")
                     if len(nom) < 5 or re.fullmatch(r"Q\d+", nom):
                         continue
                     org = b.get("oLabel", {}).get("value", "")[:120]
-                    lignes.append({"nom": nom, "sorte": sorte, "pays": b.get("iso", {}).get("value", ""),
-                                   "pays_nom": b.get("paysLabel", {}).get("value", ""), "organisation": org,
-                                   "poste": org, "chef": chef, "source": "Wikidata"})
-                    n += 1
+                    k = (nom, org)
+                    if k not in par:
+                        public = sorte in ("ministre", "chef d'État ou de gouvernement")
+                        poste = b.get("posLabel", {}).get("value", "") or ("chef d'État ou de gouvernement" if chef else org)
+                        par[k] = {"nom": nom, "sorte": "dirigeant public" if public else sorte, "pays": b.get("iso", {}).get("value", ""),
+                                  "pays_nom": b.get("paysLabel", {}).get("value", ""), "organisation": "gouvernement" if public else org,
+                                  "poste": poste[:120], "chef": chef, "source": "Wikidata", "secteurs": []}
+                    sec = b.get("secteurLabel", {}).get("value", "")
+                    if sec and not re.fullmatch(r"Q\d+", sec) and sec not in par[k]["secteurs"]:
+                        par[k]["secteurs"].append(sec)
+                lignes += list(par.values())
+                n = len(par)
                 bilan[sorte] = n
             except Exception as ex:
                 bilan[sorte] = f"erreur {type(ex).__name__}: {str(ex)[:120]} ; lignes précédentes gardées"
-                gardees = [r for r in _precedent() if r["sorte"] == sorte]
+                cible = "dirigeant public" if sorte in ("ministre", "chef d'État ou de gouvernement") else sorte
+                gardees = [r for r in _precedent() if r["sorte"] in (sorte, cible) and r["source"] == "Wikidata"]
                 lignes += gardees
     print(json.dumps(bilan, ensure_ascii=False))
     if not lignes:
@@ -192,13 +205,14 @@ def principal() -> int:
     SORTIE.parent.mkdir(parents=True, exist_ok=True)
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["variantes", "nom", "sorte", "pays", "pays_nom", "organisation", "poste", "chef", "source"])
+        w.writerow(["variantes", "nom", "sorte", "pays", "pays_nom", "organisation", "poste", "chef", "source", "secteurs"])
         for x in lignes:
             if x["nom"].lower() in vus:
                 continue
             vus.add(x["nom"].lower())
             w.writerow(["/".join(variantes(x["nom"], x["chef"], x.get("famille", ""))), x["nom"], x["sorte"], x.get("pays", ""),
-                        x.get("pays_nom", ""), x.get("organisation", ""), x["poste"], int(x["chef"]), x["source"]])
+                        x.get("pays_nom", ""), x.get("organisation", ""), x["poste"], int(x["chef"]), x["source"],
+                        "; ".join(x.get("secteurs") or []) if isinstance(x.get("secteurs"), list) else x.get("secteurs", "")])
     print(len(vus), "entités ->", SORTIE)
     return 0
 
