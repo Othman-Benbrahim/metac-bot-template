@@ -1,0 +1,37 @@
+name: "Collecte réunions eurodéputés - représentants d'intérêts"
+
+# 2026-11-25 (source validée par l'auteur à 16 h 32) : Integrity Watch EU, ODbL 1.0. Une fois par semaine ; aussi à la main.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * 3"
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run python -u collecte_lobbying.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : réunions eurodéputés du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
