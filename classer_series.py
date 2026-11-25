@@ -56,6 +56,7 @@ PAR_TYPE = {
     "tribunaux": ("flux", "décisions par jour"),
     "certificats": ("flux", "certificats émis par jour"),
     "epoch": ("flux", "modèles publiés par mois"),
+    "fts": ("gradient", "part des besoins humanitaires financés dans l'année (%)"),
     "elo": ("stock", "note de force Elo à la fin du mois (ou dispersion, ou variation, des meilleurs)"),
     "publications_nbs": ("flux", "publications parues par jour"),
     "rss": ("flux", "articles par jour (information : flux qui ne se conserve pas)"),

@@ -463,6 +463,9 @@ relations:
   statut: a_verifier
   texte: retourner l'accusation nourrit la polarisation
 ponts:
+- depuis: recits
+  vers: organisations-internationales:humanitaire
+  nature: "délégitimation narrative de l'humanitaire ; elle exploite des fragilités réelles (bureaucratie, dépendance aux donateurs), qui abaissent le seuil où la critique devient délégitimation ; la perte de réputation précède la baisse des financements (Russo et al., Journal of International Humanitarian Action 11:22, 2026, CC BY 4.0) ; déclarée, non mesurée"
 - depuis: censure
   vers: iran-nucleaire:societe_iranienne
   nature: censure et coupures en Iran

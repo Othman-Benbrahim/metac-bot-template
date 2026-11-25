@@ -348,7 +348,33 @@ def elo(reg: Path, famille: str, quoi: str = "dispersion") -> list[tuple[str, fl
     return out
 
 
-ADAPTATEURS = {"elo": elo, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def fts(reg: Path, quoi: str = "couverture") -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : appels humanitaires (collecte_fts.py, registre/fts/appels.csv.gz).
+    « fts:couverture » : fonds reçus / besoins, tous appels confondus, par année (point daté du 1er juillet) ;
+    « fts:couverture:<ISO3> » : idem pour un pays."""
+    import csv as _c
+    import gzip as _g
+    f = reg / "fts" / "appels.csv.gz"
+    if not f.exists():
+        return []
+    pays = quoi.split(":")[1] if ":" in quoi else None
+    besoins, fonds = {}, {}
+    with _g.open(f, "rt", encoding="utf-8") as h:
+        for r in _c.DictReader(h):
+            if pays and r["countryCode"] != pays:
+                continue
+            try:
+                a, b, v = int(float(r["year"])), float(r["requirements"] or 0), float(r["funding"] or 0)
+            except ValueError:
+                continue
+            if b <= 0:
+                continue
+            besoins[a] = besoins.get(a, 0) + b
+            fonds[a] = fonds.get(a, 0) + v
+    return [(f"{a}-07-01", round(100 * fonds[a] / besoins[a], 2)) for a in sorted(besoins)]
+
+
+ADAPTATEURS = {"elo": elo, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

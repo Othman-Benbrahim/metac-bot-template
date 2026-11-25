@@ -134,7 +134,35 @@ compartiments:
     taille: macro
   traces:
   - *id001
+- id: humanitaire
+  nom: Légitimité et financement humanitaires
+  organisation: convention
+  elements:
+  - financement des appels humanitaires coordonnés par l'ONU (besoins et fonds reçus, appel par appel, OCHA Financial Tracking Service)
+  - "délégitimation narrative : récits qui présentent l'action humanitaire comme partiale, inefficace, bras de l'Occident ou obstacle à la souveraineté, pour justifier des restrictions d'accès (Russo et al., Journal of International Humanitarian Action 11:22, 2026, CC BY 4.0)"
+  - "les budgets d'aide des gouvernements et des institutions multilatérales se sont nettement contractés, quand plusieurs grandes ONG sont restées financièrement résilientes (Russo et al. 2026)"
+  niveau:
+    espace: monde
+    temps: années
+    vitesse: mois
+    taille: macro
+  traces:
+  - {source: "taux de couverture des appels humanitaires coordonnés (fonds reçus / besoins, tous appels confondus, par année), OCHA Financial Tracking Service via le Humanitarian Data Exchange (source validée par l’auteur le 2026-11-25 à 5 h 57)", statut: collecte, fichier: collecte_fts.py, adaptateur: "fts:couverture"}
 relations:
+- de: retraits
+  vers: humanitaire
+  effet: '-'
+  delai: années
+  force: forte
+  statut: a_verifier
+  texte: les retraits et les coupes des donateurs réduisent le financement de l'aide humanitaire (Russo et al. 2026 ; série OCHA FTS)
+- de: onu
+  vers: humanitaire
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la légitimité humanitaire est adossée aux institutions multilatérales ; quand elles sont contournées ou vidées, les normes perdent leur échafaudage (Russo et al. 2026)
 - de: retraits
   vers: onu
   effet: '-'

@@ -53,6 +53,7 @@ OBJETS = {
     "pub:rhin": r"rhine",
     "pub:geomag": r"geomagnetic|solar storm",
     "urgences:": r"aviation|aircraft|flight|airline|hijack",
+    "fts:": r"humanitarian|aid|appeal|ocha|unrwa|wfp|world food programme|unhcr|unicef|relief|famine",
     "elo:selections": r"world cup|euro 20\d\d|euros?\b|copa am[eé]rica|nations league|national team|afcon|africa cup|asian cup|gold cup|fifa",
     "elo:clubs": r"premier league|champions league|europa league|conference league|la liga|serie a|bundesliga|ligue 1|fa cup|club world cup|eredivisie",
     "elo:nfl": r"super bowl|\bnfl\b|\bafc\b|\bnfc\b",
