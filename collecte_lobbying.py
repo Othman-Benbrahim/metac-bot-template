@@ -15,6 +15,11 @@ autoupdate_data_eu/mepmeetings/latest/. robots.txt vérifié avant chaque requê
                                 dernière date ;
 - etat.json                     colonnes vues, nombre de lignes, date de mise à jour annoncée, dernière réunion.
 Le mois de la dernière réunion est incomplet : il est marqué « partiel » et l'adaptateur ne le rend pas.
+Lu dans la vraie donnée le 2026-11-25 (114 331 réunions, 2016-2026) : le code de procédure est dans « procedure »
+(législature 10), « dossier » dans les anciens fichiers ; les deux sont lus. Rupture : le code de conduite impose la
+publication à TOUS les députés depuis la législature 10 (juillet 2024) ; avant, seuls rapporteurs et présidents de
+commission y étaient tenus. Les mois d'avant 2024-07 ne sont pas comparables : l'adaptateur commence en 2024-07.
+Les mois récents se remplissent avec retard (déclarations tardives) : millesimes/ garde chaque collecte pour le mesurer.
 """
 from __future__ import annotations
 
@@ -57,7 +62,8 @@ def agreger(reunions: list[dict], registre: dict[str, str]) -> tuple[list[tuple]
         x = mois[m]
         x["n"] += 1
         x["deputes"].add(r.get("epid"))
-        if (r.get("dossier") or "").strip():
+        dos_r = [t.strip() for t in ((r.get("procedure") or "") + "," + (r.get("dossier") or "")).split(",") if t.strip()]
+        if dos_r:
             x["dossier"] += 1
         for nom in r.get("lobbyistsArray") or []:
             x["representants"] += 1
@@ -65,7 +71,8 @@ def agreger(reunions: list[dict], registre: dict[str, str]) -> tuple[list[tuple]
                 x["inscrits"] += 1
         for c in r.get("committees") or []:
             comm[(m, c)] += 1
-        for dos in [s.strip() for s in (r.get("dossier") or "").split(",") if s.strip()]:
+        for dos in dict.fromkeys(dos_r):
+            comm[(m, "dossier:" + dos)] += 1   # réunions par dossier et par mois (mesure « dossier »)
             y = dossiers[dos]
             y["n"] += 1
             y["deputes"].add(r.get("epid"))
@@ -77,7 +84,8 @@ def agreger(reunions: list[dict], registre: dict[str, str]) -> tuple[list[tuple]
         lignes += [(m, "reunions", "", x["n"]), (m, "deputes", "", len(x["deputes"])),
                    (m, "part_dossier", "", round(100 * x["dossier"] / x["n"], 1)),
                    (m, "part_registre", "", round(100 * x["inscrits"] / x["representants"], 1) if x["representants"] else "")]
-    lignes += [(m, "commission", c, n) for (m, c), n in sorted(comm.items())]
+    lignes += [(m, "dossier", c[8:], n) if c.startswith("dossier:") else (m, "commission", c, n)
+               for (m, c), n in sorted(comm.items())]
     dos = [{"dossier": k, "reunions": v["n"], "deputes": len(v["deputes"]), "representants": len(v["repr"]),
             "debut": v["debut"], "fin": v["fin"]} for k, v in sorted(dossiers.items(), key=lambda kv: -kv[1]["n"])]
     return lignes, dos, derniere
@@ -114,6 +122,12 @@ def principal() -> int:
         w.writerow(["mois", "mesure", "cle", "valeur", "partiel"])
         for l in lignes:
             w.writerow([*l, "1" if l[0] == partiel else ""])
+    # millésime : la même table à chaque collecte, pour mesurer le retard de déclaration (un mois récent se remplit
+    # encore pendant des semaines : en novembre 2026, octobre compte 2 063 réunions contre 2 935 en septembre)
+    (DOSSIER / "millesimes").mkdir(exist_ok=True)
+    import datetime as _dt
+    import shutil
+    shutil.copy(DOSSIER / "mensuel.csv", DOSSIER / "millesimes" / f"mensuel-{_dt.date.today().isoformat()}.csv")
     with (DOSSIER / "dossiers.csv").open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["dossier", "reunions", "deputes", "representants", "debut", "fin"])
         w.writeheader()

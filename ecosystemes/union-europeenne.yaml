@@ -158,6 +158,23 @@ compartiments:
     vitesse: mois
     taille: macro
   traces: *id001
+- id: influence
+  nom: Représentants d'intérêts auprès du Parlement (réunions déclarées)
+  organisation: statut
+  elements:
+  - "réunions déclarées des eurodéputés avec des représentants d'intérêts (entreprises, fédérations, ONG, États tiers), par dossier législatif"
+  - "rupture de mesure : depuis la législature 10 (juillet 2024), tous les députés doivent publier leurs réunions ; avant, seuls rapporteurs, rapporteurs fictifs et présidents de commission (code de conduite) : séries comparables à partir de 2024-07"
+  - "114 331 réunions publiées de 2019 à novembre 2026 ; les dossiers les plus courus de 2026 : accélérateur industriel 2026/0068(COD), 678 réunions ; omnibus numérique 2025/0360(COD), 477 ; omnibus durabilité 2025/0045(COD), 498 (Integrity Watch EU, calcul du projet)"
+  - "environ 40 % des représentants rencontrés ne sont pas reliés au registre de transparence (Integrity Watch EU, calcul du projet) ; Transparency International EU relevait en juin 2025 qu'une réunion sur deux est saisie en texte libre"
+  - "le dossier pesticides de l'omnibus X : 43 réunions des rapporteurs avec des représentants d'intérêts, dont 6 avec des ONG (Challenges, 19 novembre 2026, d'après les déclarations obligatoires ; relayé)"
+  niveau:
+    espace: Union
+    temps: mois
+    vitesse: semaines
+    taille: méso à macro
+  traces:
+  - {source: "réunions déclarées par mois, tous députés, depuis 2024-07 (Integrity Watch EU, ODbL 1.0) ; les mois récents se remplissent avec retard", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:reunions"}
+  - {source: "part des représentants rencontrés inscrits au registre de transparence, par mois (Integrity Watch EU)", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:part_registre"}
 - id: etat_de_droit
   nom: État de droit et conditionnalité
   organisation: convention
@@ -171,6 +188,13 @@ compartiments:
     taille: macro
   traces: *id001
 relations:
+- de: influence
+  vers: politiques_communes
+  effet: +
+  delai: mois
+  force: inconnue
+  statut: a_verifier
+  texte: les réunions sur un dossier précèdent ses amendements ; la reprise mot pour mot de positions d'intérêts est documentée sur l'omnibus X (Corporate Europe Observatory, relayé par Challenges)
 - de: institutions
   vers: sanctions_ue
   effet: +
@@ -212,6 +236,10 @@ relations:
   statut: a_verifier
   texte: les exigences d'État de droit ralentissent l'adhésion (chapitres 23 et 24 ouverts en premier, fermés en dernier)
 ponts:
+- depuis: influence
+  vers: corruption:lutte
+  nature: transparence des contacts entre élus et représentants d'intérêts
+  type: voisinage
 - depuis: sanctions_ue
   vers: russie-ukraine:sanctions
   nature: les sanctions de l'Union contre la Russie

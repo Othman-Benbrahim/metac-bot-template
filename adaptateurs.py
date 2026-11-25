@@ -452,6 +452,22 @@ def ucdb(reg: Path, pays: str, variable: str) -> list[tuple[str, float]]:
                       if x["iso2"] == pays and x["variable"] == variable)
 
 
+def lobbying(reg: Path, mesure: str, cle: str = "") -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : réunions des eurodéputés avec des représentants d'intérêts
+    (registre/lobbying/mensuel.csv, collecte_lobbying.py ; Integrity Watch EU, ODbL 1.0). « lobbying:<mesure>[:<clé>] »,
+    mesure = reunions, deputes, part_dossier, part_registre, commission (clé = sigle), dossier (clé = code de procédure).
+    Commence en 2024-07 (rupture : publication obligatoire pour tous les députés) ; le mois partiel n'est pas rendu.
+    Daté du 15 du mois."""
+    import csv as _c
+    f = reg / "lobbying" / "mensuel.csv"
+    if not f.exists():
+        return []
+    with f.open(encoding="utf-8") as h:
+        return [(f"{x['mois']}-15", float(x["valeur"])) for x in _c.DictReader(l for l in h if not l.startswith("#"))
+                if x["mesure"] == mesure and x["cle"] == cle and x["valeur"] not in ("", None) and not x.get("partiel")
+                and x["mois"] >= "2024-07"]
+
+
 def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tuple[str, float]]:
     """2026-11-25 (source validée par l'auteur) : un graphique d'Our World in Data (registre/owid/<slug>.csv.gz,
     collecte_owid.py). « owid:<graphique>[:<entité>[:<colonne>]] » ; entité = nom (World, Arctic Ocean…), code ISO3, ou
@@ -490,7 +506,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     return [(d, round(sum(v) / len(v) if entite == "moyenne" else sum(v), 6)) for d, v in sorted(agr.items())]
 
 
-ADAPTATEURS = {"ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+ADAPTATEURS = {"lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}
