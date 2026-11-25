@@ -1,0 +1,169 @@
+om/flags/Flag_of_Haiti_svg.png" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Jul 18 2027</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/4664/">Haitian Chamber of Deputies</a><br>
+    <a href="/countries/id/94/">Haiti</a><br>
+
+
+    </td></tr>
+
+    <tr><td  style="padding: .3rem">
+    <img src="https://eguide.s3.amazonaws.com/flags/Flag_of_Haiti_svg.png" style="width:70px;">
+    </td><td style="padding: .3rem">                
+
+    
+    <strong>Jul 18 2027</strong> <small>(d)</small>
+        
+
+
+    <br>
+
+    <a href="/elections/id/4663/">Haitian Presidency</a><br>
+    <a href="/countries/id/94/">Haiti</a><br>
+
+
+    </td></tr>
+
+</tbody>
+
+</table>
+    </div>
+           
+
+
+
+
+
+<div class="d-none d-sm-block">
+
+<div style="width: 100%; overflow-x: scroll">
+                <div class="table-wrapper">
+                    <!-- Table -->
+                    <table class="table table-hover" id="electionsTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Country</th>
+                                <th>Election for</th>
+
+                           
+
+                                <th style="width: 130px">Start Date</th>
+                                <th style="width: 130px">End Date</th>
+
+
+                                 
+                                    <th>Status</th>
+                                    <th>Is Snap?</th>
+                                   <!--<th style="width: 130px">Last Held*</th>
+                                    <th style="text-align: right">Last Registered</th>-->
+                                
+
+                                     
+
+                                
+                                  
+                                    
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                
+
+
+                                    <tr>
+                                    <td>
+                                        <img src="https://eguide.s3.amazonaws.com/flags/switzerland.gif" style="width:30px;">
+                                        <div class="d-none">
+    
+</div>
+                                    
+                                    </td>
+                                    <td><a href="/countries/id/207/">Switzerland</a></td>
+                                    <td><a href="/elections/id/5097/?'report_type=upcoming">Referendum</a>
+                                  
+                                  
+                                    
+
+                                    <!-- so above I need to send the report type var into the election page SOMEHTING like that  its called "TYPE" in this view... so best to keep it TYPE instead of report type-
+there are two "/" in the link  
+                                    -->
+
+                                    <td>
+                                  
+                                    
+                                        2026-11-29 <small>(d)</small>
+                                        
+                                    </td>
+
+                                    <td>
+                            
+                                        
+                                            2026-11-29 <small>(d)</small>
+                                            
+                                        </td>
+
+
+                                      
+                                      <td>Confirmed</td>
+                                    <td>
+                                      
+                                        
+                                        
+                                        No 
+                                        
+                                    </td>
+                                  
+                                    
+
+                                 
+                                        
+
+
+                 
+
+
+
+
+
+                                    </tr>
+                                
+
+
+                                    <tr>
+                                    <td>
+                                        <img src="https://eguide.s3.amazonaws.com/flags/spain.gif" style="width:30px;">
+                                        <div class="d-none">
+    
+</div>
+                                    
+                                    </td>
+                                    <td><a href="/countries/id/200/">Spain</a></td>
+                                    <td><a href="/elections/id/5255/?'report_type=upcoming">Spanish Senate</a>
+                                  
+                                  
+                                    
+
+                                    <!-- so above I need to send the report type var into the election page SOMEHTING like that  its called "TYPE" in this view... so best to keep it TYPE instead of report type-
+there are two "/" in the link  
+                                    -->
+
+                                    <td>
+                                  
+                                    
+                                        2026-11-29 <small>(d)</small>
+                                        
+                                    </td>
+
+                                    <td>
+                            
+                                        
+                          
