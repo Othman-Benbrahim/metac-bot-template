@@ -152,6 +152,7 @@ compartiments:
   - eau disponible par habitant
   - stress hydrique
   - coupures d'eau
+  - "aridité de fond (précipitations / évapotranspiration < 0,2) : 100 % du territoire en Égypte, Arabie saoudite, Émirats, Koweït, Qatar, Bahreïn ; Jordanie 97 %, Irak 87 %, Syrie 80 %, Iran 78 % (Global Aridity Index v3.1, moyenne 1970-2000, calcul du projet par pays)"
   niveau:
     espace: pays et villes
     temps: étés ; années sèches

@@ -42,6 +42,7 @@ compartiments:
   - stress hydrique de base
   - variabilité d'une année à l'autre
   - sécheresses
+  - "aridité de fond : le climat fixe l'eau disponible avant tout prélèvement ; indice d'aridité (précipitations / évapotranspiration potentielle) < 0,2 = aride, < 0,65 = terres sèches (Global Aridity Index v3.1) ; ex. Maroc 73 % aride, Tunisie 76 %, Algérie 94 %, France 0,1 % (calcul du projet par pays, moyenne 1970-2000)"
   niveau:
     espace: bassins
     temps: années
