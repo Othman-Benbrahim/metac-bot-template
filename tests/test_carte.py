@@ -106,7 +106,9 @@ def test_serie_perimee_ignoree(tmp_path, monkeypatch):
     c.aujourdhui = dt.date(2026, 11, 19)
     e = c.etat()
     perimes = [v for v in e.values() if "perime" in v and "z" not in v]
-    assert perimes and all("meteo:" in v["perime"] for v in perimes)
+    # 2026-11-25 : ages_dirigeants lit un fichier versionné (Archigos, 1946-2015), donc toujours périmé ici
+    assert perimes and all(("meteo:" in v["perime"] or "ages_dirigeants:" in v["perime"]) for v in perimes)
+    assert any("meteo:" in v["perime"] for v in perimes)
     c2 = ca.Carte(reg=tmp_path, calibration=None)
     c2.aujourdhui = dt.date(2026, 3, 15)
     assert any("z" in v and str(v.get("adaptateur", "")).startswith("meteo:") for v in c2.etat().values())

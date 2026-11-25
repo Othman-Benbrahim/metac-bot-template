@@ -2,17 +2,17 @@
  "genere_le": "2026-11-25",
  "fraicheur_jours": 45,
  "avancement": {
-  "compartiments": 853,
+  "compartiments": 854,
   "par_statut": {
-   "a_trouver": 625,
+   "a_trouver": 626,
    "fraiche": 171,
    "ancienne": 35,
    "vide": 22
   },
-  "relations": 1007,
+  "relations": 1010,
   "relations_testables": 204,
   "relations_par_verdict": {
-   "non_controlee": 781,
+   "non_controlee": 784,
    "non_tranche": 63,
    "non_testable": 152,
    "conteste": 7,
@@ -1670,6 +1670,9 @@
    "statut": "a_trouver"
   },
   "information-cyber:inversion_reecriture": {
+   "statut": "a_trouver"
+  },
+  "information-cyber:resilience_informationnelle": {
    "statut": "a_trouver"
   },
   "infrastructures-critiques:reseaux": {
@@ -6412,6 +6415,12 @@
    "verdict": null
   },
   {
+   "de": "information-cyber:resilience_informationnelle",
+   "vers": "information-cyber:foules",
+   "testable": false,
+   "verdict": null
+  },
+  {
    "de": "information-cyber:foules",
    "vers": "information-cyber:etats",
    "testable": false,
@@ -6466,6 +6475,12 @@
    "verdict": null
   },
   {
+   "de": "information-cyber:resilience_informationnelle",
+   "vers": "information-cyber:recits",
+   "testable": false,
+   "verdict": null
+  },
+  {
    "de": "information-cyber:cyber",
    "vers": "information-cyber:infrastructure",
    "testable": false,
@@ -6480,6 +6495,12 @@
   {
    "de": "information-cyber:effacement_mots",
    "vers": "information-cyber:langues_biais",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "information-cyber:recits",
+   "vers": "information-cyber:resilience_informationnelle",
    "testable": false,
    "verdict": null
   },

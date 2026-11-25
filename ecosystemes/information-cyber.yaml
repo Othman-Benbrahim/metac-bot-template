@@ -297,6 +297,22 @@ compartiments:
     temps: d'un décret (jour) à une génération (mémoire)
     vitesse: jours à années
     taille: macro
+- id: resilience_informationnelle
+  nom: Résilience informationnelle (la société qui encaisse)
+  organisation: societe
+  elements:
+  - "la guerre cognitive exploite surtout les fragilités de la société visée : confiance faible dans les institutions, messages officiels contradictoires (« dissonance d'autorité »), sens partagé fragmenté (Russo et al., Defense & Security Analysis, 2026, doi 10.1080/14751798.2026.2714711, CC BY 4.0 ; cadre conceptuel, non validé)"
+  - "cinq mécanismes en chaîne : exposition, interprétation, activation affective, amplification sociale, réponse collective ; chacun est une faille et un point d'intervention (même source)"
+  - "ce qui protège : canaux de confiance redondants, cohérence entre autorités, reconnaissance de l'incertitude, principes CERC (être premier, juste, crédible, empathique, pousser à l'action, respecter)"
+  - "modèle : la défense psychologique nordique (Suède, Finlande : sécurité globale, responsabilité partagée)"
+  niveau:
+    espace: individu à pays
+    temps: années
+    vitesse: jours à années
+    taille: micro à macro
+    objet: information
+  traces:
+  - {source: "confiance dans les institutions (enquête de l'OCDE sur la confiance ; Eurobaromètre) ; à brancher", statut: a_brancher}
 relations:
 - de: recits
   vers: attention
@@ -462,7 +478,34 @@ relations:
   force: moyenne
   statut: a_verifier
   texte: retourner l'accusation nourrit la polarisation
+- de: resilience_informationnelle
+  vers: recits
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  statut: a_verifier
+  texte: une confiance stable et des autorités cohérentes réduisent la prise des récits hostiles ; déclaré par un cadre conceptuel, non mesuré (Russo et al. 2026)
+- de: resilience_informationnelle
+  vers: foules
+  effet: '-'
+  delai: jours
+  force: moyenne
+  statut: a_verifier
+  texte: reconnaître l'incertitude et parler avec empathie limite la panique et la polarisation (littérature de communication de crise, COVID-19, Ebola, Fukushima, citée par Russo et al. 2026)
+- de: recits
+  vers: resilience_informationnelle
+  effet: '-'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: la saturation et la fragmentation prolongées usent la confiance et l'espace commun d'interprétation
 ponts:
+- depuis: resilience_informationnelle
+  vers: epidemies:autorites
+  nature: "la confiance dans les autorités sanitaires et la cohérence de leurs messages conditionnent l'adhésion aux mesures (communication de crise)"
+- depuis: resilience_informationnelle
+  vers: organisations-internationales:humanitaire
+  nature: "une société qui fait confiance à ses institutions résiste mieux à la délégitimation narrative de l'humanitaire (Russo et al. 2026)"
 - depuis: recits
   vers: organisations-internationales:humanitaire
   nature: "délégitimation narrative de l'humanitaire ; elle exploite des fragilités réelles (bureaucratie, dépendance aux donateurs), qui abaissent le seuil où la critique devient délégitimation ; la perte de réputation précède la baisse des financements (Russo et al., Journal of International Humanitarian Action 11:22, 2026, CC BY 4.0) ; déclarée, non mesurée"
