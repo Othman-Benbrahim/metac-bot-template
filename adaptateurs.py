@@ -406,7 +406,20 @@ def wdi(reg: Path, pays: str, quoi: str) -> list[tuple[str, float]]:
     return [(f"{an}-07-01", round(k * a[an] / b[an], 4)) for an in sorted(a) if b.get(an)]
 
 
-ADAPTATEURS = {"elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+def ages_dirigeants(reg: Path, region: str, quoi: str = "age_moyen") -> list[tuple[str, float]]:
+    """2026-11-25 (demande de l'auteur) : âge des dirigeants en poste au 1er juillet, Archigos 4.1, 1946-2015
+    (ecosystemes/dirigeants-ages.csv, mise_au_point/archigos_ages.py). « ages_dirigeants:<région>:age_moyen|part70 »,
+    région = monde, ameriques, europe, afrique, moyen_orient, asie_oceanie."""
+    import csv as _c
+    f = Path(__file__).resolve().parent / "ecosystemes" / "dirigeants-ages.csv"
+    if not f.exists() or quoi not in ("age_moyen", "part70"):
+        return []
+    with f.open(encoding="utf-8") as h:
+        r = _c.DictReader(l for l in h if not l.startswith("#"))
+        return [(f"{x['annee']}-07-01", float(x[quoi])) for x in r if x["region"] == region]
+
+
+ADAPTATEURS = {"ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

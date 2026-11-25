@@ -4,9 +4,9 @@
  "avancement": {
   "compartiments": 853,
   "par_statut": {
-   "a_trouver": 626,
+   "a_trouver": 625,
    "fraiche": 171,
-   "ancienne": 34,
+   "ancienne": 35,
    "vide": 22
   },
   "relations": 1007,
@@ -882,7 +882,9 @@
    "statut": "a_trouver"
   },
   "dirigeants-elus:age_sante": {
-   "statut": "a_trouver"
+   "statut": "ancienne",
+   "serie": "ages_dirigeants:monde:age_moyen",
+   "derniere": "2015-07-01"
   },
   "eau-douce-potable:ressources": {
    "statut": "a_trouver"

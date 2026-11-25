@@ -192,6 +192,7 @@ compartiments:
   elements:
   - âge en fonction, absences et hospitalisations annoncées officiellement ; aucune inférence ni diagnostic
   - "l'écart d'âge avec la population gouvernée : Afrique, âge médian d'environ 19 ans pour sa population et d'environ 63 ans pour ses dirigeants ; le président ougandais avait près de 63 ans de plus que son administré moyen en 2023 (Wilson Center, 14 mars 2023)"
+  - "âge moyen des dirigeants en poste : 54,8 ans en 1946, 61,2 ans en 2015 ; en Afrique 65,4 ans en 2015, dont 43 % de 70 ans et plus (Archigos 4.1, calcul du 2026-11-25)"
   - "l'âge situe le dirigeant dans son cycle de vie au pouvoir ; la table des dirigeants du bot donne l'année de naissance et le début du mandat en cours (ecosystemes/dirigeants-maintien.csv)"
   niveau:
     espace: pays
@@ -200,6 +201,8 @@ compartiments:
     taille: micro
     objet: personnes
   traces:
+  - {source: "âge moyen des dirigeants en poste au 1er juillet, monde, 1946-2015 (Archigos 4.1 via peacesciencer)", statut: collecte, fichier: mise_au_point/archigos_ages.py, adaptateur: "ages_dirigeants:monde:age_moyen"}
+  - {source: "part des dirigeants africains âgés de 70 ans et plus, 1946-2015 (Archigos 4.1)", statut: collecte, fichier: mise_au_point/archigos_ages.py, adaptateur: "ages_dirigeants:afrique:part70"}
   - *id001
 cycles:
 - id: vie_au_pouvoir

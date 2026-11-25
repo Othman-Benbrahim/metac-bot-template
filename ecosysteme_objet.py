@@ -60,6 +60,7 @@ OBJETS = {
     "rss_matiere:courtiers": r"data broker|location data",
     "rss_matiere:cibles": r"spyware|surveil|journalist|activist",
     "rss_matiere:chiffrement": r"encrypt|backdoor",
+    "ages_dirigeants:": r"\bage\b|\bold\b|oldest|elderly|health|succession|successor|die|death",
     "wdi:monde:part": r"\bage\b|aging|ageing|elderly|youth|young|pension|retire|birth|fertility|demograph|population",
     "fts:": r"humanitarian|aid|appeal|ocha|unrwa|wfp|world food programme|unhcr|unicef|relief|famine",
     "elo:selections": r"world cup|euro 20\d\d|euros?\b|copa am[eé]rica|nations league|national team|afcon|africa cup|asian cup|gold cup|fifa",
