@@ -30,6 +30,10 @@ jobs:
       - name: Réunions eurodéputés
         if: always()
         run: uv run python -u collecte_lobbying.py
+      # 2026-11-25 (validé par l'auteur à 18 h 12) : taux directeurs des banques centrales (BIS, source citée)
+      - name: Taux directeurs (BIS)
+        if: always()
+        run: uv run python -u collecte_bis.py
       - name: Enregistrer
         if: always()
         run: |
@@ -37,6 +41,7 @@ jobs:
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/owid ]; then git add -f registre/owid; fi
           if [ -d registre/lobbying ]; then git add -f registre/lobbying; fi
+          if [ -d registre/bis ]; then git add -f registre/bis; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : OWID du $(date -u +%Y-%m-%d)"
             git pull --rebase

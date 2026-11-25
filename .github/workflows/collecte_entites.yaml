@@ -25,12 +25,17 @@ jobs:
       - run: uv sync --locked
       - name: Collecte
         run: uv run python -u collecte_entites.py
+      # 2026-11-25 (validé par l'auteur à 18 h 12) : successions des chefs depuis 1990 (Wikidata), même rythme
+      - name: Successions
+        if: always()
+        run: uv run python -u collecte_successions.py
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/entites ]; then git add -f registre/entites; fi
+          if [ -d registre/successions ]; then git add -f registre/successions; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : entités du $(date -u +%Y-%m-%d)"
             git pull --rebase
