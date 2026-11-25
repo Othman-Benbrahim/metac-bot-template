@@ -234,6 +234,8 @@ compartiments:
     vitesse: décennies
     taille: macro
   traces:
+  - {source: "émissions mondiales de CO2 fossile, tonnes par an (Global Carbon Budget, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:annual-co2-emissions-per-country:World"}
+  - {source: "émissions de CO2 fossile de la Chine (Global Carbon Budget, via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:annual-co2-emissions-per-country:CHN"}
   - source: anomalies mondiales de température (publiques)
     statut: a_brancher
   - source: dérive annuelle de la température à Delhi (GHCN-Daily, anomalie glissante sur 365 jours)

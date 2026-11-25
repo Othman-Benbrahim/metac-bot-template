@@ -123,6 +123,8 @@ compartiments:
     vitesse: semaines à mois
     taille: macro
   traces:
+  - {source: "capacité solaire installée en Chine, GW (via Our World in Data) ; +315 GW en 2025, +434 GW avec l'éolien, chiffre que cite Challenges (19 novembre 2026) et que la série recoupe", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:installed-solar-pv-capacity:CHN"}
+  - {source: "capacité éolienne installée en Chine, GW (via Our World in Data)", statut: collecte, fichier: collecte_owid.py, adaptateur: "owid:cumulative-installed-wind-energy-capacity-gigawatts:CHN"}
   - source: IMF PortWatch, pétroliers à Malacca
     statut: collecte
     fichier: collecte_portwatch.py
