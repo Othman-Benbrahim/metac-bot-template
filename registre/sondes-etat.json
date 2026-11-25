@@ -1,20 +1,20 @@
 {
- "calcule_le": "2026-11-24",
+ "calcule_le": "2026-11-25",
  "fenetre_etalon": [
-  "2026-05-26",
-  "2026-11-24"
+  "2026-05-27",
+  "2026-11-25"
  ],
- "questions_fenetre": 817,
+ "questions_fenetre": 809,
  "sondes": {
   "relations": {
    "actif": true,
    "plafond": 0.05,
-   "k": -0.5,
+   "k": -0.4,
    "etalon": {
-    "k": -0.5,
-    "lues": 17,
-    "perte_base": 0.6667,
-    "perte_k": 0.6119
+    "k": -0.4,
+    "lues": 26,
+    "perte_base": 0.5438,
+    "perte_k": 0.5191
    },
    "log_e": 0.0,
    "resolues": 0
@@ -25,9 +25,9 @@
    "k": 0.0,
    "etalon": {
     "k": 0.0,
-    "lues": 13,
-    "perte_base": 0.6212,
-    "perte_k": 0.6212
+    "lues": 14,
+    "perte_base": 0.5991,
+    "perte_k": 0.5991
    },
    "log_e": 0.0,
    "resolues": 0

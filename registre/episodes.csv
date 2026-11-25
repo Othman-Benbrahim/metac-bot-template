@@ -6,3 +6,5 @@ question_id,date,canal,evenement,strate,statut_C,p_B,p_C,issue,COM,CRO,CTR,EME,H
 46821,2026-11-16,C,PÉRIODICITÉ@5 apparait,5,hors_strate,0.006024096385542169,,,,,R:marqueur_non_rempli,,,,,,,,,,,,,f
 46835,2026-11-16,C,TRACE·MÉMOIRE@5 apparait,5,hors_strate,0.7272727272727273,,,,,,R:marqueur_non_rempli,,,,,,,,,,R:marqueur_non_rempli,R:marqueur_non_rempli,
 46880,2026-11-18,C,PÉRIODICITÉ@5 apparait,5,hors_strate,0.0033461772459947273,,,,,f,,,,,,,,,,,R:marqueur_non_rempli,,f
+46891,2026-11-24,C,CONTRAINTE@7 disparait,7,estime,0.015297606175691425,0.015297606175691425,,,R:marqueur_non_rempli,f,R:marqueur_non_rempli,,f,,,,,,,,,,
+46896,2026-11-25,C,CONTRAINTE@5 apparait,5,hors_strate,0.014471497017698249,,,,f,,R:contredit,,f,,,,,,,,,,

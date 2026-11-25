@@ -1,15 +1,30 @@
 {
-  "calcule_le": "2026-11-23T16:32:23+00:00",
+  "calcule_le": "2026-11-25T10:35:09+00:00",
   "version_bot": "0.10.410",
   "version_skill": "0.7.77",
-  "lignes_lues": 97,
-  "empreinte_registre": "1ac2b3b07eba1901911de243297e59fad562908a09d926f3128428ad5411fb89",
+  "lignes_lues": 106,
+  "empreinte_registre": "f61d06652734a9398809fa6123f243ffe1cc475af93ef7e28188f69e4ae26622",
   "seuils": {
     "questions": 3,
     "sources_distinctes": 2
   },
   "candidates": [],
   "confirmations": [
+    {
+      "instruction": "lien",
+      "de": "CRO",
+      "vers": "CTR",
+      "questions": 1,
+      "sources_distinctes": 1,
+      "exemples": [
+        {
+          "question_id": "46896",
+          "extrait": "The proposal will be discussed at the special European Council meeting on 26–27 November, with the challenging goal of reaching an agreement by the end of the year.",
+          "source": "https://newunionpost.eu/2026/11/21/costa-nego-box-eu-mff-global-europe"
+        }
+      ],
+      "dans_la_matrice": "F"
+    },
     {
       "instruction": "lien",
       "de": "CTR",
@@ -24,6 +39,21 @@
         }
       ],
       "dans_la_matrice": "f"
+    },
+    {
+      "instruction": "lien",
+      "de": "INC",
+      "vers": "CTR",
+      "questions": 1,
+      "sources_distinctes": 1,
+      "exemples": [
+        {
+          "question_id": "46896",
+          "extrait": "While no substantive decisions were taken, the Negotiating Box has now become the central reference point, marking the transition towards more explicit political positioning by member states across the whole package. From this point onwards, discussions across individual budget headings and sectoral",
+          "source": "https://ecdpm.org/work/whats-next-global-europe-2026-mff-negotiations"
+        }
+      ],
+      "dans_la_matrice": "M"
     },
     {
       "instruction": "lien",

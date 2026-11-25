@@ -1,0 +1,8 @@
+{
+ "calcule_le": "2026-11-25",
+ "ferme": false,
+ "plafond": 0.1,
+ "log_e": 0.0,
+ "ecarts_resolus": 0,
+ "procedure": "preenregistrements/dossier-interne.md"
+}

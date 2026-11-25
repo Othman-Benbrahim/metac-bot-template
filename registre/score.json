@@ -1,7 +1,7 @@
 {
-  "lignes": 32,
+  "lignes": 36,
   "lignes_essai_exclues": 9,
-  "questions": 15,
+  "questions": 19,
   "resolues": 0,
   "retouchees": [],
   "dossiers_non_conformes": [
@@ -63,16 +63,16 @@
     "lecture": "κ faible : le lecteur suit le registre des sources plus que la situation (§39)"
   },
   "diversite_lectures": {
-    "lectures": 2,
-    "part_etats_nuls": 1.0,
-    "etats_distincts": 0,
-    "entropie_normalisee": null,
-    "carte_la_plus_frequente": null,
-    "part_carte_la_plus_frequente": null,
+    "lectures": 3,
+    "part_etats_nuls": 0.6667,
+    "etats_distincts": 1,
+    "entropie_normalisee": 0.25,
+    "carte_la_plus_frequente": "INCERTITUDE",
+    "part_carte_la_plus_frequente": 0.5,
     "lecture": "entropie basse, états distincts rares ou états nuls quasi constants : le lecteur s'effondre"
   },
   "sorties_illisibles": {
-    "lignes": 23,
+    "lignes": 27,
     "illisibles": 0,
     "part": 0.0,
     "par_modele": {
@@ -83,7 +83,7 @@
         "part": 0.0
       },
       "azure_ai/gpt-5-mini": {
-        "lignes": 12,
+        "lignes": 16,
         "illisibles": 0,
         "etapes": {},
         "part": 0.0
@@ -92,24 +92,24 @@
     "lecture": "part élevée : le modèle échoue au format ; ces lignes n'ont pas de lecture, ce n'est pas un état nul"
   },
   "preselection_ombre": {
-    "questions": 12,
-    "calculees": 12,
+    "questions": 16,
+    "calculees": 16,
     "indisponibles": 0,
-    "recouvrement_moyen": 0.243,
-    "jaccard_moyen": 0.1694,
-    "rang_moyen_evenement": 6.1667,
+    "recouvrement_moyen": 0.2239,
+    "jaccard_moyen": 0.1521,
+    "rang_moyen_evenement": 6.5625,
     "modeles": [
       "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     ],
     "lecture": "recouvrement haut et stable : la présélection retrouve le choix du planificateur ; bas : le planificateur voit autre chose que le texte de la question"
   },
   "couts": {
-    "total_usd": 12.4,
+    "total_usd": 14.1,
     "par_modele": {
       "azure_ai/gpt-5-mini": {
-        "questions": 31,
-        "total_usd": 12.4,
-        "moyenne_usd": 0.4
+        "questions": 40,
+        "total_usd": 14.1,
+        "moyenne_usd": 0.352
       }
     },
     "par_jour": {
@@ -119,30 +119,33 @@
       "2026-11-19": 0.26,
       "2026-11-20": 1.61,
       "2026-11-21": 0.47,
-      "2026-11-23": 1.19
+      "2026-11-23": 1.19,
+      "2026-11-24": 1.19,
+      "2026-11-25": 0.51
     }
   },
   "negation_A": {
-    "questions": 2,
+    "questions": 3,
     "testees": 2,
-    "erreurs": 0,
+    "erreurs": 1,
     "incoherence_moyenne": 0.11,
     "incoherence_mediane": 0.1,
     "part_au_dela_de_0_1": 0.5,
     "lecture": "incohérence élevée : la probabilité du modèle dépend de la formulation, pas seulement de la situation"
   },
   "fidelite_plan": {
-    "relus": 12,
+    "relus": 16,
     "verdicts": {
-      "non": 12
+      "non": 16
     },
     "types_ecart": {
-      "autre_evenement": 12,
-      "mauvaise_semantique": 10,
+      "autre_evenement": 16,
+      "mauvaise_semantique": 11,
       "evenement_plus_difficile": 1,
       "negation": 3,
       "mauvaise_fenetre": 6,
-      "evenement_plus_facile": 1
+      "evenement_plus_facile": 1,
+      "autre": 1
     },
     "perte_C_selon_verdict": {}
   },
@@ -153,11 +156,11 @@
   },
   "B_par_methode": null,
   "discordances_B": {
-    "questions": 3,
-    "alarmes": 3,
+    "questions": 5,
+    "alarmes": 5,
     "part": 1.0,
     "alarmes_par_methode": {
-      "vue_modele": 2,
+      "vue_modele": 4,
       "vue_modele_compte_echoue": 1
     },
     "B_moins_A_avec_alarme": {
@@ -295,32 +298,34 @@
       "dispersion_B_moyenne": null
     },
     "0.10.410": {
-      "lignes": 2,
+      "lignes": 6,
       "statuts": {
-        "sans_vue": 2
+        "sans_vue": 4,
+        "estime": 1,
+        "hors_strate": 1
       },
       "classe": {
-        "figee": 2
+        "figee": 6
       },
-      "mots_ancres": 0,
-      "mots_non_attribues": 0,
+      "mots_ancres": 4,
+      "mots_non_attribues": 1,
       "dispersion_B_moyenne": null
     }
   },
   "effectifs_diagnostics": {
-    "lignes_publiees": 23,
-    "questions_scorees": 15
+    "lignes_publiees": 27,
+    "questions_scorees": 19
   },
   "statuts_exploratoires": {
-    "estime": 2,
+    "estime": 3,
     "etat_nul": 1
   },
   "C_exploratoire_sur_B": null,
   "exploratoire_non_binaire": {
     "note": "hors verdict ; questions non binaires ramenées à une question binaire dérivée (§29)",
-    "questions": 20,
+    "questions": 25,
     "statuts": {
-      "sans_vue": 15,
+      "sans_vue": 20,
       "estime": 2,
       "etat_nul": 2,
       "refuse": 1
@@ -347,8 +352,9 @@
   "statuts_alphabet": {
     "refuse": 5,
     "etat_nul": 2,
-    "hors_strate": 7,
-    "sans_vue": 9
+    "hors_strate": 8,
+    "sans_vue": 11,
+    "estime": 1
   },
   "calibration_par_groupe": null,
   "etats_nuls": {
@@ -358,7 +364,8 @@
   },
   "motifs_rejet": {
     "compte": {
-      "marqueur_non_rempli": 6
+      "marqueur_non_rempli": 8,
+      "contredit": 1
     },
     "lecture": "aucun_fait = recherche ; marqueur_non_rempli = marqueur ou vraie absence ; contredit = vraie absence de structure (seul motif qui renseigne sur l'alphabet)"
   },
@@ -367,7 +374,7 @@
     "B": 1,
     "C": 0,
     "AB": 0,
-    "M": 2
+    "M": 6
   },
   "regle_arret_M": {
     "n": 0,
@@ -378,7 +385,7 @@
   },
   "par_modele": {
     "azure_ai/gpt-5-mini": {
-      "questions": 12,
+      "questions": 16,
       "resolues": 0,
       "C_sur_B_gain_log_moyen": null,
       "C_sur_B_verdict": null
@@ -402,5 +409,5 @@
       "C_sur_B_verdict": null
     }
   },
-  "calcule_le": "2026-11-23T16:30:19+00:00"
+  "calcule_le": "2026-11-25T10:31:23+00:00"
 }

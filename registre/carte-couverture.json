@@ -4,10 +4,10 @@
  "avancement": {
   "compartiments": 855,
   "par_statut": {
-   "a_trouver": 626,
+   "a_trouver": 613,
+   "vide": 35,
    "fraiche": 171,
-   "ancienne": 36,
-   "vide": 22
+   "ancienne": 36
   },
   "relations": 1014,
   "relations_testables": 206,
@@ -57,7 +57,8 @@
    "statut": "a_trouver"
   },
   "afrique-subsaharienne:acces_electricite": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:share-of-the-population-with-access-to-electricity:Sub-Saharan Africa (WB)"
   },
   "afrique-subsaharienne:alternances": {
    "statut": "a_trouver"
@@ -191,13 +192,15 @@
    "statut": "a_trouver"
   },
   "antarctique:glace_mer": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:antarctica-sea-ice-extent:unique"
   },
   "antarctique:calotte": {
    "statut": "a_trouver"
   },
   "arctique:glace_arctique": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:arctic-sea-ice:Arctic Ocean"
   },
   "arctique:groenland": {
    "statut": "a_trouver"
@@ -571,7 +574,8 @@
    "statut": "a_trouver"
   },
   "corruption:perception": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:ti-corruption-perception-index:moyenne"
   },
   "corruption:grande_corruption": {
    "statut": "a_trouver"
@@ -899,10 +903,12 @@
    "statut": "a_trouver"
   },
   "eau-douce-potable:acces": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:proportion-using-safely-managed-drinking-water:World"
   },
   "eau-douce-potable:assainissement": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:share-using-safely-managed-sanitation:World"
   },
   "eau-douce-potable:qualite": {
    "statut": "a_trouver"
@@ -1166,10 +1172,12 @@
    "statut": "a_trouver"
   },
   "environnement-dechets:ozone": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:ozone-depleting-substance-consumption:World"
   },
   "environnement-dechets:qualite_air": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:death-rates-from-air-pollution:World"
   },
   "environnement-dechets:traites": {
    "statut": "a_trouver"
@@ -1903,13 +1911,15 @@
    "derniere": "2026-10-01"
   },
   "militaire:depenses": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:military-expenditure-share-gdp:World"
   },
   "militaire:forces": {
    "statut": "a_trouver"
   },
   "militaire:arsenaux_nucleaires": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:nuclear-warhead-stockpiles:somme"
   },
   "militaire:industrie_armement": {
    "statut": "a_trouver"
@@ -2154,7 +2164,8 @@
    "derniere": "2026-11-09"
   },
   "oceans-et-fleuves:peche": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:capture-and-aquaculture-production:World:somme"
   },
   "oceans-et-fleuves:recifs": {
    "statut": "a_trouver"
@@ -2163,7 +2174,8 @@
    "statut": "a_trouver"
   },
   "oceans-et-fleuves:plastiques": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "owid:global-plastics-production:World"
   },
   "oceans-et-fleuves:haute_mer": {
    "statut": "a_trouver"
@@ -3007,7 +3019,8 @@
    "statut": "a_trouver"
   },
   "union-europeenne:relations_exterieures": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_famille:geopolitique_europe"
   },
   "union-europeenne:budget": {
    "statut": "a_trouver"
@@ -9275,11 +9288,6 @@
    "relations_sortantes": 2
   },
   {
-   "compartiment": "arctique:glace_arctique",
-   "lectures_manquees": 6,
-   "relations_sortantes": 2
-  },
-  {
    "compartiment": "russie-ukraine:hiver_saisons",
    "lectures_manquees": 6,
    "relations_sortantes": 2
@@ -9515,11 +9523,6 @@
    "relations_sortantes": 3
   },
   {
-   "compartiment": "militaire:depenses",
-   "lectures_manquees": 0,
-   "relations_sortantes": 3
-  },
-  {
    "compartiment": "nucleaire-radiologique:sources",
    "lectures_manquees": 0,
    "relations_sortantes": 3
@@ -9606,6 +9609,16 @@
   },
   {
    "compartiment": "corps-humain:nutrition",
+   "lectures_manquees": 0,
+   "relations_sortantes": 2
+  },
+  {
+   "compartiment": "corps-humain:soins",
+   "lectures_manquees": 0,
+   "relations_sortantes": 2
+  },
+  {
+   "compartiment": "corruption:grande_corruption",
    "lectures_manquees": 0,
    "relations_sortantes": 2
   }
