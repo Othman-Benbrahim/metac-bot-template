@@ -599,7 +599,7 @@ compartiments:
   - "une information se propage par un seul contact ; un comportement coûteux ou risqué (manifester, boycotter, adopter) demande plusieurs sources distinctes (Centola et Macy, 2007)"
   - "expérience en ligne : l'adoption d'un comportement de santé se diffuse mieux dans un réseau dense et redondant que dans un réseau aléatoire (Centola, Science, 2010)"
   - "conséquence : les liens faibles diffusent l'information, les groupes denses diffusent l'action"
-  - "test préenregistré sur les manifestations entre pays voisins (GDELT, 2024-2026) : preenregistrements/contagion-complexe-manifestations.md"
+  - "test préenregistré sur les manifestations entre pays voisins (GDELT, 2024-2026, 159 pays, 14 396 pays-semaines) : NON TRANCHÉ. Un seul voisin en pic n'ajoute rien par rapport au témoin ; deux voisins +1,3 point, trois et plus +2,4 points (forme d'une contagion complexe), mais l'intervalle à 90 % contient 0 (registre/contagion-complexe.json, 2026-11-25)"
   niveau:
     espace: local à région
     temps: jours à mois
