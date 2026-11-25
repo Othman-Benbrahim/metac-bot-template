@@ -142,6 +142,14 @@ def _motifs(variantes: list[str]):
 def priorites(routage_pays=None) -> dict:
     dec = [(_motifs(v), "seulement associé" in r) for v, r in _liste_validee("declencheurs-proposes.txt")]
     ent = [_motifs(v) for v, _ in _liste_validee("entites-prioritaires-proposees.txt")]
+    # 2026-11-25 (sources validées par l'auteur à 13 h 20) : entités mises à jour chaque semaine (collecte_entites.py :
+    # CIA World Leaders via OpenSanctions, Wikidata) ; regroupées en motifs de 300 noms pour rester rapides
+    f_ent = ICI / "registre" / "entites" / "entites.csv"
+    if f_ent.exists():
+        import csv as _csv
+        with f_ent.open(encoding="utf-8") as h:
+            noms = [v for r in _csv.DictReader(h) for v in r["variantes"].split("/") if len(v) >= 4]
+        ent += [_motifs(noms[i:i + 300]) for i in range(0, len(noms), 300)]
     if routage_pays is None:
         import lecture_mecanique as lm
         routage_pays = [m for m, _ in lm.routage()[1]]

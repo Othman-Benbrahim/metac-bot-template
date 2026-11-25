@@ -90,3 +90,13 @@ def test_score_et_choix():
     assert b.score("rien", ["x:y"], P) == 3
     files = {"a": [{"t": 1, "score": 0}, {"t": 2, "score": 5}], "b": [{"t": 3, "score": 0}], "c": [{"t": 4, "score": 8}, {"t": 5, "score": 7}]}
     assert [x["t"] for x in b.choisir(files, 4)] == [4, 2, 3, 5]
+
+
+def test_entites_cia():
+    import collecte_entites as ce
+    l = json.dumps({"schema": "Person", "properties": {"name": ["Emmanuel Macron"], "country": ["fr"],
+                    "positionOccupancies": [{"schema": "Occupancy", "properties": {"post": [{"schema": "Position", "properties": {"name": ["President"]}}]}}]}})
+    l2 = json.dumps({"schema": "Person", "properties": {"name": ["Jean Dupont"], "positionOccupancies": [{"properties": {"post": [{"schema": "Position", "properties": {"name": ["Vice President"]}}]}}]}})
+    p = ce.personnes_cia(l + "\n" + l2)
+    assert p[0]["chef"] and not p[1]["chef"]
+    assert ce.variantes("Emmanuel Macron", True) == ["Emmanuel Macron", "Macron"] and ce.variantes("Jean Dupont", False) == ["Jean Dupont"]
