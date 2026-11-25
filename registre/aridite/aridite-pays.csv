@@ -1,0 +1,208 @@
+# Global Aridity Index v3.1 (Zomer, Xu, Trabucco 2022 ; CC BY 4.0), moyenne 1970-2000, par pays (Natural Earth) ; collecte_aridite.py
+iso2,pays,indice_moyen,part_aride_pct,part_seche_pct,cellules
+AD,Andorre,1.3442,0.0,0.0,5
+AE,Émirats arabes unis,0.0354,100.0,100.0,631
+AF,Afghanistan,0.2465,55.1,92.9,6250
+AG,Antigua-et-Barbuda,0.3601,0.0,100.0,4
+AL,Albanie,1.1918,0.0,1.0,301
+AM,Arménie,0.5839,0.0,64.6,315
+AO,Angola,0.6945,3.8,40.5,10355
+AQ,Antarctique,0.0,100.0,100.0,604919
+AR,Argentine,0.4142,34.4,75.8,27859
+AT,Autriche,1.6443,0.0,2.9,1002
+AU,Australie,0.2541,59.8,93.0,69601
+AX,Åland,0.8145,0.0,23.2,13
+AZ,Azerbaïdjan,0.4618,1.0,82.4,918
+BA,Bosnie-Herzégovine,1.2561,0.0,0.0,584
+BB,Barbade,0.654,0.0,66.7,3
+BD,Bangladesh,1.6505,0.0,0.1,1210
+BE,Belgique,1.1961,0.0,0.5,395
+BF,Burkina Faso,0.3603,11.2,100.0,2267
+BG,Bulgarie,0.6337,0.0,68.1,1243
+BH,Bahreïn,0.0266,100.0,100.0,4
+BI,Burundi,0.939,0.0,3.5,227
+BJ,Bénin,0.6136,0.0,51.4,962
+BN,Brunei,2.3476,0.0,0.0,48
+BO,Bolivie,0.8272,10.1,41.6,9217
+BR,Brésil,1.4168,0.0,9.5,70654
+BS,Bahamas,0.4783,7.3,71.1,110
+BT,Bhoutan,1.286,0.0,23.5,364
+BW,Botswana,0.1779,71.3,100.0,5062
+BY,Biélorussie,0.9569,0.0,0.0,2809
+BZ,Belize,1.3742,0.0,3.6,193
+CA,Canada,1.0747,0.8,25.6,168724
+CD,République démocratique du Congo,1.2432,0.0,1.0,18973
+CF,République centrafricaine,0.8765,0.0,16.7,5048
+CG,République du Congo,1.4427,0.0,0.0,2812
+CH,Suisse,1.8693,0.0,0.2,490
+CI,Côte d'Ivoire,0.8723,0.0,10.6,2631
+CL,Chili,1.1592,39.8,51.7,7699
+CM,Cameroun,1.2618,1.2,14.5,3779
+CN,République populaire de Chine,0.5966,27.5,59.5,95113
+CO,Colombie,2.1289,0.4,2.0,9248
+CR,Costa Rica,2.0061,0.0,1.6,427
+CU,Cuba,0.8168,0.2,17.4,943
+CV,Cap-Vert,0.1068,96.5,100.0,29
+CW,Curaçao,0.1699,75.0,100.0,4
+CY,Chypre,0.3331,12.3,100.0,57
+CZ,Tchéquie,0.9266,0.0,6.5,981
+DE,Allemagne,1.1268,0.0,0.6,4596
+DJ,Djibouti,0.0748,100.0,100.0,177
+DK,Danemark,1.0364,0.7,10.2,612
+DM,Dominique,0.9929,0.0,0.0,5
+DO,République dominicaine,0.8384,1.0,26.6,418
+DZ,Algérie,0.0412,93.5,99.6,21365
+EC,Équateur,1.9153,1.8,12.0,2070
+EE,Estonie,1.0301,0.0,4.7,712
+EG,Égypte,0.0099,100.0,100.0,9058
+EH,Sahara occidental,0.0127,100.0,100.0,820
+ER,Érythrée,0.185,60.9,100.0,1039
+ES,Espagne,0.5525,2.0,77.4,5370
+ET,Éthiopie,0.5067,24.4,68.0,9270
+FI,Finlande,1.2135,0.0,0.4,6213
+FJ,Fidji,1.8525,0.0,4.6,153
+FK,îles Malouines,0.7296,0.0,29.0,148
+FM,États fédérés de Micronésie,1.8445,0.0,0.0,4
+FO,îles Féroé,4.1404,0.0,0.0,20
+FR,France,1.1334,0.1,4.5,7147
+GA,Gabon,1.81,0.0,0.1,2118
+GB,Royaume-Uni,1.8089,0.0,1.0,3310
+GD,Grenade,0.734,0.0,66.7,3
+GE,Géorgie,1.3157,0.0,10.6,750
+GH,Ghana,0.8252,0.1,30.8,1957
+GL,Groenland,3.3727,3.8,11.5,66392
+GM,Gambie,0.3676,1.2,100.0,83
+GN,Guinée,1.0577,0.0,10.5,2015
+GQ,Guinée équatoriale,2.1365,0.0,0.0,215
+GR,Grèce,0.5577,3.4,70.8,1356
+GS,Géorgie du Sud-et-les Îles Sandwich du Sud,4.8079,0.0,0.0,50
+GT,Guatemala,1.5414,0.0,1.0,916
+GU,Guam,1.1077,0.0,0.0,4
+GW,Guinée-Bissau,0.8629,0.0,6.6,273
+GY,Guyana,1.3854,0.0,0.5,1718
+HK,Hong Kong,1.2508,0.0,11.1,9
+HM,îles Heard-et-MacDonald,1.6515,0.0,16.7,6
+HN,Honduras,1.1056,0.0,3.0,942
+HR,Croatie,1.1213,0.0,6.5,630
+HT,Haïti,0.9371,0.0,17.6,233
+HU,Hongrie,0.6588,0.0,56.6,1105
+ID,Indonésie,2.039,0.0,1.5,15169
+IE,Irlande,2.0535,0.0,0.3,942
+IL,Israël,0.1838,62.9,100.0,216
+IM,île de Man,1.7069,0.0,0.0,5
+IN,Inde,0.7458,7.8,56.6,27813
+IQ,Irak,0.1008,87.4,100.0,4224
+IR,Iran,0.1442,78.4,99.2,15595
+IS,Islande,2.3844,0.2,1.0,1936
+IT,Italie,0.8725,0.7,32.2,3308
+JM,Jamaïque,1.1258,0.0,8.8,91
+JO,Jordanie,0.0573,97.3,100.0,838
+JP,Japon,1.8287,0.0,1.1,3789
+KE,Kenya,0.3749,38.2,86.2,4826
+KG,Kirghizistan,0.5341,1.1,74.4,2141
+KH,Cambodge,1.1518,0.0,0.7,1507
+KI,Kiribati,0.4385,50.0,62.5,8
+KM,Comores,0.9973,0.0,23.1,13
+KN,Saint-Christophe-et-Niévès,0.3867,33.3,100.0,3
+KP,Corée du Nord,1.2356,0.0,1.5,1292
+KR,Corée du Sud,1.3732,0.0,0.9,969
+KW,Koweït,0.0393,100.0,100.0,164
+KZ,Kazakhstan,0.2335,47.5,98.0,32957
+LA,Laos,1.3849,0.0,0.0,1955
+LB,Liban,0.5161,1.0,80.8,99
+LC,Sainte-Lucie,0.9794,0.0,0.0,5
+LK,Sri Lanka,1.1337,0.0,10.9,542
+LR,Liberia,1.9257,0.0,0.1,776
+LS,Lesotho,0.6071,0.0,68.0,276
+LT,Lituanie,1.0594,0.0,0.3,919
+LU,Luxembourg,1.2384,0.0,0.0,32
+LV,Lettonie,1.1001,0.0,0.5,948
+LY,Libye,0.0155,99.6,100.0,14811
+MA,Maroc,0.1312,72.8,99.6,5436
+MD,Moldavie,0.6249,0.0,61.5,390
+ME,Monténégro,1.3925,0.0,0.0,151
+MG,Madagascar,0.9045,0.4,30.5,5101
+MK,Macédoine du Nord,0.6726,0.0,60.4,273
+ML,Mali,0.129,75.9,99.4,10671
+MM,Birmanie,1.5556,0.0,8.9,5764
+MN,Mongolie,0.2458,46.8,97.4,18458
+MP,îles Mariannes du Nord,0.5507,0.0,66.7,3
+MR,Mauritanie,0.0296,99.9,100.0,8951
+MT,Malte,0.2196,50.0,100.0,4
+MU,Maurice,1.0821,0.0,17.6,17
+MW,Malawi,0.7314,0.0,38.1,993
+MX,Mexique,0.4794,25.9,74.7,17399
+MY,Malaisie,2.2154,0.0,0.2,2660
+MZ,Mozambique,0.6504,0.0,48.1,6697
+NA,Namibie,0.1369,73.7,100.0,7234
+NC,Nouvelle-Calédonie,1.1254,1.2,13.3,165
+NE,Niger,0.0522,97.2,100.0,10059
+NG,Nigeria,0.7275,6.9,51.0,7490
+NI,Nicaragua,1.429,0.0,1.3,1072
+NL,Pays-Bas,1.172,0.6,2.2,490
+NO,Norvège,2.3824,3.4,4.4,8640
+NP,Népal,1.1785,0.0,9.9,1349
+NZ,Nouvelle-Zélande,1.838,0.3,4.3,2898
+OM,Oman,0.0447,99.4,100.0,2701
+PA,Panama,1.8397,0.0,0.8,601
+PE,Pérou,1.4125,12.5,23.4,10655
+PF,Polynésie française,0.8033,19.9,35.2,20
+PG,Papouasie-Nouvelle-Guinée,2.2762,0.0,0.3,3761
+PH,Philippines,1.8315,0.0,1.2,2410
+PK,Pakistan,0.1918,72.8,94.9,8169
+PL,Pologne,0.8545,0.1,0.6,4120
+PR,Porto Rico,1.0322,0.0,11.5,78
+PS,Palestine,0.2464,35.2,100.0,57
+PT,Portugal,0.7887,0.2,51.0,955
+PW,Palaos,1.3092,25.1,50.1,4
+PY,Paraguay,0.6839,0.0,53.3,3537
+QA,Qatar,0.031,100.0,100.0,99
+RO,Roumanie,0.7978,0.0,33.2,2731
+RS,Serbie,0.803,0.0,16.5,880
+RU,Russie,0.9068,0.3,23.2,292723
+RW,Rwanda,1.0072,0.0,0.5,204
+SA,Arabie saoudite,0.0385,100.0,100.0,17102
+SB,Îles Salomon,1.9523,0.5,1.0,208
+SD,Soudan,0.1008,79.5,100.0,15696
+SE,Suède,1.353,0.0,0.8,7842
+SG,Singapour,1.6523,0.0,0.0,3
+SI,Slovénie,2.047,0.0,0.0,233
+SK,Slovaquie,1.0198,0.0,10.7,588
+SL,Sierra Leone,1.8243,0.0,0.0,593
+SN,Sénégal,0.3069,28.8,98.9,1644
+SO,Somalie,0.1455,71.1,100.0,3840
+SR,Suriname,1.4863,0.0,0.3,1186
+SS,Soudan du Sud,0.5491,0.1,76.1,5096
+ST,Sao Tomé-et-Principe,2.0023,0.0,0.0,7
+SV,Salvador,1.1226,0.0,0.6,169
+SY,Syrie,0.146,80.3,98.5,1836
+SZ,Eswatini,0.609,0.0,72.7,154
+TD,Tchad,0.1393,71.7,99.4,10692
+TF,Terres australes et antarctiques françaises,1.1306,0.0,1.2,80
+TG,Togo,0.7718,0.0,19.8,462
+TH,Thaïlande,0.9385,0.0,6.3,4326
+TJ,Tadjikistan,0.525,17.1,68.7,1478
+TL,Timor oriental,1.0599,0.0,15.2,125
+TM,Turkménistan,0.0951,97.3,100.0,4912
+TN,Tunisie,0.1367,76.1,99.1,1539
+TO,Tonga,0.7579,0.0,25.3,4
+TR,Turquie,0.5135,0.3,85.4,8140
+TT,Trinité-et-Tobago,1.1339,0.0,5.0,40
+TW,Taïwan,2.4163,0.0,1.9,316
+TZ,Tanzanie,0.64,0.1,59.2,7707
+UA,Ukraine,0.7514,0.1,40.9,7065
+UG,Ouganda,0.8117,0.0,19.7,1963
+US,États-Unis,0.738,11.4,49.2,111519
+UY,Uruguay,0.974,0.0,1.4,1711
+UZ,Ouzbékistan,0.1371,81.3,98.3,4846
+VC,Saint-Vincent-et-les-Grenadines,0.8761,0.0,0.0,3
+VE,Venezuela,1.3051,0.3,11.6,7467
+VI,îles Vierges des États-Unis,0.3078,0.0,100.0,5
+VN,Viêt Nam,1.3768,0.0,1.3,2803
+VU,Vanuatu,1.7706,0.0,2.9,103
+WS,Samoa,2.63,0.0,0.0,23
+XK,Kosovo,0.9194,0.0,2.5,121
+YE,Yémen,0.0452,98.5,100.0,3824
+ZA,Afrique du Sud,0.3106,35.8,93.3,11306
+ZM,Zambie,0.5831,0.0,64.9,6277
+ZW,Zimbabwe,0.3993,0.1,97.6,3352
