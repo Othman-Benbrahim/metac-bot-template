@@ -166,7 +166,8 @@ compartiments:
   - "rupture de mesure : depuis la législature 10 (juillet 2024), tous les députés doivent publier leurs réunions ; avant, seuls rapporteurs, rapporteurs fictifs et présidents de commission (code de conduite) : séries comparables à partir de 2024-07"
   - "114 331 réunions publiées de 2019 à novembre 2026 ; les dossiers les plus courus de 2026 : accélérateur industriel 2026/0068(COD), 678 réunions ; omnibus numérique 2025/0360(COD), 477 ; omnibus durabilité 2025/0045(COD), 498 (Integrity Watch EU, calcul du projet)"
   - "environ 40 % des représentants rencontrés ne sont pas reliés au registre de transparence (Integrity Watch EU, calcul du projet) ; Transparency International EU relevait en juin 2025 qu'une réunion sur deux est saisie en texte libre"
-  - "le dossier pesticides de l'omnibus X : 43 réunions des rapporteurs avec des représentants d'intérêts, dont 6 avec des ONG (Challenges, 19 novembre 2026, d'après les déclarations obligatoires ; relayé)"
+  - "omnibus X (sécurité des denrées et des aliments pour animaux) = deux procédures (Observatoire législatif du Parlement) : la directive 2025/0409(COD), qui modifie la directive 2009/128/CE sur l'usage durable des pesticides, et le règlement 2025/0410(COD)"
+  - "recoupé : 43 réunions des rapporteurs et rapporteurs fictifs sur la directive 2025/0409(COD), le chiffre que cite Challenges (19 novembre 2026) ; 61 réunions en tout sur la directive, 97 sur le règlement (Integrity Watch EU, au 20 novembre 2026, calcul du projet). La part des ONG (6 sur 43 selon Challenges) n'est pas recalculée : le type d'organisation n'est pas dans la donnée"
   niveau:
     espace: Union
     temps: mois
@@ -175,6 +176,8 @@ compartiments:
   traces:
   - {source: "réunions déclarées par mois, tous députés, depuis 2024-07 (Integrity Watch EU, ODbL 1.0) ; les mois récents se remplissent avec retard", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:reunions"}
   - {source: "part des représentants rencontrés inscrits au registre de transparence, par mois (Integrity Watch EU)", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:part_registre"}
+  - {source: "réunions par mois sur la directive omnibus X, pesticides, 2025/0409(COD) (Integrity Watch EU)", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:dossier:2025/0409(COD)"}
+  - {source: "réunions par mois sur le règlement omnibus X, 2025/0410(COD) (Integrity Watch EU)", statut: collecte, fichier: collecte_lobbying.py, adaptateur: "lobbying:dossier:2025/0410(COD)"}
 - id: etat_de_droit
   nom: État de droit et conditionnalité
   organisation: convention
