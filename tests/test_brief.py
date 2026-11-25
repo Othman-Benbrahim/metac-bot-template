@@ -101,3 +101,12 @@ def test_entites_cia():
     p = ce.personnes_cia(l + "\n" + l2 + "\n" + l3)
     assert p[0]["chef"] and p[0]["nom"] == "Emmanuel Macron" and p[0]["famille"] == "Macron" and not p[1]["chef"] and not p[2]["chef"]
     assert ce.variantes("Emmanuel Macron", True) == ["Emmanuel Macron", "Macron"] and ce.variantes("Philip Pierre", True, "Pierre") == ["Philip Pierre"] and ce.variantes("Jean Dupont", False) == ["Jean Dupont"]
+
+
+def test_cabinet_maison_blanche():
+    import collecte_entites as ce
+    html = """<div><h3>Scott Bessent</h3><p>Secretary of the Treasury</p></div><div><h3>Todd Blanche</h3><p>Attorney General</p></div>
+    <div><h3>John Ratcliffe</h3><span>Director of the Central Intelligence Agency</span></div><p>Learn more</p><p>Read Bio</p>"""
+    r = ce.cabinet_maison_blanche(html)
+    assert [(x["nom"], x["poste"]) for x in r] == [("Scott Bessent", "Secretary of the Treasury"), ("Todd Blanche", "Attorney General"),
+                                                   ("John Ratcliffe", "Director of the Central Intelligence Agency")]

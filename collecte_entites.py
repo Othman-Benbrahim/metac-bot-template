@@ -33,6 +33,13 @@ SORTIE = Path("registre") / "entites" / "entites.csv"
 MANUEL = Path("donnees_manuelles") / "us_cia_world_leaders.targets.nested.json"
 CIA = "https://data.opensanctions.org/datasets/latest/us_cia_world_leaders/targets.nested.json"
 SPARQL = "https://query.wikidata.org/sparql"
+# 2026-11-25, 14 h 28 (proposition de l'auteur) : le cabinet américain depuis la source primaire. La page a donné 21
+# membres le 2026-11-25 (dont le ministre de la Justice, le directeur de la CIA, la représentante au commerce), contre 18
+# par Wikidata (avec une conseillère de l'administration précédente). Wikidata reste en secours si la page change.
+MAISON_BLANCHE = "https://www.whitehouse.gov/administration/the-cabinet/"
+TITRES_CABINET = re.compile(r"^(Vice President|Secretary of (the )?[A-Z][\w ,&-]+|Attorney General|Director of (the )?[A-Z][\w ,&-]+|"
+                            r"Administrator of (the )?[A-Z][\w ,&-]+|United States Trade Representative|"
+                            r"(U\.S\.|United States) Ambassador to the United Nations|(White House )?Chief of Staff)$")
 # intitulés de chef ; « President, Bundesbank » (virgule : président d'une institution) n'en est pas un ; « Fed. President »
 # (Allemagne) en est un
 CHEF = re.compile(r"^((fed\.|federal) )?(president|prime minister|premier|chancellor|king|queen|emir|sultan|supreme leader|"
@@ -153,6 +160,24 @@ def variantes(nom: str, chef: bool, famille: str = "") -> list[str]:
     return v
 
 
+def cabinet_maison_blanche(html: str) -> list[dict]:
+    """Paires (nom, titre) : un titre de cabinet précédé, dans le texte de la page, d'une ligne qui ressemble à un nom."""
+    import html as _h
+    t = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", html)
+    t = re.sub(r"(?i)<br\s*/?>|</(p|h\d|div|li|span|a)>", "\n", t)
+    lignes = [re.sub(r"\s+", " ", _h.unescape(x)).strip() for x in re.sub(r"<[^>]+>", " ", t).split("\n")]
+    lignes = [x for x in lignes if x]
+    out, vus = [], set()
+    for i, l in enumerate(lignes):
+        if TITRES_CABINET.match(l) and i > 0:
+            nom = lignes[i - 1]
+            if 2 <= len(nom.split()) <= 5 and not TITRES_CABINET.match(nom) and len(nom) <= 40 and nom not in vus:
+                vus.add(nom)
+                out.append({"nom": nom, "famille": "", "sorte": "dirigeant public", "pays": "US", "pays_nom": "United States",
+                            "organisation": "gouvernement", "poste": l, "chef": False, "source": "whitehouse.gov"})
+    return out
+
+
 def _precedent() -> list[dict]:
     """Lignes du fichier précédent (une source en échec ne vide pas la liste)."""
     if not SORTIE.exists():
@@ -181,7 +206,23 @@ def principal() -> int:
                 bilan["cia"] = f"erreur {type(ex).__name__}: {str(ex)[:120]}"
         else:
             bilan["cia"] = "refuse_robots"
+        mb = []
+        if politesse.autorise(c, MAISON_BLANCHE):
+            try:
+                r = c.get(MAISON_BLANCHE)
+                r.raise_for_status()
+                mb = cabinet_maison_blanche(r.text)
+                bilan["whitehouse.gov"] = len(mb) if len(mb) >= 10 else f"{len(mb)} seulement : page changée ? début : {r.text[:300]!r}"
+            except Exception as ex:
+                bilan["whitehouse.gov"] = f"erreur {type(ex).__name__}: {str(ex)[:120]}"
+        else:
+            bilan["whitehouse.gov"] = "refuse_robots"
+        if len(mb) >= 10:
+            lignes += mb                                       # avant Wikidata : la source primaire l'emporte aux doublons
         for sorte, q in list(REQUETES_CHEFS.items()) + list(REQUETES.items()):
+            if sorte == "cabinet américain" and len(mb) >= 10:
+                bilan[sorte] = "remplacé par whitehouse.gov"
+                continue
             chef = sorte in REQUETES_CHEFS
             try:
                 res = []
