@@ -181,6 +181,7 @@ compartiments:
   - *id001
 relations:
 - de: alliances
+  source: "OTAN, déclaration du sommet de La Haye, 25 juin 2025 (5 % du PIB d'ici 2035) : https://www.nato.int/cps/en/natohq/official_texts_236705.htm (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: depenses
   effet: +

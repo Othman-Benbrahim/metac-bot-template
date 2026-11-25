@@ -176,6 +176,7 @@ relations:
   statut: a_verifier
   texte: les retraits et les arriérés privent l'ONU de moyens (budget 2026 en baisse de 15 %)
 - de: retraits
+  source: "Décret présidentiel 14155 du 20 janvier 2025, retrait des États-Unis de l'OMS : https://www.govinfo.gov/content/pkg/FR-2025-01-29/html/2025-01957.htm (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: sante_mondiale
   effet: '-'
@@ -185,6 +186,7 @@ relations:
   statut: a_verifier
   texte: le départ du premier contributeur affaiblit l'OMS
 - de: conseil_securite
+  source: "Statut de Rome, art. 13 b) (renvoi par le Conseil de sécurité) et art. 16 (sursis) : https://www.icc-cpi.int/sites/default/files/Publications/Rome-Statute.pdf (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: justice_internationale
   effet: '-'
@@ -212,6 +214,7 @@ relations:
   statut: a_verifier
   texte: les décisions se déplacent vers des clubs restreints
 - de: droit_international
+  source: "Statut de Rome (compétence de la CPI) https://www.icc-cpi.int/sites/default/files/Publications/Rome-Statute.pdf ; Statut de la CIJ, art. 36 https://www.icj-cij.org/statute (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: justice_internationale
   effet: '+'

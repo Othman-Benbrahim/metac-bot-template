@@ -168,6 +168,7 @@ relations:
   statut: a_verifier
   texte: le contrôle des réseaux de paiement rend les sanctions efficaces
 - de: banques_centrales_puissance
+  source: "Réserve fédérale, lignes de swap avec les banques centrales : https://www.federalreserve.gov/monetarypolicy/central-bank-liquidity-swaps.htm (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: dollar_reserve
   effet: '+'

@@ -519,6 +519,7 @@ relations:
   statut: a_verifier
   texte: la ligne de l'exécutif américain ouvre ou ferme la voie d'un accord
 - de: negociations
+  source: "Résolution 2231 (2015) du Conseil de sécurité : https://undocs.org/S/RES/2231(2015) (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: sanctions
   effet: '-'
@@ -550,6 +551,7 @@ relations:
   statut: a_verifier
   texte: l'accès des inspecteurs sert de levier dans les deux sens
 - de: verification
+  source: "Statut de l'AIEA, art. XII.C (rapport au Conseil de sécurité) : https://www.iaea.org/about/statute (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: conseil_securite
   effet: +
@@ -559,6 +561,7 @@ relations:
   statut: a_verifier
   texte: une résolution du conseil de l'agence peut porter le dossier au Conseil de sécurité
 - de: russie_chine
+  source: "Charte des Nations unies, chapitre V, art. 27 (vote au Conseil de sécurité, veto) : https://www.un.org/en/about-us/un-charter/chapter-5 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: conseil_securite
   effet: '-'

@@ -252,6 +252,7 @@ relations:
   statut: a_verifier
   texte: de nouvelles mines et raffineries hors des pays dominants réduiraient la concentration, avec des délais très longs
 - de: cuivre
+  source: "USGS, Mineral Commodity Summaries : https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: metaux_compagnons
   effet: +
@@ -264,6 +265,7 @@ relations:
   texte: 'sous-produit : la production de cuivre fixe l''offre de sélénium, de tellure, d''une partie du molybdène et du
     cobalt (Nassar et al., 2015 ; roue des métaux)'
 - de: zinc_plomb
+  source: "USGS, Mineral Commodity Summaries : https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: metaux_compagnons
   effet: +
@@ -276,6 +278,7 @@ relations:
   texte: 'sous-produit : la production de zinc et de plomb fixe l''offre d''indium, de germanium, de cadmium, d''antimoine,
     de bismuth et d''une grande part de l''argent (Nassar et al., 2015 ; USGS 2026)'
 - de: aluminium
+  source: "USGS, Mineral Commodity Summaries (gallium, sous-produit de l'alumine) : https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: metaux_compagnons
   effet: +
@@ -287,6 +290,7 @@ relations:
   statut: a_verifier
   texte: 'sous-produit : le traitement de la bauxite fixe l''offre de gallium (USGS 2026)'
 - de: batteries
+  source: "USGS, Mineral Commodity Summaries (cobalt) : https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: metaux_compagnons
   effet: +

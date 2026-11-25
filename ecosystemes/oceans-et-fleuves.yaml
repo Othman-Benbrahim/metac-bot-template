@@ -536,6 +536,7 @@ relations:
   statut: a_verifier
   texte: la surpêche réduit les populations de poissons
 - de: haute_mer
+  source: "Accord sur la biodiversité marine au-delà des juridictions nationales (BBNJ, haute mer) : https://www.un.org/bbnj/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: peche
   effet: '-'

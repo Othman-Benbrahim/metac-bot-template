@@ -361,6 +361,7 @@ relations:
   statut: a_verifier
   texte: 'la même personne est réfugiée, migrante ou clandestine selon la définition : le statut change ce qui est compté et protégé'
 - de: convention
+  source: "Convention de 1951 relative au statut des réfugiés et protocole de 1967 (HCR) : https://www.unhcr.org/media/convention-and-protocol-relating-status-refugees (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: politiques_migratoires
   effet: ±

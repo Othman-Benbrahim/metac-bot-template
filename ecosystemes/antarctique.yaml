@@ -105,6 +105,7 @@ compartiments:
     taille: macro
 relations:
 - de: presences
+  source: "Traité sur l'Antarctique (1959), art. IX (réunions consultatives, décisions par consensus) : https://www.ats.aq/e/antarctictreaty.html (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: traite
   effet: '-'

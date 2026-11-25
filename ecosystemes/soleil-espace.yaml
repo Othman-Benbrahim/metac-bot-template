@@ -309,6 +309,7 @@ relations:
   statut: a_verifier
   texte: 'propre au niveau technique : deux systèmes touchés par la même cause, sans effet direct l''un sur l''autre (neutralisme)'
 - de: alertes
+  source: "Échelles de la météo de l'espace de la NOAA (G, S, R) : https://www.swpc.noaa.gov/noaa-scales-explanation (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: reseaux
   effet: +

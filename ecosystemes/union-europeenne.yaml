@@ -200,6 +200,7 @@ relations:
   statut: a_verifier
   texte: les réunions sur un dossier précèdent ses amendements ; la reprise mot pour mot de positions d'intérêts est documentée sur l'omnibus X (Corporate Europe Observatory, relayé par Challenges)
 - de: institutions
+  source: "Traité sur l'Union européenne, art. 29 et 31 (décisions de la PESC à l'unanimité) : https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M031 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: sanctions_ue
   effet: +
@@ -209,6 +210,7 @@ relations:
   statut: a_verifier
   texte: les sanctions passent par le Conseil à l'unanimité ; un seul État peut les retarder
 - de: institutions
+  source: "Traité sur l'Union européenne, art. 49 (adhésion à l'unanimité du Conseil) : https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M049 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: elargissement
   effet: +
@@ -218,6 +220,7 @@ relations:
   statut: a_verifier
   texte: chaque étape de l'adhésion exige l'unanimité ; un veto suffit à geler un candidat (Ukraine, décembre 2025)
 - de: etat_de_droit
+  source: "Règlement (UE, Euratom) 2020/2092 (conditionnalité liée à l'État de droit) : https://eur-lex.europa.eu/eli/reg/2020/2092/oj (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: budget
   effet: '-'
@@ -236,6 +239,7 @@ relations:
   statut: a_verifier
   texte: le prochain budget déplace des moyens vers la sécurité et la défense
 - de: etat_de_droit
+  source: "Traité sur l'Union européenne, art. 49 (conditions d'adhésion, art. 2) : https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016M049 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: elargissement
   effet: '-'

@@ -389,6 +389,7 @@ relations:
   statut: a_verifier
   texte: un défaut fait perdre les créanciers et ferme les marchés au pays ; chacun réduit ce que l'autre obtient
 - de: fmi
+  source: "FMI, conditionnalité des programmes : https://www.imf.org/en/About/Factsheets/Sheets/2023/IMF-Conditionality (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: reserves
   effet: +

@@ -559,6 +559,7 @@ cycles:
   statut: mecanisme
 relations:
 - de: congres
+  source: "Federal Vacancies Reform Act, 5 U.S.C. § 3346 (durée des intérims) : https://www.law.cornell.edu/uscode/text/5/3346 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: nominations_interim
   effet: ±
@@ -568,6 +569,7 @@ relations:
   statut: a_verifier
   texte: "le Sénat confirme ou bloque ; son calendrier fixe le délai"
 - de: tribunaux
+  source: "28 U.S.C. § 546 (procureurs fédéraux par intérim) : https://www.law.cornell.edu/uscode/text/28/546 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: nominations_interim
   effet: "-"
@@ -584,6 +586,7 @@ relations:
   statut: a_verifier
   texte: "chaque étape d'une poursuite passe par le tribunal et son calendrier"
 - de: executif
+  source: "Constitution des États-Unis, 5e amendement (inculpation par un grand jury) : https://constitution.congress.gov/browse/amendment-5/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: poursuites_personnalites
   effet: +
@@ -593,6 +596,7 @@ relations:
   statut: a_verifier
   texte: "l'exécutif peut annoncer des poursuites ; l'annonce n'est pas l'inculpation"
 - de: executif
+  source: "Constitution des États-Unis, art. I, section 7 (présentation des lois, veto) : https://constitution.congress.gov/browse/article-1/section-7/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: congres
   effet: ±
@@ -607,6 +611,7 @@ relations:
   statut: a_verifier
   texte: quand les majorités divergent, chacun bloque l'autre ; alignées, elles s'appuient
 - de: tribunaux
+  source: "Constitution des États-Unis, art. III (pouvoir judiciaire) : https://constitution.congress.gov/browse/article-3/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: executif
   effet: '-'
@@ -626,6 +631,7 @@ relations:
   statut: a_verifier
   texte: les États portent une part des recours contre les décisions fédérales
 - de: elections
+  source: "2 U.S.C. § 7 (jour de l'élection fédérale) : https://www.law.cornell.edu/uscode/text/2/7 ; Constitution, art. I, section 2 (mandat de deux ans à la Chambre) (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: congres
   effet: ±
@@ -647,6 +653,7 @@ relations:
   statut: a_verifier
   texte: à l'approche d'une élection, les décisions visibles (prix à la pompe, droits de douane) suivent l'opinion
 - de: congres
+  source: "Antideficiency Act, 31 U.S.C. § 1341 (pas de dépense sans crédit voté : fermeture) https://www.law.cornell.edu/uscode/text/31/1341 ; plafond de la dette, 31 U.S.C. § 3101 https://www.law.cornell.edu/uscode/text/31/3101 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: budget
   effet: ±
@@ -697,6 +704,7 @@ relations:
   source: "TiRADE v1.11 × Federal Register, codage à la main (registre/annonces/codage-manuel.csv) ; preenregistrements/taux-execution-annonces.md"
   texte: "les droits de douane se décident vite par décret, sous réserve de contestation en justice. Une annonce sur deux est appliquée telle quelle ; le recul ordinaire n'est pas l'abandon (8 % sans suite) mais la modification après accord (25 %). 77 des 130 premières déclarations sont déjà des actes : le décret accomplit ce qu'il dit"
 - de: tribunaux
+  source: "28 U.S.C. § 1581 (compétence de la Court of International Trade) : https://www.law.cornell.edu/uscode/text/28/1581 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: commerce
   effet: '-'
@@ -706,6 +714,7 @@ relations:
   statut: a_verifier
   texte: des recours peuvent suspendre des droits de douane
 - de: executif
+  source: "International Emergency Economic Powers Act, 50 U.S.C. § 1702 (pouvoirs du président) : https://www.law.cornell.edu/uscode/text/50/1702 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: sanctions
   effet: +
@@ -715,6 +724,7 @@ relations:
   statut: a_verifier
   texte: les désignations relèvent de l'exécutif et se décident sans vote
 - de: executif
+  source: "Energy Policy and Conservation Act, 42 U.S.C. § 6241 (ventes de la réserve stratégique de pétrole) : https://www.law.cornell.edu/uscode/text/42/6241 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: energie
   effet: ±
@@ -727,6 +737,7 @@ relations:
   statut: a_verifier
   texte: ventes de la réserve stratégique et permis d'exportation suivent les prix et le calendrier électoral
 - de: congres
+  source: "Constitution des États-Unis, art. II, section 2, clause 2 (nominations avec l'avis et le consentement du Sénat) : https://constitution.congress.gov/browse/article-2/section-2/clause-2/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: executif
   effet: ±
@@ -768,6 +779,7 @@ relations:
   statut: a_verifier
   texte: règles et découpages bornent ce qu'un même vote produit en sièges
 - de: tribunaux
+  source: "Voting Rights Act, 52 U.S.C. § 10301 : https://www.law.cornell.edu/uscode/text/52/10301 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: regles_electorales
   effet: ±
@@ -777,6 +789,7 @@ relations:
   statut: a_verifier
   texte: les recours redessinent les cartes et les règles de vote
 - de: executif
+  source: "Constitution des États-Unis, art. VI (suprématie du droit fédéral) https://constitution.congress.gov/browse/article-6/ et 10e amendement (pouvoirs réservés aux États) https://constitution.congress.gov/browse/amendment-10/ (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: etats_federes
   effet: ±
@@ -787,6 +800,7 @@ relations:
   statut: a_verifier
   texte: 'au sein du niveau statut : le fédéralisme, où l''État fédéral ordonne et les États résistent, appliquent ou contournent'
 - de: climat_risques
+  source: "Stafford Act, 42 U.S.C. § 5170 (déclaration fédérale de catastrophe majeure) : https://www.law.cornell.edu/uscode/text/42/5170 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: etats_federes
   effet: '-'

@@ -312,6 +312,7 @@ relations:
   texte: les aires protégées freinent la perte d'habitats, à condition d'être bien gérées et reliées (effet conditionnel ;
     moins de 5 % des terres couvertes par des aires dont la gestion a été évaluée, Protected Planet Report 2024)
 - de: accords
+  source: "Cadre mondial de la biodiversité de Kunming-Montréal, cible 3 (30 % d'ici 2030) : https://www.cbd.int/gbf/targets/3 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: aires_protegees
   effet: +

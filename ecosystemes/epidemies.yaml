@@ -330,6 +330,7 @@ relations:
   statut: a_verifier
   texte: la maladie n'existe socialement qu'une fois nommée, définie et comptée ; une déclaration ne vient qu'au-delà d'un seuil
 - de: convention
+  source: "Règlement sanitaire international (2005), art. 12 (urgence de santé publique de portée internationale) : https://www.who.int/publications/i/item/9789241580496 (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: autorites
   effet: +

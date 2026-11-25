@@ -341,6 +341,7 @@ relations:
   statut: a_verifier
   texte: l'investissement dans l'épuration réduit les rejets non traités
 - de: traites
+  source: "Protocole de Montréal (1987) : https://ozone.unep.org/treaties/montreal-protocol (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: ozone
   effet: +

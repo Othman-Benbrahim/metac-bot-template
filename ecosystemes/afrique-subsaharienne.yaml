@@ -451,6 +451,7 @@ relations:
   statut: a_verifier
   texte: le commerce entre pays africains, encore faible, peut entraîner l'industrie
 - de: integration_commerciale
+  source: "Accord portant création de la Zone de libre-échange continentale africaine (Union africaine) : https://au.int/en/treaties/agreement-establishing-african-continental-free-trade-area (référence indiquée le 2026-11-25 ; texte non relu dans cette session)"
   fondement: lien
   vers: institutions_regionales
   effet: +
