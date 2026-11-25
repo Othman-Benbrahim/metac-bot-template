@@ -56,10 +56,12 @@ REQUETES_CHEFS = {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
 REQUETES = {
-    "ministre": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?posLabel WHERE {
-  ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin }
-  ?pos wdt:P279 ?classe. VALUES ?classe { wd:Q83307 wd:Q7330070 wd:Q15966511 } ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. BIND(?o AS ?pays) OPTIONAL { ?o wdt:P297 ?iso }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
+    # 2026-11-25, 13 h 56 : la requête unique a dépassé le délai de Wikidata (504) ; une requête par classe de poste,
+    # sans les libellés de pays (le code ISO suffit, la carte connaît les noms)
+    "ministre": [f"""SELECT DISTINCT ?p ?pLabel ?iso ?posLabel WHERE {{
+  ?pos wdt:P279 wd:{classe}. ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS {{ ?st pq:P582 ?fin }}
+  ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. OPTIONAL {{ ?o wdt:P297 ?iso }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,fr". }} }}""" for classe in ("Q83307", "Q7330070", "Q15966511")],
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
     "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?secteurLabel WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
@@ -166,9 +168,16 @@ def principal() -> int:
         for sorte, q in list(REQUETES_CHEFS.items()) + list(REQUETES.items()):
             chef = sorte in REQUETES_CHEFS
             try:
-                r = c.get(SPARQL, params={"query": q, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
-                r.raise_for_status()
-                res = r.json()["results"]["bindings"]
+                res = []
+                for qq in (q if isinstance(q, list) else [q]):
+                    for essai in range(3):                    # Wikidata répond parfois 502/504 : deux nouvelles tentatives
+                        r = c.get(SPARQL, params={"query": qq, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
+                        if r.status_code < 500 or essai == 2:
+                            break
+                        import time
+                        time.sleep(30)
+                    r.raise_for_status()
+                    res += r.json()["results"]["bindings"]
                 n = 0
                 # 2026-11-25, 13 h 52 : un dirigeant public de Wikidata (chef ou ministre) est un « dirigeant public » comme
                 # ceux de la CIA, avec l'intitulé de son poste ; une entreprise garde ses secteurs (P452), plusieurs lignes
