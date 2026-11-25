@@ -452,7 +452,9 @@ class AlphabetBot(FallTemplateBot2026):
     async def _critique(self, consigne: str) -> str:
         """0.6.0 : le contradicteur (ALPHABET_CONTRADICTEUR), d'une autre famille que le lecteur ; en ombre."""
         import alphabet_modeles as am
-        m = am.llm(os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2)
+        # 2026-11-25 (demande de l'auteur) : réponse bornée à 4 000 jetons, raisonnement compris ; il ne rend qu'un objet
+        # JSON de verdicts, plus serait du coût sans usage (contradicteur payant chez Azure)
+        m = am.llm(os.environ["ALPHABET_CONTRADICTEUR"], temperature=0.1, timeout=180, allowed_tries=2, max_tokens=4000)
         return await m.invoke(consigne)
 
     def _create_unified_explanation(self, question, research_prediction_collections, aggregated_prediction,
