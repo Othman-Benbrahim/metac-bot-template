@@ -77,6 +77,10 @@ compartiments:
   - source: calendriers publics des réunions (Réserve fédérale, BCE, OPEP+)
     statut: a_brancher
   - {source: "réunions programmées du FOMC et décisions de taux (federalreserve.gov, 1994-2026) ; complété le 2026-11-24 (carte blanche de l’auteur, 20 h 48)", statut: collecte, fichier: ecosystemes/fomc-reunions.csv}
+  - {source: "taux directeur de la BCE, zone euro, quotidien (BIS, central bank policy rates ; source citée)", statut: collecte, fichier: collecte_bis.py, adaptateur: "bis_taux:XM"}
+  - {source: "taux directeur de la Banque d'Angleterre, quotidien (BIS)", statut: collecte, fichier: collecte_bis.py, adaptateur: "bis_taux:GB"}
+  - {source: "taux directeur de la Banque du Japon, quotidien (BIS)", statut: collecte, fichier: collecte_bis.py, adaptateur: "bis_taux:JP"}
+  - {source: "taux directeur de la Banque centrale de Turquie, quotidien (BIS)", statut: collecte, fichier: collecte_bis.py, adaptateur: "bis_taux:TR"}
 - id: parlements
   nom: Sessions parlementaires
   organisation: statut

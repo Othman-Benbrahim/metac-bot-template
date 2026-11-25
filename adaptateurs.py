@@ -452,6 +452,21 @@ def ucdb(reg: Path, pays: str, variable: str) -> list[tuple[str, float]]:
                       if x["iso2"] == pays and x["variable"] == variable)
 
 
+def bis_taux(reg: Path, pays: str, freq: str = "D") -> list[tuple[str, float]]:
+    """2026-11-25 (source validée par l'auteur) : taux directeur d'une banque centrale, BIS (registre/bis/taux-directeurs.csv.gz,
+    collecte_bis.py ; la BIS citée comme source). « bis_taux:<ISO2>[:M] », XM = zone euro. Quotidien par défaut ; les
+    pays de la zone euro s'arrêtent en 1998 (relais : XM). Pour une fourchette (États-Unis), la BIS donne le milieu."""
+    import csv as _c
+    import gzip as _g
+    f = reg / "bis" / "taux-directeurs.csv.gz"
+    if not f.exists():
+        return []
+    with _g.open(f, "rt", encoding="utf-8") as h:
+        L = [(x["date"] if len(x["date"]) == 10 else x["date"] + "-15", float(x["taux"])) for x in _c.DictReader(h)
+             if x["pays"] == pays and x["freq"] == freq]
+    return sorted(L)
+
+
 def lobbying(reg: Path, mesure: str, cle: str = "") -> list[tuple[str, float]]:
     """2026-11-25 (source validée par l'auteur) : réunions des eurodéputés avec des représentants d'intérêts
     (registre/lobbying/mensuel.csv, collecte_lobbying.py ; Integrity Watch EU, ODbL 1.0). « lobbying:<mesure>[:<clé>] »,
@@ -506,7 +521,7 @@ def owid(reg: Path, slug: str, entite: str = "World", col: str = "0") -> list[tu
     return [(d, round(sum(v) / len(v) if entite == "moyenne" else sum(v), 6)) for d, v in sorted(agr.items())]
 
 
-ADAPTATEURS = {"lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
+ADAPTATEURS = {"bis_taux": bis_taux, "lobbying": lobbying, "ucdb": ucdb, "owid": owid, "confiance_actualite": confiance_actualite, "ages_dirigeants": ages_dirigeants, "elo": elo, "wdi": wdi, "fts": fts, "epoch": epoch, "nowcast": nowcast, "portwatch": portwatch, "ooni": ooni, "feux": feux, "sanctions": sanctions, "dyade": dyade,
                "fred": fred, "meteo": meteo, "pluie": pluie, "ucdp_mois": ucdp_mois, "ucdp_dyade": ucdp_dyade, "climat": climat, "eia": eia, "ouvert": ouvert, "webamon": webamon, "openmeasures": openmeasures,
                "portwatch_ref": portwatch_ref, "seismes": seismes, "meteo_prevue": meteo_prevue,
                "pub": pub, "port": port, "gestes": gestes}

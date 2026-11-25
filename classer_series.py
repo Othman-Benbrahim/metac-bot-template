@@ -60,6 +60,7 @@ PAR_TYPE = {
     "rss_villes": ("flux", "articles nouveaux par jour citant un pays par son nom, son adjectif ou une de ses villes (en ombre)"),
     "rss_famille": ("flux", "articles nouveaux par jour de la famille de flux"),
     "owid": ("stock", "graphique d’Our World in Data (série annuelle ou datée, selon le graphique)"),
+    "bis_taux": ("stock", "taux directeur d’une banque centrale (BIS)"),
     "lobbying": ("flux", "réunions déclarées des eurodéputés avec des représentants d’intérêts (Integrity Watch EU)"),
     "ucdb": ("stock", "centres urbains agrégés par pays : population, expositions, chaleur, PM2,5 (GHS-UCDB, JRC)"),
     "confiance_actualite": ("stock", "confiance dans l’actualité par pays (Reuters Institute, Digital News Report)"),
