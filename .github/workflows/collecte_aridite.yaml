@@ -1,0 +1,36 @@
+name: "Collecte de l'aridité (Global Aridity Index)"
+
+# 2026-11-25 (source validée par l'auteur à 14 h 36) : Global Aridity Index v3.1 par pays (CC BY 4.0).
+# Moyenne climatique fixe : à la main seulement.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Collecte
+        run: uv run --with rasterio==1.4.3 --with numpy python -u collecte_aridite.py
+      - name: Enregistrer
+        if: always()
+        run: |
+          git config user.name "alphabet-bot"
+          git config user.email "alphabet-bot@users.noreply.github.com"
+          if [ -d registre/aridite ]; then git add -f registre/aridite; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "registre : aridité du $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
