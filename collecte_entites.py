@@ -66,11 +66,12 @@ REQUETES = {
   ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2012)
   ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. OPTIONAL {{ ?o wdt:P297 ?iso }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,fr". }} }}""" for classe in ("Q83307", "Q7330070", "Q15966511")],
-    # 2026-11-25, 14 h 18 : le gouvernement américain (absent de la CIA, mal rangé dans Wikidata) ; postes rattachés au
-    # cabinet (Q639738 « a pour partie »), directement ou par le département qu'ils dirigent ; mandat commencé depuis 2021,
-    # en cours ; on garde le titulaire le plus récent de chaque poste.
+    # 2026-11-25, 14 h 18 : le gouvernement américain (absent de la CIA, mal rangé dans Wikidata). Premier essai par les
+    # « parties » du cabinet (Q639738) : 0 résultat. Second : postes dont la juridiction est les États-Unis (P1001 = Q30)
+    # et qui sont, à n'importe quelle profondeur, une sorte de ministre (Q83307) ; mandat depuis 2021, en cours ; on garde le
+    # titulaire le plus récent de chaque poste.
     "cabinet américain": """SELECT DISTINCT ?p ?pLabel ?pos ?posLabel ?debut WHERE {
-  wd:Q639738 wdt:P527 ?x. { BIND(?x AS ?pos) } UNION { ?pos wdt:P2389 ?x } UNION { ?x wdt:P2388 ?pos }
+  ?pos wdt:P1001 wd:Q30. { ?pos wdt:P279+ wd:Q83307 } UNION { ?pos wdt:P31/wdt:P279* wd:Q83307 }
   ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
   ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2021)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
