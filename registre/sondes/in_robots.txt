@@ -1,0 +1,23 @@
+User-agent: *
+
+# Allow crawling of all content
+Disallow:
+
+# Block sensitive directories
+Disallow: /user/
+
+# Block crawling of binary files
+Disallow: /*.pdf$
+Disallow: /*.zip
+Disallow: /*.mp4
+
+# Block search results & podcasts & feed
+Disallow: /search
+Disallow: /podcasts
+Disallow: /feed
+
+# Allow Google image crawling
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://www.intellinews.com/sitemap.xml

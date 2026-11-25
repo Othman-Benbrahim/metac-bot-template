@@ -1,0 +1,67 @@
+<!DOCTYPE html><!-- Build: production -->
+<html xmlns:og="http://ogp.me/ns#" lang="en">
+<head>
+    <title>Business news | data | Eastern Europe | Eurasia | Middle East | Africa</title>    <meta name="title" content="bne IntelliNews" />
+<meta name="description" content="bne IntelliNews publishes business news from Eastern Europe, Eurasia, MENA and Africa - offers premium newswire and data products for financial professionals" />
+<meta name="keywords" content="Business news, politics, infrastructure, economics, credit, finance, infrastructure, investment, politics, stocks, telecoms, TMT, Albania, Armenia, Azerbaijan, Balkan, Baltic, Belarus, Bosnia, Bulgaria, Caucasus, CEE, CEE CIS, CEE, Central Europe, CIS, Croatia, Czech, Eastern Europe, Estonia, Eurasia, Georgia, Hungary, Kazakhstan, Kosovo, Kyrgyzstan, Latvia, Lithuania, North Macedonia, Moldova, Mongolia, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Slovenia, Southeast Europe, Tajikistan, Turkey, Turkmenistan, Ukraine, Uzbekistan" />
+<meta property="og:title" content="bne IntelliNews" />
+<meta property="og:description" content="bne IntelliNews publishes business news from Eastern Europe, Eurasia, MENA and Africa - offers premium newswire and data products for financial professionals" />
+<meta property="og:type" content="website" />
+    <meta name="google-site-verification" content="yj1tnuXUmMPZO-sdH2MQmf8FOPpmXLHUtxQaC5w8z_M"/>
+    <meta name="msvalidate.01" content="C04CF2A5CAFC1A20AD57F4729A737A86"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="//cfemdpublic.intellinews.com/assets/ico/favicon.png">
+
+            
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MRDWPMD');</script>
+        <!-- End Google Tag Manager -->
+
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7641127835404673"
+           crossorigin="anonymous"></script>
+        <!-- End Google AdSense -->
+
+        <script>
+            (function () {
+                var zi = document.createElement('script');
+                zi.type = 'text/javascript';
+                zi.async = true;
+                zi.referrerPolicy = 'unsafe-url';
+                zi.src = 'https://ws.zoominfo.com/pixel/615dc045df4a05001cfff096';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(zi, s);
+            })();
+        </script>
+
+            
+    
+    <script src="https://www.google.com/recaptcha/api.js?render="
+            async defer></script>
+
+                <script crossorigin="anonymous"
+                    src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script crossorigin="anonymous"
+                    src="//code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
+            <script>
+                window.jQuery || document.write(
+                    '<script src="/src/libraries/jquery/jquery-3.6.0.min.js"><\/script>' +
+                    '<script src="/src/libraries/jquery/jquery-migrate-3.3.2.min.js"><\/script>'
+                );
+            </script>
+            <link href="/feed/" rel="alternate" type="application/rss+xml" title="bne IntelliNews" />
+<link href="//cfemdpublic.int

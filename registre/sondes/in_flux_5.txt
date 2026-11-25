@@ -1,0 +1,99 @@
+Application error: Current route is not defined, file: /var/www/html/vendor/zendframework/zendframework1/library/Zend/Controller/Router/Rewrite.php, line 357<!DOCTYPE html><!-- Build: production -->
+<html xmlns:og="http://ogp.me/ns#" lang="en">
+<head>
+    <title>bne IntelliNews</title>    
+    <meta name="google-site-verification" content="yj1tnuXUmMPZO-sdH2MQmf8FOPpmXLHUtxQaC5w8z_M"/>
+    <meta name="msvalidate.01" content="C04CF2A5CAFC1A20AD57F4729A737A86"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="//cfemdpublic.intellinews.com/assets/ico/favicon.png">
+
+            
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MRDWPMD');</script>
+        <!-- End Google Tag Manager -->
+
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7641127835404673"
+           crossorigin="anonymous"></script>
+        <!-- End Google AdSense -->
+
+        <script>
+            (function () {
+                var zi = document.createElement('script');
+                zi.type = 'text/javascript';
+                zi.async = true;
+                zi.referrerPolicy = 'unsafe-url';
+                zi.src = 'https://ws.zoominfo.com/pixel/615dc045df4a05001cfff096';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(zi, s);
+            })();
+        </script>
+
+            
+    
+    <script src="https://www.google.com/recaptcha/api.js?render="
+            async defer></script>
+
+                <script crossorigin="anonymous"
+                    src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script crossorigin="anonymous"
+                    src="//code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
+            <script>
+                window.jQuery || document.write(
+                    '<script src="/src/libraries/jquery/jquery-3.6.0.min.js"><\/script>' +
+                    '<script src="/src/libraries/jquery/jquery-migrate-3.3.2.min.js"><\/script>'
+                );
+            </script>
+            <link href="//cfemdpublic.intellinews.com/assets/v2/assetic/20220921_1539_d9a1c6f5623e1e5fecc2d0dd5fc37a5624af31b5.css" media="all" rel="stylesheet" type="text/css" >    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-26451282-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-26451282-1');
+</script>    <style>
+footer .logoDiv img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+}
+footer .logoDiv h1{
+    font-size:21px !important;
+}
+@media (max-width: 768px) {
+    footer .logoDiv img {
+        max-width: 300px !important;
+    }
+    footer .logoDiv h1{
+    font-size:13px !important;
+}
+}
+</style>
+</head>
+
+<body>
+
+
+    
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRDWPMD"
+                    height="0" width="0"
+                    style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (nosc

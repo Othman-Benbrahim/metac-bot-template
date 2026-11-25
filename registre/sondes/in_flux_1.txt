@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">bne IntelliNews</title>
+  <subtitle type="text">bne IntelliNews publishes business news from Eastern Europe, Eurasia, MENA and Africa - offers premium newswire and data products for financial professionals</subtitle>
+  <updated>2026-11-25T21:19:15+00:00</updated>
+  <generator uri="http://framework.zend.com" version="1.12.20">Zend_Feed_Writer</generator>
+  <link rel="alternate" type="text/html" href="https://www.intellinews.com/"/>
+  <link rel="self" type="application/atom+xml" href="http://www.intellinews.com/feed"/>
+  <id>https://www.intellinews.com/</id>
+  <author>
+    <name>bne IntelliNews</name>
+    <email>info@intellinews.com</email>
+    <uri>https://www.intellinews.com/</uri>
+  </author>
+  <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+  <entry>
+    <title type="html"><![CDATA[Kaszek's record $650mn fund shows LatAm VC pooling in fewer hands]]></title>
+    <summary type="html"><![CDATA[<img src="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/nicolas-szekasy-y-hernan-kazah-fundaron-kaszek-en-5ZQQQXQNAZDMPBANQ7GO37356A.jpg" width="900" height="510" title="Kaszek's record $650mn fund shows LatAm VC pooling in fewer hands"><br/>Kaszek, the venture firm set up by former Mercado Libre executives, has closed a $650mn fund, the largest early-stage fund ever raised for Latin America.]]></summary>
+    <published>2026-11-25T17:55:23+00:00</published>
+    <updated>2026-11-25T17:55:23+00:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.intellinews.com/kaszek-s-record-650mn-fund-shows-latam-vc-pooling-in-fewer-hands-488476/"/>
+    <id>https://www.intellinews.com/kaszek-s-record-650mn-fund-shows-latam-vc-pooling-in-fewer-hands-488476/</id>
+    <author>
+      <name>Latin America bureau</name>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/nicolas-szekasy-y-hernan-kazah-fundaron-kaszek-en-5ZQQQXQNAZDMPBANQ7GO37356A.jpg"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Mexico's Sheinbaum delays anti-corruption overhaul to 2027 election year]]></title>
+    <summary type="html"><![CDATA[<img src="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/1280px-Claudia_Sheinbaum_en_su_conferencia_matutina_1795625517.jpg" width="900" height="510" title="Mexico's Sheinbaum delays anti-corruption overhaul to 2027 election year"><br/><small>Credit: CC/Eneas De Troya</small><br/>Mexico's anti-corruption reform package will not reach Congress until 2027 because officials still disagree over whether to rewrite the constitution, President Claudia Sheinbaum said.]]></summary>
+    <published>2026-11-25T16:51:46+00:00</published>
+    <updated>2026-11-25T16:51:46+00:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.intellinews.com/mexico-s-sheinbaum-delays-anti-corruption-overhaul-to-2027-election-year-488432/"/>
+    <id>https://www.intellinews.com/mexico-s-sheinbaum-delays-anti-corruption-overhaul-to-2027-election-year-488432/</id>
+    <author>
+      <name>Latin America bureau</name>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/1280px-Claudia_Sheinbaum_en_su_conferencia_matutina_1795625517.jpg"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Russia pushes ahead with Moscow-St Petersburg high-speed line despite railway debt crisis]]></title>
+    <summary type="html"><![CDATA[<img src="https://d39raawggeifpx.cloudfront.net/styles/16_9_desktop/s3/articleimages/rId7_472_1795624294.png" width="900" height="510" title="Russia pushes ahead with Moscow-St Petersburg high-speed line despite railway debt crisis"><br/><small>Credit: bne IntelliNews</small><br/>Russia's first high-speed railway, 679 km from Moscow to St Petersburg, is in full construction for a 20

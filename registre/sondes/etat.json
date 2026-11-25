@@ -1,28 +1,80 @@
 {
- "eg_avenir": {
-  "url": "https://electionguide.org/elections/type/upcoming/",
+ "in_robots": {
+  "url": "https://www.intellinews.com/robots.txt",
   "statut": 200,
-  "type": "text/html; charset=utf-8",
-  "taille": 86517,
-  "entetes": [
-   "\n        <tr>\n            <th>",
-   "",
-   "\n                            <tr>\n                                <th>",
-   "Country",
-   "Election for",
-   "Start Date",
-   "End Date",
-   "Status",
-   "Is Snap?",
-   "Last Held*",
-   "Last Registered"
+  "type": "text/plain",
+  "taille": 405
+ },
+ "in_accueil": {
+  "url": "https://www.intellinews.com/",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 1652084,
+  "flux_annonces": [
+   "<link href=\"/feed/\" rel=\"alternate\" type=\"application/rss+xml\" title=\"bne IntelliNews\" />"
   ],
-  "lignes_table": 58,
-  "donnees": [
-   "https://fonts.googleapis.com",
-   "https://fonts.googleapis.com/css2?family=Arvo&display=swap",
-   "https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap",
-   "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+  "liens_flux": [
+   "/feed/",
+   "/fifteen-years-after-fukushima-asia-is-learning-to-love-the-atom-again-477579/?source=bhutan",
+   "https://feedly.com/i/subscription/feed/https://intellinews.com/feed"
+  ]
+ },
+ "in_flux_1": {
+  "url": "https://www.intellinews.com/feed/",
+  "statut": 200,
+  "type": "text/xml;charset=UTF-8",
+  "taille": 22987,
+  "items": 17,
+  "titres": []
+ },
+ "in_flux_2": {
+  "url": "https://www.intellinews.com/fifteen-years-after-fukushima-asia-is-learning-to-love-the-atom-again-477579/?source=bhutan",
+  "statut": 200,
+  "type": "text/html; charset=UTF-8",
+  "taille": 1583282,
+  "items": 0,
+  "titres": [
+   "bne IntelliNews - Fifteen years after Fukushima, Asia is learning to love the atom again"
+  ]
+ },
+ "in_flux_3": {
+  "url": "https://feedly.com/i/subscription/feed/https://intellinews.com/feed",
+  "statut": 200,
+  "type": "text/html;charset=UTF-8",
+  "taille": 45516,
+  "items": 0,
+  "titres": [
+   "Stay ahead of the curve with Feedly AI"
+  ]
+ },
+ "in_flux_4": {
+  "url": "https://www.intellinews.com/rss/",
+  "statut": 404,
+  "type": "text/html; charset=UTF-8",
+  "taille": 1392593,
+  "items": 0,
+  "titres": [
+   "bne IntelliNews"
+  ]
+ },
+ "in_flux_5": {
+  "url": "https://www.intellinews.com/rss.xml",
+  "statut": 404,
+  "type": "text/html; charset=UTF-8",
+  "taille": 1392593,
+  "items": 0,
+  "titres": [
+   "bne IntelliNews"
+  ]
+ },
+ "in_flux_6": {
+  "url": "https://www.intellinews.com/feed.xml",
+  "statut": 404,
+  "type": "text/html; charset=UTF-8",
+  "taille": 1519529,
+  "items": 0,
+  "titres": [
+   "bne IntelliNews"
   ]
  }
 }
