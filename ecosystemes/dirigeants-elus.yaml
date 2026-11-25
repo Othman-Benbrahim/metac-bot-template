@@ -207,6 +207,34 @@ compartiments:
   - {source: "âge moyen des dirigeants en poste au 1er juillet, monde, 1946-2015 (Archigos 4.1 via peacesciencer)", statut: collecte, fichier: mise_au_point/archigos_ages.py, adaptateur: "ages_dirigeants:monde:age_moyen"}
   - {source: "part des dirigeants africains âgés de 70 ans et plus, 1946-2015 (Archigos 4.1)", statut: collecte, fichier: mise_au_point/archigos_ages.py, adaptateur: "ages_dirigeants:afrique:part70"}
   - *id001
+- id: selectorat
+  nom: Coalition de soutien d'un dirigeant (sélectorat)
+  organisation: statut
+  elements:
+  - "un dirigeant dépend d'une coalition gagnante ; petite (armée, parti, clan), il la paie en biens privés et survit longtemps ; grande (électorat), il doit offrir des biens publics et tombe plus souvent (Bueno de Mesquita, Smith, Siverson et Morrow, The Logic of Political Survival, 2003)"
+  - "psychologie du rôle, pas de la personne : la taille de la coalition prédit des choix sans rien supposer de l'intérieur du dirigeant"
+  niveau:
+    espace: pays
+    temps: mandats
+    vitesse: mois à années
+    taille: macro
+  traces:
+  - source: indices de régime (taille de la coalition gagnante, V-Dem ou équivalent)
+    statut: a_brancher
+- id: survie_politique
+  nom: Survie politique et prise de risque
+  organisation: statut
+  elements:
+  - "pari de la dernière chance : un dirigeant menacé de perdre le pouvoir prend plus de risques, y compris à l'extérieur (Downs et Rocke, 1994) ; même logique que l'aversion à la perte (Kahneman et Tversky, 1979 ; McDermott, 1998)"
+  - "théorie poliheuristique : une option politiquement coûteuse est écartée d'abord, les autres seulement sont comparées (Mintz, 2004)"
+  - "coûts d'audience : un engagement public coûte cher à renier, ce qui le rend crédible (Fearon, 1994) ; voir le taux d'exécution des annonces mesuré par le bot"
+  niveau:
+    espace: pays
+    temps: semaines à mandats
+    vitesse: jours à mois
+    taille: macro
+  traces:
+  - {source: "nouveaux chefs d'État ou de gouvernement par mois, monde (Wikidata) : la menace de départ réalisée", statut: collecte, fichier: collecte_successions.py, adaptateur: "successions:monde:changements"}
 cycles:
 - id: vie_au_pouvoir
   nom: Cycle de vie au pouvoir (arrivée, consolidation, usure, succession)
@@ -291,6 +319,33 @@ relations:
   coupure: régime présidentiel
   statut: a_verifier
   texte: dans les régimes parlementaires, la majorité fait et défait les gouvernements
+- de: selectorat
+  fondement: causalite_sociale
+  vers: departs
+  effet: "-"
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  source: "Bueno de Mesquita et al. 2003"
+  texte: une petite coalition rend le départ plus rare, mais plus souvent irrégulier quand il survient
+- de: popularite
+  fondement: causalite_sociale
+  vers: survie_politique
+  effet: "-"
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  source: "Downs et Rocke 1994"
+  texte: une impopularité forte menace la survie et pousse vers les paris risqués
+- de: survie_politique
+  fondement: causalite_sociale
+  vers: diplomatie_personnelle
+  effet: "+"
+  delai: semaines
+  force: faible
+  statut: a_verifier
+  source: "Downs et Rocke 1994 ; McDermott 1998"
+  texte: un dirigeant en danger cherche un coup d'éclat extérieur (sommet, fermeté, parfois conflit)
 ponts:
 - depuis: executifs
   vers: politique-interieure:dirigeants

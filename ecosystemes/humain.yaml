@@ -564,6 +564,77 @@ compartiments:
   traces:
   - source: "changements datés des algorithmes et de la modération annoncés par les plateformes"
     statut: "a_brancher"
+- id: persuasion
+  nom: Persuasion (examen ou raccourci) et vigilance épistémique
+  organisation: psychologique
+  elements:
+  - "deux routes : un message est examiné quand on est concerné et disponible ; sinon des indices superficiels décident (source, nombre, répétition) (Petty et Cacioppo, modèle de probabilité d'élaboration, 1986)"
+  - "vigilance épistémique : chacun juge la compétence et la bienveillance de la source ; les gens sont moins crédules qu'on ne le dit et les campagnes de masse convainquent peu (Mercier, Not Born Yesterday, 2020)"
+  - "effet de vérité par répétition : une affirmation répétée paraît plus vraie, même fausse (Hasher, Goldstein et Toppino, 1977)"
+  - "réactance : une pression ou une interdiction perçue provoque l'effet inverse (Brehm, 1966)"
+  niveau:
+    espace: pays
+    temps: jours à années
+    vitesse: jours
+    taille: micro à méso
+  traces:
+  - {source: "confiance dans l'actualité, médiane des 48 marchés (Reuters Institute) : socle de la vigilance, on écoute la source qu'on juge fiable", statut: collecte, fichier: ecosystemes/confiance-actualite.csv, adaptateur: "confiance_actualite:mediane"}
+- id: relais_opinion
+  nom: Relais d'opinion (leaders d'opinion, créateurs)
+  organisation: societe
+  elements:
+  - "flux en deux étapes : les médias touchent quelques relais, qui touchent leur entourage (Katz et Lazarsfeld, Personal Influence, 1955) ; les créateurs de contenu en sont la forme actuelle"
+  - "impact social : l'influence croît avec la force de la source, sa proximité et le nombre de sources, avec des rendements décroissants (Latané, 1981)"
+  niveau:
+    espace: local à pays
+    temps: jours à mois
+    vitesse: heures à jours
+    taille: micro à méso
+  traces:
+  - {source: "messages publiés par jour sur les chaînes publiques suivies (Telegram) : volume des relais, pas leur effet", statut: collecte, fichier: collecte_telegram.py, adaptateur: "telegram:tout"}
+- id: contagion_complexe
+  nom: Contagion simple ou complexe (une ou plusieurs sources)
+  organisation: societe
+  elements:
+  - "une information se propage par un seul contact ; un comportement coûteux ou risqué (manifester, boycotter, adopter) demande plusieurs sources distinctes (Centola et Macy, 2007)"
+  - "expérience en ligne : l'adoption d'un comportement de santé se diffuse mieux dans un réseau dense et redondant que dans un réseau aléatoire (Centola, Science, 2010)"
+  - "conséquence : les liens faibles diffusent l'information, les groupes denses diffusent l'action"
+  - "test préenregistré sur les manifestations entre pays voisins (GDELT, 2024-2026) : preenregistrements/contagion-complexe-manifestations.md"
+  niveau:
+    espace: local à région
+    temps: jours à mois
+    vitesse: jours
+    taille: méso
+  traces:
+  - {source: "manifestations par jour chez les voisins terrestres d'un pays (GDELT) ; exemple : voisins de l'Iran", statut: collecte, fichier: collecte_gdelt.py, adaptateur: "voisins:IR"}
+- id: conformite_minorite
+  nom: Conformité, minorité active et spirale du silence
+  organisation: psychologique
+  elements:
+  - "conformité : face à un groupe unanime, environ un tiers des réponses s'alignent sur une erreur évidente (Asch, 1951-1956) ; un seul allié dissident suffit à briser l'effet"
+  - "minorité active : une minorité constante et cohérente finit par déplacer la majorité, en privé d'abord (Moscovici, 1969, 1980)"
+  - "spirale du silence : qui se croit minoritaire se tait, ce qui renforce l'impression de majorité (Noelle-Neumann, 1974) ; voisin de la falsification des préférences (Kuran)"
+  niveau:
+    espace: groupe à pays
+    temps: heures à années
+    vitesse: jours
+    taille: micro à méso
+  traces:
+  - source: enquêtes publiques d'opinion (perception de l'opinion majoritaire)
+    statut: a_brancher
+- id: foules_identite
+  nom: Foules et identité collective (modèle de l'identité sociale)
+  organisation: societe
+  elements:
+  - "la foule ne perd pas la raison (contre Le Bon, 1895) : elle adopte une identité collective, et le traitement par la police fait basculer son comportement (Reicher ; Drury et Reicher, 2009)"
+  - "pensée de groupe : un groupe soudé et isolé écarte les objections (Janis, 1972) ; polarisation de groupe : des gens d'accord entre eux deviennent plus extrêmes ensemble (Sunstein, 2002)"
+  niveau:
+    espace: site à pays
+    temps: heures à semaines
+    vitesse: heures
+    taille: méso
+  traces:
+  - {source: "manifestations et émeutes par jour (GDELT) ; exemple : France", statut: collecte, fichier: collecte_gdelt.py, adaptateur: "manifestations:FR:emeutes"}
 relations:
 - de: "besoins_fondamentaux"
   fondement: causalite_sociale
@@ -1697,6 +1768,69 @@ relations:
   statut: "a_verifier"
   source: "Bond et al. 2012"
   texte: "on agit quand ses proches agissent"
+- de: persuasion
+  fondement: causalite_sociale
+  vers: opinion_privee
+  effet: "+"
+  delai: jours à mois
+  force: faible
+  statut: a_verifier
+  source: "Mercier 2020 ; Petty et Cacioppo 1986"
+  texte: un message ne change l'opinion privée que s'il passe l'examen ou un raccourci de confiance ; l'effet direct est faible
+- de: relais_opinion
+  fondement: causalite_sociale
+  vers: opinion_publique
+  effet: "+"
+  delai: jours
+  force: moyenne
+  statut: a_verifier
+  source: "Katz et Lazarsfeld 1955"
+  texte: ce qui se dit passe par quelques relais avant d'atteindre l'entourage
+- de: contagion_complexe
+  fondement: causalite_sociale
+  vers: passage_acte
+  effet: "+"
+  delai: jours à semaines
+  force: inconnue
+  statut: a_verifier
+  source: "Centola et Macy 2007 ; Centola 2010"
+  texte: un acte coûteux se propage quand plusieurs sources distinctes l'ont déjà fait ; un seul exemple suffit à l'information, pas à l'action
+- de: liens
+  fondement: causalite_sociale
+  vers: contagion_complexe
+  effet: "+"
+  delai: jours
+  force: moyenne
+  statut: a_verifier
+  source: "Centola 2010"
+  texte: un réseau dense et redondant multiplie les sources distinctes, ce que demande la contagion complexe
+- de: conformite_minorite
+  fondement: causalite_sociale
+  vers: norme_percue
+  effet: "+"
+  delai: heures à mois
+  force: moyenne
+  statut: a_verifier
+  source: "Asch 1951 ; Noelle-Neumann 1974"
+  texte: ce que semble penser le groupe devient la norme perçue ; qui se croit minoritaire se tait
+- de: conformite_minorite
+  fondement: causalite_sociale
+  vers: opinion_publique
+  effet: "±"
+  delai: mois à années
+  force: faible
+  statut: a_verifier
+  source: "Moscovici 1980"
+  texte: une minorité constante finit par déplacer la majorité, lentement et d'abord en privé
+- de: foules_identite
+  fondement: causalite_sociale
+  vers: passage_acte
+  effet: "±"
+  delai: heures
+  force: moyenne
+  statut: a_verifier
+  source: "Drury et Reicher 2009"
+  texte: une foule traitée comme une menace indistincte se soude et se radicalise ; traitée avec discernement, elle se modère
 ponts:
 - depuis: besoins_fondamentaux
   vers: corps-humain:besoins_vitaux
