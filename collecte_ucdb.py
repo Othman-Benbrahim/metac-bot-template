@@ -23,7 +23,7 @@ import httpx
 import politesse
 
 BASE = "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_THEME_GLOBE_R2024A/"
-THEMES = ("GENERAL_CHARACTERISTICS", "HAZARD_RISK", "CLIMATE", "HEALTH", "EMISSIONS", "WATER", "SOCIOECONOMIC",
+THEMES = ("GENERAL_CHARACTERISTICS", "GHSL", "HAZARD_RISK", "CLIMATE", "HEALTH", "EMISSIONS", "WATER", "SOCIOECONOMIC",
           "GREENNESS", "EXPOSURE")
 DOSSIER = Path("registre") / "ucdb"
 GEOM = re.compile(r"geom|shape|wkb|wkt", re.I)
@@ -79,7 +79,15 @@ def principal() -> int:
                 url = f"{dossier}{v}/GHS_UCDB_THEME_{th}_GLOBE_R2024A_{v.replace('-', '_')}.zip"
                 r = c.get(url)
                 r.raise_for_status()
-                cols, rows, info = _table(zipfile.ZipFile(io.BytesIO(r.content)))
+                z = zipfile.ZipFile(io.BytesIO(r.content))
+                cols, rows, info = _table(z)
+                # 2026-11-25 : la documentation du thème (définition des variables) est gardée, pour lire les codes
+                (DOSSIER / "doc").mkdir(exist_ok=True)
+                for n in z.namelist():
+                    if n.lower().endswith(".pdf") and th.lower() in n.lower():
+                        (DOSSIER / "doc" / f"{th.lower()}.pdf").write_bytes(z.read(n))
+                    if n.lower().endswith(".pdf") and n.startswith("GHSL_UCDB") and not (DOSSIER / "doc" / "general.pdf").exists():
+                        (DOSSIER / "doc" / "general.pdf").write_bytes(z.read(n))
                 with gzip.open(DOSSIER / f"{th.lower()}.csv.gz", "wt", encoding="utf-8", newline="") as f:
                     w = csv.writer(f)
                     w.writerow(cols)
