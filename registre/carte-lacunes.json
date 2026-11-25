@@ -4,7 +4,7 @@
  "par_type": [
   [
    "amont sans série",
-   2435
+   2436
   ],
   [
    "aucune relation entrante",
@@ -753,6 +753,10 @@
    1
   ],
   [
+   "cultures-emboitees:culture_algorithmique → cultures-emboitees:diffusion_mondiale",
+   1
+  ],
+  [
    "guerre-levant:yemen → guerre-levant:puissances",
    1
   ],
@@ -822,10 +826,6 @@
   ],
   [
    "insularite:caraibes",
-   1
-  ],
-  [
-   "inflation-mondiale:epidemies → inflation-mondiale:approvisionnement",
    1
   ]
  ],

@@ -2,17 +2,17 @@
  "genere_le": "2026-11-25",
  "fraicheur_jours": 45,
  "avancement": {
-  "compartiments": 845,
+  "compartiments": 853,
   "par_statut": {
-   "a_trouver": 626,
+   "a_trouver": 627,
    "fraiche": 171,
    "ancienne": 33,
-   "vide": 15
+   "vide": 22
   },
-  "relations": 994,
+  "relations": 1007,
   "relations_testables": 203,
   "relations_par_verdict": {
-   "non_controlee": 768,
+   "non_controlee": 781,
    "non_tranche": 63,
    "non_testable": 152,
    "conteste": 7,
@@ -738,6 +738,27 @@
    "statut": "a_trouver"
   },
   "culture-memoire:usages_memoire": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:aires_culturelles": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:cultures_nationales": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:cultures_locales": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:individu_identites": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:diffusion_mondiale": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:culture_algorithmique": {
+   "statut": "a_trouver"
+  },
+  "cultures-emboitees:protections_culturelles": {
    "statut": "a_trouver"
   },
   "cycles-biogeochimiques:carbone": {
@@ -1604,7 +1625,7 @@
   "information-cyber:recits": {
    "statut": "fraiche",
    "serie": "recit_russe:MD",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-24"
   },
   "information-cyber:attention": {
    "statut": "a_trouver"
@@ -2669,6 +2690,9 @@
    "statut": "vide",
    "serie": "pub:arxiv_cs_lg"
   },
+  "sciences-techniques:developpement": {
+   "statut": "a_trouver"
+  },
   "sciences-techniques:capitaux": {
    "statut": "fraiche",
    "serie": "fred:DGS10",
@@ -2834,25 +2858,32 @@
    "statut": "a_trouver"
   },
   "surveillance-espionnage:renseignement_etats": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:interceptions"
   },
   "surveillance-espionnage:espionnage_etats": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:espionnage"
   },
   "surveillance-espionnage:industrie_intrusion": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:spyware"
   },
   "surveillance-espionnage:courtiers_donnees": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:courtiers"
   },
   "surveillance-espionnage:biometrie": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:biometrie"
   },
   "surveillance-espionnage:cibles": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:cibles"
   },
   "surveillance-espionnage:contre_mesures": {
-   "statut": "a_trouver"
+   "statut": "vide",
+   "serie": "rss_matiere:chiffrement"
   },
   "transport-maritime:detroits": {
    "statut": "fraiche",
@@ -4147,6 +4178,60 @@
   {
    "de": "culture-memoire:restitutions",
    "vers": "culture-memoire:usages_memoire",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:aires_culturelles",
+   "vers": "cultures-emboitees:cultures_nationales",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:diffusion_mondiale",
+   "vers": "cultures-emboitees:cultures_nationales",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:cultures_nationales",
+   "vers": "cultures-emboitees:cultures_locales",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:cultures_locales",
+   "vers": "cultures-emboitees:individu_identites",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:culture_algorithmique",
+   "vers": "cultures-emboitees:individu_identites",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:aires_culturelles",
+   "vers": "cultures-emboitees:individu_identites",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:diffusion_mondiale",
+   "vers": "cultures-emboitees:protections_culturelles",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:protections_culturelles",
+   "vers": "cultures-emboitees:diffusion_mondiale",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "cultures-emboitees:culture_algorithmique",
+   "vers": "cultures-emboitees:diffusion_mondiale",
    "testable": false,
    "verdict": null
   },
@@ -8285,6 +8370,36 @@
    "verdict": null
   },
   {
+   "de": "sciences-techniques:recherche",
+   "vers": "sciences-techniques:developpement",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "sciences-techniques:capitaux",
+   "vers": "sciences-techniques:developpement",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "sciences-techniques:regulation",
+   "vers": "sciences-techniques:developpement",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "sciences-techniques:developpement",
+   "vers": "sciences-techniques:adoption",
+   "testable": false,
+   "verdict": null
+  },
+  {
+   "de": "sciences-techniques:ia",
+   "vers": "sciences-techniques:adoption",
+   "testable": false,
+   "verdict": null
+  },
+  {
    "de": "sciences-techniques:calcul",
    "vers": "sciences-techniques:sorties_modeles",
    "testable": true,
@@ -8377,12 +8492,6 @@
   {
    "de": "sciences-techniques:ia",
    "vers": "sciences-techniques:attentes",
-   "testable": false,
-   "verdict": null
-  },
-  {
-   "de": "sciences-techniques:ia",
-   "vers": "sciences-techniques:adoption",
    "testable": false,
    "verdict": null
   },
@@ -9024,7 +9133,7 @@
   {
    "compartiment": "sciences-techniques:regulation",
    "lectures_manquees": 20,
-   "relations_sortantes": 3
+   "relations_sortantes": 4
   },
   {
    "compartiment": "reseaux-sociaux:donnees_ciblage",
