@@ -81,7 +81,7 @@ compartiments:
   - id: "geographie"
     nom: "Géographie du continent"
     organisation: "relief"
-    elements: ["plaine d'Europe du Nord", "isthme et corridors étroits", "mers Baltique et Noire"]
+    elements: ["plaine d'Europe du Nord", "isthme et corridors étroits", "mers Baltique et Noire", "mécanisme : Kaliningrad, exclave russe militarisée (S-400, missiles Iskander, MiG-31 porteurs de Kinjal) entre Pologne et Lituanie, devient plus exposée depuis l'entrée de la Finlande (2023) et de la Suède (2024) dans l'OTAN, qui fait de la Baltique un lac otanien ; la Biélorussie a instrumentalisé les migrants contre la Pologne en 2021 (15 000 soldats polonais à la frontière) (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)"]
     niveau: {espace: "continent", temps: "permanent", vitesse: "millénaire", taille: "macro"}
     traces:
       - {source: "fait géographique", statut: "inconnue"}
