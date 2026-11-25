@@ -53,9 +53,17 @@ def principal() -> int:
         for nom, url in ADRESSES.items():
             texte = sonder(c, nom, url, etat)
             if texte and nom == "iw_script":
+                # 4e passage (16 h 55) : les fichiers sondés sont ceux de la législature 9 (2019-2024) ; la législature
+                # en cours se lit par autoupdate_data_eu + backups.json. On garde le code autour de ces mots pour lire
+                # comment l'adresse est construite.
+                extraits = []
+                for mot in ("autoupdate_data_eu", "backups.json", "legislature_10", "timestamp", "dpi_legislature_10"):
+                    for m in re.finditer(re.escape(mot), texte):
+                        extraits.append(f"--- {mot} @{m.start()}\n" + texte[max(0, m.start() - 600): m.start() + 600])
+                (SORTIE / "iw_script_extraits.txt").write_text("\n\n".join(extraits[:25]), encoding="utf-8")
                 chemins = sorted(set(re.findall(r'["\'`]([^"\'`\s]+\.(?:json|csv)(?:\?[^"\'`]*)?)["\'`]', texte)))
                 etat[nom]["chemins"] = chemins[:40]
-                for i, ch in enumerate(chemins[:5]):
+                for i, ch in enumerate([c for c in chemins if "legislature_9" not in c][:5]):
                     url = ch if ch.startswith("http") else BASE_IW + ch.lstrip("./")
                     sonder(c, f"iw_donnees_{i}", url, etat)
             if texte and nom.startswith("iw_") and nom != "iw_script":
