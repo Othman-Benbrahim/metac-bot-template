@@ -46,36 +46,43 @@ COURANTS = {"pierre", "store", "muhammad", "mohammed", "mohamed", "ahmed", "ahma
             "daniel", "david", "samuel", "moses", "simon", "victor", "felix", "marcel", "michal", "store", "costa",
             "santos", "silva", "garcia", "lopez", "martinez", "rodriguez", "gonzalez", "hernandez", "perez", "sanchez"}
 PAS_CHEF = re.compile(r"\b(vice|deputy|first deputy|acting)\b", re.I)
+# 2026-11-25, 14 h : Wikidata garde « en fonction » des personnes sans date de fin (Joseph Bech, Premier ministre du
+# Luxembourg dans les années 1950) ; on écarte les personnes décédées (P570) et les mandats commencés avant 2012.
 # 2026-11-25, premier passage : data.opensanctions.org refuse notre agent par robots.txt (« refuse_robots », non forcé).
 # Les dirigeants publics viennent donc aussi de Wikidata (source validée) : chefs d'État et de gouvernement actuels des
 # États souverains, et ministres en fonction (poste rattaché à un État souverain, sans date de fin).
 REQUETES_CHEFS = {
     "chef d'État ou de gouvernement": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
   ?o wdt:P31 wd:Q3624078. BIND(?o AS ?pays) OPTIONAL { ?o wdt:P297 ?iso } VALUES ?prop { p:P35 p:P6 } ?o ?prop ?st. ?st (ps:P35|ps:P6) ?p.
-  FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
+  OPTIONAL { ?st pq:P580 ?debut } FILTER(!BOUND(?debut) || YEAR(?debut) >= 2012)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
 REQUETES = {
     # 2026-11-25, 13 h 56 : la requête unique a dépassé le délai de Wikidata (504) ; une requête par classe de poste,
     # sans les libellés de pays (le code ISO suffit, la carte connaît les noms)
     "ministre": [f"""SELECT DISTINCT ?p ?pLabel ?iso ?posLabel WHERE {{
-  ?pos wdt:P279 wd:{classe}. ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS {{ ?st pq:P582 ?fin }}
+  ?pos wdt:P279 wd:{classe}. ?p p:P39 ?st. ?st ps:P39 ?pos. FILTER NOT EXISTS {{ ?st pq:P582 ?fin }} FILTER NOT EXISTS {{ ?p wdt:P570 ?mort }}
+  OPTIONAL {{ ?st pq:P580 ?debut }} FILTER(!BOUND(?debut) || YEAR(?debut) >= 2012)
   ?pos wdt:P1001 ?o. ?o wdt:P31 wd:Q3624078. OPTIONAL {{ ?o wdt:P297 ?iso }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,fr". }} }}""" for classe in ("Q83307", "Q7330070", "Q15966511")],
     # entreprises cotées (NYSE, NASDAQ, Londres, Tokyo, Euronext Paris, Francfort) : PDG actuel
     "entreprise": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel ?secteurLabel WHERE {
   VALUES ?ex { wd:Q13677 wd:Q82059 wd:Q171240 wd:Q217475 wd:Q2385849 wd:Q151139 }
-  ?o wdt:P414 ?ex; p:P169 ?st. OPTIONAL { ?o wdt:P452 ?secteur } OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  ?o wdt:P414 ?ex; p:P169 ?st. OPTIONAL { ?o wdt:P452 ?secteur } OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } ?st ps:P169 ?p. FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
+  OPTIONAL { ?st pq:P580 ?debut } FILTER(!BOUND(?debut) || YEAR(?debut) >= 2012)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # banques centrales : président ou gouverneur actuel
     "banque centrale": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
   ?o wdt:P31 wd:Q66344. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
-  FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
+  OPTIONAL { ?st pq:P580 ?debut } FILTER(!BOUND(?debut) || YEAR(?debut) >= 2012)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
     # organisations internationales : dirigeant actuel
     "organisation internationale": """SELECT DISTINCT ?p ?pLabel ?oLabel ?iso ?paysLabel WHERE {
   ?o wdt:P31 wd:Q484652. OPTIONAL { ?o wdt:P17 ?pays. ?pays wdt:P297 ?iso } VALUES ?prop { p:P488 p:P1037 } ?o ?prop ?st. ?st (ps:P488|ps:P1037) ?p.
-  FILTER NOT EXISTS { ?st pq:P582 ?fin }
+  FILTER NOT EXISTS { ?st pq:P582 ?fin } FILTER NOT EXISTS { ?p wdt:P570 ?mort }
+  OPTIONAL { ?st pq:P580 ?debut } FILTER(!BOUND(?debut) || YEAR(?debut) >= 2012)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". } }""",
 }
 
