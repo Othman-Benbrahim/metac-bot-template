@@ -1,94 +1,852 @@
 {
- "js_robots": {
-  "url": "https://www.justsecurity.org/robots.txt",
-  "statut": 200,
-  "type": "text/plain",
-  "taille": 541
- },
- "js_accueil": {
-  "url": "https://www.justsecurity.org/",
-  "statut": 200,
-  "type": "text/html; charset=UTF-8",
-  "taille": 267278,
-  "flux_annonces": [
-   "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Just Security &raquo; Feed\" href=\"https://www.justsecurity.org/feed/\" />"
-  ],
-  "trackers": [
-   "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/",
-   "https://www.justsecurity.org/117267/anti-corruption-tracker/",
-   "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
-   "https://www.justsecurity.org/161783/litigation-tracker-case-status-key-glossary/",
-   "https://www.justsecurity.org/162830/2026-midterms-election-integrity-litigation-tracker/",
-   "https://www.justsecurity.org/category/trackers/"
-  ]
- },
- "js_flux": {
-  "url": "https://www.justsecurity.org/feed/",
-  "statut": 200,
-  "type": "application/rss+xml; charset=UTF-8",
-  "taille": 5400443,
-  "items": 10,
-  "titres": [
-   "Just Security",
-   "Just Security",
-   "Litigation Tracker: Legal Challenges to Trump Administration Actions",
-   "The World Must Act to Deliver on the &#8220;World Court&#8217;s&#8221; Rohingya Ruling",
-   "Puppet Sovereigns and Occupation by Proxy",
-   "In The Gambia v. Myanmar, the ICJ Links Statelessness to Genocide – But Stops Short of Requiring Citizenship for all Members of the Rohingya Group"
-  ]
- },
- "js_tracker_0": {
+ "jst_proces": {
   "url": "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
   "taille": 5396096,
-  "tableaux": 1,
-  "lignes_tableaux": 1010,
-  "integres": []
+  "tableaux": [
+   {
+    "lignes": 1010,
+    "attributs_table": "<table id=\"tablepress-42\" class=\"tablepress tablepress-id-42 tablepress-responsive\">",
+    "entete": [
+     {
+      "texte": "Case Name",
+      "liens": []
+     },
+     {
+      "texte": "Filings",
+      "liens": []
+     },
+     {
+      "texte": "Date Case Filed",
+      "liens": []
+     },
+     {
+      "texte": "State A.G.'s",
+      "liens": []
+     },
+     {
+      "texte": "Case Status",
+      "liens": []
+     },
+     {
+      "texte": "Issue",
+      "liens": []
+     },
+     {
+      "texte": "Executive Action",
+      "liens": []
+     },
+     {
+      "texte": "Last Case Update",
+      "liens": []
+     },
+     {
+      "texte": "Case Summary",
+      "liens": []
+     },
+     {
+      "texte": "Case Updates",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "National Association of the Deaf v. Trump (D.D.C.) 1:25-cv-01683",
+       "liens": [
+        "https://www.courtlistener.com/docket/70391563/national-association-of-the-deaf-v-trump/"
+       ]
+      },
+      {
+       "texte": "Complaint",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.281047/gov.uscourts.dcd.281047.1.0.pdf"
+       ]
+      },
+      {
+       "texte": "2025-05-28",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "Government Action Temporarily Blocked; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "Civil Liberties and Rights",
+       "liens": []
+      },
+      {
+       "texte": "Accessibility",
+       "liens": []
+      },
+      {
+       "texte": "2025-11-13",
+       "liens": []
+      },
+      {
+       "texte": "In January 2025, the administration stopped providing ASL interpreters at public press briefings and other similar events. The federal government had provided ASL interpretation for all coronavirus press briefings following a court order in October 2020 and began voluntarily providing interpretation",
+       "liens": []
+      },
+      {
+       "texte": "Nov. 4, 2025: Judge Amir H. Ali granted plaintiffs’ motion for a preliminary injunction in part, ordering the administration to provide a simultaneous and publicly accessible feed with American Sign Language (ASL) interpretation for “all publicly announced White House press briefings conducted by th",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.281047/gov.uscourts.dcd.281047.29.0.pdf",
+        "https://www.courtlistener.com/docket/71906606/national-association-of-the-deaf-v-donald-trump/"
+       ]
+      }
+     ],
+     [
+      {
+       "texte": "National Federation of the Blind v. Department of Justice (D. Md.) 1:26-cv-02007",
+       "liens": [
+        "https://www.courtlistener.com/docket/73378158/national-federation-of-the-blind-v-department-of-justice/"
+       ]
+      },
+      {
+       "texte": "Complaint",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.mdd.606185/gov.uscourts.mdd.606185.1.0.pdf"
+       ]
+      },
+      {
+       "texte": "2026-05-21",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "Decision Pending",
+       "liens": []
+      },
+      {
+       "texte": "Civil Liberties and Rights",
+       "liens": []
+      },
+      {
+       "texte": "Accessibility",
+       "liens": []
+      },
+      {
+       "texte": "2026-05-21",
+       "liens": []
+      },
+      {
+       "texte": "On April 20, 2026, the Department of Justice (DOJ) issued an interim final rule extending by one year the deadlines for state and local government entities to comply with a 2024 final rule requiring accessible web content and mobile apps under Title II of the Americans with Disabilities Act. On May ",
+       "liens": [
+        "https://www.federalregister.gov/documents/2026/04/20/2026-07663/extension-of-compliance-dates-for-nondiscrimination-on-the-basis-of-disability-accessibility-of-web",
+        "https://www.federalregister.gov/documents/2026/05/11/2026-09266/extension-of-compliance-dates-for-nondiscrimination-on-the-basis-of-disability-accessibility-of-web#page-25501",
+        "https://storage.courtlistener.com/recap/gov.uscourts.mdd.606185/gov.uscourts.mdd.606185.1.0.pdf"
+       ]
+      },
+      {
+       "texte": "",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Perkins Coie LLP v. U.S. Department of Justice (D.D.C.) 1:25-cv-00716",
+       "liens": [
+        "https://www.courtlistener.com/docket/69725919/perkins-coie-llp-v-us-department-of-justice/"
+       ]
+      },
+      {
+       "texte": "Complaint Amended Complaint 2025-04-29",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.278290/gov.uscourts.dcd.278290.1.0_1.pdf",
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.278290/gov.uscourts.dcd.278290.176.0_1.pdf"
+       ]
+      },
+      {
+       "texte": "2025-03-11",
+       "liens": []
+      },
+      {
+       "texte": "Plaintiff-side State Amicus",
+       "liens": []
+      },
+      {
+       "texte": "Government Action Blocked; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "Civil Liberties and Rights",
+       "liens": []
+      },
+      {
+       "texte": "Action Against Law Firms and Lawyers (Executive Order 14230 - Perkins Coie) (Executive Order 14246 - Jenner &amp; Block) (Executive Order - WilmerHale) (Presidential Memorandum)",
+       "liens": []
+      },
+      {
+       "texte": "2026-04-03",
+       "liens": []
+      },
+      {
+       "texte": "On March 6, 2025, President Donald Trump issued an executive order (EO) accusing the law firm Perkins Coie LLP of undermining democracy and maintaining illegal race-based hiring quotas. The executive order directs various agencies to impose sanctions against the firm, including: terminating the firm",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.278290/gov.uscourts.dcd.278290.1.0_1.pdf"
+       ]
+      },
+      {
+       "texte": "March 12, 2025: State Attorneys General submitted an amicus brief in support of Plaintiffs. March 12, 2025: Judge Beryl Howell, ruling from the bench , granted Perkins Coie’s request for a temporary restraining order to block Sections 1, 3, and 5 of the executive order. During the hearing, she repor",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.dcd.278290/gov.uscourts.dcd.278290.15.0_5.pdf",
+        "https://news.bloomberglaw.com/product/blaw/bloomberglawnews/exp/eyJpZCI6IjAwMDAwMTk1LThhZGUtZDk1NC1hZGQ1LWVmZmZhZTNmMDAwMSIsImN0eHQiOiJCVU5XIiwidXVpZCI6IkY1YzdKQjUrRlpSVTBUenUrZ05sSEE9PWszQ2JVaWdOdXBQM1dhWXJpbXpDa2c9PSIsInRpbWUiOiIxNzQxODA5MjE4NDY0Iiwic2lnIjoiR0VJcWpNTGhna0lJZW8zNi8yTFpXT055THF3PSIsInYiOiIxIn0=?source=newsletter&amp;item=read-text&amp;region=featured-story&amp;channel=business-and-practice",
+        "https://bsky.app/profile/chrisgeidner.bsky.social/post/3lk7dshpdfc2d"
+       ]
+      }
+     ]
+    ]
+   }
+  ]
  },
- "js_tracker_1": {
-  "url": "https://www.justsecurity.org/117267/anti-corruption-tracker/",
-  "statut": 200,
-  "type": "text/html; charset=UTF-8",
-  "taille": 398365,
-  "tableaux": 1,
-  "lignes_tableaux": 126,
-  "integres": []
- },
- "js_tracker_2": {
-  "url": "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
-  "statut": 200,
-  "type": "text/html; charset=UTF-8",
-  "taille": 5854170,
-  "tableaux": 1,
-  "lignes_tableaux": 805,
-  "integres": []
- },
- "js_tracker_3": {
+ "jst_glossaire": {
   "url": "https://www.justsecurity.org/161783/litigation-tracker-case-status-key-glossary/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
   "taille": 228357,
-  "tableaux": 5,
-  "lignes_tableaux": 26,
-  "integres": []
+  "tableaux": [
+   {
+    "lignes": 2,
+    "attributs_table": "<table id=\"tablepress-53\" class=\"tablepress tablepress-id-53\">",
+    "entete": [
+     {
+      "texte": "Status",
+      "liens": []
+     },
+     {
+      "texte": "What It Means",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Decision Pending",
+       "liens": []
+      },
+      {
+       "texte": "The case has been filed and is active, but no ruling has been issued yet, the preliminary block has elapsed, or a prior ruling was vacated and no other ruling is currently in effect (see Glossary).",
+       "liens": []
+      }
+     ]
+    ]
+   },
+   {
+    "lignes": 8,
+    "attributs_table": "<table id=\"tablepress-54\" class=\"tablepress tablepress-id-54\">",
+    "entete": [
+     {
+      "texte": "Status",
+      "liens": []
+     },
+     {
+      "texte": "What It Means",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Government Action Temporarily Blocked",
+       "liens": []
+      },
+      {
+       "texte": "A district court has issued a temporary restraining order (TRO), preliminary injunction (PI), or a stay under 5 U.S.C. § 705 (Section 705 Stay), pausing the government action while the litigation continues. The temporary block remains in effect until it expires or is stayed or vacated by a further c",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Blocked",
+       "liens": []
+      },
+      {
+       "texte": "A district court has ruled that at least one of the challenged government actions is unlawful — through a permanent injunction on the merits or other available remedy — and has constrained or blocked the government’s ability to carry it out. Rulings on any other challenged actions or claims may stil",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Temporarily Blocked; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A district court has granted a TRO, PI, or Section 705 Stay, pausing the government action; the government has appealed, but the appellate court has not yet issued a decision. The block remains in effect during this period until the appellate court orders otherwise.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Blocked; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A district court has blocked the government action on the merits; the government has appealed, but the appellate court has not yet issued a decision. The block remains in effect during this period until the appellate court orders otherwise.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Temporarily Blocked; Appellate Court Affirmed Block",
+       "liens": []
+      },
+      {
+       "texte": "A district court had temporarily paused the government action via a TRO, PI, or Section 705 Stay; the government appealed, and the appellate court affirmed that block. The government action remains paused while the litigation continues.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Blocked; Appellate Court Affirmed Block",
+       "liens": []
+      },
+      {
+       "texte": "A district court had blocked the government action on the merits; the government appealed, and the appellate court affirmed that block. The government action remains blocked.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Case Closed in Favor of Plaintiff(s)",
+       "liens": []
+      },
+      {
+       "texte": "The case has concluded, and the plaintiff(s) largely obtained the result they sought. This includes cases with a final judgment for the plaintiff(s) and no further avenues for appeal, and cases in which the government rescinded or abandoned the challenged action, and the case was dismissed as moot (",
+       "liens": []
+      }
+     ]
+    ]
+   },
+   {
+    "lignes": 8,
+    "attributs_table": "<table id=\"tablepress-58\" class=\"tablepress tablepress-id-58\">",
+    "entete": [
+     {
+      "texte": "Status",
+      "liens": []
+     },
+     {
+      "texte": "What It Means",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Temporary Block of Government Action Denied",
+       "liens": []
+      },
+      {
+       "texte": "A district court has denied a request for a TRO, PI, or Section 705 Stay, or the TRO, PI, or Section 705 Stay request was denied or dissolved as moot (including where underlying claims were dismissed on a partial ruling); the government action may continue while the litigation proceeds.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Block of Government Action Denied",
+       "liens": []
+      },
+      {
+       "texte": "A district court has denied a request to block the government action on the merits; the government action may proceed.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Temporary Block of Government Action Denied; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A district court has denied a request for a TRO, PI, or Section 705 Stay; the plaintiff(s) have appealed, but the appellate court has not yet issued a decision. The government action may continue during this period until the appellate court orders otherwise.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Block of Government Action Denied; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A district court has denied a request to block the government action on the merits; the plaintiff(s) have appealed, but the appellate court has not yet issued a decision. The government action may proceed during this period until the appellate court orders otherwise.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Temporarily Unblocked by Appellate Court",
+       "liens": []
+      },
+      {
+       "texte": "A district court had temporarily paused the government action via a TRO, PI, or Section 705 Stay (see Government Action Temporarily Blocked) and an appellate court has paused the effect of the district court order(s), allowing the government to continue the action while appellate review proceeds. Th",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Unblocked by Appellate Court",
+       "liens": []
+      },
+      {
+       "texte": "A district court had blocked the government action on the merits; the government appealed, and the appellate court reversed or vacated the district court’s decision. The government action may proceed.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Case Closed/Dismissed in Favor of Government",
+       "liens": []
+      },
+      {
+       "texte": "The case has concluded, and the challenged government action remains in place. This may mean the court issued a final judgment for the government; the case was dismissed on threshold grounds — such as lack of standing, lack of subject-matter jurisdiction, or sovereign immunity — in a way that leaves",
+       "liens": []
+      }
+     ]
+    ]
+   },
+   {
+    "lignes": 6,
+    "attributs_table": "<table id=\"tablepress-57\" class=\"tablepress tablepress-id-57\">",
+    "entete": [
+     {
+      "texte": "Status",
+      "liens": []
+     },
+     {
+      "texte": "What It Means",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Government Action Temporarily Blocked in Part; Temporary Block Denied in Part",
+       "liens": []
+      },
+      {
+       "texte": "A court has granted a TRO, PI, or Section 705 Stay as to some claims or parties, but denied it as to others.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Temporarily Blocked in Part; Temporary Block Denied in Part; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A court has granted a TRO, PI, or Section 705 Stay as to some claims or parties, but denied it as to others — or has granted separate TROs, PIs, or Section 705 Stays on distinct claims where one has since been stayed by an appellate court pending appeal while the other remains in force. In either ca",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Blocked in Part; Block Denied in Part",
+       "liens": []
+      },
+      {
+       "texte": "A court has ruled on the merits, blocking the government action in some respects but not others.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Government Action Blocked in Part; Block Denied in Part; Appeal Pending",
+       "liens": []
+      },
+      {
+       "texte": "A court has granted a permanent injunction as to some claims or parties, but denied it as to others; one of the parties has appealed, but the appellate court has not yet issued a decision. The court ruling remains in effect during this period until the appellate court orders otherwise.",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Case Closed; Split Outcome",
+       "liens": []
+      },
+      {
+       "texte": "The case has concluded without a full victory for either party. This case status may reflect a settlement in which both parties made substantive concessions, or a final court ruling that resolved the case partially in favor of each party.",
+       "liens": []
+      }
+     ]
+    ]
+   },
+   {
+    "lignes": 2,
+    "attributs_table": "<table id=\"tablepress-55\" class=\"tablepress tablepress-id-55\">",
+    "entete": [
+     {
+      "texte": "Status",
+      "liens": []
+     },
+     {
+      "texte": "What It Means",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Case Closed",
+       "liens": []
+      },
+      {
+       "texte": "The case has concluded without a clear win or loss for either party. For example, the case has been dismissed by agreement of the parties, the court has found the issues moot (see Glossary) in a manner that is not clearly a win or a loss for either party, or the plaintiffs have voluntarily dismissed",
+       "liens": []
+      }
+     ]
+    ]
+   }
+  ]
  },
- "js_tracker_4": {
-  "url": "https://www.justsecurity.org/162830/2026-midterms-election-integrity-litigation-tracker/",
+ "jst_habeas": {
+  "url": "https://www.justsecurity.org/133928/immigration-habeas-tracker/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 236106,
-  "tableaux": 0,
-  "lignes_tableaux": 0,
-  "integres": []
+  "taille": 5854170,
+  "tableaux": [
+   {
+    "lignes": 805,
+    "attributs_table": "<table id=\"tablepress-46\" class=\"tablepress tablepress-id-46 tablepress-responsive\">",
+    "entete": [
+     {
+      "texte": "Case Details",
+      "liens": []
+     },
+     {
+      "texte": "Date Petition Filed",
+      "liens": []
+     },
+     {
+      "texte": "District",
+      "liens": []
+     },
+     {
+      "texte": "Noncompliance",
+      "liens": []
+     },
+     {
+      "texte": "Escalation / Accountability",
+      "liens": []
+     },
+     {
+      "texte": "False / Misleading Info",
+      "liens": []
+     },
+     {
+      "texte": "Obstruction of Habeas Review",
+      "liens": []
+     },
+     {
+      "texte": "Misconduct / Irregularity",
+      "liens": []
+     },
+     {
+      "texte": "Arbitrary and Capricious",
+      "liens": []
+     },
+     {
+      "texte": "Case Summary",
+      "liens": []
+     },
+     {
+      "texte": "Judge",
+      "liens": []
+     },
+     {
+      "texte": "Appointing President",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "Campos-Ruiz v. McGregor , 2:26-cv-01932 (D. Ariz.) Judge Diane J. Humetewa (Obama appointee)",
+       "liens": [
+        "https://www.courtlistener.com/docket/72526230/campos-ruiz-v-mcgregor/"
+       ]
+      },
+      {
+       "texte": "2026-03-20",
+       "liens": []
+      },
+      {
+       "texte": "D. Ariz.",
+       "liens": []
+      },
+      {
+       "texte": "Court-Ordered Filing / Information / Evidence",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "This habeas case involved Respondents’ failure to respond to Judge Humetewa’s show-cause order, after which the court held that they had “failed to justify Petitioner’s detention” and ordered immediate release. Petitioner Jose C.-R. filed his habeas petition on Mar. 20, 2026. On Mar. 24, Judge Humet",
+       "liens": [
+        "https://www.courtlistener.com/docket/72526230/campos-ruiz-v-mcgregor/#entry-1",
+        "https://www.justsecurity.org/wp-content/uploads/2026/05/Campos-Ruiz-v.-McGregor-226-cv-01932-D.-Ariz.-Order-to-Show-Cause-March-24-2026.pdf",
+        "https://storage.courtlistener.com/recap/gov.uscourts.azd.1484481/gov.uscourts.azd.1484481.9.0.pdf"
+       ]
+      },
+      {
+       "texte": "Judge Diane J. Humetewa",
+       "liens": []
+      },
+      {
+       "texte": "Obama",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Suarez-Maya v. Bondi , 2:25-cv-04756 (D. Ariz.) Judge Michael T. Liburdi (Trump appointee)",
+       "liens": [
+        "https://www.courtlistener.com/docket/72051446/suarez-maya-v-bondi/"
+       ]
+      },
+      {
+       "texte": "2025-12-17",
+       "liens": []
+      },
+      {
+       "texte": "D. Ariz.",
+       "liens": []
+      },
+      {
+       "texte": "Court-Ordered Filing / Information / Evidence",
+       "liens": []
+      },
+      {
+       "texte": "Show-Cause / Sanctions / Contempt Warning",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "This habeas case involved Respondents’ failure to respond by the court-set deadline after Judge Liburdi ordered them to show cause why habeas relief should not issue in a Bautista-related detention challenge, noting that courts had rejected ICE’s § 1225(b)(2) mandatory-detention position “with near ",
+       "liens": [
+        "https://www.justsecurity.org/wp-content/uploads/2026/05/Suarez-Maya-v.-Bondi-225-cv-04756-D.-Ariz.-Order-To-Answer-Dec.-18-2025.pdf",
+        "https://www.courtlistener.com/docket/72051446/suarez-maya-v-bondi/#entry-1",
+        "https://www.courtlistener.com/docket/72051446/suarez-maya-v-bondi/#entry-2"
+       ]
+      },
+      {
+       "texte": "Judge Michael T. Liburdi",
+       "liens": []
+      },
+      {
+       "texte": "Trump",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "Dzhuraev v. Bondi , 2:26-cv-00438 (D. Ariz.) Judge Sharad H. Desai (Biden appointee)",
+       "liens": [
+        "https://www.courtlistener.com/docket/72187645/dzhuraev-v-bondi/"
+       ]
+      },
+      {
+       "texte": "2026-01-26",
+       "liens": []
+      },
+      {
+       "texte": "D. Ariz.",
+       "liens": []
+      },
+      {
+       "texte": "Court-Ordered Filing / Information / Evidence Late Release",
+       "liens": []
+      },
+      {
+       "texte": "Show-Cause / Sanctions / Contempt Proceedings Initiated Enforcement Review Initiated",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "",
+       "liens": []
+      },
+      {
+       "texte": "This habeas case involved an unsupported government answer and a later release-compliance dispute after Judge Desai granted habeas relief. Although the court had ordered Respondents to support their answer with documentary evidence and, where applicable, personal-knowledge affidavits, Judge Desai la",
+       "liens": [
+        "https://storage.courtlistener.com/recap/gov.uscourts.azd.1476484/gov.uscourts.azd.1476484.6.0.pdf",
+        "https://www.courtlistener.com/docket/72187645/dzhuraev-v-bondi/#entry-1",
+        "https://www.justsecurity.org/wp-content/uploads/2026/05/Dzhuraev-v.-Bondi-226-cv-00438-D.-Ariz.-Order-To-Answer-January-26-2026.pdf"
+       ]
+      },
+      {
+       "texte": "Judge Sharad H. Desai",
+       "liens": []
+      },
+      {
+       "texte": "Biden",
+       "liens": []
+      }
+     ]
+    ]
+   }
+  ]
  },
- "js_tracker_5": {
-  "url": "https://www.justsecurity.org/category/trackers/",
+ "jst_corruption": {
+  "url": "https://www.justsecurity.org/117267/anti-corruption-tracker/",
   "statut": 200,
   "type": "text/html; charset=UTF-8",
-  "taille": 192262,
-  "tableaux": 0,
-  "lignes_tableaux": 0,
-  "integres": []
+  "taille": 398365,
+  "tableaux": [
+   {
+    "lignes": 126,
+    "attributs_table": "<table id=\"tablepress-44\" class=\"tablepress tablepress-id-44 tablepress-responsive\">",
+    "entete": [
+     {
+      "texte": "Date Of Action",
+      "liens": []
+     },
+     {
+      "texte": "Topic",
+      "liens": []
+     },
+     {
+      "texte": "Action",
+      "liens": []
+     },
+     {
+      "texte": "Additional Context",
+      "liens": []
+     },
+     {
+      "texte": "Government Entity",
+      "liens": []
+     }
+    ],
+    "exemples": [
+     [
+      {
+       "texte": "2026-08-20",
+       "liens": []
+      },
+      {
+       "texte": "Transparency",
+       "liens": []
+      },
+      {
+       "texte": "DOJ named Katie Blankenberg to lead its Office of Information Policy (OIP), which oversees DOJ’s handling of Freedom of Information Act requests and provides government-wide guidance on FOIA compliance. Blankenberg previously worked for Judicial Watch, a conservative legal advocacy organization know",
+       "liens": [
+        "https://news.bloomberglaw.com/us-law-week/foia-chief-brings-right-wing-bonafides-to-nonpartisan-doj-office"
+       ]
+      },
+      {
+       "texte": "Blankenberg is the second political appointee to lead OIP since DOJ removed its longtime career director in March 2025 and converted the position from a career to a political post. OIP has historically been led by career FOIA officials and plays an important role in shaping federal transparency poli",
+       "liens": [
+        "https://www.reuters.com/world/us/trump-justice-dept-fires-head-pardon-office-2025-03-07/",
+        "https://news.bloomberglaw.com/us-law-week/foia-chief-brings-right-wing-bonafides-to-nonpartisan-doj-office"
+       ]
+      },
+      {
+       "texte": "Department of Justice (DOJ)",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "2026-08-18",
+       "liens": []
+      },
+      {
+       "texte": "Enforcement",
+       "liens": []
+      },
+      {
+       "texte": "DOJ issued a final rule formally establishing the National Fraud Enforcement Division (NFED) as a separate litigating division in the Justice Department, expanding the NFED’s mandate beyond the specific units and personnel previously transferred to it, including jurisdiction over criminal fraud gene",
+       "liens": [
+        "https://www.federalregister.gov/documents/2026/08/18/2026-16846/establishing-the-national-fraud-enforcement-division",
+        "https://news.bloomberglaw.com/us-law-week/doj-rule-expands-fraud-division-powers-restrains-criminal-chief"
+       ]
+      },
+      {
+       "texte": "The rule formalizes much of the reorganization of federal fraud enforcement that DOJ had previously announced, including the creation of NFED and the transfer of existing fraud and tax functions into the new division. But it also goes further, giving NFED a broad jurisdictional mandate over categori",
+       "liens": []
+      },
+      {
+       "texte": "Department of Justice (DOJ)",
+       "liens": []
+      }
+     ],
+     [
+      {
+       "texte": "2026-08-11",
+       "liens": []
+      },
+      {
+       "texte": "Enforcement",
+       "liens": []
+      },
+      {
+       "texte": "The Department of the Treasury’s Financial Crimes Enforcement Network (FinCEN) issued a final rule permanently eliminating the Corporate Transparency Act beneficial ownership reporting requirements for U.S. companies and U.S. persons.",
+       "liens": [
+        "https://www.fincen.gov/system/files/2026-08/BOIFinalRuleforFR.pdf"
+       ]
+      },
+      {
+       "texte": "Under the new rule, FinCEN will delete previously-reported data for U.S. individuals from its beneficial ownership database and remove obligations for U.S. persons to update FinCEN ID details. While U.S. entities and individuals are fully exempt, foreign reporting companies must still disclose benef",
+       "liens": []
+      },
+      {
+       "texte": "Department of Treasury",
+       "liens": []
+      }
+     ]
+    ]
+   }
+  ]
  }
 }
