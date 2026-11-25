@@ -15,33 +15,27 @@
   ]
  },
  "iw_donnees_0": {
-  "url": "https://www.integritywatch.eu/data/mepmeetings/legislature_9/mepmeetings.json?",
-  "statut": 200,
-  "type": "application/json",
-  "taille": 32498471
- },
- "iw_donnees_1": {
-  "url": "https://www.integritywatch.eu/data/mepmeetings/legislature_9/mepmeetings_lobbysts_tr_match.json?",
-  "statut": 200,
-  "type": "application/json",
-  "taille": 1806010
- },
- "iw_donnees_2": {
   "url": "https://www.integritywatch.eu/data/meps/dpi_legislature_10/meps.json?",
   "statut": 200,
   "type": "application/json",
   "taille": 951048
  },
- "iw_donnees_3": {
-  "url": "https://www.integritywatch.eu/data/meps/dpi_legislature_9/meps.json?",
-  "statut": 200,
-  "type": "application/json",
-  "taille": 885858
- },
- "iw_donnees_4": {
+ "iw_donnees_1": {
   "url": "https://integritywatch.eu/autoupdate_data_eu/mepmeetings/backups.json",
   "statut": 200,
   "type": "application/json",
   "taille": 965
+ },
+ "iw_donnees_2": {
+  "url": "https://www.integritywatch.eu/mepmeetings.json?",
+  "statut": 404,
+  "type": "text/html",
+  "taille": 1040
+ },
+ "iw_donnees_3": {
+  "url": "https://www.integritywatch.eu/mepmeetings_lobbysts_tr_match.json?",
+  "statut": 404,
+  "type": "text/html",
+  "taille": 1040
  }
 }
