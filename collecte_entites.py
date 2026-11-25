@@ -284,6 +284,9 @@ def principal() -> int:
                 cible = "dirigeant public" if sorte in ("ministre", "chef d'État ou de gouvernement", "cabinet américain") else sorte
                 gardees = [r for r in _precedent() if r["sorte"] in (sorte, cible) and r["source"] == "Wikidata"]
                 lignes += gardees
+    if len(mb) >= 10:   # la page officielle fait foi pour le gouvernement américain : les membres Wikidata (hors chef) sortent
+        lignes = [x for x in lignes if not (x.get("pays") == "US" and x["sorte"] in ("dirigeant public", "ministre")
+                                            and x["source"] == "Wikidata" and not x.get("chef"))]
     print(json.dumps(bilan, ensure_ascii=False))
     if not lignes:
         print("aucune entité : fichier précédent conservé")
