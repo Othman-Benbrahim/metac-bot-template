@@ -176,6 +176,7 @@ FLUX = {
                      "https://blog.google/threat-analysis-group/rss/",             # Google Threat Analysis Group
                      "https://www.cisa.gov/cybersecurity-advisories/all.xml"],     # CISA : avis (dont avis conjoints)
     "analyse": ["https://www.atlanticcouncil.org/feed"],                         # Atlantic Council (dont DFRLab)
+    "geopolitique_europe": ["https://legrandcontinent.eu/fr/feed/"],            # Le Grand Continent (revue géopolitique européenne), source ajoutée par l'auteur le 2026-11-25
     "afrique": ["https://fr.allafrica.com/tools/headlines/rdf/westafrica/headlines.rdf"],  # AllAfrica, Afrique de l'Ouest
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
@@ -324,7 +325,7 @@ MATIERES = {m: re.compile(rx, re.I) for m, rx in {
     "cibles": r"(journalist|activist|dissident|lawmaker|opposition|human rights defender)\w*\W+(?:\w+\W+){0,8}?(spyware|hack\w*|surveil\w*|target\w*)"
               r"|(spyware|surveil\w*)\W+(?:\w+\W+){0,8}?(journalist|activist|dissident|lawmaker)",
     "chiffrement": r"end-to-end encrypt|encryption backdoor|threat notification"}.items()}
-FAMILLES_MATIERES = {"economie", "matieres_presse", "surveillance", "cyber", "renseignement", "tech", "defense"}
+FAMILLES_MATIERES = {"geopolitique_europe", "economie", "matieres_presse", "surveillance", "cyber", "renseignement", "tech", "defense"}
 MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 # 0.10.457 (décision de l'auteur, 2026-11-22, 11 h 36) : articles nouveaux par famille et par jour, avec ou sans pays
 # reconnu, pour la carte des écosystèmes (lecteur-local) ; compte seulement, jamais le texte

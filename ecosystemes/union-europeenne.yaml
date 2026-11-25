@@ -108,7 +108,10 @@ compartiments:
     temps: années
     vitesse: semaines
     taille: macro
-  traces: *id001
+  traces:
+  - source: comptes des termes validés dans les flux RSS (dépôt lecteur-local, listes/valides.txt)
+    statut: a_brancher
+  - {source: "articles par jour du Grand Continent (revue géopolitique européenne, flux RSS ; compte seulement)", statut: collecte, fichier: collecte_rss.py, adaptateur: "rss_famille:geopolitique_europe"}
 - id: budget
   nom: Budget de l'Union (cadre financier pluriannuel)
   organisation: economie

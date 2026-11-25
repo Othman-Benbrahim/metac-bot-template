@@ -184,7 +184,7 @@ def recit_russe(reg: Path, pays: str, colonne: str = "articles") -> list[tuple[s
 # _grasland, _fusion le sont aussi, par le préfixe).
 HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversite", "defense", "sante_afrique", "crime",
              "genre", "psyche", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique",   # 0.10.456
-             "surveillance")   # 2026-11-25
+             "surveillance", "geopolitique_europe")   # 2026-11-25
 
 
 def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:
