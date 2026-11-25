@@ -37,6 +37,8 @@ compartiments:
   - sortie officielle des trois pays de la CEDEAO le 29 janvier 2025 ; confédération de l'Alliance des États du Sahel,
     passeport et force militaire communs annoncés (presse, janvier-février 2025)
   - gouvernements militaires issus de coups d'État
+  - 'mécanisme : l''insécurité djihadiste use les gouvernements civils et sert de justification aux putschs ; les foules qui fêtent les militaires disent la défiance envers des dirigeants jugés incapables, et les juntes adoptent un discours souverainiste et anti-français qui accompagne le remplacement de la France par la Russie (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
+  - 'mécanisme : au Niger, les sanctions de la CEDEAO et de l''UEMOA après le putsch de juillet 2023 ont fait monter les prix ; l''aide suspendue (1,17 milliard de dollars, 6,45 % du PIB) a imposé une baisse de 40 % du budget et l''électricité venue du Nigeria (70 % des besoins) a été coupée ; la junte a abrogé la loi de 2015 qui criminalisait le transport des migrants, regagnant le Nord qui vivait de cette économie de transit et privant l''UE d''un levier (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   acteurs:
   - nom: Alliance des États du Sahel (AES)
     taille: macro
@@ -50,8 +52,6 @@ compartiments:
     vitesse: mois
     organisation: statut
     facette: statut
-  - 'mécanisme : l''insécurité djihadiste use les gouvernements civils et sert de justification aux putschs ; les foules qui fêtent les militaires disent la défiance envers des dirigeants jugés incapables, et les juntes adoptent un discours souverainiste et anti-français qui accompagne le remplacement de la France par la Russie (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
-  - 'mécanisme : au Niger, les sanctions de la CEDEAO et de l''UEMOA après le putsch de juillet 2023 ont fait monter les prix ; l''aide suspendue (1,17 milliard de dollars, 6,45 % du PIB) a imposé une baisse de 40 % du budget et l''électricité venue du Nigeria (70 % des besoins) a été coupée ; la junte a abrogé la loi de 2015 qui criminalisait le transport des migrants, regagnant le Nord qui vivait de cette économie de transit et privant l''UE d''un levier (Atlas géopolitique mondial 2025, rédigé de mai 2023 à avril 2024)'
   niveau:
     espace: région
     temps: années
