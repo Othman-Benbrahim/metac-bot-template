@@ -1,0 +1,53 @@
+{
+ "genere_le": "2026-11-25",
+ "compartiments_sans_serie": [
+  [
+   "dirigeants-elus:executifs",
+   2
+  ],
+  [
+   "sciences-techniques:ia",
+   2
+  ],
+  [
+   "dirigeants-elus:mandats_succession",
+   1
+  ],
+  [
+   "politique-interieure:contestation",
+   1
+  ],
+  [
+   "information-cyber:recits",
+   1
+  ],
+  [
+   "economie-entreprises:entreprises",
+   1
+  ],
+  [
+   "militaire:technologies",
+   1
+  ],
+  [
+   "surveillance-espionnage:biometrie",
+   1
+  ],
+  [
+   "surveillance-espionnage:cibles",
+   1
+  ],
+  [
+   "surveillance-espionnage:industrie_intrusion",
+   1
+  ],
+  [
+   "medias-diffusion:plateformes_sociales",
+   1
+  ],
+  [
+   "economie-entreprises:regles_sectorielles",
+   1
+  ]
+ ]
+}

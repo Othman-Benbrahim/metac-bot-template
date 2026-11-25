@@ -1,0 +1,203 @@
+{
+"2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md": {
+"jour": "2026-11-25",
+"url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:executifs",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "dirigeants-elus:mandats_succession",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-25/au-soudan-le-monde-qui-vient-apr-s-l-ordre-lib-ral-a-d-j-com.md": {
+"jour": "2026-11-25",
+"url": "https://legrandcontinent.eu/fr/2026/11/25/le-soudan-microcosme-de-ce-qui-succede-a-lordre-mondial-liberal/",
+"compartiments": [],
+"chiffres": []
+},
+"2026-11-25/comment-moscou-exploite-les-manifestations-de-la-jeunesse-en.md": {
+"jour": "2026-11-25",
+"url": "https://legrandcontinent.eu/fr/2026/11/24/comment-moscou-exploite-les-manifestations-de-la-jeunesse-en-europe-pour-nourrir-sa-guerre-informationnelle/",
+"compartiments": [
+{
+"compartiment": "politique-interieure:contestation",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "information-cyber:recits",
+"series": [],
+"attention": [
+{
+"adaptateur": "recit_russe:MD",
+"source": "articles des médias d'État russes sur la Moldavie",
+"date": "2026-11-24",
+"valeur": 0.0,
+"age_jours": 1,
+"variation": 0.0,
+"z": 0.0,
+"anormal": false
+}
+]
+}
+],
+"chiffres": []
+},
+"2026-11-25/moscou-est-la-troisi-me-rome-il-n-y-en-aura-pas-de-quatri-me.md": {
+"jour": "2026-11-25",
+"url": "https://legrandcontinent.eu/fr/2026/11/24/moscou-est-la-troisieme-rome-il-ny-en-aura-pas-de-quatrieme/",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:executifs",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md": {
+"jour": "2026-11-25",
+"url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+"compartiments": [
+{
+"compartiment": "economie-entreprises:entreprises",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-americaine:congres",
+"series": [
+{
+"adaptateur": "congres",
+"source": "réunions de commission du Congrès par date prévue",
+"date": "2026-11-25",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-25/l-ukraine-devient-une-puissance-mondiale-des-drones-militair.md": {
+"jour": "2026-11-25",
+"url": "https://www.atlanticcouncil.org/blogs/ukrainealert/ukraine-is-now-a-drone-superpower-at-sea-on-land-and-in-the-air/",
+"compartiments": [
+{
+"compartiment": "militaire:technologies",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "45 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-25/the-biometric-dragnet.md": {
+"jour": "2026-11-25",
+"url": "https://citizenlab.ca/the-biometric-dragnet/",
+"compartiments": [
+{
+"compartiment": "surveillance-espionnage:biometrie",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss_matiere:biometrie",
+"source": "articles qui nomment la reconnaissance faciale ou la biométrie, par jour ; flux suivis : Citizen Lab, EFF, The Record, Google TAG, CISA, CERT-FR, Intelligence O",
+"date": "2026-11-25",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": -2.0
+}
+]
+},
+{
+"compartiment": "sciences-techniques:ia",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-25/gangsters-run-the-world-citizen-lab-founder-ron-deibert-war.md": {
+"jour": "2026-11-25",
+"url": "https://citizenlab.ca/gangsters-run-the-world-citizen-lab-founder-ron-deibert-warns-of-unchecked-spyware-buse/",
+"compartiments": [
+{
+"compartiment": "surveillance-espionnage:cibles",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss_matiere:cibles",
+"source": "articles où une cible (journaliste, militant, opposant, élu) est rapprochée d'un logiciel espion ou d'une surveillance, par jour ; flux suivis : Citizen Lab, EF",
+"date": "2026-11-25",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0
+}
+]
+},
+{
+"compartiment": "surveillance-espionnage:industrie_intrusion",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss_matiere:spyware",
+"source": "articles qui nomment un logiciel espion ou un vendeur (Pegasus, Predator, Paragon, NSO, Intellexa, Candiru, sans clic), par jour ; flux suivis : Citizen Lab, EF",
+"date": "2026-11-25",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0
+}
+]
+}
+],
+"chiffres": []
+},
+"2026-11-25/entr-e-en-vigueur-de-r-gles-strictes-de-v-rification-d-ge-en.md": {
+"jour": "2026-11-25",
+"url": "https://www.eff.org/deeplinks/2026/11/new-york-and-california-age-gating-rules-go-effect-new-year",
+"compartiments": [
+{
+"compartiment": "medias-diffusion:plateformes_sociales",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "economie-entreprises:regles_sectorielles",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "15 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-25/signal-bloque-par-d-faut-les-agents-ia-dans-ses-chats-priv-s.md": {
+"jour": "2026-11-25",
+"url": "https://www.eff.org/deeplinks/2026/11/signal-now-blocks-ai-agents",
+"compartiments": [
+{
+"compartiment": "sciences-techniques:ia",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+}
+}

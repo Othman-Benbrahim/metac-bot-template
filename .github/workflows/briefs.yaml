@@ -43,6 +43,9 @@ jobs:
       - name: Questions ouvertes touchées par un brief (signal pour l'auteur, sans effet sur les prévisions)
         if: always()
         run: uv run python -u briefs_questions.py || true
+      - name: Recoupement chiffré des briefs (séries de la carte au jour du brief ; calculé par le code)
+        if: always()
+        run: uv run python -u recoupement_briefs.py || true
       - name: Enregistrer
         if: always()
         run: |
@@ -50,6 +53,7 @@ jobs:
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d briefs ]; then git add briefs; fi
           if [ -f registre/briefs-questions.json ]; then git add -f registre/briefs-questions.json; fi
+          for f in registre/briefs-recoupement.json registre/briefs-recoupement-inventaire.json; do if [ -f $f ]; then git add -f $f; fi; done
           if ! git diff --cached --quiet; then
             git commit -m "briefs du $(date -u +%Y-%m-%d)"
             git pull --rebase
