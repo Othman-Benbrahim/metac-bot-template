@@ -100,6 +100,8 @@ def adapter(modele: str, kw: dict | None = None, env=os.environ) -> tuple[str, d
         m = f"openai/{dep}"
         kw.update(base_url=base, api_key=env.get("AZURE_AI_API_KEY"))
     nom = m.rsplit("/", 1)[-1].lower()
+    if m.startswith("openrouter/") and nom.startswith("gpt-oss"):
+        kw.setdefault("reasoning_effort", "low")   # 2026-11-25 : sinon le raisonnement mange la réponse (relais des briefs)
     if re.match(r"(gpt-5|o1|o3|o4)", nom):
         kw["drop_params"] = True
         kw.pop("top_p", None)
@@ -164,6 +166,20 @@ def passagere(r: dict) -> bool:
     return bool(r.get("erreur")) and not r.get("disponible") and bool(PASSAGERE.search(r["erreur"]))
 
 
+# 2026-11-25 (décision d'auteur, 15 h 06) : OpenRouter seulement EN SECOURS, en dernier de chaque suite, quand la clé
+# OPENROUTER_API_KEY est présente. Même modèle que le relais des briefs (gpt-oss-120b). ALPHABET_SECOURS_OPENROUTER
+# change le modèle ; « 0 » l'éteint. Le contradicteur ne prend jamais le même modèle que le principal retenu.
+SECOURS_OPENROUTER = "openrouter/openai/gpt-oss-120b"
+
+
+def suite_role(role: str, env=os.environ) -> list[str]:
+    s = suite(env.get(ROLES[role]))
+    sec = (env.get("ALPHABET_SECOURS_OPENROUTER") or SECOURS_OPENROUTER).strip()
+    if s and env.get("OPENROUTER_API_KEY") and sec != "0" and sec not in s:
+        s.append(sec)
+    return s
+
+
 async def choisir(env=os.environ, appel=None, attendre=asyncio.sleep) -> tuple[dict, list[dict]]:
     """Premier modèle valide de chaque suite. Le petit rôle retombe sur le principal ; le contradicteur peut manquer.
 
@@ -178,7 +194,9 @@ async def choisir(env=os.environ, appel=None, attendre=asyncio.sleep) -> tuple[d
             if tour:
                 await attendre(60 * tour)
             ce_tour = []
-            for m in suite(env.get(var)):
+            for m in suite_role(role, env):
+                if role == "contradicteur" and m == choix.get("principal"):
+                    continue   # un contradicteur identique au lecteur ne contredit rien
                 r = await sonder(m, appel)
                 r["role"] = role
                 if tour:
@@ -199,7 +217,7 @@ def appliquer(choix: dict, env=os.environ) -> None:
     """Remplace chaque suite par le modèle retenu, pour la configuration du bot ; « {petit} » dans
     ALPHABET_CHERCHEUR devient le petit modèle retenu (ex. « smart-searcher/{petit} »)."""
     # 0.7.4 : secours des rôles légers en cours de passage : le reste de la suite légère, puis le principal retenu.
-    reste = [m for m in suite(env.get("ALPHABET_PETIT_LLM")) if m != choix.get("petit")]
+    reste = [m for m in suite_role("petit", env) if m != choix.get("petit")]
     env["ALPHABET_PETIT_SECOURS"] = ",".join(dict.fromkeys(reste + [choix.get("principal") or ""]).keys()).strip(",")
     if choix.get("principal"):
         env["ALPHABET_LLM"] = choix["principal"]

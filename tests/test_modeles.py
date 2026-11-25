@@ -208,3 +208,27 @@ class TestsTenace(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_secours_openrouter_en_dernier():
+    """2026-11-25 : OpenRouter seulement en secours, en dernier ; le contradicteur ne copie jamais le principal."""
+    import asyncio
+    import alphabet_modeles as am
+    env = {"ALPHABET_LLM": "azure_ai/gpt-5-mini", "ALPHABET_CONTRADICTEUR": "azure_ai/grok-4.7", "OPENROUTER_API_KEY": "x"}
+    assert am.suite_role("principal", env) == ["azure_ai/gpt-5-mini", am.SECOURS_OPENROUTER]
+    assert am.suite_role("petit", env) == []
+    assert am.suite_role("principal", {k: v for k, v in env.items() if k != "OPENROUTER_API_KEY"}) == ["azure_ai/gpt-5-mini"]
+    assert am.suite_role("principal", {**env, "ALPHABET_SECOURS_OPENROUTER": "0"}) == ["azure_ai/gpt-5-mini"]
+
+    async def appel(m, _):   # Azure en panne : tout tombe sur OpenRouter, sauf le contradicteur
+        if m.startswith("azure_ai/"):
+            raise RuntimeError("401 refusé")
+        return '{"ok": true}'
+    choix, _ = asyncio.run(am.choisir(env, appel=appel))
+    assert choix["principal"] == am.SECOURS_OPENROUTER and choix["contradicteur"] is None
+
+    async def appel2(m, _):
+        return '{"ok": true}'
+    choix, essais = asyncio.run(am.choisir(env, appel=appel2))
+    assert choix == {"principal": "azure_ai/gpt-5-mini", "petit": "azure_ai/gpt-5-mini", "contradicteur": "azure_ai/grok-4.7"}
+    assert am.SECOURS_OPENROUTER not in [e["modele"] for e in essais]

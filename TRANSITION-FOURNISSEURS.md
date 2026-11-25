@@ -50,4 +50,5 @@ Les cases « à choisir » se remplissent avant la bascule, après une sonde (wo
 | 2026-11-14 | Mistral Medium 3.5 et DeepSeek indisponibles sur l'abonnement Azure gratuit (pas de demande de quota possible). Déploiement de **gpt-5-mini** (Global Standard). C'est un **nouveau lecteur** (règle 1) : nouvelles séries ; les essais jugés sur Mistral Medium restent sur leurs lignes Mistral. |
 | à la mise en service d'Azure | Secrets Azure ; sonde ; contrôle de continuité (règle 3) ; le lecteur principal passe sur Azure. |
 | 2026-11-23 | Fin des crédits Bedrock : petites tâches et chercheur passent sur Azure. |
+| 2026-11-25 | Décision d'auteur : **OpenRouter en secours seulement**, ajouté en dernier de chaque suite (`openrouter/openai/gpt-oss-120b`, effort de raisonnement bas) quand le secret OPENROUTER_API_KEY est présent ; jamais choisi tant qu'un modèle de la suite répond. Le contradicteur ne prend jamais le même modèle que le principal. `ALPHABET_SECOURS_OPENROUTER=0` l'éteint. Un passage qui y bascule est un **autre lecteur** (règle 1). |
 | à fixer | Passage à OVH, puis à Google, avec les mêmes étapes. |

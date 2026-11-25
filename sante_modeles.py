@@ -33,7 +33,7 @@ def catalogue() -> list[str] | None:
 async def principal() -> int:
     essais = []
     for role, var in am.ROLES.items():
-        for m in am.suite(os.environ.get(var)):
+        for m in am.suite_role(role, os.environ):
             r = await am.sonder(m)
             r["role"] = role
             essais.append(r)
