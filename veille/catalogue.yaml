@@ -80,6 +80,7 @@ flux:
   eurasianet: {titre: "Eurasianet (Caucase et Asie centrale)", url: "https://eurasianet.org/rss"}
   insight_crime: {titre: "InSight Crime (crime organisé, Amériques)", url: "https://insightcrime.org/feed/"}
   kyiv_independent: {titre: "The Kyiv Independent (Ukraine)", url: "https://kyivindependent.com/news-archive/rss/"}
+  just_security: {titre: "Just Security (droit et sécurité, États-Unis ; trackers de procès)", url: "https://www.justsecurity.org/feed/"}
   meduza: {titre: "Meduza, en anglais (média russe indépendant, en exil)", url: "https://meduza.io/rss/en/all"}
   tass: {titre: "TASS, en anglais (agence d'État russe)", url: "https://tass.com/rss/v2.xml"}
   times_of_israel: {titre: "The Times of Israel", url: "https://www.timesofisrael.com/feed/", secours: [{url: "https://www.jpost.com/rss/rssfeedsheadlines.aspx", titre: "The Jerusalem Post"}, {url: "https://www.ynetnews.com/Integration/StoryRss3089.xml", titre: "Ynetnews (Israël)"}]}
@@ -583,7 +584,8 @@ fiches:
     - {titre: "Federal Register", url: "https://www.federalregister.gov/"}
     - {titre: "Congress.gov", url: "https://www.congress.gov/"}
     - {titre: "Cour suprême des États-Unis", url: "https://www.supremecourt.gov/"}
-    flux: [bbc_usa_canada, scotusblog, lm_ameriques]
+    - {titre: "Just Security, trackers (procès contre l'administration, habeas, anticorruption, élections 2026)", url: "https://www.justsecurity.org/category/trackers/"}
+    flux: [bbc_usa_canada, scotusblog, lm_ameriques, just_security]
   politique-interieure:
     region: monde
     liens:
