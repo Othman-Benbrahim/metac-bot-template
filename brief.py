@@ -37,7 +37,7 @@ DOSSIER = ICI / "briefs"
 JOURNAL = DOSSIER / "journal.jsonl"
 FAMILLES = {"geopolitique_europe": 4, "analyse": 2, "surveillance": 2, "defense": 1, "tech": 1}   # flux de collecte_rss.FLUX
 RELAIS = [("openrouter/openai/gpt-oss-120b", "OPENROUTER_API_KEY"),
-          ("gemini/gemini-2.5-flash", "GEMINI_API_KEY"),
+          ("gemini/gemini-flash-latest", "GEMINI_API_KEY"),    # alias de Google vers le Flash courant
           ("mistral/mistral-small-latest", "MISTRAL_API_KEY"),
           ("cerebras/gpt-oss-120b", "CEREBRAS_API_KEY")]
 TEXTE_MAX = 12_000
@@ -123,7 +123,11 @@ def appeler(messages: list[dict], relais=None, appel=None) -> tuple[str, str]:
         import litellm
 
         def appel(m, msgs):
-            r = litellm.completion(model=m, messages=msgs, temperature=0.2, max_tokens=1200, timeout=90)
+            # gpt-oss est un modèle à raisonnement : ses jetons de réflexion comptent dans max_tokens ; trop bas, la
+            # réponse sort vide sur un texte long (premier passage du 2026-11-25). Effort bas et marge large.
+            extra = {"reasoning": {"effort": "low"}} if m.startswith("openrouter/") else {}
+            r = litellm.completion(model=m, messages=msgs, temperature=0.2, max_tokens=4000, timeout=120,
+                                   **({"extra_body": extra} if extra else {}))
             return r.choices[0].message.content or ""
     ordre = relais or [(m.strip(), None) for m in os.environ.get("BRIEF_MODELES", "").split(",") if m.strip()] or RELAIS
     erreurs = []
