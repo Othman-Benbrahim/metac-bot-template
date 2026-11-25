@@ -1,5 +1,24 @@
 {
  "source": "Wikidata (CC0)",
- "requete": "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 \"etat\") (p:P6 ps:P6 \"gouvernement\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 1990)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
- "statut": "refuse_robots"
+ "requete": [
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 \"etat\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 1990 && YEAR(?debut) < 2000)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 \"etat\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2000 && YEAR(?debut) < 2010)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 \"etat\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2010 && YEAR(?debut) < 2020)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P35 ps:P35 \"etat\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2020 && YEAR(?debut) < 2030)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P6 ps:P6 \"gouvernement\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 1990 && YEAR(?debut) < 2000)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P6 ps:P6 \"gouvernement\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2000 && YEAR(?debut) < 2010)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P6 ps:P6 \"gouvernement\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2010 && YEAR(?debut) < 2020)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }",
+  "SELECT ?iso ?poste ?p ?pLabel ?debut ?fin WHERE {\n  ?o wdt:P31 wd:Q3624078; wdt:P297 ?iso.\n  VALUES (?prop ?ps ?poste) { (p:P6 ps:P6 \"gouvernement\") }\n  ?o ?prop ?st. ?st ?ps ?p. ?st pq:P580 ?debut. FILTER(YEAR(?debut) >= 2020 && YEAR(?debut) < 2030)\n  OPTIONAL { ?st pq:P582 ?fin }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr\". } }"
+ ],
+ "statut": "ok",
+ "lignes": 1435,
+ "pays": 194,
+ "sans_fin": 385,
+ "par_decennie": {
+  "1990": 230,
+  "2000": 265,
+  "2010": 481,
+  "2020": 459
+ },
+ "debut_max": "2026-11-07"
 }
