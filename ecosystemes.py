@@ -177,7 +177,7 @@ CLES_PERMISES = {
     "niveau": set(AXES) | {"objet"}, "trace": {"source", "statut", "fichier", "adaptateur", "habitude", "odd"},
     "acteur": {"nom", "taille", "espace", "vitesse", "organisation", "facette"},
     "relation": {"de", "vers", "effet", "retour", "forme", "style", "delai", "force", "intensite", "coupure", "statut", "source", "texte",
-                 "module", "parametres", "series", "verification", "fondement"},
+                 "module", "parametres", "series", "verification", "fondement", "condition"},
     "pont": {"depuis", "vers", "nature", "type", "canal"}}
 # 0.10.319 : un pont dit soit que deux fiches lisent le MÊME phénomène (type: meme, transmission entière et immédiate),
 # soit qu'un compartiment INFLUE sur l'autre fiche (type: influence, par défaut : transmission partielle, avec retard).
@@ -201,6 +201,17 @@ TYPES_PONT = ("meme", "influence", "voisinage")
 # 2026-11-25, 19 h 16 (« on y va ») : étendu à toutes les relations (1 015) ; les 955 hors échantillon sont classées par
 # Claude sans relecture une à une (liste : lecteur-local/listes/fondements-proposes.txt, statut « ? »).
 FONDEMENTS = ("lien", "mecanisme_physique", "causalite_sociale", "evenement", "comparaison", "definition")
+# 2026-11-25, 23 h 12 (décision de l'auteur, d'après Bonaccorsi 2025, ch. final : Pearl et Mackenzie, Hammer 2008) : la
+# CONDITION d'une relation causale, au service du bot (la carte est son terrain d'expérience, pas une fin en soi).
+# - necessaire : sans la cause, pas d'effet. Règle de prévision : P(effet) ≤ P(cause) ; une cause absente suffit à
+#   prévoir « non » (forme logique de la doctrine de l'auteur : une rupture voulue de l'extérieur échoue contre un
+#   terrain solide, le terrain prédisposé étant la condition nécessaire) ;
+# - suffisante_partielle : avec d'autres éléments, la cause forme un ensemble suffisant qui ne l'est plus sans elle
+#   (Hammer). Règle : sa présence ne donne pas l'effet seule ; vérifier le reste de l'ensemble avant de monter la
+#   probabilité. Ne la retenir que si elle passe les quatre critères de Hammer : une raison connue la relie à l'effet ;
+#   sa variation est observable ; on pouvait agir dessus ; rien d'autre n'aurait facilement joué le même rôle.
+# Champ facultatif, posé relation par relation QUAND le bot s'en sert pour une question, pas en masse.
+CONDITIONS = ("necessaire", "suffisante_partielle")
 
 
 # 0.10.326 (Schelling, ch. 2, « les mathématiques inéluctables des chaises musicales ») : une IDENTITÉ comptable tient
@@ -292,6 +303,8 @@ def cles_inconnues(fiche: dict) -> list[str]:
         voir(r, "relation", f"relation {r.get('de')} → {r.get('vers')}")
         if isinstance(r, dict) and r.get("fondement") is not None and r["fondement"] not in FONDEMENTS:
             err.append(f"{t} relation {r.get('de')} → {r.get('vers')} : fondement inconnu {r['fondement']!r} ({', '.join(FONDEMENTS)})")
+        if isinstance(r, dict) and r.get("condition") is not None and r["condition"] not in CONDITIONS:
+            err.append(f"{t} relation {r.get('de')} → {r.get('vers')} : condition inconnue {r['condition']!r} ({', '.join(CONDITIONS)})")
     for p in fiche.get("ponts") or []:
         voir(p, "pont", "ponts")
     for x in fiche.get("identites") or []:
