@@ -322,6 +322,23 @@ compartiments:
     objet: information
   traces:
   - {source: "confiance dans les institutions (enquête de l'OCDE sur la confiance ; Eurobaromètre) ; à brancher", statut: a_brancher}
+- id: politiques_anti_desinformation
+  nom: Politiques de lutte contre la désinformation (lois, agences, régulation)
+  organisation: statut
+  elements:
+  - "France : Viginum (2021) ne retient une ingérence numérique étrangère que si quatre critères sont réunis : atteinte possible aux intérêts fondamentaux, contenu inexact ou trompeur, diffusion artificielle et massive, acteur étranger impliqué (décret du 13 juillet 2021) ; stratégie nationale 2026-2030"
+  - "78 pays ont adopté 105 lois sur la désinformation entre 2011 et 2022 : 14 entre 2011 et 2015, 91 entre 2016 et 2022, dont 36 en 2020 ; journalistes emprisonnés pour ce motif : 22 (2011-2015), 225 (2016-2022) (CIMA, « Chilling Legislation »)"
+  - "moteurs de ces lois relevés sur 177 pays : popularisation du terme « fake news », influence occidentale sur le discours de sécurité, désir de contrôler les flux d'information, révélations sur les plateformes (Citizen Lab, juin 2025)"
+  - "divergence transatlantique : l'Europe renforce (règlement sur les services numériques, bouclier européen de la démocratie) ; les États-Unis ferment en avril 2025 le bureau du Département d'État chargé de la désinformation étrangère, accusé de « censurer les Américains » (Times of Israel, 17 avril 2025)"
+  - "les mêmes outils protègent un débat public ou servent à faire taire des critiques selon le régime : c'est la tension propre à ce compartiment"
+  niveau:
+    espace: pays à monde
+    temps: années
+    vitesse: mois à années
+    taille: macro
+    objet: normes
+  traces:
+  - {source: "lois sur la désinformation adoptées par an et par pays (base CIMA / NED) ; à brancher", statut: a_brancher}
 relations:
 - de: recits
   vers: attention
@@ -515,7 +532,34 @@ relations:
   force: moyenne
   statut: a_verifier
   texte: la saturation et la fragmentation prolongées usent la confiance et l'espace commun d'interprétation
+- de: politiques_anti_desinformation
+  vers: resilience_informationnelle
+  effet: '+'
+  delai: années
+  force: faible
+  statut: a_verifier
+  texte: en démocratie, détection, exposition publique et éducation aux médias visent à renforcer la résilience ; effet mesuré limité (vérification -8 %, Cagé et al. 2025)
+- de: politiques_anti_desinformation
+  vers: censure
+  effet: '+'
+  delai: mois
+  force: moyenne
+  statut: a_verifier
+  texte: dans les régimes autoritaires, les lois sur la « fausse information » servent contre journalistes et opposants (225 journalistes emprisonnés pour ce motif entre 2016 et 2022, CIMA)
+- de: recits
+  vers: politiques_anti_desinformation
+  effet: '+'
+  delai: années
+  force: moyenne
+  statut: a_verifier
+  texte: les campagnes étrangères documentées (Doppelgänger, Storm-1516, Portal Kombat) justifient la création d'agences et de lois
 ponts:
+- depuis: politiques_anti_desinformation
+  vers: union-europeenne:politiques_communes
+  nature: règlement européen sur les services numériques (DSA) et bouclier européen de la démocratie
+- depuis: politiques_anti_desinformation
+  vers: politique-americaine:executif
+  nature: "l'administration américaine démantèle depuis 2025 la lutte contre la désinformation étrangère, au nom de la liberté d'expression : clivage transatlantique"
 - depuis: resilience_informationnelle
   vers: epidemies:autorites
   nature: "la confiance dans les autorités sanitaires et la cohérence de leurs messages conditionnent l'adhésion aux mesures (communication de crise)"
