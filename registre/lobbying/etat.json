@@ -1,0 +1,37 @@
+{
+ "source": "Integrity Watch EU (Transparency International EU), ODbL 1.0",
+ "base": "https://integritywatch.eu/autoupdate_data_eu/mepmeetings/",
+ "sauvegardes": {
+  "statut": 200,
+  "taille": 965
+ },
+ "reunions": {
+  "statut": 200,
+  "taille": 58569685
+ },
+ "registre": {
+  "statut": 200,
+  "taille": 2492800
+ },
+ "lignes": 114331,
+ "colonnes": [
+  "committees",
+  "country",
+  "date",
+  "dossier",
+  "epid",
+  "group",
+  "lobbyists",
+  "lobbyistsArray",
+  "location",
+  "mep",
+  "procedure",
+  "role",
+  "title"
+ ],
+ "mise_a_jour_annoncee": "20260723_020003",
+ "derniere_reunion": "2026-11-20",
+ "premiere_reunion": "2016-06-17",
+ "dossiers": 0,
+ "representants_au_registre": 7194
+}
