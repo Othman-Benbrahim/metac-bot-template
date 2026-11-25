@@ -186,14 +186,18 @@ def principal() -> int:
             try:
                 res = []
                 for qq in (q if isinstance(q, list) else [q]):
-                    for essai in range(3):                    # Wikidata répond parfois 502/504 : deux nouvelles tentatives
-                        r = c.get(SPARQL, params={"query": qq, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
-                        if r.status_code < 500 or essai == 2:
+                    # Wikidata répond parfois 502/504, ou coupe la réponse (JSON tronqué) : deux nouvelles tentatives
+                    for essai in range(3):
+                        try:
+                            r = c.get(SPARQL, params={"query": qq, "format": "json"}, headers={"Accept": "application/sparql-results+json"})
+                            r.raise_for_status()
+                            res += r.json()["results"]["bindings"]
                             break
-                        import time
-                        time.sleep(30)
-                    r.raise_for_status()
-                    res += r.json()["results"]["bindings"]
+                        except (httpx.HTTPError, ValueError):
+                            if essai == 2:
+                                raise
+                            import time
+                            time.sleep(30)
                 n = 0
                 # 2026-11-25, 13 h 52 : un dirigeant public de Wikidata (chef ou ministre) est un « dirigeant public » comme
                 # ceux de la CIA, avec l'intitulé de son poste ; une entreprise garde ses secteurs (P452), plusieurs lignes
