@@ -1,0 +1,2 @@
+notice,new_url
+"This file is no longer updated. Download the latest data from new_url, or use the Ember API: https://ember-energy.org/data/api/. Documentation: https://ember-energy.org/data/yearly-electricity-data/",https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv

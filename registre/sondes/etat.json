@@ -1,0 +1,28 @@
+{
+ "ep_liste_xml": {
+  "url": "https://www.europarl.europa.eu/meps/en/full-list/xml",
+  "statut": 403,
+  "type": "text/html",
+  "taille": 919
+ },
+ "ep_reunions_1": {
+  "url": "https://www.europarl.europa.eu/meps/en/197606/ZARZALEJOS%20Javier/meetings/past",
+  "statut": 403,
+  "type": "text/html",
+  "taille": 919,
+  "indices": []
+ },
+ "ep_reunions_2": {
+  "url": "https://www.europarl.europa.eu/meps/en/197778/TOM_BERENDSEN/meetings/past",
+  "statut": 403,
+  "type": "text/html",
+  "taille": 919,
+  "indices": []
+ },
+ "ember_annuel": {
+  "url": "https://storage.googleapis.com/emb-prod-bkt-publicdata/public-downloads/yearly_full_release_long_format.csv",
+  "statut": 200,
+  "type": "text/csv;charset=utf-8",
+  "taille": 320
+ }
+}
