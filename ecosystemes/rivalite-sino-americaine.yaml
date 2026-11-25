@@ -560,6 +560,7 @@ relations:
   statut: a_verifier
   texte: puces, aimants et batteries dépendent de minerais raffinés surtout en Chine ; une restriction franchit le seuil d'une pénurie
 - de: diplomatie
+  source: "Ministère chinois du Commerce, annonce n° 61 de 2025 (contrôles à l'exportation des terres rares), traduction du CSET : https://cset.georgetown.edu/publication/mofcom-notice-2025-61/ (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: terres_rares
   effet: ±

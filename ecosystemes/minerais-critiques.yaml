@@ -207,6 +207,7 @@ compartiments:
   - *id001
 relations:
 - de: controles_export
+  source: "Ministère chinois du Commerce, annonce n° 61 de 2025 (contrôles à l'exportation des terres rares et des matériaux de batteries), traduction du CSET : https://cset.georgetown.edu/publication/mofcom-notice-2025-61/ (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: batteries
   effet: '-'

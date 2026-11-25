@@ -177,6 +177,7 @@ relations:
   statut: a_verifier
   texte: zones maritimes et câbles attirent les puissances
 - de: montee_eaux
+  source: "Traité de l'Union Falepili entre l'Australie et Tuvalu, texte (DFAT) : https://www.dfat.gov.au/countries/tuvalu/treaty-text-falepili-union (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: pacifique
   effet: +

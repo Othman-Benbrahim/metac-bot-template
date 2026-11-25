@@ -248,6 +248,7 @@ relations:
   statut: a_verifier
   texte: la croissance ne crée pas assez d'emplois pour les jeunes diplômés des villes
 - de: energie_petrole_russe
+  source: "Décret présidentiel 14329 du 6 août 2025 (droit additionnel sur les importations venant de l'Inde, achats de pétrole russe) : https://www.govinfo.gov/content/pkg/DCPD-202500829/html/DCPD-202500829.htm (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: economie_commerce
   effet: '-'
@@ -264,6 +265,7 @@ relations:
   statut: a_verifier
   texte: la frontière disputée avec la Chine entretient la dépense militaire et la dissuasion
 - de: manipur
+  source: "Constitution de l'Inde, art. 356 (régime présidentiel en cas de défaillance des institutions d'un État) : https://www.constitutionofindia.net/articles/article-356-provisions-in-case-of-failure-of-constitutional-machinery-in-state/ (site de référence, pas le site officiel) (lien vérifié le 2026-11-25)"
   fondement: lien
   vers: politique_interieure
   effet: +
