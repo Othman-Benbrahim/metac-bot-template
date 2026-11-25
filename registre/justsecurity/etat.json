@@ -1,0 +1,24 @@
+{
+ "passage": "2026-11-25",
+ "affaires": 1009,
+ "familles": {
+  "attente|0": 382,
+  "bloque|0": 38,
+  "bloque|1": 52,
+  "bloque_temp|0": 99,
+  "bloque_temp|1": 71,
+  "clos|0": 70,
+  "clos_gouvernement|0": 47,
+  "clos_plaignant|0": 67,
+  "debloque_appel|1": 40,
+  "partiel|0": 46,
+  "partiel|1": 18,
+  "refuse|0": 8,
+  "refuse|1": 9,
+  "refuse_temp|0": 53,
+  "refuse_temp|1": 9
+ },
+ "autres_statuts": [],
+ "source": "Just Security, Litigation Tracker",
+ "url": "https://www.justsecurity.org/107087/tracker-litigation-legal-challenges-trump-administration/"
+}

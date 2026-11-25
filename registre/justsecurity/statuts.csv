@@ -1,0 +1,16 @@
+passage,famille,appel,nombre
+2026-11-25,attente,0,382
+2026-11-25,bloque,0,38
+2026-11-25,bloque,1,52
+2026-11-25,bloque_temp,0,99
+2026-11-25,bloque_temp,1,71
+2026-11-25,clos,0,70
+2026-11-25,clos_gouvernement,0,47
+2026-11-25,clos_plaignant,0,67
+2026-11-25,debloque_appel,1,40
+2026-11-25,partiel,0,46
+2026-11-25,partiel,1,18
+2026-11-25,refuse,0,8
+2026-11-25,refuse,1,9
+2026-11-25,refuse_temp,0,53
+2026-11-25,refuse_temp,1,9
