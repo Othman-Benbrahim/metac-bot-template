@@ -115,3 +115,5 @@
 {"notam": "6/9446", "type": "VIP", "centre": "ZID", "etat": "OH", "description": "Cincinnati, OH, Tuesday, November 24, 2026 through Sunday, November 29, 2026 UTC", "cree_le": "11/23/2026", "vu_le": "2026-11-25"}
 {"notam": "6/9435", "type": "HAZARDS", "centre": "ZDC", "etat": "VA", "description": "69NM NW LYNCHBURG, VA, Monday, November 23, 2026 through Monday, November 30, 2026 UTC", "cree_le": "11/23/2026", "vu_le": "2026-11-25"}
 {"notam": "6/9432", "type": "AIR SHOWS/SPORTS", "centre": "ZDC", "etat": "NC", "description": "New Bern, NC, Sunday, November 29, 2026 UTC", "cree_le": "11/23/2026", "vu_le": "2026-11-25"}
+{"notam": "6/9800", "type": "SECURITY", "centre": "ZID", "etat": "IN", "description": "Carmel, IN, Thursday, November 26, 2026 through Thursday, December 24, 2026 Local", "cree_le": "11/25/2026", "vu_le": "2026-11-26"}
+{"notam": "6/9797", "type": "HAZARDS", "centre": "ZHU", "etat": "LA", "description": "NEW ORLEANS, LA, Wednesday, November 25, 2026 through Monday, January 18, 2027 UTC", "cree_le": "11/25/2026", "vu_le": "2026-11-26"}
