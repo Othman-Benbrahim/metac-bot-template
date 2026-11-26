@@ -20,6 +20,7 @@ import datetime as dt
 import gzip
 import io
 import math
+import re
 import sys
 import time
 from collections import defaultdict
@@ -127,6 +128,31 @@ def tennis(c: httpx.Client, t: str) -> None:
             notes[g].append((j, R[g]))
             notes[p].append((j, R[p]))
         time.sleep(1)
+    # 2026-11-26 (décision de l'auteur) : grands tournois postérieurs à Sackmann, lus sur Wikipédia
+    # (collecte_tennis_wiki.py) ; même formule, seulement après la dernière date de Sackmann.
+    fin = max((L[-1][0] for L in notes.values() if L), default="")
+    wiki = REG.parent / "tennis-wiki" / f"{t}.csv"
+    if wiki.exists():
+        import unicodedata
+        cle = lambda x: re.sub(r"[^a-z]", "", unicodedata.normalize("NFKD", x).encode("ascii", "ignore").decode().lower())
+        connus = {cle(e): e for e in notes}             # « Alex de Minaur » (Wikipédia) = « Alex De Minaur » (Sackmann)
+        W = sorted(csv.DictReader(wiki.open(encoding="utf-8")), key=lambda r: (r["tourney_date"], int(r["round"] or 0)))
+        for r in W:
+            r["winner_name"] = connus.get(cle(r["winner_name"]), r["winner_name"])
+            r["loser_name"] = connus.get(cle(r["loser_name"]), r["loser_name"])
+            d = r["tourney_date"]
+            j = f"{d[:4]}-{d[4:6]}-{d[6:]}"
+            if j <= fin or "w/o" in (r.get("score") or "").lower():
+                continue
+            g, p = r["winner_name"], r["loser_name"]
+            e = 1 / (1 + 10 ** ((R[p] - R[g]) / 400))
+            kg, kp = 250 / (n[g] + 5) ** 0.4, 250 / (n[p] + 5) ** 0.4
+            R[g] += kg * (1 - e)
+            R[p] -= kp * (1 - e)
+            n[g] += 1
+            n[p] += 1
+            notes[g].append((j, R[g]))
+            notes[p].append((j, R[p]))
     if notes:
         ecrire(f"tennis_{t}", notes)
 
