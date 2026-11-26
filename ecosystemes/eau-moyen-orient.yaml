@@ -1,3 +1,4 @@
+# 0.10.512 (2026-11-26, accord de l'auteur 22 h 42) : apports du dossier IISS « The Gulf at War » (octobre 2026).
 theme: eau-moyen-orient
 nom: Eau au Moyen-Orient
 declaration:
@@ -166,6 +167,7 @@ compartiments:
   nom: Dessalement
   elements:
   - usines côtières du Golfe
+  - 'vulnérabilité de guerre : les États du Golfe dépendent d''eau dessalée puisée dans le Golfe, sans réseau régional d''eau ; l''Iran a frappé des infrastructures d''eau en 2026 ; le réseau électrique commun du Conseil de coopération du Golfe a servi de secours (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
   - énergie consommée
   - rejets de saumure
   acteurs:

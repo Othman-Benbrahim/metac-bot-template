@@ -1,3 +1,4 @@
+# 0.10.512 (2026-11-26, accord de l'auteur 22 h 42) : apports du dossier IISS « The Gulf at War » (octobre 2026).
 theme: guerre-levant
 nom: Guerre au Levant et fronts régionaux
 declaration:
@@ -237,6 +238,9 @@ compartiments:
   - frappes et ripostes directes (en agrégat)
   - dissuasion
   - contraintes intérieures
+  - 'escalade horizontale par mandataires : quand une voie se ferme, la pression se déplace vers les alliés (Houthis, milices irakiennes contre l''Arabie saoudite, Jordanie) ; les frappes depuis l''Irak sur l''oléoduc Est-Ouest visaient à compenser la réouverture partielle d''Ormuz (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
+  - 'asymétrie de riposte : l''Iran frappe les États du Golfe et la marine américaine, mais évite de répondre directement à Israël pour ne pas lui donner de prétexte (crête d''Ali al-Taher, Liban, septembre 2026) (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
+  - 'déclencheurs d''escalade nommés : pression intérieure due au blocus, élections américaines et israéliennes, débordements depuis le Liban, le Yémen ou l''Irak, pertes humaines américaines (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
   acteurs:
   - nom: Iran (État)
     taille: macro

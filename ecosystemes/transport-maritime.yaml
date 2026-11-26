@@ -1,3 +1,4 @@
+# 0.10.512 (2026-11-26, accord de l'auteur 22 h 42) : apports du dossier IISS « The Gulf at War » (octobre 2026).
 # 0.10.474 (décision de l'auteur, 2026-11-23, 17 h 42) : veille IHEDN « Les verrous du monde » (23 novembre 2026) ;
 # un compartiment par détroit majeur (pays riverains sous « geopolitique »), chiffres de l'IHEDN recoupés avec des
 # sources primaires (EIA, AIE, CNUCED, Département de la marine de Malaisie, Direction générale des affaires maritimes
@@ -388,6 +389,9 @@ compartiments:
   - 'gaz naturel liquéfié : un peu plus de 20 % du commerce mondial (EIA, 1er semestre 2025) ; 19-20 %, 112 milliards de m3 en 2025 (AIE) — IHEDN « un tiers » : diverge'
   - 'largeur : 54 km au plus étroit, deux chenaux de 3,7 km (AIE, 2026) — IHEDN 39 km : diverge (39 km correspond à 21 milles marins, valeur souvent citée)'
   - 'contournement par oléoducs saoudien et émirien : 3,5 à 5,5 Mb/j disponibles (AIE, 2026)'
+  - 'guerre de 2026 : transits en baisse de plus de 90 % pendant la phase aiguë (28 février - 8 avril) ; primes de risque de guerre très élevées, couvertures annulées ; après le cessez-le-feu, blocus américain des ports iraniens et de 5 à 10 Mb/j repassés par le détroit à la mi-septembre, sous escorte (transits de nuit, transpondeurs coupés) (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
+  - 'oléoduc saoudien Est-Ouest : voie de contournement et donc cible ; suspendu à la mi-septembre 2026 après des attaques de drones lancées depuis l''Irak, pétrole au-dessus de 100 dollars (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
+  - 'fragilité : la réouverture dépend de la volonté américaine de maintenir le blocus, donc d''un décideur ; un taux de base peut se casser sur une annonce (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
   niveau:
     espace: goulet
     temps: permanent ; incidents datés
