@@ -897,6 +897,7 @@ class AlphabetBot(FallTemplateBot2026):
 
 
 BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)
+FILTRE = __import__("re").compile(r"content management policy|content_filter|ResponsibleAIPolicyViolation", re.I)
 
 
 class LlmTenace(GeneralLlm):
@@ -916,6 +917,17 @@ class LlmTenace(GeneralLlm):
         try:
             return await super().invoke(prompt, system_prompt)
         except Exception as e:
+            if FILTRE.search(str(e)):
+                # 2026-11-26 : le filtre de contenu d'Azure a bloqué une question anodine (46754, résultat d'exploitation
+                # d'une entreprise) ; la même question échouait tous les quarts d'heure. Un refus de contenu n'est pas
+                # une saturation : on ne réessaie pas le même modèle, on confie CET appel au contradicteur (autre
+                # famille), une seule fois, journalisé.
+                alt = (os.environ.get("ALPHABET_CONTRADICTEUR") or "").split(",")[0].strip()
+                if alt and alt != self.model:
+                    BASCULES.append({"de": self.model, "vers": alt, "motif": "filtre_contenu"})
+                    logger.warning("modèle %s : contenu filtré ; appel confié à %s", self.model, alt)
+                    return await am.llm(alt, **self._kw).invoke(prompt, system_prompt)
+                raise
             if not am.PASSAGERE.search(f"{type(e).__name__}: {e}"):
                 raise
             derniere = e
