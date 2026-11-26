@@ -27,12 +27,15 @@ jobs:
       - run: uv sync --locked
       - name: Collecte
         run: uv run python -u collecte_epoch.py
+      - name: Tests de référence et horizons METR (hub d'Epoch ; 2026-11-26)
+        run: uv run python -u collecte_epoch_bancs.py || true
       - name: Enregistrer
         if: always()
         run: |
           git config user.name "alphabet-bot"
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -e registre/epoch-modeles.csv ]; then git add registre/epoch-modeles.csv; fi
+          if [ -d registre/epoch-bancs ]; then git add -f registre/epoch-bancs; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : Epoch AI du $(date -u +%Y-%m-%d)"
             git pull --rebase
