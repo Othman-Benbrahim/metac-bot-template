@@ -27,3 +27,9 @@ cette date (décalage déclaré : il peut avoir changé depuis ; le contradicteu
 ## À décider par l'auteur
 1. Lancer ce passage unique.
 2. Plus tard, éventuellement : valider LMArena comme source (lecture du leader du jour, sans regard vers l'avant).
+
+## Passage unique (2026-11-26, 14 h 58 ; décision de l'auteur, 14 h 55 : « oui »)
+50 questions distinctes, mais seulement 6 échéances au leader connu (Google en mai 2025, décembre 2025 et janvier 2026 ;
+Anthropic en mars, juin et septembre 2026), soit 5 transitions. La règle écrite avant (« moins de 8 transitions
+exploitables : on ne calcule pas ») s'applique : **aucun calcul, brique non branchée.** Elle se réessaiera quand
+l'historique sera plus long, ou avec une source du leader du jour (LMArena, non validée).
