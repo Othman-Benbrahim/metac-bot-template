@@ -1,3 +1,4 @@
+# 0.10.511 (2026-11-26, accord de l'auteur 22 h 32) : centres criminels d'Asie du Sud-Est, rapport IISS d'octobre 2026.
 # 0.10.453 — fiche créée le 2026-11-22 (angle mort signalé, accord de l'auteur 9 h 23) : crime organisé et économie illicite comme
 # écosystème. Agrégats et groupes publiquement documentés seulement. Chiffres vérifiés le 2026-11-22. Relations à vérifier.
 theme: crime-organise
@@ -55,6 +56,11 @@ compartiments:
   organisation: technique
   elements:
   - Asie du Sud-Est - pertes de 88,3 à 114,1 milliards de dollars en 2025 ; centaines de complexes d'escroquerie, aussi lieux de traite ; activité qui s'étend à d'autres régions (ONUDC, 21 juillet 2026, repris par Fortune)
+  - 'centres criminels actifs (IISS, octobre 2026) - Triangle d''or (zone économique spéciale de Bokeo, Laos), Myawaddy et Shwe Kokko (Birmanie, frontière thaïlandaise), Sihanoukville et Poipet (Cambodge) ; un centre réunit trois piliers : plusieurs activités criminelles intégrées, des réseaux transnationaux, une menace pour la sécurité régionale (violence armée, terrorisme ou sanctions, relations entre États)'
+  - 'mécanisme d''apparition (IISS, octobre 2026) : facteurs géographiques (zones économiques spéciales, routes commerciales), économiques (économie informelle, cryptomonnaies), contextuels (conflit, frontières poreuses) et institutionnels (corruption, capture par les élites) ; nécessaires mais pas suffisants : c''est leur coïncidence et la décision d''acteurs criminels d''y investir, sous protection des élites, qui fait le centre ; se forme sous un État en guerre (Birmanie) comme sous un parti unique stable (Laos, Cambodge)'
+  - 'déplacement sous pression (IISS, octobre 2026) : la répression déplace plus qu''elle ne détruit - Sihanoukville après 2019 vers la frontière birmano-thaïlandaise ; pression Chine-Birmanie vers Myawaddy et Payathonzu ; fin juillet 2026, de Myawaddy vers l''intérieur de la Birmanie'
+  - 'centres émergents à surveiller (IISS, octobre 2026) : Sri Lanka (risque élevé, report après les répressions philippine et cambodgienne), Timor-Leste (jeux en ligne légalisés), intérieur de la Birmanie (liaisons Starlink), Papouasie-Nouvelle-Guinée, Palaos et Vanuatu (transbordement) ; tendance vers des centres dispersés (fraude automatisée par l''IA, banque souterraine) ; usage pour contourner des sanctions (Corée du Nord, Iran)'
+  - 'coût des escroqueries pour les États de la région : environ 37 milliards de dollars en 2023 (IISS, octobre 2026, d''après l''ONUDC)'
   niveau:
     espace: monde
     temps: années
@@ -169,7 +175,7 @@ relations:
   force: faible
   coupure: déplacement des activités
   statut: a_verifier
-  texte: les descentes déplacent les réseaux plus qu'elles ne les arrêtent
+  texte: 'les descentes déplacent les réseaux plus qu''elles ne les arrêtent ; trois déplacements documentés en Asie du Sud-Est de 2019 à juillet 2026 (IISS, octobre 2026) ; hypothèse « déplacement sous pression » : une répression fait monter le risque chez les voisins permissifs quelques mois plus tard, à tester'
 - de: repression
   fondement: causalite_sociale
   vers: drogues
@@ -195,6 +201,13 @@ ponts:
   vers: information-cyber:cyber
   nature: la cybercriminalité
   type: voisinage
+- depuis: escroqueries_cyber
+  vers: asie-du-sud-est:birmanie
+  nature: Myawaddy, Shwe Kokko et le report vers l'intérieur de la Birmanie (IISS, 2026)
+  type: voisinage
+- depuis: escroqueries_cyber
+  vers: asie-du-sud-est:asean
+  nature: coopération de l'ASEAN contre les centres (initiative Our Eyes) et Triangle d'or, Sihanoukville, Poipet (IISS, 2026)
 - depuis: escroqueries_cyber
   vers: reseaux-sociaux:plateformes
   nature: les escroqueries passent par les plateformes
