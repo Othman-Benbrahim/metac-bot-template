@@ -1,0 +1,12 @@
+{
+  "title": "metac-bot-template — bot de prévision de l'alphabet situationnel (procédures pré-enregistrées, briques, carte des écosystèmes)",
+  "upload_type": "software",
+  "description": "Bot de prévision pour les tournois de Metaculus, construit sur le gabarit public metac-bot-template. Chaque version figée contient les procédures pré-enregistrées (dossier preenregistrements/), écrites et datées avant tout calcul, les briques de mesure et la carte des écosystèmes.",
+  "creators": [{"name": "Ben Brahim, Othman"}],
+  "contributors": [
+    {"name": "Claude (Anthropic), assistant de code", "type": "Other"},
+    {"name": "Metaculus, auteurs du gabarit metac-bot-template", "type": "Other"}
+  ],
+  "license": "MIT",
+  "language": "fra"
+}

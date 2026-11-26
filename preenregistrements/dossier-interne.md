@@ -268,3 +268,5 @@ Ce qui est branché sans attendre : la phrase de domaine dans le dossier (A), lu
   le verdict « hors domaine » admis par le code annule la brique ; le bot poste son raisonnement, puis le juge agit
   comme sur une question sans brique. Si le contradicteur échoue ou ne répond pas, la brique reste appliquée. La
   rustine des appels dans `rencontres_regle.py` est gardée tant que le contradicteur peut faire défaut.
+
+Copie figée datée par un tiers (Zenodo) de l'état du 2026-11-26, amendement et banc compris : DOI 10.5281/zenodo.24559290.

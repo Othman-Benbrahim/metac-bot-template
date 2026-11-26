@@ -91,3 +91,5 @@ C'est une approximation du banc (qui utilisait les vrais tableaux), déclarée. 
 par le contradicteur et le juge comme les autres briques. Abstention si le joueur n'a aucun match connu depuis 90 jours
 (blessure ou retrait probable) : découvert sur Sinner, forfait à l'US Open 2026 sur blessure au genou, dont la dernière
 note date de Wimbledon.
+
+Copie figée datée par un tiers (Zenodo), procédure et deux passages compris : DOI 10.5281/zenodo.24559290.
