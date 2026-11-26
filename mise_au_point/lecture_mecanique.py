@@ -43,7 +43,25 @@ def _motif(t: str):
     return re.compile(r"(?<![\w-])" + re.escape(t) + r"(?![\w-])", 0 if (t.isupper() and len(t) <= 4) else re.I)
 
 
-def routage() -> tuple[list, list, dict]:
+def parasites_confirmes() -> set[str]:
+    """Termes retirés du rattachement par l'auteur (ligne « - » dans parasites-proposes.txt, 2026-11-26)."""
+    f = LISTES / "parasites-proposes.txt"
+    if not f.exists():
+        return set()
+    out = set()
+    for l in f.read_text(encoding="utf-8").splitlines():
+        p = [x.strip() for x in l.split("|")]
+        if len(p) >= 2 and p[0] == "-":
+            out.add(p[1])
+    return out
+
+
+def termes_routage() -> dict:
+    """Terme -> compartiments, tel que le rattachement les lit (sans les parasites confirmés)."""
+    return routage(brut=True)
+
+
+def routage(brut: bool = False):
     termes = defaultdict(set)
     for l in (LISTES / "valides.txt").read_text(encoding="utf-8").splitlines():
         p = [x.strip() for x in l.split("|")]
@@ -68,6 +86,10 @@ def routage() -> tuple[list, list, dict]:
                             if l and not l.startswith("#")):
         if r.get("nom"):
             pays.setdefault(r["nom"], r["iso3"])
+    for t in parasites_confirmes():              # 2026-11-26 (décision de l'auteur) : tri des mots parasites au fil de l'eau
+        termes.pop(t, None)
+    if brut:
+        return dict(termes)
     mt = [(_motif(t), r) for t, r in termes.items()]
     mp = [(re.compile(r"(?<![\w-])" + re.escape(n) + r"(?![\w-])"), i) for n, i in pays.items() if len(n) >= 2]
     return mt, mp, pays
