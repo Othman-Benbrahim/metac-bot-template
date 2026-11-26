@@ -134,12 +134,26 @@ def tennis(c: httpx.Client, t: str) -> None:
     wiki = REG.parent / "tennis-wiki" / f"{t}.csv"
     if wiki.exists():
         import unicodedata
-        cle = lambda x: re.sub(r"[^a-z]", "", unicodedata.normalize("NFKD", x).encode("ascii", "ignore").decode().lower())
+        def cle(x: str) -> str:
+            # casse, accents, ligatures, tirets ; ordre des mots indifférent (« Zheng Qinwen » = « Qinwen Zheng »,
+            # « Kwon Soon-woo » = « Soonwoo Kwon »)
+            x = x.replace("æ", "ae").replace("Æ", "Ae").replace("ø", "o").replace("Ø", "O").replace("ß", "ss")
+            x = unicodedata.normalize("NFKD", x).encode("ascii", "ignore").decode().lower().replace("-", " ")
+            return " ".join(sorted(re.sub(r"[^a-z ]", "", x).split()))
         connus = {cle(e): e for e in notes}             # « Alex de Minaur » (Wikipédia) = « Alex De Minaur » (Sackmann)
+        jetons = [(set(k.split()), e) for k, e in connus.items()]
+
+        def retrouver(x: str) -> str:
+            k = cle(x)
+            if k in connus:
+                return connus[k]
+            J = set(k.split())                           # « Irene Burillo » ⊂ « Irene Burillo Escorihuela », si unique
+            c = [e for js, e in jetons if len(J) >= 2 and J <= js]
+            return c[0] if len(c) == 1 else x
         W = sorted(csv.DictReader(wiki.open(encoding="utf-8")), key=lambda r: (r["tourney_date"], int(r["round"] or 0)))
         for r in W:
-            r["winner_name"] = connus.get(cle(r["winner_name"]), r["winner_name"])
-            r["loser_name"] = connus.get(cle(r["loser_name"]), r["loser_name"])
+            r["winner_name"] = retrouver(r["winner_name"])
+            r["loser_name"] = retrouver(r["loser_name"])
             d = r["tourney_date"]
             j = f"{d[:4]}-{d[4:6]}-{d[6:]}"
             if j <= fin or "w/o" in (r.get("score") or "").lower():
