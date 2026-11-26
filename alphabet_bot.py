@@ -1126,6 +1126,45 @@ def _a_reprevoir(q) -> bool:
     return bool(ids & R)
 
 
+QUARANTAINE = 3   # 2026-11-26 (décision de l'auteur, 15 h 28 : couverture) : échecs consécutifs avant mise à l'écart
+
+
+def _echecs_fichier() -> Path:
+    return ap.registre_ecrivable() / "echecs-questions.json"
+
+
+def echecs_lire() -> dict:
+    try:
+        return json.loads(_echecs_fichier().read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def echecs_noter(lot: list, rapports: list) -> list[str]:
+    """Compte les échecs consécutifs par question (remis à zéro sur un succès) ; rend les alertes de mise à l'écart."""
+    E, alertes = echecs_lire(), []
+    for q, r in zip(lot, rapports):
+        k = str(getattr(q, "id_of_post", "") or getattr(q, "page_url", ""))
+        if isinstance(r, BaseException):
+            n = E.get(k, {}).get("n", 0) + 1
+            E[k] = {"n": n, "url": getattr(q, "page_url", ""), "erreur": f"{type(r).__name__}: {str(r)[:200]}",
+                    "date": datetime.now(timezone.utc).isoformat(timespec="minutes")}
+            if n == QUARANTAINE:
+                alertes.append(f"🚧  question mise à l'écart après {n} échecs consécutifs : {E[k]['url']} — {E[k]['erreur']}")
+        else:
+            E.pop(k, None)
+    try:
+        _echecs_fichier().write_text(json.dumps(E, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+    except Exception:
+        pass
+    return alertes
+
+
+def en_quarantaine(q) -> bool:
+    k = str(getattr(q, "id_of_post", "") or getattr(q, "page_url", ""))
+    return echecs_lire().get(k, {}).get("n", 0) >= QUARANTAINE and not _a_reprevoir(q)
+
+
 def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dict] | None = None) -> tuple[str, int]:
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
@@ -1192,6 +1231,10 @@ if __name__ == "__main__":
             # 2026-11-26 (décision de l'auteur) : ALPHABET_REPREVOIR = numéros de questions ou de pages (séparés par des
             # virgules) à reprévoir même déjà prévues, après correction d'une erreur (cas d'origine : Trump–Poutine).
             ouvertes = [q for q in ouvertes if not q.already_forecasted or _a_reprevoir(q)]
+        ecartees = [q for q in ouvertes if en_quarantaine(q)]
+        for q in ecartees:
+            print(f"🚧  question à l'écart (échecs répétés ; « reprevoir » pour la reprendre) : {q.page_url}")
+        ouvertes = [q for q in ouvertes if q not in ecartees]
         vus = {getattr(q, "id_of_question", None) or q.page_url for q in questions}
         questions += [q for q in ouvertes if (getattr(q, "id_of_question", None) or q.page_url) not in vus]
     if plafond <= 0:
@@ -1261,6 +1304,8 @@ if __name__ == "__main__":
     else:
         rapports = asyncio.run(bot.forecast_questions(lot, return_exceptions=True))
     bot.log_report_summary(rapports, raise_errors=False)
+    for a_ in echecs_noter(lot, rapports):
+        print(a_)
     cout_passage = noter_couts(args.mode, rapports, lot)
     print(f"💶  Coût estimé du passage : {cout_passage} $")
     texte, code = bilan(rapports, lignes_registre()[avant:], not args.sans_publier, lignes_autres()[avant_autres:])
