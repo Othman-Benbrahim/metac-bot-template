@@ -1,0 +1,32 @@
+Model version,Scaffold,Average (%),Release date,Organization,Country,Training compute (FLOP),Training compute notes,Name,Average SD (%),id
+claude-fable-5-1_max,Claude Code,0.4465,2026-09-01,Anthropic,United States of America,,,Fable 5.1 (Max),,rec1kqTNNvACEHSJR
+claude-fable-5-2_max,Claude Code,0.4464,2026-11-09,Anthropic,United States of America,,,Fable 5.2 (Max),,recHPSXIQt8doB4k3
+claude-opus-5-5_max,Claude Code,0.438,2026-09-22,Anthropic,United States of America,,,Opus 5.5 (Max),,reclah1CJ5EejhuPm
+gpt-6.2-astra_max,Codex CLI,0.4349,2026-11-17,OpenAI,United States of America,,,GPT 6.2 (Astra) (Max),,rec8iIL765ZtjzR5m
+gpt-6-astra_max,Codex CLI,0.41880000000000006,2026-09-03,OpenAI,United States of America,9.4e+26,"per OpenAI and affiliates (e.g. Nvidia), 6 Astra was trained on at least 100,000 GB200s in Abilene, Texas (so 100,000 in ""Hardware quantity"" is a lower bound/underestimate).
+
+This suggests around 9e26 FLOP (corresponding to ~100k GB200s over 90 days at 25% FP8 MFU). See more detailed estimate in this notebook, yielding a CI of ~[5e26, 2e27] FLOP.
+https://colab.research.google.com/drive/1DRlugIQs-_zoV66AJT1gQg6I1-NX7NqN ",GPT 6 (Astra) (Max),,receLNeWeSFudcutj
+gemini-4-carbon_high,OpenCode,0.4098,2026-11-10,Google DeepMind,United States of America,,,Gemini 4 Carbon (High),,recKJp9pNzRLNjPDt
+gemini-4-neon_xhigh,OpenCode,0.4061,2026-11-18,Google DeepMind,United States of America,,,Gemini 4 Neon (xHigh),,recC0x2OTvu6qmof1
+gemini-4-argon_high,OpenCode,0.4044,2026-10-13,Google DeepMind,United States of America,,,Gemini 4 Argon (High),,recy0GqmfRc5Z14ye
+gpt-6.1-sol_max,Codex CLI,0.3879,2026-09-29,OpenAI,United States of America,,,GPT 6.1 (Sol) (Max),,recJmRif9M9c55oXO
+claude-fable-5_max,Claude Code,0.37270000000000003,2026-06-09,Anthropic,United States of America,,,Fable 5 (Max),0.0174,recP6ZrDsWrdqbEmt
+glm-5.3-flash_max,Claude Code,0.3679,2026-08-20,Z.ai (Zhipu AI),China,3.24e+24,"6 * 18e9 active parameters * 30e12 tokens = 3.24e24 FLOP. 
+
+https://docs.z.ai/guides/vlm/glm-5.3-flash says ""Combined with our latest 30T-token multimodal pre-training corpus, these changes let GLM-5.3-Flash produce more intelligence with less compute."", which is not definitive in saying that all 30T tokens were used exactly once; likely confidence.",GLM 5.3 Flash (Max),,recl9oLhS82JHTooB
+claude-opus-5_unknown,Claude Code,0.3566,2026-07-24,Anthropic,United States of America,,,Opus 5,0.0138,recxqR2bWuWATTQi2
+glm-5.3_max,Claude Code,0.34520000000000006,2026-08-14,Z.ai (Zhipu AI),China,,,GLM 5.3 (Max),,recB09qVR1v9Pl4ab
+kimi-k3_unknown,Claude Code,0.3148,2026-07-16,Moonshot,China,2.0001e+25,"Based on peer models such as Kimi K2.6 and DeepSeek V4 Pro, plausibly was trained on roughly 30T tokens (likely between 15T and 60T). Using the heuristic that C = 6ND, 30T pretraining tokens would imply ~1.9e25 FLOP. This is a somewhat uncertain estimate (more uncertain than estimates based on disclosed active params and token counts, but comparable to estimates based on disclosed GPU-hours).
+
+K3 was likely pretrained on over 1e25 FLOP. Speculatively, K3's relatively large size compared to other Chinese models may have reduced the training token budget vs smaller models.",Kimi K3,0.0026,reczFkgvLx23FFjG9
+gpt-5.6-sol_max,Codex CLI,0.31010000000000004,2026-07-09,OpenAI,United States of America,,,GPT 5.6 (Sol) (Max),0.0022,rec563GDCdzdGWynR
+claude-opus-4-8_max,Claude Code,0.31,2026-05-28,Anthropic,United States of America,,,Opus 4.8 (Max),0.0575,recxwUdcUZfUJ0Ajy
+claude-opus-4-8_high,Claude Code,0.3066,2026-05-28,Anthropic,United States of America,,,Opus 4.8 (High),0.0358,recXnLB0qsZWf1z1O
+glm-5.2_max,Claude Code,0.304,2026-06-16,Z.ai (Zhipu AI),China,,,GLM 5.2 (Max),0.021400000000000002,recFx69MKlTBBGigF
+claude-opus-4-7_xhigh,Claude Code,0.2434,2026-04-16,Anthropic,United States of America,,,Opus 4.7 (xHigh),0.0174,recbaD2sTNbt5xVFL
+muse-wonder-1.0_xhigh,OpenCode,0.24190000000000003,2026-10-12,Meta AI,United States of America,,,Muse Wonder (xHigh),,rec7Gmed5hKA8tws3
+gpt-5.5_xhigh,Codex CLI,0.23870000000000002,2026-04-23,OpenAI,United States of America,,,GPT 5.5 (xHigh),0.005600000000000001,recMSOXhMGW3VztFi
+grok-4.5_high,Cursor CLI,0.2262,2026-07-08,xAI,United States of America,,,Grok 4.5 (High),0.0009,rec4HQ0qLNJVhRyw9
+gemini-3.1-pro-preview,OpenCode,0.1811,2026-02-19,Google DeepMind,United States of America,,,Gemini 3.1 Pro,0.018000000000000002,recZWNED3JvA1VUDZ
+gpt-5.4-2026-03-05_high,Codex CLI,0.1776,2026-03-05,OpenAI,United States of America,,,GPT 5.4 (High),0.029900000000000003,recA3c9MYtvW1Fxb8

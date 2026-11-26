@@ -1,0 +1,54 @@
+Model version,mean_score,Best score (across scorers),Release date,Organization,Country,Training compute (FLOP),Training compute notes,stderr,Log viewer,Logs,Started at,id
+qwen4-max_xhigh,0.39999999999999997,0.39999999999999997,2026-11-16,Alibaba,China,,,0.02857142857142857,,,2026-11-21T20:39:13.000Z,ABXhrAyb7iy97kejN8U5jr
+gemini-4-neon_xhigh,0.980952380952381,0.980952380952381,2026-11-18,Google DeepMind,United States of America,,,0.011664236870396099,,,2026-11-19T22:21:33.000Z,GZkNcLrqhgysFJgkGAofNw
+muse-ember-1.0_max,0.17142857142857143,0.17142857142857143,2026-11-09,Meta AI,United States of America,,,0.024281045302822782,,,2026-11-19T08:38:55.000Z,G5dYmKPxTmbQiqPR397pxU
+gemini-4-hydrogen_xhigh,0.7047619047619047,0.7047619047619047,2026-11-12,Google DeepMind,United States of America,,,0.0628138378965377,,,2026-11-13T22:32:14.000Z,Z923wraUNYhNREbtTVUCfZ
+kimi-k3.1-pro-together_max,0.37142857142857144,0.37142857142857144,2026-10-23,Moonshot,China,2.0001e+25,"Kimi K3.1 Pro is post-trained from Kimi K3, so its training compute is at least Kimi K3's. Moonshot: ""Kimi K3.1 Pro is a post-trained version of Kimi K3, with substantially larger post-training compute"" (https://www.kimi.ai/blog/kimi-k3-1-pro). The value here is Kimi K3's pretraining estimate (6ND with ~30T tokens assumed, range 15–60T); the additional post-training compute is unknown and not included, so this is likely an underestimate. The model card reports no token counts.",0.02776643759450143,,,2026-11-13T16:36:27.000Z,RuhrCzBZPkPERc5woJoUcA
+claude-fable-5-2_max,0.9047619047619048,0.9047619047619048,2026-11-09,Anthropic,United States of America,,,0.015058465048420852,,,2026-11-06T01:40:26.000Z,QFjq6YZeSFeu74ZvTkdCei
+gemini-4-carbon_high,0.8761904761904763,0.8761904761904763,2026-11-10,Google DeepMind,United States of America,,,0.06834619092574916,,,2026-11-05T19:14:19.000Z,gakjGnDNepUzyuCVr3TwZT
+mistral-large-4-0-oss_high,0.18095238095238095,0.18095238095238095,2026-10-29,Mistral AI,France,1.24e+25,"From tech report: ""Mistral Large 4 was pretrained on 3,840 NVIDIA GB200 GPUs in a Mistral data center near Paris.
+Our internal training stack is built on PyTorch and CUDA. Pretraining took 45 days, or about 4.15 million GPU-hours, with a model FLOPs utilization (MFU) of 36% and a goodput of 94.1%. Webmeasure MFU against peak hardware BF16 FLOP/s, include matrix-multiplication and attention
+FLOPs.""
+
+GB200 is 2500 TFLOP/s BF16 peak, so 36% MFU and 94.1% goodput is 32.9% overall utilization. 
+3840 * 45 * 24*3600 * 0.329 * 2500 trillion = 1.23e25 FLOP pretraining.
+
+This suggests roughly 40T training tokens, using 6ND: 1.23e25 = 6* 52 billion * D.
+
+For post-training, RL involved 162.5 billion output tokens during rollouts for RL, so RL FLOP was <1% of pre-training. SFT and mid-training tokens were not disclosed.
+
+MFU is reported against bf16 spec, but report mentions FP8 in the pretraining without clarifying the primary format.",0.03158690276528952,,,2026-11-02T14:05:31.000Z,Xhk47x2m6incQifzec3pqC
+gpt-6.2-astra_max,0.9238095238095237,0.9238095238095237,2026-11-17,OpenAI,United States of America,,,0.0490268101951762,,,2026-10-27T19:09:20.000Z,oXYpYLShvXTC3GT2GWfJ2z
+gpt-6.1-terra_max,0.780952380952381,0.780952380952381,2026-10-26,OpenAI,United States of America,,,0.05128728387747146,,,2026-10-26T20:01:15.000Z,65SHyNJX5oxVADzzjkssFK
+gemini-4-argon_high,0.6476190476190476,0.6476190476190476,2026-10-13,Google DeepMind,United States of America,,,0.04902681019517619,,,2026-10-13T17:16:18.000Z,mSJNKA7nCp2eZVqMo5nTUP
+muse-wonder-1.0_max,0.3142857142857143,0.3142857142857143,2026-10-12,Meta AI,United States of America,,,0.041513323271815936,,,2026-10-12T21:51:35.000Z,fMDaGtyboCNfTpP9aStwaU
+claude-haiku-5-5_max,0.43809523809523804,0.43809523809523804,2026-10-07,Anthropic,United States of America,,,0.017817416127494958,,,2026-10-09T00:00:53.000Z,FMiLkyqzaD56gA4uCCj9Qr
+gpt-6.1-sol_max,0.5428571428571429,0.5428571428571429,2026-09-29,OpenAI,United States of America,,,0.05753831415997416,,,2026-09-29T18:13:25.000Z,LRUWNzFDcScwkTYuZYdeiV
+claude-opus-5-5_max,0.7142857142857142,0.7142857142857142,2026-09-22,Anthropic,United States of America,,,0.07063046178186345,,,2026-09-22T21:38:58.000Z,iKWWUmcuzRjqisoshKVEpL
+gpt-6-sol_max,0.5333333333333333,0.5333333333333333,2026-09-22,OpenAI,United States of America,,,0.04616837959444122,,,2026-09-22T21:35:18.000Z,gM5SADcEixdr2P6PkseLeF
+claude-fable-5-1_max,0.5714285714285714,0.5714285714285714,2026-09-01,Anthropic,United States of America,,,0.06023386019368341,,,2026-09-08T14:59:49.000Z,8JukffGviNAYHXSdTJvswB
+claude-opus-5_max,0.45714285714285713,0.45714285714285713,2026-07-24,Anthropic,United States of America,,,0.03563483225498992,,,2026-09-05T20:22:12.000Z,mtHToEb2uzbaekANakjkJZ
+gpt-5.6-sol_max,0.4476190476190475,0.4476190476190475,2026-07-09,OpenAI,United States of America,,,0.041513323271815936,,,2026-09-04T22:22:24.000Z,SjeXjsdda4NKRBTrPiJVM8
+gpt-6-astra_max,0.7619047619047619,0.7619047619047619,2026-09-03,OpenAI,United States of America,9.4e+26,"per OpenAI and affiliates (e.g. Nvidia), 6 Astra was trained on at least 100,000 GB200s in Abilene, Texas (so 100,000 in ""Hardware quantity"" is a lower bound/underestimate).
+
+This suggests around 9e26 FLOP (corresponding to ~100k GB200s over 90 days at 25% FP8 MFU). See more detailed estimate in this notebook, yielding a CI of ~[5e26, 2e27] FLOP.
+https://colab.research.google.com/drive/1DRlugIQs-_zoV66AJT1gQg6I1-NX7NqN ",0.08384198505551908,,,2026-08-30T15:38:49.000Z,GhVYxWxttDxZ7akiJQPYsE
+grok-4.6_xhigh,0.30476190476190473,0.30476190476190473,2026-08-12,xAI,United States of America,,,0.016187363535215188,,,2026-08-18T14:42:38.000Z,VvXTUMGEJiQqgvGMVmaL4m
+claude-opus-4-8_max,0.2857142857142857,0.2857142857142857,2026-05-28,Anthropic,United States of America,,,0.014197256999998662,,,2026-08-07T15:44:07.000Z,3zda4kRmrZfxiafpk8BtMM
+gpt-5.5_xhigh,0.3428571428571428,0.3428571428571428,2026-04-23,OpenAI,United States of America,,,0.01982539047110602,,,2026-07-27T13:22:32.000Z,RESzhBbTKsxwmsbBNyXCEz
+claude-fable-5_max,0.395238,0.395238,2026-06-09,Anthropic,United States of America,,,0.020141,,,2026-07-17T06:36:20.000Z,h6c9FVqkCj88ZD7ohCipuR
+claude-opus-4-7_max,0.19047619047619047,0.19047619047619047,2026-04-16,Anthropic,United States of America,,,,,,2026-06-30T19:24:36.000Z,Ad4geQVekrBqJn5Ka84awK
+claude-opus-4-6_max,0.126984,0.126984,2026-02-05,Anthropic,United States of America,,,,,,2026-06-29T19:12:59.000Z,XSESb7YgzSTRENEhjHxuwc
+gpt-5-2025-08-07_high,0.126984,0.126984,2025-08-07,OpenAI,United States of America,6.6e+25,"Fairly speculative, possibly around 6e25 [CI: 2e25 to 2e26] FLOP. See document below for details
+
+https://docs.google.com/document/d/1V2jIk365LnhH4WDoCw5dYJjZr1Htw8IHaK1noMf5Y48/edit?tab=t.z871imftkus",,,,2026-06-29T19:12:20.000Z,VneAiVua3Fv2ySMKyyf4Qp
+glm-5.2_max,0.09523809523809523,0.09523809523809523,2026-06-16,Z.ai (Zhipu AI),China,,,,,,2026-06-29T13:38:16.000Z,U3Fqei2qExVeQDCizpSVfx
+gpt-5.2-2025-12-11_xhigh,0.230159,0.230159,2025-12-11,OpenAI,United States of America,,,,,,2026-06-26T13:32:47.000Z,3542DFKGpjD6k8AZfGKD7W
+qwen3.7-max,0.09523809523809523,0.09523809523809523,2026-05-19,Alibaba,China,,,,,,2026-06-25T01:53:10.000Z,YJY5Dm2gEioHP2ExmTadqG
+gpt-5.4-2026-03-05_xhigh,0.253968,0.253968,2026-03-05,OpenAI,United States of America,,,,,,2026-06-25T01:47:13.000Z,RNXPxRZ4vMiwbspiqETy8B
+gemini-3.5-flash_high,0.047619047619047616,0.047619047619047616,2026-05-19,Google DeepMind,United States of America,,,,,,2026-06-25T01:46:45.000Z,7QDCZBGyG6w6BxE3gw6Gbv
+claude-opus-4-5-20251101_128K,0.14285714285714285,0.14285714285714285,2025-11-24,Anthropic,United States of America,,Flagship model from a leading developer in mid-2025; very likely it used >1e25 FLOP.,,,,2026-06-25T01:45:41.000Z,eTTktoMp5sTthdSqVkLTST
+kimi-k2.6,0.023809523809523808,0.023809523809523808,2026-04-20,Moonshot,China,,,,,,2026-06-25T01:44:03.000Z,QwcSB4hQADcMNQg7EXmaGP
+claude-sonnet-4-5-20250929,0.023809523809523808,0.023809523809523808,2025-09-29,Anthropic,United States of America,,,,,,2026-06-25T01:43:43.000Z,cUQEu2ysx4CcVJHi9KtzjQ
+claude-opus-4-1-20250805,0.079365,0.079365,2025-08-05,Anthropic,United States of America,,,,,,2026-06-25T01:43:14.000Z,NMncsmkDVG6ZmNufPxNs2m
+gemini-3.1-pro-preview,0.14285714285714285,0.14285714285714285,2026-02-19,Google DeepMind,United States of America,,,,,,2026-06-25T01:42:49.000Z,GYNraPqbBYhqqAyhYzJfQ7

@@ -1,0 +1,54 @@
+Model version,Score,Reasoning level,Cost per task,Tokens per task,Steps per task,Release date,Organization,Country,Training compute (FLOP),Training compute notes,Name,Rank,Source
+gemini-4-neon_xhigh,0.654,Extra High,10.67,136273,73,2026-11-18,Google DeepMind,United States of America,,,Gemini 4 Neon Extra High,1,https://cursor.com/cursorbench
+gemini-4-neon_high,0.637,High,6.54,88596,56,2026-11-18,Google DeepMind,United States of America,,,Gemini 4 Neon High,2,https://cursor.com/cursorbench
+gemini-4-carbon_high,0.615,High,8.52,114518,97,2026-11-10,Google DeepMind,United States of America,,,Gemini 4 Carbon High,3,https://cursor.com/cursorbench
+gemini-4-hydrogen_xhigh,0.614,Extra High,8.09,205981,113,2026-11-12,Google DeepMind,United States of America,,,Gemini 4 Hydrogen Extra High,4,https://cursor.com/cursorbench
+claude-fable-5-2_max,0.613,Max,48.11,541003,295,2026-11-09,Anthropic,United States of America,,,Fable 5.2 Max,5,https://cursor.com/cursorbench
+gemini-4-carbon_medium,0.604,Medium,7.22,103189,83,2026-11-10,Google DeepMind,United States of America,,,Gemini 4 Carbon Medium,6,https://cursor.com/cursorbench
+claude-fable-5-2_xhigh,0.588,Extra High,17.84,194918,122,2026-11-09,Anthropic,United States of America,,,Fable 5.2 Extra High,7,https://cursor.com/cursorbench
+claude-opus-5-5_max,0.5810000000000001,Max,11.88,213070,144,2026-09-22,Anthropic,United States of America,,,Opus 5.5 Max,8,https://cursor.com/cursorbench
+gemini-4-neon_medium,0.5770000000000001,Medium,3.07,47059,41,2026-11-18,Google DeepMind,United States of America,,,Gemini 4 Neon Medium,9,https://cursor.com/cursorbench
+gemini-4-hydrogen_high,0.573,High,4.57,113807,77,2026-11-12,Google DeepMind,United States of America,,,Gemini 4 Hydrogen High,10,https://cursor.com/cursorbench
+claude-opus-5-5_xhigh,0.5670000000000001,Extra High,6.54,104901,95,2026-09-22,Anthropic,United States of America,,,Opus 5.5 Extra High,11,https://cursor.com/cursorbench
+claude-fable-5-2_high,0.5650000000000001,High,10.51,108213,77,2026-11-09,Anthropic,United States of America,,,Fable 5.2 High,12,https://cursor.com/cursorbench
+gemini-4-argon_high,0.5650000000000001,High,9.14,135038,118,2026-10-13,Google DeepMind,United States of America,,,Gemini 4 Argon High,13,https://cursor.com/cursorbench
+gemini-4-argon_medium,0.5579999999999999,Medium,7.64,128231,101,2026-10-13,Google DeepMind,United States of America,,,Gemini 4 Argon Medium,14,https://cursor.com/cursorbench
+gemini-4-carbon_low,0.55,Low,8.64,48526,127,2026-11-10,Google DeepMind,United States of America,,,Gemini 4 Carbon Low,15,https://cursor.com/cursorbench
+claude-opus-5-5_high,0.545,High,3.87,56162,64,2026-09-22,Anthropic,United States of America,,,Opus 5.5 High,16,https://cursor.com/cursorbench
+claude-sonnet-5-5_max,0.544,Max,8.63,342273,199,2026-09-28,Anthropic,United States of America,,,Sonnet 5.5 Max,17,https://cursor.com/cursorbench
+claude-fable-5-2_medium,0.542,Medium,5.01,47678,40,2026-11-09,Anthropic,United States of America,,,Fable 5.2 Medium,18,https://cursor.com/cursorbench
+claude-fable-5-2_low,0.534,Low,4.26,40384,34,2026-11-09,Anthropic,United States of America,,,Fable 5.2 Low,19,https://cursor.com/cursorbench
+claude-opus-5-5_medium,0.5,Medium,2.85,39736,52,2026-09-22,Anthropic,United States of America,,,Opus 5.5 Medium,20,https://cursor.com/cursorbench
+claude-sonnet-5-5_xhigh,0.499,Extra High,3.13,112299,87,2026-09-28,Anthropic,United States of America,,,Sonnet 5.5 Extra High,21,https://cursor.com/cursorbench
+grok-4.7_xhigh,0.48600000000000004,Extra High,10.19,90268,110,2026-09-21,xAI,United States of America,,,Grok 4.7 Extra High,22,https://cursor.com/cursorbench
+claude-haiku-5-5_max,0.484,Max,1.14,344890,166,2026-10-07,Anthropic,United States of America,,,Haiku 5.5 Max,23,https://cursor.com/cursorbench
+gemini-4-argon_low,0.479,Low,7.96,40541,121,2026-10-13,Google DeepMind,United States of America,,,Gemini 4 Argon Low,24,https://cursor.com/cursorbench
+gemini-4-hydrogen_medium,0.46399999999999997,Medium,1.28,43606,45,2026-11-12,Google DeepMind,United States of America,,,Gemini 4 Hydrogen Medium,25,https://cursor.com/cursorbench
+grok-4.7_high,0.46,High,6.88,65850,84,2026-09-21,xAI,United States of America,,,Grok 4.7 High,26,https://cursor.com/cursorbench
+gemini-4-neon_low,0.455,Low,1.26,19580,26,2026-11-18,Google DeepMind,United States of America,,,Gemini 4 Neon Low,27,https://cursor.com/cursorbench
+claude-haiku-5-5_xhigh,0.452,Extra High,0.56,149314,94,2026-10-07,Anthropic,United States of America,,,Haiku 5.5 Extra High,28,https://cursor.com/cursorbench
+grok-4.6_xhigh,0.443,Extra High,5.26,58554,62,2026-08-12,xAI,United States of America,,,Grok 4.6 Extra High,29,https://cursor.com/cursorbench
+claude-sonnet-5-5_high,0.438,High,1.41,43088,48,2026-09-28,Anthropic,United States of America,,,Sonnet 5.5 High,30,https://cursor.com/cursorbench
+claude-opus-5-5_low,0.42700000000000005,Low,1.43,19497,32,2026-09-22,Anthropic,United States of America,,,Opus 5.5 Low,31,https://cursor.com/cursorbench
+grok-4.7_medium,0.425,Medium,5.52,41173,70,2026-09-21,xAI,United States of America,,,Grok 4.7 Medium,32,https://cursor.com/cursorbench
+muse-spark-1.3_max,0.419,Max,2.89,56572,113,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 Max,33,https://cursor.com/cursorbench
+grok-4.6_high,0.413,High,4.28,46330,52,2026-08-12,xAI,United States of America,,,Grok 4.6 High,34,https://cursor.com/cursorbench
+gpt-5.6-sol_max,0.409,Max,7.6,40466,100,2026-07-09,OpenAI,United States of America,,,GPT-5.6 Sol Max,35,https://cursor.com/cursorbench
+grok-4.6_medium,0.389,Medium,2.59,26374,40,2026-08-12,xAI,United States of America,,,Grok 4.6 Medium,36,https://cursor.com/cursorbench
+claude-haiku-5-5_high,0.375,High,0.31,77196,61,2026-10-07,Anthropic,United States of America,,,Haiku 5.5 High,37,https://cursor.com/cursorbench
+gpt-5.6-sol_xhigh,0.374,Extra High,4.32,23921,58,2026-07-09,OpenAI,United States of America,,,GPT-5.6 Sol Extra High,38,https://cursor.com/cursorbench
+muse-spark-1.3_xhigh,0.34600000000000003,Extra High,2.33,47142,96,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 Extra High,39,https://cursor.com/cursorbench
+claude-sonnet-5-5_medium,0.34299999999999997,Medium,0.63,19144,26,2026-09-28,Anthropic,United States of America,,,Sonnet 5.5 Medium,40,https://cursor.com/cursorbench
+claude-haiku-5-5_medium,0.342,Medium,0.17,43441,41,2026-10-07,Anthropic,United States of America,,,Haiku 5.5 Medium,41,https://cursor.com/cursorbench
+gpt-5.6-sol_high,0.332,High,3.0,16319,44,2026-07-09,OpenAI,United States of America,,,GPT-5.6 Sol High,42,https://cursor.com/cursorbench
+grok-4.6_low,0.331,Low,1.76,16863,33,2026-08-12,xAI,United States of America,,,Grok 4.6 Low,43,https://cursor.com/cursorbench
+muse-spark-1.3_high,0.321,High,1.97,36562,85,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 High,44,https://cursor.com/cursorbench
+claude-sonnet-5-5_low,0.318,Low,0.44,13798,21,2026-09-28,Anthropic,United States of America,,,Sonnet 5.5 Low,45,https://cursor.com/cursorbench
+grok-4.7_low,0.315,Low,2.73,14493,42,2026-09-21,xAI,United States of America,,,Grok 4.7 Low,46,https://cursor.com/cursorbench
+muse-spark-1.3_medium,0.313,Medium,1.75,32034,77,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 Medium,47,https://cursor.com/cursorbench
+gpt-5.6-sol_medium,0.287,Medium,1.97,10554,34,2026-07-09,OpenAI,United States of America,,,GPT-5.6 Sol Medium,48,https://cursor.com/cursorbench
+claude-haiku-5-5_low,0.278,Low,0.08,23673,27,2026-10-07,Anthropic,United States of America,,,Haiku 5.5 Low,49,https://cursor.com/cursorbench
+muse-spark-1.3_low,0.275,Low,1.13,20673,58,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 Low,50,https://cursor.com/cursorbench
+gemini-4-hydrogen_low,0.239,Low,0.28,10497,22,2026-11-12,Google DeepMind,United States of America,,,Gemini 4 Hydrogen Low,51,https://cursor.com/cursorbench
+gpt-5.6-sol_low,0.23,Low,0.98,5206,22,2026-07-09,OpenAI,United States of America,,,GPT-5.6 Sol Low,52,https://cursor.com/cursorbench
+muse-spark-1.3_minimal,0.21300000000000002,,0.69,12789,42,2026-09-02,Meta AI,United States of America,,,Muse Spark 1.3 Minimal,53,https://cursor.com/cursorbench
