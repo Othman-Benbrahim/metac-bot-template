@@ -1,0 +1,32 @@
+name: Banc du duel tennis (1/N, Elo, forme)
+
+# preenregistrements/duel-tennis.md (décisions de l'auteur du 2026-11-26, 12 h 05 à 12 h 09). Une passe, aucun modèle
+# de langue (aucun crédit). Données Sackmann (CC BY-NC-SA 4.0). Rien n'est écrit au registre ; rapport en artefact.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Duel
+        run: uv run python banc_duel_tennis.py
+        env:
+          PYTHONUNBUFFERED: "1"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banc-duel-tennis
+          path: banc_duel_tennis.json
