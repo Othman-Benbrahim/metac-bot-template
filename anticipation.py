@@ -118,9 +118,14 @@ def mesurer() -> dict:
             tailles.append(len(L))
             listes |= {e.lower() for e, _, _ in L}
         touche = sorted(n for n in N if any(n in e or e in n for e in listes))
+        import calendrier_echeances as ce
+        cal = ce.au_calendrier(q["titre"], j - timedelta(days=7))
         R.append({"question_id": q["question_id"], "titre": q["titre"], "jour": j.isoformat(), "noms": sorted(N),
-                  "trouves": touche, "reussite": bool(touche), "taille_moyenne_listes": sum(tailles) / len(tailles)})
-    res = {"questions": len(R), "reussites": sum(r["reussite"] for r in R), "lignes": R}
+                  "trouves": touche, "calendrier": cal, "reussite": bool(touche), "reussite_calendrier": bool(cal),
+                  "reussite_totale": bool(touche or cal), "taille_moyenne_listes": sum(tailles) / len(tailles)})
+    res = {"questions": len(R), "reussites": sum(r["reussite"] for r in R),
+           "reussites_calendrier": sum(r["reussite_calendrier"] for r in R),
+           "reussites_totales": sum(r["reussite_totale"] for r in R), "lignes": R}
     DOS.mkdir(parents=True, exist_ok=True)
     (DOS / "mesure.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     return res

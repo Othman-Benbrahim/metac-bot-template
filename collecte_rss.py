@@ -684,6 +684,8 @@ def principal() -> int:
         try:
             anticipation.ecrire_comptes(entites_c)
             anticipation.ecrire_liste(datetime.now(timezone.utc).date().isoformat())
+            import calendrier_echeances
+            calendrier_echeances.ecrire(datetime.now(timezone.utc).date())
             anticipation.mesurer()
         except Exception as ex:
             print(f"veille anticipée : non écrite ({type(ex).__name__})")
