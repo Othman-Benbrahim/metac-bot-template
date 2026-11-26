@@ -65,7 +65,9 @@ def au_calendrier(titre: str, jour: date) -> list[str]:
             if e["type"] == "élection":
                 cles = [w for w in m.replace("–", " ").split() if len(w) > 4 and w not in
                         ("election", "elections", "general", "presidential", "parliamentary", "legislative", "local",
-                         "regional", "municipal", "referendum", "state", "round")]
+                         "regional", "municipal", "referendum", "state", "round", "council", "councils", "county", "city", "mayor",
+                         "magistrate", "national", "assembly", "federal", "senate", "house", "initiative", "union",
+                         "european", "parliament", "elections")]
                 if any(w in t for w in cles):
                     out.append(e["nom"])
                     break
