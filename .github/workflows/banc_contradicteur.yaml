@@ -1,0 +1,50 @@
+name: Banc du contradicteur (hors domaine)
+
+# Amendement du 2026-11-26 (preenregistrements/dossier-interne.md, E bis.1) : une passe, 37 questions, texte seul,
+# aucune recherche ; modèle du contradicteur du bot par défaut. Rien n'est écrit au registre ; rapport en artefact.
+on:
+  workflow_dispatch:
+    inputs:
+      modele:
+        description: "modèle (vide = variable ALPHABET_CONTRADICTEUR du dépôt, premier de la liste)"
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc du contradicteur
+        run: |
+          M="${{ github.event.inputs.modele }}"
+          if [ -z "$M" ]; then M="${ALPHABET_CONTRADICTEUR%%,*}"; fi
+          uv run python banc_contradicteur.py --modele "$M"
+        env:
+          PYTHONUNBUFFERED: "1"
+          ALPHABET_CONTRADICTEUR: ${{ vars.ALPHABET_CONTRADICTEUR }}
+          OPENAI_API_KEY: ${{ secrets.FANTASY_API_KEY || secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.ALPHABET_API_BASE }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEARER_TOKEN_BEDROCK }}
+          AWS_REGION_NAME: ${{ vars.AWS_REGION_NAME || 'us-east-1' }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AZURE_AI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
+          AZURE_AI_API_BASE: ${{ secrets.AZURE_AI_API_BASE || vars.AZURE_AI_API_BASE }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banc-contradicteur
+          path: banc_contradicteur.json

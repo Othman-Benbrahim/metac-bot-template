@@ -1,0 +1,302 @@
+{
+ "ecrit_le": "2026-11-26",
+ "etiquettes": "posées par Claude sur les titres seuls, avant tout appel de modèle (amendement E bis)",
+ "jeu": [
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "No change in Fed interest rates after May 2025 meeting?",
+   "mesure": 0.6650372759975833,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "No change in Fed interest rates after June 2025 meeting?",
+   "mesure": 0.7627118644067796,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "No change in Fed interest rates after September 2025 meeting?",
+   "mesure": 0.7777777777777778,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will no Fed rate cuts happen in 2025?",
+   "mesure": 0.7581703041055862,
+   "hors_domaine": true,
+   "raison": "une année entière, pas une réunion"
+  },
+  {
+   "groupe": "risque",
+   "famille": "cessez_le_feu",
+   "titre": "Will Trump win the 2025 Nobel Peace Prize iff there is a ceasefire in Ukraine before 2026? (or not if there isn't)",
+   "mesure": 0.06934373407876526,
+   "hors_domaine": true,
+   "raison": "question conditionnelle sur un prix"
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+   "mesure": 0.47550802126676495,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will any new country attack Israel or Iran between June and December 2025?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": true,
+   "raison": "aucun État attaquant nommé"
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will there be another deadly clash between Thailand and Cambodia, resulting in three or more fatalities, before 2026?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the June 2026 meeting?",
+   "mesure": 0.5095895720182989,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will France, UK, or Germany strike Iran by February 28?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the April 2026 meeting?",
+   "mesure": 0.6697804044056812,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will France, UK, or Germany strike Iran by June 30?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will the United States attempt to occupy or blockade Kharg Island during 2026?",
+   "mesure": 0.09628543499511241,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will the US/Israel strike 3 or more Iranian power plants in April 2026",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": true,
+   "raison": "compte de cibles"
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Russian attacks or invades Latvia by mid 2026",
+   "mesure": 0.09628543499511241,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Russian attacks or invades Finland by mid 2026",
+   "mesure": 0.09628543499511241,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "escalade",
+   "titre": "Will the People's Republic of China blockade or quarantine Taiwan before September 1, 2026?",
+   "mesure": 0.09628543499511241,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the July 2026 meeting?",
+   "mesure": 0.7746478873239436,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+   "mesure": 0.6929985711369667,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "risque",
+   "famille": "maintien",
+   "titre": "Will the Government of Albania or Prime Minister Edi Rama resign before September 2026?",
+   "mesure": 0.019854819511616495,
+   "hors_domaine": true,
+   "raison": "gouvernement collectif joint par « or »"
+  },
+  {
+   "groupe": "risque",
+   "famille": "banque_centrale",
+   "titre": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+   "mesure": 0.7000563570270717,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "escalade",
+   "titre": "Will Israel strike the Iranian military in Iran again, before September 2025?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "escalade",
+   "titre": "Will China invade Taiwan by March 31, 2026?",
+   "mesure": 0.09628543499511241,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "autres_accords",
+   "titre": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
+   "mesure": 0.2659,
+   "hors_domaine": true,
+   "raison": "un prix, pas un accord"
+  },
+  {
+   "groupe": "hasard",
+   "famille": "maintien",
+   "titre": "Will Vladimir Putin cease to be the president of the Russian Federation before 1 July 2025?",
+   "mesure": 0.29739966162917086,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "prix",
+   "titre": "Will Bitcoin dip to $90k in October?",
+   "mesure": 0.01,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "autres_accords",
+   "titre": "Will UNRWA win the Nobel Peace Prize in 2026?",
+   "mesure": 0.2659,
+   "hors_domaine": true,
+   "raison": "un prix, pas un accord"
+  },
+  {
+   "groupe": "hasard",
+   "famille": "cessez_le_feu",
+   "titre": "Russia-Ukraine Ceasefire in Trump's First 90 Days?",
+   "mesure": 0.022273145980330034,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "escalade",
+   "titre": "China x Philippines military clash by December 31?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "prix",
+   "titre": "Will Bitcoin dip to $105K in August?",
+   "mesure": 0.042415602918971396,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "banque_centrale",
+   "titre": "Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?",
+   "mesure": 0.12882416479182857,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "prix",
+   "titre": "BTC  close above 80K by end of March?",
+   "mesure": 0.01,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "maintien",
+   "titre": "Zelenskyy out as Ukraine president before July?",
+   "mesure": 0.03143446078826784,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "cessez_le_feu",
+   "titre": "US x Iran ceasefire by April 15?",
+   "mesure": 0.07369520475589042,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "autres_accords",
+   "titre": "Will the New START nuclear arms control agreement be renewed until at least February 5, 2027?",
+   "mesure": 0.3332,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "hasard",
+   "famille": "escalade",
+   "titre": "US strike on Cuba by March 31?",
+   "mesure": 0.2663299663299663,
+   "hors_domaine": false,
+   "raison": null
+  },
+  {
+   "groupe": "origine",
+   "famille": "rencontres",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person or talk on the phone before January 1, 2027?",
+   "mesure": 0.0494,
+   "hors_domaine": true,
+   "raison": "appels joints par « or »"
+  }
+ ]
+}

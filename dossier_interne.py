@@ -62,6 +62,33 @@ def _p(e: dict):
     return p if isinstance(p, (int, float)) else None
 
 
+# Amendement du 2026-11-26 (A) : ce que chaque brique compte, et ce qu'elle ne compte pas. Recopié dans le dossier
+# (briques[].domaine) pour le juge et le contradicteur.
+DOMAINES = {
+    "prix": "price of a quoted asset above or below a threshold at or before a date, by a random walk on recent volatility; "
+            "does not cover decisions, announcements or unquoted indices",
+    "evenements": "number of events of a type already counted by a series (measured rate); does not cover a single named event",
+    "maintien": "a named leader or office-holder leaving office before a date, by mortality and departure tables (Archigos) "
+                "in normal times; blind to an ongoing crisis; does not cover the resignation of a collective government",
+    "escalade": "a military strike or attack between named states, by level on the escalation ladder; does not cover "
+                "sanctions, verbal threats, counts of targets or conditional questions",
+    "competitions": "prior of 1/N for one contender winning a competition; ignores the contenders' strength; does not cover "
+                    "reaching a round or individual awards",
+    "banque_centrale": "the US Federal Reserve's decision at ONE named FOMC meeting (hike, cut, hold); does not cover a "
+                       "whole year or other central banks",
+    "cessez_le_feu": "conclusion of a ceasefire in an ongoing war; does not cover conditional questions (if/iff), prizes "
+                     "or meetings",
+    "tenue": "breakdown of an existing truce before a date",
+    "accord_guerre": "a peace agreement during an ongoing war (end of conflict)",
+    "rencontres": "an IN-PERSON meeting of heads of state or government; does not count phone or video calls, envoys or "
+                  "ministers",
+    "sommets": "attendance of a head of state at a NATO summit",
+    "justice": "a decision of the US Supreme Court in a case",
+    "autres_accords": "an agreement requiring the consent of several parties (treaty, vote, trade deal), by the number of "
+                      "consents required; does not cover a unilateral decision",
+}
+
+
 def _briques(titre: str, jour: dt.date, fin: str) -> list[tuple[str, str, dict | None, str | None]]:
     """(famille, mécanisme, sortie ou None, silence éventuel), dans l'ordre de la chaîne du bot."""
     import seuils_prix as spx, evenements_regle as evr, maintien_regle as mr, escalade_regle as es
@@ -222,7 +249,8 @@ def construire(titre: str, fin: str, jour: dt.date | None = None, qid: str | Non
     if "briques" in rubriques:
         el = []
         for fam, meca, e, _ in reconnues:
-            el.append({"famille": fam, "mecanisme": meca, "valeur": round(_p(e), 4), "unite": "probabilité",
+            el.append({"famille": fam, "mecanisme": meca, "domaine": DOMAINES.get(fam), "valeur": round(_p(e), 4),
+                       "unite": "probabilité",
                        "date_donnee": e.get("date_prix") or e.get("date_donnee"), "n": e.get("n"),
                        "perf": PERF.get(fam), "regle_entree": "R-brique"})
         ancien = next((x[3] for x in B if x[0] == "prix" and x[2] is None), None)

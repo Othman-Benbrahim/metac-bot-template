@@ -237,3 +237,19 @@ Les deux restent sous la règle d'arrêt des e-valeurs (§ 6), calculée sépar�
    log de la chaîne avec et sans contradicteur.
 4. Branchement si la perte avec contradicteur est inférieure à la perte sans, et si les fausses alertes restent sous
    un quart. Sinon, on n'ajoute rien et on rapporte.
+
+### E bis. Précision du test, écrite avant tout appel de modèle (2026-11-26, vers 11 h 45)
+Raison : une recherche rétrospective sur des questions résolues fuit l'issue (ForecastGym, veille du 2026-11-18), et les
+modèles peuvent connaître ces issues. Le test est donc scindé :
+1. **Hors domaine, hors ligne, texte seul.** Le contradicteur ne reçoit que le titre, la famille, la phrase de domaine
+   et la mesure ; aucune recherche. Jeu : les 21 déclenchements distincts de l'audit dont le titre porte une forme à
+   risque (hors compétitions, dont la brique a changé de rôle le jour même avant le test), Trump–Poutine, et 15
+   déclenchements sans forme à risque tirés au hasard (graine 20261126, hors compétitions). Étiquettes « hors domaine »
+   posées par Claude sur les titres seuls, avant tout appel, dans `mise_au_point/banc_contradicteur_jeu.json`.
+   Mesures : rappel (hors domaine attrapés) et fausses alertes (dans le domaine contestés). Critère : rappel ≥ 3 sur 4
+   et fausses alertes ≤ 1 sur 4. Modèle : celui du contradicteur du bot (variable ALPHABET_CONTRADICTEUR), une passe.
+2. **Contre le terrain, en ombre sur les questions vivantes.** Il ne peut pas se tester proprement sur le passé. Le
+   contradicteur tourne dans le bot sur les questions où une brique s'applique ; son verdict est journalisé, sans effet
+   sur la prévision, jusqu'à ce qu'assez de questions soient résolues pour le juger. L'application au juge (D) attend
+   ce résultat et une décision de l'auteur.
+Ce qui est branché sans attendre : la phrase de domaine dans le dossier (A), lue par le juge actuel.
