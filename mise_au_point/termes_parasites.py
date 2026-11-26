@@ -29,6 +29,9 @@ MOTS_VIDES = set("""will the a an of in on to by for and or be is are was before
 its it his her their which who what when there any no not more less least most new first last into during about over
 under between against within without per via end year years month months day days 2024 2025 2026 2027 2028 jan feb mar
 apr may jun jul aug sep oct nov dec january february march april june july august september october november december
+win wins won reach reaches out next top have has had become becomes finish hit hits get gets make makes take takes
+high low higher lower above below least than say says said announce announces happen happens remain remains still
+again ever officially publicly least least people called
 """.split())
 
 
@@ -97,7 +100,8 @@ def analyser(T: list[str], termes: dict) -> tuple[list, list]:
                     continue
                 vus.add(" ".join(g))
         gram.update(vus)
-    connus = {t.lower() for t in termes}
+    from mise_au_point.lecture_mecanique import routage
+    connus = {t.lower() for t in termes} | {n.lower() for n in routage()[2]}   # pays : rattachés par ailleurs
     sugg = []
     for g, c in gram.most_common(400):
         if c < 8 or g in connus:
