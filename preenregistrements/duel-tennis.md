@@ -54,3 +54,18 @@ Pour chaque tournoi : −ln p(vainqueur réel), p bornée à 0,0001. Moyenne par
 - Les questions de Metaculus portent sur des tournois précis et des joueurs choisis par le rédacteur ; le banc porte sur
   tous les joueurs de tous les grands tournois : il mesure la méthode, pas la performance sur nos questions.
 - Les paramètres de la forme (10 matchs, v(r), 500 pour un classement absent) sont fixés ici sans essai.
+
+## Résultat du passage unique (2026-11-26, run 45808551960)
+
+| Circuit | 1/N | Elo | Forme pondérée | Saisons battant 1/N (sur 16) | Duel, saisons gagnées |
+|---|---|---|---|---|---|
+| ATP (G, M ; 0 tableau écarté) | 4,389 | **2,093** | 2,255 | Elo 16, forme 16 | Elo 12, forme 4 |
+| WTA (G, PM ; T1 absent ; 0 tableau écarté) | 4,608 | **2,956** | 3,228 | Elo 16, forme 13 | Elo 10, forme 6 |
+
+- Les deux méthodes sont retenues contre 1/N : elles le battent sur l'ensemble et dans au moins deux saisons sur trois.
+  En moyenne géométrique, la probabilité donnée au vrai vainqueur passe d'environ 1 % (1/N) à environ 12 % (Elo, ATP).
+- Duel : l'**Elo** l'emporte sur l'ensemble (écart 0,16 à l'ATP, 0,27 à la WTA, au-delà du seuil de 0,02) et dans la
+  majorité des saisons. La forme pondérée gagne certaines saisons (ATP 2019-2021 et 2024 ; WTA 2010, 2013, 2016, 2022).
+- WTA : peu de tournois par saison certaines années (niveau PM seulement, T1 introuvable dans les fichiers) ; 2018 et
+  2020 proches de 1/N pour les deux méthodes.
+- Rien n'est branché : la décision revient à l'auteur, et les données de Sackmann s'arrêtent en mai 2026.
