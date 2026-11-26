@@ -6,11 +6,11 @@
    "statut": "introuvable",
    "essais": [
     [
-     "2024 Russian presidential election",
+     "Democratic Republic of the Congo",
      "page refusée"
     ],
     [
-     "Democratic Republic of the Congo",
+     "2024 Russian presidential election",
      "page refusée"
     ],
     [
@@ -209,15 +209,15 @@
    "statut": "introuvable",
    "essais": [
     [
-     "Opinion polling for the next Ukrainian presidential election",
-     "page refusée"
-    ],
-    [
      "Opinion polling for the 2027 French presidential election",
      "page refusée"
     ],
     [
      "Opinion polling for the 2026 Brazilian presidential election",
+     "page refusée"
+    ],
+    [
+     "Opinion polling for the next Ukrainian presidential election",
      "page refusée"
     ],
     [
@@ -393,7 +393,7 @@
      "page refusée"
     ],
     [
-     "2022 Colombian presidential election",
+     "2018 Colombian parliamentary election",
      "page refusée"
     ],
     [
@@ -419,7 +419,7 @@
      "page refusée"
     ],
     [
-     "2026 United States House of Representatives elections in Michigan",
+     "Statewide opinion polling for the 2028 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -737,53 +737,33 @@
   },
   "polymarket:0x190ac165e768e2f4169e79874d7671edd551c4c0a6ab4d4f07f16a2cae903f3b": {
    "election": "2026 Sachsen-Anhalt parliamentary election",
-   "statut": "ok",
-   "source": "dawum",
-   "page": "DAWUM Sachsen-Anhalt",
-   "sujet": "The Left",
-   "colonne_sujet": "Linke",
-   "jeu": "2026-08-30",
-   "moyennes": {
-    "AfD": {
-     "moyenne": 42.0,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "CDU": {
-     "moyenne": 22.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "Linke": {
-     "moyenne": 12.4,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "SPD": {
-     "moyenne": 7.4,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "Grüne": {
-     "moyenne": 5.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "FDP": {
-     "moyenne": 3.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "BSW": {
-     "moyenne": 4.0,
-     "n": 5,
-     "dernier": "2026-08-27"
-    }
-   },
-   "alertes": [
-    "colonnes en sigles, sujet nommé : vérifier la correspondance"
-   ],
-   "verification": "confirme_structure"
+   "statut": "introuvable",
+   "essais": [
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 Berlin state election",
+     "page refusée"
+    ],
+    [
+     "2021 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 German government crisis",
+     "page refusée"
+    ],
+    [
+     "Alliance for Social Justice and Economic Reason",
+     "page refusée"
+    ],
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ]
+   ]
   },
   "polymarket:0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d": {
    "election": "2026 Brazilian presidential election",
@@ -1009,11 +989,11 @@
      "aucun tableau lisible (HTTP 200)"
     ],
     [
-     "2026 United States elections",
+     "United Russia",
      "page refusée"
     ],
     [
-     "United Russia",
+     "2026 United States elections",
      "page refusée"
     ],
     [
@@ -1592,11 +1572,11 @@
      "page refusée"
     ],
     [
-     "2026 Brazilian presidential election",
+     "Opinion polling for the 2010 Brazilian presidential election",
      "page refusée"
     ],
     [
-     "Opinion polling for the 2010 Brazilian presidential election",
+     "2026 Brazilian presidential election",
      "page refusée"
     ],
     [
@@ -1714,15 +1694,15 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the next Japanese general election",
-     "page refusée"
-    ],
-    [
      "Opinion polling in Scotland for the next United Kingdom general election",
      "page refusée"
     ],
     [
-     "General election",
+     "Opinion polling for the next Japanese general election",
+     "page refusée"
+    ],
+    [
+     "Next United Kingdom general election",
      "page refusée"
     ]
    ]
@@ -2731,11 +2711,11 @@
      "page refusée"
     ],
     [
-     "2026 Brazilian presidential election",
+     "Flávio Bolsonaro 2026 presidential campaign",
      "page refusée"
     ],
     [
-     "Flávio Bolsonaro 2026 presidential campaign",
+     "2026 Brazilian presidential election",
      "page refusée"
     ],
     [
@@ -2764,51 +2744,33 @@
   },
   "polymarket:0xad485c0cfb6058e791ffd719ee3a99bf8ea241975704b5960041ec0fe017dadf": {
    "election": "2026 Sachsen-Anhalt parliamentary election",
-   "statut": "ok",
-   "source": "dawum",
-   "page": "DAWUM Sachsen-Anhalt",
-   "sujet": "AfD",
-   "colonne_sujet": "AfD",
-   "jeu": "2026-08-30",
-   "moyennes": {
-    "AfD": {
-     "moyenne": 42.0,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "CDU": {
-     "moyenne": 22.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "Linke": {
-     "moyenne": 12.4,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "SPD": {
-     "moyenne": 7.4,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "Grüne": {
-     "moyenne": 5.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "FDP": {
-     "moyenne": 3.2,
-     "n": 5,
-     "dernier": "2026-08-27"
-    },
-    "BSW": {
-     "moyenne": 4.0,
-     "n": 5,
-     "dernier": "2026-08-27"
-    }
-   },
-   "alertes": [],
-   "verification": "confirme_structure"
+   "statut": "introuvable",
+   "essais": [
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 Berlin state election",
+     "page refusée"
+    ],
+    [
+     "2021 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 German government crisis",
+     "page refusée"
+    ],
+    [
+     "Alliance for Social Justice and Economic Reason",
+     "page refusée"
+    ],
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ]
+   ]
   },
   "polymarket:0xae6d3d20bc8f742922dc40880cd8a8671c10385a9912fa7cd670fba0643dfe96": {
    "election": "2026 Peruvian presidential election",
@@ -2885,11 +2847,11 @@
      "page refusée"
     ],
     [
-     "2026 Federal District gubernatorial election",
+     "2026 Brazilian presidential election",
      "page refusée"
     ],
     [
-     "2026 Brazilian presidential election",
+     "2026 Federal District gubernatorial election",
      "page refusée"
     ],
     [
@@ -2908,51 +2870,33 @@
   },
   "polymarket:0xbb333a67a021476c97c9ac368e9d280ca43fe09782042d3ada92e48955c6a90c": {
    "election": "2026 Sachsen-Anhalt parliamentary election",
-   "statut": "ok",
-   "source": "dawum",
-   "page": "DAWUM Sachsen-Anhalt",
-   "sujet": "CDU",
-   "colonne_sujet": "CDU",
-   "jeu": "2026-07-19",
-   "moyennes": {
-    "AfD": {
-     "moyenne": 41.33,
-     "n": 3,
-     "dernier": "2026-06-30"
-    },
-    "CDU": {
-     "moyenne": 24.33,
-     "n": 3,
-     "dernier": "2026-06-30"
-    },
-    "Linke": {
-     "moyenne": 12.67,
-     "n": 3,
-     "dernier": "2026-06-30"
-    },
-    "SPD": {
-     "moyenne": 6.33,
-     "n": 3,
-     "dernier": "2026-06-30"
-    },
-    "BSW": {
-     "moyenne": 4.33,
-     "n": 3,
-     "dernier": "2026-06-30"
-    },
-    "FDP": {
-     "moyenne": 3.5,
-     "n": 2,
-     "dernier": "2026-06-30"
-    },
-    "Grüne": {
-     "moyenne": 4.0,
-     "n": 3,
-     "dernier": "2026-06-30"
-    }
-   },
-   "alertes": [],
-   "verification": "confirme_structure"
+   "statut": "introuvable",
+   "essais": [
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 Berlin state election",
+     "page refusée"
+    ],
+    [
+     "2021 Saxony-Anhalt state election",
+     "page refusée"
+    ],
+    [
+     "2026 German government crisis",
+     "page refusée"
+    ],
+    [
+     "Alliance for Social Justice and Economic Reason",
+     "page refusée"
+    ],
+    [
+     "2026 Saxony-Anhalt state election",
+     "page refusée"
+    ]
+   ]
   },
   "polymarket:0xbbd623c4191ca76dec466507375d6df85b403b7e14f9cbd3d09f2c450ae0cd96": {
    "election": "2026 Minnesota Governor Republican primary",
@@ -3651,7 +3595,7 @@
      "page refusée"
     ],
     [
-     "2026 United States House of Representatives elections in Michigan",
+     "Statewide opinion polling for the 2028 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3681,15 +3625,15 @@
      "page refusée"
     ],
     [
-     "Opinion polling for the next Japanese general election",
-     "page refusée"
-    ],
-    [
      "Opinion polling in Scotland for the next United Kingdom general election",
      "page refusée"
     ],
     [
-     "General election",
+     "Opinion polling for the next Japanese general election",
+     "page refusée"
+    ],
+    [
+     "Next United Kingdom general election",
      "page refusée"
     ]
    ]
@@ -3765,11 +3709,11 @@
      "page refusée"
     ],
     [
-     "Nationwide opinion polling for the 2028 Republican Party presidential primaries",
+     "Statewide opinion polling for the 2028 Democratic Party presidential primaries",
      "page refusée"
     ],
     [
-     "Statewide opinion polling for the 2016 Republican Party presidential primaries",
+     "Nationwide opinion polling for the 2028 Republican Party presidential primaries",
      "page refusée"
     ],
     [
@@ -3777,7 +3721,7 @@
      "page refusée"
     ],
     [
-     "Statewide opinion polling for the 2028 Democratic Party presidential primaries",
+     "Statewide opinion polling for the 2008 Republican Party presidential primaries",
      "page refusée"
     ],
     [
