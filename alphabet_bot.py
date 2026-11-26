@@ -576,8 +576,15 @@ class AlphabetBot(FallTemplateBot2026):
         # points au plus, modulée par la force de la preuve ; journal-juge.jsonl.
         texte = (r.commentaire or "") + (sp_["texte"] if sp_ is not None else "")
         p_mesure = float(sp_.get("p_regle", sp_["p"])) if sp_ is not None else r.p_poste
-        if sp_ is not None:   # amendement du 2026-11-26 (E bis.2) : contradicteur des briques, EN OMBRE (aucun effet)
-            await self._contradicteur_brique(question, q, research, r.p_poste, p_mesure)
+        if sp_ is not None:   # amendement du 2026-11-26 : contradicteur des briques
+            v = await self._contradicteur_brique(question, q, research, r.p_poste, p_mesure)
+            # « hors domaine » admis par le code (citation vérifiée) : la brique est annulée, on poste le raisonnement du
+            # modèle (décision de l'auteur, 2026-11-26, 11 h 46, après le banc : rappel 8/8, fausses alertes 6/29).
+            # « contre le terrain » reste en ombre (E bis.2).
+            if v is not None and v.get("verdict") == "hors_domaine":
+                texte = (r.commentaire or "") + (f"\n\nContradictor: the coded rule does not apply to this question "
+                                                 f"(« {v.get('citation')} »); the rule is set aside.")
+                sp_, p_mesure = None, r.p_poste
         j = await self._juge(question, q, research, a.prediction_value, p_mesure)
         if j is not None and j["decision"] == "ecart":
             texte += (f"\n\nInformed judge (bounded): departure for motive « {j['motif']} », capped at "
@@ -585,30 +592,33 @@ class AlphabetBot(FallTemplateBot2026):
             return ReasonedPrediction(prediction_value=j["p_poste"], reasoning=texte)
         return ReasonedPrediction(prediction_value=p_mesure, reasoning=texte)
 
-    async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float) -> None:
+    async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float) -> dict | None:
         """Amendement du 2026-11-26 (E bis.2) : verdict du contradicteur sur la brique appliquée, journalisé dans
         registre/journal-contradicteur.jsonl, sans aucun effet sur la prévision."""
         if not os.environ.get("ALPHABET_CONTRADICTEUR") or os.environ.get("ALPHABET_CONTRADICTEUR_BRIQUE") == "0":
-            return
+            return None
         try:
             import contradicteur_brique as cb
             import dossier_interne as di
             fin = q.resolution.isoformat() if hasattr(q.resolution, "isoformat") else str(q.resolution or "")[:10]
             B = [b for b in di._briques(q.titre, datetime.now(timezone.utc).date(), fin) if b[2] is not None]
             if not B:
-                return
+                return None
             fam = B[0][0]
             crit = getattr(q, "criteres", "") or ""
             rep = await self._critique(cb.consigne(q.titre, crit, fam, di.DOMAINES.get(fam, ""), p_mesure, research or ""))
             v = cb.analyser(rep, q.titre, crit)
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                      "date_information": datetime.now(timezone.utc).date().isoformat(), "famille": fam,
-                     "p_raisonnement": p_raisonnement, "p_mesure": p_mesure, "verdict": v, "ombre": True}
+                     "p_raisonnement": p_raisonnement, "p_mesure": p_mesure, "verdict": v,
+                     "applique": v.get("verdict") == "hors_domaine"}
             ligne["sceau"] = ap.sceau(ligne)
             with open(ap.registre_ecrivable() / "journal-contradicteur.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
-        except Exception as ex:   # l'ombre qui échoue ne bloque rien
+            return v
+        except Exception as ex:   # le contradicteur qui échoue ne bloque rien : la brique reste appliquée
             logger.warning("contradicteur des briques : non appliqué (%s)", type(ex).__name__)
+            return None
 
     async def _juge(self, question, q, research: str, p_A: float, p_mesure: float) -> dict | None:
         """Juge informé : dossier interne standardisé, réponse fermée, bornée par le code ; journal scellé."""

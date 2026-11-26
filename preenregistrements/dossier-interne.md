@@ -264,3 +264,7 @@ Ce qui est branché sans attendre : la phrase de domaine dans le dossier (A), lu
   incohérente (Finlande contestée, Lettonie acceptée pour la même forme). Rien n'est réétiqueté après coup.
 - Suite : le contradicteur reste en ombre pour le volet « contre le terrain » (E bis.2). L'application du verdict
   « hors domaine » au juge (annulation de la brique) attend la décision de l'auteur.
+- **Branché (2026-11-26, 11 h 46, décision de l'auteur : « je valide ; c'est ce qu'on appelle un garde-fou utile ») :**
+  le verdict « hors domaine » admis par le code annule la brique ; le bot poste son raisonnement, puis le juge agit
+  comme sur une question sans brique. Si le contradicteur échoue ou ne répond pas, la brique reste appliquée. La
+  rustine des appels dans `rencontres_regle.py` est gardée tant que le contradicteur peut faire défaut.
