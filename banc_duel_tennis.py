@@ -160,7 +160,9 @@ def duel(t: str) -> dict:
                 pe = proba_titre(A, lambda x, y: 1 / (1 + 10 ** ((R[y] - R[x]) / 400)))
                 pf = proba_titre(A, lambda x, y: 1 / (1 + math.exp(-(a * (Fj[x] - Fj[y]) +
                                                                       b * (math.log(rk.get(y, 500)) - math.log(rk.get(x, 500)))))))
-                for nom, p in (("1/N", 1 / len(J)), ("elo", pe.get(champion, 0)), ("forme", pf.get(champion, 0))):
+                melange = (pe.get(champion, 0) + pf.get(champion, 0)) / 2     # second passage (combinaison, poids 1/2)
+                for nom, p in (("1/N", 1 / len(J)), ("elo", pe.get(champion, 0)), ("forme", pf.get(champion, 0)),
+                               ("melange", melange)):
                     res[saison][nom].append(-math.log(max(p, PMIN)))
         # mises à jour avec les matchs du tournoi (état de la veille gardé pour le pronostic ci-dessus)
         for m in sorted(ms, key=lambda m: TOURS.index(m["round"]) if m.get("round") in TOURS else -1):
@@ -180,7 +182,10 @@ def duel(t: str) -> dict:
     S = {s: {k: round(sum(v) / len(v), 4) for k, v in d.items()} | {"n": len(d["1/N"])} for s, d in sorted(res.items())}
     test = [s for s in S if 2010 <= s <= 2025]
     tous = lambda k: [x for s in test for x in res[s][k]]
-    ens = {k: round(sum(tous(k)) / max(1, len(tous(k))), 4) for k in ("1/N", "elo", "forme")}
+    ens = {k: round(sum(tous(k)) / max(1, len(tous(k))), 4) for k in ("1/N", "elo", "forme", "melange")}
+    mel = {"saisons_battant_elo": sum(S[s]["melange"] < S[s]["elo"] for s in test),
+           "ecart_avec_elo": round(ens["elo"] - ens["melange"], 4)}
+    mel["remplace_elo"] = mel["ecart_avec_elo"] >= 0.02 and mel["saisons_battant_elo"] >= math.ceil(len(test) / 2)
     bat = {k: sum(S[s][k] < S[s]["1/N"] for s in test) for k in ("elo", "forme")}
     duel_ = {"elo": sum(S[s]["elo"] < S[s]["forme"] for s in test), "forme": sum(S[s]["forme"] < S[s]["elo"] for s in test)}
     retenue = {k: ens[k] < ens["1/N"] and bat[k] >= math.ceil(2 * len(test) / 3) for k in ("elo", "forme")}
@@ -189,7 +194,7 @@ def duel(t: str) -> dict:
     return {"circuit": t, "niveaux_vus": sorted(niveaux_vus), "tableaux_ecartes": ecartes, "saisons": S,
             "ensemble_2010_2025": ens, "saisons_test": len(test), "saisons_battant_1_sur_N": bat,
             "duel_saisons_gagnees": duel_, "retenue": retenue, "duel_ensemble": gagnant,
-            "params_forme_derniere_saison": {"a": round(a, 3), "b": round(b, 3)}}
+            "params_forme_derniere_saison": {"a": round(a, 3), "b": round(b, 3)}, "melange": mel}
 
 
 if __name__ == "__main__":
@@ -198,7 +203,8 @@ if __name__ == "__main__":
     for t, r in out.items():
         print(f"\n== {t.upper()} (niveaux {r['niveaux_vus']}, tableaux écartés {r['tableaux_ecartes']})")
         for s, v in r["saisons"].items():
-            print(f"  {s} n={v['n']:>2}  1/N {v['1/N']:.3f}  elo {v['elo']:.3f}  forme {v['forme']:.3f}")
+            print(f"  {s} n={v['n']:>2}  1/N {v['1/N']:.3f}  elo {v['elo']:.3f}  forme {v['forme']:.3f}  mélange {v['melange']:.3f}")
         print(f"  ensemble 2010-2025 : {r['ensemble_2010_2025']}")
         print(f"  saisons battant 1/N (sur {r['saisons_test']}) : {r['saisons_battant_1_sur_N']} ; retenue : {r['retenue']}")
         print(f"  duel elo/forme, saisons gagnées : {r['duel_saisons_gagnees']} ; ensemble : {r['duel_ensemble']}")
+        print(f"  mélange contre Elo : {r['melange']}")

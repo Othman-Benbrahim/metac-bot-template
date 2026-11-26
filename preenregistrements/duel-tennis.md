@@ -69,3 +69,12 @@ Pour chaque tournoi : −ln p(vainqueur réel), p bornée à 0,0001. Moyenne par
 - WTA : peu de tournois par saison certaines années (niveau PM seulement, T1 introuvable dans les fichiers) ; 2018 et
   2020 proches de 1/N pour les deux méthodes.
 - Rien n'est branché : la décision revient à l'auteur, et les données de Sackmann s'arrêtent en mai 2026.
+
+## Second passage : combinaison Elo + forme (écrit avant calcul, 2026-11-26, 12 h 20 ; décision de l'auteur, 12 h 19 :
+« les deux » — tester la combinaison et chercher une source fraîche)
+Constat qui motive le test : les deux méthodes ne se trompent pas les mêmes saisons.
+- Méthode 4, **mélange** : pour chaque tournoi, moyenne simple des deux probabilités de titre, p = (p_elo + p_forme)/2.
+  Poids fixé à 1/2, sans réglage.
+- Même score, mêmes saisons, même passage de données.
+- Décision : le mélange remplace l'Elo s'il fait mieux sur l'ensemble 2010-2025 d'au moins 0,02 ET dans au moins la
+  moitié des saisons, sur chacun des deux circuits ; sinon l'Elo reste.
