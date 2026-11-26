@@ -897,7 +897,7 @@ class AlphabetBot(FallTemplateBot2026):
 
 
 BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)
-FILTRE = __import__("re").compile(r"content management policy|content_filter|ResponsibleAIPolicyViolation", re.I)
+FILTRE = __import__("re").compile(r"content management policy|content_filter|ResponsibleAIPolicyViolation", __import__("re").I)
 
 
 class LlmTenace(GeneralLlm):
