@@ -85,6 +85,11 @@ def pays_du_titre(titre: str) -> tuple[str, ...] | None:
         return None
     if not re.search(r"\b(meet|meeting|summit|trilateral)\b", t) or re.search(r"\bnot meet\b", t):
         return None
+    # Hors domaine (correction du 2026-11-26) : COLT ne compte que les rencontres en personne ; une question qui accepte
+    # aussi un appel ou un échange à distance (« meet in person or talk on the phone ») n'est pas mesurée par cette
+    # brique. Cas d'origine : Trump–Putin, Metaculus 46751, mesuré à 0,049 alors que les appels sont fréquents.
+    if re.search(r"\b(phone|call|calls|talk|talks|speak|speaks|video|virtual|virtually|remote|remotely)\b", t):
+        return None
     P = []
     for k, v in sorted(NOMS.items(), key=lambda z: -len(z[0])):
         if re.search(r"\b" + re.escape(k) + r"\b", t) and v not in P:
