@@ -714,6 +714,10 @@ class AlphabetBot(FallTemplateBot2026):
                 return None
             p = arr.melanger(p_pipeline, e["p"])
             e.update({"p_regle": e["p"], "p": p, "poids": arr.POIDS, "ecart_max": arr.ECART_MAX})
+            if e.get("classe") == "autre":
+                # 2026-11-26 (décision de l'auteur, 15 h 22) : « autres accords » perd contre la part de oui de sa famille
+                # (27 questions : 0,393 contre 0,316) ; elle n'est plus une base, seulement un ajustement plafonné.
+                e["p_repere"] = e.pop("p_regle")
             jour = datetime.now(timezone.utc).date().isoformat()
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                      "date_information": jour, "p_pipeline": p_pipeline, "p_poste": p, "accords": e}
@@ -726,7 +730,10 @@ class AlphabetBot(FallTemplateBot2026):
                     "justice": "US Supreme Court outcome (Supreme Court Database 1946-2025 base rates)"}.get(e["classe"], "peace agreement")
             e["texte"] = (f"\n\nWar-state rule (coded): {quoi} during an ongoing war ({e['guerre']}), measured rates "
                           f"by war type and age (COW interstate wars since 1946, ETH/PRIO civil-war ceasefires, UCDP "
-                          f"conflict termination, MID interstate disputes since 1946): {e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
+                          f"conflict termination, MID interstate disputes since 1946): "
+                          + (f"{e['p_regle']:.1%}. This coded rule is the measure (base, not blended)." if "p_regle" in e else
+                             f"{e['p_repere']:.1%}. This rule only adjusts the model's reading (one quarter, at most 15 "
+                             f"points): {e['p']:.1%}."))
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("accords : non appliquée (%s)", type(ex).__name__)
