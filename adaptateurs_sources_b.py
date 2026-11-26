@@ -185,7 +185,8 @@ def recit_russe(reg: Path, pays: str, colonne: str = "articles") -> list[tuple[s
 HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversite", "defense", "sante_afrique", "crime",
              "genre", "psyche", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique",   # 0.10.456
              "surveillance", "geopolitique_europe", "moyen_orient", "chine", "russie", "amerique_latine", "inde",
-             "voix_etat")   # 2026-11-25
+             "voix_etat",   # 2026-11-25
+             "laboratoires_ia")   # 2026-11-26
 
 
 def rss(reg: Path, pays: str, famille: str = "tout") -> list[tuple[str, float]]:

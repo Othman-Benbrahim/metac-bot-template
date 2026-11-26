@@ -181,6 +181,13 @@ FLUX = {
     "moyen_orient": ["https://www.aljazeera.com/xml/rss/all.xml",                # Al Jazeera (Qatar)
                      "https://www.middleeasteye.net/rss",                         # Middle East Eye (Londres, indépendant)
                      "https://orientxxi.info/?page=backend&lang=fr"],             # Orient XXI (analyse, français)
+    # 2026-11-26 (source validée par l'auteur le 2026-11-24, 14 h 35 : « notes de version des laboratoires ») : annonces
+    # officielles des laboratoires d'IA, pour les questions de sortie de modèles ; en ombre, hors « tout » ; titres,
+    # liens et dates seulement. Anthropic, Meta, xAI et Mistral ne publient pas de flux : non forcés.
+    "laboratoires_ia": ["https://openai.com/news/rss.xml",                       # OpenAI : actualités et sorties
+                        "https://deepmind.google/blog/rss.xml",                  # Google DeepMind : blog
+                        "https://blog.google/technology/ai/rss/",                # Google : IA (annonces Gemini)
+                        "https://huggingface.co/blog/feed.xml"],                 # Hugging Face : blog (modèles ouverts)
     "chine": ["https://www.scmp.com/rss/91/feed",                                 # South China Morning Post : Chine
               "https://chinamediaproject.org/feed/"],                             # China Media Project (discours officiel)
     "russie": ["https://meduza.io/rss/en/all",                                    # Meduza (indépendant, en exil)
