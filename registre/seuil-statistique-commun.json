@@ -1,0 +1,98 @@
+{
+ "epreuve_ensemble": {
+  "p_commun": 0.4904,
+  "p_rw": 0.4771,
+  "p_const": 0.5359,
+  "n": 23584,
+  "n_apprentissage": 18336
+ },
+ "par_serie": {
+  "UNRATE": {
+   "p_commun": 0.3709,
+   "p_rw": 0.3829,
+   "p_const": 0.3771,
+   "n": 1680
+  },
+  "inflation_cpi": {
+   "p_commun": 0.5619,
+   "p_rw": 0.552,
+   "p_const": 0.5996,
+   "n": 1680
+  },
+  "inflation_core": {
+   "p_commun": 0.4753,
+   "p_rw": 0.4298,
+   "p_const": 0.5117,
+   "n": 1680
+  },
+  "salaires_an": {
+   "p_commun": 0.4152,
+   "p_rw": 0.4342,
+   "p_const": 0.4724,
+   "n": 1712
+  },
+  "UMCSENT": {
+   "p_commun": 0.56,
+   "p_rw": 0.5157,
+   "p_const": 0.5869,
+   "n": 1712
+  },
+  "PFOODINDEXM": {
+   "p_commun": 0.3973,
+   "p_rw": 0.3258,
+   "p_const": 0.4361,
+   "n": 1680
+  },
+  "PCOPPUSDM": {
+   "p_commun": 0.4347,
+   "p_rw": 0.4704,
+   "p_const": 0.5354,
+   "n": 1680
+  },
+  "PNICKUSDM": {
+   "p_commun": 0.5627,
+   "p_rw": 0.5255,
+   "p_const": 0.5784,
+   "n": 1680
+  },
+  "PURANUSDM": {
+   "p_commun": 0.4862,
+   "p_rw": 0.5192,
+   "p_const": 0.5797,
+   "n": 1680
+  },
+  "PALUMUSDM": {
+   "p_commun": 0.4662,
+   "p_rw": 0.488,
+   "p_const": 0.5463,
+   "n": 1680
+  },
+  "PIORECRUSDM": {
+   "p_commun": 0.5148,
+   "p_rw": 0.4972,
+   "p_const": 0.5508,
+   "n": 1680
+  },
+  "PZINCUSDM": {
+   "p_commun": 0.5126,
+   "p_rw": 0.5046,
+   "p_const": 0.5726,
+   "n": 1680
+  },
+  "PWHEAMTUSDM": {
+   "p_commun": 0.5852,
+   "p_rw": 0.5477,
+   "p_const": 0.6021,
+   "n": 1680
+  },
+  "PMAIZMTUSDM": {
+   "p_commun": 0.5228,
+   "p_rw": 0.4871,
+   "p_const": 0.554,
+   "n": 1680
+  }
+ },
+ "series_gagnees_par_commun": 5,
+ "n_series": 14,
+ "retenue": false
+}

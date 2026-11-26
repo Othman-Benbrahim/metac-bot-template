@@ -23,3 +23,11 @@ Concurrents sur l'épreuve :
 La fréquence commune est retenue si elle bat les deux autres sur l'épreuve, sur l'ensemble ET sur au moins deux tiers
 des séries. Elle deviendrait alors la brique des seuils de statistiques (branchement : décision de l'auteur), avec les
 mêmes crans ; un seuil hors des crans prend le cran le plus proche (interpolation linéaire entre crans).
+
+## Résultat du passage unique (2026-11-26, vers 16 h 25)
+Apprentissage 18 336 questions (cible avant 2022), épreuve 23 584 (départ à partir de 2022).
+- Épreuve, perte log : fréquence commune 0,4904 ; marche aléatoire propre à la série 0,4771 ; constante 0,5359.
+- La fréquence commune ne bat les deux autres que sur 5 séries sur 14. **Non retenue.**
+- Lecture : sur la période récente, c'est la marche aléatoire propre à chaque série qui fait le mieux, l'inverse du banc
+  précédent (calculé sur toute la période). Les deux règles battent nettement la constante (0,48-0,49 contre 0,54), mais
+  aucune ne domine l'autre de façon stable : l'avantage change selon la période. Aucune ne passe son propre critère.
