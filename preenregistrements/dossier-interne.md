@@ -253,3 +253,14 @@ modèles peuvent connaître ces issues. Le test est donc scindé :
    sur la prévision, jusqu'à ce qu'assez de questions soient résolues pour le juger. L'application au juge (D) attend
    ce résultat et une décision de l'auteur.
 Ce qui est branché sans attendre : la phrase de domaine dans le dossier (A), lue par le juge actuel.
+
+### Résultat du banc hors domaine (une passe, 2026-11-26, run 45802865087, modèle azure_ai/grok-4.7)
+- Rappel : 8 sur 8 hors domaine attrapés (Trump–Poutine compris), citations toutes vérifiées par le code.
+- Fausses alertes : 6 sur 29 (0,21), sous le plafond d'un quart. **Critère tenu.**
+- Les 6 contestations « à tort » : France, Royaume-Uni ou Allemagne frappe l'Iran (deux fois) ; occuper ou bloquer
+  l'île de Kharg ; blocus ou « quarantaine » de Taïwan ; la Russie attaque ou envahit la Finlande ; Bitcoin descend à
+  105 000 $ en août. Quatre d'entre elles se défendent (blocus, quarantaine et occupation ne sont pas des frappes ;
+  plusieurs États attaquants joints par « or ») : les étiquettes de Claude étaient peut-être trop larges. Une est
+  incohérente (Finlande contestée, Lettonie acceptée pour la même forme). Rien n'est réétiqueté après coup.
+- Suite : le contradicteur reste en ombre pour le volet « contre le terrain » (E bis.2). L'application du verdict
+  « hors domaine » au juge (annulation de la brique) attend la décision de l'auteur.
