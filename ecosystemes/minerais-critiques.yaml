@@ -31,6 +31,8 @@ compartiments:
   - part moyenne du premier raffineur passée de 70 % (2023) à 72 % (2025), hors terres rares ; la Chine première pour la
     plupart des minerais, l'Indonésie pour le nickel (AIE, Global Critical Minerals Outlook 2026)
   - la Chine fait environ la moitié de la fonte mondiale de cuivre, contre 15 % environ en 2005 (AIE, commentaire de 2026)
+  - 'RDC : intérêts chinois au capital de 17 des 19 principales opérations de cobalt ; 96 % du cobalt congolais part vers la Chine ; la RDC devient en 2024 le deuxième raffineur de cuivre en cathodes (8 % de l''offre mondiale, Chine 45 %) mais exporte son cobalt en hydroxyde (pureté 20 à 40 %, payé 50 à 60 % du prix du métal) (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026, d''après OCDE 2026 et Deberdt, Le Billon et DiCarlo 2026)'
+  - 'mécanisme : la transformation concentrée en Chine limite l''autonomie des chaînes occidentales ; une route « alternative » transporte de fait un minerai en partie sous contrôle chinois (Zijin détient 39,6 % de Kamoa-Kakula, premier client potentiel du corridor de Lobito) (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
   niveau:
     espace: monde
     temps: décennies
@@ -52,6 +54,8 @@ compartiments:
     9 novembre 2026)
   - quotas d'exportation de cobalt de la RDC après la levée de l'interdiction le 16 octobre 2025 ; quota de 96 600 tonnes
     pour 2026, cadre jusqu'en 2027 (Benchmark Mineral Intelligence, 22 septembre 2025)
+  - 'mécanisme : les restrictions africaines visent trois buts, faire monter les prix, réorganiser la commercialisation, imposer la transformation locale ; formes graduées : plafond de production aux études de faisabilité (bauxite, Guinée), quotas (cobalt, RDC), interdiction au cas par cas (lithium brut, Zimbabwe, depuis décembre 2022) ; elles ne marchent pas seules, il faut électricité, capitaux et compétences (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'Afrique du Sud : propositions de juin 2026 pour une taxe de 25 % à l''exportation du chrome brut ; 11 fonderies de ferrochrome en activité en 2026 contre 66 à l''apogée ; tarifs d''Eskom multipliés par 10 depuis 2008, allègement tarifaire négocié au printemps 2026 (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
   acteurs:
   - nom: ministère chinois du Commerce (statut)
     taille: macro
@@ -100,6 +104,7 @@ compartiments:
   - le cobalt est extrait avec le cuivre et le nickel (secteur cuivre-nickel de la roue des métaux, Reuter, reprise par
     SMS group, 2024) ; la RDC fait environ 74 % de la production minière mondiale en 2025, 230 000 tonnes sur 310 000
     (USGS, Mineral Commodity Summaries 2026)
+  - 'lithium de Manono (RDC) : production lancée sur la partie nord en juin 2026 ; Zijin (via Jinxiang Lithium) 54,9 %, Cominière 35,1 %, État congolais 10 % (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
   niveau:
     espace: monde
     temps: années
@@ -187,6 +192,8 @@ compartiments:
   - délais longs d'ouverture des mines
   - 'mines et eau : 65,7 % des plus de 12 000 grands sites miniers et métallurgiques (148 pays et régions) font face à au moins un risque hydrique majeur — stress hydrique 38 %, sécheresse 27 %, forte variabilité d''une année à l''autre 16 %, inondation 14 % ; 81 % des sites d''Afrique et du Moyen-Orient en forte sécheresse (96 % en Afrique du Sud) ; points chauds cumulant les risques : ouest des États-Unis, Chili, Pérou, Afrique australe, nord de la Chine, centre de l''Inde, ouest de l''Australie, soit plusieurs grands bassins du cuivre et du lithium (ICMM, Global Mining and Metals Water Dataset, 22 juillet 2026, via Down To Earth ; l''ICMM est l''association des grands groupes miniers)'
   - 'mines et biodiversité : 22 % des quelque 12 000 grands sites miniers et métallurgiques sont dans des zones d''écosystèmes en bon ou très bon état, dont un tiers (7 % du total) sous forte pression ; 5 % chevauchent une zone clé pour la biodiversité et 4 % une aire protégée ; manganèse (14 %), étain et diamant (12 %) plus de deux fois la moyenne ; 73 % des zones clés touchées ne sont pas entièrement protégées ; petite mine artisanale exclue (ICMM, Global Mining and Metals Biodiversity Dataset, 18 novembre 2026, CC BY 4.0 ; l''ICMM est l''association des grands groupes miniers)'
+  - 'stratégie états-unienne « mine to market » de la DFC : prêts, participations, assurance politique, contrats d''enlèvement avec droit de premier refus ; portefeuille minier africain au-delà de 3 milliards de dollars ; prêt de 553 millions pour le rail angolais et le port de Lobito (décembre 2025) ; coentreprise Gécamines-Mercuria soutenue par la DFC (décembre 2025) (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'mécanisme : les États producteurs créent des entreprises publiques adossées aux grands négociants (Glencore, Mercuria, Trafigura) pour vendre hors des chaînes chinoises intégrées ; EGC (RDC, cobalt artisanal) : 1 000 premières tonnes traçables en novembre 2025, 5 000 visées en 2026, premier accord Mercuria-Trafigura en février 2026 (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
   niveau:
     espace: monde
     temps: décennies
@@ -208,7 +215,59 @@ compartiments:
   traces:
   - {source: "flux RSS MINING.COM, famille « minerais » (0.10.456, en ombre)", statut: collecte, fichier: collecte_rss.py}
   - *id001
+- id: corridors_evacuation
+  nom: Corridors d'évacuation des mines africaines
+  organisation: technique
+  elements:
+  - 'mécanisme : extraction concentrée sur quelques territoires souvent enclavés, évacuée par peu de corridors longs, saturés et sans contournement ; la concentration ne crée pas le choc mais l''amplifie, un incident local peut devenir un choc d''offre mondial (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'Guinée : la région de Boké fait 86,4 % de la bauxite guinéenne en 2023, soit 25 % de la production mondiale ; SMB (environ 72 millions de tonnes en 2025, près de 40 % du pays) dépend d''une seule voie ferrée de 130 km puis du Rio Nunez (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'RDC-Zambie : effondrement du pont de Kakoso sur le corridor vers Kasumbalesa (mars 2026) ; attaques contre des transporteurs zambiens (janvier 2026) (relayé par IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'mécanisme : pour les États africains, un corridor est à double sens, il fait sortir le minerai et baisse le coût des intrants importés (agriculture, industrie) (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  niveau:
+    espace: région
+    temps: années
+    vitesse: jours (incident) à années (construction)
+    taille: méso
+  traces:
+  - *id001
+- id: energie_hydro
+  nom: Dépendance des mines à l'hydroélectricité
+  organisation: technique
+  elements:
+  - 'RDC : 97 % des capacités installées sont hydroélectriques (Inga, Lualaba, Lufira) ; Guinée 80 à 85 % du réseau interconnecté ; Zimbabwe : Kariba South environ 45 % de la production ; Zambie 83 % hydraulique, surtout bassin du Zambèze, et point de passage des échanges RDC-SAPP ; Afrique du Sud exception (près de 80 % charbon) (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'sécheresse El Niño de 2024, la pire depuis quarante ans en Afrique australe : Kariba South tombé à 104 MW pour 1 050 installés fin 2024, production zambienne en baisse de 31 %, arrêts de production minière, exportations d''électricité zambiennes réduites vers la RDC et la Namibie (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  - 'mécanisme : une même ressource en eau (bassin du Zambèze) alimente plusieurs pays, d''où des pénuries simultanées en cas de stress hydrique (IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026)'
+  niveau:
+    espace: bassin et région
+    temps: saisons à années
+    vitesse: mois
+    taille: macro
+  traces:
+  - source: anomalie de température du Pacifique, zone Niño 3.4
+    statut: collecte
+    adaptateur: pub:nino34_anomalie
+  - *id001
 relations:
+- de: energie_hydro
+  source: "IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026"
+  fondement: lien
+  vers: corridors_evacuation
+  effet: '-'
+  delai: mois
+  force: moyenne
+  coupure: centrales thermiques ou solaires propres aux mines
+  statut: a_verifier
+  texte: une sécheresse sur le Zambèze coupe l'électricité des mines et des fonderies et réduit ce qui part par les corridors
+- de: corridors_evacuation
+  source: "IRIS, Observatoire de la sécurité des flux et des matières énergétiques (OSFME), « Minerais critiques en Afrique », novembre 2026"
+  fondement: comparaison
+  vers: cuivre
+  effet: '-'
+  delai: semaines
+  force: moyenne
+  coupure: stocks, route de contournement
+  statut: a_verifier
+  texte: la rupture d'un corridor sans redondance retire des volumes du marché mondial (cuivre, cobalt, bauxite)
 - de: controles_export
   source: "Ministère chinois du Commerce, annonce n° 61 de 2025 (contrôles à l'exportation des terres rares et des matériaux de batteries), traduction du CSET : https://cset.georgetown.edu/publication/mofcom-notice-2025-61/ (lien vérifié le 2026-11-25)"
   fondement: lien
@@ -371,3 +430,9 @@ ponts:
 - depuis: cuivre
   vers: inflation-mondiale:approvisionnement
   nature: tensions sur les chaînes d'approvisionnement
+- depuis: corridors_evacuation
+  vers: afrique-subsaharienne:ressources
+  nature: les mines de RDC, de Zambie, du Zimbabwe et de Guinée et leurs routes de sortie
+- depuis: energie_hydro
+  vers: afrique:climat_continent
+  nature: El Niño et sécheresses sur le Zambèze, électricité des mines
