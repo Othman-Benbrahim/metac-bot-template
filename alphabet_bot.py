@@ -755,6 +755,22 @@ class AlphabetBot(FallTemplateBot2026):
             return None
 
     def _competition(self, question, q, p_pipeline: float) -> dict | None:
+        try:   # 2026-11-26 (décision de l'auteur, 12 h 36) : tennis, force mesurée (Elo), base et non mélange
+            import tennis_elo_regle as ter
+            e = ter.estimer(question.question_text or "", datetime.now(timezone.utc).date())
+            if e is not None:
+                jour = datetime.now(timezone.utc).date().isoformat()
+                ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                         "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "tennis_elo": e}
+                ligne["sceau"] = ap.sceau(ligne)
+                with open(ap.registre_ecrivable() / "journal-competitions.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                    f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+                e["texte"] = (f"\n\nTennis strength rule (coded, Elo): {e['joueur']} rated {e['elo']} (last match "
+                              f"{e['date_elo']}); simulated {e['taille_tableau']}-player draw: {e['p_regle']:.1%}. "
+                              f"This measured rule is the base.")
+                return e
+        except Exception as ex:
+            logger.warning("tennis Elo : non appliqué (%s)", type(ex).__name__)
         try:
             import competitions_regle as cpr
             e = cpr.estimer(question.question_text or "", p_pipeline)

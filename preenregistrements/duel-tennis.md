@@ -83,3 +83,11 @@ Constat qui motive le test : les deux méthodes ne se trompent pas les mêmes sa
 - ATP : mélange 2,121 contre Elo 2,093 (moins bien de 0,029) ; meilleur que l'Elo dans 6 saisons sur 16.
 - WTA : mélange 2,972 contre Elo 2,956 (moins bien de 0,016) ; meilleur dans 7 saisons sur 16.
 - **Le mélange ne remplace pas l'Elo.** L'Elo seul reste la méthode retenue pour le tennis.
+
+## Branchement (décision de l'auteur, 2026-11-26, 12 h 36 : « Ok, je valide »)
+`tennis_elo_regle.py` : « X gagnera-t-il <Grand Chelem ou tournoi 1000> ? ». Le vrai tableau n'étant pas connu avant le
+tirage, il est simulé (4 000 tirages ; 128 places, ou 96 joueurs dont 32 exemptés ; têtes de série placées selon l'Elo).
+C'est une approximation du banc (qui utilisait les vrais tableaux), déclarée. La note sert de base (mesure), puis passe
+par le contradicteur et le juge comme les autres briques. Abstention si le joueur n'a aucun match connu depuis 90 jours
+(blessure ou retrait probable) : découvert sur Sinner, forfait à l'US Open 2026 sur blessure au genou, dont la dernière
+note date de Wimbledon.

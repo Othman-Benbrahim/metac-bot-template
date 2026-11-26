@@ -72,6 +72,8 @@ DOMAINES = {
                 "in normal times; blind to an ongoing crisis; does not cover the resignation of a collective government",
     "escalade": "a military strike or attack between named states, by level on the escalation ladder; does not cover "
                 "sanctions, verbal threats, counts of targets or conditional questions",
+    "tennis_elo": "a named player WINNING a Grand Slam or a 1000-level tournament, by Elo ratings on a simulated draw; "
+                  "does not cover reaching a round, doubles, or a player injured or withdrawn (no match in 90 days: abstains)",
     "competitions": "prior of 1/N for one contender winning a competition; ignores the contenders' strength; does not cover "
                     "reaching a round or individual awards",
     "banque_centrale": "the US Federal Reserve's decision at ONE named FOMC meeting (hike, cut, hold); does not cover a "
@@ -92,7 +94,7 @@ DOMAINES = {
 def _briques(titre: str, jour: dt.date, fin: str) -> list[tuple[str, str, dict | None, str | None]]:
     """(famille, mécanisme, sortie ou None, silence éventuel), dans l'ordre de la chaîne du bot."""
     import seuils_prix as spx, evenements_regle as evr, maintien_regle as mr, escalade_regle as es
-    import competitions_regle as cp, banque_centrale_regle as bc
+    import competitions_regle as cp, banque_centrale_regle as bc, tennis_elo_regle as te
     import accords_etats as ae, accords_mid as am, accords_guerre as ag, accords_regle as ar
     import rencontres_regle as rr, sommets_regle as so, justice_regle as jr
     j = jour.isoformat()
@@ -103,6 +105,7 @@ def _briques(titre: str, jour: dt.date, fin: str) -> list[tuple[str, str, dict |
         ("maintien", "maintien au pouvoir : tables de mortalité et de départs (Archigos)",
          lambda: mr.estimer(titre, j, fin, 0.5, False)),
         ("escalade", "échelle de l'escalade", lambda: es.estimer(titre, 0.5)),
+        ("tennis_elo", "tennis : force mesurée (Elo), tableau simulé", lambda: te.estimer(titre, jour)),
         ("competitions", "un parmi N", lambda: cp.estimer(titre, 0.5)),
         ("banque_centrale", "inertie de la Fed : chaîne de Markov sur les réunions du FOMC depuis 1994",
          lambda: bc.estimer(titre, jour)),
