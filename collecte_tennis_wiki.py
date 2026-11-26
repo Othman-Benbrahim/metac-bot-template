@@ -150,6 +150,7 @@ def brut(c: httpx.Client, titres: list[str]) -> tuple[str | None, str]:
             continue
         r = c.get(u)
         time.sleep(1)
+        print(f"  essai « {t} » : HTTP {r.status_code}, {len(r.text)} caractères")   # diagnostic en une passe
         if r.status_code != 200 or not r.text.strip():
             continue
         m = re.match(r"\s*#REDIRECT\s*\[\[([^\]|#]+)", r.text, re.I)
@@ -179,6 +180,9 @@ def principal() -> int:
                     continue
                 M = matchs(texte)
                 print(f"{circuit} : {t} : {len(M)} matchs")
+                if len(M) < 10:                                   # diagnostic : gabarits trouvés sur la page
+                    noms_g = [g.split("|")[0].strip() for g in gabarits(texte)]
+                    print(f"  peu de matchs ; gabarits de tableau : {noms_g[:12]} ; extrait : {texte[:300]!r}")
                 for ordre, g, p, sc in sorted(M):
                     lignes.append({"tourney_date": date, "tourney_name": t, "round": ordre, "winner_name": g,
                                    "loser_name": p, "score": sc, "page": t})
