@@ -1,0 +1,70 @@
+{
+ "ensemble": {
+  "n": 1486,
+  "regle": 0.7801,
+  "reference": 0.641
+ },
+ "par_test": {
+  "gpqa_diamond": {
+   "n": 294,
+   "oui": 180,
+   "regle": 1.0771,
+   "reference": 0.5326
+  },
+  "frontiermath": {
+   "n": 96,
+   "oui": 63,
+   "regle": 1.1006,
+   "reference": 0.4035
+  },
+  "otis_mock_aime_2024_2025": {
+   "n": 270,
+   "oui": 207,
+   "regle": 0.5263,
+   "reference": 0.4458
+  },
+  "swe_bench_verified": {
+   "n": 52,
+   "oui": 19,
+   "regle": 1.3503,
+   "reference": 0.3571
+  },
+  "simpleqa_verified": {
+   "n": 216,
+   "oui": 124,
+   "regle": 0.6407,
+   "reference": 0.4648
+  },
+  "metr_time_horizons_external": {
+   "n": 558,
+   "oui": 196,
+   "regle": 0.6919,
+   "reference": 0.9282
+  }
+ },
+ "tests_gagnes": 1,
+ "n_tests": 6,
+ "retenue": false,
+ "calibration": {
+  "0.0-0.2": {
+   "n": 580,
+   "part_oui": 0.266
+  },
+  "0.2-0.4": {
+   "n": 127,
+   "part_oui": 0.504
+  },
+  "0.4-0.6": {
+   "n": 105,
+   "part_oui": 0.552
+  },
+  "0.6-0.8": {
+   "n": 126,
+   "part_oui": 0.603
+  },
+  "0.8-1.0": {
+   "n": 548,
+   "part_oui": 0.797
+  }
+ }
+}

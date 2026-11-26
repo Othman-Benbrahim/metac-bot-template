@@ -40,3 +40,12 @@ titre), sous le contradicteur et le juge ; le branchement reste une décision de
 ## Limites déclarées
 Les questions construites se recouvrent (mêmes séries, mois voisins) : les pertes ne sont pas indépendantes. Les scores
 d'Epoch dépendent de leur propre protocole, qui peut différer de celui d'une question (classement officiel du test).
+
+## Résultat du passage unique (2026-11-26, vers 15 h 05)
+1 486 questions construites sur 6 tests (terminalbench_external n'a pas assez d'historique). Perte log : règle 0,780
+contre référence 0,641 ; la règle ne gagne que sur 1 test sur 6 (horizons METR : 0,692 contre 0,928). **Non retenue.**
+Lecture : la règle est très trop sûre d'elle (580 questions sous 0,2 : 27 % de oui ; 548 au-dessus de 0,8 : 80 %). Le
+record avance par sauts (une sortie de modèle) : les résidus d'une droite sur des paliers sous-estiment l'incertitude,
+et le plancher de 0,1 (en logit) était bien trop bas. Une version qui tirerait l'incertitude de la taille et de la
+fréquence passées des sauts serait une nouvelle procédure. Pour METR, la règle bat la référence, mais celle-ci était
+faible (crans différents des autres tests : repli sur le seul horizon).
