@@ -39,6 +39,12 @@ def echeances(debut: date, jours: int = 45) -> list[dict]:
             if d0 <= r["date_prevue"] <= fin:
                 out.append({"date": r["date_prevue"], "type": "statistique", "nom": NBS.get(r["publication"], r["publication"]),
                             "mots": ["China", NBS.get(r["publication"], "")]})
+    f = ICI / "registre" / "calendrier-consilium.csv"            # 2026-11-26 : Conseil européen et Conseil de l'UE
+    if f.exists():
+        for r in csv.DictReader(f.open(encoding="utf-8")):
+            if d0 <= r["date"] <= fin:
+                out.append({"date": r["date"], "type": "Conseil de l'UE", "nom": r["reunion"],
+                            "mots": ["European Council", "Council of the EU", "EU leaders", "EU summit", "Council of the European Union"]})
     return sorted(out, key=lambda e: e["date"])
 
 
