@@ -57,3 +57,9 @@ Gleditsch-Ward : aucune conversion.
   0,567 sur les années « conflit » ; ensemble 0,6189 contre 0,6164).
 - **Non retenue.** Les pertes de l'audit (Khamenei, pape François) ne viennent pas d'un état de guerre mesurable, mais
   d'événements précis (frappes, santé) que les tables et ce signal ne voient pas.
+
+## Décision (2026-11-26, 15 h 14 ; l'auteur : « je valide »)
+La brique du maintien n'est plus une base : elle redevient un repère de temps normal qui ajuste le raisonnement du
+modèle (un quart en log-cote, 15 points au plus), comme le 1/N des compétitions. Raison : rien de chiffré ne prévoit un
+départ comme ceux de l'audit ; l'information est dans l'actualité, que lit le modèle. Le contradicteur (« contre le
+terrain », en ombre) reste la voie de correction à juger plus tard.

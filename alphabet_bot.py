@@ -827,10 +827,16 @@ class AlphabetBot(FallTemplateBot2026):
             ligne["sceau"] = ap.sceau(ligne)
             with open(ap.registre_ecrivable() / "journal-maintien.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            # 2026-11-26 (décision de l'auteur, 15 h 14) : les tables donnent le risque en temps normal ; une question de
+            # maintien n'est jamais posée en temps normal (audit : 3 questions sous 5 %, 3 départs). La règle redevient un
+            # repère qui ajuste le raisonnement du modèle (un quart, 15 points au plus) au lieu de le remplacer : le modèle,
+            # qui lit l'actualité (frappes, santé), garde la main. Banc « signal de crise » : non retenu (maintien-crise.md).
+            e["p_temps_normal"] = e.pop("p_regle")
             e["texte"] = (f"\n\nTenure rule (coded): age-based mortality (SSA 2023) and exit hazards by time in office "
                           f"(Archigos 4.1, 1990-2015), multiplied by {e['saillance']:g} because leaders whose exit is "
-                          f"being asked about leave more often; chance of exit before the deadline {e['p_depart']:.1%}; "
-                          f"measure for this question {e['p_regle']:.1%}. This coded rule is the measure (base, not blended).")
+                          f"being asked about leave more often: {e['p_temps_normal']:.1%} in normal times. It cannot see "
+                          f"specific events (strikes, health), so it only adjusts the model's reading (one quarter, at "
+                          f"most 15 points): {e['p']:.1%}.")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("maintien : non appliqué (%s)", type(ex).__name__)
