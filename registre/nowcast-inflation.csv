@@ -111,3 +111,15 @@ releve_le,periode,mesure,valeur
 2026-11-25,2026:Q4,trimestre_annualise:Core CPI,3.4
 2026-11-25,2026:Q4,trimestre_annualise:PCE,3.83
 2026-11-25,2026:Q4,trimestre_annualise:Core PCE,3.38
+2026-11-26,November 2026,variation_mensuelle:CPI,-0.0
+2026-11-26,November 2026,variation_mensuelle:Core CPI,0.21
+2026-11-26,November 2026,variation_mensuelle:PCE,0.14
+2026-11-26,November 2026,variation_mensuelle:Core PCE,0.27
+2026-11-26,November 2026,glissement_annuel:CPI,3.79
+2026-11-26,November 2026,glissement_annuel:Core CPI,2.87
+2026-11-26,November 2026,glissement_annuel:PCE,3.78
+2026-11-26,November 2026,glissement_annuel:Core PCE,3.38
+2026-11-26,2026:Q4,trimestre_annualise:CPI,4.13
+2026-11-26,2026:Q4,trimestre_annualise:Core CPI,3.4
+2026-11-26,2026:Q4,trimestre_annualise:PCE,3.89
+2026-11-26,2026:Q4,trimestre_annualise:Core PCE,3.54
