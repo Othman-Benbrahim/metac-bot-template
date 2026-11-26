@@ -1,0 +1,182 @@
+{
+ "candidats": [
+  "CTR@6",
+  "CRO@6",
+  "RES@6"
+ ],
+ "contre_candidate": [
+  "RES@6"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "rejets": {
+  "CTR@6": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "CRO@6": "[contredit] A7 : contre-observation substantielle sur une lecture f",
+  "RES@6": "[contredit] A7 : contre-observation substantielle sur une lecture f"
+ },
+ "etat": "",
+ "disponible_le": "2026-11-26",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "How often do simultaneous blockbuster releases (two tentpoles same weekend) reduce a film's domestic opening weekend by >15% compared to similar-market single-release weekends? US box office 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Are theater count and distribution constraints (screens/theaters) more predictive of opening weekend gross than franchise momentum (previous-installment growth)? US domestic openings 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CTR@6"
+   ],
+   "requete": "Examples of films that exceeded $90M opening weekend despite limited screen counts or distribution constraints, US 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "How often do sequels or later franchise installments open at least 10% higher than their immediate predecessor in domestic opening weekend, US 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Does prior-installment growth (franchise momentum) predict crossing a $98–100M opening threshold better than contemporaneous competitor strength? US 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "CRO@6"
+   ],
+   "requete": "Cases where a sequel showed strong momentum from prior installment but failed to reach ~$100M opening due to same-weekend tentpole competition, US 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "RES@6"
+   ],
+   "requete": "Correlation between marketing/network indicators (social media engagement, pre-sales/advance ticketing) and domestic opening weekend grosses for tentpoles, US 2015-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "RES@6"
+   ],
+   "requete": "Is social/media buzz and advance ticketing more predictive of opening weekend gross than theater allocation or franchise momentum for major releases? US 2015-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "RES@6"
+   ],
+   "requete": "Instances where strong online fandom or high advance engagement did not translate into a >$90M opening when a dominant competitor released same weekend, US 2010-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "CRO@6"
+   ],
+   "requete": "When two tentpoles release same weekend, what is the comparative predictive power of distribution constraints (screen count) versus franchise momentum on the opening weekend gross? US 2000-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CTR@6",
+    "RES@6"
+   ],
+   "requete": "Comparative predictive strength of distribution constraints (theater/screen allocation) versus network/marketing effects (advance sales, social buzz) on a film's opening weekend in the presence of a dominant competitor, US 2015-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "CRO@6",
+    "RES@6"
+   ],
+   "requete": "Does sequel growth (momentum from previous installment) or network/social engagement better predict crossing a ~$100M opening weekend threshold for franchise films? US 2010-2025",
+   "executee": true,
+   "date_execution": "2026-11-26"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "SEUIL@6 apparait",
+   "semantique": "au-moins-une-fois",
+   "temporalite": "generique",
+   "resolution": "La question résoudra à OUI si, dans la fiche Box Office Mojo consultée pour Dune: Part Three au premier relevé non‑préliminaire, la valeur 'Opening weekend' domestique est strictement supérieure à $98,500,000 ; sinon ce sera NO.",
+   "source_resolution": {
+    "emetteur": "Box Office Mojo",
+    "document": "table 'Top Opening Weekends' / page du film Dune: Part Three sur Box Office Mojo — la valeur 'Opening weekend (domestic)' publiée",
+    "regle_ambiguite": "utiliser la valeur 'Opening weekend' domestique telle que Box Office Mojo la publie pour le film, en prenant la première valeur non‑préliminaire disponible; si Box Office Mojo n'indique pas de valeur définitive au moment de la résolution, appliquer la valeur la plus récente non‑préliminaire fournie par Box Office Mojo."
+   },
+   "vue_exterieure": {
+    "frequence": 0.10266399915762872,
+    "classe_de_reference": "{\n \"classe_de_reference\": \"films dont le 'Opening weekend' (domestic, selon Box Office Mojo) est strictement supérieur à 98 500 000 dollars\",\n \"unite\": \"une occurrence = un film dont la valeur 'Opening weekend' dans la table de Box Office Mojo est > 98 500 000 $; n'est pas une occurrence tout film dont l'Opening weekend ≤ 98 500 000 $ ou sans donnée d'opening\",\n \"population\": \"toutes les sorties domestiques répertoriées dans la table 'Opening Weekends' de Box Office Mojo (US et territoires couverts) pour la période considérée\",\n \"periode\": \"2000-2025\",\n \"mise_a_l_echelle\": \"pour passer de la période à une fenêtre de 25 jours : (nombre de cas observés sur 2000‑2025) ÷ (nombre de jours dans 2000‑2025) × 25. (ou équivalemment : cas/an × 25/365)\",\n \"sources_visees\": \"[R1] (liste des 'Domestic opening‑weekend grosses > $98.5M, 2000‑2025' — table 'Top Opening Weekends' de Box Office Mojo)\"\n}",
+    "source": "Box Office Mojo — table 'Top Opening Weekends' (compilation fournie en [R1])",
+    "periode": "2000-2025",
+    "disponible_le": "2026-11-26",
+    "classe_alternative": {
+     "frequence": 0.039443,
+     "classe_de_reference": "films dont l'Opening weekend domestique (Box Office Mojo) est entre $90 000 000 et $110 000 000 (inclus), sur 2000‑2025",
+     "source": "Box Office Mojo — compilation fournie en [R2]",
+     "pourquoi_ecartee": "seconde classe R2 couvre un intervalle différent (90–110M) et n'est pas équivalente au seuil strict >98.5M requis par la question ; elle compte des films sous et au‑dessus du seuil et inclut des bornes différentes."
+    },
+    "ecart_critere": "identique : la classe_de_reference compte exactement les films dont l'Opening weekend domestique (Box Office Mojo) est > $98.5M, ce qui correspond au critère de résolution (seuil strict de $98.5M)."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "CRO@6",
+   "vers": "cible",
+   "extrait": "Simultaneous releases of two tent‑pole films rarely knock a partner’s opening‑weekend gross down by more than 15 %.",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "CTR@6",
+   "vers": "cible",
+   "extrait": "When the audiences overlap, the weaker film tends to suffer the >15 % loss (as seen with *Hollow Man*, *Cloverfield*, *Big Hero 6*).",
+   "source": ""
+  },
+  {
+   "instruction": "bloque",
+   "de": "RES@6",
+   "extrait": "This supports the conclusion that **most tent‑poles are resilient** to competition.",
+   "source": ""
+  }
+ ]
+}
