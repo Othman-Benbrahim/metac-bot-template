@@ -37,3 +37,11 @@ et le juge, au même rang que la brique des prix.
 Les valeurs de FRED sont révisées ; une question se tranche souvent sur la première publication : léger écart. Les
 questions construites se recouvrent (pertes non indépendantes). Peu de séries mensuelles : la couverture des questions
 vivantes dépendra des séries collectées (à étendre par famille, procédure à part).
+
+## Résultat du passage unique (2026-11-26, vers 16 h 15)
+43 936 questions construites, 14 séries. Perte log : règle 0,5055 contre référence 0,4963 ; la règle ne gagne que sur
+4 séries sur 14 (inflation CPI, confiance des ménages, prix alimentaires, minerai de fer). **Non retenue.**
+Lecture : la règle n'est pas mal calibrée (annoncée sous 0,2 : 10 % de oui ; 0,2-0,4 : 29 % ; 0,4-0,6 : 41 %), mais la
+volatilité propre de chaque série, mesurée sur 36 mois (fenêtres qui traversent le choc de 2020-2023), n'apporte rien
+de plus que la fréquence de franchissement d'un même pas sur les autres séries. Sur les statistiques mensuelles, « de
+combien ça bouge d'habitude » se mesure aussi bien en mettant les séries en commun qu'en les prenant une par une.

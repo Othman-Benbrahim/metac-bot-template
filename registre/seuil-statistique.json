@@ -1,0 +1,96 @@
+{
+ "ensemble": {
+  "n": 43936,
+  "regle": 0.5055,
+  "reference": 0.4963
+ },
+ "par_serie": {
+  "UNRATE": {
+   "n": 3216,
+   "regle": 0.4586,
+   "reference": 0.4244
+  },
+  "inflation_cpi": {
+   "n": 2832,
+   "regle": 0.574,
+   "reference": 0.6131
+  },
+  "inflation_core": {
+   "n": 2832,
+   "regle": 0.494,
+   "reference": 0.4664
+  },
+  "salaires_an": {
+   "n": 2864,
+   "regle": 0.5119,
+   "reference": 0.4593
+  },
+  "UMCSENT": {
+   "n": 3248,
+   "regle": 0.4965,
+   "reference": 0.5123
+  },
+  "PFOODINDEXM": {
+   "n": 3216,
+   "regle": 0.3854,
+   "reference": 0.4002
+  },
+  "PCOPPUSDM": {
+   "n": 3216,
+   "regle": 0.4806,
+   "reference": 0.4596
+  },
+  "PNICKUSDM": {
+   "n": 3216,
+   "regle": 0.5396,
+   "reference": 0.5385
+  },
+  "PURANUSDM": {
+   "n": 3216,
+   "regle": 0.5192,
+   "reference": 0.4998
+  },
+  "PALUMUSDM": {
+   "n": 3216,
+   "regle": 0.4942,
+   "reference": 0.4739
+  },
+  "PIORECRUSDM": {
+   "n": 3216,
+   "regle": 0.5517,
+   "reference": 0.5561
+  },
+  "PZINCUSDM": {
+   "n": 3216,
+   "regle": 0.5168,
+   "reference": 0.5131
+  },
+  "PWHEAMTUSDM": {
+   "n": 3216,
+   "regle": 0.5451,
+   "reference": 0.537
+  },
+  "PMAIZMTUSDM": {
+   "n": 3216,
+   "regle": 0.5164,
+   "reference": 0.501
+  }
+ },
+ "series_gagnees": 4,
+ "n_series": 14,
+ "retenue": false,
+ "calibration": {
+  "0.0-0.2": {
+   "n": 17472,
+   "part_oui": 0.103
+  },
+  "0.2-0.4": {
+   "n": 16198,
+   "part_oui": 0.294
+  },
+  "0.4-0.6": {
+   "n": 10266,
+   "part_oui": 0.414
+  }
+ }
+}
