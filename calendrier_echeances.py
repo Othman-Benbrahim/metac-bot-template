@@ -45,6 +45,13 @@ def echeances(debut: date, jours: int = 45) -> list[dict]:
             if d0 <= r["date"] <= fin:
                 out.append({"date": r["date"], "type": "Conseil de l'UE", "nom": r["reunion"],
                             "mots": ["European Council", "Council of the EU", "EU leaders", "EU summit", "Council of the European Union"]})
+    f = ICI / "ecosystemes" / "sommets-internationaux.csv"      # 2026-11-26 : grands sommets à date publiée et sourcée
+    if f.exists():
+        L = [l for l in f.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+        for l in L[1:]:
+            p = [x.strip() for x in l.split("|")]
+            if len(p) >= 5 and d0 <= p[0] <= fin:
+                out.append({"date": p[0], "type": "sommet", "nom": f"{p[2]} ({p[3]})", "mots": p[4].split("/")})
     return sorted(out, key=lambda e: e["date"])
 
 
