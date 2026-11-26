@@ -43,3 +43,18 @@ poussées ; longue durée depuis le pic → plus de poussées).
 ## Limites déclarées
 Cas déclarés (sous-déclaration variable selon les pays) ; données annuelles (le cycle saisonnier n'est pas vu) ; la
 connectivité est mesurée par le tourisme entrant, pas par le réseau de transport lui-même.
+
+## Résultat du passage unique (2026-11-26, run 45850242432)
+Apprentissage 6 864 questions, épreuve 1 376 (124 pays, 2022-2025).
+- Perte log sur l'épreuve : (a) comme l'an dernier 0,6468 ; **(b) cycle seul 0,6229** ; (c) mécanisme complet 0,6340.
+- (c) ne bat pas (b) (écart −0,011) : **non retenue.**
+- Le **cycle** apporte un vrai gain sur « comme l'an dernier » (0,623 contre 0,647). Ses coefficients vont dans le sens
+  attendu (plus de temps depuis le dernier pic → plus de poussées).
+- Couverture première dose : sens attendu (couverture basse → plus de poussées, coefficient −1,41). Natalité : nul.
+  Part des 0-14 ans et arrivées internationales : sens inverse de l'attendu (confusion probable avec le niveau de
+  développement : les pays riches reçoivent plus de touristes et vaccinent plus).
+- Doute sur les données : la seconde dose (MCV2) compte exactement autant de valeurs que la première (5 051), possible
+  doublon de la série ; non vérifiable sans relance (règle : pas de relance sans dysfonctionnement avéré).
+- Lecture : à l'échelle du pays et de l'année, le cycle se voit ; la diffusion par les transports et l'âge ne se voient
+  pas avec ces mesures grossières (tourisme entrant, moyenne nationale). L'échelle de l'hypothèse de l'auteur (réseau de
+  diffusion, espace local) est plus fine que celle des données.
