@@ -22,19 +22,27 @@ import politesse
 
 ICI = Path(__file__).resolve().parent
 REG = ICI / "registre" / "tennis-wiki"
-API = "https://en.wikipedia.org/w/api.php"
+WIKI = "https://en.wikipedia.org/wiki/"
+# 2026-11-26 : robots.txt de Wikipédia refuse /w/ (api.php) ; la page brute (/wiki/<titre>?action=raw) est permise.
+# Pas de recherche (Special:Search est refusé) : titres d'usage essayés dans l'ordre, redirections suivies une fois.
 DEPUIS = "20260526"   # lendemain de la dernière date connue chez Sackmann (miroir) ; Roland-Garros 2026 y figure
 
 # (date de début approximative AAAAMMJJ, recherche Wikipédia) — dates approximatives, servent seulement à l'ordre
 TOURNOIS = {
-    "atp": [("20260629", "2026 Wimbledon Championships Men's singles"), ("20260803", "2026 Canadian Open Men's singles"),
-            ("20260813", "2026 Cincinnati Open Men's singles"), ("20260831", "2026 US Open Men's singles"),
-            ("20261001", "2026 Shanghai Masters singles"), ("20261026", "2026 Paris Masters singles"),
-            ("20261109", "2026 ATP Finals singles")],
-    "wta": [("20260629", "2026 Wimbledon Championships Women's singles"), ("20260803", "2026 Canadian Open Women's singles"),
-            ("20260813", "2026 Cincinnati Open Women's singles"), ("20260831", "2026 US Open Women's singles"),
-            ("20260924", "2026 China Open Women's singles"), ("20261012", "2026 Wuhan Open singles"),
-            ("20261102", "2026 WTA Finals singles")],
+    "atp": [("20260629", ["2026 Wimbledon Championships – Men's singles"]),
+            ("20260803", ["2026 Canadian Open – Men's singles", "2026 National Bank Open – Men's singles"]),
+            ("20260813", ["2026 Cincinnati Open – Men's singles"]),
+            ("20260831", ["2026 US Open – Men's singles"]),
+            ("20261001", ["2026 Shanghai Masters – Singles", "2026 Rolex Shanghai Masters – Singles"]),
+            ("20261026", ["2026 Paris Masters – Singles", "2026 Rolex Paris Masters – Singles"]),
+            ("20261109", ["2026 ATP Finals – Singles", "2026 Nitto ATP Finals – Singles"])],
+    "wta": [("20260629", ["2026 Wimbledon Championships – Women's singles"]),
+            ("20260803", ["2026 Canadian Open – Women's singles", "2026 National Bank Open – Women's singles"]),
+            ("20260813", ["2026 Cincinnati Open – Women's singles"]),
+            ("20260831", ["2026 US Open – Women's singles"]),
+            ("20260924", ["2026 China Open – Women's singles"]),
+            ("20261012", ["2026 Wuhan Open – Singles"]),
+            ("20261102", ["2026 WTA Finals – Singles"])],
 }
 
 
@@ -133,37 +141,43 @@ def matchs(texte: str) -> list[tuple[int, str, str, str]]:
 
 
 # ---- collecte ----------------------------------------------------------------------------------------------------------
-def titre(c: httpx.Client, recherche: str) -> str | None:
-    r = c.get(API, params={"action": "query", "list": "search", "srsearch": recherche, "srlimit": 3, "format": "json"})
-    for h in r.json().get("query", {}).get("search", []):
-        if h["title"].startswith("2026") and "singles" in h["title"].lower():
-            return h["title"]
-    return None
-
-
-def wikitexte(c: httpx.Client, t: str) -> str:
-    r = c.get(API, params={"action": "parse", "page": t, "prop": "wikitext", "format": "json", "formatversion": 2})
-    return r.json().get("parse", {}).get("wikitext", "")
+def brut(c: httpx.Client, titres: list[str]) -> tuple[str | None, str]:
+    """Wikitexte de la première page trouvée (redirection suivie une fois)."""
+    for t in titres:
+        u = WIKI + t.replace(" ", "_") + "?action=raw"
+        if not politesse.autorise(c, u):
+            print(f"refusé par robots.txt : {u}")
+            continue
+        r = c.get(u)
+        time.sleep(1)
+        if r.status_code != 200 or not r.text.strip():
+            continue
+        m = re.match(r"\s*#REDIRECT\s*\[\[([^\]|#]+)", r.text, re.I)
+        if m:
+            u2 = WIKI + m.group(1).strip().replace(" ", "_") + "?action=raw"
+            if politesse.autorise(c, u2):
+                r = c.get(u2)
+                time.sleep(1)
+                if r.status_code == 200:
+                    return m.group(1).strip(), r.text
+            continue
+        return t, r.text
+    return None, ""
 
 
 def principal() -> int:
     REG.mkdir(parents=True, exist_ok=True)
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=60, follow_redirects=True) as c:
-        if not politesse.autorise(c, API + "?action=parse"):
-            print("refusé par robots.txt : api.php")
-            return 0
         for circuit, L in TOURNOIS.items():
             lignes = []
-            for date, q in L:
+            for date, titres in L:
                 if date < DEPUIS:
                     continue
-                t = titre(c, q)
-                time.sleep(1)
+                t, texte = brut(c, titres)
                 if not t:
-                    print(f"{circuit} : page introuvable pour « {q} »")
+                    print(f"{circuit} : page introuvable ({titres[0]})")
                     continue
-                M = matchs(wikitexte(c, t))
-                time.sleep(1)
+                M = matchs(texte)
                 print(f"{circuit} : {t} : {len(M)} matchs")
                 for ordre, g, p, sc in sorted(M):
                     lignes.append({"tourney_date": date, "tourney_name": t, "round": ordre, "winner_name": g,
