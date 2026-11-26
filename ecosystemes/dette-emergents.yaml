@@ -243,6 +243,7 @@ compartiments:
   elements:
   - exportations de pétrole, de métaux, de produits agricoles
   - termes de l'échange
+  - 'mécanisme : un pays est dit dépendant des ressources quand les minerais et métaux dépassent 20 % de ses exportations et les rentes minières 10 % de son PIB ; ses recettes, sa monnaie et sa dette suivent alors les cours ; en 2022 les cours élevés (reprise après le Covid, minerais de la transition, guerre en Ukraine) ont fait monter tous les 20 premiers producteurs ; la Chine (435 milliards de dollars), l''Australie (205) et l''Indonésie (157) dominent en valeur, mais la dépendance pèse surtout sur des pays pauvres (ICMM, Mining Contribution Index, 7e édition, 2025, données de 2022)'
   niveau:
     espace: pays exportateurs
     temps: saisons ; cycles des prix
