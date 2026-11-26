@@ -23,7 +23,7 @@ from pathlib import Path
 
 ICI = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ICI))
-from mise_au_point.lecture_mecanique import LISTES, _motif, termes_routage  # noqa: E402
+from mise_au_point.lecture_mecanique import LISTES, _motif, _MotifContexte, contextes, termes_routage  # noqa: E402
 
 MOTS_VIDES = set("""will the a an of in on to by for and or be is are was before after at as from with than that this
 its it his her their which who what when there any no not more less least most new first last into during about over
@@ -62,7 +62,8 @@ def _deja(nom: str) -> dict:
 
 def analyser(T: list[str], termes: dict) -> tuple[list, list]:
     fiche = lambda c: c.split(":")[0]
-    motifs = {t: _motif(t) for t in termes}
+    C = contextes()
+    motifs = {t: (_MotifContexte(t, C[t]) if t in C else _motif(t)) for t in termes}
     par_q = []
     for t in T:
         tt = [x for x, m in motifs.items() if m.search(t)]

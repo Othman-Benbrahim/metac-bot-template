@@ -43,6 +43,30 @@ def _motif(t: str):
     return re.compile(r"(?<![\w-])" + re.escape(t) + r"(?![\w-])", 0 if (t.isupper() and len(t) <= 4) else re.I)
 
 
+class _MotifContexte:
+    """Terme polysémique (décision de l'auteur, 2026-11-26, 11 h 59) : il ne rattache que si un mot de contexte est
+    présent dans le même titre ; sinon, « ça sent le hors domaine ». Même interface que re.Pattern.search."""
+    def __init__(self, terme: str, contexte: list[str]):
+        self.m = _motif(terme)
+        self.c = [_motif(x) for x in contexte]
+
+    def search(self, titre: str):
+        x = self.m.search(titre)
+        return x if x and any(c.search(titre) for c in self.c) else None
+
+
+def contextes() -> dict:
+    """terme -> mots de contexte, lus dans termes-contextuels.txt (« terme | mot1/mot2/... | motif »)."""
+    f = LISTES / "termes-contextuels.txt"
+    out = {}
+    if f.exists():
+        for l in f.read_text(encoding="utf-8").splitlines():
+            p = [x.strip() for x in l.split("|")]
+            if len(p) >= 2 and p[0] and not p[0].startswith("#"):
+                out[p[0]] = [w.strip() for w in p[1].split("/") if w.strip()]
+    return out
+
+
 def parasites_confirmes() -> set[str]:
     """Termes retirés du rattachement par l'auteur (ligne « - » dans parasites-proposes.txt, 2026-11-26)."""
     f = LISTES / "parasites-proposes.txt"
@@ -90,7 +114,8 @@ def routage(brut: bool = False):
         termes.pop(t, None)
     if brut:
         return dict(termes)
-    mt = [(_motif(t), r) for t, r in termes.items()]
+    C = contextes()
+    mt = [(_MotifContexte(t, C[t]) if t in C else _motif(t), r) for t, r in termes.items()]
     mp = [(re.compile(r"(?<![\w-])" + re.escape(n) + r"(?![\w-])"), i) for n, i in pays.items() if len(n) >= 2]
     return mt, mp, pays
 
