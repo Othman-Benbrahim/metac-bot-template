@@ -1,0 +1,36 @@
+name: Banc du maintien (signal de crise)
+
+# preenregistrements/maintien-crise.md (décision de l'auteur du 2026-11-26, 15 h 01). Une passe, aucun modèle de
+# langue. Archigos 4.1 et UCDP/PRIO ACD par le paquet peacesciencer (GitHub). Rapport en artefact.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas pyreadr scipy
+      - name: Données (peacesciencer)
+        run: |
+          mkdir -p /tmp/ps
+          for f in archigos ucdp_acd; do
+            curl -sfL -o /tmp/ps/$f.rda "https://github.com/svmiller/peacesciencer/raw/master/data/$f.rda"
+            ls -l /tmp/ps/$f.rda
+          done
+      - name: Banc
+        run: python -I mise_au_point/banc_maintien_crise.py /tmp/ps/archigos.rda /tmp/ps/ucdp_acd.rda
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banc-maintien-crise
+          path: banc_maintien_crise.json
