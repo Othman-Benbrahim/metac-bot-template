@@ -1027,6 +1027,22 @@ def lignes_autres() -> list[dict]:
     return [json.loads(x) for x in f.read_text(encoding="utf-8").splitlines() if x.strip()]
 
 
+
+def _reprevoir() -> set[str]:
+    """Numéros donnés dans ALPHABET_REPREVOIR (question ou page Metaculus)."""
+    return {x.strip() for x in (os.environ.get("ALPHABET_REPREVOIR") or "").split(",") if x.strip()}
+
+
+def _a_reprevoir(q) -> bool:
+    R = _reprevoir()
+    if not R:
+        return False
+    ids = {str(getattr(q, "id_of_question", "") or ""), str(getattr(q, "id_of_post", "") or "")}
+    page = str(getattr(q, "page_url", "") or "").rstrip("/").split("/")
+    ids |= {x for x in page if x.isdigit()}
+    return bool(ids & R)
+
+
 def bilan(rapports: list, nouvelles: list[dict], publier: bool, autres: list[dict] | None = None) -> tuple[str, int]:
     """Bilan lisible du passage et code de sortie : 1 si des questions ont été trouvées mais rien n'a été prévu."""
     ok = [r for r in rapports if not isinstance(r, BaseException)]
@@ -1090,7 +1106,9 @@ if __name__ == "__main__":
     for cible in cibles:
         ouvertes = client.get_all_open_questions_from_tournament(cible)
         if sauter_deja_prevues:
-            ouvertes = [q for q in ouvertes if not q.already_forecasted]
+            # 2026-11-26 (décision de l'auteur) : ALPHABET_REPREVOIR = numéros de questions ou de pages (séparés par des
+            # virgules) à reprévoir même déjà prévues, après correction d'une erreur (cas d'origine : Trump–Poutine).
+            ouvertes = [q for q in ouvertes if not q.already_forecasted or _a_reprevoir(q)]
         vus = {getattr(q, "id_of_question", None) or q.page_url for q in questions}
         questions += [q for q in ouvertes if (getattr(q, "id_of_question", None) or q.page_url) not in vus]
     if plafond <= 0:
@@ -1138,7 +1156,7 @@ if __name__ == "__main__":
     am.servis_et_vider()
     print(f"🧠  Modèles du passage : {os.environ['ALPHABET_MODELES']}")
     bot = construire(publier=not args.sans_publier)
-    bot.skip_previously_forecasted_questions = sauter_deja_prevues
+    bot.skip_previously_forecasted_questions = sauter_deja_prevues and not _reprevoir()
     bloquants, avertissements = problemes(bot)
     for a_ in avertissements:
         print(f"⚠️  {a_}")

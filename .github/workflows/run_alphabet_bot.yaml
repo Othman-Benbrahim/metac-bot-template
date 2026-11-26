@@ -9,6 +9,9 @@ on:
       max_questions:
         description: "questions nouvelles au plus pour ce passage (0 = toutes)"
         default: "0"
+      reprevoir:
+        description: "numéros de questions déjà prévues à reprévoir, séparés par des virgules (vide = aucune)"
+        default: ""
   # Mode minibench. Les questions ne restent ouvertes que 3 heures, à heure aléatoire.
   # 0.10.278 (2026-11-18) : le déclenchement programmé « toutes les 20 minutes » n'a été honoré que 12 fois en 4 jours
   # (GitHub retarde ou saute ces tâches, et la file partagée avec les bancs les écrasait). C'est désormais le VEILLEUR
@@ -123,6 +126,7 @@ jobs:
           ALPHABET_NEGATION_TAUX: ${{ vars.ALPHABET_NEGATION_TAUX || '0.2' }}   # 0.10.34 : test de négation, en ombre
           ALPHABET_FIDELITE: ${{ vars.ALPHABET_FIDELITE || '1' }}   # 0.10.35 : relecteur de fidélité du plan, en ombre   # 0.10.11 (§39) : part des questions testées (2 lectures de plus)
           ALPHABET_MAX_QUESTIONS: ${{ github.event.inputs.max_questions || vars.ALPHABET_MAX_QUESTIONS || '0' }}
+          ALPHABET_REPREVOIR: ${{ github.event.inputs.reprevoir || '' }}
           # 0.10.33 : budget en dollars depuis une date (vide ou 0 = aucun) ; coûts dans registre/couts.jsonl
           ALPHABET_BUDGET_USD: ${{ vars.ALPHABET_BUDGET_USD }}
           ALPHABET_BUDGET_DEPUIS: ${{ vars.ALPHABET_BUDGET_DEPUIS }}
