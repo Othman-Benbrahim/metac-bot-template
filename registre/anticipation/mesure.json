@@ -1,0 +1,141 @@
+{
+ "questions": 9,
+ "reussites": 0,
+ "reussites_calendrier": 0,
+ "reussites_totales": 0,
+ "lignes": [
+  {
+   "question_id": "46884",
+   "titre": "Will the Belgian State and Engie conclude an agreement for Belgium's acquisition of Engie's nuclear activities before December 14, 2026?",
+   "jour": "2026-11-20",
+   "noms": [
+    "belgian state",
+    "belgium's",
+    "engie",
+    "engie's"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46889",
+   "titre": "Will any of these AI companies (Lovable, DeepSeek, or Perplexity) have a funding round in December 2026?",
+   "jour": "2026-11-23",
+   "noms": [
+    "deepseek",
+    "lovable",
+    "perplexity"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46982",
+   "titre": "Will any of these high-ranking U.S. officials leave office before January 1, 2027?",
+   "jour": "2026-11-23",
+   "noms": [],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46891",
+   "titre": "Will Russian Foreign Minister Sergey Lavrov visit Florida in December 2026?",
+   "jour": "2026-11-24",
+   "noms": [
+    "florida",
+    "minister sergey lavrov",
+    "russian foreign"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46892",
+   "titre": "Will a US governor, congressperson or cabinet member formally declare a 2028 presidential run before 2027?",
+   "jour": "2026-11-24",
+   "noms": [],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46893",
+   "titre": "Will Senegal's National Assembly be dissolved before January 1, 2027?",
+   "jour": "2026-11-24",
+   "noms": [
+    "assembly",
+    "senegal's national"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "46896",
+   "titre": "Will the European Council reach a political agreement on the overall 2028-2034 Multiannual Financial Framework before January 1, 2027?",
+   "jour": "2026-11-25",
+   "noms": [
+    "european council",
+    "multiannual financial framework"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "47008",
+   "titre": "Will Donald Trump and Vladimir Putin meet in person or talk on the phone before January 1, 2027?",
+   "jour": "2026-11-25",
+   "noms": [
+    "donald trump",
+    "vladimir putin"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  },
+  {
+   "question_id": "47010",
+   "titre": "Will the fuel loading of the Palisades Nuclear Generating Station's reactor core be completed before December 16, 2026?",
+   "jour": "2026-11-26",
+   "noms": [
+    "palisades nuclear generating",
+    "station's"
+   ],
+   "trouves": [],
+   "calendrier": [],
+   "reussite": false,
+   "reussite_calendrier": false,
+   "reussite_totale": false,
+   "taille_moyenne_listes": 0.0
+  }
+ ]
+}
