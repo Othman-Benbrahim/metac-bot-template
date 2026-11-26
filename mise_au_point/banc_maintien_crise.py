@@ -16,7 +16,7 @@ ICI = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ICI))
 import maintien_regle as mr  # noqa: E402
 
-GW_COW = {260: 255, 340: 345, 678: 679, 817: 817}
+# Archigos (peacesciencer) et UCDP utilisent tous deux les codes Gleditsch-Ward : aucune conversion.
 
 
 def lire(f):
@@ -27,18 +27,19 @@ def principal(f_arch: str, f_acd: str):
     A, U = lire(f_arch), lire(f_acd)
     print("Archigos colonnes :", list(A.columns))
     print("UCDP colonnes :", list(U.columns))
-    cc = next(c for c in ("ccode", "gwcode", "idacr") if c in A.columns)
+    cc = next(c for c in ("gwcode", "ccode") if c in A.columns)
     nais = next((c for c in ("yrborn", "born", "borndate") if c in A.columns), None)
     # signal pays-année
     sig = defaultdict(int)          # (code COW, année) -> intensité max
     for _, r in U.iterrows():
-        for g in str(r["gwno_loc"]).split(","):
-            g = g.strip()
-            if not g or g.lower() == "nan":
-                continue
-            g = int(float(g))
-            c = GW_COW.get(g, g)
-            sig[(c, int(r["year"]))] = max(sig[(c, int(r["year"]))], int(r["intensity_level"]))
+        # pas de colonne de lieu dans cette version : parties principales (gwno_a, gwno_b), alliés exclus
+        for col in ("gwno_a", "gwno_b"):
+            for g in str(r[col]).split(","):
+                g = g.strip()
+                if not g or g.lower() in ("nan", "none"):
+                    continue
+                c = int(float(g))
+                sig[(c, int(r["year"]))] = max(sig[(c, int(r["year"]))], int(r["intensity_level"]))
     risques, q = mr.risques(), mr.mortalite()
     lignes = []
     for _, r in A.iterrows():

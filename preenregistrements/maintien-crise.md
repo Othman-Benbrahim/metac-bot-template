@@ -41,3 +41,10 @@ de départ (hors mortalité) est multiplié par m(guerre) ; de même pour « con
 ## Limites déclarées
 Lieu du conflit et pays du dirigeant : un dirigeant en guerre hors de son territoire n'est pas signalé (cas de
 l'Iran frappé chez lui en 2026 : signalé ; cas d'une guerre menée à l'étranger : non). Le pape n'est pas concerné.
+
+## Correction avant tout résultat (2026-11-26, 15 h 10)
+Le premier passage s'est arrêté sur les données, avant tout calcul : la version de l'UCDP/PRIO fournie par
+peacesciencer n'a pas de colonne de lieu (gwno_loc). Le signal se lit donc sur les **parties principales** du conflit
+(gwno_a, gwno_b ; alliés exclus). Conséquence : un État partie principale d'une guerre menée hors de son territoire
+est signalé (cela remplace la limite déclarée plus haut). Archigos et l'UCDP utilisent tous deux les codes
+Gleditsch-Ward : aucune conversion.
