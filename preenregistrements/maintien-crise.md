@@ -48,3 +48,12 @@ peacesciencer n'a pas de colonne de lieu (gwno_loc). Le signal se lit donc sur l
 (gwno_a, gwno_b ; alliés exclus). Conséquence : un État partie principale d'une guerre menée hors de son territoire
 est signalé (cela remplace la limite déclarée plus haut). Archigos et l'UCDP utilisent tous deux les codes
 Gleditsch-Ward : aucune conversion.
+
+## Résultat du passage unique (2026-11-26, run 45835715358)
+5 255 dirigeants-années (1990-2015), 882 départs ; signal « conflit » 668, « guerre » 261.
+- Guerre (apprentissage 1990-2005) : m = 1,05, IC90 [0,77 ; 1,39] — **n'exclut pas 1** : un pays en guerre ne fait pas
+  partir son dirigeant plus souvent que les tables ne le disent.
+- Conflit : m = 1,36, IC90 [1,14 ; 1,62] sur l'apprentissage, mais il **dégrade** le test 2006-2015 (0,588 contre
+  0,567 sur les années « conflit » ; ensemble 0,6189 contre 0,6164).
+- **Non retenue.** Les pertes de l'audit (Khamenei, pape François) ne viennent pas d'un état de guerre mesurable, mais
+  d'événements précis (frappes, santé) que les tables et ce signal ne voient pas.
