@@ -30,3 +30,18 @@ entrerait dans le dossier du juge comme un repère de famille (procédure du jug
 ## Coût
 200 appels courts à Haiku (crédits Anthropic de l'auteur) : de l'ordre de quelques centimes. Conflit d'intérêts déclaré
 (modèle d'Anthropic, comme Claude qui a écrit la procédure) ; étiquettes absentes : l'issue n'est jamais montrée.
+
+## Résultat du passage unique (2026-11-26, run 45842640497)
+| Verdict de Haiku | Questions | Oui | Part de oui | Référence moyenne |
+|---|---|---|---|---|
+| tient | 79 | 18 | 23 % | 34 % |
+| ne_tient_pas | 99 | 15 | 15,2 % | 30 % |
+| sans_objet | 22 | 9 | 41 % | 31 % |
+- Gain sur le score : +0,118, IC90 [0,063 ; 0,175] ; perte 0,797 → 0,678.
+- Mais la part de oui des « ne tient pas » (15,2 %) dépasse d'un cheveu la moitié de la référence (15,0 %) : **critère
+  non tenu, non retenu** (règle écrite avant, appliquée sans retouche).
+- Lecture : l'essentiel du gain vient de ce que la référence est trop haute sur cette période (part de oui réelle des
+  200 questions : 21 %, contre ≈ 31 % prévus par le questionneur appris avant août 2025) ; toute correction vers le bas
+  aurait gagné. Le verdict sépare un peu (15 % contre 23 % pour « tient »), loin du « presque toujours non » attendu.
+  Le signal le plus net est ailleurs : le questionneur appris sur le passé surestime le oui récent (dérive déjà vue le
+  24 novembre).
