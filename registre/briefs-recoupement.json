@@ -10,7 +10,28 @@
 },
 {
 "compartiment": "dirigeants-elus:mandats_succession",
-"series": [],
+"series": [
+{
+"adaptateur": "successions:monde:changements",
+"source": "nouveaux chefs d'État ou de gouvernement par mois, monde, depuis 2012 (Wikidata ; reconductions exclues)",
+"date": "2026-10-15",
+"valeur": 2.0,
+"age_jours": 41,
+"variation": 0.0,
+"z": 0.0,
+"anormal": false
+},
+{
+"adaptateur": "successions:monde:anciennete:gouvernement",
+"source": "ancienneté médiane des chefs de gouvernement en poste, années, depuis 2012 (Wikidata)",
+"date": "2026-11-15",
+"valeur": 3.08,
+"age_jours": 10,
+"variation": 0.03000000000000025,
+"z": 0.0,
+"anormal": false
+}
+],
 "attention": []
 }
 ],
@@ -38,9 +59,9 @@
 {
 "adaptateur": "recit_russe:MD",
 "source": "articles des médias d'État russes sur la Moldavie",
-"date": "2026-11-24",
+"date": "2026-11-25",
 "valeur": 0.0,
-"age_jours": 1,
+"age_jours": 0,
 "variation": 0.0,
 "z": 0.0,
 "anormal": false
@@ -125,7 +146,18 @@
 },
 {
 "compartiment": "sciences-techniques:ia",
-"series": [],
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 24,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
 "attention": []
 }
 ],
@@ -194,10 +226,508 @@
 "compartiments": [
 {
 "compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 24,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/juges-de-la-cpi-cibles-par-des-sanctions-americaines.md": {
+"jour": "2026-11-26",
+"url": "https://www.aljazeera.com/news/2026/11/26/icc-judge-kimberly-prost-tries-war-crimes-shes-a-target-of-us-sanctions?traffic_source=rss",
+"compartiments": [
+{
+"compartiment": "politique-americaine:sanctions",
+"series": [
+{
+"adaptateur": "sanctions:IR",
+"source": "listes de sanctions (désignations visant l'Iran)",
+"date": "2026-11-23",
+"valeur": 30.0,
+"age_jours": 3,
+"variation": 26.0,
+"z": 2.92,
+"anormal": true
+},
+{
+"adaptateur": "sanctions:RU",
+"source": "listes de sanctions (désignations visant la Russie)",
+"date": "2026-11-12",
+"valeur": 11.0,
+"age_jours": 14,
+"variation": 10.0,
+"z": 0.34,
+"anormal": false
+},
+{
+"adaptateur": "federal_register:tous:Treasury",
+"source": "textes du Trésor déposés au Federal Register",
+"date": "2026-11-25",
+"valeur": 1.0,
+"age_jours": 1,
+"variation": 1.0
+}
+],
+"attention": []
+},
+{
+"compartiment": "monnaie-pouvoir:sanctions_financieres",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "février 2025",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "août 2025",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md": {
+"jour": "2026-11-26",
+"url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
+"compartiments": [
+{
+"compartiment": "medias-diffusion:cinema_series",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "dirigeants-elus:executifs",
 "series": [],
 "attention": []
 }
 ],
 "chiffres": []
+},
+"2026-11-26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta.md": {
+"jour": "2026-11-26",
+"url": "https://meduza.io/en/news/2026/11/26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-attack-on-putin-s-residence-an-attack-both-u-s-intelligence-and-trump-say-did-not-happen",
+"compartiments": [
+{
+"compartiment": "russie-ukraine:negociations",
+"series": [
+{
+"adaptateur": "gestes:RUS:UKR",
+"source": "GDELT, nombre de gestes de la Russie envers l'Ukraine",
+"date": "2026-10-26",
+"valeur": 82.0,
+"age_jours": 31,
+"variation": -2.0,
+"z": -0.08,
+"anormal": false
+},
+{
+"adaptateur": "paire_mois:RU:UA:conflit",
+"source": "événements conflictuels Russie–Ukraine par mois (GDELT)",
+"date": "2026-11-01",
+"valeur": 7604.0,
+"age_jours": 25,
+"variation": -4755.0,
+"z": -1.23,
+"anormal": false
+}
+],
+"attention": []
+},
+{
+"compartiment": "dirigeants-elus:executifs",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/falklands-outbreak-of-avian-influenza-among-gentoo-penguins.md": {
+"jour": "2026-11-26",
+"url": "https://en.mercopress.com/2026/11/25/falklands-outbreak-of-avian-influenza-among-gentoo-penguins?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+"compartiments": [
+{
+"compartiment": "epidemies:agent",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "epidemies:autorites",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss:CD:sante",
+"source": "articles des flux de santé (OMS, ECDC, Fonds mondial) citant la RD Congo",
+"date": "2026-10-19",
+"valeur": 1.0,
+"age_jours": 38,
+"variation": 0.0
+}
+]
+}
+],
+"chiffres": [
+{
+"chiffre": "18 novembre 2026",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "27366, 55366",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/could-the-jensen-huang-scandal-help-chinas-ai-industry.md": {
+"jour": "2026-11-26",
+"url": "https://thediplomat.com/2026/11/could-the-jensen-huang-scandal-help-chinas-ai-industry/",
+"compartiments": [
+{
+"compartiment": "rivalite-sino-americaine:technologie",
+"series": [
+{
+"adaptateur": "certificats",
+"source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
+"date": "2026-11-24",
+"valeur": 2.0,
+"age_jours": 2,
+"variation": 2.0
+}
+],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 25,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/cyril-ramaphosa-wins-court-bid-to-overturn-impeachment-repor.md": {
+"jour": "2026-11-26",
+"url": "https://www.thehindu.com/news/international/cyril-ramaphosa-wins-court-bid-to-overturn-impeachment-report/article71745568.ece",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:departs",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:procedures",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "580 000",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre.md": {
+"jour": "2026-11-26",
+"url": "https://fr.hespress.com/497494-israel-les-partis-deisenkot-et-de-netanyahu-vont-reprendre-leurs-discussions.html",
+"compartiments": [
+{
+"compartiment": "partis-politiques:systemes_partisans",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:partis",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/telenor-accuse-d-avoir-transmis-des-donnees-d-utilisateurs-a.md": {
+"jour": "2026-11-26",
+"url": "https://globalvoices.org/2026/10/14/norways-telenor-telecom-faces-lawsuit-for-giving-user-data-to-myanmars-junta/",
+"compartiments": [
+{
+"compartiment": "politique-interieure:coups_transitions",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "humain:hierarchie",
+"series": [
+{
+"adaptateur": "elections:US:proche30",
+"source": "fenêtre de 30 jours avant une élection américaine (le rang est remis en jeu ; Sapolsky : une hiérarchie contestée stresse le haut)",
+"date": "2026-11-26",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0
+},
+{
+"adaptateur": "elections:US",
+"source": "proximité d'une élection américaine (compte à rebours brut, pour l'état du jour)",
+"date": "2026-11-26",
+"valeur": 36.0,
+"age_jours": 0,
+"variation": -1.0
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "18 millions",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "1 253",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "9 000 EUR",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/african-union-who-estiment-le-cout-de-la-riposte-a-ebola-a-p.md": {
+"jour": "2026-11-26",
+"url": "https://tass.com/society/2224841",
+"compartiments": [
+{
+"compartiment": "afrique-subsaharienne:institutions_regionales",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "epidemies:agent",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "1,6 milliard de dollars",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "11 700",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "48,9 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/nikoladze-evoque-le-scandale-nvidia-et-les-controles-a-l-exp.md": {
+"jour": "2026-11-26",
+"url": "https://www.atlanticcouncil.org/insight-impact/in-the-news/nikoladze-interviewed-by-malaysian-business-fm-on-the-nvidia-scandal-and-implications-for-export-controls/",
+"compartiments": [
+{
+"compartiment": "rivalite-sino-americaine:technologie",
+"series": [
+{
+"adaptateur": "certificats",
+"source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
+"date": "2026-11-24",
+"valeur": 2.0,
+"age_jours": 2,
+"variation": 2.0
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/william-joffre-alcivar-bautista-alias-willy.md": {
+"jour": "2026-11-26",
+"url": "https://insightcrime.org/ecuador-organized-crime-news/william-joffre-alcivar-bautista-alias-willy/",
+"compartiments": [
+{
+"compartiment": "politique-americaine:poursuites_personnalites",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "securite-publique:justice",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "9 septembre",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "octobre 2024, décembre 2025, novembre 2026",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "janvier 2024",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/outage-chaos-who-turned-off-all-the-computer.md": {
+"jour": "2026-11-26",
+"url": "https://www.eff.org/deeplinks/2026/11/outage-chaos-who-turned-all-computer",
+"compartiments": [
+{
+"compartiment": "information-cyber:cyber",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 25,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "12 novembre",
+"verdict": "cohérent avec la série",
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-10-01",
+"valeur": 12.0
+}
+]
+},
+"2026-11-26/le-blocus-maritime-americain-etouffe-leconomie-iranienne.md": {
+"jour": "2026-11-26",
+"url": "https://legrandcontinent.eu/fr/2026/11/26/le-blocus-maritime-americain-etouffe-leconomie-iranienne/",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:executifs",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-26/nato-joins-global-data-marketplace-to-support-space-industry.md": {
+"jour": "2026-11-26",
+"url": "https://www.defenseone.com/threats/2026/11/nato-aims-spur-space-industry-help-militaries-new-data-marketplace/417283/",
+"compartiments": [
+{
+"compartiment": "militaire:alliances",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "securite-europeenne:otan_ue",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss:RU:conseil_ue",
+"source": "communiqués du Conseil de l'UE qui nomment la Russie, par jour (RSS)",
+"date": "2026-11-25",
+"valeur": 1.0,
+"age_jours": 1,
+"variation": 0.0
+}
+]
+}
+],
+"chiffres": [
+{
+"chiffre": "220",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "124 millions",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/how-foreign-ai-romance-apps-are-reshaping-youth-intimacy-in.md": {
+"jour": "2026-11-26",
+"url": "https://restofworld.org/2026/ai-companion-apps-africa-character-ai/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+"compartiments": [
+{
+"compartiment": "sciences-techniques:attentes",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 25,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "60 %",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "4 millions",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-26/brazil-blasts-unacceptable-new-us-tariff-proposals.md": {
+"jour": "2026-11-26",
+"url": "https://www.aljazeera.com/news/2026/11/26/brazil-blasts-unacceptable-new-us-tariff-proposals?traffic_source=rss",
+"compartiments": [
+{
+"compartiment": "politique-americaine:commerce",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "10 percent",
+"verdict": "non recoupable"
+}
+]
 }
 }

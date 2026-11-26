@@ -1,0 +1,18 @@
+# Briefs du 2026-11-26
+
+- [juges-de-la-cpi-cibles-par-des-sanctions-americaines](juges-de-la-cpi-cibles-par-des-sanctions-americaines.md) (openrouter/openai/gpt-oss-120b)
+- [modis-government-urges-netflix-to-keep-pakistani-urdu-drama](modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md) (openrouter/openai/gpt-oss-120b)
+- [kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta](kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta.md) (openrouter/openai/gpt-oss-120b)
+- [falklands-outbreak-of-avian-influenza-among-gentoo-penguins](falklands-outbreak-of-avian-influenza-among-gentoo-penguins.md) (openrouter/openai/gpt-oss-120b)
+- [could-the-jensen-huang-scandal-help-chinas-ai-industry](could-the-jensen-huang-scandal-help-chinas-ai-industry.md) (openrouter/openai/gpt-oss-120b)
+- [cyril-ramaphosa-wins-court-bid-to-overturn-impeachment-repor](cyril-ramaphosa-wins-court-bid-to-overturn-impeachment-repor.md) (openrouter/openai/gpt-oss-120b)
+- [israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre](israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre.md) (openrouter/openai/gpt-oss-120b)
+- [telenor-accuse-d-avoir-transmis-des-donnees-d-utilisateurs-a](telenor-accuse-d-avoir-transmis-des-donnees-d-utilisateurs-a.md) (openrouter/openai/gpt-oss-120b)
+- [african-union-who-estiment-le-cout-de-la-riposte-a-ebola-a-p](african-union-who-estiment-le-cout-de-la-riposte-a-ebola-a-p.md) (openrouter/openai/gpt-oss-120b)
+- [nikoladze-evoque-le-scandale-nvidia-et-les-controles-a-l-exp](nikoladze-evoque-le-scandale-nvidia-et-les-controles-a-l-exp.md) (mistral/mistral-small-latest)
+- [william-joffre-alcivar-bautista-alias-willy](william-joffre-alcivar-bautista-alias-willy.md) (openrouter/openai/gpt-oss-120b)
+- [outage-chaos-who-turned-off-all-the-computer](outage-chaos-who-turned-off-all-the-computer.md) (openrouter/openai/gpt-oss-120b)
+- [le-blocus-maritime-americain-etouffe-leconomie-iranienne](le-blocus-maritime-americain-etouffe-leconomie-iranienne.md) (openrouter/openai/gpt-oss-120b)
+- [nato-joins-global-data-marketplace-to-support-space-industry](nato-joins-global-data-marketplace-to-support-space-industry.md) (openrouter/openai/gpt-oss-120b)
+- [how-foreign-ai-romance-apps-are-reshaping-youth-intimacy-in](how-foreign-ai-romance-apps-are-reshaping-youth-intimacy-in.md) (openrouter/openai/gpt-oss-120b)
+- [brazil-blasts-unacceptable-new-us-tariff-proposals](brazil-blasts-unacceptable-new-us-tariff-proposals.md) (openrouter/openai/gpt-oss-120b)

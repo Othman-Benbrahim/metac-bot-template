@@ -1,17 +1,13 @@
 {
- "genere_le": "2026-11-25",
+ "genere_le": "2026-11-26",
  "compartiments_sans_serie": [
   [
    "dirigeants-elus:executifs",
-   2
+   5
   ],
   [
-   "sciences-techniques:ia",
+   "epidemies:agent",
    2
-  ],
-  [
-   "dirigeants-elus:mandats_succession",
-   1
   ],
   [
    "politique-interieure:contestation",
@@ -47,6 +43,70 @@
   ],
   [
    "economie-entreprises:regles_sectorielles",
+   1
+  ],
+  [
+   "monnaie-pouvoir:sanctions_financieres",
+   1
+  ],
+  [
+   "medias-diffusion:cinema_series",
+   1
+  ],
+  [
+   "epidemies:autorites",
+   1
+  ],
+  [
+   "dirigeants-elus:departs",
+   1
+  ],
+  [
+   "politique-interieure:procedures",
+   1
+  ],
+  [
+   "partis-politiques:systemes_partisans",
+   1
+  ],
+  [
+   "politique-interieure:partis",
+   1
+  ],
+  [
+   "politique-interieure:coups_transitions",
+   1
+  ],
+  [
+   "afrique-subsaharienne:institutions_regionales",
+   1
+  ],
+  [
+   "politique-americaine:poursuites_personnalites",
+   1
+  ],
+  [
+   "securite-publique:justice",
+   1
+  ],
+  [
+   "information-cyber:cyber",
+   1
+  ],
+  [
+   "militaire:alliances",
+   1
+  ],
+  [
+   "securite-europeenne:otan_ue",
+   1
+  ],
+  [
+   "sciences-techniques:attentes",
+   1
+  ],
+  [
+   "politique-americaine:commerce",
    1
   ]
  ]
