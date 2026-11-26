@@ -1,0 +1,29 @@
+name: Banc des épidémies (rougeole)
+
+# preenregistrements/epidemies-rougeole.md (décisions de l'auteur du 2026-11-26, 16 h 26 et 16 h 31). Une passe,
+# aucun modèle de langue. OMS (GHO) et Banque mondiale, téléchargés à la volée. Rapport en artefact.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install httpx numpy scikit-learn
+      - name: Banc
+        run: python mise_au_point/banc_rougeole.py
+        env:
+          PYTHONUNBUFFERED: "1"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banc-rougeole
+          path: banc_rougeole.json
