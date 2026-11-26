@@ -519,9 +519,11 @@ def principal() -> int:
             titres[x["empreinte"]] = x["jour"]
     reprises: dict[str, int] = {}
     villes_c: dict[tuple, int] = {}
+    entites_c: dict[tuple, int] = {}   # 2026-11-26 : veille anticipée (anticipation.py)
     if VILLES_CSV.exists():
         for x in csv.DictReader(VILLES_CSV.open(encoding="utf-8")):
             villes_c[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
+    import anticipation
     import villes_pays
     regions: dict[tuple, int] = {}
     if REGIONS.exists():
@@ -596,6 +598,8 @@ def principal() -> int:
                         reprises[famille] = reprises.get(famille, 0) + 1
                         continue
                     pays = detecter(a["texte"], motifs)
+                    for n_ in anticipation.noms(a.get("titre") or ""):   # 2026-11-26 : veille anticipée (noms seuls)
+                        entites_c[(a["jour"], n_)] = entites_c.get((a["jour"], n_), 0) + 1
                     if famille in FAMILLES_MATIERES:
                         for m, rx in MATIERES.items():
                             if rx.search(a["texte"]):
@@ -676,6 +680,13 @@ def principal() -> int:
             w.writerow(["matiere", "jour", "famille", "articles"])
             for (m, j, fa), n in sorted(matieres.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
                 w.writerow([m, j, fa, n])
+    if entites_c:   # 2026-11-26 : veille anticipée ; liste du jour des acteurs qui montent, et mesure
+        try:
+            anticipation.ecrire_comptes(entites_c)
+            anticipation.ecrire_liste(datetime.now(timezone.utc).date().isoformat())
+            anticipation.mesurer()
+        except Exception as ex:
+            print(f"veille anticipée : non écrite ({type(ex).__name__})")
     if villes_c:
         with VILLES_CSV.open("w", encoding="utf-8", newline="") as f:
             w = csv.writer(f)
