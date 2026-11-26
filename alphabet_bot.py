@@ -729,9 +729,14 @@ class AlphabetBot(FallTemplateBot2026):
             ligne["sceau"] = ap.sceau(ligne)
             with open(ap.registre_ecrivable() / "journal-competitions.jsonl", "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
-            e["texte"] = (f"\n\nOne-among-N rule (coded): {e['n']} contenders under the competition's rules, salience "
-                          f"factor {e['saillance']:g} (questions tend to be asked about favourites): {e['p_regle']:.1%}. "
-                          f"This coded rule is the measure (base, not blended).")
+            # 2026-11-26 (décision de l'auteur, 11 h 25 : « on corrige la brique compétition ») : 1/N ignore la force des
+            # concurrents (audit du 2026-11-26 : Rybakina à 0,8 %, Brésil à 4 % pour gagner sa poule). Ce n'est pas une
+            # mesure du concurrent mais un a priori sans information de force : il retourne au mélange au quart plafonné
+            # à 15 points, la forme sous laquelle il a été évalué (0.10.498). La force mesurée (Elo) viendra par famille.
+            e["p_un_parmi_n"] = e.pop("p_regle")
+            e["texte"] = (f"\n\nOne-among-N prior (coded): {e['n']} contenders, salience {e['saillance']:g}: "
+                          f"{e['p_un_parmi_n']:.1%}. It ignores the contenders' strength, so it is only blended with the "
+                          f"model (one quarter in log-odds, capped at 15 points): {e['p']:.1%}.")
             return e
         except Exception as ex:   # la règle qui échoue ne bloque rien
             logger.warning("compétition : non appliquée (%s)", type(ex).__name__)
