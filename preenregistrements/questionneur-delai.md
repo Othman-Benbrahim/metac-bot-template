@@ -29,3 +29,11 @@ Probabilités bornées à [0,02 ; 0,98].
 ## Étape suivante prévue (si retenue ou non)
 Le calendrier proprement dit (étapes nécessaires contre jours restants) demande de lire la question : test séparé, sur
 un petit échantillon et un modèle bon marché, avec sa propre procédure.
+
+## Résultat du passage unique (2026-11-26, vers 15 h 50)
+Apprentissage 1 395 questions (part de oui ≈ 14 % hors tranche > 365 j), test 2 823 (31 % de oui).
+- Ensemble : forme × délai 0,7274 contre forme seule 0,7124 — **pire** (gain −0,015, IC90 [−0,020 ; −0,010]).
+- Metaculus : 0,5686 contre 0,5703 (gain +0,002, IC90 [−0,009 ; +0,013]) — rien de net.
+- **Non retenue.** Le temps restant seul n'apporte rien : la part de oui est à peu près la même de 7 jours à un an
+  (11 à 14 %), sauf au-delà d'un an (53 %). Ce n'est pas le nombre de jours qui compte, mais ce qu'il faut accomplir
+  dans ces jours : cela demande de lire la question (étape suivante prévue).

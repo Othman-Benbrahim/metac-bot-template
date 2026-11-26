@@ -1,0 +1,48 @@
+{
+ "ensemble": {
+  "n": 2823,
+  "oui": 884,
+  "forme_seule": 0.7124,
+  "forme_x_delai": 0.7274,
+  "gain": -0.0151,
+  "ic90_gain": [
+   -0.0202,
+   -0.0101
+  ]
+ },
+ "metaculus": {
+  "n": 572,
+  "oui": 129,
+  "forme_seule": 0.5703,
+  "forme_x_delai": 0.5686,
+  "gain": 0.0016,
+  "ic90_gain": [
+   -0.0089,
+   0.0128
+  ]
+ },
+ "part_oui_par_tranche_apprentissage": {
+  "31-90": [
+   281,
+   0.11
+  ],
+  "8-30": [
+   161,
+   0.137
+  ],
+  "91-365": [
+   814,
+   0.139
+  ],
+  "<=7": [
+   82,
+   0.134
+  ],
+  ">365": [
+   57,
+   0.526
+  ]
+ },
+ "n_apprentissage": 1395,
+ "retenue": false
+}
