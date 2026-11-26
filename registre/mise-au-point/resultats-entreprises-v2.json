@@ -1,8 +1,8 @@
 {
  "decision_v2_nouvelles": {
-  "n": 428,
-  "couverture_80": 0.766,
-  "couverture_60": 0.596,
+  "n": 431,
+  "couverture_80": 0.768,
+  "couverture_60": 0.599,
   "entreprises": {
    "ABT": {
     "n": 22,
@@ -20,9 +20,9 @@
     "couverture_60": 0.65
    },
    "ADSK": {
-    "n": 21,
-    "couverture_80": 0.857,
-    "couverture_60": 0.714
+    "n": 22,
+    "couverture_80": 0.864,
+    "couverture_60": 0.727
    },
    "AMAT": {
     "n": 14,
@@ -65,9 +65,9 @@
     "couverture_60": 0.591
    },
    "LOW": {
-    "n": 17,
-    "couverture_80": 0.824,
-    "couverture_60": 0.412
+    "n": 18,
+    "couverture_80": 0.833,
+    "couverture_60": 0.444
    },
    "MRK": {
     "n": 18,
@@ -85,9 +85,9 @@
     "couverture_60": 0.278
    },
    "TGT": {
-    "n": 21,
-    "couverture_80": 0.762,
-    "couverture_60": 0.571
+    "n": 22,
+    "couverture_80": 0.773,
+    "couverture_60": 0.591
    },
    "TMO": {
     "n": 22,
@@ -107,9 +107,9 @@
   }
  },
  "descriptif_v1_nouvelles": {
-  "n": 605,
-  "couverture_80": 0.704,
-  "couverture_60": 0.534,
+  "n": 608,
+  "couverture_80": 0.706,
+  "couverture_60": 0.536,
   "entreprises": {
    "ABT": {
     "n": 30,
@@ -127,9 +127,9 @@
     "couverture_60": 0.536
    },
    "ADSK": {
-    "n": 29,
-    "couverture_80": 0.828,
-    "couverture_60": 0.69
+    "n": 30,
+    "couverture_80": 0.833,
+    "couverture_60": 0.7
    },
    "AMAT": {
     "n": 22,
@@ -182,9 +182,9 @@
     "couverture_60": 0.567
    },
    "LOW": {
-    "n": 25,
-    "couverture_80": 0.88,
-    "couverture_60": 0.68
+    "n": 26,
+    "couverture_80": 0.885,
+    "couverture_60": 0.692
    },
    "MRK": {
     "n": 26,
@@ -202,9 +202,9 @@
     "couverture_60": 0.346
    },
    "TGT": {
-    "n": 29,
-    "couverture_80": 0.793,
-    "couverture_60": 0.586
+    "n": 30,
+    "couverture_80": 0.8,
+    "couverture_60": 0.6
    },
    "TMO": {
     "n": 30,
