@@ -133,6 +133,12 @@ compartiments:
   elements:
   - l'investissement dans l'IA soutient la croissance ; une réévaluation de sa rentabilité pourrait le couper et
     corriger les marchés d'actions (FMI, octobre 2026)
+  - 'centres de données géants aux États-Unis (403 repérés par satellite, mai 2024 à avril 2025) : 68 à 99 TWh par an,
+    environ 1,8 % de la consommation électrique du pays, environ 25,7 millions de tonnes de CO2 ; électricité fossile à
+    environ 54 % (gaz 38 %, charbon 15 %) ; Virginie, Oregon, Ohio et Iowa font plus de la moitié (Guidi, Dominici et
+    al., Nature Sustainability, 16 novembre 2026, doi 10.1038/s41893-026-01985-7)'
+  - 'mécanisme : la demande des centres de données se concentre sur quelques réseaux régionaux ; elle y pèse sur les prix
+    de l''électricité, les centrales fossiles maintenues et les émissions locales (même source)'
   niveau:
     espace: monde
     temps: années
