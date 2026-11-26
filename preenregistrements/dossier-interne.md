@@ -184,3 +184,56 @@ Passage sur les 18 questions ouvertes du 2026-11-24 :
 - deux bruits restent, qui viennent des listes de mots validées et non du dossier : « confirmed » mène à « nominations par intérim » (sources radioactives volées), et « agreement » mène à « gisements de la dette émergente » (Engie). Leur correction relève des listes, donc de l'auteur.
 
 Source de prix fraîche (§ 7, point 4) : API Ninjas, validée par l'auteur le 2026-11-24 à 22 h 50 (`cours_frais.py`, clé `API_NINJAS_KEY`) ; dernier règlement seulement, volatilité gardée sur FRED, jamais de regard vers l'avant.
+
+## Amendement du 2026-11-26 : brique hors domaine, contradicteur et terrain (écrit avant tout code)
+
+Origine : Trump–Poutine (page 46751, question d'entraînement du 2026-11-25). La question acceptait « meet in person OR
+talk on the phone » ; la brique « rencontres » (COLT, rencontres en personne seulement) l'a reconnue sur le mot « meet »
+et a posté 0,049 à la place du raisonnement du modèle (0,90). Le juge disposait du motif « brique hors domaine » mais ne
+voyait pas le domaine de la brique, et sa marge (10 points) n'aurait de toute façon permis que 0,15. Rustine posée le
+jour même dans `rencontres_regle.py` (abstention sur appel ou échange à distance) ; elle sera retirée quand le mécanisme
+général ci-dessous aura prouvé qu'il attrape seul ce cas.
+
+Décisions de l'auteur :
+- 10 h 49 : pas de disjoncteur mécanique ; « privilégier la réalité du terrain plutôt que la mesure, quand c'est contre
+  intuitif ; c'est le rôle du contradicteur de dire ça, et du juge de le prendre en compte » ; il valide le reste des
+  propositions (audit des briques, domaine donné au juge).
+- 10 h 54 : « Oui, c'est bon » (brique hors domaine annulée ; marge de 30 points pour le terrain).
+- 10 h 57 : corriger le biais quand il se présente, de façon générale, plutôt que des exceptions brique par brique.
+- 11 h 08 : contradicteur appelé seulement quand une brique s'applique et diverge fortement du raisonnement — « c'est à
+  tester », pour laisser le moins de place possible au hasard. Contrainte de l'auteur : chaque question coûte des crédits.
+
+### A. Domaine déclaré
+Chaque brique porte une phrase de domaine (ce qu'elle compte, ce qu'elle ne compte pas), écrite dans son module et
+recopiée dans le dossier (`briques[].domaine`). Exemple : « rencontres en personne de chefs d'État ou de gouvernement ;
+ne compte ni les appels, ni les envoyés, ni les ministres ».
+
+### B. Déclenchement du contradicteur (à tester)
+Le contradicteur n'est appelé que si (1) une brique s'applique et (2) |p_brique − p_raisonnement| ≥ S. Le seuil S n'est
+pas fixé ici : il sera choisi par le test de la section E, puis soumis à l'auteur. Hors déclenchement, rien ne change.
+
+### C. Rôle du contradicteur (après la mesure, avant le juge)
+Il reçoit le titre, les critères de résolution, le domaine de la brique, la mesure et la recherche. Réponse fermée :
+- `conforme` ;
+- `hors_domaine` + citation exacte du titre ou des critères qui sort la question du domaine ;
+- `contre_terrain` + liste de faits datés et sourcés (URL, date) qui contredisent la mesure.
+Il ne donne pas de probabilité.
+
+### D. Juge
+Il reçoit le verdict du contradicteur. Deux changements :
+- `brique_hors_domaine` admis (citation vérifiée par le code) : la brique est annulée et l'on poste le raisonnement du
+  modèle, comme s'il n'y avait pas de brique ; pas de plafond, puisqu'il n'y a plus de mesure.
+- nouveau motif `contre_terrain` : marge de 30 points au plus, exigeant au moins deux sources indépendantes et datées
+  (règle de corroboration et force de la preuve de la § 5 bis).
+Les deux restent sous la règle d'arrêt des e-valeurs (§ 6), calculée séparément par motif.
+
+### E. Test avant branchement (une passe)
+1. Audit sans modèle de langue : toutes les briques rejouées sur les questions résolues du corpus ; liste des
+   déclenchements, des pertes, et des titres à risque (« or », négation, « any of », « at least one »).
+2. Jeu de test : les déclenchements de l'audit dont la perte est la plus forte, plus autant de déclenchements à faible
+   perte tirés au hasard (graine fixée), plus Trump–Poutine. Taille plafonnée à 40 questions (coût).
+3. Pour chacun : raisonnement du modèle (bras A, modèle bon marché), puis contradicteur. On mesure : part des
+   mauvaises reconnaissances attrapées (rappel), part des bonnes briques contestées à tort (fausses alertes), et perte
+   log de la chaîne avec et sans contradicteur.
+4. Branchement si la perte avec contradicteur est inférieure à la perte sans, et si les fausses alertes restent sous
+   un quart. Sinon, on n'ajoute rien et on rapporte.
