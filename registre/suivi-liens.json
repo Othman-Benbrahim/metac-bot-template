@@ -1,7 +1,19 @@
 {
  "releve": "2026-11-20 →",
  "liens_suivis": 39,
- "liens_touches": 0,
- "par_lien": {},
+ "liens_touches": 1,
+ "par_lien": {
+  "ru_ua_negociation_reprise": {
+   "relation": "depend_de",
+   "questions": 1,
+   "resolues": 0,
+   "part_oui": null,
+   "perte_log_bot": null,
+   "franchissent_echeance": 0,
+   "exemples": [
+    "Will Donald Trump and Vladimir Putin meet in person or talk on the phone before January 1, 2027?"
+   ]
+  }
+ },
  "note": "observation en avant, pas un test ; rien n'entre dans le bot"
 }

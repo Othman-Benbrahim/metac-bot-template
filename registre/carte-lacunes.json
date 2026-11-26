@@ -1,22 +1,22 @@
 {
- "genere_le": "2026-11-25",
+ "genere_le": "2026-11-26",
  "questions": 2196,
  "par_type": [
   [
    "amont sans série",
-   2430
+   2286
   ],
   [
    "aucune relation entrante",
-   2065
+   2069
   ],
   [
    "sens du oui illisible",
-   497
+   608
   ],
   [
    "série sans état récent",
-   424
+   425
   ],
   [
    "aucun compartiment rattaché",
@@ -24,7 +24,7 @@
   ],
   [
    "aucune relation retenue aux échelles de la question",
-   260
+   263
   ]
  ],
  "par_compartiment": [
@@ -55,10 +55,6 @@
   [
    "competitions-culture:precurseurs_recompenses → competitions-culture:public",
    177
-  ],
-  [
-   "sciences-techniques:ia → sciences-techniques:attentes",
-   144
   ],
   [
    "competitions-culture:forme → competitions-culture:forme",
@@ -213,10 +209,6 @@
    27
   ],
   [
-   "dirigeants-elus:diplomatie_personnelle",
-   23
-  ],
-  [
    "reseaux-sociaux:donnees_ciblage → reseaux-sociaux:personnalites",
    20
   ],
@@ -274,6 +266,10 @@
   ],
   [
    "guerre-levant:epidemies → guerre-levant:humanitaire",
+   16
+  ],
+  [
+   "turquie:energie_transit",
    16
   ],
   [
@@ -477,6 +473,10 @@
    5
   ],
   [
+   "turquie:question_kurde",
+   5
+  ],
+  [
    "epidemies:convention → epidemies:autorites",
    5
   ],
@@ -541,6 +541,14 @@
    4
   ],
   [
+   "turquie:economie_monnaie",
+   4
+  ],
+  [
+   "turquie:societe_territoires",
+   4
+  ],
+  [
    "rivalite-sino-americaine:taiwan → rivalite-sino-americaine:diplomatie",
    4
   ],
@@ -598,10 +606,6 @@
   ],
   [
    "guerre-levant:relief → guerre-levant:eau",
-   2
-  ],
-  [
-   "union-europeenne:politiques_communes",
    2
   ],
   [
@@ -713,6 +717,10 @@
    1
   ],
   [
+   "humain:relais_opinion → humain:opinion_publique",
+   1
+  ],
+  [
    "iran-nucleaire:sanctions → iran-nucleaire:societe_iranienne",
    1
   ],
@@ -818,14 +826,6 @@
   ],
   [
    "frontieres:frontieres_contestees",
-   1
-  ],
-  [
-   "frontieres:frontieres_contestees → frontieres:etats",
-   1
-  ],
-  [
-   "insularite:caraibes",
    1
   ]
  ],
