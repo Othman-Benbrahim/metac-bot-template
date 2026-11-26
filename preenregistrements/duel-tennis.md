@@ -78,3 +78,8 @@ Constat qui motive le test : les deux méthodes ne se trompent pas les mêmes sa
 - Même score, mêmes saisons, même passage de données.
 - Décision : le mélange remplace l'Elo s'il fait mieux sur l'ensemble 2010-2025 d'au moins 0,02 ET dans au moins la
   moitié des saisons, sur chacun des deux circuits ; sinon l'Elo reste.
+
+## Résultat du second passage (2026-11-26, run 45809824873)
+- ATP : mélange 2,121 contre Elo 2,093 (moins bien de 0,029) ; meilleur que l'Elo dans 6 saisons sur 16.
+- WTA : mélange 2,972 contre Elo 2,956 (moins bien de 0,016) ; meilleur dans 7 saisons sur 16.
+- **Le mélange ne remplace pas l'Elo.** L'Elo seul reste la méthode retenue pour le tennis.
