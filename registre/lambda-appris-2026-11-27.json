@@ -1,0 +1,53 @@
+{
+  "calcule_le": "2026-11-27T10:13:12+00:00",
+  "version_bot": "0.10.410",
+  "version_skill": "0.7.77",
+  "questions": 229,
+  "par_source": {
+    "forecastbench": 229
+  },
+  "questions_avec_source": 229,
+  "lambda_stipules": {
+    "F": 3.0,
+    "M": 1.8,
+    "f": 1.2,
+    "I": 0.556
+  },
+  "a_priori": "normal sur ln λ, centré sur le stipulé, écart-type 0.5",
+  "lambda_appris": {
+    "F": 2.921,
+    "M": 0.917,
+    "f": 1.082,
+    "I": 0.752
+  },
+  "intervalle_95": {
+    "F": [
+      1.109,
+      7.694
+    ],
+    "M": [
+      0.786,
+      1.068
+    ],
+    "f": [
+      0.829,
+      1.412
+    ],
+    "I": [
+      0.298,
+      1.901
+    ]
+  },
+  "exposition": {
+    "F": 1,
+    "M": 412,
+    "f": 205,
+    "I": 2
+  },
+  "perte_log_hors_echantillon": {
+    "stipules": 0.8298,
+    "appris": 0.6037,
+    "lecture": "appris < stipulés : les données corrigent utilement les λ"
+  },
+  "statut": "exploitable pour une décision d'auteur"
+}

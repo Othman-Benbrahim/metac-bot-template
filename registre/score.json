@@ -104,12 +104,12 @@
     "lecture": "recouvrement haut et stable : la présélection retrouve le choix du planificateur ; bas : le planificateur voit autre chose que le texte de la question"
   },
   "couts": {
-    "total_usd": 14.94,
+    "total_usd": 16.13,
     "par_modele": {
       "azure_ai/gpt-5-mini": {
-        "questions": 43,
-        "total_usd": 14.94,
-        "moyenne_usd": 0.348
+        "questions": 47,
+        "total_usd": 16.13,
+        "moyenne_usd": 0.343
       }
     },
     "par_jour": {
@@ -122,7 +122,8 @@
       "2026-11-23": 1.19,
       "2026-11-24": 1.19,
       "2026-11-25": 1.16,
-      "2026-11-26": 0.2
+      "2026-11-26": 0.73,
+      "2026-11-27": 0.65
     }
   },
   "negation_A": {
@@ -324,11 +325,11 @@
   "C_exploratoire_sur_B": null,
   "exploratoire_non_binaire": {
     "note": "hors verdict ; questions non binaires ramenées à une question binaire dérivée (§29)",
-    "questions": 26,
+    "questions": 30,
     "statuts": {
-      "sans_vue": 20,
-      "estime": 2,
-      "etat_nul": 2,
+      "sans_vue": 22,
+      "estime": 3,
+      "etat_nul": 3,
       "refuse": 2
     },
     "resolues_chiffrees": 0,
@@ -410,5 +411,5 @@
       "C_sur_B_verdict": null
     }
   },
-  "calcule_le": "2026-11-26T10:04:20+00:00"
+  "calcule_le": "2026-11-27T10:10:11+00:00"
 }

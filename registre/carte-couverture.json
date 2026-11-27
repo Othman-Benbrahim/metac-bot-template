@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-26",
+ "genere_le": "2026-11-27",
  "fraicheur_jours": 45,
  "avancement": {
   "compartiments": 882,
@@ -76,7 +76,7 @@
   "afrique:afrique_nord": {
    "statut": "fraiche",
    "serie": "manifestations:EG",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "afrique:libye": {
    "statut": "ancienne",
@@ -142,7 +142,7 @@
   "alimentation-mondiale:importateurs": {
    "statut": "fraiche",
    "serie": "violations:Sudan",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "alimentation-mondiale:elevage": {
    "statut": "a_trouver"
@@ -267,12 +267,12 @@
   "asie-du-sud-est:indonesie": {
    "statut": "fraiche",
    "serie": "manifestations:ID",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "asie-du-sud-est:philippines": {
    "statut": "fraiche",
    "serie": "manifestations:PH",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "asie-du-sud-est:economie_region": {
    "statut": "a_trouver"
@@ -489,7 +489,7 @@
   "climat-extremes:feux": {
    "statut": "fraiche",
    "serie": "feux:US",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "climat-extremes:tendance": {
    "statut": "ancienne",
@@ -499,7 +499,7 @@
   "climat-extremes:exposes": {
    "statut": "fraiche",
    "serie": "ooni:IN",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "climat-extremes:chimie_atmosphere": {
    "statut": "a_trouver"
@@ -657,7 +657,7 @@
   "crises-bancaires:cryptomonnaies": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "crises-bancaires:regulateurs": {
    "statut": "fraiche",
@@ -673,7 +673,7 @@
   "crises-bancaires:seuils_de_prix": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "croyances-religions:christianisme": {
    "statut": "a_trouver"
@@ -843,7 +843,7 @@
   "dette-emergents:politique_interieure": {
    "statut": "fraiche",
    "serie": "ooni:AR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "dette-emergents:matieres_premieres": {
    "statut": "fraiche",
@@ -856,7 +856,7 @@
   "dette-emergents:recoltes_catastrophes": {
    "statut": "fraiche",
    "serie": "feux:ZM",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "dette-emergents:gisements": {
    "statut": "a_trouver"
@@ -972,7 +972,7 @@
   "eau-moyen-orient:villes": {
    "statut": "fraiche",
    "serie": "ooni:IR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "eau-moyen-orient:etats_riverains": {
    "statut": "vide",
@@ -995,7 +995,7 @@
   "economie-chinoise:activite": {
    "statut": "fraiche",
    "serie": "feux:CN",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "economie-chinoise:immobilier": {
    "statut": "a_trouver"
@@ -1019,7 +1019,7 @@
   "economie-chinoise:pouvoir": {
    "statut": "fraiche",
    "serie": "ooni:CN",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "economie-chinoise:statistiques": {
    "statut": "fraiche",
@@ -1302,7 +1302,7 @@
   "flux-mondiaux:flux_information": {
    "statut": "fraiche",
    "serie": "ooni:RU",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "flux-mondiaux:penetration_exterieure": {
    "statut": "a_trouver"
@@ -1310,7 +1310,7 @@
   "flux-mondiaux:reaction_identitaire": {
    "statut": "fraiche",
    "serie": "manifestations:TR",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "flux-mondiaux:defiance_politique": {
    "statut": "ancienne",
@@ -1396,17 +1396,17 @@
   "guerre-levant:gaza": {
    "statut": "fraiche",
    "serie": "violations:Palestine",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "guerre-levant:liban": {
    "statut": "fraiche",
    "serie": "feux:LB",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "guerre-levant:syrie_irak": {
    "statut": "fraiche",
    "serie": "feux:SY",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "guerre-levant:yemen": {
    "statut": "fraiche",
@@ -1490,7 +1490,7 @@
   "humain:nous_eux": {
    "statut": "fraiche",
    "serie": "telegram:tout",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "humain:hierarchie": {
    "statut": "fraiche",
@@ -1511,7 +1511,7 @@
   "humain:passage_acte": {
    "statut": "fraiche",
    "serie": "manifestations:US",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "humain:treve": {
    "statut": "fraiche",
@@ -1533,7 +1533,7 @@
   "humain:falsification": {
    "statut": "fraiche",
    "serie": "ooni:RU",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "humain:opinion_publique": {
    "statut": "a_trouver"
@@ -1541,7 +1541,7 @@
   "humain:disponibilite": {
    "statut": "fraiche",
    "serie": "ouvert:attention_crise",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "humain:risque_percu": {
    "statut": "fraiche",
@@ -1565,7 +1565,7 @@
   "humain:controle_percu": {
    "statut": "fraiche",
    "serie": "ooni:RU",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "humain:intention": {
    "statut": "a_trouver"
@@ -1605,12 +1605,12 @@
   "humain:relais_opinion": {
    "statut": "fraiche",
    "serie": "telegram:tout",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "humain:contagion_complexe": {
    "statut": "fraiche",
    "serie": "voisins:IR",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "humain:conformite_minorite": {
    "statut": "a_trouver"
@@ -1618,12 +1618,12 @@
   "humain:foules_identite": {
    "statut": "fraiche",
    "serie": "manifestations:FR:emeutes",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "inde:population_jeunesse": {
    "statut": "fraiche",
    "serie": "manifestations:IN",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "inde:politique_interieure": {
    "statut": "a_trouver"
@@ -1727,7 +1727,7 @@
   "information-cyber:recits": {
    "statut": "fraiche",
    "serie": "recit_russe:MD",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "information-cyber:attention": {
    "statut": "a_trouver"
@@ -1738,7 +1738,7 @@
   "information-cyber:censure": {
    "statut": "fraiche",
    "serie": "ooni:IR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "information-cyber:coupures": {
    "statut": "fraiche",
@@ -1783,7 +1783,7 @@
   "infrastructures-critiques:reseaux": {
    "statut": "fraiche",
    "serie": "ooni:IR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "infrastructures-critiques:cascades": {
    "statut": "vide",
@@ -1805,7 +1805,7 @@
   "infrastructures-critiques:physique_espace": {
    "statut": "fraiche",
    "serie": "pub:geomag_ap",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "infrastructures-critiques:attaques": {
    "statut": "vide",
@@ -1862,7 +1862,7 @@
   "iran-nucleaire:societe_iranienne": {
    "statut": "fraiche",
    "serie": "ooni:IR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "iran-nucleaire:etats_unis": {
    "statut": "fraiche",
@@ -1896,7 +1896,7 @@
   "iran-nucleaire:sismicite": {
    "statut": "fraiche",
    "serie": "seismes:iran_m45",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "liban-institutions:justice": {
    "statut": "a_trouver"
@@ -1929,7 +1929,7 @@
   "liban-institutions:internet_information": {
    "statut": "fraiche",
    "serie": "ooni:LB",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "medias-diffusion:plateformes_sociales": {
    "statut": "a_trouver"
@@ -2090,7 +2090,7 @@
   "monnaie-pouvoir:monnaies_numeriques": {
    "statut": "fraiche",
    "serie": "fred:CBBTCUSD",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "monnaie-pouvoir:dedollarisation": {
    "statut": "a_trouver"
@@ -2175,7 +2175,7 @@
   "observateur-mesure:biais": {
    "statut": "fraiche",
    "serie": "telegram:tout",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "observateur-mesure:definitions": {
    "statut": "a_trouver"
@@ -2243,7 +2243,7 @@
   "oceans-et-fleuves:fleuves": {
    "statut": "fraiche",
    "serie": "pub:rhin_kaub_cm",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "oceans-et-fleuves:nappes": {
    "statut": "a_trouver"
@@ -2338,7 +2338,7 @@
   "ormuz:riverains": {
    "statut": "fraiche",
    "serie": "voisins:IR",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "ormuz:puissances": {
    "statut": "fraiche",
@@ -2348,7 +2348,7 @@
   "ormuz:force": {
    "statut": "fraiche",
    "serie": "avions:AE",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "ormuz:droit": {
    "statut": "fraiche",
@@ -2363,12 +2363,12 @@
   "ormuz:interieur_iran": {
    "statut": "fraiche",
    "serie": "ooni:IR",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "ormuz:recits": {
    "statut": "fraiche",
    "serie": "telegram:farsna",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "ormuz:mer_golfe": {
    "statut": "a_trouver"
@@ -2444,7 +2444,7 @@
   "politique-americaine:executif": {
    "statut": "fraiche",
    "serie": "avions:US",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "politique-americaine:congres": {
    "statut": "fraiche",
@@ -2454,7 +2454,7 @@
   "politique-americaine:tribunaux": {
    "statut": "fraiche",
    "serie": "tribunaux:scotus",
-   "derniere": "2026-11-23"
+   "derniere": "2026-11-25"
   },
   "politique-americaine:elections": {
    "statut": "fraiche",
@@ -2490,7 +2490,7 @@
   "politique-americaine:entourage": {
    "statut": "fraiche",
    "serie": "tfr:VIP",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "politique-americaine:regles_electorales": {
    "statut": "a_trouver"
@@ -2588,7 +2588,7 @@
   "relief-et-montagnes:seismes_volcans": {
    "statut": "fraiche",
    "serie": "seismes:m6",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "relief-et-montagnes:cotes_detroits": {
    "statut": "fraiche",
@@ -2715,7 +2715,7 @@
   "rivalite-sino-americaine:alliances": {
    "statut": "fraiche",
    "serie": "avions",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "rivalite-sino-americaine:diplomatie": {
    "statut": "fraiche",
@@ -2733,7 +2733,7 @@
   "rivalite-sino-americaine:recits": {
    "statut": "fraiche",
    "serie": "ooni:CN",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "rivalite-sino-americaine:terres_rares": {
    "statut": "vide",
@@ -2750,12 +2750,12 @@
   "russie-ukraine:front": {
    "statut": "fraiche",
    "serie": "feux:UA",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "russie-ukraine:capacites": {
    "statut": "fraiche",
    "serie": "paire:RU:UA:force",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "russie-ukraine:soutiens": {
    "statut": "fraiche",
@@ -2775,7 +2775,7 @@
   "russie-ukraine:economie_ukraine": {
    "statut": "fraiche",
    "serie": "ooni:UA",
-   "derniere": "2026-11-22"
+   "derniere": "2026-11-26"
   },
   "russie-ukraine:negociations": {
    "statut": "fraiche",
@@ -2801,7 +2801,7 @@
   "russie-ukraine:sols_agriculture": {
    "statut": "fraiche",
    "serie": "feux:UA",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "russie-ukraine:atomique": {
    "statut": "a_trouver"
@@ -2891,7 +2891,7 @@
   "securite-europeenne:budgets_dette": {
    "statut": "fraiche",
    "serie": "fred:ECBDFR",
-   "derniere": "2026-11-25"
+   "derniere": "2026-11-26"
   },
   "securite-europeenne:geographie": {
    "statut": "a_trouver"
@@ -2955,7 +2955,7 @@
   "soleil-espace:satellites": {
    "statut": "fraiche",
    "serie": "tfr:SPACE OPERATIONS",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "soleil-espace:debris": {
    "statut": "a_trouver"
@@ -3056,7 +3056,7 @@
   "transport-maritime:securite": {
    "statut": "fraiche",
    "serie": "avions:mer",
-   "derniere": "2026-11-26"
+   "derniere": "2026-11-27"
   },
   "transport-maritime:climat": {
    "statut": "a_trouver"
@@ -3130,7 +3130,7 @@
   "turquie:pouvoir_opposition": {
    "statut": "fraiche",
    "serie": "manifestations:TR",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "turquie:economie_monnaie": {
    "statut": "fraiche",
@@ -3151,7 +3151,7 @@
   "turquie:societe_territoires": {
    "statut": "fraiche",
    "serie": "manifestations:TR",
-   "derniere": "2026-11-24"
+   "derniere": "2026-11-25"
   },
   "union-europeenne:institutions": {
    "statut": "a_trouver"
@@ -9445,7 +9445,7 @@
   },
   {
    "compartiment": "politique-interieure:procedures",
-   "lectures_manquees": 201,
+   "lectures_manquees": 199,
    "relations_sortantes": 1
   },
   {
@@ -9470,7 +9470,7 @@
   },
   {
    "compartiment": "dirigeants-elus:entourage",
-   "lectures_manquees": 50,
+   "lectures_manquees": 58,
    "relations_sortantes": 1
   },
   {
@@ -9519,11 +9519,6 @@
    "relations_sortantes": 1
   },
   {
-   "compartiment": "eau-moyen-orient:maladies_hydriques",
-   "lectures_manquees": 16,
-   "relations_sortantes": 1
-  },
-  {
    "compartiment": "guerre-levant:epidemies",
    "lectures_manquees": 16,
    "relations_sortantes": 1
@@ -9532,6 +9527,11 @@
    "compartiment": "epidemies:malades",
    "lectures_manquees": 15,
    "relations_sortantes": 2
+  },
+  {
+   "compartiment": "eau-moyen-orient:maladies_hydriques",
+   "lectures_manquees": 15,
+   "relations_sortantes": 1
   },
   {
    "compartiment": "epidemies:reservoirs",
@@ -9564,7 +9564,7 @@
    "relations_sortantes": 4
   },
   {
-   "compartiment": "amerique-latine:usa_chine_latam",
+   "compartiment": "politique-interieure:contestation",
    "lectures_manquees": 10,
    "relations_sortantes": 1
   },
@@ -9572,6 +9572,11 @@
    "compartiment": "medias-diffusion:plateformes_sociales",
    "lectures_manquees": 8,
    "relations_sortantes": 3
+  },
+  {
+   "compartiment": "amerique-latine:usa_chine_latam",
+   "lectures_manquees": 8,
+   "relations_sortantes": 1
   },
   {
    "compartiment": "medias-diffusion:jeux_video",
@@ -9589,6 +9594,11 @@
    "relations_sortantes": 2
   },
   {
+   "compartiment": "politique-interieure:elections",
+   "lectures_manquees": 7,
+   "relations_sortantes": 1
+  },
+  {
    "compartiment": "russie-ukraine:hiver_saisons",
    "lectures_manquees": 6,
    "relations_sortantes": 2
@@ -9604,11 +9614,6 @@
    "relations_sortantes": 2
   },
   {
-   "compartiment": "eau-moyen-orient:fleuves",
-   "lectures_manquees": 4,
-   "relations_sortantes": 3
-  },
-  {
    "compartiment": "calendriers-echeances:dates_limites",
    "lectures_manquees": 4,
    "relations_sortantes": 2
@@ -9622,6 +9627,11 @@
    "compartiment": "dirigeants-elus:diplomatie_personnelle",
    "lectures_manquees": 4,
    "relations_sortantes": 1
+  },
+  {
+   "compartiment": "eau-moyen-orient:fleuves",
+   "lectures_manquees": 3,
+   "relations_sortantes": 3
   },
   {
    "compartiment": "guerre-levant:puissances",
@@ -9735,6 +9745,11 @@
   },
   {
    "compartiment": "dirigeants-elus:departs",
+   "lectures_manquees": 1,
+   "relations_sortantes": 1
+  },
+  {
+   "compartiment": "frontieres:frontieres_contestees",
    "lectures_manquees": 1,
    "relations_sortantes": 1
   },
@@ -9910,21 +9925,6 @@
   },
   {
    "compartiment": "corps-humain:soins",
-   "lectures_manquees": 0,
-   "relations_sortantes": 2
-  },
-  {
-   "compartiment": "corruption:grande_corruption",
-   "lectures_manquees": 0,
-   "relations_sortantes": 2
-  },
-  {
-   "compartiment": "crime-organise:cartels_mafias",
-   "lectures_manquees": 0,
-   "relations_sortantes": 2
-  },
-  {
-   "compartiment": "crime-organise:repression",
    "lectures_manquees": 0,
    "relations_sortantes": 2
   }

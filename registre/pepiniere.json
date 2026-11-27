@@ -1,9 +1,9 @@
 {
-  "calcule_le": "2026-11-26T10:07:22+00:00",
+  "calcule_le": "2026-11-27T10:13:12+00:00",
   "version_bot": "0.10.410",
   "version_skill": "0.7.77",
-  "lignes_lues": 109,
-  "empreinte_registre": "8f14a710097e68bd3acc71c26d222d4614ea2d134b6cad55bf852591701f616e",
+  "lignes_lues": 113,
+  "empreinte_registre": "507e17f9ed567510e2f307aa0763875fb1e677fca769f6380a5b6bbca7d39b99",
   "seuils": {
     "questions": 3,
     "sources_distinctes": 2
