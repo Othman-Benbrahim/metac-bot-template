@@ -147,5 +147,6 @@
 "GovInfo | Federal Register (adresse supposée)": "https://www.govinfo.gov/rss/fr.xml",
 "NASA | communiqués": "https://www.nasa.gov/news-release/feed/",
 "NASA | Artemis": "https://www.nasa.gov/missions/artemis/feed/",
-"NASA | Station spatiale": "https://www.nasa.gov/missions/station/feed/"
+"NASA | Station spatiale": "https://www.nasa.gov/missions/station/feed/",
+"OPEP | communiqués": "https://www.opec.org/opec_web/en/pressreleases.rss"
 }
