@@ -121,5 +121,9 @@
 "IA | Berkeley AI Research (BAIR)": "http://bair.berkeley.edu/blog/feed.xml",
 "IA | Machine Intelligence Research Institute": "https://intelligence.org/blog/feed",
 "IA | AWS Machine Learning Blog": "https://aws.amazon.com/blogs/machine-learning/feed/",
-"IA | fast.ai": "https://www.fast.ai/index.xml"
+"IA | fast.ai": "https://www.fast.ai/index.xml",
+"IA | Anthropic, flux supposé": "https://www.anthropic.com/rss.xml",
+"IA | Meta AI, flux supposé": "https://ai.meta.com/blog/rss/",
+"IA | Mistral, flux supposé": "https://mistral.ai/rss.xml",
+"IA | xAI, flux supposé": "https://x.ai/rss.xml"
 }

@@ -20,7 +20,13 @@ SITES: dict[str, dict] = {
     # pays est un autre lien de la même ligne du tableau, d'où « ligne » : le titre réunit les liens de la ligne.
     "ElectionGuide": {"url": "https://www.electionguide.org/elections/type/upcoming/",
                       "motif": r"^/elections/id/\d+/?$", "ligne": True,
-                      "valide": True},   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
+                      "valide": True},
+    # 2026-11-27, 20 h 48 : laboratoires d'IA sans flux connu ; sonde d'abord (motif None : non collectés).
+    # Anthropic : conflit d'intérêts déclaré (le code est écrit par un modèle d'Anthropic).
+    "Anthropic": {"url": "https://www.anthropic.com/news", "motif": None},
+    "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": None},
+    "Mistral": {"url": "https://mistral.ai/news", "motif": None},
+    "xAI": {"url": "https://x.ai/news", "motif": None},   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
