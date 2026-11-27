@@ -9806,6 +9806,7 @@ flux_f107,2026-11-22,93.7
 flux_f107,2026-11-23,90.4
 flux_f107,2026-11-24,88.3
 flux_f107,2026-11-25,87.0
+flux_f107,2026-11-26,87.4
 geomag_ap,2000-01-01,30.0
 geomag_ap,2000-01-02,16.0
 geomag_ap,2000-01-03,12.0
@@ -19632,6 +19633,7 @@ geomag_ap,2026-11-22,3.0
 geomag_ap,2026-11-23,2.0
 geomag_ap,2026-11-24,3.0
 geomag_ap,2026-11-25,5.0
+geomag_ap,2026-11-26,4.0
 mississippi_memphis,2016-01-01,35679.2
 mississippi_memphis,2016-01-02,37944.5
 mississippi_memphis,2016-01-03,40209.9
@@ -23613,6 +23615,7 @@ mississippi_memphis,2026-11-21,7617.2
 mississippi_memphis,2026-11-22,7447.3
 mississippi_memphis,2026-11-23,7362.4
 mississippi_memphis,2026-11-24,7050.9
+mississippi_memphis,2026-11-25,6654.4
 mississippi_saint_louis,2016-01-01,23389.7
 mississippi_saint_louis,2016-01-02,22115.4
 mississippi_saint_louis,2016-01-03,19793.4
@@ -27594,6 +27597,7 @@ mississippi_saint_louis,2026-11-21,3766.1
 mississippi_saint_louis,2026-11-22,3709.5
 mississippi_saint_louis,2026-11-23,3907.7
 mississippi_saint_louis,2026-11-24,3879.4
+mississippi_saint_louis,2026-11-25,3851.1
 nino34_anomalie,1981-09-02,-0.2
 nino34_anomalie,1981-09-09,-0.2
 nino34_anomalie,1981-09-16,-0.2
@@ -29969,7 +29973,7 @@ rhin_kaub_cm,2026-10-24,24.5
 rhin_kaub_cm,2026-10-25,33.6
 rhin_kaub_cm,2026-10-26,54.2
 rhin_kaub_cm,2026-10-27,56.4
-rhin_kaub_cm,2026-10-28,57.2
+rhin_kaub_cm,2026-10-28,57.8
 rhin_kaub_cm,2026-10-29,52.4
 rhin_kaub_cm,2026-10-30,41.2
 rhin_kaub_cm,2026-10-31,32.2
@@ -29998,6 +30002,7 @@ rhin_kaub_cm,2026-11-22,214.9
 rhin_kaub_cm,2026-11-23,222.8
 rhin_kaub_cm,2026-11-24,223.1
 rhin_kaub_cm,2026-11-25,236.4
+rhin_kaub_cm,2026-11-26,228.2
 secheresse_us_d2plus,2000-01-04,9.45
 secheresse_us_d2plus,2000-01-11,9.9
 secheresse_us_d2plus,2000-01-18,10.38
@@ -41225,6 +41230,7 @@ taches_solaires,2026-11-19,88.0
 taches_solaires,2026-11-20,62.0
 taches_solaires,2026-11-21,36.0
 taches_solaires,2026-11-22,38.0
-taches_solaires,2026-11-23,34.0
+taches_solaires,2026-11-23,35.0
 taches_solaires,2026-11-24,35.0
-taches_solaires,2026-11-25,34.0
+taches_solaires,2026-11-25,36.0
+taches_solaires,2026-11-26,29.0
