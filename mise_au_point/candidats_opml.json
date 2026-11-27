@@ -135,5 +135,6 @@
 "EMA | avis et rapports d'évaluation (EPAR)": "https://www.ema.europa.eu/en/human-medicine-new.xml",
 "EMA | demandes retirées": "https://www.ema.europa.eu/en/withdrawn-applications.xml",
 "FTC | communiqués concurrence": "https://www.ftc.gov/feeds/press-release-competition.xml",
-"FTC | fins anticipées d'examen des fusions (HSR)": "https://www.ftc.gov/feeds/hsr-early-termination-notices.xml"
+"FTC | fins anticipées d'examen des fusions (HSR)": "https://www.ftc.gov/feeds/hsr-early-termination-notices.xml",
+"Justice | SCOTUSblog": "https://www.scotusblog.com/feed/"
 }
