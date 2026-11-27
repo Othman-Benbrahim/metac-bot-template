@@ -97,3 +97,30 @@ Vérification faite avant le score, sans aucune issue : têtes du classement Elo
 - Barcelone et le Real Madrid en Espagne au 1/10/2023.
 - Le Bayern en Allemagne au 1/3/2020.
 - Le PSG en France au 1/9/2025.
+
+## Résultat (passage unique, run 45990881636, 2026-11-27, 12 h 31)
+
+**Réglages des saisons de développement :**
+
+| Championnat | H (points) | Part de nuls |
+|---|---|---|
+| en.1 | 60 | 0,238 |
+| es.1 | 70 | 0,248 |
+| it.1 | 60 | 0,241 |
+| de.1 | 60 | 0,246 |
+| fr.1 | 65 | 0,269 |
+
+Une seule saison est exclue : la Ligue 1 2019/20, arrêtée par la COVID.
+
+**Épreuve 1** : 5 940 questions construites, 306 grappes. Pertes moyennes : M 0,066, B 0,219, T 0,089.
+
+| Écart | Valeur | Intervalle à 90 % |
+|---|---|---|
+| M − B | −0,153 | [−0,159 ; −0,147] |
+| M − T | −0,023 | [−0,028 ; −0,018] |
+
+**Critère atteint.** L'Elo apporte un gain net au-delà du classement seul (M − T). Le gain sur T est le plus fort en début de saison (septembre : 0,112 contre 0,171) et se réduit vers la fin (mai : 0,028 contre 0,031).
+
+**Épreuve 2** : 26 questions réelles, rapportées sans critère. Pertes : M 0,152, T 0,147, B 0,772. Sur ces questions posées surtout en fin de saison, M et T se valent ; les deux écrasent la brique actuelle.
+
+**Conséquence prévue** : M devient la base des questions de vainqueur de championnat. **Obstacle constaté avant branchement** : pour la saison en cours (2026/27), openfootball ne contient des scores que jusqu'au 20 septembre 2026, soit plus de deux mois de retard. Une brique en direct n'aurait ni classement ni matchs restants à jour. Elle doit s'abstenir tant qu'aucune source fraîche des résultats n'est trouvée (règle de fraîcheur). La décision revient à l'auteur.
