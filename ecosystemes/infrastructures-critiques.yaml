@@ -1,3 +1,4 @@
+# 0.10.514 (2026-11-27, accord de l'auteur 12 h 08) : taux de base des pannes de câbles sous-marins (ICPC, UIT).
 theme: "infrastructures-critiques"
 nom: "Infrastructures critiques (réseaux)"
 declaration:
@@ -62,7 +63,9 @@ compartiments:
   - id: "attaques"
     nom: "Attaques et sabotages (effets publics)"
     organisation: "geopolitique"
-    elements: ["cyberattaques attribuées publiquement", "sabotages de câbles ou de gazoducs signalés", "frappes sur des infrastructures en guerre"]
+    elements: ["cyberattaques attribuées publiquement", "sabotages de câbles ou de gazoducs signalés", "frappes sur des infrastructures en guerre",
+               "taux de base des câbles sous-marins : plus de 170 réparations dans le monde en 2025, environ 4 par semaine (ICPC, Global Cable Repair Data Analysis, plénière d'Athènes, avril 2026, repris par l'UIT) ; causes surtout accidentelles, pêche et ancres environ 80 % (relayé, UIT via la presse) ; une coupure est donc courante, un sabotage attribué reste rare : ne pas lire une coupure comme un sabotage sans attribution publique",
+               "plus de 500 systèmes de câbles actifs ou prévus en 2024 (Submarine Telecoms Almanac, août 2024, repris par l'UIT) ; environ 99 % du trafic internet passe par eux (UIT)"]
     niveau: {espace: "pays à mers", temps: "incidents", vitesse: "heures", taille: "méso"}
     traces:
       - {source: "GDELT (événements publics)", statut: "collecte", fichier: "collecte_gdelt.py"}
