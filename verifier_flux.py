@@ -85,6 +85,11 @@ def principal() -> int:
                     if d.get("motif"):   # lecture d'essai avec le motif fixé : 8 premiers liens, lien et titre
                         lus = pfs.lire(html, str(r.url), d["motif"], d.get("ligne", False))
                         essais.append((nom, len(lus), lus[:8]))
+                        if d.get("ligne"):   # diagnostic de la date : la ligne du premier lien retenu, au journal seulement
+                            for bloc in re.split(r"<tr\b", html, flags=re.I):
+                                if lus and lus[0]["lien"].split(".org")[-1] in bloc:
+                                    print(f"--- ligne brute ({nom}) :", " ".join(bloc[:900].split()))
+                                    break
             except Exception as e:
                 L.append(f"| {nom} | autorisé | erreur {type(e).__name__} | — | — |")
     for nom, gs in sondes:
