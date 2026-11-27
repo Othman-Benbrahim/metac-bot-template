@@ -26,7 +26,8 @@ SITES: dict[str, dict] = {
     "Anthropic": {"url": "https://www.anthropic.com/news", "motif": None},
     "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": None},
     "Mistral": {"url": "https://mistral.ai/news", "motif": None},
-    "xAI": {"url": "https://x.ai/news", "motif": None},   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
+    "xAI": {"url": "https://x.ai/news", "motif": None},
+    "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": None},   # 2026-11-27, 20 h 58 : demande de l'auteur   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
