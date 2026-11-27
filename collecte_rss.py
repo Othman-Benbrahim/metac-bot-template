@@ -405,7 +405,7 @@ def articles(xml: bytes, titres_seuls: bool = False) -> list[dict]:
         texte = " ".join(champs.get(k, "") for k in (("title",) if titres_seuls else ("title", "description", "summary", "category")))
         cle = champs.get("guid") or champs.get("id") or champs.get("link") or champs.get("title", "")
         out.append({"jour": jour, "texte": re.sub(r"<[^>]+>", " ", texte), "empreinte": hashlib.sha1(cle.encode()).hexdigest()[:16],
-                    "titre": re.sub(r"<[^>]+>", " ", champs.get("title", ""))})
+                    "titre": re.sub(r"<[^>]+>", " ", champs.get("title", "")), "lien": champs.get("link", "")})
     return out
 
 
@@ -520,6 +520,7 @@ def principal() -> int:
     reprises: dict[str, int] = {}
     villes_c: dict[tuple, int] = {}
     entites_c: dict[tuple, int] = {}   # 2026-11-26 : veille anticipée (anticipation.py)
+    puits_lignes: list[dict] = []      # 2026-11-27 : puits de données (puits.py)
     if VILLES_CSV.exists():
         for x in csv.DictReader(VILLES_CSV.open(encoding="utf-8")):
             villes_c[(x["pays"], x["jour"], x["famille"])] = int(x["articles"])
@@ -598,8 +599,14 @@ def principal() -> int:
                         reprises[famille] = reprises.get(famille, 0) + 1
                         continue
                     pays = detecter(a["texte"], motifs)
-                    for n_ in anticipation.noms(a.get("titre") or ""):   # 2026-11-26 : veille anticipée (noms seuls)
+                    noms_a = anticipation.noms(a.get("titre") or "")
+                    for n_ in noms_a:   # 2026-11-26 : veille anticipée (noms seuls)
                         entites_c[(a["jour"], n_)] = entites_c.get((a["jour"], n_), 0) + 1
+                    # 2026-11-27 (décision de l'auteur, 19 h 43) : puits de données (lien, titre, métadonnées ; jamais le texte)
+                    puits_lignes.append({"jour": a["jour"], "lien": a.get("lien", ""), "titre": a.get("titre", ""),
+                                         "famille": famille, "pays": pays, "noms": noms_a,
+                                         "matieres": [m for m, rx in MATIERES.items() if rx.search(a["texte"])]
+                                         if famille in FAMILLES_MATIERES else []})
                     if famille in FAMILLES_MATIERES:
                         for m, rx in MATIERES.items():
                             if rx.search(a["texte"]):
@@ -680,6 +687,12 @@ def principal() -> int:
             w.writerow(["matiere", "jour", "famille", "articles"])
             for (m, j, fa), n in sorted(matieres.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
                 w.writerow([m, j, fa, n])
+    if puits_lignes:   # 2026-11-27 : puits de données ; un échec n'arrête jamais la collecte
+        try:
+            import puits
+            print(f"Puits : {puits.ajouter(puits_lignes)} article(s) ajouté(s) (lien, titre, métadonnées).")
+        except Exception as e:
+            print(f"Puits : non écrit ({type(e).__name__}: {e})")
     if entites_c:   # 2026-11-26 : veille anticipée ; liste du jour des acteurs qui montent, et mesure
         try:
             anticipation.ecrire_comptes(entites_c)

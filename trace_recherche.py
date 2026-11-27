@@ -68,6 +68,18 @@ def tracer(texte: str, jeu: str) -> dict:
                  "sans date" if d is None else None)
         if motif:
             suspectes.append({**s, "motif": motif})
+    if not sources:
+        # 2026-11-27 (accord de l'auteur, 19 h 43 : journal des sources des moteurs) : 52 captures sur 58 n'avaient
+        # aucune source reconnue, la recherche principale (Exa via forecasting_tools) n'ayant pas notre format de ligne.
+        # Repli : toutes les adresses du texte, sans date.
+        vues = set()
+        for url in re.findall(r"https?://[^\s)\]>\"'|]+", texte or ""):
+            url = url.rstrip(".,;:")
+            if url not in vues:
+                vues.add(url)
+                sources.append({"date": None, "url": url[:300]})
+        if sources and moteur == "aucun":
+            moteur = "adresses du texte"
     if (texte or "").startswith("("):
         moteur = "aucun résultat" if texte == AUCUN else "panne"
     return {"moteur": moteur, "n_sources": len(sources), **({"panne": texte[:600]} if moteur == "panne" else {}), "sources": sources, "suspectes": suspectes,
