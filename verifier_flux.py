@@ -66,7 +66,7 @@ def principal() -> int:
     L += ["", f"{ok} flux lisibles sur {len(CANDIDATS)}.", "", "## Pages sans flux connu", "",
           "| Page | Robots | HTTP | Liens | Flux annoncés |", "|---|---|---|---|---|"]
     with httpx.Client(headers=cr.UA, follow_redirects=True, timeout=30) as c:
-        sondes, essais = [], []
+        sondes, essais, listes = [], [], []
         for nom, url in PAGES.items():
             if not politesse.autorise(c, url):
                 L.append(f"| {nom} | refusé | — | — | — |")
@@ -78,6 +78,11 @@ def principal() -> int:
                 L.append(f"| {nom} | autorisé | {r.status_code} | {html.lower().count('<a ')} | {' ; '.join(fl) or '—'} |")
                 if html:
                     sondes.append((nom, pfs.sonde(html, str(r.url))))
+                    # liens de flux présents dans la page (pages qui listent leurs flux, comme celle du BLS)
+                    fl_liens = sorted({u for u, _ in pfs.liens(html, str(r.url))
+                                       if re.search(r"(\.rss|\.xml|/feed/?|/rss/?|atom)(\?|$)", u, re.I)})
+                    if fl_liens:
+                        listes.append((nom, fl_liens[:80]))
                     d = pfs.SITES.get(nom, {})
                     if d.get("motif"):   # lecture d'essai avec le motif fixé : 8 premiers liens, lien et titre
                         lus = pfs.lire(html, str(r.url), d["motif"], d.get("ligne", False))
@@ -89,6 +94,8 @@ def principal() -> int:
                                     break
             except Exception as e:
                 L.append(f"| {nom} | autorisé | erreur {type(e).__name__} | — | — |")
+    for nom, ls in listes:
+        L += ["", f"### Liens de flux dans la page : {nom} ({len(ls)})", ""] + [f"- {u}" for u in ls]
     for nom, gs in sondes:
         L += ["", f"### Gabarits des liens : {nom}", "", "| Gabarit | Liens | Exemple | Titre |", "|---|---|---|---|"]
         L += [f"| {g} | {n} | {u} | {t.replace('|', '/')} |" for g, n, u, t in gs]
