@@ -75,3 +75,14 @@ Ce relancement est décidé pour un dysfonctionnement de collecte, pas au vu d'u
 | S3 (primaires) | 14 | 0,213 | 0,739 |
 
 **Pas de nouveau passage sur ces questions.** Restreindre le critère à S2 et S3 après avoir vu ces chiffres serait un choix fait après coup. Toute suite (critère par classe, lecteur des sujets amélioré) se pré-enregistre maintenant et s'éprouve sur des élections tranchées APRÈS aujourd'hui.
+
+## Décision de l'auteur (2026-11-27, 13 h 12) : branchement direct de S2 et S3
+« On ne peut pas le brancher directement, et voir les résultats après. Le taux d'échec pour les 1 tour est proche de 0, ça vaudrait le coup. »
+
+**Ce qui est branché :** `scrutin_regle.py` (bot 0.10.516) applique la méthode du banc à l'identique, sur la version actuelle de la page de sondages. Il ne traite que les classes S2 et S3. S1 s'abstient. La brique sert de base, et passe derrière la porte de compatibilité (famille « élection ») et le contradicteur. Chaque application est notée dans `registre/journal-scrutin.jsonl`.
+
+**Risque connu et déclaré :**
+- le critère d'ensemble est non tranché de justesse ;
+- l'exclusion de S1 a été décidée après avoir vu les chiffres par classe. La fragilité de la règle des deux tours était cependant déjà notée le 2026-11-19 (resultat-registre-briques), avant ce passage.
+
+**Suivi :** sur les élections tranchées après le 2026-11-27, comparer la brique aux semblables. Si l'écart cumulé devient défavorable, la brique sera retirée par décision d'auteur.

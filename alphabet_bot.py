@@ -801,6 +801,23 @@ class AlphabetBot(FallTemplateBot2026):
                 return e
         except Exception as ex:
             logger.warning("tennis Elo : non appliqué (%s)", type(ex).__name__)
+        try:   # 2026-11-27 (décision de l'auteur, 13 h 12) : scrutin à un tour ou primaire, sondages, base
+            import scrutin_regle as scr
+            fin = q.resolution.isoformat() if hasattr(q.resolution, "isoformat") else str(q.resolution or "")[:10]
+            e = scr.estimer(question.question_text or "", datetime.now(timezone.utc).date(), fin)
+            if e is not None and self._porte("scrutin", question, q):
+                jour = datetime.now(timezone.utc).date().isoformat()
+                ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                         "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "scrutin": e}
+                ligne["sceau"] = ap.sceau(ligne)
+                with open(ap.registre_ecrivable() / "journal-scrutin.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                    f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+                e["texte"] = (f"\n\nPolling rule (coded): {e['sujet']} averages {e['part_sujet']}% over the last 30 days "
+                              f"({e['page']}), {e['jours_restants']} days before the vote; polling error 2.5 points widened "
+                              f"with time, 20,000 draws: {e['p_regle']:.1%}. This measured rule is the base.")
+                return e
+        except Exception as ex:
+            logger.warning("scrutin : non appliqué (%s)", type(ex).__name__)
         try:   # 2026-11-27 (décision de l'auteur, 12 h 34) : football, fin de saison simulée (Elo + classement), base
             import football_elo_regle as fer
             e = fer.estimer(question.question_text or "", datetime.now(timezone.utc).date())
