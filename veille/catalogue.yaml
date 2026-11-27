@@ -122,6 +122,82 @@ flux:
   global_voices: {titre: "Global Voices (sociétés, monde)", url: "https://globalvoices.org/feed/"}
   rns: {titre: "Religion News Service", url: "https://religionnews.com/feed/"}
 
+  # --- 2026-11-27, 21 h 50 (décision de l'auteur) : flux vérifiés depuis GitHub (runs 46063994555, 46065424349) ;
+  #     régulateurs, législatif, statistiques, espace, cyclones, laboratoires d'IA, presse nationale
+  fda_communiques: {titre: "FDA, communiqués (autorisations)", url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml"}
+  fda_medicaments: {titre: "FDA, nouveautés médicaments", url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/drugs/rss.xml"}
+  fda_vaccins: {titre: "FDA, vaccins et produits biologiques", url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml"}
+  fda_medwatch: {titre: "FDA, alertes de sécurité MedWatch", url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml"}
+  ema_actualites: {titre: "EMA (Agence européenne des médicaments), actualités", url: "https://www.ema.europa.eu/en/news.xml"}
+  ema_nouveaux: {titre: "EMA, nouveaux médicaments humains", url: "https://www.ema.europa.eu/en/new-human-medicine-new.xml"}
+  ema_avis: {titre: "EMA, avis et rapports d'évaluation (EPAR)", url: "https://www.ema.europa.eu/en/human-medicine-new.xml"}
+  ema_retraits: {titre: "EMA, demandes retirées", url: "https://www.ema.europa.eu/en/withdrawn-applications.xml"}
+  congres_president: {titre: "Congrès des États-Unis, textes transmis au président", url: "https://www.congress.gov/rss/presented-to-president.xml"}
+  govinfo_lois: {titre: "GovInfo, lois promulguées", url: "https://www.govinfo.gov/rss/plaw.xml"}
+  govinfo_fr: {titre: "GovInfo, Federal Register", url: "https://www.govinfo.gov/rss/fr.xml"}
+  govinfo_presidence: {titre: "GovInfo, documents présidentiels (décrets, déclarations)", url: "https://www.govinfo.gov/rss/dcpd.xml"}
+  parlement_uk: {titre: "Parlement britannique, projets de loi publics", url: "https://bills.parliament.uk/rss/publicbills.rss"}
+  eurostat: {titre: "Eurostat, communiqués (euro-indicateurs)", url: "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_PREREL"}
+  nasa_communiques: {titre: "NASA, communiqués", url: "https://www.nasa.gov/news-release/feed/"}
+  nasa_artemis: {titre: "NASA, Artemis", url: "https://www.nasa.gov/missions/artemis/feed/"}
+  nasa_station: {titre: "NASA, Station spatiale", url: "https://www.nasa.gov/missions/station/feed/"}
+  nhc_atlantique: {titre: "NOAA, centre des ouragans, Atlantique", url: "https://www.nhc.noaa.gov/index-at.xml"}
+  nhc_pacifique: {titre: "NOAA, centre des ouragans, Pacifique Est", url: "https://www.nhc.noaa.gov/index-ep.xml"}
+  bair: {titre: "Berkeley AI Research (BAIR), blog", url: "https://bair.berkeley.edu/blog/feed.xml"}
+  aws_ia: {titre: "AWS, blog apprentissage automatique (Amazon)", url: "https://aws.amazon.com/blogs/machine-learning/feed/"}
+  fastai: {titre: "fast.ai", url: "https://www.fast.ai/index.xml"}
+  mistral: {titre: "Mistral AI, actualités", url: "https://mistral.ai/rss.xml"}
+  nyt_monde: {titre: "New York Times, monde", url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"}
+  wapo_monde: {titre: "Washington Post, monde", url: "https://feeds.washingtonpost.com/rss/world"}
+  guardian_monde: {titre: "The Guardian, monde", url: "https://www.theguardian.com/world/rss"}
+  cnn_monde: {titre: "CNN, monde", url: "https://rss.cnn.com/rss/edition_world.rss"}
+  fox: {titre: "Fox News (ligne conservatrice)", url: "https://feeds.foxnews.com/foxnews/latest"}
+  politico_us: {titre: "Politico, Playbook (politique américaine)", url: "https://rss.politico.com/playbook.xml"}
+  latimes: {titre: "Los Angeles Times, monde et pays", url: "https://www.latimes.com/world-nation/rss2.0.xml"}
+  cnbc: {titre: "CNBC, international (économie, marchés)", url: "https://www.cnbc.com/id/100727362/device/rss/rss.html"}
+  fortune: {titre: "Fortune (entreprises)", url: "https://fortune.com/feed"}
+  forbes: {titre: "Forbes, entreprises", url: "https://www.forbes.com/business/feed/"}
+  dw: {titre: "Deutsche Welle (média public allemand)", url: "https://rss.dw.com/rdf/rss-en-all"}
+  faz: {titre: "Frankfurter Allgemeine Zeitung", url: "https://www.faz.net/rss/aktuell/"}
+  tagesschau: {titre: "Tagesschau (ARD, média public allemand)", url: "https://www.tagesschau.de/xml/rss2"}
+  ansa: {titre: "ANSA (agence italienne)", url: "https://www.ansa.it/sito/ansait_rss.xml"}
+  f24_en: {titre: "France 24, en anglais (média public)", url: "https://www.france24.com/en/rss"}
+  franceinfo: {titre: "Franceinfo, titres (média public)", url: "https://www.francetvinfo.fr/titres.rss"}
+  rp_pl: {titre: "Rzeczpospolita (Pologne)", url: "https://www.rp.pl/rss/1019"}
+  rmf24: {titre: "RMF24 (Pologne)", url: "https://www.rmf24.pl/feed"}
+  elconfidencial: {titre: "El Confidencial, Espagne", url: "https://rss.elconfidencial.com/espana/"}
+  pravda_ua: {titre: "Ukrainska Pravda (Ukraine)", url: "https://www.pravda.com.ua/rss/"}
+  nv_ua: {titre: "NV (Ukraine)", url: "https://nv.ua/rss/all.xml"}
+  rg_ru: {titre: "Rossiïskaïa Gazeta (journal du gouvernement russe)", url: "https://rg.ru/xml/index.xml"}
+  rt: {titre: "RT (média d'État russe ; sanctionné dans l'UE)", url: "https://www.rt.com/rss/"}
+  gazeta_ru: {titre: "Gazeta.ru (Russie)", url: "https://www.gazeta.ru/export/rss/first.xml"}
+  mehr: {titre: "Mehr (agence semi-officielle iranienne)", url: "https://www.mehrnews.com/rss"}
+  isna: {titre: "ISNA (agence semi-officielle iranienne)", url: "https://www.isna.ir/rss"}
+  india_today: {titre: "India Today", url: "https://www.indiatoday.in/rss/home"}
+  toi: {titre: "Times of India", url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms"}
+  businessline: {titre: "The Hindu BusinessLine (économie indienne)", url: "https://www.thehindubusinessline.com/feeder/default.rss"}
+  economic_times: {titre: "Economic Times (Inde)", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms"}
+  tribune_pk: {titre: "The Express Tribune (Pakistan)", url: "https://tribune.com.pk/feed/home"}
+  nation_pk: {titre: "The Nation (Pakistan)", url: "https://nation.com.pk/rss/top-stories"}
+  jang: {titre: "Jang (Pakistan, en ourdou)", url: "https://jang.com.pk/rss/1/1"}
+  prothomalo: {titre: "Prothom Alo (Bangladesh, en bengali)", url: "https://www.prothomalo.com/feed/"}
+  asahi: {titre: "Asahi Shimbun (Japon, en japonais)", url: "https://rss.asahi.com/rss/asahi/newsheadlines.rdf"}
+  hkfp: {titre: "Hong Kong Free Press (indépendant)", url: "https://www.hongkongfp.com/feed/"}
+  inquirer: {titre: "Philippine Daily Inquirer", url: "https://www.inquirer.net/fullfeed"}
+  philstar: {titre: "Philippine Star", url: "https://www.philstar.com/rss/headlines"}
+  bworld: {titre: "BusinessWorld (économie philippine)", url: "https://www.bworldonline.com/feed/"}
+  republika: {titre: "Republika (Indonésie)", url: "https://www.republika.co.id/rss/"}
+  premium_times: {titre: "Premium Times (Nigeria, enquête)", url: "https://www.premiumtimesng.com/feed"}
+  daily_post_ng: {titre: "Daily Post (Nigeria)", url: "https://dailypost.ng/feed"}
+  daily_maverick: {titre: "Daily Maverick (Afrique du Sud, enquête)", url: "https://www.dailymaverick.co.za/dmrss/"}
+  moneyweb: {titre: "Moneyweb (économie sud-africaine)", url: "https://www.moneyweb.co.za/feed/"}
+  folha: {titre: "Folha de S.Paulo (Brésil)", url: "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml"}
+  reforma: {titre: "Reforma (Mexique)", url: "https://www.reforma.com/rss/portada.xml"}
+  elfinanciero: {titre: "El Financiero (Mexique, économie)", url: "https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml"}
+  globalnews: {titre: "Global News (Canada)", url: "https://globalnews.ca/feed/"}
+  lapresse: {titre: "La Presse (Québec)", url: "https://www.lapresse.ca/actualites/rss"}
+  smh: {titre: "Sydney Morning Herald (Australie)", url: "https://www.smh.com.au/rss/feed.xml"}
+
 # Flux par région (déduite des pays d'un compartiment, sinon de la fiche)
 regions:
   afrique: [lm_afrique, rfi_afrique, bbc_afrique, un_afrique]
@@ -179,6 +255,9 @@ fiches:
     - {titre: "UNHCR, portail des données opérationnelles", url: "https://data.unhcr.org/fr/"}
     - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
     flux: [rfi_afrique, lm_afrique, f24_afrique]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      groupes_armes: [premium_times, daily_post_ng, rfi_afrique]
+      croissance: [moneyweb, daily_maverick]
   alimentation-mondiale:
     region: monde
     liens:
@@ -197,6 +276,7 @@ fiches:
     compartiments:
       violences_criminelles: [insight_crime, lm_ameriques]
       haiti: [un_ameriques, insight_crime]
+      bascule_politique: [folha, reforma, lm_ameriques]   # 2026-11-27
   antarctique:
     region: monde
     liens:
@@ -226,12 +306,17 @@ fiches:
     - {titre: "38 North (Corée du Nord, Stimson Center)", url: "https://www.38north.org/"}
     - {titre: "Ministère japonais de la Défense", url: "https://www.mod.go.jp/en/"}
     flux: [japan_times, bbc_asie, lm_asie]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      japon: [asahi, japan_times]
   asie-du-sud:
     region: asie
     liens:
     - {titre: "South Asia Terrorism Portal", url: "https://www.satp.org/"}
     - {titre: "USIP, Asie du Sud", url: "https://www.usip.org/regions/asia"}
     flux: [dawn, the_hindu, bbc_asie]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      pakistan_interieur: [tribune_pk, nation_pk, jang]
+      bangladesh: [prothomalo, bbc_asie]
   asie-du-sud-est:
     region: asie
     liens:
@@ -239,6 +324,9 @@ fiches:
     - {titre: "AMTI, Asia Maritime Transparency Initiative (CSIS)", url: "https://amti.csis.org/"}
     - {titre: "ISEAS - Institut Yusof Ishak", url: "https://www.iseas.edu.sg/"}
     flux: [rfi_asie, lm_asie, bbc_asie]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      philippines: [inquirer, philstar, bworld]
+      indonesie: [republika, rfi_asie]
   australie:
     region: oceanie
     liens:
@@ -246,6 +334,8 @@ fiches:
     - {titre: "Bureau of Meteorology", url: "http://www.bom.gov.au/"}
     - {titre: "Lowy Institute", url: "https://www.lowyinstitute.org/"}
     flux: [abc_australie, bbc_australie]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      politique_aus: [smh, abc_australie]
   biocenose:
     region: monde
     liens:
@@ -265,12 +355,17 @@ fiches:
     - {titre: "ONU, journées et semaines internationales", url: "https://www.un.org/fr/observances/list-days-weeks"}
     - {titre: "IFES, ElectionGuide (calendrier électoral)", url: "https://www.electionguide.org/"}
     flux: [lm_international]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      publications: [eurostat, fed]
+      parlements: [congres_president, parlement_uk]
   canada:
     region: amerique_du_nord
     liens:
     - {titre: "Statistique Canada", url: "https://www.statcan.gc.ca/fr/debut"}
     - {titre: "Affaires mondiales Canada, révision conjointe de l'ACEUM", url: "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cusma-aceum/joint-review-examen-conjoint.aspx?lang=fra"}
     flux: [cbc_canada, bbc_usa_canada]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      politique_can: [globalnews, lapresse, cbc_canada]
   classes-sociales:
     region: monde
     liens:
@@ -286,6 +381,8 @@ fiches:
     - {titre: "OMM (Organisation météorologique mondiale)", url: "https://wmo.int/fr"}
     - {titre: "GIEC", url: "https://www.ipcc.ch/"}
     flux: [carbon_brief, nasa_eo, un_climat]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      tempetes: [nhc_atlantique, nhc_pacifique, carbon_brief]
   competitions-culture:
     region: monde
     liens:
@@ -298,6 +395,8 @@ fiches:
     - {titre: "OMS, Observatoire mondial de la santé", url: "https://www.who.int/data/gho"}
     - {titre: "IHME, Global Burden of Disease", url: "https://www.healthdata.org/research-analysis/gbd"}
     flux: [sd_sante, oms]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      soins: [fda_medicaments, ema_nouveaux, fda_medwatch]
   corruption:
     region: monde
     liens:
@@ -348,6 +447,8 @@ fiches:
     - {titre: "Union interparlementaire, Parline", url: "https://data.ipu.org/fr/"}
     - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
     flux: [lm_international, lm_politique]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      executifs: [nyt_monde, guardian_monde, wapo_monde]
   eau-douce-potable:
     region: monde
     liens:
@@ -367,18 +468,23 @@ fiches:
     - {titre: "Bureau national des statistiques de Chine", url: "https://www.stats.gov.cn/english/"}
     - {titre: "Banque populaire de Chine", url: "http://www.pbc.gov.cn/en/3688006/index.html"}
     flux: [scmp_chine, bbc_chine]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      pouvoir: [hkfp, scmp_chine]
   economie-entreprises:
     region: monde
     liens:
     - {titre: "OCDE, données", url: "https://data.oecd.org/fr/"}
     - {titre: "FMI, Perspectives de l'économie mondiale", url: "https://www.imf.org/fr/Publications/WEO"}
     flux: [lm_economie, bbc_economie]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      entreprises: [fortune, forbes, cnbc]
+      conjoncture: [cnbc, lm_economie, bbc_economie]
   elections-amerique-latine:
     region: ameriques
     liens:
     - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
     - {titre: "CEPALC", url: "https://www.cepal.org/fr"}
-    flux: [lm_ameriques, bbc_amlat]
+    flux: [lm_ameriques, bbc_amlat, folha, reforma]   # 2026-11-27 : presse brésilienne et mexicaine
   energie-mondiale:
     region: monde
     liens:
@@ -400,6 +506,9 @@ fiches:
     - {titre: "ECDC (Centre européen de prévention et de contrôle des maladies)", url: "https://www.ecdc.europa.eu/fr"}
     - {titre: "CDC (Centers for Disease Control and Prevention)", url: "https://www.cdc.gov/"}
     flux: [oms, un_sante, bbc_sante]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      autorites: [fda_communiques, ema_actualites, oms]
+      technique: [fda_vaccins, ema_avis, ema_retraits]
   famille-genre:
     region: monde
     liens:
@@ -443,6 +552,8 @@ fiches:
       mousson: [carbon_brief, the_hindu]
       nucleaire_defense: [bulletin, the_hindu]
       chine_frontiere: [the_hindu, scmp_chine]
+      politique_interieure: [india_today, toi, the_hindu]   # 2026-11-27
+      economie_commerce: [businessline, economic_times]   # 2026-11-27
   flux-mondiaux:
     region: monde
     liens:
@@ -464,6 +575,9 @@ fiches:
     - {titre: "OCDE, prix à la consommation", url: "https://www.oecd.org/fr/data/"}
     - {titre: "FAO, indice des prix alimentaires", url: "https://www.fao.org/worldfoodsituation/foodpricesindex/fr/"}
     flux: [fed, bce, fmi]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      statistiques: [eurostat, fed, bce]
+      prix_conso: [eurostat, cnbc]
   cultures-emboitees:
     region: monde
     liens:
@@ -502,6 +616,9 @@ fiches:
     - {titre: "AIEA, Iran", url: "https://www.iaea.org/newscenter/focus/iran"}
     - {titre: "Arms Control Association", url: "https://www.armscontrol.org/"}
     flux: [aiea, lm_proche_orient, bbc_moyen_orient]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      pouvoir_iranien: [mehr, isna, bbc_moyen_orient]
+      societe_iranienne: [isna, mehr]
   liban-institutions:
     region: moyen_orient
     liens:
@@ -600,12 +717,18 @@ fiches:
     - {titre: "Cour suprême des États-Unis", url: "https://www.supremecourt.gov/"}
     - {titre: "Just Security, trackers (procès contre l'administration, habeas, anticorruption, élections 2026)", url: "https://www.justsecurity.org/category/trackers/"}
     flux: [bbc_usa_canada, scotusblog, lm_ameriques, just_security]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      executif: [govinfo_presidence, govinfo_fr, politico_us]
+      congres: [congres_president, govinfo_lois, politico_us]
+      elections: [politico_us, fox, nyt_monde]
   politique-interieure:
     region: monde
     liens:
     - {titre: "Vie publique", url: "https://www.vie-publique.fr/"}
     - {titre: "IFES, ElectionGuide", url: "https://www.electionguide.org/"}
     flux: [lm_politique, lm_international]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      gouvernement: [guardian_monde, cnn_monde, elconfidencial]
   psyche:
     region: monde
     liens:
@@ -649,12 +772,19 @@ fiches:
     - {titre: "Kiel Institute, Ukraine Support Tracker", url: "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/"}
     - {titre: "UCDP, données par pays", url: "https://ucdp.uu.se/"}
     flux: [kyiv_independent, meduza, tass]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      opinions: [pravda_ua, rt, gazeta_ru]
+      economie_ukraine: [nv_ua, pravda_ua]
+      economie_russe: [rg_ru, gazeta_ru, meduza]
   sciences-techniques:
     region: monde
     liens:
     - {titre: "arXiv", url: "https://arxiv.org/"}
     - {titre: "OCDE, science, technologie et innovation", url: "https://www.oecd.org/fr/sti/"}
     flux: [nature, arxiv_ia, lm_sciences]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      sorties_modeles: [mistral, aws_ia, arxiv_ia]
+      recherche: [bair, fastai, nature]
   securite-europeenne:
     region: europe
     liens:
@@ -662,6 +792,8 @@ fiches:
     - {titre: "Agence européenne de défense", url: "https://eda.europa.eu/"}
     - {titre: "SIPRI, dépenses militaires", url: "https://www.sipri.org/databases/milex"}
     flux: [politico_europe, defense_news, lm_europe]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      menace: [rp_pl, rmf24, dw]
   securite-publique:
     region: monde
     liens:
@@ -680,6 +812,8 @@ fiches:
     - {titre: "NOAA, Space Weather Prediction Center", url: "https://www.swpc.noaa.gov/"}
     - {titre: "ESA, météo spatiale", url: "https://swe.ssa.esa.int/"}
     flux: [nasa, sd_espace]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      satellites: [nasa_station, nasa_communiques, nasa]
   soudan:
     region: afrique
     liens:
@@ -708,6 +842,9 @@ fiches:
     - {titre: "Eurostat", url: "https://ec.europa.eu/eurostat/fr/"}
     - {titre: "EUR-Lex (droit de l'Union)", url: "https://eur-lex.europa.eu/homepage.html?locale=fr"}
     flux: [politico_europe, lm_europe, bbc_europe]
+    compartiments:   # 2026-11-27, 21 h 50 : flux vérifiés depuis GitHub
+      relations_exterieures: [dw, f24_en, ansa]
+      institutions: [faz, tagesschau, politico_europe]
   niveaux-de-base:
     region: monde
     liens:
