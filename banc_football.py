@@ -84,6 +84,12 @@ class Source:
     def get(self, url: str) -> str | None:
         if not politesse.autorise(self.c, url):
             print(f"refusé par robots.txt : {url}", flush=True)
+            try:   # transparence : le texte du robots.txt, pour savoir si le refus vise tout le monde ou ce robot
+                from urllib.parse import urlparse
+                u = urlparse(url)
+                print(self.c.get(f"{u.scheme}://{u.netloc}/robots.txt").text[:3000], flush=True)
+            except httpx.HTTPError:
+                pass
             sys.exit(2)
         for _ in range(3):
             try:
