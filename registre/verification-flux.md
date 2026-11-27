@@ -37,11 +37,11 @@
 
 ### Lecture d'essai : ElectionGuide (28 liens retenus)
 
-- Referendum — Switzerland — Nov 29 2026 — https://www.electionguide.org/elections/id/5097/
-- Spanish Senate — Spain — Nov 29 2026 — https://www.electionguide.org/elections/id/5255/
-- Spanish Congress of Deputies — Spain — Nov 29 2026 — https://www.electionguide.org/elections/id/5256/
-- Gambian Presidency — Gambia, The — Dec 5 2026 — https://www.electionguide.org/elections/id/5106/
-- Northern Cypriot Assembly of the Republic — Northern Cyprus — Dec 6 2026 — https://www.electionguide.org/elections/id/5208/
-- Dominican House of Assembly — Dominica — Dec 16 2026 — https://www.electionguide.org/elections/id/5329/
-- Fijian Parliament — Fiji — Dec 24 2026 — https://www.electionguide.org/elections/id/5206/
-- Serbian Presidency — Serbia — Dec 27 2026 — https://www.electionguide.org/elections/id/5295/
+- Referendum — Switzerland — 2026-11-29 — https://www.electionguide.org/elections/id/5097/
+- Spanish Senate — Spain — 2026-11-29 — https://www.electionguide.org/elections/id/5255/
+- Spanish Congress of Deputies — Spain — 2026-11-29 — https://www.electionguide.org/elections/id/5256/
+- Gambian Presidency — Gambia, The — 2026-12-05 — https://www.electionguide.org/elections/id/5106/
+- Northern Cypriot Assembly of the Republic — Northern Cyprus — 2026-12-06 — https://www.electionguide.org/elections/id/5208/
+- Dominican House of Assembly — Dominica — 2026-12-16 — https://www.electionguide.org/elections/id/5329/
+- Fijian Parliament — Fiji — 2026-12-24 — https://www.electionguide.org/elections/id/5206/
+- Serbian Presidency — Serbia — 2026-12-27 — https://www.electionguide.org/elections/id/5295/
