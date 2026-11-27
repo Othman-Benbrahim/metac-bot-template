@@ -1,0 +1,239 @@
+{
+ "candidats": [
+  "EME@5",
+  "COM@5",
+  "POL@5",
+  "HIE@5"
+ ],
+ "contre_candidate": [
+  "POL@5"
+ ],
+ "mots": [
+  {
+   "carte": "HIE",
+   "strate": 5,
+   "intensite": "f",
+   "fait": "Historique 2023–2026 sur leaderboards textuels : de longues périodes où un même laboratoire conserve la tête (ex. LMArena Text leaderboard : 45 semaines consécutives Google mar‑2025→févr‑2026 ; 34 semaines consécutives Anthropic févr‑2026→sept‑2026), montrant que des hiérarchies de lab persistent par intervalles prolongés.",
+   "objet": "persistance d'une hiérarchie (même laboratoire en position n°1 pendant des semaines/mois)",
+   "source": "suparank.com (résumé LMArena – Text leaderboard : durées de tête prolongées)",
+   "source_url": "https://suparank.com/ai-race-2023-2026/#:~:text=Since%20May%202023%2C%20the%20top,or%20formatting%29%20affect%20the%20result.",
+   "date_consultation": "2026-11-27",
+   "classe_source": "contemporain",
+   "contre_observation": "Exemples d'instabilité élevée (Chatbot Arena, nov. 2024 ; pratiques de private testing / retirage de scores) montrent que la hiérarchie peut être renversée rapidement par mesures de plateforme et stratégies des fournisseurs.",
+   "portee": "marginale",
+   "test": "cerceau",
+   "corroboration": "unique",
+   "passage": [
+    {
+     "localisation": "suparank.com, LMArena – Text leaderboard section",
+     "relation": "soutient",
+     "extrait": "LMArena – Text leaderboard : 45 semaines consécutives (mars 2025 → février 2026) – Google (Gemini 2.5 Pro) reste numéro 1. 34 semaines consécutives (février 2026 → septembre 2026) – Anthropic (Claude Opus 4.6/5) reste numéro 1."
+    }
+   ],
+   "garantie": {
+    "mecanisme": "les mêmes dynamiques (concentration de variantes, communauté active, règles de la plateforme) produisent des périodes mesurables de persistance hiérarchique où un laboratoire reste en tête.",
+    "support": {
+     "type": "texte",
+     "reference": "suparank LMArena chronology",
+     "disponible_le": "2026-10-25"
+    },
+    "attendu": "on observe des intervalles continus (semaines/mois) où un même laboratoire occupe la première place sur un leaderboard textuel.",
+    "contredirait": "une succession quotidienne ou très fréquente de leaders sans période prolongée d'un même leader."
+   }
+  }
+ ],
+ "liaisons": [],
+ "questions": [
+  {
+   "question": "Le laboratoire classé n°1 sur l'Arena AI Overall Text Arena (classement par 'labs') le 2026-12-27 sera‑t‑il Google (incl. Google DeepMind) ?",
+   "si_oui": "HIE@5",
+   "si_non": "POL@5",
+   "resolution": "Consultation du snapshot public de l'Arena AI 'Text Arena' leaderboard (labs view, rankBy=labs) le 2026-12-27 ou le premier jour d'accès public par Metaculus après cette date ; source attendue : page publique Arena AI (URL fournie par la plateforme) ou archive du snapshot.",
+   "justification": {
+    "oui": "si le snapshot du 2026-12-27 montre Google (incl. DeepMind) en position n°1, cela confirme que la hiérarchie (le leader observé antérieurement ou la position observée) persiste jusqu'à la date — cas directement lié à HIE@5 persiste.",
+    "non": "si le snapshot du 2026-12-27 montre un autre laboratoire en n°1, cela indique qu'une dynamique (par ex. polarisation, soumission de variantes, action de la communauté) a renversé ou modifié la hiérarchie observée, pointant vers POL@5 (conflit/polarisation) comme explication plausible."
+   },
+   "statut": "ouverte"
+  }
+ ],
+ "rejets": {
+  "EME@5": "[contredit] [contredit] A7 : contre-observation substantielle sur une lecture f",
+  "COM@5": "[contredit] [contredit] A7 : contre-observation substantielle sur une lecture f",
+  "POL@5": "[contredit] [contredit] A7 : contre-observation substantielle sur une lecture f"
+ },
+ "etat": "[2026-11-27 | 30 jours] HIÉRARCHIE@5[f]",
+ "disponible_le": "2026-11-27",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Cas où plusieurs modèles d'un même laboratoire ont émergé simultanément en dominant un classement public d'IA (ex. top3 occupé par une seule entreprise) entre 2020 et 2026",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Preuves que la domination d'un laboratoire sur un leaderboard résulte d'une émergence collective (adoption/votes distribués) plutôt que d'un artefact de mesure ou d'une mise à jour ponctuelle",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@5"
+   ],
+   "requete": "Exemples où une domination apparente (plusieurs modèles d'une même org en tête) s'est effondrée rapidement malgré une période d'apparente émergence, 2020-2026",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "COM@5"
+   ],
+   "requete": "Cas où la structure et la densité d'une communauté d'utilisateurs/votants ont maintenu de façon stable le classement d'un laboratoire en tête d'un leaderboard public entre 2020 et 2026",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "COM@5"
+   ],
+   "requete": "Preuves distinguant la persistance d'une position de tête causée par une communauté active de votants versus persistance due à l'inertie des scores historiques",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "COM@5"
+   ],
+   "requete": "Exemples où une communauté d'utilisateurs n'a pas empêché un renversement soudain du leader sur un classement public d'IA",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@5"
+   ],
+   "requete": "Cas où une polarisation (deux pôles concurrents) a fragilisé la position du laboratoire leader sur un leaderboard d'IA, entraînant des basculements fréquents entre acteurs (2020-2026)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@5"
+   ],
+   "requete": "Éléments montrant que la polarité entre pôles concurrents cause des renversements de tête plus souvent que des facteurs techniques (nouveau modèle) sur les classements publics",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "POL@5"
+   ],
+   "requete": "Exemples où, malgré une forte polarisation entre laboratoires, la position de tête est restée stable sur un leaderboard d'IA",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "COM@5"
+   ],
+   "requete": "Comparer cas où domination vient d'une émergence d'usage collectif (plusieurs modèles d'une même org) versus d'une communauté organisée de votants (2020-2026)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@5",
+    "POL@5"
+   ],
+   "requete": "Comparer cas où domination par émergence a résisté face à polarisation concurrente versus cas où la polarisation a renversé la domination (2020-2026)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "COM@5",
+    "POL@5"
+   ],
+   "requete": "Études montrant si une forte communauté de votants stabilise un leader davantage qu'une compétition polarisée ne le déstabilise (2020-2026)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "HIÉRARCHIE@5 persiste",
+   "semantique": "continue",
+   "temporalite": "generique",
+   "resolution": "La question résout OUI si et seulement si, lors de la première consultation du leaderboard 'Text Arena – Overall' d'Arena AI effectuée par l'entité de résolution à la date cible (le 27 décembre 2026 ou la première consultation le/ après cette date), la ligne n°1 indique un laboratoire Google (incl. Google DeepMind).",
+   "source_resolution": {
+    "emetteur": "Arena AI",
+    "document": "Snapshot public du leaderboard 'Text Arena – Overall' (première consultation disponible sur ou après 2026-12-27)",
+    "regle_ambiguite": "Si la première ligne du leaderboard indique un laboratoire dont le nom correspond à Google ou Google DeepMind, la résolution est YES; si elle indique un autre laboratoire ou si le leaderboard n'est pas consultable, la résolution est NO. En cas d'affichage de plusieurs laboratoires ex aequo, utiliser l'ordre tel qu'affiché par Arena AI; toute ambiguité persistante est tranchée par la procédure de résolution officielle (Metaculus/Arena)."
+   },
+   "vue_exterieure": {
+    "frequence": 0.36585365853658536,
+    "classe_de_reference": "Instances où un laboratoire occupe la position n°1 du 'Lab Rank' du leaderboard 'Text Arena – Overall' d'Arena AI, mesurées au moment de la première consultation du leaderboard pour chaque fenêtre temporelle de référence (ne pas utiliser de noms de modèles).",
+    "source": "lmarena-ai/leaderboard-dataset — jeux de snapshots mensuels (month-end snapshots) de l'Arena AI 'Text Arena – Overall' leaderboard",
+    "periode": "2023-2026",
+    "disponible_le": "2026-11-27",
+    "classe_alternative": null,
+    "motif_sans_alternative": "Les sources disponibles donnent un registre mensuel (month‑end) clair et exhaustif utilisable comme partition historique alignée sur des fenêtres ≈30 jours ; il n'existe pas, dans les documents fournis [R1–R3], un comptage public et vérifiable par fenêtre de 30 jours non chevauchantes exploitable sans interpolation supplémentaire, donc on utilise le month‑end registry comme approximation raisonnable.",
+    "ecart_critere": "Différence : la classe compte les month‑end snapshots (le leader au 'month‑end') comme proxy du leader au moment de la première consultation d'une fenêtre de 30 jours ; critère de résolution demande le leader affiché à la première consultation du leaderboard pour une fenêtre donnée. Effet pratique : si les fenêtres sont alignées sur les month‑end du registre, la mesure est identique ; sinon il s'agit d'une approximation par alignement mensuel."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "EME@5",
+   "cible": "HIÉRARCHIE@5",
+   "extrait": "Preuves que la domination d’un laboratoire sur un leaderboard provient d’une **émergence collective** (adoption / votes distribués) plutôt que d’un **artefact de mesure** ou d’une **mise à jour ponctuelle**",
+   "source": ""
+  },
+  {
+   "instruction": "lien",
+   "de": "EME@5",
+   "cible": "HIÉRARCHIE@5",
+   "extrait": "Les meilleures performances du laboratoire proviennent alors de ces directions émergentes, jamais explorées par le simple leaderboard.",
+   "source": "https://arxiv.org/abs/2610.33281#:~:text=%23%23%23%23%23%23%20Abstract%20A%20research%20community,and%20crowd%20into%20one%20approach."
+  },
+  {
+   "instruction": "lien",
+   "de": "COM@5",
+   "cible": "HIÉRARCHIE@5",
+   "extrait": "Le fait que la domination persiste (ou même se renforce) après contrôle indique que **une dynamique collective** (ex. adoption massive d’une même méthode) est à l’œuvre.",
+   "source": "https://arxiv.org/abs/2605.25272#:~:text=%23%23%20Abstract%20While%20aggregate%20leaderboard,of%20work%20for%20future%20studies."
+  },
+  {
+   "instruction": "lien",
+   "de": "HIE@5",
+   "cible": "HIÉRARCHIE@5",
+   "extrait": "Le tableau de l’Arena montre que **neuf des quatorze meilleures entrées** étaient des variantes Claude, ce qui place Anthropic non seulement en première position mais aussi en quasi‑monopole du podium.",
+   "source": "https://mindber.com/en/blog/ai-model-rankings-history-2020-2026#:~:text=guide%20Updated%20October%2025%2C%202026,cost%20several%20times%20the%20default."
+  },
+  {
+   "instruction": "lien",
+   "de": "COM@5",
+   "cible": "HIÉRARCHIE@5",
+   "extrait": "Ces situations illustrent la capacité des grands labs à **monopoliser le « podium »** grâce à des cycles de versionnage très rapides et à la diffusion massive de leurs modèles via les plateformes de vote publiques.",
+   "source": ""
+  }
+ ]
+}
