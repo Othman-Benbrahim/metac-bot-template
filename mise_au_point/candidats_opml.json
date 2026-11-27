@@ -125,5 +125,9 @@
 "IA | Anthropic, flux supposé": "https://www.anthropic.com/rss.xml",
 "IA | Meta AI, flux supposé": "https://ai.meta.com/blog/rss/",
 "IA | Mistral, flux supposé": "https://mistral.ai/rss.xml",
-"IA | xAI, flux supposé": "https://x.ai/rss.xml"
+"IA | xAI, flux supposé": "https://x.ai/rss.xml",
+"FDA | communiqués": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml",
+"FDA | nouveautés médicaments": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/drugs/rss.xml",
+"FDA | nouveautés vaccins et produits biologiques": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml",
+"FDA | alertes de sécurité MedWatch": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml"
 }
