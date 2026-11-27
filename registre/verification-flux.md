@@ -2,15 +2,12 @@
 
 | Flux | Robots | HTTP | Articles | Plus récent |
 |---|---|---|---|---|
-| Mining Weekly, dernières nouvelles | autorisé | 200 | 36 | 2026-11-20 |
-| MINING.COM | autorisé | 403 | 0 | — |
-| Mining Technology | autorisé | 200 | 10 | 2026-11-20 |
-| The Northern Miner | autorisé | 200 | 20 | 2026-11-19 |
-| International Mining | autorisé | 200 | 12 | 2026-11-20 |
-| Global Mining Review | autorisé | 404 | 0 | — |
-| Engineering & Mining Journal | autorisé | 200 | 10 | 2026-11-19 |
-| Canadian Mining Journal | autorisé | 200 | 12 | 2026-11-19 |
-| OilPrice.com | autorisé | 200 | 15 | 2026-11-20 |
-| Rigzone | autorisé | 200 | 20 | 2026-11-20 |
+| Security Council Report, tout | autorisé | 200 | 0 | — |
+| Security Council Report, What's in Blue | autorisé | 200 | 10 | 2026-11-25 |
+| Crisis Group | autorisé | 200 | 10 | 2026-11-27 |
+| ElectionGuide (IFES) | autorisé | 404 | 0 | — |
+| ONU, couverture des réunions | autorisé | 404 | 0 | — |
+| Conseil de l'UE, communiqués | autorisé | 200 | 20 | 2026-11-27 |
+| Commission européenne, presse | autorisé | 200 | 10 | 2026-11-27 |
 
-8 flux lisibles sur 10.
+4 flux lisibles sur 7.
