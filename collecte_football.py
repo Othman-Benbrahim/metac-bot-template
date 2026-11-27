@@ -47,7 +47,7 @@ def titre_saison(a: int, div: str) -> str:
 def corps_module(texte: str, module: str) -> list[str]:
     """Corps des appels {{#invoke:<module>|...}}, accolades appariées."""
     out, i = [], 0
-    motif = re.compile(r"\{\{\s*#invoke:\s*" + re.escape(module) + r"\s*\|", re.I)
+    motif = re.compile(r"\{\{\s*#invoke:\s*" + re.escape(module).replace(r"\ ", "[ _]") + r"\s*\|", re.I)
     while True:
         m = motif.search(texte, i)
         if not m:
@@ -125,6 +125,8 @@ def lire_tableau(texte: str) -> dict | None:
     for corps in corps_module(texte, "Sports table"):
         P = parametres(corps)
         codes = [P[k] for k in sorted((k for k in P if re.fullmatch(r"team\d+", k)), key=lambda k: int(k[4:]))]
+        if not codes:   # autre écriture du module : liste « team_order = A, B, C »
+            codes = [x.strip() for x in re.split(r"[,\n]", P.get("team_order", "")) if x.strip()]
         if len(codes) < 16:
             continue
         equipes = {}
@@ -197,6 +199,13 @@ def etat(diag: bool = False) -> dict:
             tab, res = page_saison(c, a, div)
             if not tab:
                 out["ligues"][div] = {"erreur": "classement illisible"}
+                if True:   # diagnostic : début des appels de module et des paramètres d'équipes, pour adapter le lecteur
+                    t = (brut(c, titre_saison(a, div)) or "")
+                    for g in re.findall(r"\{\{\s*([^{}|]*\btable\b[^{}|]*)\}\}", t, re.I)[:1]:
+                        t += "\n" + (brut(c, "Template:" + g.strip()) or "")
+                    k = t.find("#invoke")
+                    print(f"--- {div} : premier #invoke à {k} ---", flush=True)
+                    print(t[max(0, k - 40):k + 1200] if k >= 0 else t[:1200], flush=True)
                 continue
             codes = list(tab["equipes"])
             n = len(codes)
