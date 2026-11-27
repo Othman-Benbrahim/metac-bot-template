@@ -148,5 +148,8 @@
 "NASA | communiqués": "https://www.nasa.gov/news-release/feed/",
 "NASA | Artemis": "https://www.nasa.gov/missions/artemis/feed/",
 "NASA | Station spatiale": "https://www.nasa.gov/missions/station/feed/",
-"OPEP | communiqués": "https://www.opec.org/opec_web/en/pressreleases.rss"
+"OPEP | communiqués": "https://www.opec.org/opec_web/en/pressreleases.rss",
+"NHC | cyclones, bassin Atlantique": "https://www.nhc.noaa.gov/index-at.xml",
+"NHC | cyclones, Pacifique Est": "https://www.nhc.noaa.gov/index-ep.xml",
+"NHC | bilan mensuel Atlantique": "https://www.nhc.noaa.gov/xml/TWSAT.xml"
 }
