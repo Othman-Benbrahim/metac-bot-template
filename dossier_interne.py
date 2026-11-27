@@ -126,6 +126,10 @@ def _briques(titre: str, jour: dt.date, fin: str) -> list[tuple[str, str, dict |
         except Exception:
             e = None
         if e and _p(e) is not None:
+            import familles_situation as fsit      # 0.10.513 : porte de compatibilité famille × brique
+            if not fsit.compatible(fam, titre)[0]:
+                out.append((fam, meca, None, "hors_domaine"))
+                continue
             out.append((fam, meca, e, None))
         elif fam == "prix":
             q = spx.lire(titre)

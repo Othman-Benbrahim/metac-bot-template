@@ -25,6 +25,9 @@ EVENEMENTS = [
     (r"Eurovision", 37),
     (r"Best Picture", 10), (r"Academy Awards|Oscar", 5), (r"Emmy.*Outstanding (Comedy|Drama|Limited) Series", 8), (r"Emmy", 6),
     (r"Australian Open|French Open|Roland Garros|Wimbledon|US Open", 128),
+    # 0.10.513 (accord de l'auteur, 2026-11-27, 11 h 35) : prix Nobel de la paix, 287 nommés pour 2026 (comité Nobel
+    # norvégien, relayé par Reuters, 30 avril 2026). Auparavant capté à tort par « autres accords » (mot « peace »).
+    (r"Nobel Peace Prize", 287),
 ]
 MOTIFS = [(re.compile(m, re.I), n) for m, n in EVENEMENTS]
 POIDS, ECART_MAX = 0.25, 0.15
@@ -34,7 +37,7 @@ SAILLANCE = {"equipe": 2.0, "recompense": 1.0, "tennis": 1.0}
 
 
 def famille(n: int) -> str:
-    return "recompense" if n in (5, 6, 8, 10) else ("tennis" if n == 128 else "equipe")
+    return "recompense" if n in (5, 6, 8, 10, 287) else ("tennis" if n == 128 else "equipe")
 
 
 def n_concurrents(titre: str) -> int | None:

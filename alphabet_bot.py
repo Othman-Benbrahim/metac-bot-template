@@ -647,6 +647,25 @@ class AlphabetBot(FallTemplateBot2026):
             logger.warning("juge informé : non appliqué (%s)", type(ex).__name__)
             return None
 
+    def _porte(self, brique: str, question, q) -> bool:
+        """0.10.513 (accord de l'auteur, 2026-11-27, 11 h 35) : porte de compatibilité famille de situation × brique
+        (familles_situation.py). Une brique hors de ses familles se tait ; trace dans journal-porte.jsonl."""
+        try:
+            import familles_situation as fsit
+            ok, fs = fsit.compatible(brique, question.question_text or "")
+            if not ok:
+                ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                         "date_information": datetime.now(timezone.utc).date().isoformat(), "brique": brique,
+                         "familles": fs, "decision": "hors_domaine"}
+                ligne["sceau"] = ap.sceau(ligne)
+                with open(ap.registre_ecrivable() / "journal-porte.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                    f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+                logger.info("porte : brique %s hors de ses familles (%s), silence", brique, fs)
+            return ok
+        except Exception as ex:   # la porte qui échoue ne bloque rien
+            logger.warning("porte : non appliquée (%s)", type(ex).__name__)
+            return True
+
     def _sondes(self, question, q, p_pipeline: float) -> dict | None:
         try:
             import sondes as snd
@@ -712,6 +731,10 @@ class AlphabetBot(FallTemplateBot2026):
                  or rcr.estimer(titre) or jsr.estimer(titre) or arr.estimer_autres(titre))
             if e is None:
                 return None
+            brique = {"cessez_le_feu": "cessez_le_feu", "accord_paix": "accord_guerre", "tenue": "tenue",
+                      "rencontre": "rencontres", "justice": "justice", "autre": "autres_accords"}.get(e.get("classe"), "")
+            if not self._porte(brique, question, q):
+                return None
             p = arr.melanger(p_pipeline, e["p"])
             e.update({"p_regle": e["p"], "p": p, "poids": arr.POIDS, "ecart_max": arr.ECART_MAX})
             if e.get("classe") == "autre":
@@ -743,7 +766,7 @@ class AlphabetBot(FallTemplateBot2026):
         try:
             import banque_centrale_regle as bcr
             e = bcr.estimer(question.question_text or "")
-            if e is None:
+            if e is None or not self._porte("banque_centrale", question, q):
                 return None
             p = bcr.melanger(p_pipeline, e["p"])
             e.update({"p_regle": e["p"], "p": p, "poids": bcr.POIDS, "ecart_max": bcr.ECART_MAX})
@@ -765,7 +788,7 @@ class AlphabetBot(FallTemplateBot2026):
         try:   # 2026-11-26 (décision de l'auteur, 12 h 36) : tennis, force mesurée (Elo), base et non mélange
             import tennis_elo_regle as ter
             e = ter.estimer(question.question_text or "", datetime.now(timezone.utc).date())
-            if e is not None:
+            if e is not None and self._porte("tennis_elo", question, q):
                 jour = datetime.now(timezone.utc).date().isoformat()
                 ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                          "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "tennis_elo": e}
@@ -781,7 +804,7 @@ class AlphabetBot(FallTemplateBot2026):
         try:
             import competitions_regle as cpr
             e = cpr.estimer(question.question_text or "", p_pipeline)
-            if e is None:
+            if e is None or not self._porte("competitions", question, q):
                 return None
             jour = datetime.now(timezone.utc).date().isoformat()
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
@@ -806,7 +829,7 @@ class AlphabetBot(FallTemplateBot2026):
         try:
             import escalade_regle as esc
             e = esc.estimer(question.question_text or "", p_pipeline)
-            if e is None:
+            if e is None or not self._porte("escalade", question, q):
                 return None
             jour = datetime.now(timezone.utc).date().isoformat()
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
@@ -827,7 +850,7 @@ class AlphabetBot(FallTemplateBot2026):
             import maintien_regle as mr
             jour = datetime.now(timezone.utc).date().isoformat()
             e = mr.estimer(question.question_text or "", jour, q.resolution.isoformat(), p_pipeline)
-            if e is None:
+            if e is None or not self._porte("maintien", question, q):
                 return None
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                      "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "maintien": e}
@@ -854,7 +877,7 @@ class AlphabetBot(FallTemplateBot2026):
             import evenements_regle as evr
             jour = datetime.now(timezone.utc).date().isoformat()
             e = evr.estimer(question.question_text or "", jour, q.resolution.isoformat(), p_pipeline)
-            if e is None:
+            if e is None or not self._porte("evenements", question, q):
                 return None
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                      "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "evenement": e}
@@ -878,7 +901,7 @@ class AlphabetBot(FallTemplateBot2026):
             jour = datetime.now(timezone.utc).date().isoformat()
             fin = spx.echeance(question.question_text or "", jour) or q.resolution.isoformat()
             e = spx.estimer(question.question_text or "", jour, fin)
-            if e is None:
+            if e is None or not self._porte("prix", question, q):
                 return None
             ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                      "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p"], "seuil": e}
