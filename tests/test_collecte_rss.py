@@ -239,7 +239,8 @@ class TestFamillesEnOmbre(unittest.TestCase):
         nouvelles = {"monnaie": 2, "religion": 2, "biodiversite": 1, "defense": 1, "sante_afrique": 2, "crime": 2, "genre": 1,
                      "psyche": 2, "asie": 3, "transport": 2, "tech": 1, "minerais": 1, "inegalites": 1, "analyse": 1, "afrique": 1,
                      "geopolitique_europe": 1,   # 2026-11-25 : Le Grand Continent
-                     "moyen_orient": 3, "chine": 2, "russie": 2, "amerique_latine": 3, "inde": 1, "voix_etat": 2}
+                     "moyen_orient": 3, "chine": 2, "russie": 2, "amerique_latine": 3, "inde": 1, "voix_etat": 2,
+                     "primaires": 3}   # 2026-11-27 : sources primaires
         for f, n in nouvelles.items():
             self.assertEqual(len(cr.FLUX[f]), n)
             self.assertTrue(f.startswith(ab.HORS_TOUT))

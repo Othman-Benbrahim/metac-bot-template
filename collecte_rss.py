@@ -200,6 +200,11 @@ FLUX = {
     "voix_etat": ["https://tass.com/rss/v2.xml",                                  # TASS (agence d'État russe)
                   "https://www.chinadaily.com.cn/rss/world_rss.xml"],             # China Daily (quotidien d'État chinois)
     "afrique": ["https://fr.allafrica.com/tools/headlines/rdf/westafrica/headlines.rdf"],  # AllAfrica, Afrique de l'Ouest
+    # 2026-11-27 (décision de l'auteur, 18 h) : sources primaires, vérifiées lisibles depuis GitHub (run 46054233525) ;
+    # en ombre, non lues par le bot ; elles alimentent le puits (lien, titre, métadonnées, jamais le texte).
+    "primaires": ["https://www.securitycouncilreport.org/whatsinblue/feed/",       # Security Council Report : What's in Blue
+                  "https://www.crisisgroup.org/rss",                               # International Crisis Group
+                  "https://ec.europa.eu/commission/presscorner/api/rss?language=en"],  # Commission européenne : presse
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -355,7 +360,7 @@ MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 FAMILLES_CSV = Path("registre") / "rss-familles.csv"
 FAMILLES_VUS = Path("registre") / "rss-familles-vus.txt"   # 0.10.458 : empreintes déjà comptées dans rss-familles.csv
 
-DEDOUBLONNER = {"surveillance", "crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
+DEDOUBLONNER = {"surveillance", "crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "primaires", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
