@@ -24,9 +24,12 @@ import httpx
 
 import politesse
 
-LIGUES = {"E0": ("ENG", 20, "premier league"), "SP1": ("ESP", 20, "la ?liga"), "I1": ("ITA", 20, "serie a"),
-          "D1": ("GER", 18, "bundesliga"), "F1": ("FRA", 18, "ligue 1")}
-FD = "https://www.football-data.co.uk/mmz4281/{s}/{d}.csv"
+LIGUES = {"en.1": ("ENG", 20, "premier league"), "es.1": ("ESP", 20, "la ?liga"), "it.1": ("ITA", 20, "serie a"),
+          "de.1": ("GER", 18, "bundesliga"), "fr.1": ("FRA", 18, "ligue 1")}
+# Amendement du 2026-11-27 (12 h) : football-data.co.uk refuse notre robot (robots.txt) ; remplacé par openfootball
+# (domaine public, validé par l'auteur à 11 h 56). Seul le chargement des matchs change.
+OF = "https://raw.githubusercontent.com/openfootball/football.json/master/{s}/{d}.json"
+PART_MANQUANTE_MAX = 0.05                # saison exclue si plus de 5 % des matchs n'ont pas de score
 CE = "http://api.clubelo.com/{j}"
 DEV = [2015, 2016, 2017, 2018]           # saison = année de début
 EPREUVE = [2019, 2020, 2021, 2022, 2023, 2024, 2025]
@@ -37,6 +40,21 @@ SAILLANCE = 2.0
 
 # football-data / titres de questions -> forme proche de ClubElo (complétée après le diagnostic, jamais après le score)
 ALIAS = {
+    # openfootball -> ClubElo (noms longs)
+    "manchester city": "man city", "manchester united": "man united", "wolverhampton wanderers": "wolves",
+    "west bromwich albion": "west brom", "brighton hove albion": "brighton", "tottenham hotspur": "tottenham",
+    "club atletico de madrid": "atletico", "athletic club": "bilbao", "rcd espanyol de barcelona": "espanyol",
+    "espanyol barcelona": "espanyol", "real betis balompie": "betis", "real sociedad de futbol": "sociedad",
+    "deportivo la coruna": "depor", "sporting gijon": "gijon", "rayo vallecano de madrid": "rayo vallecano",
+    "fc internazionale milano": "inter", "lazio roma": "lazio", "ss lazio": "lazio", "chievo verona": "chievo",
+    "bayern munchen": "bayern", "fc bayern munchen": "bayern", "bor monchengladbach": "gladbach",
+    "borussia monchengladbach": "gladbach", "1 fc koln": "koeln", "1 fc nurnberg": "nuernberg", "hamburger sv": "hamburg",
+    "spvgg greuther furth 1903": "fuerth", "fortuna dusseldorf": "duesseldorf", "sv werder bremen": "werder",
+    "paris saint germain": "paris sg", "paris saint germain fc": "paris sg", "olympique de marseille": "marseille",
+    "stade rennais": "rennes", "stade rennais fc 1901": "rennes", "stade brestois 29": "brest", "stade de reims": "reims",
+    "lille osc": "lille", "estac troyes": "troyes", "girondins bordeaux": "bordeaux", "racing club de lens": "lens",
+    "rc strasbourg alsace": "strasbourg", "as saint etienne": "saint etienne", "as nancy lorraine": "nancy",
+    "gazelec fc ajaccio": "gazelec",
     "nottm forest": "forest", "nott m forest": "forest", "nottingham forest": "forest",
     "man city": "man city", "manchester city": "man city", "man united": "man united", "manchester united": "man united",
     "wolverhampton": "wolves", "sheffield united": "sheffield united", "leeds united": "leeds", "west ham": "west ham",
@@ -52,6 +70,8 @@ ALIAS = {
     "ac milan": "milan", "inter milan": "inter", "as roma": "roma", "hellas verona": "verona", "spal": "spal",
 }
 VIDES = {"fc", "cf", "ac", "as", "sc", "afc", "ssc", "us", "sv", "vfl", "vfb", "tsg", "fsv", "ogc", "rc", "sd", "ud",
+         "calcio", "acf", "cfc", "bc", "bsc", "spvgg", "sco", "hsc", "osc", "fco", "ea", "aj", "sm", "olympique", "1848",
+         "2013", "1919", "29", "63", "07", "96", "98", "1903", "balompie", "futbol", "borussia", "bayer", "hellas",
          "cd", "rcd", "ca", "club", "de", "the", "1", "04", "05", "1899", "1846", "1907", "1909", "1910", "1913"}
 
 
@@ -60,7 +80,8 @@ def cle(nom: str) -> str:
     s = re.sub(r"[^a-z0-9 ]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     s = ALIAS.get(s, s)
-    return " ".join(t for t in s.split() if t not in VIDES) or s
+    r = " ".join(t for t in s.split() if t not in VIDES) or s
+    return ALIAS.get(r, r)
 
 
 def saison_code(a: int) -> str:
@@ -96,8 +117,7 @@ class Source:
                 r = self.c.get(url)
                 time.sleep(1)
                 if r.status_code == 200:
-                    return r.content.decode("utf-8-sig", errors="replace") if b"\xef\xbb\xbf" == r.content[:3] \
-                        else r.content.decode("latin-1")
+                    return r.content.decode("utf-8-sig", errors="replace")
                 if r.status_code in (403, 404):
                     print(f"{r.status_code} : {url}", flush=True)
                     return None
@@ -106,19 +126,25 @@ class Source:
         return None
 
     def matchs(self, div: str, a: int) -> list[dict]:
-        txt = self.get(FD.format(s=saison_code(a), d=div))
+        txt = self.get(OF.format(s=f"{a}-{(a + 1) % 100:02d}", d=div))
+        try:
+            d = json.loads(txt or "{}")
+        except ValueError:
+            return []
+        brut = d.get("matches") or [m for r in d.get("rounds", []) for m in r.get("matches", [])]
         out = []
-        for r in csv.DictReader(io.StringIO(txt or "")):
-            d = lire_date(r.get("Date", ""))
-            if not d or not r.get("HomeTeam"):
+        for m in brut:
+            try:
+                j = date.fromisoformat(str(m.get("date"))[:10])
+            except ValueError:
                 continue
-            def n(x):
-                try:
-                    return int(float(x))
-                except (TypeError, ValueError):
-                    return None
-            out.append({"d": d, "h": r["HomeTeam"].strip(), "a": r["AwayTeam"].strip(),
-                        "hg": n(r.get("FTHG")), "ag": n(r.get("FTAG"))})
+            nom = lambda t: (t if isinstance(t, str) else (t or {}).get("name") or "").strip()
+            sc = m.get("score")
+            ft = sc.get("ft") if isinstance(sc, dict) else (sc if isinstance(sc, list) else None)
+            if ft is None and m.get("score1") is not None:
+                ft = [m.get("score1"), m.get("score2")]
+            hg, ag = (ft[0], ft[1]) if ft and len(ft) == 2 and None not in ft else (None, None)
+            out.append({"d": j, "h": nom(m.get("team1")), "a": nom(m.get("team2")), "hg": hg, "ag": ag})
         return out
 
     def elo(self, j: date) -> list[dict]:
@@ -129,16 +155,31 @@ class Source:
         return self.elo_cache[k]
 
 
+GENERIQUES = {"real", "united", "city", "athletic", "atletico", "sporting", "club", "racing", "stade", "eintracht",
+              "inter", "madrid", "barcelona", "milan", "roma", "verona", "paris", "saint", "town", "albion", "county"}
+
+
+def trouver(nom: str, candidats: dict[str, object]):
+    """Clé égale, sinon le candidat unique qui partage le plus de jetons significatifs (au moins un, 4 lettres)."""
+    k = cle(nom)
+    if k in candidats:
+        return candidats[k]
+    jk = {t for t in k.split() if len(t) >= 4 and t not in GENERIQUES}
+    notes = sorted(((len(jk & {t for t in kk.split() if len(t) >= 4}), kk) for kk in candidats), reverse=True)
+    if notes and notes[0][0] >= 1 and (len(notes) == 1 or notes[1][0] < notes[0][0]):
+        return candidats[notes[0][1]]
+    return None
+
+
 def correspondance(clubs: list[str], elos: list[dict], pays: str) -> tuple[dict, list[str]]:
-    cand = [(cle(r["Club"]), float(r["Elo"])) for r in elos if r.get("Country") == pays]
+    cand = {cle(r["Club"]): float(r["Elo"]) for r in elos if r.get("Country") == pays}
     res, manque = {}, []
     for c in clubs:
-        k = cle(c)
-        v = [e for kk, e in cand if kk == k] or [e for kk, e in cand if (k in kk.split() or kk in k.split()) and len(min(k, kk, key=len)) >= 4]
-        if len(v) >= 1:
-            res[c] = v[0]
-        else:
+        v = trouver(c, cand)
+        if v is None:
             manque.append(c)
+        else:
+            res[c] = v
     return res, manque
 
 
@@ -160,9 +201,11 @@ def classement(ms: list[dict], D: date) -> dict:
 
 def champion(ms: list[dict]) -> str | None:
     pts, gd, gf = defaultdict(int), defaultdict(int), defaultdict(int)
+    if not ms or sum(m["hg"] is None for m in ms) > PART_MANQUANTE_MAX * len(ms):
+        return None
     for m in ms:
         if m["hg"] is None or m["ag"] is None:
-            return None
+            continue
         for eq, f, c in ((m["h"], m["hg"], m["ag"]), (m["a"], m["ag"], m["hg"])):
             gd[eq] += f - c
             gf[eq] += f
@@ -287,7 +330,7 @@ def principal() -> int:
         for q in reelles:
             ms = saisons.get((q["div"], saison_de(q["jeu"]))) or []
             clubs = sorted({m["h"] for m in ms} | {m["a"] for m in ms})
-            if cle(q["club"]) not in {cle(c) for c in clubs}:
+            if trouver(q["club"], {cle(c): c for c in clubs}) is None:
                 manques["question:" + q["div"]].add(f"{q['club']}  ⇢ clubs : {', '.join(clubs)}")
         print(json.dumps({k: sorted(v) for k, v in manques.items()}, ensure_ascii=False, indent=1))
         print(f"questions réelles reconnues : {len(reelles)}")
@@ -352,7 +395,7 @@ def principal() -> int:
         a = saison_de(q["jeu"])
         ms = saisons.get((q["div"], a)) or []
         clubs = sorted({m["h"] for m in ms} | {m["a"] for m in ms})
-        c = next((x for x in clubs if cle(x) == cle(q["club"])), None)
+        c = trouver(q["club"], {cle(x): x for x in clubs})
         if not ms or c is None or str(q["issue"]) not in ("0", "1"):
             r2.append({"titre": q["titre"], "exclue": "club ou saison introuvable"})
             continue

@@ -63,3 +63,18 @@ Le mode `--diagnostic` télécharge les données et imprime seulement les corres
 - Les questions construites d'une même date sont liées (un seul champion), d'où le rééchantillonnage par grappe.
 
 Conflit d'intérêts déclaré : la procédure est rédigée par un modèle d'Anthropic.
+
+## Amendement du 2026-11-27 (12 h), avant tout calcul de score
+Le premier diagnostic (run 45985888792) s'est arrêté avant tout téléchargement : le robots.txt de football-data.co.uk refuse notre robot. Ce refus est respecté, pas contourné.
+
+**Nouvelle source des matchs : openfootball** (`github.com/openfootball/football.json`, domaine public), validée par l'auteur à 11 h 56. Codes des championnats : en.1, es.1, it.1, de.1 et fr.1.
+
+**Couverture relevée** (nombre de matchs et de scores seulement, aucune issue regardée) : saisons 2015/16 à 2025/26 complètes, avec deux exceptions.
+- Ligue 1 2019/20 : saison arrêtée par la COVID, 279 scores sur 380. Elle est exclue par la règle ci-dessous.
+- Liga et Serie A 2024/25 : 370 scores sur 380, la dernière journée manque.
+
+**Deux changements, dictés par la source, sans rapport avec les résultats :**
+- Le champion est calculé sur les matchs qui ont un score. Une saison est exclue si plus de 5 % des scores manquent.
+- La correspondance des noms passe par des jetons partagés : le candidat unique qui partage le plus de mots significatifs. La table d'alias est étendue aux noms longs d'openfootball.
+
+Le reste de la procédure est inchangé.
