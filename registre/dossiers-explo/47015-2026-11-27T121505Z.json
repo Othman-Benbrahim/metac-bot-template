@@ -1,0 +1,174 @@
+{
+ "candidats": [
+  "EME@6",
+  "POL@6",
+  "REC@6",
+  "HIE@6"
+ ],
+ "contre_candidate": [
+  "POL@6"
+ ],
+ "mots": [],
+ "liaisons": [],
+ "questions": [],
+ "rejets": {
+  "EME@6": "[marqueur_non_rempli] [marqueur_non_rempli] Les résultats fournis contiennent des analyses affirmant que des lancements de produits (AI/cloud) ont soutenu des valorisations, mais il manque dans les pièces contemporaines fournies une mesure datée et directe (dans CompaniesMarketCap) liant explicitement une émergence spontanée auto‑organisée de la position de marché à une dynamique sans décision centrale conforme à la définition d'ÉMERGENCE.",
+  "POL@6": "[marqueur_non_rempli] [marqueur_non_rempli] Les documents fournis montrent des alternances de rangs entre firmes (ex. Apple/Nvidia swaps) mais ne présentent pas, dans les extraits contemporains fournis, un alignement stable et exclusif de l'ensemble du champ en deux pôles clairement auto‑déclarés ; la présence d'échanges de position n'implique pas à elle seule la structure dichotomique attendue par POLARITÉ.",
+  "REC@6": "[marqueur_non_rempli] [marqueur_non_rempli] Plusieurs partenariats et alliances datés sont listés dans les résultats fournis (Microsoft‑OpenAI, Amazon‑Anthropic, Nvidia‑Microsoft, etc.), mais la carte RÉCIPROCITÉ exige des transferts identifiables dans les deux sens entre les mêmes parties et une tenue de compte; les extraits disponibles documentent unilatéralement des investissements/accords plutôt que des boucles de contre‑transferts explicites entre les mêmes firmes.",
+  "HIE@6": "[marqueur_non_rempli] La fiche HIE fournie (CompaniesMarketCap — capture Wayback 2026-11-27 indiquant Microsoft #2) était présente mais le moteur a exigé la sous‑structure dossier.evenements.vue_exterieure.classe_alternative {frequence dans ]0 ; 1[, classe_de_reference, source, pourquoi_ecartee}. Plutôt que d'inventer ces éléments requis (fréquence numérique, classe_de_reference, etc.), la lecture retire la carte HIE@6 conformément à la consigne: ne pas inventer de fait ni de source. L'entrée HIE originelle n'est donc plus retenue dans 'mots'."
+ },
+ "etat": "",
+ "disponible_le": "2026-11-27",
+ "recherches": [
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@6"
+   ],
+   "requete": "Instances 2018-2026 where a major tech firm maintained or strengthened a top-2 global market-cap ranking after launching a major AI or cloud product (source: CompaniesMarketCap listings)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "EME@6"
+   ],
+   "requete": "Cases 2018-2026 where a major product launch (AI/cloud) did not prevent a loss of a top-2 market-cap ranking within three months (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@6",
+    "POL@6"
+   ],
+   "requete": "Between 2018-2026, examples where a firm's persistence in a top-2 market-cap rank was better explained by its own emergent product growth versus by direct head-to-head rivalry with a competitor (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "POL@6"
+   ],
+   "requete": "Instances 2018-2026 of two firms alternating between #2 and #3 positions in global market-cap rankings due to direct competitive dynamics (price/news/expectations) (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "POL@6"
+   ],
+   "requete": "Cases 2018-2026 where visible rivalry or polarizing narratives between two companies did not lead to a swap in market-cap ranking within three months (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@6",
+    "REC@6"
+   ],
+   "requete": "Between 2018-2026, examples where direct rivalry (head-to-head competition) explains ranking swaps better than reciprocal interactions (partnerships, mutual measures) among top tech firms (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "REC@6"
+   ],
+   "requete": "Instances 2018-2026 where reciprocal actions between firms (partnerships, cross-licensing, coordinated announcements) caused measurable changes in market-cap ranking among the largest tech companies (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "contradiction",
+   "cartes": [
+    "REC@6"
+   ],
+   "requete": "Cases 2018-2026 where reciprocal corporate actions (partnerships, alliances) did not change market-cap rankings of major tech firms within six months (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@6",
+    "REC@6"
+   ],
+   "requete": "Between 2018-2026, examples where ranking persistence was attributable to a firm's internal growth/emergence (new products/services) rather than to reciprocal interactions with rivals (partnerships, alliances) (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "EME@6",
+    "POL@6"
+   ],
+   "requete": "Cases 2018-2026 comparing whether emergent technological lead or bilateral competitive swings better predicted swaps in top-3 market-cap positions (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "discrimination",
+   "cartes": [
+    "POL@6",
+    "REC@6"
+   ],
+   "requete": "Instances 2018-2026 where competitive polarization between two firms led to a ranking swap versus where reciprocal cooperation/retaliation between firms drove ranking changes (CompaniesMarketCap)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  },
+  {
+   "famille": "observation",
+   "cartes": [
+    "EME@6",
+    "POL@6"
+   ],
+   "requete": "Historical frequency 2000-2025 of changes in the #2 position among global public companies and the primary proximate causes cited (product-driven growth, direct rivalry, reciprocal actions) (CompaniesMarketCap and archive snapshots)",
+   "executee": true,
+   "date_execution": "2026-11-27"
+  }
+ ],
+ "evenements": [
+  {
+   "evenement": "HIÉRARCHIE@6 persiste",
+   "semantique": "presence",
+   "temporalite": "generique",
+   "resolution": "La réponse sera 'OUI' si, et seulement si, la page de CompaniesMarketCap montrant le classement à la clôture régulière du marché US du 2026‑12‑29 affiche Microsoft en position #2.",
+   "source_resolution": {
+    "emetteur": "CompaniesMarketCap",
+    "document": "page de classement (ranking) publiée par CompaniesMarketCap pour la date de clôture 2026-12-29 (ou archive dudit jour)",
+    "regle_ambiguite": "si CompaniesMarketCap est indisponible pour la date cible, la règle secondaire exige un calcul manuel : prix de l'action × nombre d'actions en circulation tiré du dépôt SEC le plus récent ; ce produit comparé aux valeurs similaires pour les autres sociétés permettra de déterminer la position #2."
+   },
+   "vue_exterieure": {
+    "frequence": 0.5185185185185185,
+    "classe_de_reference": "la société occupant la position n°2 dans le classement CompaniesMarketCap à la clôture régulière du marché US de la date cible (événement « qui est #2 ? »)",
+    "source": "CompaniesMarketCap — historique des rangs annuels pour Microsoft (données synthétisées dans [R2])",
+    "periode": "2000-2026",
+    "disponible_le": "2026-11-27",
+    "classe_alternative": {
+     "frequence": null,
+     "classe_de_reference": "la société occupant la position n°2 dans le classement CompaniesMarketCap à la clôture régulière du marché US pour CHAQUE date de clôture entre 2000 et 2026 (comptage quotidien/archives Wayback)",
+     "source": "Wayback Machine / archives quotidiennes de CompaniesMarketCap (idéalement captures pour chaque date de clôture)",
+     "pourquoi_ecartee": "Wayback/archives quotidiennes n'ont pas pu être utilisées de façon fiable et répétable pour produire un comptage exhaustif des dates de clôture (captures incomplètes, accès programmatique non reproductible dans ce contexte). Par conséquent cette classe, qui serait la plus conforme au critère, n'a pas pu fournir une fréquence vérifiable ici."
+    },
+    "ecart_critere": "R2 compte des années où Microsoft figure #2 (points annuels ou 'ranking history') ; la classe imposée exige un comptage sur l'ensemble des dates de clôture (observations quotidiennes ou toutes les clôtures archivées) et des fenêtres de 32 jours. Ici on remplace le comptage quotidien/32‑jours par la proportion d'années (#2 présentes), donc l'échantillonnage temporel diffère (annuel vs. quotidien)."
+   }
+  }
+ ],
+ "programme": [
+  {
+   "instruction": "lien",
+   "de": "HIE@6",
+   "vers": "cible",
+   "extrait": "Microsoft kept its **#2** ranking as of November 2026【1†L1-L4】【3†L1-L4】",
+   "source": ""
+  }
+ ]
+}
