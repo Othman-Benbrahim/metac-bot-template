@@ -1,3 +1,4 @@
+# 0.10.518 (2026-11-27, accord de l'auteur 14 h 52) : endurance navale américaine et durée du blocus d'Ormuz (relayé).
 # 0.10.512 (2026-11-26, accord de l'auteur 22 h 42) : apports du dossier IISS « The Gulf at War » (octobre 2026).
 # 0.10.474 (décision de l'auteur, 2026-11-23, 17 h 42) : veille IHEDN « Les verrous du monde » (23 novembre 2026) ;
 # un compartiment par détroit majeur (pays riverains sous « geopolitique »), chiffres de l'IHEDN recoupés avec des
@@ -392,6 +393,7 @@ compartiments:
   - 'guerre de 2026 : transits en baisse de plus de 90 % pendant la phase aiguë (28 février - 8 avril) ; primes de risque de guerre très élevées, couvertures annulées ; après le cessez-le-feu, blocus américain des ports iraniens et de 5 à 10 Mb/j repassés par le détroit à la mi-septembre, sous escorte (transits de nuit, transpondeurs coupés) (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
   - 'oléoduc saoudien Est-Ouest : voie de contournement et donc cible ; suspendu à la mi-septembre 2026 après des attaques de drones lancées depuis l''Irak, pétrole au-dessus de 100 dollars (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
   - 'fragilité : la réouverture dépend de la volonté américaine de maintenir le blocus, donc d''un décideur ; un taux de base peut se casser sur une annonce (IISS, The Gulf at War, octobre 2026, faits jusqu''à mi-septembre)'
+  - 'endurance navale américaine, contrainte sur la durée du blocus : le porte-avions Abraham Lincoln est rentré le 8 octobre 2026 après 321 jours de déploiement, dont 265 dans le golfe Persique sans escale (8 tentatives de suicide à bord) ; le secrétaire par intérim de la Navy attribue l''allongement des déploiements au manque de navires (relayé : Center for Maritime Strategy, parrainé par la Navy League, novembre 2026, et Task & Purpose ; non vérifié à la source)'
   niveau:
     espace: goulet
     temps: permanent ; incidents datés
