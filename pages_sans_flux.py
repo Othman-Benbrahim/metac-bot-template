@@ -29,7 +29,8 @@ SITES: dict[str, dict] = {
     "xAI": {"url": "https://x.ai/news", "motif": None},
     "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": None},   # 2026-11-27, 20 h 58 : demande de l'auteur
     "CPI, Assemblée des États parties": {"url": "https://asp.icc-cpi.int/press-releases", "motif": None},  # 20 h 59
-    "CPI, la Cour": {"url": "https://www.icc-cpi.int/news", "motif": None},   # communiqués de la Cour elle-même   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
+    "CPI, la Cour": {"url": "https://www.icc-cpi.int/news", "motif": None},   # communiqués de la Cour elle-même
+    "Oscars, presse": {"url": "https://press.oscars.org/tag/news", "motif": None},   # 21 h 01 : demande de l'auteur   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
