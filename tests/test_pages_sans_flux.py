@@ -43,3 +43,11 @@ class TestPagesSansFlux(unittest.TestCase):
         r = pfs.lire(page, "https://ai.meta.com/blog/", r"^/blog/[A-Za-z0-9-]+/?$")
         self.assertEqual(r[0]["titre"], "assistive robotics sam")
         self.assertLessEqual(len(r[1]["titre"]), 120)
+
+    def test_generique_et_date_adresse(self):
+        page = ('<a href="/blog/tribe-v2-model">Learn More</a>'
+                '<a href="/files/178-20261119-pre-01-00-en.pdf">Press release No. 2026/30</a>')
+        r = pfs.lire(page, "https://ai.meta.com/blog/", r"^/blog/[A-Za-z0-9-]+/?$")
+        self.assertEqual(r[0]["titre"], "tribe v2 model")
+        r = pfs.lire(page, "https://www.icj-cij.org/", r"-pre-\d+-\d+-en\.pdf$")
+        self.assertEqual(r[0]["date_affichee"], "2026-11-19")

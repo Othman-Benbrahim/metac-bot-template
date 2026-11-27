@@ -21,16 +21,16 @@ SITES: dict[str, dict] = {
     # Lecture d'essai relue (run 46055978219) : titres « type — pays » propres.
     "ElectionGuide": {"url": "https://www.electionguide.org/elections/type/upcoming/",
                       "motif": r"^/elections/id/\d+/?$", "ligne": True, "valide": True},
-    # 2026-11-27, 21 h 34 : motifs fixés sur la sonde du run 46063994555 ; « valide » après la lecture d'essai relue.
+    # 2026-11-27, 21 h 34 : motifs fixés sur la sonde du run 46063994555 ; lecture d'essai relue (run 46065424349).
     # Anthropic : conflit d'intérêts déclaré (le code est écrit par un modèle d'Anthropic).
     "Anthropic": {"url": "https://www.anthropic.com/news",
-                  "motif": r"^/(news/(?!announcements/?$)[a-z0-9-]+|claude-[a-z]+(-[a-z]+)*-\d+-\d+)/?$"},
-    "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": r"^/blog/[A-Za-z0-9-]+/?$"},
-    "xAI": {"url": "https://x.ai/news", "motif": r"^/news/[a-z0-9-]+/?$"},
-    "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": r"^/prizes/[a-z-]+/\d{4}/"},
+                  "motif": r"^/(news/(?!(announcements|features)/?$)[a-z0-9-]+|claude-[a-z]+(-[a-z]+)*-\d+-\d+)/?$", "valide": True},
+    "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": r"^/blog/[A-Za-z0-9-]+/?$", "valide": True},
+    "xAI": {"url": "https://x.ai/news", "motif": r"^/news/[a-z0-9-]+/?$", "valide": True},
+    "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": r"^/prizes/[a-z-]+/\d{4}/", "valide": True},
     "CPI, Assemblée des États parties": {"url": "https://asp.icc-cpi.int/press-releases",
-                                         "motif": r"^/press-releases/PR-?\d+/?$"},
-    "CIJ, communiqués": {"url": "https://www.icj-cij.org/press-releases", "motif": r"-pre-\d+-\d+-en\.pdf$"},
+                                         "motif": r"^/press-releases/PR-?\d+/?$", "valide": True},
+    "CIJ, communiqués": {"url": "https://www.icj-cij.org/press-releases", "motif": r"-pre-\d+-\d+-en\.pdf$", "valide": True},
     # Écartés au run 46063994555 : Mistral (flux trouvé, collecté par RSS), CPI la Cour (page en JavaScript, aucun
     # lien), Oscars, BLS et AIE (refus 403, respectés), GovInfo (ses flux ont été relevés).
 }
@@ -86,6 +86,10 @@ def iso(date_txt: str) -> str:
     return ""
 
 
+_GENERIQUES = {"learn more", "read more", "featured", "next", "more", "en savoir plus", "lire la suite"}
+_DATE_URL = re.compile(r"(?<!\d)(20\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?!\d)")
+
+
 def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
     """Liens d'articles (chemin conforme au motif), sans doublon, avec un titre non vide.
 
@@ -100,9 +104,15 @@ def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
                 meilleurs[u] = t
         out = []
         for u, t in meilleurs.items():
+            if t.lower() in _GENERIQUES:
+                t = ""
             if not t:
                 t = [x for x in urlparse(u).path.split("/") if x][-1].replace("-", " ")
-            out.append({"lien": u, "titre": t[:120].rsplit(" ", 1)[0] if len(t) > 120 else t})
+            d = {"lien": u, "titre": t[:120].rsplit(" ", 1)[0] if len(t) > 120 else t}
+            m = _DATE_URL.search(urlparse(u).path)   # date écrite dans l'adresse (AAAAMMJJ), comme à la CIJ
+            if m:
+                d["date_affichee"] = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+            out.append(d)
         return out
     blocs = re.split(r"<tr\b", html, flags=re.I) if ligne else [html]
     vus, out = set(), []

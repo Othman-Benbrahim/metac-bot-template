@@ -241,7 +241,7 @@ class TestFamillesEnOmbre(unittest.TestCase):
                      "geopolitique_europe": 1,   # 2026-11-25 : Le Grand Continent
                      "moyen_orient": 3, "chine": 2, "russie": 2, "amerique_latine": 3, "inde": 1, "voix_etat": 2,
                      "primaires": 3,   # 2026-11-27 : sources primaires
-                     "presse_monde": 68, "regulateurs": 8, "justice": 1, "legislatif": 4, "statistiques": 1,
+                     "presse_monde": 68, "regulateurs": 8, "justice": 1, "legislatif": 5, "statistiques": 1,
                      "espace": 3, "cyclones": 2}   # 2026-11-27, 21 h 34
         for f, n in nouvelles.items():
             self.assertEqual(len(cr.FLUX[f]), n)

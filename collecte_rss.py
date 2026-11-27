@@ -300,6 +300,7 @@ FLUX = {
         "https://bills.parliament.uk/rss/publicbills.rss",   # Parlement britannique | projets de loi publics
         "https://www.govinfo.gov/rss/plaw.xml",   # GovInfo | lois promulguées (adresse supposée)
         "https://www.govinfo.gov/rss/fr.xml",   # GovInfo | Federal Register (adresse supposée)
+        "https://www.govinfo.gov/rss/dcpd.xml",   # GovInfo | documents présidentiels (décrets, déclarations ; run 46065424349)
     ],
     "statistiques": [
         "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_PREREL",   # Eurostat | communiqués (euro-indicateurs)
