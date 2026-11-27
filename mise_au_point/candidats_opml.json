@@ -141,5 +141,8 @@
 "Congrès US | à l'ordre du jour de la Chambre": "https://www.congress.gov/rss/house-floor-today.xml",
 "Congrès US | à l'ordre du jour du Sénat": "https://www.congress.gov/rss/senate-floor-today.xml",
 "Parlement britannique | projets de loi publics": "https://bills.parliament.uk/rss/publicbills.rss",
-"Eurostat | communiqués (euro-indicateurs)": "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_PREREL"
+"Eurostat | communiqués (euro-indicateurs)": "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_PREREL",
+"GovInfo | lois promulguées (adresse supposée)": "https://www.govinfo.gov/rss/plaw.xml",
+"GovInfo | documents présidentiels (adresse supposée)": "https://www.govinfo.gov/rss/cpd.xml",
+"GovInfo | Federal Register (adresse supposée)": "https://www.govinfo.gov/rss/fr.xml"
 }
