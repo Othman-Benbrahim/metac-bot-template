@@ -61,6 +61,19 @@ _DATE = re.compile(r"\b(\d{4}-\d{2}-\d{2}|\d{4}/\d{1,2}/\d{1,2}|\d{1,2}/\d{1,2}/
 _DATETIME = re.compile(r"datetime=[\"'](\d{4}-\d{2}-\d{2})")
 
 
+def iso(date_txt: str) -> str:
+    """Date affichée → AAAA-MM-JJ quand le format est sans ambiguïté ; sinon chaîne vide (12/06/2026 : ambigu)."""
+    from datetime import datetime
+    t = date_txt.replace(",", " ").replace(".", " ")
+    t = " ".join(t.split())
+    for f in ("%Y-%m-%d", "%Y/%m/%d", "%b %d %Y", "%B %d %Y", "%d %b %Y", "%d %B %Y"):
+        try:
+            return datetime.strptime(t, f).date().isoformat()
+        except ValueError:
+            pass
+    return ""
+
+
 def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
     """Liens d'articles (chemin conforme au motif), sans doublon, avec un titre non vide.
 
@@ -83,7 +96,7 @@ def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
             d = {"lien": u, "titre": t}
             m = (_DATETIME.search(b) or _DATE.search(_BALISE.sub(" ", b))) if ligne else None
             if m:
-                d["date_affichee"] = m.group(1)
+                d["date_affichee"] = iso(m.group(1)) or m.group(1)
             out.append(d)
     return out
 
