@@ -117,5 +117,9 @@
 "United States | FOX News": "http://feeds.foxnews.com/foxnews/latest",
 "United States | WSJ.com: World News": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
 "United States | World & Nation": "https://www.latimes.com/world-nation/rss2.0.xml",
-"United States | Playbook": "https://rss.politico.com/playbook.xml"
+"United States | Playbook": "https://rss.politico.com/playbook.xml",
+"IA | Berkeley AI Research (BAIR)": "http://bair.berkeley.edu/blog/feed.xml",
+"IA | Machine Intelligence Research Institute": "https://intelligence.org/blog/feed",
+"IA | AWS Machine Learning Blog": "https://aws.amazon.com/blogs/machine-learning/feed/",
+"IA | fast.ai": "https://www.fast.ai/index.xml"
 }
