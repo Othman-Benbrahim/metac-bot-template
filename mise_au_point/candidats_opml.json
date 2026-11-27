@@ -129,5 +129,9 @@
 "FDA | communiqués": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml",
 "FDA | nouveautés médicaments": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/drugs/rss.xml",
 "FDA | nouveautés vaccins et produits biologiques": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml",
-"FDA | alertes de sécurité MedWatch": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml"
+"FDA | alertes de sécurité MedWatch": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml",
+"EMA | actualités et communiqués": "https://www.ema.europa.eu/en/news.xml",
+"EMA | nouveaux médicaments humains": "https://www.ema.europa.eu/en/new-human-medicine-new.xml",
+"EMA | avis et rapports d'évaluation (EPAR)": "https://www.ema.europa.eu/en/human-medicine-new.xml",
+"EMA | demandes retirées": "https://www.ema.europa.eu/en/withdrawn-applications.xml"
 }
