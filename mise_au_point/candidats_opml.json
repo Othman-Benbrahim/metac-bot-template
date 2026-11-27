@@ -139,5 +139,6 @@
 "Justice | SCOTUSblog": "https://www.scotusblog.com/feed/",
 "Congrès US | textes transmis au président": "https://www.congress.gov/rss/presented-to-president.xml",
 "Congrès US | à l'ordre du jour de la Chambre": "https://www.congress.gov/rss/house-floor-today.xml",
-"Congrès US | à l'ordre du jour du Sénat": "https://www.congress.gov/rss/senate-floor-today.xml"
+"Congrès US | à l'ordre du jour du Sénat": "https://www.congress.gov/rss/senate-floor-today.xml",
+"Parlement britannique | projets de loi publics": "https://bills.parliament.uk/rss/publicbills.rss"
 }
