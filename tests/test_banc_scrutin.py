@@ -54,9 +54,12 @@ def test_formes():
 
 def test_tableau_et_moyenne():
     tabs = b.tableaux(WIKI, 2026)
-    assert tabs and tabs[0]["colonnes"][3] == "Lula" and len(tabs[0]["lignes"]) == 3
+    # 2026-11-27 : l'en-tête garde aussi la cible du lien ([[Luiz Inácio Lula da Silva|Lula]])
+    assert tabs and tabs[0]["colonnes"][3].startswith("Lula") and len(tabs[0]["lignes"]) == 3
     p = b.moyenne_sondages(tabs, date(2026, 9, 25), "Luiz Inácio Lula da Silva")
-    assert p and p["__sujet__"] == "Lula" and p["Lula"] == 40.0 and p["Flávio"] == 34.0
+    lula = next(k for k in p if k.startswith("Lula"))
+    flavio = next(k for k in p if k.startswith("Flávio"))
+    assert p and p["__sujet__"] == lula and p[lula] == 40.0 and p[flavio] == 34.0
     assert "Others" not in p and "Lead" not in p
     assert b.moyenne_sondages(tabs, date(2026, 6, 1), "Lula") is None               # aucun sondage dans les 30 jours
 

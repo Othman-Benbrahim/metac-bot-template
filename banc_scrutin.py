@@ -107,6 +107,31 @@ def _texte_cellule(c: str) -> str:
     return re.sub(r"\s+", " ", c).strip()
 
 
+_PIXELS = re.compile(r"^\s*(\d+x\d+px|\d+px|x\d+px)?\s*$", re.I)
+
+
+def _texte_entete(c: str) -> str:
+    """2026-11-27 (accord de l'auteur, 19 h 12) : un en-tête garde aussi la cible de ses liens et le nom de fichier de
+    ses images. Sur 117 questions où le candidat n'était pas trouvé, les colonnes étaient des photos (« 70x70px »,
+    Brésil, Chili) ou des sigles de partis (« QLP » pour [[Quebec Liberal Party|QLP]])."""
+    base = _texte_cellule(c)
+    sans_ref = re.sub(r"<ref[^>]*/>|<ref[^>]*>.*?</ref>", "", c, flags=re.S)
+    extra = []
+    for cible in re.findall(r"\[\[([^|\]]+)", sans_ref):
+        cible = cible.strip()
+        if re.match(r"(file|image|fichier):", cible, re.I):
+            nom = re.sub(r"^(file|image|fichier):", "", cible, flags=re.I)
+            nom = re.sub(r"\.(jpe?g|png|svg|gif|webp|tiff?)$", "", nom, flags=re.I)
+            nom = re.sub(r"[_\-()]", " ", nom)
+            nom = re.sub(r"\b(\d+|official|portrait|photo|foto|crop(ped)?|retrato|oficial|cropped)\b", " ", nom, flags=re.I)
+            extra.append(nom)
+        else:
+            extra.append(cible)
+    base = "" if _PIXELS.match(base) else base
+    tout = " ".join([base] + [e for e in extra if e and e.lower() not in base.lower()])
+    return re.sub(r"\s+", " ", tout).strip()
+
+
 def _date(texte: str, annee_defaut: int) -> date | None:
     t = texte.lower()
     iso = re.findall(r"(\d{4})-(\d{1,2})-(\d{1,2})", t)
@@ -161,19 +186,24 @@ def tableaux(wikitexte: str, annee_defaut: int) -> list[dict]:
                 continue
             cellules_h = [x for x in re.split(r"\n!|!!", "\n" + lt) if x.strip()] if lt.startswith("!") else []
             if cellules_h and not entetes:
-                entetes = [_texte_cellule(x) for x in cellules_h]
+                entetes = [_texte_entete(x) for x in cellules_h]
                 brut_h = cellules_h
                 continue
             if cellules_h and entetes and not lignes:
                 # 0.10.377 : deuxième ligne d'en-tête (« Candidate » sur plusieurs colonnes, puis les noms) : on remplace
                 # chaque cellule fusionnée du premier rang par les cellules correspondantes du second
-                suite, fusion = [_texte_cellule(x) for x in cellules_h], []
+                # 2026-11-27 : une cellule du premier rang sans rowspan a sa suite au second rang (photo dessus, nom
+                # dessous) : on les réunit ; une cellule en rowspan reste seule.
+                suite, fusion = [_texte_entete(x) for x in cellules_h], []
                 for x, t in zip(brut_h, entetes):
                     k = re.search(r"colspan\s*=\s*\"?(\d+)", x)
+                    rs = re.search(r"rowspan\s*=\s*\"?([2-9])", x)
                     if k and suite:
                         n = int(k.group(1))
                         fusion += suite[:n]
                         suite = suite[n:]
+                    elif not rs and suite:
+                        fusion.append((t + " " + suite.pop(0)).strip())
                     else:
                         fusion.append(t)
                 entetes = fusion
