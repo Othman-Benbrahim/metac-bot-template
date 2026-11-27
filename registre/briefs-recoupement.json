@@ -336,10 +336,10 @@
 "adaptateur": "paire_mois:RU:UA:conflit",
 "source": "événements conflictuels Russie–Ukraine par mois (GDELT)",
 "date": "2026-11-01",
-"valeur": 7604.0,
+"valeur": 8028.0,
 "age_jours": 25,
-"variation": -4755.0,
-"z": -1.23,
+"variation": -4331.0,
+"z": -1.11,
 "anormal": false
 }
 ],
@@ -399,9 +399,9 @@
 "adaptateur": "certificats",
 "source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
 "date": "2026-11-24",
-"valeur": 2.0,
+"valeur": 3.0,
 "age_jours": 2,
-"variation": 2.0
+"variation": 3.0
 }
 ],
 "attention": []
@@ -552,9 +552,9 @@
 "adaptateur": "certificats",
 "source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
 "date": "2026-11-24",
-"valeur": 2.0,
+"valeur": 3.0,
 "age_jours": 2,
-"variation": 2.0
+"variation": 3.0
 }
 ],
 "attention": []
@@ -726,6 +726,518 @@
 "chiffres": [
 {
 "chiffre": "10 percent",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/plus-dun-an-apres-limposition-de-sanctions-les-etats-unis-co.md": {
+"jour": "2026-11-27",
+"url": "https://legrandcontinent.eu/fr/2026/11/27/plus-dun-an-apres-limposition-de-sanctions-les-etats-unis-concluent-un-accord-pour-les-actifs-de-lukoil/",
+"compartiments": [
+{
+"compartiment": "monnaie-pouvoir:sanctions_financieres",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-americaine:sanctions",
+"series": [
+{
+"adaptateur": "sanctions:IR",
+"source": "listes de sanctions (désignations visant l'Iran)",
+"date": "2026-11-23",
+"valeur": 30.0,
+"age_jours": 4,
+"variation": 26.0,
+"z": 2.92,
+"anormal": true
+},
+{
+"adaptateur": "sanctions:RU",
+"source": "listes de sanctions (désignations visant la Russie)",
+"date": "2026-11-12",
+"valeur": 11.0,
+"age_jours": 15,
+"variation": 10.0,
+"z": 0.34,
+"anormal": false
+},
+{
+"adaptateur": "federal_register:tous:Treasury",
+"source": "textes du Trésor déposés au Federal Register",
+"date": "2026-11-25",
+"valeur": 1.0,
+"age_jours": 2,
+"variation": 1.0
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/new-zealand-election-results-set-up-tricky-talks-for-conserv.md": {
+"jour": "2026-11-27",
+"url": "https://www.aljazeera.com/news/2026/11/27/new-zealand-election-results-set-up-tricky-talks-for-conservative-incumbent?traffic_source=rss",
+"compartiments": [
+{
+"compartiment": "politique-interieure:elections",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "65",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "40, 13, 12",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "7",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/why-trumps-new-tariff-threats-may-spur-southeast-asia-to-ret.md": {
+"jour": "2026-11-27",
+"url": "https://www.scmp.com/week-asia/economics/article/3376040/why-trumps-new-tariff-threats-may-spur-southeast-asia-rethink-us-trade-deals",
+"compartiments": [
+{
+"compartiment": "politique-americaine:commerce",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "14",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/wife-of-japanese-journalist-jailed-in-russia-on-espionage-ch.md": {
+"jour": "2026-11-27",
+"url": "https://meduza.io/en/feature/2026/11/26/please-return-this-precious-papa-to-his-little-daughter-wife-of-japanese-journalist-jailed-in-russia-on-espionage-charges-pleads-for-his-release",
+"compartiments": [
+{
+"compartiment": "politique-americaine:poursuites_personnalites",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "securite-publique:justice",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "13 octobre",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "20 ans",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/lahore-police-chief-denies-fazls-arrest.md": {
+"jour": "2026-11-27",
+"url": "https://www.dawn.com/news/2047452/lahore-police-chief-denies-fazls-arrest",
+"compartiments": [
+{
+"compartiment": "politique-interieure:contestation",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:gouvernement",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "30 jours",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/president-donald-trump-insists-nvidia-ceo-not-a-security-thr.md": {
+"jour": "2026-11-27",
+"url": "https://www.thehindu.com/news/international/president-donald-trump-insists-nvidia-ceo-not-a-security-threat/article71749200.ece",
+"compartiments": [
+{
+"compartiment": "politique-americaine:executif",
+"series": [
+{
+"adaptateur": "avions:US",
+"source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
+"date": "2026-11-27",
+"valeur": 6.0,
+"age_jours": 0,
+"variation": 0.0,
+"z": 0.66,
+"anormal": false
+},
+{
+"adaptateur": "tfr:SECURITY",
+"source": "interdictions de survol de sécurité créées par jour (FAA)",
+"date": "2026-11-27",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0,
+"z": 0.0,
+"anormal": false
+},
+{
+"adaptateur": "federal_register",
+"source": "textes déposés en inspection publique au Federal Register par jour",
+"date": "2026-11-25",
+"valeur": 136.0,
+"age_jours": 2,
+"variation": 131.0,
+"z": 1.61,
+"anormal": false
+}
+],
+"attention": []
+},
+{
+"compartiment": "economie-entreprises:entreprises",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/ebola-en-rdc-l-oms-reclame-la-protection-des-soignants-et-de.md": {
+"jour": "2026-11-27",
+"url": "https://fr.hespress.com/497460-ebola-en-rdc-loms-reclame-la-protection-des-soignants-et-des-infrastructures-sanitaires.html",
+"compartiments": [
+{
+"compartiment": "epidemies:autorites",
+"series": [],
+"attention": [
+{
+"adaptateur": "rss:CD:sante",
+"source": "articles des flux de santé (OMS, ECDC, Fonds mondial) citant la RD Congo",
+"date": "2026-10-19",
+"valeur": 1.0,
+"age_jours": 39,
+"variation": 0.0
+}
+]
+},
+{
+"compartiment": "organisations-internationales:sante_mondiale",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/hong-kong-police-launch-ai-powered-national-security-platfor.md": {
+"jour": "2026-11-27",
+"url": "https://globalvoices.org/2026/10/16/hong-kong-police-launch-ai-powered-national-security-platform-for-school-pupils/",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:executifs",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:recherche",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "6 octobre 2026",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "700",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/what-is-known-about-failure-of-eu-summit.md": {
+"jour": "2026-11-27",
+"url": "https://tass.com/world/2225755",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:diplomatie_personnelle",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "russie-ukraine:negociations",
+"series": [
+{
+"adaptateur": "gestes:RUS:UKR",
+"source": "GDELT, nombre de gestes de la Russie envers l'Ukraine",
+"date": "2026-10-26",
+"valeur": 82.0,
+"age_jours": 32,
+"variation": -2.0,
+"z": -0.08,
+"anormal": false
+},
+{
+"adaptateur": "paire_mois:RU:UA:conflit",
+"source": "événements conflictuels Russie–Ukraine par mois (GDELT)",
+"date": "2026-11-01",
+"valeur": 8028.0,
+"age_jours": 26,
+"variation": -4331.0,
+"z": -1.11,
+"anormal": false
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "45 milliards €",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "1,52 billion €",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/why-trumps-newest-tariffs-could-stick.md": {
+"jour": "2026-11-27",
+"url": "https://www.atlanticcouncil.org/content-series/fastthinking/why-trumps-newest-tariffs-are-made-to-stick/",
+"compartiments": [
+{
+"compartiment": "politique-americaine:executif",
+"series": [
+{
+"adaptateur": "avions:US",
+"source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
+"date": "2026-11-27",
+"valeur": 6.0,
+"age_jours": 0,
+"variation": 0.0,
+"z": 0.66,
+"anormal": false
+},
+{
+"adaptateur": "tfr:SECURITY",
+"source": "interdictions de survol de sécurité créées par jour (FAA)",
+"date": "2026-11-27",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0,
+"z": 0.0,
+"anormal": false
+},
+{
+"adaptateur": "federal_register",
+"source": "textes déposés en inspection publique au Federal Register par jour",
+"date": "2026-11-25",
+"valeur": 136.0,
+"age_jours": 2,
+"variation": 131.0,
+"z": 1.61,
+"anormal": false
+}
+],
+"attention": []
+},
+{
+"compartiment": "politique-americaine:commerce",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "40 percent",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "10 percent",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/uk-hacker-sentenced-to-seven-years-then-released.md": {
+"jour": "2026-11-27",
+"url": "https://www.occrp.org/en/news/uk-hacker-sentenced-to-seven-years-then-released",
+"compartiments": [
+{
+"compartiment": "securite-publique:justice",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/outage-chaos-when-tech-is-too-big-to-fail.md": {
+"jour": "2026-11-27",
+"url": "https://www.eff.org/deeplinks/2026/11/outage-chaos-when-tech-too-big-fail",
+"compartiments": [
+{
+"compartiment": "information-cyber:infrastructure",
+"series": [
+{
+"adaptateur": "certificats",
+"source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
+"date": "2026-11-24",
+"valeur": 3.0,
+"age_jours": 3,
+"variation": 3.0
+}
+],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:regulation",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-min.md": {
+"jour": "2026-11-27",
+"url": "https://en.mercopress.com/2026/11/27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-ministry-in-his-fourth-term?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+"compartiments": [
+{
+"compartiment": "politique-interieure:gouvernement",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "economie-chinoise:politique_monetaire",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "6 %",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "60 milliards de reais, 9 %, 13,75 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/ai-isnt-replacing-your-job-its-turning-it-into-low-paid-gig.md": {
+"jour": "2026-11-27",
+"url": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+"compartiments": [
+{
+"compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 26,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:attentes",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "180 $, 7,50 $, 12,50 $",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "0,18 $, 2 $, 20 $",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "mars 2024",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-27/white-house-sets-limits-on-contractors-contacts-with-congres.md": {
+"jour": "2026-11-27",
+"url": "https://www.defenseone.com/policy/2026/11/trump-exec-order-pushes-white-house-gatekeeper-between-contractors-and-congress/417411/",
+"compartiments": [
+{
+"compartiment": "politique-americaine:congres",
+"series": [
+{
+"adaptateur": "congres",
+"source": "réunions de commission du Congrès par date prévue",
+"date": "2026-11-27",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": 0.0
+}
+],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:procedures",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-27/gazas-children-caught-in-the-grip-of-a-meningitis-outbreak.md": {
+"jour": "2026-11-27",
+"url": "https://www.middleeasteye.net/news/gazas-children-caught-grip-meningitis-outbreak",
+"compartiments": [
+{
+"compartiment": "epidemies:malades",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "eau-douce-potable:assainissement",
+"series": [
+{
+"adaptateur": "owid:share-using-safely-managed-sanitation:World",
+"source": "part de la population disposant d'un assainissement géré en toute sécurité, monde (OMS/UNICEF, via Our World in Data)",
+"date": "2024-07-01",
+"valeur": 58.49519,
+"age_jours": 879,
+"variation": 0.694783000000001,
+"z": -2.48,
+"anormal": true
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "413",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "1 790",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "20 %",
 "verdict": "non recoupable"
 }
 ]

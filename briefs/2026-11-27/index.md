@@ -1,0 +1,18 @@
+# Briefs du 2026-11-27
+
+- [plus-dun-an-apres-limposition-de-sanctions-les-etats-unis-co](plus-dun-an-apres-limposition-de-sanctions-les-etats-unis-co.md) (openrouter/openai/gpt-oss-120b)
+- [new-zealand-election-results-set-up-tricky-talks-for-conserv](new-zealand-election-results-set-up-tricky-talks-for-conserv.md) (openrouter/openai/gpt-oss-120b)
+- [why-trumps-new-tariff-threats-may-spur-southeast-asia-to-ret](why-trumps-new-tariff-threats-may-spur-southeast-asia-to-ret.md) (openrouter/openai/gpt-oss-120b)
+- [wife-of-japanese-journalist-jailed-in-russia-on-espionage-ch](wife-of-japanese-journalist-jailed-in-russia-on-espionage-ch.md) (openrouter/openai/gpt-oss-120b)
+- [lahore-police-chief-denies-fazls-arrest](lahore-police-chief-denies-fazls-arrest.md) (openrouter/openai/gpt-oss-120b)
+- [president-donald-trump-insists-nvidia-ceo-not-a-security-thr](president-donald-trump-insists-nvidia-ceo-not-a-security-thr.md) (openrouter/openai/gpt-oss-120b)
+- [ebola-en-rdc-l-oms-reclame-la-protection-des-soignants-et-de](ebola-en-rdc-l-oms-reclame-la-protection-des-soignants-et-de.md) (openrouter/openai/gpt-oss-120b)
+- [hong-kong-police-launch-ai-powered-national-security-platfor](hong-kong-police-launch-ai-powered-national-security-platfor.md) (openrouter/openai/gpt-oss-120b)
+- [what-is-known-about-failure-of-eu-summit](what-is-known-about-failure-of-eu-summit.md) (openrouter/openai/gpt-oss-120b)
+- [why-trumps-newest-tariffs-could-stick](why-trumps-newest-tariffs-could-stick.md) (openrouter/openai/gpt-oss-120b)
+- [uk-hacker-sentenced-to-seven-years-then-released](uk-hacker-sentenced-to-seven-years-then-released.md) (openrouter/openai/gpt-oss-120b)
+- [outage-chaos-when-tech-is-too-big-to-fail](outage-chaos-when-tech-is-too-big-to-fail.md) (openrouter/openai/gpt-oss-120b)
+- [lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-min](lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-min.md) (openrouter/openai/gpt-oss-120b)
+- [ai-isnt-replacing-your-job-its-turning-it-into-low-paid-gig](ai-isnt-replacing-your-job-its-turning-it-into-low-paid-gig.md) (openrouter/openai/gpt-oss-120b)
+- [white-house-sets-limits-on-contractors-contacts-with-congres](white-house-sets-limits-on-contractors-contacts-with-congres.md) (openrouter/openai/gpt-oss-120b)
+- [gazas-children-caught-in-the-grip-of-a-meningitis-outbreak](gazas-children-caught-in-the-grip-of-a-meningitis-outbreak.md) (openrouter/openai/gpt-oss-120b)

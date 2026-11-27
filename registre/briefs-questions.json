@@ -1,7 +1,48 @@
 {
- "calcule_le": "2026-11-26",
+ "calcule_le": "2026-11-27",
  "fenetre_jours": 7,
  "questions": [
+  {
+   "question_id": "46850",
+   "titre": "What will President Lee Jae-myung's job approval rating be in Gallup Korea's weekly poll released on November 27, 2026?",
+   "url": "https://www.metaculus.com/questions/46590",
+   "echeance": "2026-11-27",
+   "compartiments": [
+    "dirigeants-elus:executifs"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Moscou est la troisième Rome, il n’y en aura pas de quatrième",
+     "url": "https://legrandcontinent.eu/fr/2026/11/24/moscou-est-la-troisieme-rome-il-ny-en-aura-pas-de-quatrieme/",
+     "fichier": "2026-11-25/moscou-est-la-troisi-me-rome-il-n-y-en-aura-pas-de-quatri-me.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Modi’s government urges Netflix to keep Pakistani Urdu drama off Indian screens",
+     "url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
+     "fichier": "2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Kushner blames stalled peace talks on alleged Ukrainian attack on Putin’s residence — an attack both U.S. intelligence and Trump say did not happen",
+     "url": "https://meduza.io/en/news/2026/11/26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-attack-on-putin-s-residence-an-attack-both-u-s-intelligence-and-trump-say-did-not-happen",
+     "fichier": "2026-11-26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Le blocus maritime américain étouffe l’économie iranienne",
+     "url": "https://legrandcontinent.eu/fr/2026/11/26/le-blocus-maritime-americain-etouffe-leconomie-iranienne/",
+     "fichier": "2026-11-26/le-blocus-maritime-americain-etouffe-leconomie-iranienne.md"
+    }
+   ]
+  },
   {
    "question_id": "46867",
    "titre": "What will Anthropic (ANT) close at on Friday, November 27, 2026?",
@@ -41,6 +82,90 @@
      "titre": "How foreign AI romance apps are reshaping youth intimacy in Africa",
      "url": "https://restofworld.org/2026/ai-companion-apps-africa-character-ai/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
      "fichier": "2026-11-26/how-foreign-ai-romance-apps-are-reshaping-youth-intimacy-in.md"
+    }
+   ]
+  },
+  {
+   "question_id": "47014",
+   "titre": "Who will have the #1 lab rank on Arena AI's overall Text Arena leaderboard on December 27, 2026?",
+   "url": "https://www.metaculus.com/questions/46757",
+   "echeance": "2026-12-27",
+   "compartiments": [
+    "sciences-techniques:attentes",
+    "sciences-techniques:ia",
+    "sciences-techniques:recherche"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "The Biometric Dragnet",
+     "url": "https://citizenlab.ca/the-biometric-dragnet/",
+     "fichier": "2026-11-25/the-biometric-dragnet.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Signal bloque par défaut les agents IA dans ses chats privés",
+     "url": "https://www.eff.org/deeplinks/2026/11/signal-now-blocks-ai-agents",
+     "fichier": "2026-11-25/signal-bloque-par-d-faut-les-agents-ia-dans-ses-chats-priv-s.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Could the Jensen Huang Scandal Help China’s AI Industry?",
+     "url": "https://thediplomat.com/2026/11/could-the-jensen-huang-scandal-help-chinas-ai-industry/",
+     "fichier": "2026-11-26/could-the-jensen-huang-scandal-help-chinas-ai-industry.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Outage Chaos: Who Turned Off All The Computer?",
+     "url": "https://www.eff.org/deeplinks/2026/11/outage-chaos-who-turned-all-computer",
+     "fichier": "2026-11-26/outage-chaos-who-turned-off-all-the-computer.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "How foreign AI romance apps are reshaping youth intimacy in Africa",
+     "url": "https://restofworld.org/2026/ai-companion-apps-africa-character-ai/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+     "fichier": "2026-11-26/how-foreign-ai-romance-apps-are-reshaping-youth-intimacy-in.md"
+    }
+   ]
+  },
+  {
+   "question_id": "43329",
+   "titre": "Will the sitting U.S. president’s net worth reach ≥4x its value before they became president at any point in the following years? (2025-2026)",
+   "url": "https://www.metaculus.com/questions/43325",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "dirigeants-elus:executifs"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Moscou est la troisième Rome, il n’y en aura pas de quatrième",
+     "url": "https://legrandcontinent.eu/fr/2026/11/24/moscou-est-la-troisieme-rome-il-ny-en-aura-pas-de-quatrieme/",
+     "fichier": "2026-11-25/moscou-est-la-troisi-me-rome-il-n-y-en-aura-pas-de-quatri-me.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Modi’s government urges Netflix to keep Pakistani Urdu drama off Indian screens",
+     "url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
+     "fichier": "2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Kushner blames stalled peace talks on alleged Ukrainian attack on Putin’s residence — an attack both U.S. intelligence and Trump say did not happen",
+     "url": "https://meduza.io/en/news/2026/11/26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-attack-on-putin-s-residence-an-attack-both-u-s-intelligence-and-trump-say-did-not-happen",
+     "fichier": "2026-11-26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Le blocus maritime américain étouffe l’économie iranienne",
+     "url": "https://legrandcontinent.eu/fr/2026/11/26/le-blocus-maritime-americain-etouffe-leconomie-iranienne/",
+     "fichier": "2026-11-26/le-blocus-maritime-americain-etouffe-leconomie-iranienne.md"
     }
    ]
   },
@@ -92,7 +217,8 @@
    "url": "https://www.metaculus.com/questions/46751",
    "echeance": "2027-01-01",
    "compartiments": [
-    "dirigeants-elus:executifs"
+    "dirigeants-elus:executifs",
+    "politique-americaine:executif"
    ],
    "briefs": [
     {
@@ -133,7 +259,8 @@
    "url": "https://www.metaculus.com/questions/43323",
    "echeance": "2027-01-01",
    "compartiments": [
-    "dirigeants-elus:executifs"
+    "dirigeants-elus:executifs",
+    "politique-americaine:executif"
    ],
    "briefs": [
     {
@@ -196,6 +323,18 @@
      "titre": "Telenor accusé d'avoir transmis des données d'utilisateurs à la junte du Myanmar",
      "url": "https://globalvoices.org/2026/10/14/norways-telenor-telecom-faces-lawsuit-for-giving-user-data-to-myanmars-junta/",
      "fichier": "2026-11-26/telenor-accuse-d-avoir-transmis-des-donnees-d-utilisateurs-a.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "Lahore police chief denies Fazl’s arrest",
+     "url": "https://www.dawn.com/news/2047452/lahore-police-chief-denies-fazls-arrest",
+     "fichier": "2026-11-27/lahore-police-chief-denies-fazls-arrest.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "White House sets limits on contractors' contacts with Congress",
+     "url": "https://www.defenseone.com/policy/2026/11/trump-exec-order-pushes-white-house-gatekeeper-between-contractors-and-congress/417411/",
+     "fichier": "2026-11-27/white-house-sets-limits-on-contractors-contacts-with-congres.md"
     }
    ]
   },
@@ -208,6 +347,8 @@
     "dirigeants-elus:mandats_succession",
     "partis-politiques:systemes_partisans",
     "politique-americaine:congres",
+    "politique-americaine:executif",
+    "politique-interieure:elections",
     "politique-interieure:partis"
    ],
    "briefs": [
@@ -228,6 +369,133 @@
      "titre": "Israël : les partis d'Eisenkot et de Netanyahu vont reprendre leurs discussions",
      "url": "https://fr.hespress.com/497494-israel-les-partis-deisenkot-et-de-netanyahu-vont-reprendre-leurs-discussions.html",
      "fichier": "2026-11-26/israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "New Zealand election results set up tricky talks for conservative incumbent",
+     "url": "https://www.aljazeera.com/news/2026/11/27/new-zealand-election-results-set-up-tricky-talks-for-conservative-incumbent?traffic_source=rss",
+     "fichier": "2026-11-27/new-zealand-election-results-set-up-tricky-talks-for-conserv.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "President Donald Trump insists Nvidia CEO not a security threat",
+     "url": "https://www.thehindu.com/news/international/president-donald-trump-insists-nvidia-ceo-not-a-security-threat/article71749200.ece",
+     "fichier": "2026-11-27/president-donald-trump-insists-nvidia-ceo-not-a-security-thr.md"
+    }
+   ]
+  },
+  {
+   "question_id": "43330",
+   "titre": "Will the sitting U.S. president’s net worth reach ≥4x its value before they became president at any point in the following years? (2027-2028)",
+   "url": "https://www.metaculus.com/questions/43325",
+   "echeance": "2029-01-01",
+   "compartiments": [
+    "dirigeants-elus:executifs"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Moscou est la troisième Rome, il n’y en aura pas de quatrième",
+     "url": "https://legrandcontinent.eu/fr/2026/11/24/moscou-est-la-troisieme-rome-il-ny-en-aura-pas-de-quatrieme/",
+     "fichier": "2026-11-25/moscou-est-la-troisi-me-rome-il-n-y-en-aura-pas-de-quatri-me.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Modi’s government urges Netflix to keep Pakistani Urdu drama off Indian screens",
+     "url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
+     "fichier": "2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Kushner blames stalled peace talks on alleged Ukrainian attack on Putin’s residence — an attack both U.S. intelligence and Trump say did not happen",
+     "url": "https://meduza.io/en/news/2026/11/26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-attack-on-putin-s-residence-an-attack-both-u-s-intelligence-and-trump-say-did-not-happen",
+     "fichier": "2026-11-26/kushner-blames-stalled-peace-talks-on-alleged-ukrainian-atta.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "Le blocus maritime américain étouffe l’économie iranienne",
+     "url": "https://legrandcontinent.eu/fr/2026/11/26/le-blocus-maritime-americain-etouffe-leconomie-iranienne/",
+     "fichier": "2026-11-26/le-blocus-maritime-americain-etouffe-leconomie-iranienne.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46869",
+   "titre": "How many confirmed U.S. measles cases for 2026 will CDC report in its November 27, 2026 update?",
+   "url": "https://www.metaculus.com/questions/46609",
+   "echeance": "2026-11-27",
+   "compartiments": [
+    "epidemies:agent",
+    "epidemies:autorites",
+    "epidemies:malades"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-26",
+     "titre": "Falklands, outbreak of avian influenza among Gentoo Penguins",
+     "url": "https://en.mercopress.com/2026/11/25/falklands-outbreak-of-avian-influenza-among-gentoo-penguins?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+     "fichier": "2026-11-26/falklands-outbreak-of-avian-influenza-among-gentoo-penguins.md"
+    },
+    {
+     "jour": "2026-11-26",
+     "titre": "African Union, WHO estiment le coût de la riposte à Ebola à près de 1,6 milliard de dollars",
+     "url": "https://tass.com/society/2224841",
+     "fichier": "2026-11-26/african-union-who-estiment-le-cout-de-la-riposte-a-ebola-a-p.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "Ebola en RDC : l'OMS réclame la protection des soignants et des infrastructures sanitaires",
+     "url": "https://fr.hespress.com/497460-ebola-en-rdc-loms-reclame-la-protection-des-soignants-et-des-infrastructures-sanitaires.html",
+     "fichier": "2026-11-27/ebola-en-rdc-l-oms-reclame-la-protection-des-soignants-et-de.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "Gaza’s children caught in the grip of a meningitis outbreak",
+     "url": "https://www.middleeasteye.net/news/gazas-children-caught-grip-meningitis-outbreak",
+     "fichier": "2026-11-27/gazas-children-caught-in-the-grip-of-a-meningitis-outbreak.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46892",
+   "titre": "Will a US governor, congressperson or cabinet member formally declare a 2028 presidential run before 2027?",
+   "url": "https://www.metaculus.com/questions/46632",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "dirigeants-elus:mandats_succession",
+    "politique-americaine:congres",
+    "politique-interieure:elections"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-25",
+     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
+     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
+     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
+    },
+    {
+     "jour": "2026-11-25",
+     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
+     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
+     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "New Zealand election results set up tricky talks for conservative incumbent",
+     "url": "https://www.aljazeera.com/news/2026/11/27/new-zealand-election-results-set-up-tricky-talks-for-conservative-incumbent?traffic_source=rss",
+     "fichier": "2026-11-27/new-zealand-election-results-set-up-tricky-talks-for-conserv.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "White House sets limits on contractors' contacts with Congress",
+     "url": "https://www.defenseone.com/policy/2026/11/trump-exec-order-pushes-white-house-gatekeeper-between-contractors-and-congress/417411/",
+     "fichier": "2026-11-27/white-house-sets-limits-on-contractors-contacts-with-congres.md"
     }
    ]
   },
@@ -252,54 +520,12 @@
      "titre": "Israël : les partis d'Eisenkot et de Netanyahu vont reprendre leurs discussions",
      "url": "https://fr.hespress.com/497494-israel-les-partis-deisenkot-et-de-netanyahu-vont-reprendre-leurs-discussions.html",
      "fichier": "2026-11-26/israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre.md"
-    }
-   ]
-  },
-  {
-   "question_id": "46869",
-   "titre": "How many confirmed U.S. measles cases for 2026 will CDC report in its November 27, 2026 update?",
-   "url": "https://www.metaculus.com/questions/46609",
-   "echeance": "2026-11-27",
-   "compartiments": [
-    "epidemies:agent",
-    "epidemies:autorites"
-   ],
-   "briefs": [
-    {
-     "jour": "2026-11-26",
-     "titre": "Falklands, outbreak of avian influenza among Gentoo Penguins",
-     "url": "https://en.mercopress.com/2026/11/25/falklands-outbreak-of-avian-influenza-among-gentoo-penguins?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
-     "fichier": "2026-11-26/falklands-outbreak-of-avian-influenza-among-gentoo-penguins.md"
     },
     {
-     "jour": "2026-11-26",
-     "titre": "African Union, WHO estiment le coût de la riposte à Ebola à près de 1,6 milliard de dollars",
-     "url": "https://tass.com/society/2224841",
-     "fichier": "2026-11-26/african-union-who-estiment-le-cout-de-la-riposte-a-ebola-a-p.md"
-    }
-   ]
-  },
-  {
-   "question_id": "46892",
-   "titre": "Will a US governor, congressperson or cabinet member formally declare a 2028 presidential run before 2027?",
-   "url": "https://www.metaculus.com/questions/46632",
-   "echeance": "2027-01-01",
-   "compartiments": [
-    "dirigeants-elus:mandats_succession",
-    "politique-americaine:congres"
-   ],
-   "briefs": [
-    {
-     "jour": "2026-11-25",
-     "titre": "L’incertitude météorologique pourrait faire grimper les prix du gaz en Europe cet hiver",
-     "url": "https://legrandcontinent.eu/fr/2026/11/25/lincertitude-meteorologique-pourrait-faire-grimper-les-prix-du-gaz-en-europe-cet-hiver/",
-     "fichier": "2026-11-25/l-incertitude-m-t-orologique-pourrait-faire-grimper-les-prix.md"
-    },
-    {
-     "jour": "2026-11-25",
-     "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
-     "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
-     "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+     "jour": "2026-11-27",
+     "titre": "White House sets limits on contractors' contacts with Congress",
+     "url": "https://www.defenseone.com/policy/2026/11/trump-exec-order-pushes-white-house-gatekeeper-between-contractors-and-congress/417411/",
+     "fichier": "2026-11-27/white-house-sets-limits-on-contractors-contacts-with-congres.md"
     }
    ]
   },
@@ -317,6 +543,12 @@
      "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
      "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
      "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "President Donald Trump insists Nvidia CEO not a security threat",
+     "url": "https://www.thehindu.com/news/international/president-donald-trump-insists-nvidia-ceo-not-a-security-threat/article71749200.ece",
+     "fichier": "2026-11-27/president-donald-trump-insists-nvidia-ceo-not-a-security-thr.md"
     }
    ]
   },
@@ -327,6 +559,7 @@
    "echeance": "2026-11-27",
    "compartiments": [
     "partis-politiques:systemes_partisans",
+    "politique-interieure:elections",
     "politique-interieure:partis"
    ],
    "briefs": [
@@ -335,6 +568,12 @@
      "titre": "Israël : les partis d'Eisenkot et de Netanyahu vont reprendre leurs discussions",
      "url": "https://fr.hespress.com/497494-israel-les-partis-deisenkot-et-de-netanyahu-vont-reprendre-leurs-discussions.html",
      "fichier": "2026-11-26/israel-les-partis-d-eisenkot-et-de-netanyahu-vont-reprendre.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "New Zealand election results set up tricky talks for conservative incumbent",
+     "url": "https://www.aljazeera.com/news/2026/11/27/new-zealand-election-results-set-up-tricky-talks-for-conservative-incumbent?traffic_source=rss",
+     "fichier": "2026-11-27/new-zealand-election-results-set-up-tricky-talks-for-conserv.md"
     }
    ]
   },
@@ -352,6 +591,58 @@
      "titre": "Retour de Jensen Huang chez Nvidia et tensions persistantes sur les exportations de puces",
      "url": "https://www.atlanticcouncil.org/dispatches/huang-is-back-at-nvidia-but-the-fight-over-who-controls-chip-exports-is-just-beginning/",
      "fichier": "2026-11-25/retour-de-jensen-huang-chez-nvidia-et-tensions-persistantes.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "President Donald Trump insists Nvidia CEO not a security threat",
+     "url": "https://www.thehindu.com/news/international/president-donald-trump-insists-nvidia-ceo-not-a-security-threat/article71749200.ece",
+     "fichier": "2026-11-27/president-donald-trump-insists-nvidia-ceo-not-a-security-thr.md"
+    }
+   ]
+  },
+  {
+   "question_id": "43324",
+   "titre": "What will the average interest rate on the US federal government's total debt be at the end of these fiscal years? (FY 2028 (ending Sep 30, 2028))",
+   "url": "https://www.metaculus.com/questions/43322",
+   "echeance": "2028-10-01",
+   "compartiments": [
+    "politique-interieure:gouvernement"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-27",
+     "titre": "Lahore police chief denies Fazl’s arrest",
+     "url": "https://www.dawn.com/news/2047452/lahore-police-chief-denies-fazls-arrest",
+     "fichier": "2026-11-27/lahore-police-chief-denies-fazls-arrest.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "Lula picks banker Luiz Carlos Trabuco to run the Finance Ministry in his fourth term",
+     "url": "https://en.mercopress.com/2026/11/27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-ministry-in-his-fourth-term?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+     "fichier": "2026-11-27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-min.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46451",
+   "titre": "What will net outlays by the US government be in millions of dollars in FY 2028?",
+   "url": "https://www.metaculus.com/questions/46224",
+   "echeance": "2028-10-20",
+   "compartiments": [
+    "politique-interieure:gouvernement"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-27",
+     "titre": "Lahore police chief denies Fazl’s arrest",
+     "url": "https://www.dawn.com/news/2047452/lahore-police-chief-denies-fazls-arrest",
+     "fichier": "2026-11-27/lahore-police-chief-denies-fazls-arrest.md"
+    },
+    {
+     "jour": "2026-11-27",
+     "titre": "Lula picks banker Luiz Carlos Trabuco to run the Finance Ministry in his fourth term",
+     "url": "https://en.mercopress.com/2026/11/27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-ministry-in-his-fourth-term?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+     "fichier": "2026-11-27/lula-picks-banker-luiz-carlos-trabuco-to-run-the-finance-min.md"
     }
    ]
   },
@@ -361,7 +652,6 @@
    "url": "https://www.metaculus.com/questions/46613",
    "echeance": "2026-11-27",
    "compartiments": [
-    "partis-politiques:systemes_partisans",
     "politique-interieure:partis"
    ],
    "briefs": [
@@ -387,6 +677,57 @@
      "titre": "Modi’s government urges Netflix to keep Pakistani Urdu drama off Indian screens",
      "url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
      "fichier": "2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md"
+    }
+   ]
+  },
+  {
+   "question_id": "47012",
+   "titre": "How much will Dune: Part Three gross domestically during its opening weekend?",
+   "url": "https://www.metaculus.com/questions/46755",
+   "echeance": "2026-12-21",
+   "compartiments": [
+    "medias-diffusion:cinema_series"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-26",
+     "titre": "Modi’s government urges Netflix to keep Pakistani Urdu drama off Indian screens",
+     "url": "https://www.scmp.com/news/asia/south-asia/article/3375924/modis-government-urges-netflix-keep-pakistani-urdu-drama-indian-screens",
+     "fichier": "2026-11-26/modis-government-urges-netflix-to-keep-pakistani-urdu-drama.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46886",
+   "titre": "How many votes of no confidence will Thai PM Anutin Charnvirakul receive?",
+   "url": "https://www.metaculus.com/questions/46626",
+   "echeance": "2026-12-23",
+   "compartiments": [
+    "politique-interieure:elections"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-27",
+     "titre": "New Zealand election results set up tricky talks for conservative incumbent",
+     "url": "https://www.aljazeera.com/news/2026/11/27/new-zealand-election-results-set-up-tricky-talks-for-conservative-incumbent?traffic_source=rss",
+     "fichier": "2026-11-27/new-zealand-election-results-set-up-tricky-talks-for-conserv.md"
+    }
+   ]
+  },
+  {
+   "question_id": "46891",
+   "titre": "Will Russian Foreign Minister Sergey Lavrov visit Florida in December 2026?",
+   "url": "https://www.metaculus.com/questions/46631",
+   "echeance": "2027-01-01",
+   "compartiments": [
+    "dirigeants-elus:diplomatie_personnelle"
+   ],
+   "briefs": [
+    {
+     "jour": "2026-11-27",
+     "titre": "What is known about failure of EU summit",
+     "url": "https://tass.com/world/2225755",
+     "fichier": "2026-11-27/what-is-known-about-failure-of-eu-summit.md"
     }
    ]
   }

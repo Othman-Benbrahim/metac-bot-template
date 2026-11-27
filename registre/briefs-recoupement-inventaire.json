@@ -1,24 +1,56 @@
 {
- "genere_le": "2026-11-26",
+ "genere_le": "2026-11-27",
  "compartiments_sans_serie": [
   [
    "dirigeants-elus:executifs",
-   5
+   6
+  ],
+  [
+   "securite-publique:justice",
+   3
+  ],
+  [
+   "politique-americaine:commerce",
+   3
+  ],
+  [
+   "politique-interieure:contestation",
+   2
+  ],
+  [
+   "economie-entreprises:entreprises",
+   2
+  ],
+  [
+   "monnaie-pouvoir:sanctions_financieres",
+   2
   ],
   [
    "epidemies:agent",
    2
   ],
   [
-   "politique-interieure:contestation",
-   1
+   "epidemies:autorites",
+   2
+  ],
+  [
+   "politique-interieure:procedures",
+   2
+  ],
+  [
+   "politique-americaine:poursuites_personnalites",
+   2
+  ],
+  [
+   "sciences-techniques:attentes",
+   2
+  ],
+  [
+   "politique-interieure:gouvernement",
+   2
   ],
   [
    "information-cyber:recits",
-   1
-  ],
-  [
-   "economie-entreprises:entreprises",
    1
   ],
   [
@@ -46,23 +78,11 @@
    1
   ],
   [
-   "monnaie-pouvoir:sanctions_financieres",
-   1
-  ],
-  [
    "medias-diffusion:cinema_series",
    1
   ],
   [
-   "epidemies:autorites",
-   1
-  ],
-  [
    "dirigeants-elus:departs",
-   1
-  ],
-  [
-   "politique-interieure:procedures",
    1
   ],
   [
@@ -82,14 +102,6 @@
    1
   ],
   [
-   "politique-americaine:poursuites_personnalites",
-   1
-  ],
-  [
-   "securite-publique:justice",
-   1
-  ],
-  [
    "information-cyber:cyber",
    1
   ],
@@ -102,11 +114,31 @@
    1
   ],
   [
-   "sciences-techniques:attentes",
+   "politique-interieure:elections",
    1
   ],
   [
-   "politique-americaine:commerce",
+   "organisations-internationales:sante_mondiale",
+   1
+  ],
+  [
+   "sciences-techniques:recherche",
+   1
+  ],
+  [
+   "dirigeants-elus:diplomatie_personnelle",
+   1
+  ],
+  [
+   "sciences-techniques:regulation",
+   1
+  ],
+  [
+   "economie-chinoise:politique_monetaire",
+   1
+  ],
+  [
+   "epidemies:malades",
    1
   ]
  ]
