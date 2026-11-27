@@ -1,6 +1,6 @@
 {
- "openai.com": "17812467411",
- "chatgpt.com": "18579033952",
+ "openai.com": "18039757425",
+ "chatgpt.com": "18606892071",
  "anthropic.com": "18628925479",
  "_tour": {
   "anthropic.com": "2026-11-26",
@@ -8,15 +8,15 @@
   "x.ai": "2026-11-26",
   "grok.com": "2026-11-26",
   "mistral.ai": "2026-11-26",
-  "deepseek.com": "2026-11-23",
-  "deepmind.google": "2026-11-23",
-  "meta.ai": "2026-11-24",
-  "perplexity.ai": "2026-11-24",
+  "deepseek.com": "2026-11-27",
+  "deepmind.google": "2026-11-27",
+  "meta.ai": "2026-11-27",
+  "perplexity.ai": "2026-11-27",
   "kimi.com": "2026-11-24",
   "z.ai": "2026-11-26",
   "qwen.ai": "2026-11-26",
-  "openai.com": "2026-11-24",
-  "chatgpt.com": "2026-11-24"
+  "openai.com": "2026-11-27",
+  "chatgpt.com": "2026-11-27"
  },
  "claude.ai": "18495825668",
  "x.ai": "18621554430",
@@ -24,8 +24,8 @@
  "mistral.ai": "17321851543",
  "deepseek.com": "18564701488",
  "deepmind.google": "18004589239",
- "meta.ai": "17809228090",
- "perplexity.ai": "18361996404",
+ "meta.ai": "18218388571",
+ "perplexity.ai": "18642139497",
  "kimi.com": "18589117733",
  "z.ai": "18229600449",
  "qwen.ai": "17050170010"
