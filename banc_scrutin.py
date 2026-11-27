@@ -316,13 +316,23 @@ def collecter(tout: bool = False) -> int:
     ARCHIVES.parent.mkdir(parents=True, exist_ok=True)
 
     def get(c, url, **kw):
-        for essai in range(3):
-            r = c.get(url, **kw)
-            if r.status_code == 429:
-                time.sleep(10 * (essai + 1))
+        # 2026-11-27 : 183 archives sans page en novembre, alors que la recherche trouve ces pages aujourd'hui
+        # (diagnostic, run 45995542185) : refus passagers probables. Cinq essais, attente croissante, échec signalé.
+        for essai in range(5):
+            try:
+                r = c.get(url, **kw)
+            except httpx.HTTPError:
+                time.sleep(5 * (essai + 1))
                 continue
-            time.sleep(0.2)
-            return r.json() if r.status_code == 200 else {}
+            if r.status_code in (429, 500, 502, 503, 504):
+                time.sleep(15 * (essai + 1))
+                continue
+            time.sleep(0.5)
+            try:
+                return r.json() if r.status_code == 200 else {}
+            except ValueError:
+                return {}
+        print(f"::warning::échec répété : {url}", flush=True)
         return {}
 
     with httpx.Client(headers={"User-Agent": politesse.UA}, timeout=60, follow_redirects=True) as c, \

@@ -41,3 +41,19 @@ Tirages de Monte-Carlo (20 000, graine fixe 0) : part de chaque candidat = moyen
 - **Critère** (risque corrigé d'`essais.py`) : la brique est retenue si la perte log de la brique est plus basse que celle des semblables, avec un intervalle de l'écart entièrement sous 0, sur les questions où la brique ne s'abstient pas. Le taux d'abstention est publié.
 - **Homologie** : on publie le résultat par classe (S1, S2, S3) et par région. Une brique qui gagne en Amérique latine mais perd ailleurs, dans la même classe, n'est pas une brique : c'est une analogie.
 - Même en cas de succès, l'inscription dans les fiches et le passage dans le bot sont des décisions d'auteur datées, après le tournoi pour le bot.
+
+## Amendement du 2026-11-27 (13 h 05) : relance pour dysfonctionnement avéré, avant tout nouveau score
+Le passage de novembre a conclu « trop peu de questions jugées » : 25 questions jugées sur 329, et le critère n'a pas été évalué.
+
+**Cause trouvée sans regarder aucune issue :** 183 archives sur 340 n'ont trouvé aucune page de sondages. Pourtant, le diagnostic en lecture seule du 27/11 (run 45995542185) montre que la recherche de l'API Wikimedia renvoie aujourd'hui la bonne page en première position, par exemple « Opinion polling for the 2026 Brazilian presidential election » ou « Opinion polling for the 46th Canadian federal election ». Les échecs de novembre étaient donc très probablement des refus passagers (429), traités comme « aucune page ».
+
+**Correctif :**
+- La collecte fait cinq essais avec une attente croissante, et signale tout échec répété.
+- Les archives sans page sont reprises, comme le prévoyait déjà `lire_archives`.
+
+**Inchangé :**
+- Le calcul de la brique et le critère, perte logarithmique contre les semblables, avec un intervalle de l'écart entièrement sous 0, publié par classe S1, S2, S3.
+- La cohorte : elle comprend désormais aussi les élections tranchées depuis le 19/11.
+- Rappel du principe de la matriochka : une classe qui perd (S1 en novembre) n'est pas branchée, même si l'ensemble gagne.
+
+Ce relancement est décidé pour un dysfonctionnement de collecte, pas au vu d'un résultat.
