@@ -33,7 +33,8 @@ SITES: dict[str, dict] = {
     "Oscars, presse": {"url": "https://press.oscars.org/tag/news", "motif": None},   # 21 h 01 : demande de l'auteur
     "CIJ, communiqués": {"url": "https://www.icj-cij.org/press-releases", "motif": None},   # 21 h 02 : demande de l'auteur
     "BLS, page des flux": {"url": "https://www.bls.gov/bls/rss.htm", "motif": None},   # 21 h 08 : relever les vraies adresses
-    "GovInfo, page des flux": {"url": "https://www.govinfo.gov/feeds", "motif": None},   # 21 h 19 : relever les adresses   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
+    "GovInfo, page des flux": {"url": "https://www.govinfo.gov/feeds", "motif": None},   # 21 h 19 : relever les adresses
+    "AIE, actualités": {"url": "https://www.iea.org/news", "motif": None},   # 21 h 27 : demande de l'auteur   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
