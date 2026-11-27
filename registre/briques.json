@@ -1,6 +1,6 @@
 {
  "note": "perte log, plus bas = mieux ; ombre ; statut : valide | nuit | non tranché | insuffisant (< 30)",
- "risque_corrige": 0.0033333333333333335,
+ "risque_corrige": 0.025,
  "structures": {
   "seuil": {
    "axe": "vitesse",
@@ -10,8 +10,8 @@
     "perte_reference": 0.723,
     "ecart": -0.0355,
     "intervalle": [
-     -0.0625,
-     -0.0108
+     -0.0538,
+     -0.0181
     ],
     "statut": "valide"
    },
@@ -22,8 +22,8 @@
      "perte_reference": 0.6888,
      "ecart": 0.0223,
      "intervalle": [
-      -0.0553,
-      0.0956
+      -0.0342,
+      0.0787
      ],
      "statut": "non tranché"
     },
@@ -37,8 +37,8 @@
      "perte_reference": 0.7301,
      "ecart": -0.0442,
      "intervalle": [
-      -0.0724,
-      -0.0182
+      -0.0653,
+      -0.0244
      ],
      "statut": "valide"
     },
@@ -51,19 +51,19 @@
   "course": {
    "axe": "taille",
    "ensemble": {
-    "n": 35,
-    "perte_brique": 0.5649,
-    "perte_reference": 0.7444,
-    "ecart": -0.1795,
+    "n": 40,
+    "perte_brique": 0.5077,
+    "perte_reference": 0.7927,
+    "ecart": -0.285,
     "intervalle": [
-     -0.6091,
-     0.3013
+     -0.5826,
+     0.0655
     ],
     "statut": "non tranché"
    },
    "tranches": {
     "infranational": {
-     "n": 9,
+     "n": 14,
      "statut": "insuffisant"
     },
     "national": {
@@ -78,6 +78,7 @@
    "sigma_retenus": {
     "infranational": [
      2.5,
+     4.0,
      20.0
     ],
     "national": [

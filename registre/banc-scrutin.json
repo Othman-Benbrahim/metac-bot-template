@@ -1,37 +1,40 @@
 {
- "questions_electorales": 329,
- "confirmation": 247,
- "jugees": 25,
+ "questions_electorales": 342,
+ "confirmation": 260,
+ "jugees": 30,
  "abstentions": {
-  "aucun sondage du sujet dans les 30 jours": 113,
-  "hors brique (forme)": 80,
-  "pas d'archive ou de tableau": 29
+  "aucun sondage du sujet dans les 30 jours": 118,
+  "hors brique (forme)": 82,
+  "pas d'archive ou de tableau": 30
  },
  "perte": {
-  "semblables": 0.7108,
-  "brique": 0.451
+  "semblables": 0.7811,
+  "brique": 0.3801
  },
- "ecart_brique_moins_semblables": -0.2598,
- "intervalle_corrige": null,
- "verdict": "trop peu de questions jugées",
+ "ecart_brique_moins_semblables": -0.401,
+ "intervalle_corrige": [
+  -0.8285,
+  0.0065
+ ],
+ "verdict": "non tranché",
  "par_classe": {
   "S1": {
    "n": 7,
-   "semblables": 0.6169,
+   "semblables": 0.6171,
    "brique": 1.0829
   },
   "S2": {
-   "n": 4,
-   "semblables": 0.7695,
-   "brique": 0.1769
+   "n": 9,
+   "semblables": 0.974,
+   "brique": 0.0929
   },
   "S3": {
    "n": 14,
-   "semblables": 0.741,
+   "semblables": 0.7392,
    "brique": 0.2134
   }
  },
- "empreinte_sha256": "063ae2219c37c01f051ea3610febce62ce4b18423e7dd1e705c218d02d5d3133",
- "risque_corrige": 0.0033333333333333335,
+ "empreinte_sha256": "309a0583718887d0ea40d314180f0048c350c6be50a672edd394d5fff2924db2",
+ "risque_corrige": 0.025,
  "note": "perte log, plus bas = mieux ; aucune donnée lue hors des archives ; ombre"
 }
