@@ -20,7 +20,7 @@ SITES: dict[str, dict] = {
     # pays est un autre lien de la même ligne du tableau, d'où « ligne » : le titre réunit les liens de la ligne.
     "ElectionGuide": {"url": "https://www.electionguide.org/elections/type/upcoming/",
                       "motif": r"^/elections/id/\d+/?$", "ligne": True,
-                      "valide": False},   # passe à True après la lecture d'essai relue (verifier_flux.py)
+                      "valide": True},   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
@@ -55,7 +55,10 @@ def sonde(html: str, base: str, n: int = 12) -> list[tuple[str, int, str, str]]:
     return [(g, len(v), v[0][0], v[0][1][:80]) for g, v in tri]
 
 
-_DATE = re.compile(r"\b(\d{4}-\d{2}-\d{2}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}, \d{4})\b")
+_MOIS = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?"
+_DATE = re.compile(r"\b(\d{4}-\d{2}-\d{2}|\d{4}/\d{1,2}/\d{1,2}|\d{1,2}/\d{1,2}/\d{4}|" + _MOIS + r" \d{1,2},? \d{4}|"
+                   r"\d{1,2} " + _MOIS + r",? \d{4})\b")
+_DATETIME = re.compile(r"datetime=[\"'](\d{4}-\d{2}-\d{2})")
 
 
 def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
@@ -78,7 +81,7 @@ def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
                 continue
             vus.add(u)
             d = {"lien": u, "titre": t}
-            m = _DATE.search(_BALISE.sub(" ", b)) if ligne else None
+            m = (_DATETIME.search(b) or _DATE.search(_BALISE.sub(" ", b))) if ligne else None
             if m:
                 d["date_affichee"] = m.group(1)
             out.append(d)
