@@ -121,34 +121,53 @@ def date_maj(v: str) -> str | None:
         return None
 
 
+def _matchs(P: dict, codes: set[str]) -> dict[tuple[str, str], tuple[int, int]]:
+    out = {}
+    for k, v in P.items():
+        m = re.fullmatch(r"match_([^\W_]+)_([^\W_]+)", k)
+        if not m or m.group(1) not in codes or m.group(2) not in codes:
+            continue
+        s = re.search(r"(\d+)\s*[–—-]\s*(\d+)", affiche(v))
+        if s:
+            out[(m.group(1), m.group(2))] = (int(s.group(1)), int(s.group(2)))
+    return out
+
+
 def lire_tableau(texte: str) -> dict | None:
+    """Module « Sports table » : équipes déclarées (teamN, team_order, ou à défaut name_X) ; points donnés (win/draw/loss)
+    ou calculés à partir des résultats du module (auto_generate_standings, 2026-11-27 : Bundesliga, Serie A)."""
     for corps in corps_module(texte, "Sports table"):
         P = parametres(corps)
         codes = [P[k] for k in sorted((k for k in P if re.fullmatch(r"team\d+", k)), key=lambda k: int(k[4:]))]
-        if not codes:   # autre écriture du module : liste « team_order = A, B, C »
+        if not codes:
             codes = [x.strip() for x in re.split(r"[,\n]", P.get("team_order", "")) if x.strip()]
+        if not codes:
+            codes = [m.group(1) for k in P if (m := re.fullmatch(r"name_([^\W_]+)", k))]
         if len(codes) < 16:
             continue
+        res = _matchs(P, set(codes))
+        calc = {c: [0, 0, 0] for c in codes}
+        for (h, g), (sh, sg) in res.items():
+            i_h, i_g = (0, 2) if sh > sg else ((1, 1) if sh == sg else (2, 0))
+            calc[h][i_h] += 1
+            calc[g][i_g] += 1
         equipes = {}
         for c in codes:
-            w, d_, l = entier(P.get(f"win_{c}", "0")), entier(P.get(f"draw_{c}", "0")), entier(P.get(f"loss_{c}", "0"))
+            if f"win_{c}" in P:
+                w, d_, l = entier(P.get(f"win_{c}", "0")), entier(P.get(f"draw_{c}", "0")), entier(P.get(f"loss_{c}", "0"))
+            else:
+                w, d_, l = calc[c]
             equipes[c] = {"nom": affiche(P.get(f"name_{c}", c)), "joues": w + d_ + l,
                           "points": 3 * w + d_ + entier(P.get(f"adjust_points_{c}", "0"))}
         return {"equipes": equipes, "mise_a_jour": date_maj(P.get("update", "")),
-                "complete": "complete" in P.get("update", "").lower()}
+                "complete": "complete" in P.get("update", "").lower(), "resultats": res}
     return None
 
 
 def lire_resultats(texte: str, codes: set[str]) -> dict[tuple[str, str], tuple[int, int]]:
     out = {}
-    for corps in corps_module(texte, "Sports results"):
-        for k, v in parametres(corps).items():
-            m = re.fullmatch(r"match_([A-Za-z0-9]+)_([A-Za-z0-9]+)", k)
-            if not m or m.group(1) not in codes or m.group(2) not in codes:
-                continue
-            s = re.search(r"(\d+)\s*[–—-]\s*(\d+)", affiche(v))
-            if s:
-                out[(m.group(1), m.group(2))] = (int(s.group(1)), int(s.group(2)))
+    for corps in corps_module(texte, "Sports results") + corps_module(texte, "Sports table"):
+        out.update(_matchs(parametres(corps), codes))
     return out
 
 
@@ -203,7 +222,9 @@ def etat(diag: bool = False) -> dict:
                     t = (brut(c, titre_saison(a, div)) or "")
                     for g in re.findall(r"\{\{\s*([^{}|]*\btable\b[^{}|]*)\}\}", t, re.I)[:1]:
                         t += "\n" + (brut(c, "Template:" + g.strip()) or "")
-                    k = t.find("#invoke")
+                    k = max(t.find("Sports table"), t.find("Sports_table"))
+                    if k < 0:
+                        k = t.lower().find("league table")
                     print(f"--- {div} : premier #invoke à {k} ---", flush=True)
                     print(t[max(0, k - 40):k + 1200] if k >= 0 else t[:1200], flush=True)
                 continue

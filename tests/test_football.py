@@ -69,3 +69,23 @@ def test_abstention_si_perime(tmp_path, monkeypatch):
     e = fr.estimer("Will Arsenal win the 2026–27 Premier League?", date(2026, 11, 27))
     assert e is not None and 0.01 <= e["p_regle"] <= 0.99
     fr._etat.cache_clear()
+
+
+AUTO = """{{#invoke:Sports table|main|style=WDL
+|auto_generate_standings=y
+|update=23 November 2026
+""" + "\n".join(f"|name_T{i}=[[Club {i}]]" for i in range(1, 17)) + """
+|name_KÖL=[[1. FC Köln]]
+|name_MÖN=[[Borussia Mönchengladbach]]
+|match_KÖL_MÖN=3–1
+|match_MÖN_KÖL=1–1
+|match_T1_T2=0–2
+}}"""
+
+
+def test_tableau_auto_genere():
+    t = cf.lire_tableau(AUTO)
+    assert len(t["equipes"]) == 18 and t["mise_a_jour"] == "2026-11-23"
+    assert t["equipes"]["KÖL"]["points"] == 4 and t["equipes"]["MÖN"]["points"] == 1
+    assert t["equipes"]["T2"]["points"] == 3 and t["equipes"]["KÖL"]["nom"] == "1. FC Köln"
+    assert len(cf.lire_resultats(AUTO, set(t["equipes"]))) == 3
