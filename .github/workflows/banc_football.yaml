@@ -1,0 +1,42 @@
+name: Banc football (vainqueur de championnat, Elo + classement)
+
+# preenregistrements/football-championnats.md (décisions de l'auteur du 2026-11-27, 11 h 42 à 11 h 48). Aucun modèle de
+# langue (aucun crédit). Sources : football-data.co.uk, ClubElo ; robots.txt lu avant toute requête. Rien n'est écrit au
+# registre ; rapport en artefact. D'abord « diagnostic » (noms seulement), puis une seule passe « score ».
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "diagnostic (noms seulement) ou score (le passage unique)"
+        required: true
+        default: diagnostic
+        type: choice
+        options: [diagnostic, score]
+
+permissions:
+  contents: read
+
+jobs:
+  banc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - name: Banc
+        run: |
+          if [ "${{ inputs.mode }}" = "score" ]; then uv run python banc_football.py; else uv run python banc_football.py --diagnostic; fi
+        env:
+          PYTHONUNBUFFERED: "1"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banc-football-${{ inputs.mode }}
+          path: banc_football.json
+          if-no-files-found: ignore
