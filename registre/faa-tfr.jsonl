@@ -117,3 +117,10 @@
 {"notam": "6/9432", "type": "AIR SHOWS/SPORTS", "centre": "ZDC", "etat": "NC", "description": "New Bern, NC, Sunday, November 29, 2026 UTC", "cree_le": "11/23/2026", "vu_le": "2026-11-25"}
 {"notam": "6/9800", "type": "SECURITY", "centre": "ZID", "etat": "IN", "description": "Carmel, IN, Thursday, November 26, 2026 through Thursday, December 24, 2026 Local", "cree_le": "11/25/2026", "vu_le": "2026-11-26"}
 {"notam": "6/9797", "type": "HAZARDS", "centre": "ZHU", "etat": "LA", "description": "NEW ORLEANS, LA, Wednesday, November 25, 2026 through Monday, January 18, 2027 UTC", "cree_le": "11/25/2026", "vu_le": "2026-11-26"}
+{"notam": "6/9862", "type": "SPACE OPERATIONS", "centre": "ZJX", "etat": "FL", "description": "Cape Canaveral, FL, Sunday, November 29, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9861", "type": "SPACE OPERATIONS", "centre": "ZMA", "etat": "FL", "description": "Cape Canaveral, FL, Sunday, November 29, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9859", "type": "SPACE OPERATIONS", "centre": "ZJX", "etat": "FL", "description": "Cape Canaveral, FL, Monday, November 30, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9860", "type": "SPACE OPERATIONS", "centre": "ZMA", "etat": "FL", "description": "Cape Canaveral, FL, Monday, November 30, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9857", "type": "SPACE OPERATIONS", "centre": "ZJX", "etat": "FL", "description": "Cape Canaveral, FL, Tuesday, December 1, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9856", "type": "SPACE OPERATIONS", "centre": "ZMA", "etat": "FL", "description": "Cape Canaveral, FL, Tuesday, December 1, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9837", "type": "HAZARDS", "centre": "ZKC", "etat": "MO", "description": "LOUISIANA, MO, Monday, November 30, 2026 UTC", "cree_le": "11/26/2026", "vu_le": "2026-11-27"}
