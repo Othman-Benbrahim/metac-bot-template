@@ -19,14 +19,13 @@ SORTIE = Path("registre") / "verification-flux.md"
 # 2026-11-27 : sources primaires (décision de l'auteur, 18 h). Adresses SUPPOSÉES, à vérifier : rien n'est ajouté à la
 # collecte avant ce passage. ReliefWeb n'est pas repris (retiré en 0.10.167 : page vide pour GitHub). Crisis Group a
 # refusé GitHub (403) le 17/11 sur ses pages ; son flux est sondé une fois, et un nouveau refus sera respecté.
+# ONU Info (retiré en 0.10.170) et le Parlement européen (déjà collecté par FeedBurner) ne sont pas repris.
 CANDIDATS = {
     "Security Council Report, tout": "https://www.securitycouncilreport.org/feed/",
     "Security Council Report, What's in Blue": "https://www.securitycouncilreport.org/whatsinblue/feed/",
     "Crisis Group": "https://www.crisisgroup.org/rss",
     "ElectionGuide (IFES)": "https://www.electionguide.org/feed/",
     "ONU, couverture des réunions": "https://press.un.org/en/rss.xml",
-    "ONU Info, toutes les nouvelles": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
-    "Parlement européen, communiqués": "https://www.europarl.europa.eu/rss/doc/press-releases/en.xml",
     "Conseil de l'UE, communiqués": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
     "Commission européenne, presse": "https://ec.europa.eu/commission/presscorner/api/rss?language=en",
 }
