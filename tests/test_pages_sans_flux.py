@@ -36,3 +36,10 @@ class TestPagesSansFlux(unittest.TestCase):
         self.assertEqual(r[0]["date_affichee"], "2026-11-29")
         self.assertEqual(pfs.iso("Sept. 6, 2027"), "")      # format inconnu : rien d'inventé
         self.assertEqual(pfs.iso("6 Dec 2026"), "2026-12-06")
+
+    def test_titre_par_adresse_et_borne(self):
+        page = ('<a href="/blog/assistive-robotics-sam"><img src="x.png"></a>'
+                '<a href="/blog/long-one">' + "mot " * 60 + '</a><a href="/blog/long-one">court</a>')
+        r = pfs.lire(page, "https://ai.meta.com/blog/", r"^/blog/[A-Za-z0-9-]+/?$")
+        self.assertEqual(r[0]["titre"], "assistive robotics sam")
+        self.assertLessEqual(len(r[1]["titre"]), 120)

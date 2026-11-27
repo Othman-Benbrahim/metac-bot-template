@@ -78,3 +78,89 @@ who.int,primaire_officielle,international,en,OMS,organisation internationale
 securitycouncilreport.org,ong_analyse,international,en,"Security Council Report (fondations et États donateurs)",suivi du Conseil de sécurité de l'ONU
 crisisgroup.org,ong_analyse,international,en,"International Crisis Group (États, fondations, entreprises)",analyse des conflits ; CrisisWatch mensuel
 ec.europa.eu,primaire_officielle,UE,en,Commission européenne,communiqués et décisions
+economictimes.indiatimes.com,presse_specialisee,IN,en,"Times Group (Bennett, Coleman & Co.)",économie
+timesofindia.indiatimes.com,presse_generaliste,IN,en,"Times Group (Bennett, Coleman & Co.)",
+forbes.com,presse_specialisee,US,en,Forbes Media (Integrated Whale Media),économie
+fortune.com,presse_specialisee,US,en,Fortune Media (Chatchaval Jiaravanon),économie
+bbc.co.uk,media_public,GB,en,BBC (redevance),
+bbc.com,media_public,GB,en,BBC (redevance),
+cnn.com,presse_generaliste,US,en,Warner Bros. Discovery,
+cnbc.com,presse_specialisee,US,en,NBCUniversal (Comcast),économie et marchés
+nytimes.com,presse_generaliste,US,en,The New York Times Company,
+washingtonpost.com,presse_generaliste,US,en,Jeff Bezos (Nash Holdings),
+theguardian.com,presse_generaliste,GB,en,Scott Trust,
+smh.com.au,presse_generaliste,AU,en,Nine Entertainment,
+abc.net.au,media_public,AU,en,Australian Broadcasting Corporation (État),
+prothomalo.com,presse_generaliste,BD,bn,Transcom Group,
+folha.uol.com.br,presse_generaliste,BR,pt,Grupo Folha,
+uol.com.br,agregateur,BR,pt,Grupo Folha,portail
+brasilwire.com,ong_media,BR,en,à compléter,site militant de gauche
+globalnews.ca,presse_generaliste,CA,en,Corus Entertainment,
+lapresse.ca,presse_generaliste,CA,fr,Structure sans but lucratif (fiducie),
+france24.com,media_public,FR,en/fr,France Médias Monde (État),audiovisuel extérieur de la France
+nouvelobs.com,presse_generaliste,FR,fr,Groupe Le Monde (Claude Perdriel),
+francetvinfo.fr,media_public,FR,fr,France Télévisions (État),
+faz.net,presse_generaliste,DE,de,FAZIT-Stiftung,
+tagesschau.de,media_public,DE,de,ARD (redevance),
+dw.com,media_public,DE,en,Deutsche Welle (État fédéral),audiovisuel extérieur allemand
+hongkongfp.com,presse_generaliste,HK,en,"HKFP (sans but lucratif, dons des lecteurs)",indépendant
+indiatoday.in,presse_generaliste,IN,en,India Today Group (Living Media),
+thehindubusinessline.com,presse_specialisee,IN,en,The Hindu Group,économie
+republika.co.id,presse_generaliste,ID,id,Mahaka Media,
+isna.ir,media_d_etat,IR,fa,Université Azad (financement public),agence semi-officielle iranienne
+mehrnews.com,media_d_etat,IR,fa,Organisation de propagande islamique (État),agence semi-officielle iranienne
+thejournal.ie,presse_generaliste,IE,en,Journal Media,
+ansa.it,agence,IT,it,Coopérative des éditeurs italiens,
+adnkronos.com,agence,IT,it,Gruppo Adnkronos,
+internazionale.it,revue_specialisee,IT,it,Internazionale SpA,revue de presse internationale
+asahi.com,presse_generaliste,JP,ja,Asahi Shimbun Company,
+reforma.com,presse_generaliste,MX,es,Grupo Reforma,
+elfinanciero.com.mx,presse_specialisee,MX,es,Grupo Multimedios,économie
+mexiconewsdaily.com,presse_generaliste,MX,en,à compléter,anglophone
+dailypost.ng,presse_generaliste,NG,en,à compléter,
+premiumtimesng.com,presse_generaliste,NG,en,Premium Times Services,presse d'enquête
+tribune.com.pk,presse_generaliste,PK,en,Lakson Group (Express Media),
+nation.com.pk,presse_generaliste,PK,en,Nawa-i-Waqt Group,
+jang.com.pk,presse_generaliste,PK,ur,Jang Group,
+inquirer.net,presse_generaliste,PH,en,Prieto family (Inquirer Group),
+philstar.com,presse_generaliste,PH,en,MediaQuest (PLDT),
+bworldonline.com,presse_specialisee,PH,en,Philippine Star Group,économie
+newsweek.pl,presse_generaliste,PL,pl,Ringier Axel Springer Polska,
+gazetaprawna.pl,presse_specialisee,PL,pl,Infor PL,droit et économie
+rp.pl,presse_generaliste,PL,pl,Gremi Media,
+rmf24.pl,presse_generaliste,PL,pl,Bauer Media,
+gazeta.ru,presse_generaliste,RU,ru,à compléter,presse russe sous contrôle de l'État
+rg.ru,media_d_etat,RU,ru,Gouvernement russe,journal officiel du gouvernement
+rt.com,media_d_etat,RU,en,État russe (TV-Novosti),média d'État ; sanctionné dans l'UE
+citizen.co.za,presse_generaliste,ZA,en,Caxton,
+dailymaverick.co.za,presse_generaliste,ZA,en,Daily Maverick (indépendant),presse d'enquête
+moneyweb.co.za,presse_specialisee,ZA,en,Moneyweb Holdings,économie
+iol.co.za,presse_generaliste,ZA,en,Independent Media,
+elconfidencial.com,presse_generaliste,ES,es,Titania Compañía Editorial,
+eldiario.es,presse_generaliste,ES,es,Diario de Prensa Digital (salariés et lecteurs),
+expansion.com,presse_specialisee,ES,es,Unidad Editorial (RCS MediaGroup),économie
+tsn.ua,presse_generaliste,UA,uk,1+1 Media,
+pravda.com.ua,presse_generaliste,UA,uk,Dragon Capital,
+nv.ua,presse_generaliste,UA,uk,Dragon Capital,
+foxnews.com,presse_generaliste,US,en,Fox Corporation (famille Murdoch),ligne conservatrice
+latimes.com,presse_generaliste,US,en,Patrick Soon-Shiong,
+politico.com,presse_specialisee,US,en,Axel Springer,politique américaine
+bair.berkeley.edu,centre_recherche,US,en,Université de Californie à Berkeley,
+aws.amazon.com,blog_entreprise,US,en,Amazon,
+fast.ai,centre_recherche,US,en,fast.ai (sans but lucratif),
+mistral.ai,blog_entreprise,FR,en,Mistral AI,
+fda.gov,primaire_officielle,US,en,FDA (État fédéral),autorisations de médicaments
+ema.europa.eu,primaire_officielle,UE,en,Agence européenne des médicaments,autorisations de médicaments
+scotusblog.com,presse_specialisee,US,en,à compléter,référence sur la Cour suprême
+congress.gov,primaire_officielle,US,en,Bibliothèque du Congrès,procédure législative
+bills.parliament.uk,primaire_officielle,GB,en,Parlement britannique,procédure législative
+govinfo.gov,primaire_officielle,US,en,Imprimerie fédérale (GPO),"lois, Federal Register"
+nasa.gov,primaire_officielle,US,en,NASA (État fédéral),espace
+nhc.noaa.gov,primaire_officielle,US,en,NOAA (État fédéral),cyclones
+anthropic.com,blog_entreprise,US,en,Anthropic,conflit d'intérêts : le bot est écrit par un modèle d'Anthropic
+ai.meta.com,blog_entreprise,US,en,Meta,
+x.ai,blog_entreprise,US,en,xAI,
+nobelprize.org,primaire_officielle,SE,en,Fondation Nobel,annonces des prix
+asp.icc-cpi.int,primaire_officielle,international,en,Assemblée des États parties de la CPI,
+icj-cij.org,primaire_officielle,international,en/fr,Cour internationale de justice (ONU),
+electionguide.org,ong_analyse,international,en,IFES (fonds publics et privés),calendrier des élections

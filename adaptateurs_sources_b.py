@@ -187,6 +187,7 @@ HORS_TOUT = ("sp_energie", "matieres_presse", "monnaie", "religion", "biodiversi
              "surveillance", "geopolitique_europe", "moyen_orient", "chine", "russie", "amerique_latine", "inde",
              "voix_etat",   # 2026-11-25
              "primaires",   # 2026-11-27
+             "presse_monde", "regulateurs", "justice", "legislatif", "statistiques", "espace", "cyclones",   # 2026-11-27, 21 h 34
              "laboratoires_ia")   # 2026-11-26
 
 

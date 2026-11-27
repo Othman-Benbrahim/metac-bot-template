@@ -18,23 +18,21 @@ from urllib.parse import urljoin, urlparse
 SITES: dict[str, dict] = {
     # sonde du 2026-11-27 (run 46055564179) : 36 liens /elections/id/N, titrés par le seul type (« Referendum ») ; le
     # pays est un autre lien de la même ligne du tableau, d'où « ligne » : le titre réunit les liens de la ligne.
+    # Lecture d'essai relue (run 46055978219) : titres « type — pays » propres.
     "ElectionGuide": {"url": "https://www.electionguide.org/elections/type/upcoming/",
-                      "motif": r"^/elections/id/\d+/?$", "ligne": True,
-                      "valide": True},
-    # 2026-11-27, 20 h 48 : laboratoires d'IA sans flux connu ; sonde d'abord (motif None : non collectés).
+                      "motif": r"^/elections/id/\d+/?$", "ligne": True, "valide": True},
+    # 2026-11-27, 21 h 34 : motifs fixés sur la sonde du run 46063994555 ; « valide » après la lecture d'essai relue.
     # Anthropic : conflit d'intérêts déclaré (le code est écrit par un modèle d'Anthropic).
-    "Anthropic": {"url": "https://www.anthropic.com/news", "motif": None},
-    "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": None},
-    "Mistral": {"url": "https://mistral.ai/news", "motif": None},
-    "xAI": {"url": "https://x.ai/news", "motif": None},
-    "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": None},   # 2026-11-27, 20 h 58 : demande de l'auteur
-    "CPI, Assemblée des États parties": {"url": "https://asp.icc-cpi.int/press-releases", "motif": None},  # 20 h 59
-    "CPI, la Cour": {"url": "https://www.icc-cpi.int/news", "motif": None},   # communiqués de la Cour elle-même
-    "Oscars, presse": {"url": "https://press.oscars.org/tag/news", "motif": None},   # 21 h 01 : demande de l'auteur
-    "CIJ, communiqués": {"url": "https://www.icj-cij.org/press-releases", "motif": None},   # 21 h 02 : demande de l'auteur
-    "BLS, page des flux": {"url": "https://www.bls.gov/bls/rss.htm", "motif": None},   # 21 h 08 : relever les vraies adresses
-    "GovInfo, page des flux": {"url": "https://www.govinfo.gov/feeds", "motif": None},   # 21 h 19 : relever les adresses
-    "AIE, actualités": {"url": "https://www.iea.org/news", "motif": None},   # 21 h 27 : demande de l'auteur   # lecture d'essai relue (run 46055978219) : titres « type — pays » propres
+    "Anthropic": {"url": "https://www.anthropic.com/news",
+                  "motif": r"^/(news/(?!announcements/?$)[a-z0-9-]+|claude-[a-z]+(-[a-z]+)*-\d+-\d+)/?$"},
+    "Meta AI": {"url": "https://ai.meta.com/blog/", "motif": r"^/blog/[A-Za-z0-9-]+/?$"},
+    "xAI": {"url": "https://x.ai/news", "motif": r"^/news/[a-z0-9-]+/?$"},
+    "Prix Nobel": {"url": "https://www.nobelprize.org/", "motif": r"^/prizes/[a-z-]+/\d{4}/"},
+    "CPI, Assemblée des États parties": {"url": "https://asp.icc-cpi.int/press-releases",
+                                         "motif": r"^/press-releases/PR-?\d+/?$"},
+    "CIJ, communiqués": {"url": "https://www.icj-cij.org/press-releases", "motif": r"-pre-\d+-\d+-en\.pdf$"},
+    # Écartés au run 46063994555 : Mistral (flux trouvé, collecté par RSS), CPI la Cour (page en JavaScript, aucun
+    # lien), Oscars, BLS et AIE (refus 403, respectés), GovInfo (ses flux ont été relevés).
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
@@ -95,6 +93,17 @@ def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
     de la ligne est gardée comme métadonnée (« date_affichee »). Rien d'autre du texte n'est gardé.
     """
     rx = re.compile(motif)
+    if not ligne:   # titre : le plus long des titres du lien, sinon le dernier segment de l'adresse ; 120 caractères au plus
+        meilleurs: dict[str, str] = {}
+        for u, t in liens(html, base):
+            if rx.search(urlparse(u).path) and (u not in meilleurs or len(t) > len(meilleurs[u])):
+                meilleurs[u] = t
+        out = []
+        for u, t in meilleurs.items():
+            if not t:
+                t = [x for x in urlparse(u).path.split("/") if x][-1].replace("-", " ")
+            out.append({"lien": u, "titre": t[:120].rsplit(" ", 1)[0] if len(t) > 120 else t})
+        return out
     blocs = re.split(r"<tr\b", html, flags=re.I) if ligne else [html]
     vus, out = set(), []
     for b in blocs:

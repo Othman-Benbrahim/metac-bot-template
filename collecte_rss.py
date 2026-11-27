@@ -187,7 +187,11 @@ FLUX = {
     "laboratoires_ia": ["https://openai.com/news/rss.xml",                       # OpenAI : actualités et sorties
                         "https://deepmind.google/blog/rss.xml",                  # Google DeepMind : blog
                         "https://blog.google/technology/ai/rss/",                # Google : IA (annonces Gemini)
-                        "https://huggingface.co/blog/feed.xml"],                 # Hugging Face : blog (modèles ouverts)
+                        "https://huggingface.co/blog/feed.xml",                 # Hugging Face : blog (modèles ouverts)
+                        "http://bair.berkeley.edu/blog/feed.xml",   # Berkeley AI Research (BAIR)
+                        "https://aws.amazon.com/blogs/machine-learning/feed/",   # AWS Machine Learning Blog
+                        "https://www.fast.ai/index.xml",   # fast.ai
+                        "https://mistral.ai/rss.xml"],  # Mistral (ajouts du 2026-11-27, run 46063994555)
     "chine": ["https://www.scmp.com/rss/91/feed",                                 # South China Morning Post : Chine
               "https://chinamediaproject.org/feed/"],                             # China Media Project (discours officiel)
     "russie": ["https://meduza.io/rss/en/all",                                    # Meduza (indépendant, en exil)
@@ -205,6 +209,110 @@ FLUX = {
     "primaires": ["https://www.securitycouncilreport.org/whatsinblue/feed/",       # Security Council Report : What's in Blue
                   "https://www.crisisgroup.org/rss",                               # International Crisis Group
                   "https://ec.europa.eu/commission/presscorner/api/rss?language=en"],  # Commission européenne : presse
+    # 2026-11-27, 21 h 34 (décision de l'auteur : « ratisser large ») : flux vérifiés lisibles depuis GitHub (run
+    # 46063994555) ; presse des OPML awesome-RSS-feeds triée par Claude, sources primaires des niches trouvées par l'auteur.
+    # En ombre, non lus par le bot ; ils alimentent le puits (lien, titre, métadonnées, jamais le texte).
+    "presse_monde": [
+        "https://economictimes.indiatimes.com/rssfeedsdefault.cms",   # Business & Economy | Economic Times
+        "https://www.forbes.com/business/feed/",   # Business & Economy | Forbes - Business
+        "https://fortune.com/feed",   # Business & Economy | Fortune
+        "http://feeds.bbci.co.uk/news/world/rss.xml",   # News | BBC News
+        "http://rss.cnn.com/rss/edition_world.rss",   # News | CNN.com - RSS Channel - World
+        "https://www.cnbc.com/id/100727362/device/rss/rss.html",   # News | International: Top News And Analysis
+        "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",   # News | NYT > World News
+        "http://feeds.washingtonpost.com/rss/world",   # News | World
+        "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",   # News | World News, Today World News, Latest Internat
+        "https://www.theguardian.com/world/rss",   # News | World news
+        "https://www.smh.com.au/rss/feed.xml",   # Australia | Sydney Morning Herald - Latest News
+        "https://www.abc.net.au/news/feed/1948/rss.xml",   # Australia | ABC News
+        "https://www.prothomalo.com/feed/",   # Bangladesh | প্রথম আলো
+        "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",   # Brazil | Folha de S.Paulo - Em cima da hora - Principa
+        "http://rss.home.uol.com.br/index.xml",   # Brazil | UOL
+        "http://www.brasilwire.com/feed/",   # Brazil | Brasil Wire
+        "https://globalnews.ca/feed/",   # Canada | https://globalnews.ca/feed/
+        "https://www.lapresse.ca/actualites/rss",   # Canada | LaPresse.ca - Actualités
+        "https://www.france24.com/en/rss",   # France | france24.com
+        "https://www.nouvelobs.com/a-la-une/rss.xml",   # France | L'Obs - A la une
+        "https://www.francetvinfo.fr/titres.rss",   # France | Franceinfo - Les Titres
+        "https://www.faz.net/rss/aktuell/",   # Germany | Aktuell - FAZ.NET
+        "http://www.tagesschau.de/xml/rss2",   # Germany | tagesschau.de - Die Nachrichten der ARD
+        "https://rss.dw.com/rdf/rss-en-all",   # Germany | Deutsche Welle
+        "https://www.hongkongfp.com/feed/",   # Hong Kong SAR China | Hong Kong Free Press HKFP
+        "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",   # India | Times of India
+        "https://www.indiatoday.in/rss/home",   # India | India Today
+        "https://www.thehindubusinessline.com/feeder/default.rss",   # India | Business Line - Home
+        "https://www.republika.co.id/rss/",   # Indonesia | Republika Online RSS Feed
+        "https://www.isna.ir/rss",   # Iran | خبرگزاری ایسنا
+        "https://www.mehrnews.com/rss",   # Iran | خبرگزاری مهر
+        "https://www.thejournal.ie/feed/",   # Ireland | TheJournal.ie
+        "https://www.ansa.it/sito/ansait_rss.xml",   # Italy | RSS di   - ANSA.it
+        "http://rss.adnkronos.com/RSS_PrimaPagina.xml",   # Italy | Adnkronos - ultimoratop
+        "https://www.internazionale.it/sitemaps/rss.xml",   # Italy | Internazionale
+        "http://rss.asahi.com/rss/asahi/newsheadlines.rdf",   # Japan | 朝日新聞デジタル
+        "https://www.reforma.com/rss/portada.xml",   # Mexico | Reforma
+        "https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml",   # Mexico | El Financiero
+        "https://mexiconewsdaily.com/feed/",   # Mexico | Mexico News Daily
+        "https://dailypost.ng/feed",   # Nigeria | Daily Post Nigeria
+        "https://www.premiumtimesng.com/feed",   # Nigeria | Premium Times Nigeria
+        "https://tribune.com.pk/feed/home",   # Pakistan | The Express Tribune
+        "https://nation.com.pk/rss/top-stories",   # Pakistan | The Nation - Top Stories
+        "https://jang.com.pk/rss/1/1",   # Pakistan | قومی خبریں
+        "https://www.inquirer.net/fullfeed",   # Philippines | INQUIRER.net
+        "https://www.philstar.com/rss/headlines",   # Philippines | philstar.com - RSS Headlines
+        "https://www.bworldonline.com/feed/",   # Philippines | BusinessWorld
+        "https://www.newsweek.pl/rss.xml",   # Poland | Newsweek Polska
+        "http://rss.gazetaprawna.pl/GazetaPrawna",   # Poland | GazetaPrawna.pl - biznes, podatki, prawo, fin
+        "https://www.rp.pl/rss/1019",   # Poland | https://www.rp.pl
+        "https://www.rmf24.pl/feed",   # Poland | RMF24.pl
+        "https://www.gazeta.ru/export/rss/first.xml",   # Russia | Газета.Ru - Первая полоса
+        "https://rg.ru/xml/index.xml",   # Russia | Российская Газета
+        "https://www.rt.com/rss/",   # Russia | RT - Daily news
+        "https://citizen.co.za/feed/",   # South Africa | The Citizen
+        "https://www.dailymaverick.co.za/dmrss/",   # South Africa | Daily Maverick
+        "https://www.moneyweb.co.za/feed/",   # South Africa | Moneyweb
+        "http://rss.iol.io/iol/news",   # South Africa | IOL section feed for News
+        "https://rss.elconfidencial.com/espana/",   # Spain | España
+        "https://www.eldiario.es/rss/",   # Spain | ElDiario.es - ElDiario.es
+        "https://e00-expansion.uecdn.es/rss/portada.xml",   # Spain | Portada // expansion
+        "https://tsn.ua/rss/full.rss",   # Ukraine | Новини на tsn.ua
+        "https://www.pravda.com.ua/rss/",   # Ukraine | Українська правда
+        "https://nv.ua/rss/all.xml",   # Ukraine | НВ
+        "http://feeds.bbci.co.uk/news/rss.xml",   # United Kingdom | BBC News - Home
+        "http://feeds.foxnews.com/foxnews/latest",   # United States | FOX News
+        "https://www.latimes.com/world-nation/rss2.0.xml",   # United States | World & Nation
+        "https://rss.politico.com/playbook.xml",   # United States | Playbook
+    ],
+    "regulateurs": [
+        "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml",   # FDA | communiqués
+        "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/drugs/rss.xml",   # FDA | nouveautés médicaments
+        "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml",   # FDA | nouveautés vaccins et produits biologiques
+        "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml",   # FDA | alertes de sécurité MedWatch
+        "https://www.ema.europa.eu/en/news.xml",   # EMA | actualités et communiqués
+        "https://www.ema.europa.eu/en/new-human-medicine-new.xml",   # EMA | nouveaux médicaments humains
+        "https://www.ema.europa.eu/en/human-medicine-new.xml",   # EMA | avis et rapports d'évaluation (EPAR)
+        "https://www.ema.europa.eu/en/withdrawn-applications.xml",   # EMA | demandes retirées
+    ],
+    "justice": [
+        "https://www.scotusblog.com/feed/",   # Justice | SCOTUSblog
+    ],
+    "legislatif": [
+        "https://www.congress.gov/rss/presented-to-president.xml",   # Congrès US | textes transmis au président
+        "https://bills.parliament.uk/rss/publicbills.rss",   # Parlement britannique | projets de loi publics
+        "https://www.govinfo.gov/rss/plaw.xml",   # GovInfo | lois promulguées (adresse supposée)
+        "https://www.govinfo.gov/rss/fr.xml",   # GovInfo | Federal Register (adresse supposée)
+    ],
+    "statistiques": [
+        "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_PREREL",   # Eurostat | communiqués (euro-indicateurs)
+    ],
+    "espace": [
+        "https://www.nasa.gov/news-release/feed/",   # NASA | communiqués
+        "https://www.nasa.gov/missions/artemis/feed/",   # NASA | Artemis
+        "https://www.nasa.gov/missions/station/feed/",   # NASA | Station spatiale
+    ],
+    "cyclones": [
+        "https://www.nhc.noaa.gov/index-at.xml",   # NHC | cyclones, bassin Atlantique
+        "https://www.nhc.noaa.gov/index-ep.xml",   # NHC | cyclones, Pacifique Est
+    ],
     "presse": [
         "https://www.rfi.fr/fr/monde/rss",
         "https://sympli.rss-fusion.com/rss/ed181345284980c7c79fadd0f5f23b1c21c4f0fe6f70b868",   # France 24 : monde
@@ -360,7 +468,7 @@ MATIERES_CSV = Path("registre") / "rss-matieres.csv"
 FAMILLES_CSV = Path("registre") / "rss-familles.csv"
 FAMILLES_VUS = Path("registre") / "rss-familles-vus.txt"   # 0.10.458 : empreintes déjà comptées dans rss-familles.csv
 
-DEDOUBLONNER = {"surveillance", "crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "primaires", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
+DEDOUBLONNER = {"surveillance", "crime", "defense", "biodiversite", "asie", "transport", "tech", "minerais", "inegalites", "analyse", "afrique", "primaires", "presse_monde", "presse", "voix_citoyennes", "economie", "renseignement", "lettres_fr", "parlement_ue", "conseil_ue", "parlement_ue_presse", "sp_energie", "matieres_presse"}
 FENETRE_TITRES, MOTS_MIN = 30, 5
 
 
