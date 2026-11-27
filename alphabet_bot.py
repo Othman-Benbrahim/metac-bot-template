@@ -528,41 +528,45 @@ class AlphabetBot(FallTemplateBot2026):
         # 0.10.399 (décision d'auteur du 2026-11-20, 19 h 34) : questions de seuil de prix, modèle log-normal calibré
         # (preenregistrements/seuils-de-prix-calibrage.md : −0,206 contre le taux de base sur 138 questions). La
         # prévision du pipeline reste scellée dans le journal ; le remplacement est scellé dans journal-seuils.jsonl.
-        sp_ = self._seuil_de_prix(question, q, r.p_poste)
+        def _tag(e, nom):   # 0.10.517 : famille de la brique appliquée (garde-fou et journal)
+            if e is not None:
+                e.setdefault("famille", nom)
+            return e
+        sp_ = _tag(self._seuil_de_prix(question, q, r.p_poste), "prix")
         # 0.10.494 (décision de l'auteur du 2026-11-24, 15 h 15) : événements comptés (violence entre deux gouvernements,
         # séismes de magnitude 6), mélange d'un quart en log-cote avec la prévision du bot, déplacement plafonné à 15
         # points ; calibrage sur 54 questions résolues (registre/calibrage-evenements.json). Scellé dans
         # journal-evenements.jsonl.
         if sp_ is None:
-            sp_ = self._evenement_compte(question, q, r.p_poste)
+            sp_ = _tag(self._evenement_compte(question, q, r.p_poste), "evenements")
         # 0.10.495 (décision de l'auteur du 2026-11-24, 15 h 30) : brique du maintien (mortalité SSA, risques Archigos,
         # saillance 3), même mélange et même plafond ; scellée dans journal-maintien.jsonl.
         if sp_ is None:
-            sp_ = self._maintien(question, q, r.p_poste)
+            sp_ = _tag(self._maintien(question, q, r.p_poste), "maintien")
         # 0.10.497 (décision de l'auteur du 2026-11-24, 15 h 40) : échelle de l'escalade pour les questions de conflit
         # entre États (acte lourd ou léger), même mélange et même plafond ; scellée dans journal-escalade.jsonl.
         if sp_ is None:
-            sp_ = self._escalade(question, q, r.p_poste)
+            sp_ = _tag(self._escalade(question, q, r.p_poste), "escalade")
         # 0.10.498 (décision de l'auteur du 2026-11-24, 15 h 51) : « un parmi N » avec saillance pour « X gagnera-t-il
         # <compétition> ? », confirmé une fois sur les questions de 2026 ; même mélange, même plafond ; journal-competitions.jsonl.
         if sp_ is None:
-            sp_ = self._competition(question, q, r.p_poste)
+            sp_ = _tag(self._competition(question, q, r.p_poste), "competitions")
         # 0.10.499 (décision de l'auteur du 2026-11-24, 15 h 59 : champ libre) : brique banque centrale, inertie de la Fed
         # (chaîne de Markov sur les réunions programmées depuis 1994, sources federalreserve.gov) ; passée une fois :
         # 0,469 contre 0,663 sur 47 questions, 0,575 contre 0,763 sur celles de 2026 ; même mélange, même plafond ;
         # journal-banque-centrale.jsonl.
         if sp_ is None:
-            sp_ = self._banque_centrale(question, q, r.p_poste)
+            sp_ = _tag(self._banque_centrale(question, q, r.p_poste), "banque_centrale")
         # 0.10.500 (décision de l'auteur du 2026-11-24, 16 h 28 : découpage « matriochka ») : accords selon l'état de la
         # guerre (UCDP fin des conflits, table sourcée des guerres) ; seule la sous-famille « accord de paix pendant une
         # guerre en cours » a passé les critères (2 questions) ; même mélange, même plafond ; journal-accords.jsonl.
         if sp_ is None:
-            sp_ = await self._accords_guerre(question, q, r.p_poste, research)
+            sp_ = _tag(await self._accords_guerre(question, q, r.p_poste, research), "accords")
         # 0.10.509 (décisions de l'auteur du 2026-11-24, 21 h 14 à 21 h 24) : sondes de l'écosystème (relations, ponts,
         # phase), seulement sans brique, étalon recalé sur les 6 derniers mois, plafond 5 points, règle d'arrêt par
         # e-valeurs (preenregistrements/sondes-ecosysteme.md) ; journal-sondes.jsonl.
         if sp_ is None:
-            sp_ = self._sondes(question, q, r.p_poste)
+            sp_ = _tag(self._sondes(question, q, r.p_poste), "sondes")
         # 0.10.408 (décision de l'auteur du 2026-11-20, 23 h 11) : cote Polymarket relevée EN OMBRE, après le calcul
         # de la prévision, scellée dans journal-cotes.jsonl ; elle ne touche jamais ce qui est posté.
         try:
@@ -585,6 +589,11 @@ class AlphabetBot(FallTemplateBot2026):
                 texte = (r.commentaire or "") + (f"\n\nContradictor: the coded rule does not apply to this question "
                                                  f"(« {v.get('citation')} »); the rule is set aside.")
                 sp_, p_mesure = None, r.p_poste
+        if sp_ is not None and "p_regle" in sp_:
+            p_mesure, gf = self._garde_fou(q, sp_.get("famille", "?"), p_mesure, a.prediction_value)
+            if gf:
+                texte += (f"\n\nSafeguard (coded): the coded rule is extreme and the model alone disagrees by more than "
+                          f"{GF_DESACCORD:.0%}; the rule is held at {p_mesure:.0%}.")
         j = await self._juge(question, q, research, a.prediction_value, p_mesure)
         if j is not None and j["decision"] == "ecart":
             texte += (f"\n\nInformed judge (bounded): departure for motive « {j['motif']} », capped at "
@@ -646,6 +655,30 @@ class AlphabetBot(FallTemplateBot2026):
         except Exception as ex:   # le juge qui échoue ne bloque rien : on poste la mesure
             logger.warning("juge informé : non appliqué (%s)", type(ex).__name__)
             return None
+
+    def _garde_fou(self, q, famille: str, p_mesure: float, p_A: float) -> tuple[float, bool]:
+        """0.10.517 (décision de l'auteur, 2026-11-27, 13 h 20) : une brique EXTRÊME (au-delà de 90 % ou en deçà de
+        10 %) contredite de plus de 40 points par le modèle seul (bras A, scellé avant elle) est ramenée à 90 % ou 10 %.
+        Réserve de l'auteur (« une correction générale lisserait les cas particuliers ») : la règle est générale par
+        défaut, mais chaque famille garde son dossier (journal-garde-fou.jsonl) ; une famille où le garde-fou se révèle
+        nuisible sur ses questions résolues en est exemptée (GF_EXEMPTES), par décision d'auteur sur mesure."""
+        try:
+            if famille in GF_EXEMPTES or p_A is None:
+                return p_mesure, False
+            extreme = p_mesure > 1 - GF_BORNE or p_mesure < GF_BORNE
+            if not extreme or abs(float(p_A) - p_mesure) <= GF_DESACCORD:
+                return p_mesure, False
+            p = min(max(p_mesure, GF_BORNE), 1 - GF_BORNE)
+            ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                     "date_information": datetime.now(timezone.utc).date().isoformat(), "famille": famille,
+                     "p_brique": p_mesure, "p_A": float(p_A), "p_garde_fou": p}
+            ligne["sceau"] = ap.sceau(ligne)
+            with open(ap.registre_ecrivable() / "journal-garde-fou.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+            return p, True
+        except Exception as ex:   # le garde-fou qui échoue ne bloque rien
+            logger.warning("garde-fou : non appliqué (%s)", type(ex).__name__)
+            return p_mesure, False
 
     def _porte(self, brique: str, question, q) -> bool:
         """0.10.513 (accord de l'auteur, 2026-11-27, 11 h 35) : porte de compatibilité famille de situation × brique
@@ -789,6 +822,7 @@ class AlphabetBot(FallTemplateBot2026):
             import tennis_elo_regle as ter
             e = ter.estimer(question.question_text or "", datetime.now(timezone.utc).date())
             if e is not None and self._porte("tennis_elo", question, q):
+                e["famille"] = "tennis_elo"
                 jour = datetime.now(timezone.utc).date().isoformat()
                 ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                          "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "tennis_elo": e}
@@ -806,6 +840,7 @@ class AlphabetBot(FallTemplateBot2026):
             fin = q.resolution.isoformat() if hasattr(q.resolution, "isoformat") else str(q.resolution or "")[:10]
             e = scr.estimer(question.question_text or "", datetime.now(timezone.utc).date(), fin)
             if e is not None and self._porte("scrutin", question, q):
+                e["famille"] = "scrutin"
                 jour = datetime.now(timezone.utc).date().isoformat()
                 ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                          "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "scrutin": e}
@@ -822,6 +857,7 @@ class AlphabetBot(FallTemplateBot2026):
             import football_elo_regle as fer
             e = fer.estimer(question.question_text or "", datetime.now(timezone.utc).date())
             if e is not None and self._porte("football_elo", question, q):
+                e["famille"] = "football_elo"
                 jour = datetime.now(timezone.utc).date().isoformat()
                 ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
                          "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "football_elo": e}
@@ -952,6 +988,8 @@ class AlphabetBot(FallTemplateBot2026):
             return None
 
 
+GF_BORNE, GF_DESACCORD = 0.10, 0.40   # 0.10.517 : fixés avant tout résultat (2026-11-27, 13 h 20)
+GF_EXEMPTES: set[str] = set()        # familles exemptées, seulement au vu de leurs questions résolues (décision d'auteur)
 BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)
 FILTRE = __import__("re").compile(r"content management policy|content_filter|ResponsibleAIPolicyViolation", __import__("re").I)
 
