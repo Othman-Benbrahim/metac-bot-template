@@ -69,7 +69,7 @@ def principal() -> int:
     L += ["", f"{ok} flux lisibles sur {len(CANDIDATS)}.", "", "## Pages sans flux connu", "",
           "| Page | Robots | HTTP | Liens | Flux annoncés |", "|---|---|---|---|---|"]
     with httpx.Client(headers=cr.UA, follow_redirects=True, timeout=30) as c:
-        sondes = []
+        sondes, essais = [], []
         for nom, url in PAGES.items():
             if not politesse.autorise(c, url):
                 L.append(f"| {nom} | refusé | — | — | — |")
@@ -81,11 +81,18 @@ def principal() -> int:
                 L.append(f"| {nom} | autorisé | {r.status_code} | {html.lower().count('<a ')} | {' ; '.join(fl) or '—'} |")
                 if html:
                     sondes.append((nom, pfs.sonde(html, str(r.url))))
+                    d = pfs.SITES.get(nom, {})
+                    if d.get("motif"):   # lecture d'essai avec le motif fixé : 8 premiers liens, lien et titre
+                        lus = pfs.lire(html, str(r.url), d["motif"], d.get("ligne", False))
+                        essais.append((nom, len(lus), lus[:8]))
             except Exception as e:
                 L.append(f"| {nom} | autorisé | erreur {type(e).__name__} | — | — |")
     for nom, gs in sondes:
         L += ["", f"### Gabarits des liens : {nom}", "", "| Gabarit | Liens | Exemple | Titre |", "|---|---|---|---|"]
         L += [f"| {g} | {n} | {u} | {t.replace('|', '/')} |" for g, n, u, t in gs]
+    for nom, n, lus in essais:
+        L += ["", f"### Lecture d'essai : {nom} ({n} liens retenus)", ""]
+        L += [f"- {x['titre'].replace('|', '/')} — {x.get('date_affichee', 'sans date')} — {x['lien']}" for x in lus]
     SORTIE.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
     return 0

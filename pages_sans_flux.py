@@ -16,7 +16,11 @@ from urllib.parse import urljoin, urlparse
 
 # nom → page lue et motif du chemin des articles (None tant que la sonde n'a pas été lue)
 SITES: dict[str, dict] = {
-    "ElectionGuide": {"url": "https://www.electionguide.org/elections/", "motif": None},
+    # sonde du 2026-11-27 (run 46055564179) : 36 liens /elections/id/N, titrés par le seul type (« Referendum ») ; le
+    # pays est un autre lien de la même ligne du tableau, d'où « ligne » : le titre réunit les liens de la ligne.
+    "ElectionGuide": {"url": "https://www.electionguide.org/elections/type/upcoming/",
+                      "motif": r"^/elections/id/\d+/?$", "ligne": True,
+                      "valide": False},   # passe à True après la lecture d'essai relue (verifier_flux.py)
 }
 
 _A = re.compile(r"<a\b[^>]*?href=[\"']([^\"'#]+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
@@ -51,13 +55,73 @@ def sonde(html: str, base: str, n: int = 12) -> list[tuple[str, int, str, str]]:
     return [(g, len(v), v[0][0], v[0][1][:80]) for g, v in tri]
 
 
-def lire(html: str, base: str, motif: str) -> list[dict]:
-    """Liens d'articles (chemin conforme au motif), sans doublon, avec un titre non vide."""
+_DATE = re.compile(r"\b(\d{4}-\d{2}-\d{2}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}, \d{4})\b")
+
+
+def lire(html: str, base: str, motif: str, ligne: bool = False) -> list[dict]:
+    """Liens d'articles (chemin conforme au motif), sans doublon, avec un titre non vide.
+
+    ligne=True : le titre réunit les titres de tous les liens de la même ligne de tableau (<tr>), et la première date
+    de la ligne est gardée comme métadonnée (« date_affichee »). Rien d'autre du texte n'est gardé.
+    """
     rx = re.compile(motif)
+    blocs = re.split(r"<tr\b", html, flags=re.I) if ligne else [html]
     vus, out = set(), []
-    for u, t in liens(html, base):
-        if u in vus or not t or not rx.search(urlparse(u).path):
+    for b in blocs:
+        ls = liens(b, base)
+        for u, t in ls:
+            if u in vus or not rx.search(urlparse(u).path):
+                continue
+            if ligne:
+                t = " — ".join(x for _, x in ls if x)
+            if not t:
+                continue
+            vus.add(u)
+            d = {"lien": u, "titre": t}
+            m = _DATE.search(_BALISE.sub(" ", b)) if ligne else None
+            if m:
+                d["date_affichee"] = m.group(1)
+            out.append(d)
+    return out
+
+
+def collecter(client, jour: str, vues_fichier=None) -> list[dict]:
+    """Lignes du puits pour les liens jamais vus des SITES (jour = jour de première vue). Robots respecté.
+
+    Une page sans flux montre les mêmes liens d'un jour à l'autre : les liens déjà vus sont mémorisés dans
+    registre/puits/pages-vues.json (liens seuls). Un site en échec est sauté, la collecte continue.
+    """
+    import json
+    from pathlib import Path
+
+    import politesse
+    p = Path(vues_fichier or Path("registre") / "puits" / "pages-vues.json")
+    try:
+        vues = set(json.loads(p.read_text(encoding="utf-8")))
+    except (OSError, ValueError):
+        vues = set()
+    out = []
+    for nom, d in SITES.items():
+        if not d.get("motif") or not d.get("valide"):
             continue
-        vus.add(u)
-        out.append({"lien": u, "titre": t})
+        try:
+            if not politesse.autorise(client, d["url"]):
+                print(f"Pages sans flux : {nom} refusé par robots.txt")
+                continue
+            r = client.get(d["url"])
+            if r.status_code != 200:
+                print(f"Pages sans flux : {nom} HTTP {r.status_code}")
+                continue
+            arts = lire(r.text, str(r.url), d["motif"], d.get("ligne", False))
+        except Exception as e:
+            print(f"Pages sans flux : {nom} en échec ({type(e).__name__})")
+            continue
+        neufs = [a for a in arts if a["lien"] not in vues]
+        print(f"Pages sans flux : {nom}, {len(arts)} liens lus, {len(neufs)} nouveaux")
+        for a in neufs:
+            vues.add(a["lien"])
+            out.append({"jour": jour, "lien": a["lien"], "titre": a["titre"], "famille": "page:" + nom,
+                        "date_affichee": a.get("date_affichee", "")})
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(sorted(vues), ensure_ascii=False), encoding="utf-8")
     return out

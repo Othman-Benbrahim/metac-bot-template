@@ -692,6 +692,12 @@ def principal() -> int:
             w.writerow(["matiere", "jour", "famille", "articles"])
             for (m, j, fa), n in sorted(matieres.items(), key=lambda t: (t[0][1], t[0][0], t[0][2])):
                 w.writerow([m, j, fa, n])
+    try:   # 2026-11-27 (décision de l'auteur, 20 h 15) : sites sans flux, lecteur maison (lien et titre seulement)
+        import pages_sans_flux
+        with httpx.Client(headers=UA, follow_redirects=True, timeout=30) as c_pages:
+            puits_lignes += pages_sans_flux.collecter(c_pages, datetime.now(timezone.utc).date().isoformat())
+    except Exception as e:
+        print(f"Pages sans flux : non lues ({type(e).__name__}: {e})")
     if puits_lignes:   # 2026-11-27 : puits de données ; un échec n'arrête jamais la collecte
         try:
             import puits

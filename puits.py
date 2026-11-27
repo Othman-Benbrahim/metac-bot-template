@@ -37,6 +37,8 @@ def ajouter(lignes: list[dict], dossier: Path = DOSSIER) -> int:
         r = {"j": l["jour"], "u": l["lien"][:500], "t": " ".join(l["titre"].split())[:300], "d": domaine(l["lien"]),
              "f": l.get("famille", ""), "p": sorted(l.get("pays") or []), "n": sorted(l.get("noms") or [])[:20],
              "m": sorted(l.get("matieres") or [])}
+        if l.get("date_affichee"):   # pages sans flux : date montrée par la page (métadonnée)
+            r["x"] = l["date_affichee"][:40]
         par_mois.setdefault(l["jour"][:7], []).append(r)
     dossier.mkdir(parents=True, exist_ok=True)
     n = 0
