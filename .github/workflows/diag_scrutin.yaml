@@ -1,0 +1,24 @@
+name: Diagnostic des pages de sondages (lecture seule)
+
+# 2026-11-27 (accord de l'auteur, 13 h 02) : pourquoi 183 archives du banc scrutin n'ont trouvé aucune page.
+# Aucun score, aucune écriture au registre.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: "0.13.1"
+      - run: uv sync --locked
+      - run: uv run python -u diag_scrutin_titres.py
