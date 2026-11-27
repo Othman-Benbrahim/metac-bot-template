@@ -15,6 +15,7 @@ from pathlib import Path
 import httpx
 
 import collecte_rss as cr
+import pages_sans_flux as pfs
 import politesse
 
 SORTIE = Path("registre") / "verification-flux.md"
@@ -34,12 +35,7 @@ CANDIDATS = {
 
 # 2026-11-27 : pages des sources sans flux connu (ElectionGuide, ONU). Pour chacune : robots, code HTTP, flux annoncés
 # dans l'en-tête de la page (<link rel="alternate">), nombre de liens. Rien n'est gardé du texte de la page.
-PAGES = {
-    "ElectionGuide, accueil": "https://www.electionguide.org/",
-    "ElectionGuide, élections": "https://www.electionguide.org/elections/",
-    "ONU, presse, accueil": "https://press.un.org/en",
-    "ONU, couverture des réunions": "https://press.un.org/en/content/meetings-coverage",
-}
+PAGES = {nom: d["url"] for nom, d in pfs.SITES.items()}   # 2026-11-27, 20 h 15 : les pages du lecteur maison
 _ALT = re.compile(r"<link[^>]+>", re.I)
 
 
@@ -73,6 +69,7 @@ def principal() -> int:
     L += ["", f"{ok} flux lisibles sur {len(CANDIDATS)}.", "", "## Pages sans flux connu", "",
           "| Page | Robots | HTTP | Liens | Flux annoncés |", "|---|---|---|---|---|"]
     with httpx.Client(headers=cr.UA, follow_redirects=True, timeout=30) as c:
+        sondes = []
         for nom, url in PAGES.items():
             if not politesse.autorise(c, url):
                 L.append(f"| {nom} | refusé | — | — | — |")
@@ -82,8 +79,13 @@ def principal() -> int:
                 html = r.text if r.status_code == 200 else ""
                 fl = flux_annonces(html, str(r.url))
                 L.append(f"| {nom} | autorisé | {r.status_code} | {html.lower().count('<a ')} | {' ; '.join(fl) or '—'} |")
+                if html:
+                    sondes.append((nom, pfs.sonde(html, str(r.url))))
             except Exception as e:
                 L.append(f"| {nom} | autorisé | erreur {type(e).__name__} | — | — |")
+    for nom, gs in sondes:
+        L += ["", f"### Gabarits des liens : {nom}", "", "| Gabarit | Liens | Exemple | Titre |", "|---|---|---|---|"]
+        L += [f"| {g} | {n} | {u} | {t.replace('|', '/')} |" for g, n, u, t in gs]
     SORTIE.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
     return 0
