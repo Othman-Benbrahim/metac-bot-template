@@ -244,19 +244,54 @@ def simuler(ms: list[dict], D: date, force: dict, H: float, pn: float, rng) -> d
     return {e: float(comptes[ix[e]]) / TIRAGES for e in eqs}
 
 
-def regler(src: Source, div: str) -> tuple[float, float]:
+K_ELO, H_ELO, ELO0 = 20.0, 60.0, 1500.0   # amendement 2 (2026-11-27, 12 h 26) : Elo calculé sur openfootball
+
+
+def elo_a(saisons: dict, div: str, D: date) -> dict:
+    """Elo de chaque club (clé normalisée) à la date D, à partir des seuls matchs joués avant D (2015/16 d'abord).
+    Promus : Elo moyen, en fin de saison, des promus de la saison précédente (1500 la première saison)."""
+    R, avant, promus_prec = {}, set(), []
+    for a in sorted(x for (d, x) in saisons if d == div):
+        ms = sorted(saisons[(div, a)], key=lambda m: m["d"])
+        if not ms or (ms[0]["d"] >= D and a != saison_de(D)):
+            break
+        equipes = {cle(m["h"]) for m in ms} | {cle(m["a"]) for m in ms}
+        nouvelles = equipes - avant if avant else set()
+        init = statistics.mean(R[t] for t in promus_prec) if promus_prec else ELO0
+        for t in equipes:
+            if t in nouvelles or t not in R:
+                R[t] = init if avant else ELO0
+        for m in ms:
+            if m["d"] >= D:
+                break
+            if m["hg"] is None or m["ag"] is None:
+                continue
+            h, g = cle(m["h"]), cle(m["a"])
+            E = 1 / (1 + 10 ** (-(R[h] + H_ELO - R[g]) / 400))
+            S = 1.0 if m["hg"] > m["ag"] else (0.5 if m["hg"] == m["ag"] else 0.0)
+            R[h] += K_ELO * (S - E)
+            R[g] -= K_ELO * (S - E)
+        promus_prec, avant = sorted(nouvelles), equipes
+    return R
+
+
+def forces(saisons: dict, div: str, D: date, clubs: list[str]) -> dict:
+    R = elo_a(saisons, div, D)
+    return {c: R.get(cle(c), ELO0) for c in clubs}
+
+
+def regler(saisons: dict, div: str) -> tuple[float, float]:
     """H et p_N sur les saisons de développement (préenregistrement, § Méthode M, point 5)."""
-    pays = LIGUES[div][0]
     n = nuls = dom = 0
     paires = []
     for a in DEV:
-        ms = src.matchs(div, a)
+        ms = saisons[(div, a)]
         par_mois = defaultdict(list)
         for m in ms:
             if m["hg"] is not None:
                 par_mois[date(m["d"].year, m["d"].month, 1)].append(m)
         for j, lot in par_mois.items():
-            f, _ = correspondance(sorted({m["h"] for m in lot} | {m["a"] for m in lot}), src.elo(j), pays)
+            f = forces(saisons, div, j, sorted({m["h"] for m in lot} | {m["a"] for m in lot}))
             for m in lot:
                 n += 1
                 nuls += m["hg"] == m["ag"]
@@ -324,7 +359,8 @@ def principal() -> int:
             if a not in EPREUVE or not ms:
                 continue
             clubs = sorted({m["h"] for m in ms} | {m["a"] for m in ms})
-            _, mq = correspondance(clubs, src.elo(date(a, 10, 1)), LIGUES[div][0])
+            R = elo_a(saisons, div, date(a + 1, 1, 1))
+            mq = [c for c in clubs if cle(c) not in R]
             for c in mq:
                 manques[div].add(c)
         for q in reelles:
@@ -338,7 +374,7 @@ def principal() -> int:
 
     import numpy as np
     rng = np.random.default_rng(GRAINE)
-    reglages = {div: regler(src, div) for div in LIGUES}
+    reglages = {div: regler(saisons, div) for div in LIGUES}
     print("réglages H, p_N :", reglages, flush=True)
     lignes, exclus = [], []
     for div, (pays, N, _) in LIGUES.items():
@@ -352,12 +388,7 @@ def principal() -> int:
             clubs = sorted({m["h"] for m in ms} | {m["a"] for m in ms})
             for mo in MOIS:
                 D = date(a + (mo < 7), mo, 1)
-                f, mq = correspondance(clubs, src.elo(D), pays)
-                if len(mq) > 2:
-                    exclus.append(f"{div} {a} {D} : {len(mq)} clubs sans Elo")
-                    continue
-                med = statistics.median(f.values())
-                force = {c: f.get(c, med) for c in clubs}
+                force, mq = forces(saisons, div, D, clubs), []
                 pM = simuler(ms, D, force, H, pn, rng)
                 pT = simuler(ms, D, {c: 1500.0 for c in clubs}, H, pn, rng)
                 for c in clubs:
@@ -400,9 +431,7 @@ def principal() -> int:
             r2.append({"titre": q["titre"], "exclue": "club ou saison introuvable"})
             continue
         pays, N, _ = LIGUES[q["div"]]
-        f, mq = correspondance(clubs, src.elo(q["jeu"]), pays)
-        med = statistics.median(f.values())
-        force = {x: f.get(x, med) for x in clubs}
+        force = forces(saisons, q["div"], q["jeu"], clubs)
         H, pn = reglages[q["div"]]
         y = int(q["issue"])
         pM = simuler(ms, q["jeu"], force, H, pn, rng)[c]

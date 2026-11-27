@@ -78,3 +78,22 @@ Le premier diagnostic (run 45985888792) s'est arrêté avant tout téléchargeme
 - La correspondance des noms passe par des jetons partagés : le candidat unique qui partage le plus de mots significatifs. La table d'alias est étendue aux noms longs d'openfootball.
 
 Le reste de la procédure est inchangé.
+
+## Amendement 2 du 2026-11-27 (12 h 26), avant tout calcul de score
+Le diagnostic (run 45986813035) montre que ClubElo ne répond pas aux machines de GitHub : 23 minutes d'attente, aucun Elo reçu. openfootball, en revanche, a tout livré (55 saisons), et les 26 questions réelles retrouvent leur club.
+
+Décision de l'auteur (12 h 26) : « On fait avec ce qu'on a ». **L'Elo est désormais calculé sur les résultats d'openfootball**, comme pour le tennis :
+- **Départ** : 1500 pour tous en 2015/16. Les saisons 2015/16 à 2018/19 servent de chauffe et de développement.
+- **Mise à jour** après chaque match joué avant D : K = 20 ; avantage du terrain de 60 points dans la mise à jour ; résultat 1, ½ ou 0.
+- **Promus** : ils reçoivent l'Elo moyen, en fin de saison, des promus de la saison précédente. Un club qui revient est traité comme un promu.
+- **Pas de retour vers la moyenne** entre deux saisons.
+- **Clés** : les clubs sont identifiés par leur nom normalisé, ce qui supprime toute correspondance entre deux sources.
+- **Limite déclarée** : l'Elo ne voit que les cinq championnats, ni les coupes d'Europe ni les autres divisions.
+
+H et p_N de la simulation restent réglés sur les saisons de développement, désormais avec cet Elo. Le reste de la procédure est inchangé.
+
+Vérification faite avant le score, sans aucune issue : têtes du classement Elo à quelques dates.
+- Liverpool en tête en Angleterre au 1/1/2021.
+- Barcelone et le Real Madrid en Espagne au 1/10/2023.
+- Le Bayern en Allemagne au 1/3/2020.
+- Le PSG en France au 1/9/2025.
