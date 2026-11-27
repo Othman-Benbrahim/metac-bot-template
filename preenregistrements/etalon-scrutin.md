@@ -57,3 +57,21 @@ Le passage de novembre a conclu « trop peu de questions jugées » : 25 questio
 - Rappel du principe de la matriochka : une classe qui perd (S1 en novembre) n'est pas branchée, même si l'ensemble gagne.
 
 Ce relancement est décidé pour un dysfonctionnement de collecte, pas au vu d'un résultat.
+
+## Résultat de la relance (run 45995971880, 2026-11-27, 13 h 09)
+**Ma correction d'abord.** Seuls 10 couples restaient à archiver dans la cohorte (178 questions de 2026). Les 183 archives sans page appartenaient presque toutes aux années d'avant 2026, collectées avec `--tout`, hors de la cohorte du test. L'amendement a donc peu changé la matière. Le vrai frein de la cohorte est ailleurs : la page est lue, mais le sujet n'est pas trouvé dans les tableaux, ou aucun sondage ne date des 30 jours précédents (118 questions).
+
+**Résultats :**
+- 342 questions électorales, 260 en confirmation.
+- **30 questions jugées** : 9 S2, 14 S3, 7 S1.
+- Abstentions : 118 sans sondage du sujet dans les 30 jours, 82 hors forme, 30 sans archive ni tableau.
+- Perte : brique 0,380 contre 0,781 pour les semblables. Écart −0,401, intervalle corrigé [−0,829 ; +0,007].
+- **Verdict : non tranché, de justesse.** La brique n'est pas branchée.
+
+| Classe | Questions | Brique | Semblables |
+|---|---|---|---|
+| S1 (deux tours) | 7 | 1,083 | 0,617 |
+| S2 (un tour) | 9 | 0,093 | 0,974 |
+| S3 (primaires) | 14 | 0,213 | 0,739 |
+
+**Pas de nouveau passage sur ces questions.** Restreindre le critère à S2 et S3 après avoir vu ces chiffres serait un choix fait après coup. Toute suite (critère par classe, lecteur des sujets amélioré) se pré-enregistre maintenant et s'éprouve sur des élections tranchées APRÈS aujourd'hui.
