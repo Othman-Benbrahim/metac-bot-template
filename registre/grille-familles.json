@@ -1,0 +1,662 @@
+{
+ "date": "2026-11-27",
+ "methode": "mots du titre, famille principale = première reconnue ; descriptif",
+ "dynamique": {
+  "distinction_classement": "compétition",
+  "sport": "compétition",
+  "election": "course",
+  "maintien": "maintien",
+  "rencontre": "rare",
+  "accord_conflit": "procédure",
+  "accord_general": "procédure",
+  "conflit_escalade": "rare",
+  "justice": "procédure",
+  "banque_centrale": "lente",
+  "marche_prix": "rapide",
+  "statistique_publiee": "lente ou cumulative",
+  "climat_catastrophe": "cyclique",
+  "sante_epidemie": "cyclique",
+  "autorisation_reglementaire": "procédure",
+  "procedure_legislative": "procédure",
+  "action_executive": "rare",
+  "entreprise": "procédure",
+  "technologie_ia": "jalon",
+  "jalon_projet": "jalon"
+ },
+ "metaculus": {
+  "total": 271,
+  "familles": [
+   {
+    "famille": "election",
+    "n": 32,
+    "part": 0.118,
+    "oui": 0.219,
+    "couverte_brique": 0.031
+   },
+   {
+    "famille": "conflit_escalade",
+    "n": 29,
+    "part": 0.107,
+    "oui": 0.241,
+    "couverte_brique": 0.379
+   },
+   {
+    "famille": "sans_famille",
+    "n": 27,
+    "part": 0.1,
+    "oui": 0.259,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "marche_prix",
+    "n": 27,
+    "part": 0.1,
+    "oui": 0.296,
+    "couverte_brique": 0.037
+   },
+   {
+    "famille": "technologie_ia",
+    "n": 19,
+    "part": 0.07,
+    "oui": 0.316,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "autorisation_reglementaire",
+    "n": 17,
+    "part": 0.063,
+    "oui": 0.353,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "distinction_classement",
+    "n": 16,
+    "part": 0.059,
+    "oui": 0.562,
+    "couverte_brique": 0.125
+   },
+   {
+    "famille": "sport",
+    "n": 14,
+    "part": 0.052,
+    "oui": 0.429,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "statistique_publiee",
+    "n": 13,
+    "part": 0.048,
+    "oui": 0.308,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "maintien",
+    "n": 13,
+    "part": 0.048,
+    "oui": 0.308,
+    "couverte_brique": 0.308
+   },
+   {
+    "famille": "procedure_legislative",
+    "n": 12,
+    "part": 0.044,
+    "oui": 0.333,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "justice",
+    "n": 12,
+    "part": 0.044,
+    "oui": 0.167,
+    "couverte_brique": 0.167
+   },
+   {
+    "famille": "accord_general",
+    "n": 8,
+    "part": 0.03,
+    "oui": 0.125,
+    "couverte_brique": 0.375
+   },
+   {
+    "famille": "entreprise",
+    "n": 7,
+    "part": 0.026,
+    "oui": 0.0,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "rencontre",
+    "n": 7,
+    "part": 0.026,
+    "oui": 0.143,
+    "couverte_brique": 0.571
+   },
+   {
+    "famille": "sante_epidemie",
+    "n": 6,
+    "part": 0.022,
+    "oui": 0.167,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "action_executive",
+    "n": 5,
+    "part": 0.018,
+    "oui": 0.4,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "climat_catastrophe",
+    "n": 2,
+    "part": 0.007,
+    "oui": 0.5,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "accord_conflit",
+    "n": 2,
+    "part": 0.007,
+    "oui": 0.5,
+    "couverte_brique": 1.0
+   },
+   {
+    "famille": "jalon_projet",
+    "n": 2,
+    "part": 0.007,
+    "oui": 0.5,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "banque_centrale",
+    "n": 1,
+    "part": 0.004,
+    "oui": 0.0,
+    "couverte_brique": 1.0
+   }
+  ]
+ },
+ "toutes": {
+  "total": 2200,
+  "familles": [
+   {
+    "famille": "election",
+    "n": 558,
+    "part": 0.254,
+    "oui": 0.33,
+    "couverte_brique": 0.226
+   },
+   {
+    "famille": "sans_famille",
+    "n": 350,
+    "part": 0.159,
+    "oui": 0.231,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "sport",
+    "n": 337,
+    "part": 0.153,
+    "oui": 0.205,
+    "couverte_brique": 0.401
+   },
+   {
+    "famille": "marche_prix",
+    "n": 166,
+    "part": 0.075,
+    "oui": 0.229,
+    "couverte_brique": 0.265
+   },
+   {
+    "famille": "technologie_ia",
+    "n": 148,
+    "part": 0.067,
+    "oui": 0.243,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "conflit_escalade",
+    "n": 128,
+    "part": 0.058,
+    "oui": 0.211,
+    "couverte_brique": 0.516
+   },
+   {
+    "famille": "distinction_classement",
+    "n": 94,
+    "part": 0.043,
+    "oui": 0.309,
+    "couverte_brique": 0.277
+   },
+   {
+    "famille": "statistique_publiee",
+    "n": 63,
+    "part": 0.029,
+    "oui": 0.286,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "rencontre",
+    "n": 62,
+    "part": 0.028,
+    "oui": 0.5,
+    "couverte_brique": 0.581
+   },
+   {
+    "famille": "maintien",
+    "n": 48,
+    "part": 0.022,
+    "oui": 0.312,
+    "couverte_brique": 0.438
+   },
+   {
+    "famille": "accord_conflit",
+    "n": 29,
+    "part": 0.013,
+    "oui": 0.379,
+    "couverte_brique": 0.828
+   },
+   {
+    "famille": "banque_centrale",
+    "n": 28,
+    "part": 0.013,
+    "oui": 0.25,
+    "couverte_brique": 0.679
+   },
+   {
+    "famille": "procedure_legislative",
+    "n": 27,
+    "part": 0.012,
+    "oui": 0.296,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "justice",
+    "n": 26,
+    "part": 0.012,
+    "oui": 0.115,
+    "couverte_brique": 0.077
+   },
+   {
+    "famille": "autorisation_reglementaire",
+    "n": 25,
+    "part": 0.011,
+    "oui": 0.28,
+    "couverte_brique": 0.04
+   },
+   {
+    "famille": "jalon_projet",
+    "n": 25,
+    "part": 0.011,
+    "oui": 0.12,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "accord_general",
+    "n": 24,
+    "part": 0.011,
+    "oui": 0.167,
+    "couverte_brique": 0.458
+   },
+   {
+    "famille": "action_executive",
+    "n": 21,
+    "part": 0.01,
+    "oui": 0.333,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "entreprise",
+    "n": 19,
+    "part": 0.009,
+    "oui": 0.263,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "sante_epidemie",
+    "n": 12,
+    "part": 0.005,
+    "oui": 0.083,
+    "couverte_brique": 0.0
+   },
+   {
+    "famille": "climat_catastrophe",
+    "n": 10,
+    "part": 0.005,
+    "oui": 0.5,
+    "couverte_brique": 0.0
+   }
+  ]
+ },
+ "associations_suspectes": {
+  "n": 16,
+  "par_brique": {
+   "autres_accords": 16
+  },
+  "exemples": [
+   {
+    "source": "polymarket",
+    "id": "0xab6faa3e66abacc484bbb4bd31ae5e2a56d6f6252b5023631f1bd9e5299fa2f8",
+    "titre": "Will Donald Trump win Nobel Peace Prize in 2025?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "metaculus",
+    "id": "19724",
+    "titre": "Will Russia have significantly expanded its controlled territory in Ukraine on January 1, 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "conflit_escalade"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x319825b4422801a53da59c796e17cfb0fb08bd5183f30d837bf6c1ae564fb9cf",
+    "titre": "Will Greta Thunberg win the Nobel Peace Prize in 2025?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0xdd84a0f9830eb540be5cd7a22bcaaa27aedced37c7994c480f95669a341f1c4e",
+    "titre": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x1e7a7b53f33712909925d133f51a3454a97f8d39bb2651761c4ee44d580ae2df",
+    "titre": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x97115010af13666600dc8776dce48290f5c4c23d387a86a97f6b4b38561dd5af",
+    "titre": "Will Elon Musk win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "infer",
+    "id": "1704",
+    "titre": "Will an AI-enabled cyber-attack, attributed to a state actor, cause significant disruption to critical national infrastructure in any G20 country before 1 July ",
+    "brique": "autres_accords",
+    "familles": [
+     "conflit_escalade",
+     "technologie_ia"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0xb3fefe9667acca5ca31a8e330219dc67a01b374331d9bf4875357655a5508815",
+    "titre": "Will UNRWA win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x720e7267b2bd49feeaed5cf254b5d5243aa4d5e4f2ac03e4a5cb1bd9eea8a6eb",
+    "titre": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x0d58510591b53c9837c30c1f5a202232da376460634aee9da71a6bfeb15350bb",
+    "titre": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x32146c285b1d126556a309e3eae227f614076c93c0b080bae4ed6aaf6b1e9e5f",
+    "titre": "Will Recep Tayyip Erdoğan win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0x36081a32ac369bad207447fa2bc5d6d663fb576e935178a4a297931ec571f5d1",
+    "titre": "Will the International Court of Justice win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election",
+     "justice"
+    ]
+   },
+   {
+    "source": "manifold",
+    "id": "ZQvUHx5d2tphDz1tJSMM",
+    "titre": "Will there be official peace talks involving both Putin and Zelenskyy before Aug 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "rencontre"
+    ]
+   },
+   {
+    "source": "metaculus",
+    "id": "41804",
+    "titre": "Will Sudan's Emergency Response Rooms win the Nobel Peace Prize in 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election",
+     "action_executive"
+    ]
+   },
+   {
+    "source": "manifold",
+    "id": "hERQAyOtAZ",
+    "titre": "Will Trump wins the Nobel Peace Prize in 2026? [High Liquidity]",
+    "brique": "autres_accords",
+    "familles": [
+     "distinction_classement",
+     "election"
+    ]
+   },
+   {
+    "source": "polymarket",
+    "id": "0xfba1944e3a766b128d79d1c344e6b87bbbcd422a9eebe8a2111d4cf97262f238",
+    "titre": "Russia-Ukraine peace talks by November 30, 2026?",
+    "brique": "autres_accords",
+    "familles": [
+     "rencontre"
+    ]
+   }
+  ]
+ },
+ "sans_famille": {
+  "n": 350,
+  "exemples": [
+   {
+    "source": "manifold",
+    "titre": "Will over 70% of Manifold users think that Elon Musk does not deserve 100 billion dollars?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Lionel Messi retire before the end of 2024?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Google Chrome be the most popular browser at the end of 2025?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will the upcoming Minecraft movie get over a 6.0 on IMDB?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Ding Liren repeat as World Chess Champion?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will a large scale Alignment Project like The Omega Protocol be funded before 2025?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Hezbollah directly engage in combat operations against Israel?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will TSLA reach >$ 275 before 8pm EST on 8/8?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Binance collapse before the end of 2024?"
+   },
+   {
+    "source": "metaculus",
+    "titre": "Will diplomatic expulsions or recalls take place between the Philippines and China before August 1, 2024?"
+   },
+   {
+    "source": "metaculus",
+    "titre": "Will Scotland leave the United Kingdom before 2025?"
+   },
+   {
+    "source": "metaculus",
+    "titre": "Will GB News be broadcasting in 2025?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "James Norton announced as next James Bond?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will POPCAT reach $1b first?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will 'Despicable Me 4' gross most in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will TOSHI reach $1b first?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Russian nuke in space in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will 'Joker 2' gross most in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will Satoshi Nakamoto's identity not be proven in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will Satoshi Nakamoto's identity be proven in Q4 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Andrew Tate guilty of human trafficking in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "TikTok sale announced before August?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Another player Week 1 starter for Steelers?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will 'Deadpool 3' gross most in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Iggy Azalea criminal charges in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will another cat memecoin reach $1b first?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Justin Fields Week 1 starter for Steelers?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will weed be rescheduled in 2024?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Damson Idris announced as next James Bond?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Tom Hardy announced as next James Bond?"
+   },
+   {
+    "source": "polymarket",
+    "titre": "Will 'Dune: Part 2' gross most in 2024?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will human narration for audiobooks become mostly unnecessary before 2026?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Was synthetic video data generated and used in training Sora?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will the upcoming Minecraft movie make over a billion dollars at the worldwide box office?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will a legal sub two-hour marathon be run before December 31, 2025."
+   },
+   {
+    "source": "manifold",
+    "titre": "Will GTA VI get delayed again?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Saudi Arabia abandon (or vastly scale back) the NEOM linear city project by 2028?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will at least three of Trump's cabinet nominees fail?"
+   },
+   {
+    "source": "manifold",
+    "titre": "Will Trump & Elon cut >250,000 government employees in 2025?"
+   },
+   {
+    "source": "metaculus",
+    "titre": "Will any senior executives of these major public companies be imprisoned for corporate crimes before 2026?"
+   }
+  ]
+ }
+}
