@@ -1,0 +1,77 @@
+domaine,type,pays,langue,proprietaire_ou_financeur,note
+afro.who.int,primaire_officielle,international,en/fr,OMS (bureau Afrique),organisation internationale
+aljazeera.com,media_public_etranger,QA,en,État du Qatar (financement public),média d'État qatari ; ligne éditoriale liée à la politique étrangère du Qatar
+americasquarterly.org,revue_specialisee,US,en,Americas Society / Council of the Americas,revue d'analyse
+atlanticcouncil.org,think_tank,US,en,"dons de gouvernements, entreprises et fondations (publiés)",proche des positions atlantistes (OTAN) ; financeurs publiés
+blog.google,blog_entreprise,US,en,Google,communication de l'entreprise : source primaire sur ses propres annonces
+burkina24.com,presse_generaliste,BF,fr,privé,presse nationale
+canadianminingjournal.com,presse_specialisee,CA,en,privé,presse minière
+cert.ssi.gouv.fr,primaire_officielle,FR,fr,ANSSI (État français),alertes de sécurité
+chinadaily.com.cn,media_d_etat,CN,en,État chinois (Parti communiste),"voix officielle : source primaire de la position de Pékin, pas des faits contestés"
+chinamediaproject.org,centre_recherche,HK/US,en,projet universitaire indépendant,analyse des médias chinois
+cisa.gov,primaire_officielle,US,en,État fédéral américain,alertes de sécurité
+citizenlab.ca,centre_recherche,CA,en,Université de Toronto,enquêtes techniques sur la surveillance
+consilium.europa.eu,primaire_officielle,UE,en/fr,Conseil de l'UE,décisions et communiqués
+correctiv.org,ong_enquete,DE,de/en,fondation à but non lucratif (dons),journalisme d'enquête et vérification
+courrierinternational.com,presse_generaliste,FR,fr,groupe Le Monde,traductions de presse étrangère : source secondaire
+dawn.com,presse_generaliste,PK,en,groupe Dawn (privé),premier quotidien anglophone du Pakistan
+deepmind.google,blog_entreprise,UK/US,en,Google DeepMind,source primaire sur ses propres annonces
+defenseone.com,presse_specialisee,US,en,GovExec (privé),défense américaine
+e-mj.com,presse_specialisee,US,en,privé,presse minière
+earthquake.usgs.gov,primaire_officielle,US,en,USGS (État fédéral),données sismiques
+ecb.europa.eu,primaire_officielle,UE,en,BCE,décisions monétaires
+ecdc.europa.eu,primaire_officielle,UE,en,ECDC,surveillance épidémiologique
+eff.org,ong_militante,US,en,Electronic Frontier Foundation (dons),défense des libertés numériques : position militante assumée
+en.mercopress.com,presse_specialisee,UY,en,privé,Atlantique Sud et Mercosur
+federalreserve.gov,primaire_officielle,US,en,Réserve fédérale,décisions monétaires
+feeds.elpais.com,presse_generaliste,ES,es,groupe PRISA,quotidien de référence espagnol
+feeds.feedburner.com,agregateur,,,(service de diffusion),"à étiqueter par flux d'origine (lettres, Parlement européen, renseignement…)"
+fr.allafrica.com,agregateur,international,fr,AllAfrica (privé),reprend la presse africaine : source secondaire
+fr.investing.com,agregateur,international,fr,Investing.com (privé),actualité financière
+fr.yna.co.kr,agence,KR,fr,Yonhap (agence nationale sud-coréenne),agence de presse
+gdacs.org,primaire_officielle,international,en,ONU et Commission européenne,alertes de catastrophes
+globalvoices.org,ong_media,international,en,fondation à but non lucratif,voix citoyennes : signaux faibles
+gov.uk,primaire_officielle,UK,en,gouvernement britannique,communiqués officiels
+huggingface.co,blog_entreprise,US/FR,en,Hugging Face,source primaire sur ses annonces
+iata.org,primaire_professionnelle,international,en,IATA (association des compagnies aériennes),données du transport aérien ; organisation professionnelle
+im-mining.com,presse_specialisee,UK,en,privé,presse minière
+insightcrime.org,centre_recherche,international,en/es,fondation à but non lucratif,criminalité organisée en Amérique latine
+investinglive.com,agregateur,international,en,privé,actualité financière
+korea.net,primaire_officielle,KR,en,gouvernement sud-coréen,communication officielle
+la-croix.com,presse_generaliste,FR,fr,groupe Bayard,quotidien d'inspiration catholique
+ledevoir.com,presse_generaliste,CA,fr,indépendant (Québec),quotidien de référence québécois
+lefigaro.fr,presse_generaliste,FR,fr,groupe Dassault,quotidien de référence de centre-droit
+legrandcontinent.eu,revue_specialisee,FR/UE,fr,Groupe d'études géopolitiques (association),revue géopolitique européenne
+lemonde.fr,presse_generaliste,FR,fr,groupe Le Monde,quotidien de référence de centre-gauche
+liberation.fr,presse_generaliste,FR,fr,Presse indépendante SAS (fonds de dotation),quotidien de gauche
+meduza.io,presse_generaliste,LV/RU,ru/en,indépendant (en exil),média russe d'opposition basé à Riga
+middleeasteye.net,presse_generaliste,UK,en,privé (financement peu transparent),ligne éditoriale critiquée pour sa proximité avec le Qatar (contestée)
+mining-technology.com,presse_specialisee,UK,en,GlobalData (privé),presse minière
+mining.com,presse_specialisee,CA,en,privé,presse minière
+miningweekly.com,presse_specialisee,ZA,en,Creamer Media (privé),presse minière
+news.mongabay.com,ong_media,US,en,à but non lucratif,environnement et biodiversité
+northernminer.com,presse_specialisee,CA,en,privé,presse minière
+occrp.org,ong_enquete,international,en,"à but non lucratif (dont financements publics américains et européens, publiés)",journalisme d'enquête sur la corruption
+oilprice.com,presse_specialisee,UK,en,privé,énergie ; qualité inégale
+openai.com,blog_entreprise,US,en,OpenAI,source primaire sur ses propres annonces
+orientxxi.info,revue_specialisee,FR,fr,association,Moyen-Orient ; ligne critique des politiques occidentales
+press.vatican.va,primaire_officielle,VA,multi,Saint-Siège,communiqués officiels
+railnews.co.uk,presse_specialisee,UK,en,privé,ferroviaire
+restofworld.org,ong_media,US,en,à but non lucratif,technologie hors Occident
+rfi.fr,media_public,FR,fr,France Médias Monde (État français),audiovisuel public extérieur
+rigzone.com,presse_specialisee,US,en,privé,pétrole et gaz
+rss.vatican.va,primaire_officielle,VA,multi,Saint-Siège,communiqués officiels
+rts.ch,media_public,CH,fr,SSR (service public suisse),audiovisuel public
+sciencedaily.com,agregateur,US,en,privé,reprend les communiqués des universités : source secondaire
+scmp.com,presse_generaliste,HK,en,groupe Alibaba,quotidien de Hong Kong
+simpleflying.com,presse_specialisee,US,en,Valnet (privé),aviation
+sympli.rss-fusion.com,agregateur,,,(service de fusion de flux),à étiqueter par flux d'origine
+tass.com,media_d_etat,RU,en,État russe,"voix officielle : source primaire de la position de Moscou, pas des faits contestés"
+thediplomat.com,revue_specialisee,US/JP,en,privé,Asie-Pacifique
+theglobalfund.org,primaire_officielle,international,en,Fonds mondial,organisation internationale
+thehindu.com,presse_generaliste,IN,en,groupe The Hindu (privé),quotidien de référence indien
+themoscowtimes.com,presse_generaliste,NL/RU,en,indépendant (en exil),média russe indépendant basé à Amsterdam
+therecord.media,presse_specialisee,US,en,Recorded Future,cybersécurité ; propriétaire = entreprise de renseignement sur les menaces
+tsa-algerie.com,presse_generaliste,DZ,fr,privé,presse nationale
+unwomen.org,primaire_officielle,international,en,ONU Femmes,organisation internationale
+who.int,primaire_officielle,international,en,OMS,organisation internationale
