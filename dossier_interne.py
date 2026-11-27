@@ -72,6 +72,9 @@ DOMAINES = {
                 "in normal times; blind to an ongoing crisis; does not cover the resignation of a collective government",
     "escalade": "a military strike or attack between named states, by level on the escalation ladder; does not cover "
                 "sanctions, verbal threats, counts of targets or conditional questions",
+    "football_elo": "a named club WINNING one of the five major European football leagues (Premier League, La Liga, "
+                    "Serie A, Bundesliga, Ligue 1) this season, by simulating the remaining matches from the current table "
+                    "and Elo ratings; does not cover top-4, relegation, cups or other leagues; abstains if the table is stale",
     "tennis_elo": "a named player WINNING a Grand Slam or a 1000-level tournament, by Elo ratings on a simulated draw; "
                   "does not cover reaching a round, doubles, or a player injured or withdrawn (no match in 90 days: abstains)",
     "competitions": "prior of 1/N for one contender winning a competition; ignores the contenders' strength; does not cover "
@@ -106,6 +109,8 @@ def _briques(titre: str, jour: dt.date, fin: str) -> list[tuple[str, str, dict |
          lambda: mr.estimer(titre, j, fin, 0.5, False)),
         ("escalade", "échelle de l'escalade", lambda: es.estimer(titre, 0.5)),
         ("tennis_elo", "tennis : force mesurée (Elo), tableau simulé", lambda: te.estimer(titre, jour)),
+        ("football_elo", "football : classement, matchs restants et Elo, fin de saison simulée",
+         lambda: __import__("football_elo_regle").estimer(titre, jour)),
         ("competitions", "un parmi N", lambda: cp.estimer(titre, 0.5)),
         ("banque_centrale", "inertie de la Fed : chaîne de Markov sur les réunions du FOMC depuis 1994",
          lambda: bc.estimer(titre, jour)),

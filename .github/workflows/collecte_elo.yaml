@@ -29,6 +29,8 @@ jobs:
       - run: uv sync --locked
       - name: Grands tournois de tennis récents (Wikipédia, décision de l'auteur du 2026-11-26)
         run: uv run python -u collecte_tennis_wiki.py || true
+      - name: Football, état des cinq championnats (openfootball + Wikipédia ; décision de l'auteur du 2026-11-27, 12 h 34)
+        run: uv run python -u collecte_football.py || true
       - name: Collecte
         run: uv run python -u collecte_elo.py
       - name: Enregistrer
@@ -38,6 +40,7 @@ jobs:
           git config user.email "alphabet-bot@users.noreply.github.com"
           if [ -d registre/elo ]; then git add -f registre/elo; fi
           if [ -d registre/tennis-wiki ]; then git add -f registre/tennis-wiki; fi
+          if [ -d registre/football ]; then git add -f registre/football; fi
           if ! git diff --cached --quiet; then
             git commit -m "registre : Elo du $(date -u +%Y-%m-%d)"
             git pull --rebase

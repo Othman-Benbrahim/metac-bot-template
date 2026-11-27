@@ -74,6 +74,7 @@ COMPATIBLE = {
     "maintien": {"maintien"},
     "escalade": {"conflit_escalade"},
     "tennis_elo": {"sport"},
+    "football_elo": {"sport", "election", "distinction_classement"},
     "competitions": {"sport", "election", "technologie_ia", "entreprise", "distinction_classement"},
     "banque_centrale": {"banque_centrale"},
     "cessez_le_feu": {"accord_conflit", "accord_general"},

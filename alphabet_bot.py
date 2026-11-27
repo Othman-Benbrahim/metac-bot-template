@@ -801,6 +801,22 @@ class AlphabetBot(FallTemplateBot2026):
                 return e
         except Exception as ex:
             logger.warning("tennis Elo : non appliqué (%s)", type(ex).__name__)
+        try:   # 2026-11-27 (décision de l'auteur, 12 h 34) : football, fin de saison simulée (Elo + classement), base
+            import football_elo_regle as fer
+            e = fer.estimer(question.question_text or "", datetime.now(timezone.utc).date())
+            if e is not None and self._porte("football_elo", question, q):
+                jour = datetime.now(timezone.utc).date().isoformat()
+                ligne = {"version_bot": ap.VERSION_BOT, "question_id": str(q.id), "url": q.url, "titre": q.titre,
+                         "date_information": jour, "p_pipeline": p_pipeline, "p_poste": e["p_regle"], "football_elo": e}
+                ligne["sceau"] = ap.sceau(ligne)
+                with open(ap.registre_ecrivable() / "journal-competitions.jsonl", "a", encoding="utf-8", newline="\n") as f:
+                    f.write(json.dumps(ligne, ensure_ascii=False, sort_keys=True, default=str) + "\n")
+                e["texte"] = (f"\n\nFootball league rule (coded): {e['club']} has {e['points']} points (table updated "
+                              f"{e['mise_a_jour']}), Elo {e['elo']:.0f}; {e['restants']} matches left in {e['championnat']}, "
+                              f"10,000 simulated season endings: {e['p_regle']:.1%}. This measured rule is the base.")
+                return e
+        except Exception as ex:
+            logger.warning("football Elo : non appliqué (%s)", type(ex).__name__)
         try:
             import competitions_regle as cpr
             e = cpr.estimer(question.question_text or "", p_pipeline)
