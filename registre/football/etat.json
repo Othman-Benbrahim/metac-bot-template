@@ -3,19 +3,5582 @@
  "saison": 2026,
  "ligues": {
   "en.1": {
-   "erreur": "classement illisible"
+   "titre": "2026–27 Premier League",
+   "mise_a_jour": "2026-11-23",
+   "complete": false,
+   "equipes": {
+    "ARS": {
+     "nom": "Arsenal",
+     "joues": 11,
+     "points": 28,
+     "elo": 1770.8,
+     "cle": "arsenal"
+    },
+    "AVL": {
+     "nom": "Aston Villa",
+     "joues": 11,
+     "points": 14,
+     "elo": 1607.2,
+     "cle": "aston villa"
+    },
+    "BOU": {
+     "nom": "Bournemouth",
+     "joues": 11,
+     "points": 18,
+     "elo": 1603.4,
+     "cle": "bournemouth"
+    },
+    "BRE": {
+     "nom": "Brentford",
+     "joues": 11,
+     "points": 17,
+     "elo": 1564.4,
+     "cle": "brentford"
+    },
+    "BHA": {
+     "nom": "Brighton & Hove Albion",
+     "joues": 11,
+     "points": 22,
+     "elo": 1601.5,
+     "cle": "brighton"
+    },
+    "CHE": {
+     "nom": "Chelsea",
+     "joues": 11,
+     "points": 16,
+     "elo": 1554.1,
+     "cle": "chelsea"
+    },
+    "COV": {
+     "nom": "Coventry City",
+     "joues": 11,
+     "points": 12,
+     "elo": 1426.5,
+     "cle": "coventry city"
+    },
+    "CRY": {
+     "nom": "Crystal Palace",
+     "joues": 11,
+     "points": 7,
+     "elo": 1472.4,
+     "cle": "crystal palace"
+    },
+    "EVE": {
+     "nom": "Everton",
+     "joues": 11,
+     "points": 16,
+     "elo": 1537.8,
+     "cle": "everton"
+    },
+    "FUL": {
+     "nom": "Fulham",
+     "joues": 11,
+     "points": 11,
+     "elo": 1522.2,
+     "cle": "fulham"
+    },
+    "HUL": {
+     "nom": "Hull City",
+     "joues": 11,
+     "points": 14,
+     "elo": 1455.3,
+     "cle": "hull city"
+    },
+    "IPS": {
+     "nom": "Ipswich Town",
+     "joues": 11,
+     "points": 11,
+     "elo": 1429.3,
+     "cle": "ipswich town"
+    },
+    "LEE": {
+     "nom": "Leeds United",
+     "joues": 11,
+     "points": 17,
+     "elo": 1507.9,
+     "cle": "leeds"
+    },
+    "LIV": {
+     "nom": "Liverpool",
+     "joues": 11,
+     "points": 21,
+     "elo": 1656.9,
+     "cle": "liverpool"
+    },
+    "MCI": {
+     "nom": "Manchester City",
+     "joues": 11,
+     "points": 22,
+     "elo": 1713.6,
+     "cle": "man city"
+    },
+    "MUN": {
+     "nom": "Manchester United",
+     "joues": 11,
+     "points": 8,
+     "elo": 1573.9,
+     "cle": "man united"
+    },
+    "NEW": {
+     "nom": "Newcastle United",
+     "joues": 11,
+     "points": 13,
+     "elo": 1533.8,
+     "cle": "newcastle united"
+    },
+    "NFO": {
+     "nom": "Nottingham Forest",
+     "joues": 11,
+     "points": 9,
+     "elo": 1503.1,
+     "cle": "forest"
+    },
+    "SUN": {
+     "nom": "Sunderland",
+     "joues": 11,
+     "points": 9,
+     "elo": 1467.8,
+     "cle": "sunderland"
+    },
+    "TOT": {
+     "nom": "Tottenham Hotspur",
+     "joues": 11,
+     "points": 15,
+     "elo": 1485.6,
+     "cle": "tottenham"
+    }
+   },
+   "restants": [
+    [
+     "ARS",
+     "AVL"
+    ],
+    [
+     "ARS",
+     "BOU"
+    ],
+    [
+     "ARS",
+     "BRE"
+    ],
+    [
+     "ARS",
+     "BHA"
+    ],
+    [
+     "ARS",
+     "CRY"
+    ],
+    [
+     "ARS",
+     "FUL"
+    ],
+    [
+     "ARS",
+     "IPS"
+    ],
+    [
+     "ARS",
+     "LIV"
+    ],
+    [
+     "ARS",
+     "MCI"
+    ],
+    [
+     "ARS",
+     "MUN"
+    ],
+    [
+     "ARS",
+     "NEW"
+    ],
+    [
+     "ARS",
+     "NFO"
+    ],
+    [
+     "ARS",
+     "SUN"
+    ],
+    [
+     "ARS",
+     "TOT"
+    ],
+    [
+     "AVL",
+     "BOU"
+    ],
+    [
+     "AVL",
+     "BHA"
+    ],
+    [
+     "AVL",
+     "CHE"
+    ],
+    [
+     "AVL",
+     "COV"
+    ],
+    [
+     "AVL",
+     "CRY"
+    ],
+    [
+     "AVL",
+     "EVE"
+    ],
+    [
+     "AVL",
+     "HUL"
+    ],
+    [
+     "AVL",
+     "IPS"
+    ],
+    [
+     "AVL",
+     "LEE"
+    ],
+    [
+     "AVL",
+     "LIV"
+    ],
+    [
+     "AVL",
+     "MUN"
+    ],
+    [
+     "AVL",
+     "NEW"
+    ],
+    [
+     "AVL",
+     "TOT"
+    ],
+    [
+     "BOU",
+     "ARS"
+    ],
+    [
+     "BOU",
+     "AVL"
+    ],
+    [
+     "BOU",
+     "BHA"
+    ],
+    [
+     "BOU",
+     "CHE"
+    ],
+    [
+     "BOU",
+     "COV"
+    ],
+    [
+     "BOU",
+     "CRY"
+    ],
+    [
+     "BOU",
+     "FUL"
+    ],
+    [
+     "BOU",
+     "HUL"
+    ],
+    [
+     "BOU",
+     "IPS"
+    ],
+    [
+     "BOU",
+     "MCI"
+    ],
+    [
+     "BOU",
+     "MUN"
+    ],
+    [
+     "BOU",
+     "NEW"
+    ],
+    [
+     "BOU",
+     "TOT"
+    ],
+    [
+     "BRE",
+     "ARS"
+    ],
+    [
+     "BRE",
+     "AVL"
+    ],
+    [
+     "BRE",
+     "BOU"
+    ],
+    [
+     "BRE",
+     "BHA"
+    ],
+    [
+     "BRE",
+     "COV"
+    ],
+    [
+     "BRE",
+     "CRY"
+    ],
+    [
+     "BRE",
+     "FUL"
+    ],
+    [
+     "BRE",
+     "HUL"
+    ],
+    [
+     "BRE",
+     "IPS"
+    ],
+    [
+     "BRE",
+     "LEE"
+    ],
+    [
+     "BRE",
+     "MCI"
+    ],
+    [
+     "BRE",
+     "MUN"
+    ],
+    [
+     "BRE",
+     "NEW"
+    ],
+    [
+     "BHA",
+     "BOU"
+    ],
+    [
+     "BHA",
+     "CHE"
+    ],
+    [
+     "BHA",
+     "COV"
+    ],
+    [
+     "BHA",
+     "EVE"
+    ],
+    [
+     "BHA",
+     "FUL"
+    ],
+    [
+     "BHA",
+     "HUL"
+    ],
+    [
+     "BHA",
+     "IPS"
+    ],
+    [
+     "BHA",
+     "LIV"
+    ],
+    [
+     "BHA",
+     "MCI"
+    ],
+    [
+     "BHA",
+     "MUN"
+    ],
+    [
+     "BHA",
+     "NEW"
+    ],
+    [
+     "BHA",
+     "NFO"
+    ],
+    [
+     "BHA",
+     "SUN"
+    ],
+    [
+     "BHA",
+     "TOT"
+    ],
+    [
+     "CHE",
+     "ARS"
+    ],
+    [
+     "CHE",
+     "AVL"
+    ],
+    [
+     "CHE",
+     "BRE"
+    ],
+    [
+     "CHE",
+     "COV"
+    ],
+    [
+     "CHE",
+     "CRY"
+    ],
+    [
+     "CHE",
+     "EVE"
+    ],
+    [
+     "CHE",
+     "FUL"
+    ],
+    [
+     "CHE",
+     "IPS"
+    ],
+    [
+     "CHE",
+     "LIV"
+    ],
+    [
+     "CHE",
+     "MCI"
+    ],
+    [
+     "CHE",
+     "NEW"
+    ],
+    [
+     "CHE",
+     "NFO"
+    ],
+    [
+     "CHE",
+     "SUN"
+    ],
+    [
+     "COV",
+     "ARS"
+    ],
+    [
+     "COV",
+     "AVL"
+    ],
+    [
+     "COV",
+     "BOU"
+    ],
+    [
+     "COV",
+     "BRE"
+    ],
+    [
+     "COV",
+     "CHE"
+    ],
+    [
+     "COV",
+     "EVE"
+    ],
+    [
+     "COV",
+     "IPS"
+    ],
+    [
+     "COV",
+     "LEE"
+    ],
+    [
+     "COV",
+     "LIV"
+    ],
+    [
+     "COV",
+     "MCI"
+    ],
+    [
+     "COV",
+     "MUN"
+    ],
+    [
+     "COV",
+     "NFO"
+    ],
+    [
+     "COV",
+     "TOT"
+    ],
+    [
+     "CRY",
+     "ARS"
+    ],
+    [
+     "CRY",
+     "AVL"
+    ],
+    [
+     "CRY",
+     "BOU"
+    ],
+    [
+     "CRY",
+     "BRE"
+    ],
+    [
+     "CRY",
+     "BHA"
+    ],
+    [
+     "CRY",
+     "CHE"
+    ],
+    [
+     "CRY",
+     "COV"
+    ],
+    [
+     "CRY",
+     "EVE"
+    ],
+    [
+     "CRY",
+     "FUL"
+    ],
+    [
+     "CRY",
+     "HUL"
+    ],
+    [
+     "CRY",
+     "LEE"
+    ],
+    [
+     "CRY",
+     "MUN"
+    ],
+    [
+     "CRY",
+     "SUN"
+    ],
+    [
+     "CRY",
+     "TOT"
+    ],
+    [
+     "EVE",
+     "ARS"
+    ],
+    [
+     "EVE",
+     "AVL"
+    ],
+    [
+     "EVE",
+     "BOU"
+    ],
+    [
+     "EVE",
+     "BRE"
+    ],
+    [
+     "EVE",
+     "BHA"
+    ],
+    [
+     "EVE",
+     "FUL"
+    ],
+    [
+     "EVE",
+     "HUL"
+    ],
+    [
+     "EVE",
+     "LEE"
+    ],
+    [
+     "EVE",
+     "LIV"
+    ],
+    [
+     "EVE",
+     "MCI"
+    ],
+    [
+     "EVE",
+     "NEW"
+    ],
+    [
+     "EVE",
+     "NFO"
+    ],
+    [
+     "EVE",
+     "SUN"
+    ],
+    [
+     "EVE",
+     "TOT"
+    ],
+    [
+     "FUL",
+     "ARS"
+    ],
+    [
+     "FUL",
+     "AVL"
+    ],
+    [
+     "FUL",
+     "BOU"
+    ],
+    [
+     "FUL",
+     "BRE"
+    ],
+    [
+     "FUL",
+     "BHA"
+    ],
+    [
+     "FUL",
+     "COV"
+    ],
+    [
+     "FUL",
+     "EVE"
+    ],
+    [
+     "FUL",
+     "IPS"
+    ],
+    [
+     "FUL",
+     "LEE"
+    ],
+    [
+     "FUL",
+     "LIV"
+    ],
+    [
+     "FUL",
+     "MCI"
+    ],
+    [
+     "FUL",
+     "NFO"
+    ],
+    [
+     "FUL",
+     "SUN"
+    ],
+    [
+     "FUL",
+     "TOT"
+    ],
+    [
+     "HUL",
+     "ARS"
+    ],
+    [
+     "HUL",
+     "BOU"
+    ],
+    [
+     "HUL",
+     "CHE"
+    ],
+    [
+     "HUL",
+     "COV"
+    ],
+    [
+     "HUL",
+     "CRY"
+    ],
+    [
+     "HUL",
+     "FUL"
+    ],
+    [
+     "HUL",
+     "LEE"
+    ],
+    [
+     "HUL",
+     "LIV"
+    ],
+    [
+     "HUL",
+     "MCI"
+    ],
+    [
+     "HUL",
+     "NEW"
+    ],
+    [
+     "HUL",
+     "NFO"
+    ],
+    [
+     "HUL",
+     "SUN"
+    ],
+    [
+     "HUL",
+     "TOT"
+    ],
+    [
+     "IPS",
+     "ARS"
+    ],
+    [
+     "IPS",
+     "AVL"
+    ],
+    [
+     "IPS",
+     "BRE"
+    ],
+    [
+     "IPS",
+     "BHA"
+    ],
+    [
+     "IPS",
+     "CHE"
+    ],
+    [
+     "IPS",
+     "COV"
+    ],
+    [
+     "IPS",
+     "CRY"
+    ],
+    [
+     "IPS",
+     "EVE"
+    ],
+    [
+     "IPS",
+     "HUL"
+    ],
+    [
+     "IPS",
+     "LEE"
+    ],
+    [
+     "IPS",
+     "MCI"
+    ],
+    [
+     "IPS",
+     "MUN"
+    ],
+    [
+     "IPS",
+     "NEW"
+    ],
+    [
+     "IPS",
+     "TOT"
+    ],
+    [
+     "LEE",
+     "ARS"
+    ],
+    [
+     "LEE",
+     "AVL"
+    ],
+    [
+     "LEE",
+     "BOU"
+    ],
+    [
+     "LEE",
+     "BHA"
+    ],
+    [
+     "LEE",
+     "CHE"
+    ],
+    [
+     "LEE",
+     "COV"
+    ],
+    [
+     "LEE",
+     "EVE"
+    ],
+    [
+     "LEE",
+     "FUL"
+    ],
+    [
+     "LEE",
+     "HUL"
+    ],
+    [
+     "LEE",
+     "IPS"
+    ],
+    [
+     "LEE",
+     "LIV"
+    ],
+    [
+     "LEE",
+     "MCI"
+    ],
+    [
+     "LEE",
+     "NFO"
+    ],
+    [
+     "LEE",
+     "SUN"
+    ],
+    [
+     "LIV",
+     "AVL"
+    ],
+    [
+     "LIV",
+     "BOU"
+    ],
+    [
+     "LIV",
+     "BRE"
+    ],
+    [
+     "LIV",
+     "CHE"
+    ],
+    [
+     "LIV",
+     "COV"
+    ],
+    [
+     "LIV",
+     "CRY"
+    ],
+    [
+     "LIV",
+     "EVE"
+    ],
+    [
+     "LIV",
+     "HUL"
+    ],
+    [
+     "LIV",
+     "IPS"
+    ],
+    [
+     "LIV",
+     "LEE"
+    ],
+    [
+     "LIV",
+     "NEW"
+    ],
+    [
+     "LIV",
+     "SUN"
+    ],
+    [
+     "LIV",
+     "TOT"
+    ],
+    [
+     "MCI",
+     "ARS"
+    ],
+    [
+     "MCI",
+     "AVL"
+    ],
+    [
+     "MCI",
+     "BRE"
+    ],
+    [
+     "MCI",
+     "CHE"
+    ],
+    [
+     "MCI",
+     "CRY"
+    ],
+    [
+     "MCI",
+     "EVE"
+    ],
+    [
+     "MCI",
+     "HUL"
+    ],
+    [
+     "MCI",
+     "LEE"
+    ],
+    [
+     "MCI",
+     "LIV"
+    ],
+    [
+     "MCI",
+     "MUN"
+    ],
+    [
+     "MCI",
+     "NEW"
+    ],
+    [
+     "MCI",
+     "NFO"
+    ],
+    [
+     "MCI",
+     "TOT"
+    ],
+    [
+     "MUN",
+     "ARS"
+    ],
+    [
+     "MUN",
+     "BRE"
+    ],
+    [
+     "MUN",
+     "BHA"
+    ],
+    [
+     "MUN",
+     "CHE"
+    ],
+    [
+     "MUN",
+     "COV"
+    ],
+    [
+     "MUN",
+     "CRY"
+    ],
+    [
+     "MUN",
+     "EVE"
+    ],
+    [
+     "MUN",
+     "FUL"
+    ],
+    [
+     "MUN",
+     "HUL"
+    ],
+    [
+     "MUN",
+     "LEE"
+    ],
+    [
+     "MUN",
+     "LIV"
+    ],
+    [
+     "MUN",
+     "NEW"
+    ],
+    [
+     "MUN",
+     "NFO"
+    ],
+    [
+     "MUN",
+     "SUN"
+    ],
+    [
+     "NEW",
+     "BRE"
+    ],
+    [
+     "NEW",
+     "BHA"
+    ],
+    [
+     "NEW",
+     "CHE"
+    ],
+    [
+     "NEW",
+     "COV"
+    ],
+    [
+     "NEW",
+     "CRY"
+    ],
+    [
+     "NEW",
+     "FUL"
+    ],
+    [
+     "NEW",
+     "IPS"
+    ],
+    [
+     "NEW",
+     "LEE"
+    ],
+    [
+     "NEW",
+     "MCI"
+    ],
+    [
+     "NEW",
+     "MUN"
+    ],
+    [
+     "NEW",
+     "NFO"
+    ],
+    [
+     "NEW",
+     "SUN"
+    ],
+    [
+     "NEW",
+     "TOT"
+    ],
+    [
+     "NFO",
+     "AVL"
+    ],
+    [
+     "NFO",
+     "BOU"
+    ],
+    [
+     "NFO",
+     "BRE"
+    ],
+    [
+     "NFO",
+     "BHA"
+    ],
+    [
+     "NFO",
+     "CHE"
+    ],
+    [
+     "NFO",
+     "CRY"
+    ],
+    [
+     "NFO",
+     "EVE"
+    ],
+    [
+     "NFO",
+     "FUL"
+    ],
+    [
+     "NFO",
+     "HUL"
+    ],
+    [
+     "NFO",
+     "IPS"
+    ],
+    [
+     "NFO",
+     "LIV"
+    ],
+    [
+     "NFO",
+     "MUN"
+    ],
+    [
+     "NFO",
+     "NEW"
+    ],
+    [
+     "NFO",
+     "SUN"
+    ],
+    [
+     "SUN",
+     "AVL"
+    ],
+    [
+     "SUN",
+     "BOU"
+    ],
+    [
+     "SUN",
+     "BRE"
+    ],
+    [
+     "SUN",
+     "COV"
+    ],
+    [
+     "SUN",
+     "CRY"
+    ],
+    [
+     "SUN",
+     "EVE"
+    ],
+    [
+     "SUN",
+     "HUL"
+    ],
+    [
+     "SUN",
+     "IPS"
+    ],
+    [
+     "SUN",
+     "LIV"
+    ],
+    [
+     "SUN",
+     "MCI"
+    ],
+    [
+     "SUN",
+     "MUN"
+    ],
+    [
+     "SUN",
+     "NEW"
+    ],
+    [
+     "SUN",
+     "NFO"
+    ],
+    [
+     "SUN",
+     "TOT"
+    ],
+    [
+     "TOT",
+     "ARS"
+    ],
+    [
+     "TOT",
+     "BOU"
+    ],
+    [
+     "TOT",
+     "BRE"
+    ],
+    [
+     "TOT",
+     "BHA"
+    ],
+    [
+     "TOT",
+     "CHE"
+    ],
+    [
+     "TOT",
+     "FUL"
+    ],
+    [
+     "TOT",
+     "HUL"
+    ],
+    [
+     "TOT",
+     "LEE"
+    ],
+    [
+     "TOT",
+     "LIV"
+    ],
+    [
+     "TOT",
+     "MCI"
+    ],
+    [
+     "TOT",
+     "MUN"
+    ],
+    [
+     "TOT",
+     "NFO"
+    ],
+    [
+     "TOT",
+     "SUN"
+    ]
+   ],
+   "H": 60.0,
+   "p_nul": 0.2375,
+   "controle": {
+    "matchs_classement": 110,
+    "resultats_lus": 110,
+    "restants": 270,
+    "attendu_total": 380,
+    "resultats_ajoutes_elo": 60
+   }
   },
   "es.1": {
-   "erreur": "classement illisible"
+   "titre": "2026–27 La Liga",
+   "mise_a_jour": "2026-11-23",
+   "complete": false,
+   "equipes": {
+    "ALA": {
+     "nom": "Alavés",
+     "joues": 13,
+     "points": 16,
+     "elo": 1483.4,
+     "cle": "alaves"
+    },
+    "ATH": {
+     "nom": "Athletic Bilbao",
+     "joues": 12,
+     "points": 16,
+     "elo": 1552.1,
+     "cle": "bilbao"
+    },
+    "ATM": {
+     "nom": "Atlético Madrid",
+     "joues": 13,
+     "points": 31,
+     "elo": 1710.5,
+     "cle": "atletico"
+    },
+    "BAR": {
+     "nom": "Barcelona",
+     "joues": 13,
+     "points": 36,
+     "elo": 1844.8,
+     "cle": "barcelona"
+    },
+    "CEL": {
+     "nom": "Celta Vigo",
+     "joues": 13,
+     "points": 13,
+     "elo": 1546.8,
+     "cle": "celta"
+    },
+    "DEP": {
+     "nom": "Deportivo A Coruña",
+     "joues": 13,
+     "points": 15,
+     "elo": 1514.2,
+     "cle": "deportivo alaves"
+    },
+    "ELC": {
+     "nom": "Elche",
+     "joues": 13,
+     "points": 11,
+     "elo": 1489.5,
+     "cle": "elche"
+    },
+    "ESP": {
+     "nom": "Espanyol",
+     "joues": 13,
+     "points": 15,
+     "elo": 1498.6,
+     "cle": "espanyol"
+    },
+    "GET": {
+     "nom": "Getafe",
+     "joues": 13,
+     "points": 12,
+     "elo": 1500.4,
+     "cle": "getafe"
+    },
+    "LEV": {
+     "nom": "Levante",
+     "joues": 13,
+     "points": 12,
+     "elo": 1492.7,
+     "cle": "levante"
+    },
+    "MAL": {
+     "nom": "Málaga",
+     "joues": 13,
+     "points": 5,
+     "elo": 1424.0,
+     "cle": "malaga"
+    },
+    "OSA": {
+     "nom": "Osasuna",
+     "joues": 13,
+     "points": 15,
+     "elo": 1500.0,
+     "cle": "osasuna"
+    },
+    "RAC": {
+     "nom": "Racing Santander",
+     "joues": 13,
+     "points": 17,
+     "elo": 1498.3,
+     "cle": "real racing santander"
+    },
+    "RAY": {
+     "nom": "Rayo Vallecano",
+     "joues": 12,
+     "points": 12,
+     "elo": 1536.2,
+     "cle": "rayo vallecano"
+    },
+    "BET": {
+     "nom": "Real Betis",
+     "joues": 13,
+     "points": 27,
+     "elo": 1664.2,
+     "cle": "betis"
+    },
+    "RMA": {
+     "nom": "Real Madrid",
+     "joues": 13,
+     "points": 33,
+     "elo": 1808.4,
+     "cle": "real madrid"
+    },
+    "RSO": {
+     "nom": "Real Sociedad",
+     "joues": 13,
+     "points": 22,
+     "elo": 1562.6,
+     "cle": "sociedad"
+    },
+    "SEV": {
+     "nom": "Sevilla",
+     "joues": 13,
+     "points": 19,
+     "elo": 1540.4,
+     "cle": "sevilla"
+    },
+    "VAL": {
+     "nom": "Valencia",
+     "joues": 13,
+     "points": 12,
+     "elo": 1544.5,
+     "cle": "valencia"
+    },
+    "VIL": {
+     "nom": "Villarreal",
+     "joues": 13,
+     "points": 15,
+     "elo": 1598.2,
+     "cle": "villarreal"
+    }
+   },
+   "restants": [
+    [
+     "ALA",
+     "ATH"
+    ],
+    [
+     "ALA",
+     "BAR"
+    ],
+    [
+     "ALA",
+     "CEL"
+    ],
+    [
+     "ALA",
+     "ELC"
+    ],
+    [
+     "ALA",
+     "ESP"
+    ],
+    [
+     "ALA",
+     "LEV"
+    ],
+    [
+     "ALA",
+     "RAC"
+    ],
+    [
+     "ALA",
+     "RAY"
+    ],
+    [
+     "ALA",
+     "BET"
+    ],
+    [
+     "ALA",
+     "RMA"
+    ],
+    [
+     "ALA",
+     "RSO"
+    ],
+    [
+     "ALA",
+     "SEV"
+    ],
+    [
+     "ATH",
+     "BAR"
+    ],
+    [
+     "ATH",
+     "CEL"
+    ],
+    [
+     "ATH",
+     "DEP"
+    ],
+    [
+     "ATH",
+     "LEV"
+    ],
+    [
+     "ATH",
+     "MAL"
+    ],
+    [
+     "ATH",
+     "OSA"
+    ],
+    [
+     "ATH",
+     "RAC"
+    ],
+    [
+     "ATH",
+     "RAY"
+    ],
+    [
+     "ATH",
+     "BET"
+    ],
+    [
+     "ATH",
+     "RMA"
+    ],
+    [
+     "ATH",
+     "VAL"
+    ],
+    [
+     "ATH",
+     "VIL"
+    ],
+    [
+     "ATM",
+     "ALA"
+    ],
+    [
+     "ATM",
+     "ATH"
+    ],
+    [
+     "ATM",
+     "CEL"
+    ],
+    [
+     "ATM",
+     "ELC"
+    ],
+    [
+     "ATM",
+     "ESP"
+    ],
+    [
+     "ATM",
+     "GET"
+    ],
+    [
+     "ATM",
+     "LEV"
+    ],
+    [
+     "ATM",
+     "RAC"
+    ],
+    [
+     "ATM",
+     "RAY"
+    ],
+    [
+     "ATM",
+     "BET"
+    ],
+    [
+     "ATM",
+     "RSO"
+    ],
+    [
+     "ATM",
+     "SEV"
+    ],
+    [
+     "ATM",
+     "VAL"
+    ],
+    [
+     "BAR",
+     "ATM"
+    ],
+    [
+     "BAR",
+     "CEL"
+    ],
+    [
+     "BAR",
+     "DEP"
+    ],
+    [
+     "BAR",
+     "ELC"
+    ],
+    [
+     "BAR",
+     "ESP"
+    ],
+    [
+     "BAR",
+     "LEV"
+    ],
+    [
+     "BAR",
+     "MAL"
+    ],
+    [
+     "BAR",
+     "OSA"
+    ],
+    [
+     "BAR",
+     "BET"
+    ],
+    [
+     "BAR",
+     "RSO"
+    ],
+    [
+     "BAR",
+     "SEV"
+    ],
+    [
+     "BAR",
+     "VAL"
+    ],
+    [
+     "CEL",
+     "ATM"
+    ],
+    [
+     "CEL",
+     "BAR"
+    ],
+    [
+     "CEL",
+     "DEP"
+    ],
+    [
+     "CEL",
+     "ELC"
+    ],
+    [
+     "CEL",
+     "ESP"
+    ],
+    [
+     "CEL",
+     "GET"
+    ],
+    [
+     "CEL",
+     "RAY"
+    ],
+    [
+     "CEL",
+     "RMA"
+    ],
+    [
+     "CEL",
+     "RSO"
+    ],
+    [
+     "CEL",
+     "SEV"
+    ],
+    [
+     "CEL",
+     "VAL"
+    ],
+    [
+     "CEL",
+     "VIL"
+    ],
+    [
+     "DEP",
+     "ALA"
+    ],
+    [
+     "DEP",
+     "ATH"
+    ],
+    [
+     "DEP",
+     "ATM"
+    ],
+    [
+     "DEP",
+     "BAR"
+    ],
+    [
+     "DEP",
+     "CEL"
+    ],
+    [
+     "DEP",
+     "ESP"
+    ],
+    [
+     "DEP",
+     "GET"
+    ],
+    [
+     "DEP",
+     "MAL"
+    ],
+    [
+     "DEP",
+     "RAC"
+    ],
+    [
+     "DEP",
+     "RAY"
+    ],
+    [
+     "DEP",
+     "RMA"
+    ],
+    [
+     "DEP",
+     "RSO"
+    ],
+    [
+     "DEP",
+     "VIL"
+    ],
+    [
+     "ELC",
+     "ALA"
+    ],
+    [
+     "ELC",
+     "ATH"
+    ],
+    [
+     "ELC",
+     "ATM"
+    ],
+    [
+     "ELC",
+     "DEP"
+    ],
+    [
+     "ELC",
+     "ESP"
+    ],
+    [
+     "ELC",
+     "GET"
+    ],
+    [
+     "ELC",
+     "LEV"
+    ],
+    [
+     "ELC",
+     "MAL"
+    ],
+    [
+     "ELC",
+     "OSA"
+    ],
+    [
+     "ELC",
+     "RAC"
+    ],
+    [
+     "ELC",
+     "RAY"
+    ],
+    [
+     "ELC",
+     "SEV"
+    ],
+    [
+     "ELC",
+     "VIL"
+    ],
+    [
+     "ESP",
+     "ALA"
+    ],
+    [
+     "ESP",
+     "ATH"
+    ],
+    [
+     "ESP",
+     "BAR"
+    ],
+    [
+     "ESP",
+     "CEL"
+    ],
+    [
+     "ESP",
+     "GET"
+    ],
+    [
+     "ESP",
+     "MAL"
+    ],
+    [
+     "ESP",
+     "OSA"
+    ],
+    [
+     "ESP",
+     "RAC"
+    ],
+    [
+     "ESP",
+     "RAY"
+    ],
+    [
+     "ESP",
+     "BET"
+    ],
+    [
+     "ESP",
+     "RSO"
+    ],
+    [
+     "ESP",
+     "VAL"
+    ],
+    [
+     "ESP",
+     "VIL"
+    ],
+    [
+     "GET",
+     "ALA"
+    ],
+    [
+     "GET",
+     "ATH"
+    ],
+    [
+     "GET",
+     "BAR"
+    ],
+    [
+     "GET",
+     "ELC"
+    ],
+    [
+     "GET",
+     "ESP"
+    ],
+    [
+     "GET",
+     "LEV"
+    ],
+    [
+     "GET",
+     "OSA"
+    ],
+    [
+     "GET",
+     "BET"
+    ],
+    [
+     "GET",
+     "RMA"
+    ],
+    [
+     "GET",
+     "RSO"
+    ],
+    [
+     "GET",
+     "VAL"
+    ],
+    [
+     "GET",
+     "VIL"
+    ],
+    [
+     "LEV",
+     "ALA"
+    ],
+    [
+     "LEV",
+     "CEL"
+    ],
+    [
+     "LEV",
+     "DEP"
+    ],
+    [
+     "LEV",
+     "ESP"
+    ],
+    [
+     "LEV",
+     "GET"
+    ],
+    [
+     "LEV",
+     "MAL"
+    ],
+    [
+     "LEV",
+     "OSA"
+    ],
+    [
+     "LEV",
+     "RAC"
+    ],
+    [
+     "LEV",
+     "RAY"
+    ],
+    [
+     "LEV",
+     "RMA"
+    ],
+    [
+     "LEV",
+     "RSO"
+    ],
+    [
+     "LEV",
+     "VAL"
+    ],
+    [
+     "LEV",
+     "VIL"
+    ],
+    [
+     "MAL",
+     "ALA"
+    ],
+    [
+     "MAL",
+     "ATH"
+    ],
+    [
+     "MAL",
+     "ATM"
+    ],
+    [
+     "MAL",
+     "BAR"
+    ],
+    [
+     "MAL",
+     "CEL"
+    ],
+    [
+     "MAL",
+     "ELC"
+    ],
+    [
+     "MAL",
+     "GET"
+    ],
+    [
+     "MAL",
+     "OSA"
+    ],
+    [
+     "MAL",
+     "RAY"
+    ],
+    [
+     "MAL",
+     "BET"
+    ],
+    [
+     "MAL",
+     "RMA"
+    ],
+    [
+     "MAL",
+     "SEV"
+    ],
+    [
+     "MAL",
+     "VAL"
+    ],
+    [
+     "OSA",
+     "ALA"
+    ],
+    [
+     "OSA",
+     "ATM"
+    ],
+    [
+     "OSA",
+     "BAR"
+    ],
+    [
+     "OSA",
+     "CEL"
+    ],
+    [
+     "OSA",
+     "DEP"
+    ],
+    [
+     "OSA",
+     "ELC"
+    ],
+    [
+     "OSA",
+     "BET"
+    ],
+    [
+     "OSA",
+     "RMA"
+    ],
+    [
+     "OSA",
+     "RSO"
+    ],
+    [
+     "OSA",
+     "SEV"
+    ],
+    [
+     "OSA",
+     "VAL"
+    ],
+    [
+     "OSA",
+     "VIL"
+    ],
+    [
+     "RAC",
+     "ATH"
+    ],
+    [
+     "RAC",
+     "ATM"
+    ],
+    [
+     "RAC",
+     "BAR"
+    ],
+    [
+     "RAC",
+     "CEL"
+    ],
+    [
+     "RAC",
+     "DEP"
+    ],
+    [
+     "RAC",
+     "GET"
+    ],
+    [
+     "RAC",
+     "LEV"
+    ],
+    [
+     "RAC",
+     "MAL"
+    ],
+    [
+     "RAC",
+     "OSA"
+    ],
+    [
+     "RAC",
+     "RAY"
+    ],
+    [
+     "RAC",
+     "BET"
+    ],
+    [
+     "RAC",
+     "SEV"
+    ],
+    [
+     "RAY",
+     "ATH"
+    ],
+    [
+     "RAY",
+     "ATM"
+    ],
+    [
+     "RAY",
+     "BAR"
+    ],
+    [
+     "RAY",
+     "DEP"
+    ],
+    [
+     "RAY",
+     "GET"
+    ],
+    [
+     "RAY",
+     "LEV"
+    ],
+    [
+     "RAY",
+     "MAL"
+    ],
+    [
+     "RAY",
+     "OSA"
+    ],
+    [
+     "RAY",
+     "BET"
+    ],
+    [
+     "RAY",
+     "RMA"
+    ],
+    [
+     "RAY",
+     "RSO"
+    ],
+    [
+     "RAY",
+     "SEV"
+    ],
+    [
+     "RAY",
+     "VIL"
+    ],
+    [
+     "BET",
+     "ALA"
+    ],
+    [
+     "BET",
+     "ATH"
+    ],
+    [
+     "BET",
+     "ATM"
+    ],
+    [
+     "BET",
+     "CEL"
+    ],
+    [
+     "BET",
+     "DEP"
+    ],
+    [
+     "BET",
+     "ELC"
+    ],
+    [
+     "BET",
+     "ESP"
+    ],
+    [
+     "BET",
+     "LEV"
+    ],
+    [
+     "BET",
+     "RAC"
+    ],
+    [
+     "BET",
+     "RAY"
+    ],
+    [
+     "BET",
+     "SEV"
+    ],
+    [
+     "BET",
+     "VAL"
+    ],
+    [
+     "BET",
+     "VIL"
+    ],
+    [
+     "RMA",
+     "ALA"
+    ],
+    [
+     "RMA",
+     "ATH"
+    ],
+    [
+     "RMA",
+     "ATM"
+    ],
+    [
+     "RMA",
+     "BAR"
+    ],
+    [
+     "RMA",
+     "DEP"
+    ],
+    [
+     "RMA",
+     "ELC"
+    ],
+    [
+     "RMA",
+     "ESP"
+    ],
+    [
+     "RMA",
+     "GET"
+    ],
+    [
+     "RMA",
+     "LEV"
+    ],
+    [
+     "RMA",
+     "OSA"
+    ],
+    [
+     "RMA",
+     "RAC"
+    ],
+    [
+     "RMA",
+     "BET"
+    ],
+    [
+     "RMA",
+     "VAL"
+    ],
+    [
+     "RSO",
+     "ALA"
+    ],
+    [
+     "RSO",
+     "ATH"
+    ],
+    [
+     "RSO",
+     "BAR"
+    ],
+    [
+     "RSO",
+     "ELC"
+    ],
+    [
+     "RSO",
+     "GET"
+    ],
+    [
+     "RSO",
+     "MAL"
+    ],
+    [
+     "RSO",
+     "OSA"
+    ],
+    [
+     "RSO",
+     "RAC"
+    ],
+    [
+     "RSO",
+     "BET"
+    ],
+    [
+     "RSO",
+     "RMA"
+    ],
+    [
+     "RSO",
+     "SEV"
+    ],
+    [
+     "RSO",
+     "VAL"
+    ],
+    [
+     "RSO",
+     "VIL"
+    ],
+    [
+     "SEV",
+     "ATH"
+    ],
+    [
+     "SEV",
+     "CEL"
+    ],
+    [
+     "SEV",
+     "DEP"
+    ],
+    [
+     "SEV",
+     "ELC"
+    ],
+    [
+     "SEV",
+     "ESP"
+    ],
+    [
+     "SEV",
+     "GET"
+    ],
+    [
+     "SEV",
+     "LEV"
+    ],
+    [
+     "SEV",
+     "MAL"
+    ],
+    [
+     "SEV",
+     "RAC"
+    ],
+    [
+     "SEV",
+     "RMA"
+    ],
+    [
+     "SEV",
+     "RSO"
+    ],
+    [
+     "SEV",
+     "VIL"
+    ],
+    [
+     "VAL",
+     "ALA"
+    ],
+    [
+     "VAL",
+     "ATM"
+    ],
+    [
+     "VAL",
+     "DEP"
+    ],
+    [
+     "VAL",
+     "ELC"
+    ],
+    [
+     "VAL",
+     "ESP"
+    ],
+    [
+     "VAL",
+     "GET"
+    ],
+    [
+     "VAL",
+     "LEV"
+    ],
+    [
+     "VAL",
+     "MAL"
+    ],
+    [
+     "VAL",
+     "OSA"
+    ],
+    [
+     "VAL",
+     "RAC"
+    ],
+    [
+     "VAL",
+     "RAY"
+    ],
+    [
+     "VAL",
+     "SEV"
+    ],
+    [
+     "VIL",
+     "ALA"
+    ],
+    [
+     "VIL",
+     "ATH"
+    ],
+    [
+     "VIL",
+     "ATM"
+    ],
+    [
+     "VIL",
+     "BAR"
+    ],
+    [
+     "VIL",
+     "CEL"
+    ],
+    [
+     "VIL",
+     "MAL"
+    ],
+    [
+     "VIL",
+     "OSA"
+    ],
+    [
+     "VIL",
+     "RAC"
+    ],
+    [
+     "VIL",
+     "RAY"
+    ],
+    [
+     "VIL",
+     "RMA"
+    ],
+    [
+     "VIL",
+     "RSO"
+    ],
+    [
+     "VIL",
+     "SEV"
+    ],
+    [
+     "VIL",
+     "VAL"
+    ]
+   ],
+   "H": 70.0,
+   "p_nul": 0.248,
+   "controle": {
+    "matchs_classement": 129,
+    "resultats_lus": 129,
+    "restants": 251,
+    "attendu_total": 380,
+    "resultats_ajoutes_elo": 72
+   }
   },
   "it.1": {
-   "erreur": "classement illisible"
+   "titre": "2026–27 Serie A",
+   "mise_a_jour": "2026-11-23",
+   "complete": false,
+   "equipes": {
+    "ATA": {
+     "nom": "Atalanta",
+     "joues": 12,
+     "points": 15,
+     "elo": 1606.5,
+     "cle": "atalanta"
+    },
+    "BOL": {
+     "nom": "Bologna",
+     "joues": 12,
+     "points": 18,
+     "elo": 1603.8,
+     "cle": "bologna"
+    },
+    "CAG": {
+     "nom": "Cagliari",
+     "joues": 12,
+     "points": 16,
+     "elo": 1502.3,
+     "cle": "cagliari"
+    },
+    "COM": {
+     "nom": "Como",
+     "joues": 12,
+     "points": 26,
+     "elo": 1667.1,
+     "cle": "como"
+    },
+    "FIO": {
+     "nom": "Fiorentina",
+     "joues": 12,
+     "points": 9,
+     "elo": 1521.1,
+     "cle": "fiorentina"
+    },
+    "FRO": {
+     "nom": "Frosinone",
+     "joues": 12,
+     "points": 20,
+     "elo": 1487.1,
+     "cle": "frosinone"
+    },
+    "GEN": {
+     "nom": "Genoa",
+     "joues": 12,
+     "points": 16,
+     "elo": 1506.9,
+     "cle": "genoa"
+    },
+    "INT": {
+     "nom": "Inter Milan",
+     "joues": 12,
+     "points": 29,
+     "elo": 1794.3,
+     "cle": "inter"
+    },
+    "JUV": {
+     "nom": "Juventus",
+     "joues": 12,
+     "points": 21,
+     "elo": 1660.7,
+     "cle": "juventus"
+    },
+    "LAZ": {
+     "nom": "Lazio",
+     "joues": 12,
+     "points": 32,
+     "elo": 1672.3,
+     "cle": "lazio"
+    },
+    "LEC": {
+     "nom": "Lecce",
+     "joues": 12,
+     "points": 10,
+     "elo": 1438.8,
+     "cle": "lecce"
+    },
+    "MIL": {
+     "nom": "AC Milan",
+     "joues": 12,
+     "points": 27,
+     "elo": 1680.1,
+     "cle": "milan"
+    },
+    "MON": {
+     "nom": "Monza",
+     "joues": 12,
+     "points": 10,
+     "elo": 1428.4,
+     "cle": "monza"
+    },
+    "NAP": {
+     "nom": "Napoli",
+     "joues": 12,
+     "points": 18,
+     "elo": 1669.8,
+     "cle": "napoli"
+    },
+    "PAR": {
+     "nom": "Parma",
+     "joues": 12,
+     "points": 8,
+     "elo": 1469.0,
+     "cle": "parma"
+    },
+    "ROM": {
+     "nom": "Roma",
+     "joues": 12,
+     "points": 30,
+     "elo": 1723.5,
+     "cle": "roma"
+    },
+    "SAS": {
+     "nom": "Sassuolo",
+     "joues": 12,
+     "points": 8,
+     "elo": 1472.1,
+     "cle": "sassuolo"
+    },
+    "TOR": {
+     "nom": "Torino",
+     "joues": 12,
+     "points": 14,
+     "elo": 1510.7,
+     "cle": "torino"
+    },
+    "UDI": {
+     "nom": "Udinese",
+     "joues": 12,
+     "points": 6,
+     "elo": 1465.7,
+     "cle": "udinese"
+    },
+    "VEN": {
+     "nom": "Venezia",
+     "joues": 12,
+     "points": 6,
+     "elo": 1410.4,
+     "cle": "venezia"
+    }
+   },
+   "restants": [
+    [
+     "ATA",
+     "COM"
+    ],
+    [
+     "ATA",
+     "FIO"
+    ],
+    [
+     "ATA",
+     "GEN"
+    ],
+    [
+     "ATA",
+     "JUV"
+    ],
+    [
+     "ATA",
+     "LAZ"
+    ],
+    [
+     "ATA",
+     "LEC"
+    ],
+    [
+     "ATA",
+     "MIL"
+    ],
+    [
+     "ATA",
+     "MON"
+    ],
+    [
+     "ATA",
+     "NAP"
+    ],
+    [
+     "ATA",
+     "ROM"
+    ],
+    [
+     "ATA",
+     "TOR"
+    ],
+    [
+     "ATA",
+     "UDI"
+    ],
+    [
+     "BOL",
+     "ATA"
+    ],
+    [
+     "BOL",
+     "CAG"
+    ],
+    [
+     "BOL",
+     "COM"
+    ],
+    [
+     "BOL",
+     "FIO"
+    ],
+    [
+     "BOL",
+     "FRO"
+    ],
+    [
+     "BOL",
+     "GEN"
+    ],
+    [
+     "BOL",
+     "JUV"
+    ],
+    [
+     "BOL",
+     "LEC"
+    ],
+    [
+     "BOL",
+     "MIL"
+    ],
+    [
+     "BOL",
+     "NAP"
+    ],
+    [
+     "BOL",
+     "PAR"
+    ],
+    [
+     "BOL",
+     "ROM"
+    ],
+    [
+     "BOL",
+     "VEN"
+    ],
+    [
+     "CAG",
+     "ATA"
+    ],
+    [
+     "CAG",
+     "COM"
+    ],
+    [
+     "CAG",
+     "FIO"
+    ],
+    [
+     "CAG",
+     "GEN"
+    ],
+    [
+     "CAG",
+     "LAZ"
+    ],
+    [
+     "CAG",
+     "MIL"
+    ],
+    [
+     "CAG",
+     "MON"
+    ],
+    [
+     "CAG",
+     "NAP"
+    ],
+    [
+     "CAG",
+     "PAR"
+    ],
+    [
+     "CAG",
+     "ROM"
+    ],
+    [
+     "CAG",
+     "SAS"
+    ],
+    [
+     "CAG",
+     "TOR"
+    ],
+    [
+     "CAG",
+     "UDI"
+    ],
+    [
+     "CAG",
+     "VEN"
+    ],
+    [
+     "COM",
+     "ATA"
+    ],
+    [
+     "COM",
+     "BOL"
+    ],
+    [
+     "COM",
+     "FIO"
+    ],
+    [
+     "COM",
+     "FRO"
+    ],
+    [
+     "COM",
+     "GEN"
+    ],
+    [
+     "COM",
+     "INT"
+    ],
+    [
+     "COM",
+     "JUV"
+    ],
+    [
+     "COM",
+     "LAZ"
+    ],
+    [
+     "COM",
+     "LEC"
+    ],
+    [
+     "COM",
+     "MIL"
+    ],
+    [
+     "COM",
+     "MON"
+    ],
+    [
+     "COM",
+     "NAP"
+    ],
+    [
+     "COM",
+     "TOR"
+    ],
+    [
+     "COM",
+     "UDI"
+    ],
+    [
+     "FIO",
+     "BOL"
+    ],
+    [
+     "FIO",
+     "CAG"
+    ],
+    [
+     "FIO",
+     "GEN"
+    ],
+    [
+     "FIO",
+     "INT"
+    ],
+    [
+     "FIO",
+     "LAZ"
+    ],
+    [
+     "FIO",
+     "LEC"
+    ],
+    [
+     "FIO",
+     "MIL"
+    ],
+    [
+     "FIO",
+     "MON"
+    ],
+    [
+     "FIO",
+     "PAR"
+    ],
+    [
+     "FIO",
+     "ROM"
+    ],
+    [
+     "FIO",
+     "SAS"
+    ],
+    [
+     "FIO",
+     "UDI"
+    ],
+    [
+     "FIO",
+     "VEN"
+    ],
+    [
+     "FRO",
+     "ATA"
+    ],
+    [
+     "FRO",
+     "BOL"
+    ],
+    [
+     "FRO",
+     "CAG"
+    ],
+    [
+     "FRO",
+     "FIO"
+    ],
+    [
+     "FRO",
+     "GEN"
+    ],
+    [
+     "FRO",
+     "INT"
+    ],
+    [
+     "FRO",
+     "LAZ"
+    ],
+    [
+     "FRO",
+     "MIL"
+    ],
+    [
+     "FRO",
+     "MON"
+    ],
+    [
+     "FRO",
+     "NAP"
+    ],
+    [
+     "FRO",
+     "PAR"
+    ],
+    [
+     "FRO",
+     "ROM"
+    ],
+    [
+     "FRO",
+     "UDI"
+    ],
+    [
+     "GEN",
+     "ATA"
+    ],
+    [
+     "GEN",
+     "BOL"
+    ],
+    [
+     "GEN",
+     "CAG"
+    ],
+    [
+     "GEN",
+     "INT"
+    ],
+    [
+     "GEN",
+     "LAZ"
+    ],
+    [
+     "GEN",
+     "LEC"
+    ],
+    [
+     "GEN",
+     "MON"
+    ],
+    [
+     "GEN",
+     "PAR"
+    ],
+    [
+     "GEN",
+     "ROM"
+    ],
+    [
+     "GEN",
+     "SAS"
+    ],
+    [
+     "GEN",
+     "TOR"
+    ],
+    [
+     "GEN",
+     "UDI"
+    ],
+    [
+     "INT",
+     "ATA"
+    ],
+    [
+     "INT",
+     "BOL"
+    ],
+    [
+     "INT",
+     "CAG"
+    ],
+    [
+     "INT",
+     "FRO"
+    ],
+    [
+     "INT",
+     "GEN"
+    ],
+    [
+     "INT",
+     "JUV"
+    ],
+    [
+     "INT",
+     "LAZ"
+    ],
+    [
+     "INT",
+     "LEC"
+    ],
+    [
+     "INT",
+     "MIL"
+    ],
+    [
+     "INT",
+     "ROM"
+    ],
+    [
+     "INT",
+     "SAS"
+    ],
+    [
+     "INT",
+     "TOR"
+    ],
+    [
+     "INT",
+     "VEN"
+    ],
+    [
+     "JUV",
+     "BOL"
+    ],
+    [
+     "JUV",
+     "CAG"
+    ],
+    [
+     "JUV",
+     "COM"
+    ],
+    [
+     "JUV",
+     "FIO"
+    ],
+    [
+     "JUV",
+     "FRO"
+    ],
+    [
+     "JUV",
+     "GEN"
+    ],
+    [
+     "JUV",
+     "INT"
+    ],
+    [
+     "JUV",
+     "LEC"
+    ],
+    [
+     "JUV",
+     "MON"
+    ],
+    [
+     "JUV",
+     "ROM"
+    ],
+    [
+     "JUV",
+     "SAS"
+    ],
+    [
+     "JUV",
+     "TOR"
+    ],
+    [
+     "JUV",
+     "UDI"
+    ],
+    [
+     "LAZ",
+     "ATA"
+    ],
+    [
+     "LAZ",
+     "BOL"
+    ],
+    [
+     "LAZ",
+     "COM"
+    ],
+    [
+     "LAZ",
+     "FIO"
+    ],
+    [
+     "LAZ",
+     "FRO"
+    ],
+    [
+     "LAZ",
+     "INT"
+    ],
+    [
+     "LAZ",
+     "JUV"
+    ],
+    [
+     "LAZ",
+     "NAP"
+    ],
+    [
+     "LAZ",
+     "ROM"
+    ],
+    [
+     "LAZ",
+     "SAS"
+    ],
+    [
+     "LAZ",
+     "TOR"
+    ],
+    [
+     "LAZ",
+     "UDI"
+    ],
+    [
+     "LAZ",
+     "VEN"
+    ],
+    [
+     "LEC",
+     "ATA"
+    ],
+    [
+     "LEC",
+     "CAG"
+    ],
+    [
+     "LEC",
+     "COM"
+    ],
+    [
+     "LEC",
+     "FIO"
+    ],
+    [
+     "LEC",
+     "FRO"
+    ],
+    [
+     "LEC",
+     "INT"
+    ],
+    [
+     "LEC",
+     "LAZ"
+    ],
+    [
+     "LEC",
+     "MIL"
+    ],
+    [
+     "LEC",
+     "NAP"
+    ],
+    [
+     "LEC",
+     "PAR"
+    ],
+    [
+     "LEC",
+     "SAS"
+    ],
+    [
+     "LEC",
+     "TOR"
+    ],
+    [
+     "LEC",
+     "UDI"
+    ],
+    [
+     "LEC",
+     "VEN"
+    ],
+    [
+     "MIL",
+     "CAG"
+    ],
+    [
+     "MIL",
+     "COM"
+    ],
+    [
+     "MIL",
+     "FIO"
+    ],
+    [
+     "MIL",
+     "GEN"
+    ],
+    [
+     "MIL",
+     "JUV"
+    ],
+    [
+     "MIL",
+     "LAZ"
+    ],
+    [
+     "MIL",
+     "MON"
+    ],
+    [
+     "MIL",
+     "NAP"
+    ],
+    [
+     "MIL",
+     "PAR"
+    ],
+    [
+     "MIL",
+     "ROM"
+    ],
+    [
+     "MIL",
+     "SAS"
+    ],
+    [
+     "MIL",
+     "TOR"
+    ],
+    [
+     "MIL",
+     "UDI"
+    ],
+    [
+     "MON",
+     "BOL"
+    ],
+    [
+     "MON",
+     "COM"
+    ],
+    [
+     "MON",
+     "FRO"
+    ],
+    [
+     "MON",
+     "GEN"
+    ],
+    [
+     "MON",
+     "INT"
+    ],
+    [
+     "MON",
+     "JUV"
+    ],
+    [
+     "MON",
+     "LAZ"
+    ],
+    [
+     "MON",
+     "LEC"
+    ],
+    [
+     "MON",
+     "MIL"
+    ],
+    [
+     "MON",
+     "PAR"
+    ],
+    [
+     "MON",
+     "ROM"
+    ],
+    [
+     "MON",
+     "TOR"
+    ],
+    [
+     "MON",
+     "VEN"
+    ],
+    [
+     "NAP",
+     "ATA"
+    ],
+    [
+     "NAP",
+     "CAG"
+    ],
+    [
+     "NAP",
+     "FIO"
+    ],
+    [
+     "NAP",
+     "GEN"
+    ],
+    [
+     "NAP",
+     "INT"
+    ],
+    [
+     "NAP",
+     "JUV"
+    ],
+    [
+     "NAP",
+     "LEC"
+    ],
+    [
+     "NAP",
+     "MIL"
+    ],
+    [
+     "NAP",
+     "MON"
+    ],
+    [
+     "NAP",
+     "PAR"
+    ],
+    [
+     "NAP",
+     "SAS"
+    ],
+    [
+     "NAP",
+     "UDI"
+    ],
+    [
+     "NAP",
+     "VEN"
+    ],
+    [
+     "PAR",
+     "ATA"
+    ],
+    [
+     "PAR",
+     "COM"
+    ],
+    [
+     "PAR",
+     "FIO"
+    ],
+    [
+     "PAR",
+     "FRO"
+    ],
+    [
+     "PAR",
+     "INT"
+    ],
+    [
+     "PAR",
+     "JUV"
+    ],
+    [
+     "PAR",
+     "LAZ"
+    ],
+    [
+     "PAR",
+     "LEC"
+    ],
+    [
+     "PAR",
+     "MIL"
+    ],
+    [
+     "PAR",
+     "NAP"
+    ],
+    [
+     "PAR",
+     "SAS"
+    ],
+    [
+     "PAR",
+     "VEN"
+    ],
+    [
+     "ROM",
+     "BOL"
+    ],
+    [
+     "ROM",
+     "COM"
+    ],
+    [
+     "ROM",
+     "FRO"
+    ],
+    [
+     "ROM",
+     "JUV"
+    ],
+    [
+     "ROM",
+     "LAZ"
+    ],
+    [
+     "ROM",
+     "LEC"
+    ],
+    [
+     "ROM",
+     "MIL"
+    ],
+    [
+     "ROM",
+     "MON"
+    ],
+    [
+     "ROM",
+     "NAP"
+    ],
+    [
+     "ROM",
+     "PAR"
+    ],
+    [
+     "ROM",
+     "TOR"
+    ],
+    [
+     "ROM",
+     "UDI"
+    ],
+    [
+     "ROM",
+     "VEN"
+    ],
+    [
+     "SAS",
+     "ATA"
+    ],
+    [
+     "SAS",
+     "BOL"
+    ],
+    [
+     "SAS",
+     "CAG"
+    ],
+    [
+     "SAS",
+     "COM"
+    ],
+    [
+     "SAS",
+     "FRO"
+    ],
+    [
+     "SAS",
+     "INT"
+    ],
+    [
+     "SAS",
+     "LEC"
+    ],
+    [
+     "SAS",
+     "MON"
+    ],
+    [
+     "SAS",
+     "NAP"
+    ],
+    [
+     "SAS",
+     "PAR"
+    ],
+    [
+     "SAS",
+     "ROM"
+    ],
+    [
+     "SAS",
+     "UDI"
+    ],
+    [
+     "SAS",
+     "VEN"
+    ],
+    [
+     "TOR",
+     "ATA"
+    ],
+    [
+     "TOR",
+     "BOL"
+    ],
+    [
+     "TOR",
+     "CAG"
+    ],
+    [
+     "TOR",
+     "FIO"
+    ],
+    [
+     "TOR",
+     "FRO"
+    ],
+    [
+     "TOR",
+     "GEN"
+    ],
+    [
+     "TOR",
+     "INT"
+    ],
+    [
+     "TOR",
+     "JUV"
+    ],
+    [
+     "TOR",
+     "LAZ"
+    ],
+    [
+     "TOR",
+     "NAP"
+    ],
+    [
+     "TOR",
+     "PAR"
+    ],
+    [
+     "TOR",
+     "SAS"
+    ],
+    [
+     "TOR",
+     "VEN"
+    ],
+    [
+     "UDI",
+     "ATA"
+    ],
+    [
+     "UDI",
+     "BOL"
+    ],
+    [
+     "UDI",
+     "FIO"
+    ],
+    [
+     "UDI",
+     "FRO"
+    ],
+    [
+     "UDI",
+     "GEN"
+    ],
+    [
+     "UDI",
+     "INT"
+    ],
+    [
+     "UDI",
+     "JUV"
+    ],
+    [
+     "UDI",
+     "MON"
+    ],
+    [
+     "UDI",
+     "NAP"
+    ],
+    [
+     "UDI",
+     "PAR"
+    ],
+    [
+     "UDI",
+     "SAS"
+    ],
+    [
+     "UDI",
+     "TOR"
+    ],
+    [
+     "UDI",
+     "VEN"
+    ],
+    [
+     "VEN",
+     "ATA"
+    ],
+    [
+     "VEN",
+     "BOL"
+    ],
+    [
+     "VEN",
+     "CAG"
+    ],
+    [
+     "VEN",
+     "COM"
+    ],
+    [
+     "VEN",
+     "FRO"
+    ],
+    [
+     "VEN",
+     "GEN"
+    ],
+    [
+     "VEN",
+     "JUV"
+    ],
+    [
+     "VEN",
+     "MIL"
+    ],
+    [
+     "VEN",
+     "MON"
+    ],
+    [
+     "VEN",
+     "PAR"
+    ],
+    [
+     "VEN",
+     "ROM"
+    ],
+    [
+     "VEN",
+     "SAS"
+    ],
+    [
+     "VEN",
+     "TOR"
+    ]
+   ],
+   "H": 60.0,
+   "p_nul": 0.2408,
+   "controle": {
+    "matchs_classement": 120,
+    "resultats_lus": 120,
+    "restants": 260,
+    "attendu_total": 380,
+    "resultats_ajoutes_elo": 70
+   }
   },
   "de.1": {
-   "erreur": "classement illisible"
+   "titre": "2026–27 Bundesliga",
+   "mise_a_jour": "2026-11-22",
+   "complete": false,
+   "equipes": {
+    "AUG": {
+     "nom": "FC Augsburg",
+     "joues": 10,
+     "points": 12,
+     "elo": 1527.0,
+     "cle": "augsburg"
+    },
+    "UNB": {
+     "nom": "Union Berlin",
+     "joues": 10,
+     "points": 7,
+     "elo": 1483.0,
+     "cle": "union berlin"
+    },
+    "BRE": {
+     "nom": "Werder Bremen",
+     "joues": 10,
+     "points": 18,
+     "elo": 1527.9,
+     "cle": "werder"
+    },
+    "DOR": {
+     "nom": "Borussia Dortmund",
+     "joues": 10,
+     "points": 24,
+     "elo": 1735.2,
+     "cle": "dortmund"
+    },
+    "ELV": {
+     "nom": "SV Elversberg",
+     "joues": 10,
+     "points": 13,
+     "elo": 1482.1,
+     "cle": "elversberg"
+    },
+    "FRA": {
+     "nom": "Eintracht Frankfurt",
+     "joues": 10,
+     "points": 15,
+     "elo": 1568.1,
+     "cle": "frankfurt"
+    },
+    "FRE": {
+     "nom": "SC Freiburg",
+     "joues": 10,
+     "points": 22,
+     "elo": 1606.8,
+     "cle": "freiburg"
+    },
+    "HAM": {
+     "nom": "Hamburger SV",
+     "joues": 10,
+     "points": 12,
+     "elo": 1484.0,
+     "cle": "hamburg"
+    },
+    "HOF": {
+     "nom": "TSG Hoffenheim",
+     "joues": 10,
+     "points": 12,
+     "elo": 1556.7,
+     "cle": "hoffenheim"
+    },
+    "KÖL": {
+     "nom": "1. FC Köln",
+     "joues": 10,
+     "points": 10,
+     "elo": 1449.3,
+     "cle": "koeln"
+    },
+    "LEI": {
+     "nom": "RB Leipzig",
+     "joues": 10,
+     "points": 21,
+     "elo": 1664.5,
+     "cle": "rb leipzig"
+    },
+    "LEV": {
+     "nom": "Bayer Leverkusen",
+     "joues": 10,
+     "points": 19,
+     "elo": 1678.5,
+     "cle": "leverkusen"
+    },
+    "MAI": {
+     "nom": "Mainz 05",
+     "joues": 10,
+     "points": 10,
+     "elo": 1523.8,
+     "cle": "mainz"
+    },
+    "MÖN": {
+     "nom": "Borussia Mönchengladbach",
+     "joues": 10,
+     "points": 4,
+     "elo": 1461.9,
+     "cle": "gladbach"
+    },
+    "MUN": {
+     "nom": "Bayern Munich",
+     "joues": 10,
+     "points": 22,
+     "elo": 1832.0,
+     "cle": "bayern"
+    },
+    "PAD": {
+     "nom": "SC Paderborn",
+     "joues": 10,
+     "points": 10,
+     "elo": 1468.3,
+     "cle": "paderborn"
+    },
+    "SCH": {
+     "nom": "Schalke 04",
+     "joues": 10,
+     "points": 7,
+     "elo": 1449.3,
+     "cle": "schalke"
+    },
+    "STU": {
+     "nom": "VfB Stuttgart",
+     "joues": 10,
+     "points": 13,
+     "elo": 1616.2,
+     "cle": "stuttgart"
+    }
+   },
+   "restants": [
+    [
+     "AUG",
+     "BRE"
+    ],
+    [
+     "AUG",
+     "DOR"
+    ],
+    [
+     "AUG",
+     "ELV"
+    ],
+    [
+     "AUG",
+     "FRA"
+    ],
+    [
+     "AUG",
+     "HAM"
+    ],
+    [
+     "AUG",
+     "HOF"
+    ],
+    [
+     "AUG",
+     "KÖL"
+    ],
+    [
+     "AUG",
+     "LEI"
+    ],
+    [
+     "AUG",
+     "MÖN"
+    ],
+    [
+     "AUG",
+     "PAD"
+    ],
+    [
+     "AUG",
+     "STU"
+    ],
+    [
+     "UNB",
+     "AUG"
+    ],
+    [
+     "UNB",
+     "BRE"
+    ],
+    [
+     "UNB",
+     "FRE"
+    ],
+    [
+     "UNB",
+     "HAM"
+    ],
+    [
+     "UNB",
+     "HOF"
+    ],
+    [
+     "UNB",
+     "LEV"
+    ],
+    [
+     "UNB",
+     "MAI"
+    ],
+    [
+     "UNB",
+     "MÖN"
+    ],
+    [
+     "UNB",
+     "MUN"
+    ],
+    [
+     "UNB",
+     "PAD"
+    ],
+    [
+     "UNB",
+     "STU"
+    ],
+    [
+     "BRE",
+     "UNB"
+    ],
+    [
+     "BRE",
+     "DOR"
+    ],
+    [
+     "BRE",
+     "ELV"
+    ],
+    [
+     "BRE",
+     "FRA"
+    ],
+    [
+     "BRE",
+     "FRE"
+    ],
+    [
+     "BRE",
+     "KÖL"
+    ],
+    [
+     "BRE",
+     "LEV"
+    ],
+    [
+     "BRE",
+     "MAI"
+    ],
+    [
+     "BRE",
+     "MÖN"
+    ],
+    [
+     "BRE",
+     "MUN"
+    ],
+    [
+     "BRE",
+     "SCH"
+    ],
+    [
+     "BRE",
+     "STU"
+    ],
+    [
+     "DOR",
+     "AUG"
+    ],
+    [
+     "DOR",
+     "UNB"
+    ],
+    [
+     "DOR",
+     "FRE"
+    ],
+    [
+     "DOR",
+     "HOF"
+    ],
+    [
+     "DOR",
+     "KÖL"
+    ],
+    [
+     "DOR",
+     "LEI"
+    ],
+    [
+     "DOR",
+     "LEV"
+    ],
+    [
+     "DOR",
+     "MAI"
+    ],
+    [
+     "DOR",
+     "MÖN"
+    ],
+    [
+     "DOR",
+     "MUN"
+    ],
+    [
+     "DOR",
+     "SCH"
+    ],
+    [
+     "DOR",
+     "STU"
+    ],
+    [
+     "ELV",
+     "UNB"
+    ],
+    [
+     "ELV",
+     "BRE"
+    ],
+    [
+     "ELV",
+     "DOR"
+    ],
+    [
+     "ELV",
+     "FRA"
+    ],
+    [
+     "ELV",
+     "HAM"
+    ],
+    [
+     "ELV",
+     "HOF"
+    ],
+    [
+     "ELV",
+     "KÖL"
+    ],
+    [
+     "ELV",
+     "LEI"
+    ],
+    [
+     "ELV",
+     "MÖN"
+    ],
+    [
+     "ELV",
+     "PAD"
+    ],
+    [
+     "ELV",
+     "SCH"
+    ],
+    [
+     "ELV",
+     "STU"
+    ],
+    [
+     "FRA",
+     "UNB"
+    ],
+    [
+     "FRA",
+     "BRE"
+    ],
+    [
+     "FRA",
+     "DOR"
+    ],
+    [
+     "FRA",
+     "ELV"
+    ],
+    [
+     "FRA",
+     "LEI"
+    ],
+    [
+     "FRA",
+     "LEV"
+    ],
+    [
+     "FRA",
+     "MAI"
+    ],
+    [
+     "FRA",
+     "MÖN"
+    ],
+    [
+     "FRA",
+     "MUN"
+    ],
+    [
+     "FRA",
+     "PAD"
+    ],
+    [
+     "FRA",
+     "SCH"
+    ],
+    [
+     "FRA",
+     "STU"
+    ],
+    [
+     "FRE",
+     "AUG"
+    ],
+    [
+     "FRE",
+     "DOR"
+    ],
+    [
+     "FRE",
+     "ELV"
+    ],
+    [
+     "FRE",
+     "FRA"
+    ],
+    [
+     "FRE",
+     "HAM"
+    ],
+    [
+     "FRE",
+     "HOF"
+    ],
+    [
+     "FRE",
+     "KÖL"
+    ],
+    [
+     "FRE",
+     "LEI"
+    ],
+    [
+     "FRE",
+     "LEV"
+    ],
+    [
+     "FRE",
+     "MAI"
+    ],
+    [
+     "FRE",
+     "PAD"
+    ],
+    [
+     "FRE",
+     "STU"
+    ],
+    [
+     "HAM",
+     "AUG"
+    ],
+    [
+     "HAM",
+     "UNB"
+    ],
+    [
+     "HAM",
+     "BRE"
+    ],
+    [
+     "HAM",
+     "DOR"
+    ],
+    [
+     "HAM",
+     "ELV"
+    ],
+    [
+     "HAM",
+     "FRA"
+    ],
+    [
+     "HAM",
+     "FRE"
+    ],
+    [
+     "HAM",
+     "HOF"
+    ],
+    [
+     "HAM",
+     "LEI"
+    ],
+    [
+     "HAM",
+     "LEV"
+    ],
+    [
+     "HAM",
+     "MUN"
+    ],
+    [
+     "HAM",
+     "PAD"
+    ],
+    [
+     "HAM",
+     "SCH"
+    ],
+    [
+     "HOF",
+     "AUG"
+    ],
+    [
+     "HOF",
+     "UNB"
+    ],
+    [
+     "HOF",
+     "BRE"
+    ],
+    [
+     "HOF",
+     "ELV"
+    ],
+    [
+     "HOF",
+     "FRA"
+    ],
+    [
+     "HOF",
+     "FRE"
+    ],
+    [
+     "HOF",
+     "KÖL"
+    ],
+    [
+     "HOF",
+     "LEI"
+    ],
+    [
+     "HOF",
+     "MAI"
+    ],
+    [
+     "HOF",
+     "MÖN"
+    ],
+    [
+     "HOF",
+     "MUN"
+    ],
+    [
+     "HOF",
+     "PAD"
+    ],
+    [
+     "KÖL",
+     "AUG"
+    ],
+    [
+     "KÖL",
+     "UNB"
+    ],
+    [
+     "KÖL",
+     "DOR"
+    ],
+    [
+     "KÖL",
+     "ELV"
+    ],
+    [
+     "KÖL",
+     "FRA"
+    ],
+    [
+     "KÖL",
+     "FRE"
+    ],
+    [
+     "KÖL",
+     "HAM"
+    ],
+    [
+     "KÖL",
+     "LEI"
+    ],
+    [
+     "KÖL",
+     "MAI"
+    ],
+    [
+     "KÖL",
+     "MUN"
+    ],
+    [
+     "KÖL",
+     "PAD"
+    ],
+    [
+     "KÖL",
+     "STU"
+    ],
+    [
+     "LEI",
+     "UNB"
+    ],
+    [
+     "LEI",
+     "BRE"
+    ],
+    [
+     "LEI",
+     "DOR"
+    ],
+    [
+     "LEI",
+     "FRE"
+    ],
+    [
+     "LEI",
+     "HOF"
+    ],
+    [
+     "LEI",
+     "KÖL"
+    ],
+    [
+     "LEI",
+     "LEV"
+    ],
+    [
+     "LEI",
+     "MAI"
+    ],
+    [
+     "LEI",
+     "MUN"
+    ],
+    [
+     "LEI",
+     "PAD"
+    ],
+    [
+     "LEI",
+     "SCH"
+    ],
+    [
+     "LEI",
+     "STU"
+    ],
+    [
+     "LEV",
+     "AUG"
+    ],
+    [
+     "LEV",
+     "BRE"
+    ],
+    [
+     "LEV",
+     "DOR"
+    ],
+    [
+     "LEV",
+     "ELV"
+    ],
+    [
+     "LEV",
+     "FRA"
+    ],
+    [
+     "LEV",
+     "HAM"
+    ],
+    [
+     "LEV",
+     "HOF"
+    ],
+    [
+     "LEV",
+     "KÖL"
+    ],
+    [
+     "LEV",
+     "MAI"
+    ],
+    [
+     "LEV",
+     "MÖN"
+    ],
+    [
+     "LEV",
+     "MUN"
+    ],
+    [
+     "LEV",
+     "SCH"
+    ],
+    [
+     "MAI",
+     "AUG"
+    ],
+    [
+     "MAI",
+     "UNB"
+    ],
+    [
+     "MAI",
+     "DOR"
+    ],
+    [
+     "MAI",
+     "ELV"
+    ],
+    [
+     "MAI",
+     "FRE"
+    ],
+    [
+     "MAI",
+     "HAM"
+    ],
+    [
+     "MAI",
+     "HOF"
+    ],
+    [
+     "MAI",
+     "KÖL"
+    ],
+    [
+     "MAI",
+     "LEI"
+    ],
+    [
+     "MAI",
+     "MÖN"
+    ],
+    [
+     "MAI",
+     "SCH"
+    ],
+    [
+     "MAI",
+     "STU"
+    ],
+    [
+     "MÖN",
+     "AUG"
+    ],
+    [
+     "MÖN",
+     "UNB"
+    ],
+    [
+     "MÖN",
+     "BRE"
+    ],
+    [
+     "MÖN",
+     "FRA"
+    ],
+    [
+     "MÖN",
+     "FRE"
+    ],
+    [
+     "MÖN",
+     "HAM"
+    ],
+    [
+     "MÖN",
+     "KÖL"
+    ],
+    [
+     "MÖN",
+     "LEI"
+    ],
+    [
+     "MÖN",
+     "LEV"
+    ],
+    [
+     "MÖN",
+     "MUN"
+    ],
+    [
+     "MÖN",
+     "SCH"
+    ],
+    [
+     "MÖN",
+     "STU"
+    ],
+    [
+     "MUN",
+     "AUG"
+    ],
+    [
+     "MUN",
+     "BRE"
+    ],
+    [
+     "MUN",
+     "ELV"
+    ],
+    [
+     "MUN",
+     "FRA"
+    ],
+    [
+     "MUN",
+     "FRE"
+    ],
+    [
+     "MUN",
+     "HAM"
+    ],
+    [
+     "MUN",
+     "HOF"
+    ],
+    [
+     "MUN",
+     "LEV"
+    ],
+    [
+     "MUN",
+     "MAI"
+    ],
+    [
+     "MUN",
+     "MÖN"
+    ],
+    [
+     "MUN",
+     "PAD"
+    ],
+    [
+     "MUN",
+     "SCH"
+    ],
+    [
+     "PAD",
+     "AUG"
+    ],
+    [
+     "PAD",
+     "UNB"
+    ],
+    [
+     "PAD",
+     "BRE"
+    ],
+    [
+     "PAD",
+     "DOR"
+    ],
+    [
+     "PAD",
+     "ELV"
+    ],
+    [
+     "PAD",
+     "KÖL"
+    ],
+    [
+     "PAD",
+     "LEI"
+    ],
+    [
+     "PAD",
+     "LEV"
+    ],
+    [
+     "PAD",
+     "MAI"
+    ],
+    [
+     "PAD",
+     "MÖN"
+    ],
+    [
+     "PAD",
+     "MUN"
+    ],
+    [
+     "PAD",
+     "SCH"
+    ],
+    [
+     "SCH",
+     "AUG"
+    ],
+    [
+     "SCH",
+     "UNB"
+    ],
+    [
+     "SCH",
+     "BRE"
+    ],
+    [
+     "SCH",
+     "DOR"
+    ],
+    [
+     "SCH",
+     "FRA"
+    ],
+    [
+     "SCH",
+     "FRE"
+    ],
+    [
+     "SCH",
+     "HAM"
+    ],
+    [
+     "SCH",
+     "HOF"
+    ],
+    [
+     "SCH",
+     "KÖL"
+    ],
+    [
+     "SCH",
+     "LEV"
+    ],
+    [
+     "SCH",
+     "MÖN"
+    ],
+    [
+     "SCH",
+     "PAD"
+    ],
+    [
+     "STU",
+     "AUG"
+    ],
+    [
+     "STU",
+     "UNB"
+    ],
+    [
+     "STU",
+     "ELV"
+    ],
+    [
+     "STU",
+     "FRA"
+    ],
+    [
+     "STU",
+     "FRE"
+    ],
+    [
+     "STU",
+     "HAM"
+    ],
+    [
+     "STU",
+     "HOF"
+    ],
+    [
+     "STU",
+     "LEI"
+    ],
+    [
+     "STU",
+     "LEV"
+    ],
+    [
+     "STU",
+     "MAI"
+    ],
+    [
+     "STU",
+     "MUN"
+    ],
+    [
+     "STU",
+     "PAD"
+    ],
+    [
+     "STU",
+     "SCH"
+    ]
+   ],
+   "H": 60.0,
+   "p_nul": 0.2459,
+   "controle": {
+    "matchs_classement": 90,
+    "resultats_lus": 90,
+    "restants": 216,
+    "attendu_total": 306,
+    "resultats_ajoutes_elo": 54
+   }
   },
   "fr.1": {
-   "erreur": "classement illisible"
+   "titre": "2026–27 Ligue 1",
+   "mise_a_jour": "2026-11-22",
+   "complete": false,
+   "equipes": {
+    "ANG": {
+     "nom": "Angers",
+     "joues": 11,
+     "points": 8,
+     "elo": 1462.7,
+     "cle": "angers"
+    },
+    "AUX": {
+     "nom": "Auxerre",
+     "joues": 11,
+     "points": 11,
+     "elo": 1508.7,
+     "cle": "auxerre"
+    },
+    "BRE": {
+     "nom": "Brest",
+     "joues": 11,
+     "points": 18,
+     "elo": 1577.9,
+     "cle": "brest"
+    },
+    "LEH": {
+     "nom": "Le Havre",
+     "joues": 11,
+     "points": 2,
+     "elo": 1438.1,
+     "cle": "le havre"
+    },
+    "LMA": {
+     "nom": "Le Mans",
+     "joues": 11,
+     "points": 11,
+     "elo": 1503.6,
+     "cle": "le mans"
+    },
+    "LEN": {
+     "nom": "Lens",
+     "joues": 11,
+     "points": 14,
+     "elo": 1646.0,
+     "cle": "lens"
+    },
+    "LIL": {
+     "nom": "Lille",
+     "joues": 11,
+     "points": 21,
+     "elo": 1690.5,
+     "cle": "lille"
+    },
+    "LOR": {
+     "nom": "Lorient",
+     "joues": 11,
+     "points": 16,
+     "elo": 1539.3,
+     "cle": "lorient"
+    },
+    "OL": {
+     "nom": "Lyon",
+     "joues": 11,
+     "points": 20,
+     "elo": 1662.7,
+     "cle": "lyon"
+    },
+    "OM": {
+     "nom": "Marseille",
+     "joues": 11,
+     "points": 18,
+     "elo": 1639.6,
+     "cle": "marseille"
+    },
+    "ASM": {
+     "nom": "Monaco",
+     "joues": 11,
+     "points": 17,
+     "elo": 1647.2,
+     "cle": "monaco"
+    },
+    "NIC": {
+     "nom": "Nice",
+     "joues": 11,
+     "points": 17,
+     "elo": 1567.3,
+     "cle": "nice"
+    },
+    "PFC": {
+     "nom": "Paris FC",
+     "joues": 11,
+     "points": 23,
+     "elo": 1598.0,
+     "cle": "paris"
+    },
+    "PSG": {
+     "nom": "Paris Saint-Germain",
+     "joues": 11,
+     "points": 26,
+     "elo": 1814.4,
+     "cle": "paris sg"
+    },
+    "REN": {
+     "nom": "Rennes",
+     "joues": 11,
+     "points": 17,
+     "elo": 1621.0,
+     "cle": "rennes"
+    },
+    "STR": {
+     "nom": "Strasbourg",
+     "joues": 11,
+     "points": 10,
+     "elo": 1587.5,
+     "cle": "strasbourg"
+    },
+    "TFC": {
+     "nom": "Toulouse",
+     "joues": 11,
+     "points": 14,
+     "elo": 1570.9,
+     "cle": "toulouse"
+    },
+    "TRO": {
+     "nom": "Troyes",
+     "joues": 11,
+     "points": 11,
+     "elo": 1420.2,
+     "cle": "troyes"
+    }
+   },
+   "restants": [
+    [
+     "ANG",
+     "AUX"
+    ],
+    [
+     "ANG",
+     "BRE"
+    ],
+    [
+     "ANG",
+     "LEH"
+    ],
+    [
+     "ANG",
+     "LMA"
+    ],
+    [
+     "ANG",
+     "LEN"
+    ],
+    [
+     "ANG",
+     "OL"
+    ],
+    [
+     "ANG",
+     "ASM"
+    ],
+    [
+     "ANG",
+     "PFC"
+    ],
+    [
+     "ANG",
+     "PSG"
+    ],
+    [
+     "ANG",
+     "STR"
+    ],
+    [
+     "ANG",
+     "TFC"
+    ],
+    [
+     "AUX",
+     "LEH"
+    ],
+    [
+     "AUX",
+     "LEN"
+    ],
+    [
+     "AUX",
+     "LIL"
+    ],
+    [
+     "AUX",
+     "LOR"
+    ],
+    [
+     "AUX",
+     "OL"
+    ],
+    [
+     "AUX",
+     "OM"
+    ],
+    [
+     "AUX",
+     "ASM"
+    ],
+    [
+     "AUX",
+     "PSG"
+    ],
+    [
+     "AUX",
+     "REN"
+    ],
+    [
+     "AUX",
+     "STR"
+    ],
+    [
+     "AUX",
+     "TFC"
+    ],
+    [
+     "AUX",
+     "TRO"
+    ],
+    [
+     "BRE",
+     "AUX"
+    ],
+    [
+     "BRE",
+     "LEH"
+    ],
+    [
+     "BRE",
+     "LMA"
+    ],
+    [
+     "BRE",
+     "LEN"
+    ],
+    [
+     "BRE",
+     "LIL"
+    ],
+    [
+     "BRE",
+     "LOR"
+    ],
+    [
+     "BRE",
+     "OM"
+    ],
+    [
+     "BRE",
+     "ASM"
+    ],
+    [
+     "BRE",
+     "PFC"
+    ],
+    [
+     "BRE",
+     "REN"
+    ],
+    [
+     "BRE",
+     "STR"
+    ],
+    [
+     "BRE",
+     "TRO"
+    ],
+    [
+     "LEH",
+     "LMA"
+    ],
+    [
+     "LEH",
+     "LEN"
+    ],
+    [
+     "LEH",
+     "LIL"
+    ],
+    [
+     "LEH",
+     "OL"
+    ],
+    [
+     "LEH",
+     "OM"
+    ],
+    [
+     "LEH",
+     "NIC"
+    ],
+    [
+     "LEH",
+     "PFC"
+    ],
+    [
+     "LEH",
+     "REN"
+    ],
+    [
+     "LEH",
+     "STR"
+    ],
+    [
+     "LEH",
+     "TFC"
+    ],
+    [
+     "LEH",
+     "TRO"
+    ],
+    [
+     "LMA",
+     "ANG"
+    ],
+    [
+     "LMA",
+     "AUX"
+    ],
+    [
+     "LMA",
+     "LEH"
+    ],
+    [
+     "LMA",
+     "LIL"
+    ],
+    [
+     "LMA",
+     "OL"
+    ],
+    [
+     "LMA",
+     "OM"
+    ],
+    [
+     "LMA",
+     "NIC"
+    ],
+    [
+     "LMA",
+     "PFC"
+    ],
+    [
+     "LMA",
+     "PSG"
+    ],
+    [
+     "LMA",
+     "REN"
+    ],
+    [
+     "LMA",
+     "STR"
+    ],
+    [
+     "LMA",
+     "TRO"
+    ],
+    [
+     "LEN",
+     "ANG"
+    ],
+    [
+     "LEN",
+     "BRE"
+    ],
+    [
+     "LEN",
+     "LEH"
+    ],
+    [
+     "LEN",
+     "LMA"
+    ],
+    [
+     "LEN",
+     "LIL"
+    ],
+    [
+     "LEN",
+     "ASM"
+    ],
+    [
+     "LEN",
+     "NIC"
+    ],
+    [
+     "LEN",
+     "PSG"
+    ],
+    [
+     "LEN",
+     "REN"
+    ],
+    [
+     "LEN",
+     "STR"
+    ],
+    [
+     "LEN",
+     "TRO"
+    ],
+    [
+     "LIL",
+     "ANG"
+    ],
+    [
+     "LIL",
+     "AUX"
+    ],
+    [
+     "LIL",
+     "LMA"
+    ],
+    [
+     "LIL",
+     "LOR"
+    ],
+    [
+     "LIL",
+     "OM"
+    ],
+    [
+     "LIL",
+     "ASM"
+    ],
+    [
+     "LIL",
+     "NIC"
+    ],
+    [
+     "LIL",
+     "PFC"
+    ],
+    [
+     "LIL",
+     "REN"
+    ],
+    [
+     "LIL",
+     "STR"
+    ],
+    [
+     "LIL",
+     "TFC"
+    ],
+    [
+     "LOR",
+     "ANG"
+    ],
+    [
+     "LOR",
+     "AUX"
+    ],
+    [
+     "LOR",
+     "LEH"
+    ],
+    [
+     "LOR",
+     "LMA"
+    ],
+    [
+     "LOR",
+     "LEN"
+    ],
+    [
+     "LOR",
+     "LIL"
+    ],
+    [
+     "LOR",
+     "OL"
+    ],
+    [
+     "LOR",
+     "OM"
+    ],
+    [
+     "LOR",
+     "NIC"
+    ],
+    [
+     "LOR",
+     "PSG"
+    ],
+    [
+     "LOR",
+     "STR"
+    ],
+    [
+     "OL",
+     "BRE"
+    ],
+    [
+     "OL",
+     "LMA"
+    ],
+    [
+     "OL",
+     "LEN"
+    ],
+    [
+     "OL",
+     "LIL"
+    ],
+    [
+     "OL",
+     "LOR"
+    ],
+    [
+     "OL",
+     "OM"
+    ],
+    [
+     "OL",
+     "ASM"
+    ],
+    [
+     "OL",
+     "PFC"
+    ],
+    [
+     "OL",
+     "PSG"
+    ],
+    [
+     "OL",
+     "STR"
+    ],
+    [
+     "OL",
+     "TFC"
+    ],
+    [
+     "OL",
+     "TRO"
+    ],
+    [
+     "OM",
+     "ANG"
+    ],
+    [
+     "OM",
+     "AUX"
+    ],
+    [
+     "OM",
+     "BRE"
+    ],
+    [
+     "OM",
+     "LEN"
+    ],
+    [
+     "OM",
+     "LIL"
+    ],
+    [
+     "OM",
+     "LOR"
+    ],
+    [
+     "OM",
+     "OL"
+    ],
+    [
+     "OM",
+     "ASM"
+    ],
+    [
+     "OM",
+     "NIC"
+    ],
+    [
+     "OM",
+     "REN"
+    ],
+    [
+     "OM",
+     "TRO"
+    ],
+    [
+     "ASM",
+     "ANG"
+    ],
+    [
+     "ASM",
+     "BRE"
+    ],
+    [
+     "ASM",
+     "LEH"
+    ],
+    [
+     "ASM",
+     "LMA"
+    ],
+    [
+     "ASM",
+     "LOR"
+    ],
+    [
+     "ASM",
+     "OL"
+    ],
+    [
+     "ASM",
+     "NIC"
+    ],
+    [
+     "ASM",
+     "PFC"
+    ],
+    [
+     "ASM",
+     "PSG"
+    ],
+    [
+     "ASM",
+     "REN"
+    ],
+    [
+     "ASM",
+     "STR"
+    ],
+    [
+     "ASM",
+     "TRO"
+    ],
+    [
+     "NIC",
+     "ANG"
+    ],
+    [
+     "NIC",
+     "AUX"
+    ],
+    [
+     "NIC",
+     "BRE"
+    ],
+    [
+     "NIC",
+     "LEH"
+    ],
+    [
+     "NIC",
+     "LEN"
+    ],
+    [
+     "NIC",
+     "OL"
+    ],
+    [
+     "NIC",
+     "OM"
+    ],
+    [
+     "NIC",
+     "ASM"
+    ],
+    [
+     "NIC",
+     "PFC"
+    ],
+    [
+     "NIC",
+     "TFC"
+    ],
+    [
+     "NIC",
+     "TRO"
+    ],
+    [
+     "PFC",
+     "AUX"
+    ],
+    [
+     "PFC",
+     "BRE"
+    ],
+    [
+     "PFC",
+     "LEH"
+    ],
+    [
+     "PFC",
+     "LMA"
+    ],
+    [
+     "PFC",
+     "LEN"
+    ],
+    [
+     "PFC",
+     "LIL"
+    ],
+    [
+     "PFC",
+     "LOR"
+    ],
+    [
+     "PFC",
+     "OM"
+    ],
+    [
+     "PFC",
+     "PSG"
+    ],
+    [
+     "PFC",
+     "TFC"
+    ],
+    [
+     "PFC",
+     "TRO"
+    ],
+    [
+     "PSG",
+     "ANG"
+    ],
+    [
+     "PSG",
+     "AUX"
+    ],
+    [
+     "PSG",
+     "BRE"
+    ],
+    [
+     "PSG",
+     "LEH"
+    ],
+    [
+     "PSG",
+     "LEN"
+    ],
+    [
+     "PSG",
+     "LIL"
+    ],
+    [
+     "PSG",
+     "LOR"
+    ],
+    [
+     "PSG",
+     "OM"
+    ],
+    [
+     "PSG",
+     "NIC"
+    ],
+    [
+     "PSG",
+     "PFC"
+    ],
+    [
+     "PSG",
+     "REN"
+    ],
+    [
+     "PSG",
+     "STR"
+    ],
+    [
+     "PSG",
+     "TFC"
+    ],
+    [
+     "REN",
+     "ANG"
+    ],
+    [
+     "REN",
+     "BRE"
+    ],
+    [
+     "REN",
+     "LEH"
+    ],
+    [
+     "REN",
+     "LEN"
+    ],
+    [
+     "REN",
+     "LOR"
+    ],
+    [
+     "REN",
+     "OL"
+    ],
+    [
+     "REN",
+     "ASM"
+    ],
+    [
+     "REN",
+     "NIC"
+    ],
+    [
+     "REN",
+     "PFC"
+    ],
+    [
+     "REN",
+     "TFC"
+    ],
+    [
+     "REN",
+     "TRO"
+    ],
+    [
+     "STR",
+     "ANG"
+    ],
+    [
+     "STR",
+     "LEH"
+    ],
+    [
+     "STR",
+     "LMA"
+    ],
+    [
+     "STR",
+     "LIL"
+    ],
+    [
+     "STR",
+     "LOR"
+    ],
+    [
+     "STR",
+     "OL"
+    ],
+    [
+     "STR",
+     "OM"
+    ],
+    [
+     "STR",
+     "NIC"
+    ],
+    [
+     "STR",
+     "PFC"
+    ],
+    [
+     "STR",
+     "REN"
+    ],
+    [
+     "STR",
+     "TFC"
+    ],
+    [
+     "STR",
+     "TRO"
+    ],
+    [
+     "TFC",
+     "ANG"
+    ],
+    [
+     "TFC",
+     "AUX"
+    ],
+    [
+     "TFC",
+     "BRE"
+    ],
+    [
+     "TFC",
+     "LMA"
+    ],
+    [
+     "TFC",
+     "LEN"
+    ],
+    [
+     "TFC",
+     "LOR"
+    ],
+    [
+     "TFC",
+     "OM"
+    ],
+    [
+     "TFC",
+     "ASM"
+    ],
+    [
+     "TFC",
+     "NIC"
+    ],
+    [
+     "TFC",
+     "PFC"
+    ],
+    [
+     "TFC",
+     "PSG"
+    ],
+    [
+     "TFC",
+     "REN"
+    ],
+    [
+     "TRO",
+     "ANG"
+    ],
+    [
+     "TRO",
+     "AUX"
+    ],
+    [
+     "TRO",
+     "BRE"
+    ],
+    [
+     "TRO",
+     "LIL"
+    ],
+    [
+     "TRO",
+     "LOR"
+    ],
+    [
+     "TRO",
+     "OL"
+    ],
+    [
+     "TRO",
+     "ASM"
+    ],
+    [
+     "TRO",
+     "NIC"
+    ],
+    [
+     "TRO",
+     "PSG"
+    ],
+    [
+     "TRO",
+     "REN"
+    ],
+    [
+     "TRO",
+     "TFC"
+    ]
+   ],
+   "H": 65.0,
+   "p_nul": 0.2691,
+   "controle": {
+    "matchs_classement": 99,
+    "resultats_lus": 99,
+    "restants": 207,
+    "attendu_total": 306,
+    "resultats_ajoutes_elo": 59
+   }
   }
  }
 }
