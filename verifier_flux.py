@@ -7,6 +7,7 @@ Rien n'est collecté. `python verifier_flux.py` écrit registre/verification-flu
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from urllib.parse import urljoin
@@ -23,14 +24,10 @@ SORTIE = Path("registre") / "verification-flux.md"
 # collecte avant ce passage. ReliefWeb n'est pas repris (retiré en 0.10.167 : page vide pour GitHub). Crisis Group a
 # refusé GitHub (403) le 17/11 sur ses pages ; son flux est sondé une fois, et un nouveau refus sera respecté.
 # ONU Info (retiré en 0.10.170) et le Parlement européen (déjà collecté par FeedBurner) ne sont pas repris.
-CANDIDATS = {
-    "Security Council Report, tout": "https://www.securitycouncilreport.org/feed/",
-    "Security Council Report, What's in Blue": "https://www.securitycouncilreport.org/whatsinblue/feed/",
-    "Crisis Group": "https://www.crisisgroup.org/rss",
-    "ElectionGuide (IFES)": "https://www.electionguide.org/feed/",
-    "ONU, couverture des réunions": "https://press.un.org/en/rss.xml",
-    "Conseil de l'UE, communiqués": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
-    "Commission européenne, presse": "https://ec.europa.eu/commission/presscorner/api/rss?language=en",
+CANDIDATS = {   # 2026-11-27, 20 h 40 : flux des OPML « awesome-RSS-feeds » (plenaryapp), triés par Claude
+    # (presse nationale et internationale, économie, agences ; écartés : sport, divertissement, régional, podcasts,
+    # agrégateurs, sites douteux, doublons de la collecte). Liste : mise_au_point/candidats_opml.json.
+    **json.loads((Path(__file__).parent / "mise_au_point" / "candidats_opml.json").read_text(encoding="utf-8")),
 }
 
 # 2026-11-27 : pages des sources sans flux connu (ElectionGuide, ONU). Pour chacune : robots, code HTTP, flux annoncés
