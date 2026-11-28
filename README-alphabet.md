@@ -24,17 +24,23 @@ comparer les situations, pas à produire seul la probabilité**. Le bras C reste
 2. **Bras A** : le modèle seul, scellé avant toute carte.
 3. **Pipeline de l'alphabet** : taux de base B, lecture C en ombre, et **bras M** (l'alphabet « en matriochka » :
    sept cartes notées de 1 à 4 par le modèle, publiées dans le commentaire). Bras retenu : M dès qu'il est estimé,
-   à la place de A, de ½A + ½B ou d'un B tiré de la seule vue du modèle ; un B calculé par le code (comptage, taux
-   fixé) est gardé. Sans M : ½A + ½B pour les événements humains qui ont un taux de base, sinon B ou A.
+   à la place de A ou d'un B tiré de la seule vue du modèle ; un B calculé par le code (comptage, taux fixé) est
+   gardé. Sans M : B quand l'alphabet a estimé ou lu un état nul avec un taux de base, sinon A (la moyenne ½A + ½B
+   existe dans le code mais est éteinte : `POSTER_AB = False`).
 4. **Briques mécaniques** (règles appliquées à des données, sans modèle de langue), essayées dans cet ordre, chacune
    derrière la **porte de compatibilité** (famille de la question × brique, `familles_situation.py`) : seuils de prix
-   (modèle log-normal), événements comptés, maintien, escalade, compétitions (tennis et football par Elo, scrutin
-   pour les classes S2 et S3, sinon « un parmi N »), banque centrale (inertie de la Fed), accords pendant une guerre,
-   sondes de l'écosystème. Les briques de base remplacent la prévision ; les autres s'y mélangent au quart.
-5. **Contradicteur** : s'il montre, citation vérifiée à l'appui, que la brique ne s'applique pas, elle est écartée.
-6. **Garde-fou** : une brique extrême (au-delà de 10 % / 90 %) contredite de plus de 40 points par le modèle seul
-   est ramenée à 10 % / 90 % (exemptions par famille, décision de l'auteur).
-7. **Juge** : écart permis de 10 points au plus autour de la brique, selon la force de la preuve.
+   (modèle log-normal), événements comptés, maintien, escalade, compétitions (dans l'ordre : tennis par Elo, scrutin
+   pour les classes S2 et S3, football par Elo, sinon « un parmi N »), banque centrale (inertie de la Fed), accords
+   (cessez-le-feu, tenue des trêves, accord de paix pendant une guerre, rencontres, sommets de l'OTAN, justice, autres
+   accords), sondes de l'écosystème. Les briques de base remplacent la prévision ; le maintien, « un parmi N » et les
+   « autres accords » s'y mélangent au quart.
+5. **Contradicteur** (actif si la variable du dépôt `ALPHABET_CONTRADICTEUR` est renseignée) : s'il montre, citation
+   vérifiée à l'appui, que la brique appliquée ne s'applique pas, elle est écartée. Il ne juge pas les sondes.
+6. **Garde-fou** : une brique de base ou une sonde (les briques mélangées au quart n'y passent pas) extrême
+   (au-delà de 10 % / 90 %), contredite de plus de 40 points par le modèle seul, est ramenée à 10 % / 90 %
+   (exemptions par famille, décision de l'auteur).
+7. **Juge** (peut être coupé : `ALPHABET_JUGE=0`) : écart permis de 10 points au plus autour de la brique, ou de la
+   valeur du pipeline quand aucune brique ne s'applique, selon la force de la preuve.
 
 **Autres types de questions** : choix multiple ancré sur 1/N (85 % bot, 15 % répartition égale) et tranches de
 chiffre d'affaires ; questions numériques et à date : le modèle, avec une lecture exploratoire scellée.

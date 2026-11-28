@@ -14,11 +14,11 @@ What a binary question goes through today:
 |---|---|
 | Research | two independent searchers |
 | Arm A | the language model alone, sealed before any card |
-| Arm M | the alphabet "as a matryoshka": seven cards scored 1–4, shown in the posted comment; replaces A (a base rate computed by code is kept) |
-| Coded bricks | rules applied to data, no language model, each behind a compatibility gate (question family × brick): price thresholds, counted events, staying in office, escalation, competitions (tennis and football Elo, elections), central bank, peace agreements during wars, ecosystem probes |
-| Contradictor | sets a brick aside when a verified quote shows it does not apply |
-| Safeguard | an extreme brick strongly contradicted by the model alone is held at 10% / 90% |
-| Judge | may depart from the brick by 10 points at most |
+| Arm M | the alphabet "as a matryoshka": seven cards scored 1–4, shown in the posted comment; replaces A or a model-estimated base rate (a base rate computed by code is kept) |
+| Coded bricks | rules applied to data, no language model, each behind a compatibility gate (question family × brick): price thresholds, counted events, staying in office, escalation, competitions (tennis Elo, elections, football Elo, one-of-N), central bank, agreements (ceasefires, truces holding, peace deals during wars, meetings, NATO summits, justice, other agreements), ecosystem probes |
+| Contradictor | when enabled, sets the applied brick aside when a verified quote shows it does not apply (not used on ecosystem probes) |
+| Safeguard | an extreme base brick or probe (not the blended bricks) strongly contradicted by the model alone is held at 10% / 90% |
+| Judge | may depart from the brick, or from the pipeline value when no brick applies, by 10 points at most |
 
 Every brick that touches the posted forecast first passed a pre-registered test (`preenregistrements/`), except the
 election brick, switched on by the author's decision with its risk declared; failed trials are closed and kept. Around the bot: an ecosystem map, our own data collection and a link-and-metadata data

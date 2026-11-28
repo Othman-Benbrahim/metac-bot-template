@@ -558,8 +558,9 @@ class AlphabetBot(FallTemplateBot2026):
         if sp_ is None:
             sp_ = _tag(self._banque_centrale(question, q, r.p_poste), "banque_centrale")
         # 0.10.500 (décision de l'auteur du 2026-11-24, 16 h 28 : découpage « matriochka ») : accords selon l'état de la
-        # guerre (UCDP fin des conflits, table sourcée des guerres) ; seule la sous-famille « accord de paix pendant une
-        # guerre en cours » a passé les critères (2 questions) ; même mélange, même plafond ; journal-accords.jsonl.
+        # guerre (UCDP fin des conflits, table sourcée des guerres). Commentaire corrigé le 2026-11-28 : _accords_guerre
+        # couvre aussi le cessez-le-feu, la tenue des trêves, les rencontres, les sommets de l'OTAN, la justice et les
+        # « autres accords » ; journal-accords.jsonl.
         if sp_ is None:
             sp_ = _tag(await self._accords_guerre(question, q, r.p_poste, research), "accords")
         # 0.10.509 (décisions de l'auteur du 2026-11-24, 21 h 14 à 21 h 24) : sondes de l'écosystème (relations, ponts,
@@ -576,14 +577,15 @@ class AlphabetBot(FallTemplateBot2026):
         except Exception as e:     # l'ombre qui échoue ne bloque rien
             logger.warning("cotes en ombre : non relevées (%s)", type(e).__name__)
         # 0.10.510 (décision de l'auteur du 2026-11-24, 22 h 12 ; preenregistrements/dossier-interne.md) : la brique
-        # sert de base (plus de mélange au quart) ; puis juge informé, après le sceau du bras A, dans une marge de 10
+        # sert de base (plus de mélange au quart), SAUF le maintien, « un parmi N » et les « autres accords », qui restent
+        # mélangés au quart (pas de p_regle ; précision du 2026-11-28) ; puis juge informé, après le sceau du bras A, dans une marge de 10
         # points au plus, modulée par la force de la preuve ; journal-juge.jsonl.
         texte = (r.commentaire or "") + (sp_["texte"] if sp_ is not None else "")
         p_mesure = float(sp_.get("p_regle", sp_["p"])) if sp_ is not None else r.p_poste
         if sp_ is not None:   # amendement du 2026-11-26 : contradicteur des briques
-            v = await self._contradicteur_brique(question, q, research, r.p_poste, p_mesure)
-            # « hors domaine » admis par le code (citation vérifiée) : la brique est annulée, on poste le raisonnement du
-            # modèle (décision de l'auteur, 2026-11-26, 11 h 46, après le banc : rappel 8/8, fausses alertes 6/29).
+            v = await self._contradicteur_brique(question, q, research, r.p_poste, p_mesure, sp_.get("famille"))
+            # « hors domaine » admis par le code (citation vérifiée) : la brique est annulée, on reprend la valeur du
+            # pipeline (M, B ou A ; le juge peut encore s'en écarter) (décision de l'auteur, 2026-11-26, 11 h 46, après le banc : rappel 8/8, fausses alertes 6/29).
             # « contre le terrain » reste en ombre (E bis.2).
             if v is not None and v.get("verdict") == "hors_domaine":
                 texte = (r.commentaire or "") + (f"\n\nContradictor: the coded rule does not apply to this question "
@@ -601,7 +603,8 @@ class AlphabetBot(FallTemplateBot2026):
             return ReasonedPrediction(prediction_value=j["p_poste"], reasoning=texte)
         return ReasonedPrediction(prediction_value=p_mesure, reasoning=texte)
 
-    async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float) -> dict | None:
+    async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float,
+                                   fam_appliquee: str | None = None) -> dict | None:
         """Amendement du 2026-11-26 (E bis.2) : verdict du contradicteur sur la brique appliquée, journalisé dans
         registre/journal-contradicteur.jsonl. Effet sur la prévision (décision de l'auteur du 2026-11-26, 11 h 46) :
         le verdict « hors domaine », citation vérifiée par le code, ÉCARTE la brique (voir _run_forecast_on_binary) ;
@@ -614,6 +617,12 @@ class AlphabetBot(FallTemplateBot2026):
             import dossier_interne as di
             fin = q.resolution.isoformat() if hasattr(q.resolution, "isoformat") else str(q.resolution or "")[:10]
             B = [b for b in di._briques(q.titre, datetime.now(timezone.utc).date(), fin) if b[2] is not None]
+            # 2026-11-28 (relecture indépendante) : juger LA brique appliquée par le bot, pas la première du dossier
+            # interne (ordres différents ; « accords » et « competitions » regroupent plusieurs familles du dossier).
+            # Les sondes n'ont pas d'équivalent dans le dossier : pas de contradicteur (elles ont leur règle d'arrêt).
+            if fam_appliquee is not None:
+                admis = FAMILLES_DOSSIER.get(fam_appliquee, {fam_appliquee})
+                B = [b for b in B if b[0] == fam_appliquee] or [b for b in B if b[0] in admis]
             if not B:
                 return None
             fam = B[0][0]
@@ -991,6 +1000,11 @@ class AlphabetBot(FallTemplateBot2026):
             return None
 
 
+# 2026-11-28 : familles du bot (_tag) → familles du dossier interne, pour que le contradicteur juge la brique appliquée
+FAMILLES_DOSSIER = {"accords": {"accord_guerre", "cessez_le_feu", "tenue", "rencontres", "sommets", "justice",
+                                "autres_accords"},
+                    "competitions": {"competitions", "tennis_elo", "scrutin", "football_elo"},
+                    "sondes": set()}
 GF_BORNE, GF_DESACCORD = 0.10, 0.40   # 0.10.517 : fixés avant tout résultat (2026-11-27, 13 h 20)
 GF_EXEMPTES: set[str] = set()        # familles exemptées, seulement au vu de leurs questions résolues (décision d'auteur)
 BASCULES: list[dict] = []     # 0.7.4 : remplacements en cours de passage (journal du bilan)

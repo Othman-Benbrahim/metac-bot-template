@@ -3,7 +3,7 @@ Procédure : preenregistrements/banque-centrale.md, écrite et versée avant tou
 
 Mécanisme (carte : inflation mondiale, banques centrales) : la Fed bouge par petits pas, dans la même direction, avec des
 pauses. Échelle d'une réunion : B50 (baisse de 50 points ou plus), B25, M (maintien), H25, H50 (hausse de 50 ou plus).
-Mesure : toutes les réunions programmées du FOMC (calendriers officiels 1994-2002 et 2007-2026, federalreserve.gov) et
+Mesure : toutes les réunions programmées du FOMC (calendriers officiels 1994-2002 et 2007-2027, federalreserve.gov) et
 tous les changements de cible (openmarket.htm et son archive), hors réunions tenues au plancher (borne haute ≤ 0,25 %).
 État avant une réunion : sens du dernier changement, et s'il a eu lieu depuis la réunion précédente (« récent ») ou non
 (« pause ») → quatre états. Probabilités : fréquences de l'échelle par état, plus 0,5 par case.
@@ -223,11 +223,13 @@ def probabilite(forme: dict, jeu: dt.date, R=None, C=None) -> float | None:
         return None
     # 2026-11-28 (revue des cycles, décision de l'auteur : « une question de cycle, pas de fraîcheur ») : la brique
     # s'abstient quand la fenêtre de la question dépasse le calendrier officiel connu (sinon une année absente du
-    # calendrier compterait zéro réunion : 1 % ou 99 % sans raison). Marge : sept semaines, l'écart usuel entre deux
-    # réunions.
-    fin_cal = max(R) + dt.timedelta(days=49)
+    # calendrier compterait zéro réunion : 1 % ou 99 % sans raison). Marge : cinq semaines, l'écart le plus court entre
+    # deux réunions récentes étant de six (relecture indépendante du 2026-11-28 : sept semaines laissaient passer une
+    # réunion inconnue). Les baisses d'urgence aussi : « hors réunion programmée » n'a de sens qu'avec le calendrier.
+    fin_cal = max(R) + dt.timedelta(days=35)
     t0 = forme["type"]
-    if t0 in ("au_moins_un", "compte", "sequence") and "annee" in forme and dt.date(forme["annee"], 12, 31) > fin_cal:
+    if t0 in ("au_moins_un", "compte", "sequence", "urgence") and "annee" in forme \
+            and dt.date(forme["annee"], 12, 31) > fin_cal:
         return None
     if t0 == "au_moins_un" and "avant" in forme and forme["avant"] > fin_cal:
         return None
@@ -243,7 +245,9 @@ def probabilite(forme: dict, jeu: dt.date, R=None, C=None) -> float | None:
         if any(p < 0 and d.year == forme["annee"] and not any(f <= d <= f + dt.timedelta(days=2) for f in R)
                for d, p, _ in Ck):
             return 1.0
-        reste = (dt.date(forme["annee"], 12, 31) - jeu).days / 365.25
+        # 2026-11-28 (relecture indépendante) : exposition sur la seule année visée (avant : depuis `jeu`, soit plusieurs
+        # années pour une année future)
+        reste = (dt.date(forme["annee"], 12, 31) - max(jeu, dt.date(forme["annee"], 1, 1))).days / 365.25
         return 1 - math.exp(-_taux_urgence(R, Ck, jeu) * max(reste, 0))
     if t == "reunion":
         cible = _reunion_du_mois(R, *forme["reunion"])

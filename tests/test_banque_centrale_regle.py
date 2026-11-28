@@ -44,9 +44,24 @@ def test_melange_plafonne():
 
 
 def test_abstention_hors_calendrier():
-    """2026-11-28 : une fenêtre au-delà du calendrier officiel connu ne compte pas « zéro réunion »."""
+    """2026-11-28 : une fenêtre au-delà du calendrier officiel connu ne compte pas « zéro réunion ». Chaque titre est
+    d'abord vérifié comme reconnu, pour que l'abstention vienne bien de la règle (relecture indépendante)."""
     import datetime as dt
     import banque_centrale_regle as b
-    assert b.estimer("Will the Fed cut rates in 2029?", dt.date(2026, 11, 20)) is None
-    assert b.estimer("Will 2+ Fed rate cuts happen in 2029?", dt.date(2026, 11, 20)) is None
-    assert b.estimer("Will the Fed raise the federal funds target range before March 1, 2029?", dt.date(2026, 11, 20)) is None
+    jeu = dt.date(2026, 11, 20)
+    for t in ["Will 2+ Fed rate cuts happen in 2029?", "Will there be a Fed rate hike in 2029?",
+              "Will the Fed raise the federal funds target range before March 1, 2029?",
+              "Will the Fed announce an emergency rate cut in 2029?",
+              "Will the Fed hold a cut-pause-cut sequence in 2029?",
+              "No change in Fed interest rates after March 2029 meeting?"]:
+        assert b.reconnaitre(t) is not None, t
+        assert b.estimer(t, jeu) is None, t
+    assert b.estimer("Will 2+ Fed rate cuts happen in 2027?", jeu) is not None
+
+
+def test_urgence_exposition_annee_seule():
+    import datetime as dt
+    import banque_centrale_regle as b
+    p26 = b.estimer("Will the Fed announce an emergency rate cut in 2027?", dt.date(2026, 11, 20))["p"]
+    p27 = b.estimer("Will the Fed announce an emergency rate cut in 2027?", dt.date(2027, 1, 1))["p"]
+    assert abs(p26 - p27) < 0.02      # même exposition : l'année 2027 seule
