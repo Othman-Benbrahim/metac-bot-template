@@ -1,5 +1,7 @@
 # Situational Alphabet Bot — Abstract
 
+> **Note (28 November 2026).** This abstract describes the starting experiment. The alphabet's role has since changed (it organises situations; coded bricks now carry most forecasts). See the orientation section of [`README.md`](README.md).
+
 *Othman Ben Brahim · bot version 0.10.29 · skill alphabet-situationnel 0.7.70 · Metaculus FutureEval*
 
 **Question.** Does a structural reading of a situation improve on a plain base rate when forecasting real-world events?

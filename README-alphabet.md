@@ -1,11 +1,69 @@
 # Bot Metaculus de l'alphabet situationnel
 
-Version 0.10.100 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
+Version 0.10.522 · skill alphabet-situationnel 0.7.77 · auteur Othman Ben Brahim · licence MIT pour les fichiers du bot
 (`LICENSE-alphabet` : `alphabet_*.py`, `score_registre.py`, `tests/`, workflows `*alphabet*`) ; le reste du dépôt est
 le modèle de Metaculus, sous ses propres conditions. Résumé en anglais : [`ABSTRACT-alphabet.md`](ABSTRACT-alphabet.md).
 
 Ce document décrit **le bot**. Le skill qu'il fait tourner (cartes, strates, moteur, règles de validation) est décrit
 dans [`alphabet-situationnel/README.md`](alphabet-situationnel/README.md).
+
+## Orientation actuelle (28 novembre 2026) : ce qui sert aujourd'hui, ce qui est retiré
+
+Cette section prime sur le reste du document, qui garde l'historique : plusieurs parties plus bas (les trois bras, le
+bras C, le monde synthétique) décrivent l'expérience de départ et non le fonctionnement d'aujourd'hui.
+
+**La question a changé de place.** Au départ, le projet demandait si l'alphabet (bras C) bat le taux de base (bras B).
+Les mesures ont montré que le maillon faible était la traduction des questions en cartes par un modèle de langue
+(fidélité au plan relue « non » 18 fois sur 18). Décision de l'auteur (15 novembre) : **l'alphabet sert à organiser et
+comparer les situations, pas à produire seul la probabilité**. Le bras C reste calculé et scellé, en ombre
+(`POSTER_C = False`) ; il ne touche pas ce qui est posté.
+
+**Le chemin d'une question binaire aujourd'hui** (`alphabet_bot._run_forecast_on_binary`) :
+
+1. **Recherche** par deux chercheurs (plusieurs sources valent mieux qu'une).
+2. **Bras A** : le modèle seul, scellé avant toute carte.
+3. **Pipeline de l'alphabet** : taux de base B, lecture C en ombre, et **bras M** (l'alphabet « en matriochka » :
+   sept cartes notées de 1 à 4 par le modèle, publiées dans le commentaire). Bras retenu : M dès qu'il est estimé,
+   à la place de A, de ½A + ½B ou d'un B tiré de la seule vue du modèle ; un B calculé par le code (comptage, taux
+   fixé) est gardé. Sans M : ½A + ½B pour les événements humains qui ont un taux de base, sinon B ou A.
+4. **Briques mécaniques** (règles appliquées à des données, sans modèle de langue), essayées dans cet ordre, chacune
+   derrière la **porte de compatibilité** (famille de la question × brique, `familles_situation.py`) : seuils de prix
+   (modèle log-normal), événements comptés, maintien, escalade, compétitions (tennis et football par Elo, scrutin
+   pour les classes S2 et S3, sinon « un parmi N »), banque centrale (inertie de la Fed), accords pendant une guerre,
+   sondes de l'écosystème. Les briques de base remplacent la prévision ; les autres s'y mélangent au quart.
+5. **Contradicteur** : s'il montre, citation vérifiée à l'appui, que la brique ne s'applique pas, elle est écartée.
+6. **Garde-fou** : une brique extrême (au-delà de 10 % / 90 %) contredite de plus de 40 points par le modèle seul
+   est ramenée à 10 % / 90 % (exemptions par famille, décision de l'auteur).
+7. **Juge** : écart permis de 10 points au plus autour de la brique, selon la force de la preuve.
+
+**Autres types de questions** : choix multiple ancré sur 1/N (85 % bot, 15 % répartition égale) et tranches de
+chiffre d'affaires ; questions numériques et à date : le modèle, avec une lecture exploratoire scellée.
+
+**Ce qui entre dans la prévision a passé un test préenregistré** (`preenregistrements/`), par exemple : football,
+perte 0,066 contre 0,219 sur 5 940 questions construites ; banque centrale, 0,469 contre 0,663 sur 47 questions ;
+seuils de prix, −0,206 contre le taux de base sur 138 questions. Le scrutin (S2, S3) est branché par décision de
+l'auteur, risque déclaré, sur un étalonnage non tranché.
+
+**Autour du bot** : la carte des écosystèmes (`ecosystemes/`, support et terrain d'expérience du bot), la collecte
+(flux RSS, sites sans flux lus par notre propre lecteur, séries chiffrées), le **puits de données** (lien, titre et
+métadonnées, jamais le texte), le registre étiqueté des sources, la veille, et les briefs en deux couches (visible :
+briefs traités ; non visible : nuage de mots et signaux faibles, en observation jusqu'au 12 décembre).
+
+**En ombre** (calculé, scellé, jamais posté) : bras C et ses variantes (symétrique, exploratoire), essais répétés de
+A, tests de négation, cotes Polymarket (relevées pour mesurer, jamais utilisées), verdict « contre le terrain » du
+contradicteur, classement des briefs.
+
+**Retiré ou plus utilisé** :
+- le **monde synthétique** (calibrage du lecteur du bras C) : plus lancé, le bras C n'étant plus la voie de la
+  prévision ;
+- la **réparation du lecteur** du bras C : abandonnée avec ce changement de place ;
+- la **proxémie** comme correction statistique (21 novembre : contredite par les résultats) ;
+- la **classe de référence pondérée** par forme de question (20 novembre : forme absente de Metaculus) ;
+- des essais clos sans adoption, gardés au catalogue : B autorégressif et saisonnier, rougeole, stocks, Kalman,
+  calendrier Haiku.
+
+**Calibration à venir** : calibration de Platt des prévisions binaires publiées, déclenchée à 100 questions résolues
+(`preenregistrements/calibration-platt.md`).
 
 ## En bref
 
