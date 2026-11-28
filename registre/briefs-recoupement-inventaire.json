@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-27",
+ "genere_le": "2026-11-28",
  "compartiments_sans_serie": [
   [
    "dirigeants-elus:executifs",
@@ -7,10 +7,26 @@
   ],
   [
    "securite-publique:justice",
-   3
+   4
   ],
   [
    "politique-americaine:commerce",
+   4
+  ],
+  [
+   "politique-interieure:gouvernement",
+   4
+  ],
+  [
+   "monnaie-pouvoir:sanctions_financieres",
+   3
+  ],
+  [
+   "politique-interieure:procedures",
+   3
+  ],
+  [
+   "sciences-techniques:attentes",
    3
   ],
   [
@@ -22,7 +38,7 @@
    2
   ],
   [
-   "monnaie-pouvoir:sanctions_financieres",
+   "medias-diffusion:plateformes_sociales",
    2
   ],
   [
@@ -34,7 +50,7 @@
    2
   ],
   [
-   "politique-interieure:procedures",
+   "partis-politiques:systemes_partisans",
    2
   ],
   [
@@ -42,11 +58,15 @@
    2
   ],
   [
-   "sciences-techniques:attentes",
+   "politique-interieure:elections",
    2
   ],
   [
-   "politique-interieure:gouvernement",
+   "sciences-techniques:regulation",
+   2
+  ],
+  [
+   "militaire:forces",
    2
   ],
   [
@@ -70,10 +90,6 @@
    1
   ],
   [
-   "medias-diffusion:plateformes_sociales",
-   1
-  ],
-  [
    "economie-entreprises:regles_sectorielles",
    1
   ],
@@ -83,10 +99,6 @@
   ],
   [
    "dirigeants-elus:departs",
-   1
-  ],
-  [
-   "partis-politiques:systemes_partisans",
    1
   ],
   [
@@ -114,10 +126,6 @@
    1
   ],
   [
-   "politique-interieure:elections",
-   1
-  ],
-  [
    "organisations-internationales:sante_mondiale",
    1
   ],
@@ -130,15 +138,35 @@
    1
   ],
   [
-   "sciences-techniques:regulation",
-   1
-  ],
-  [
    "economie-chinoise:politique_monetaire",
    1
   ],
   [
    "epidemies:malades",
+   1
+  ],
+  [
+   "information-cyber:plateformes",
+   1
+  ],
+  [
+   "securite-publique:alertes",
+   1
+  ],
+  [
+   "transport-maritime:detroit_ormuz",
+   1
+  ],
+  [
+   "militaire:doctrines",
+   1
+  ],
+  [
+   "dirigeants-elus:justice_immunites",
+   1
+  ],
+  [
+   "politique-interieure:dirigeants",
    1
   ]
  ]

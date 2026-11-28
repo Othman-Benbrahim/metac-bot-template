@@ -1,0 +1,9 @@
+{
+ "jour": "2026-11-27",
+ "gdelt_lu": true,
+ "alertes": [],
+ "seuils": {
+  "gdelt": ">= 5 événements 0871 et >= 4.0 x la moyenne des 28 jours",
+  "puits": ">= 3 titres distincts sur 3 jours"
+ }
+}

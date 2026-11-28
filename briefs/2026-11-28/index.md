@@ -1,0 +1,18 @@
+# Briefs du 2026-11-28
+
+- [trumps-tariffs-have-become-americas-new-normal](trumps-tariffs-have-become-americas-new-normal.md) (openrouter/openai/gpt-oss-120b)
+- [sarawak-state-election-retreat-by-anwar-and-rivals-brings-ru](sarawak-state-election-retreat-by-anwar-and-rivals-brings-ru.md) (openrouter/openai/gpt-oss-120b)
+- [no-reports-no-strikes-russias-prowar-bloggers-slam-proposed](no-reports-no-strikes-russias-prowar-bloggers-slam-proposed.md) (openrouter/openai/gpt-oss-120b)
+- [argentina-bans-online-betting-advertising-including-in-footb](argentina-bans-online-betting-advertising-including-in-footb.md) (openrouter/openai/gpt-oss-120b)
+- [baloch-colony-building-collapse-death-toll-rises-to-11](baloch-colony-building-collapse-death-toll-rises-to-11.md) (openrouter/openai/gpt-oss-120b)
+- [u-s-disables-ship-trying-to-leave-iran-as-tehran-vows-to-con](u-s-disables-ship-trying-to-leave-iran-as-tehran-vows-to-con.md) (openrouter/openai/gpt-oss-120b)
+- [how-medical-neglect-killed-alfredo-diaz-in-a-venezuelan-cell](how-medical-neglect-killed-alfredo-diaz-in-a-venezuelan-cell.md) (openrouter/openai/gpt-oss-120b)
+- [trump-to-keep-suspense-over-his-successor-for-as-long-as-pos](trump-to-keep-suspense-over-his-successor-for-as-long-as-pos.md) (openrouter/openai/gpt-oss-120b)
+- [why-and-how-the-united-states-and-its-allies-should-prepare](why-and-how-the-united-states-and-its-allies-should-prepare.md) (openrouter/openai/gpt-oss-120b)
+- [kazakhstan-sentences-prominent-anti-corruption-blogger-to-10](kazakhstan-sentences-prominent-anti-corruption-blogger-to-10.md) (openrouter/openai/gpt-oss-120b)
+- [surveillance-isn-t-safety-a-comic-about-organizing-against-f](surveillance-isn-t-safety-a-comic-about-organizing-against-f.md) (openrouter/openai/gpt-oss-120b)
+- [international-la-militante-panafricaniste-nathalie-yamb-deno](international-la-militante-panafricaniste-nathalie-yamb-deno.md) (openrouter/openai/gpt-oss-120b)
+- [conquerir-par-le-bas-a-taiwan-la-chine-plane-sur-les-electio](conquerir-par-le-bas-a-taiwan-la-chine-plane-sur-les-electio.md) (openrouter/openai/gpt-oss-120b)
+- [the-small-african-lab-sounding-the-alarm-on-ai-bioweapons](the-small-african-lab-sounding-the-alarm-on-ai-bioweapons.md) (openrouter/openai/gpt-oss-120b)
+- [trumps-contractor-gag-order-is-an-affront-to-congressional-o](trumps-contractor-gag-order-is-an-affront-to-congressional-o.md) (openrouter/openai/gpt-oss-120b)
+- [morning-update](morning-update.md) (openrouter/openai/gpt-oss-120b)

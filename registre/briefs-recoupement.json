@@ -273,10 +273,10 @@
 {
 "adaptateur": "federal_register:tous:Treasury",
 "source": "textes du Trésor déposés au Federal Register",
-"date": "2026-11-25",
-"valeur": 1.0,
-"age_jours": 1,
-"variation": 1.0
+"date": "2026-11-26",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": -1.0
 }
 ],
 "attention": []
@@ -336,10 +336,10 @@
 "adaptateur": "paire_mois:RU:UA:conflit",
 "source": "événements conflictuels Russie–Ukraine par mois (GDELT)",
 "date": "2026-11-01",
-"valeur": 8028.0,
+"valeur": 8351.0,
 "age_jours": 25,
-"variation": -4331.0,
-"z": -1.11,
+"variation": -4008.0,
+"z": -1.02,
 "anormal": false
 }
 ],
@@ -398,10 +398,10 @@
 {
 "adaptateur": "certificats",
 "source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
-"date": "2026-11-24",
-"valeur": 3.0,
-"age_jours": 2,
-"variation": 3.0
+"date": "2026-11-26",
+"valeur": 1.0,
+"age_jours": 0,
+"variation": 1.0
 }
 ],
 "attention": []
@@ -551,10 +551,10 @@
 {
 "adaptateur": "certificats",
 "source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
-"date": "2026-11-24",
-"valeur": 3.0,
-"age_jours": 2,
-"variation": 3.0
+"date": "2026-11-26",
+"valeur": 1.0,
+"age_jours": 0,
+"variation": 1.0
 }
 ],
 "attention": []
@@ -765,10 +765,10 @@
 {
 "adaptateur": "federal_register:tous:Treasury",
 "source": "textes du Trésor déposés au Federal Register",
-"date": "2026-11-25",
-"valeur": 1.0,
-"age_jours": 2,
-"variation": 1.0
+"date": "2026-11-27",
+"valeur": 3.0,
+"age_jours": 0,
+"variation": 3.0
 }
 ],
 "attention": []
@@ -877,30 +877,30 @@
 "adaptateur": "avions:US",
 "source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
 "date": "2026-11-27",
-"valeur": 6.0,
+"valeur": 6.333,
 "age_jours": 0,
-"variation": 0.0,
-"z": 0.66,
+"variation": 0.3330000000000002,
+"z": 0.67,
 "anormal": false
 },
 {
 "adaptateur": "tfr:SECURITY",
 "source": "interdictions de survol de sécurité créées par jour (FAA)",
 "date": "2026-11-27",
-"valeur": 0.0,
+"valeur": 4.0,
 "age_jours": 0,
-"variation": 0.0,
-"z": 0.0,
-"anormal": false
+"variation": 4.0,
+"z": 2.7,
+"anormal": true
 },
 {
 "adaptateur": "federal_register",
 "source": "textes déposés en inspection publique au Federal Register par jour",
-"date": "2026-11-25",
-"valeur": 136.0,
-"age_jours": 2,
-"variation": 131.0,
-"z": 1.61,
+"date": "2026-11-27",
+"valeur": 140.0,
+"age_jours": 0,
+"variation": 140.0,
+"z": 1.03,
 "anormal": false
 }
 ],
@@ -992,10 +992,10 @@
 "adaptateur": "paire_mois:RU:UA:conflit",
 "source": "événements conflictuels Russie–Ukraine par mois (GDELT)",
 "date": "2026-11-01",
-"valeur": 8028.0,
+"valeur": 8351.0,
 "age_jours": 26,
-"variation": -4331.0,
-"z": -1.11,
+"variation": -4008.0,
+"z": -1.02,
 "anormal": false
 }
 ],
@@ -1024,30 +1024,30 @@
 "adaptateur": "avions:US",
 "source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
 "date": "2026-11-27",
-"valeur": 6.0,
+"valeur": 6.333,
 "age_jours": 0,
-"variation": 0.0,
-"z": 0.66,
+"variation": 0.3330000000000002,
+"z": 0.67,
 "anormal": false
 },
 {
 "adaptateur": "tfr:SECURITY",
 "source": "interdictions de survol de sécurité créées par jour (FAA)",
 "date": "2026-11-27",
-"valeur": 0.0,
+"valeur": 4.0,
 "age_jours": 0,
-"variation": 0.0,
-"z": 0.0,
-"anormal": false
+"variation": 4.0,
+"z": 2.7,
+"anormal": true
 },
 {
 "adaptateur": "federal_register",
 "source": "textes déposés en inspection publique au Federal Register par jour",
-"date": "2026-11-25",
-"valeur": 136.0,
-"age_jours": 2,
-"variation": 131.0,
-"z": 1.61,
+"date": "2026-11-27",
+"valeur": 140.0,
+"age_jours": 0,
+"variation": 140.0,
+"z": 1.03,
 "anormal": false
 }
 ],
@@ -1092,10 +1092,10 @@
 {
 "adaptateur": "certificats",
 "source": "nouveaux certificats des laboratoires d'IA (Cert Spotter)",
-"date": "2026-11-24",
-"valeur": 3.0,
-"age_jours": 3,
-"variation": 3.0
+"date": "2026-11-26",
+"valeur": 1.0,
+"age_jours": 1,
+"variation": 1.0
 }
 ],
 "attention": []
@@ -1241,5 +1241,479 @@
 "verdict": "non recoupable"
 }
 ]
+},
+"2026-11-28/trumps-tariffs-have-become-americas-new-normal.md": {
+"jour": "2026-11-28",
+"url": "https://www.aljazeera.com/opinions/2026/11/28/trumps-tariffs-have-become-americas-new-normal?traffic_source=rss",
+"compartiments": [
+{
+"compartiment": "politique-americaine:executif",
+"series": [
+{
+"adaptateur": "avions:US",
+"source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
+"date": "2026-11-28",
+"valeur": 2.0,
+"age_jours": 0,
+"variation": -4.333,
+"z": 0.48,
+"anormal": false
+},
+{
+"adaptateur": "tfr:SECURITY",
+"source": "interdictions de survol de sécurité créées par jour (FAA)",
+"date": "2026-11-28",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+},
+{
+"adaptateur": "federal_register",
+"source": "textes déposés en inspection publique au Federal Register par jour",
+"date": "2026-11-27",
+"valeur": 140.0,
+"age_jours": 1,
+"variation": 140.0,
+"z": 1.03,
+"anormal": false
+}
+],
+"attention": []
+},
+{
+"compartiment": "politique-americaine:commerce",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "11.4 % ; 13.9 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/sarawak-state-election-retreat-by-anwar-and-rivals-brings-ru.md": {
+"jour": "2026-11-28",
+"url": "https://www.scmp.com/week-asia/politics/article/3376115/sarawak-state-election-retreat-anwar-and-rivals-brings-ruling-gps-closer-victory",
+"compartiments": [
+{
+"compartiment": "politique-interieure:elections",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "partis-politiques:systemes_partisans",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/no-reports-no-strikes-russias-prowar-bloggers-slam-proposed.md": {
+"jour": "2026-11-28",
+"url": "https://meduza.io/en/feature/2026/11/27/no-reports-no-strikes-russia-s-pro-war-bloggers-slam-proposed-prison-sentences-for-sharing-photos-and-videos-of-ukrainian-attacks",
+"compartiments": [
+{
+"compartiment": "politique-interieure:procedures",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/argentina-bans-online-betting-advertising-including-in-footb.md": {
+"jour": "2026-11-28",
+"url": "https://en.mercopress.com/2026/11/27/argentina-bans-online-betting-advertising-including-in-football-and-on-social-media?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+"compartiments": [
+{
+"compartiment": "information-cyber:plateformes",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "medias-diffusion:plateformes_sociales",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "72",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "50 %",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/baloch-colony-building-collapse-death-toll-rises-to-11.md": {
+"jour": "2026-11-28",
+"url": "https://www.dawn.com/news/2047647/death-toll-in-baloch-colony-building-collapse-rises-to-11-as-rescuers-recover-three-more-bodies",
+"compartiments": [
+{
+"compartiment": "securite-publique:alertes",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:gouvernement",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "11",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "516",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/u-s-disables-ship-trying-to-leave-iran-as-tehran-vows-to-con.md": {
+"jour": "2026-11-28",
+"url": "https://www.thehindu.com/news/international/us-military-says-it-disabled-commercial-ship-trying-to-run-iran-blockade/article71752214.ece",
+"compartiments": [
+{
+"compartiment": "ormuz:navigation",
+"series": [
+{
+"adaptateur": "portwatch:ormuz:navires",
+"source": "IMF PortWatch (navires par jour)",
+"date": "2026-11-22",
+"valeur": 1.0,
+"age_jours": 6,
+"variation": -3.0,
+"z": -1.01,
+"anormal": false
+}
+],
+"attention": []
+},
+{
+"compartiment": "transport-maritime:detroit_ormuz",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/how-medical-neglect-killed-alfredo-diaz-in-a-venezuelan-cell.md": {
+"jour": "2026-11-28",
+"url": "https://globalvoices.org/2026/11/13/how-medical-neglect-killed-alfredo-diaz-in-a-venezuelan-cell/",
+"compartiments": [
+{
+"compartiment": "politique-interieure:gouvernement",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "213",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "18",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/trump-to-keep-suspense-over-his-successor-for-as-long-as-pos.md": {
+"jour": "2026-11-28",
+"url": "https://tass.com/world/2226295",
+"compartiments": [
+{
+"compartiment": "politique-americaine:executif",
+"series": [
+{
+"adaptateur": "avions:US",
+"source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
+"date": "2026-11-28",
+"valeur": 2.0,
+"age_jours": 0,
+"variation": -4.333,
+"z": 0.48,
+"anormal": false
+},
+{
+"adaptateur": "tfr:SECURITY",
+"source": "interdictions de survol de sécurité créées par jour (FAA)",
+"date": "2026-11-28",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+},
+{
+"adaptateur": "federal_register",
+"source": "textes déposés en inspection publique au Federal Register par jour",
+"date": "2026-11-27",
+"valeur": 140.0,
+"age_jours": 1,
+"variation": 140.0,
+"z": 1.03,
+"anormal": false
+}
+],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/why-and-how-the-united-states-and-its-allies-should-prepare.md": {
+"jour": "2026-11-28",
+"url": "https://www.atlanticcouncil.org/in-depth-research-reports/toplines-why-and-how-the-united-states-and-its-allies-should-prepare-for-a-limited-nuclear-attack/",
+"compartiments": [
+{
+"compartiment": "militaire:doctrines",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "militaire:forces",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "plus de 150 ; plus de 100",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/kazakhstan-sentences-prominent-anti-corruption-blogger-to-10.md": {
+"jour": "2026-11-28",
+"url": "https://www.occrp.org/en/news/kazakhstan-sentences-prominent-anti-corruption-blogger-to-10-years",
+"compartiments": [
+{
+"compartiment": "dirigeants-elus:justice_immunites",
+"series": [],
+"attention": []
+},
+{
+"compartiment": "securite-publique:justice",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "10 ans",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "10 ans",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/surveillance-isn-t-safety-a-comic-about-organizing-against-f.md": {
+"jour": "2026-11-28",
+"url": "https://www.eff.org/deeplinks/2026/11/surveillance-isnt-safety-comic-about-organizing-against-surveillance",
+"compartiments": [
+{
+"compartiment": "sciences-techniques:regulation",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/international-la-militante-panafricaniste-nathalie-yamb-deno.md": {
+"jour": "2026-11-28",
+"url": "https://lefaso.net/spip.php?article150668",
+"compartiments": [
+{
+"compartiment": "monnaie-pouvoir:sanctions_financieres",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "9 octobre 2026",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "26 juin 2025",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "9 octobre 2027",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/conquerir-par-le-bas-a-taiwan-la-chine-plane-sur-les-electio.md": {
+"jour": "2026-11-28",
+"url": "https://legrandcontinent.eu/fr/2026/11/28/conquerir-par-le-bas-a-taiwan-la-chine-plane-sur-les-elections-locales/",
+"compartiments": [
+{
+"compartiment": "calendriers-echeances:elections",
+"series": [
+{
+"adaptateur": "elections:US",
+"source": "jours avant la prochaine élection connue aux États-Unis (Wikidata)",
+"date": "2026-11-28",
+"valeur": 34.0,
+"age_jours": 0,
+"variation": -1.0
+}
+],
+"attention": []
+},
+{
+"compartiment": "politique-interieure:dirigeants",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
+},
+"2026-11-28/the-small-african-lab-sounding-the-alarm-on-ai-bioweapons.md": {
+"jour": "2026-11-28",
+"url": "https://restofworld.org/2026/ghana-ai-lab-minohealth-bioweapons-threat-dna-synthesis-regulation/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+"compartiments": [
+{
+"compartiment": "sciences-techniques:ia",
+"series": [
+{
+"adaptateur": "epoch:frontiere",
+"source": "modèles publiés par mois par OpenAI, Anthropic, Google, xAI et Meta (Epoch AI, CC BY ; série déjà collectée, ajoutée ici le 2026-11-25 d'après les priorités de ",
+"date": "2026-11-01",
+"valeur": 8.0,
+"age_jours": 27,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+}
+],
+"attention": []
+},
+{
+"compartiment": "sciences-techniques:attentes",
+"series": [],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "1 020, 5 000",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "149 533",
+"verdict": "non recoupable"
+},
+{
+"chiffre": "8,4 milliards",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/trumps-contractor-gag-order-is-an-affront-to-congressional-o.md": {
+"jour": "2026-11-28",
+"url": "https://www.defenseone.com/ideas/2026/11/trumps-contractor-order-affront-congress-oversight/417410/",
+"compartiments": [
+{
+"compartiment": "politique-americaine:executif",
+"series": [
+{
+"adaptateur": "avions:US",
+"source": "avions militaires américains visibles (adsb.fi), moyenne quotidienne",
+"date": "2026-11-28",
+"valeur": 2.0,
+"age_jours": 0,
+"variation": -4.333,
+"z": 0.48,
+"anormal": false
+},
+{
+"adaptateur": "tfr:SECURITY",
+"source": "interdictions de survol de sécurité créées par jour (FAA)",
+"date": "2026-11-28",
+"valeur": 0.0,
+"age_jours": 0,
+"variation": -4.0,
+"z": -2.7,
+"anormal": true
+},
+{
+"adaptateur": "federal_register",
+"source": "textes déposés en inspection publique au Federal Register par jour",
+"date": "2026-11-27",
+"valeur": 140.0,
+"age_jours": 1,
+"variation": 140.0,
+"z": 1.03,
+"anormal": false
+}
+],
+"attention": []
+}
+],
+"chiffres": [
+{
+"chiffre": "7 in 10",
+"verdict": "non recoupable"
+}
+]
+},
+"2026-11-28/morning-update.md": {
+"jour": "2026-11-28",
+"url": "https://www.middleeasteye.net/live-blog/live-blog-update/morning-update-683",
+"compartiments": [
+{
+"compartiment": "transport-maritime:detroits",
+"series": [
+{
+"adaptateur": "portwatch:suez:porte_conteneurs",
+"source": "IMF PortWatch, porte-conteneurs à Suez",
+"date": "2026-11-22",
+"valeur": 15.0,
+"age_jours": 6,
+"variation": 5.0,
+"z": 1.12,
+"anormal": false
+},
+{
+"adaptateur": "portwatch:bab_el_mandeb:navires",
+"source": "IMF PortWatch, navires à Bab-el-Mandeb",
+"date": "2026-11-22",
+"valeur": 20.0,
+"age_jours": 6,
+"variation": -12.0,
+"z": -1.62,
+"anormal": false
+},
+{
+"adaptateur": "portwatch:panama:navires",
+"source": "IMF PortWatch, navires à Panama",
+"date": "2026-11-22",
+"valeur": 25.0,
+"age_jours": 6,
+"variation": -6.0,
+"z": -2.02,
+"anormal": true
+}
+],
+"attention": []
+},
+{
+"compartiment": "militaire:forces",
+"series": [],
+"attention": []
+}
+],
+"chiffres": []
 }
 }
