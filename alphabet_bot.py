@@ -603,7 +603,10 @@ class AlphabetBot(FallTemplateBot2026):
 
     async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float) -> dict | None:
         """Amendement du 2026-11-26 (E bis.2) : verdict du contradicteur sur la brique appliquée, journalisé dans
-        registre/journal-contradicteur.jsonl, sans aucun effet sur la prévision."""
+        registre/journal-contradicteur.jsonl. Effet sur la prévision (décision de l'auteur du 2026-11-26, 11 h 46) :
+        le verdict « hors domaine », citation vérifiée par le code, ÉCARTE la brique (voir _run_forecast_on_binary) ;
+        le verdict « contre le terrain » reste en ombre. (Docstring corrigée le 2026-11-28 : elle disait à tort
+        « sans aucun effet », ce qui a induit un audit externe en erreur.)"""
         if not os.environ.get("ALPHABET_CONTRADICTEUR") or os.environ.get("ALPHABET_CONTRADICTEUR_BRIQUE") == "0":
             return None
         try:
