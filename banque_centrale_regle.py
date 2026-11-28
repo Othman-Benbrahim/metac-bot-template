@@ -22,6 +22,10 @@ from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
 REUNIONS = ICI / "ecosystemes" / "fomc-reunions.csv"
+# 2026-11-28 : calendrier 2027 ajouté d'après le communiqué officiel du 12/11/2026 (calendrier révisé, provisoire) :
+# https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm . La réunion des 26-27 octobre 2027 est
+# consacrée à la stratégie, SANS décision de politique monétaire annoncée : elle n'est pas comptée comme réunion de
+# décision. Pas de réunion en décembre 2027 ; la suivante est celle des 25-26 janvier 2028.
 CHANGEMENTS = ICI / "ecosystemes" / "fed-changements-taux.csv"
 BARREAUX = ("B50", "B25", "M", "H25", "H50")
 ETATS = ("baisse_recente", "pause_apres_baisse", "hausse_recente", "pause_apres_hausse")
@@ -216,6 +220,16 @@ def probabilite(forme: dict, jeu: dt.date, R=None, C=None) -> float | None:
     P, _ = table(R, Ck, jeu)
     futures = [r for r in R if r >= jeu]
     if not futures:
+        return None
+    # 2026-11-28 (revue des cycles, décision de l'auteur : « une question de cycle, pas de fraîcheur ») : la brique
+    # s'abstient quand la fenêtre de la question dépasse le calendrier officiel connu (sinon une année absente du
+    # calendrier compterait zéro réunion : 1 % ou 99 % sans raison). Marge : sept semaines, l'écart usuel entre deux
+    # réunions.
+    fin_cal = max(R) + dt.timedelta(days=49)
+    t0 = forme["type"]
+    if t0 in ("au_moins_un", "compte", "sequence") and "annee" in forme and dt.date(forme["annee"], 12, 31) > fin_cal:
+        return None
+    if t0 == "au_moins_un" and "avant" in forme and forme["avant"] > fin_cal:
         return None
 
     def depart(premiere):

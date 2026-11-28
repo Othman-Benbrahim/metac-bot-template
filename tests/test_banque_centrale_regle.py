@@ -41,3 +41,12 @@ def test_fred_complete_les_changements(tmp_path):
 
 def test_melange_plafonne():
     assert bc.melanger(0.5, 0.01) >= 0.35
+
+
+def test_abstention_hors_calendrier():
+    """2026-11-28 : une fenêtre au-delà du calendrier officiel connu ne compte pas « zéro réunion »."""
+    import datetime as dt
+    import banque_centrale_regle as b
+    assert b.estimer("Will the Fed cut rates in 2029?", dt.date(2026, 11, 20)) is None
+    assert b.estimer("Will 2+ Fed rate cuts happen in 2029?", dt.date(2026, 11, 20)) is None
+    assert b.estimer("Will the Fed raise the federal funds target range before March 1, 2029?", dt.date(2026, 11, 20)) is None
