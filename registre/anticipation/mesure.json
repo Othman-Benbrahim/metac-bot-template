@@ -1,8 +1,8 @@
 {
  "questions": 9,
- "reussites": 0,
+ "reussites": 2,
  "reussites_calendrier": 0,
- "reussites_totales": 0,
+ "reussites_totales": 2,
  "lignes": [
   {
    "question_id": "46884",
@@ -19,7 +19,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 7.571428571428571
   },
   {
    "question_id": "46889",
@@ -35,7 +35,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 8.428571428571429
   },
   {
    "question_id": "46982",
@@ -47,7 +47,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 8.428571428571429
   },
   {
    "question_id": "46891",
@@ -63,7 +63,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 8.428571428571429
   },
   {
    "question_id": "46892",
@@ -75,7 +75,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 8.428571428571429
   },
   {
    "question_id": "46893",
@@ -90,7 +90,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 8.428571428571429
   },
   {
    "question_id": "46896",
@@ -100,12 +100,14 @@
     "european council",
     "multiannual financial framework"
    ],
-   "trouves": [],
+   "trouves": [
+    "european council"
+   ],
    "calendrier": [],
-   "reussite": false,
+   "reussite": true,
    "reussite_calendrier": false,
-   "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "reussite_totale": true,
+   "taille_moyenne_listes": 9.285714285714286
   },
   {
    "question_id": "47008",
@@ -115,12 +117,14 @@
     "donald trump",
     "vladimir putin"
    ],
-   "trouves": [],
+   "trouves": [
+    "donald trump"
+   ],
    "calendrier": [],
-   "reussite": false,
+   "reussite": true,
    "reussite_calendrier": false,
-   "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "reussite_totale": true,
+   "taille_moyenne_listes": 9.285714285714286
   },
   {
    "question_id": "47010",
@@ -135,7 +139,7 @@
    "reussite": false,
    "reussite_calendrier": false,
    "reussite_totale": false,
-   "taille_moyenne_listes": 0.0
+   "taille_moyenne_listes": 10.571428571428571
   }
  ]
 }
