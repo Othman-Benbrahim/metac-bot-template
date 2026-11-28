@@ -124,3 +124,7 @@
 {"notam": "6/9857", "type": "SPACE OPERATIONS", "centre": "ZJX", "etat": "FL", "description": "Cape Canaveral, FL, Tuesday, December 1, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
 {"notam": "6/9856", "type": "SPACE OPERATIONS", "centre": "ZMA", "etat": "FL", "description": "Cape Canaveral, FL, Tuesday, December 1, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-27"}
 {"notam": "6/9837", "type": "HAZARDS", "centre": "ZKC", "etat": "MO", "description": "LOUISIANA, MO, Monday, November 30, 2026 UTC", "cree_le": "11/26/2026", "vu_le": "2026-11-27"}
+{"notam": "6/9880", "type": "SECURITY", "centre": "ZHU", "etat": "TX", "description": "Killeen, TX, Monday, November 30, 2026 through Friday, December 4, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-28"}
+{"notam": "6/9879", "type": "SECURITY", "centre": "ZMA", "etat": "FL", "description": "Palm Beach, FL, Saturday, November 28, 2026 through Sunday, November 29, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-28"}
+{"notam": "6/9877", "type": "SECURITY", "centre": "ZNY", "etat": "NY", "description": "Manhattan, NY, Saturday, November 28, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-28"}
+{"notam": "6/9873", "type": "SECURITY", "centre": "ZJX", "etat": "GA", "description": "Brunswick, GA, Monday, November 30, 2026 through Friday, December 18, 2026 Local", "cree_le": "11/27/2026", "vu_le": "2026-11-28"}
