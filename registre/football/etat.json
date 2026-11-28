@@ -1,10 +1,10 @@
 {
- "calcule_le": "2026-11-27",
+ "calcule_le": "2026-11-28",
  "saison": 2026,
  "ligues": {
   "en.1": {
    "titre": "2026–27 Premier League",
-   "mise_a_jour": "2026-11-23",
+   "mise_a_jour": "2026-11-27",
    "complete": false,
    "equipes": {
     "ARS": {
@@ -44,9 +44,9 @@
     },
     "CHE": {
      "nom": "Chelsea",
-     "joues": 11,
+     "joues": 12,
      "points": 16,
-     "elo": 1554.1,
+     "elo": 1543.9,
      "cle": "chelsea"
     },
     "COV": {
@@ -109,7 +109,7 @@
      "nom": "Manchester City",
      "joues": 11,
      "points": 22,
-     "elo": 1713.6,
+     "elo": 1713.9,
      "cle": "man city"
     },
     "MUN": {
@@ -128,16 +128,16 @@
     },
     "NFO": {
      "nom": "Nottingham Forest",
-     "joues": 11,
-     "points": 9,
-     "elo": 1503.1,
+     "joues": 12,
+     "points": 12,
+     "elo": 1513.4,
      "cle": "forest"
     },
     "SUN": {
      "nom": "Sunderland",
      "joues": 11,
      "points": 9,
-     "elo": 1467.8,
+     "elo": 1467.5,
      "cle": "sunderland"
     },
     "TOT": {
@@ -1083,10 +1083,6 @@
     ],
     [
      "NFO",
-     "CHE"
-    ],
-    [
-     "NFO",
      "CRY"
     ],
     [
@@ -1233,23 +1229,23 @@
    "H": 60.0,
    "p_nul": 0.2375,
    "controle": {
-    "matchs_classement": 110,
-    "resultats_lus": 110,
-    "restants": 270,
+    "matchs_classement": 111,
+    "resultats_lus": 111,
+    "restants": 269,
     "attendu_total": 380,
-    "resultats_ajoutes_elo": 60
+    "resultats_ajoutes_elo": 61
    }
   },
   "es.1": {
    "titre": "2026–27 La Liga",
-   "mise_a_jour": "2026-11-23",
+   "mise_a_jour": "2026-11-27",
    "complete": false,
    "equipes": {
     "ALA": {
      "nom": "Alavés",
      "joues": 13,
      "points": 16,
-     "elo": 1483.4,
+     "elo": 1483.7,
      "cle": "alaves"
     },
     "ATH": {
@@ -1298,7 +1294,7 @@
      "nom": "Espanyol",
      "joues": 13,
      "points": 15,
-     "elo": 1498.6,
+     "elo": 1498.9,
      "cle": "espanyol"
     },
     "GET": {
@@ -1310,30 +1306,30 @@
     },
     "LEV": {
      "nom": "Levante",
-     "joues": 13,
+     "joues": 14,
      "points": 12,
-     "elo": 1492.7,
+     "elo": 1480.9,
      "cle": "levante"
     },
     "MAL": {
      "nom": "Málaga",
      "joues": 13,
      "points": 5,
-     "elo": 1424.0,
+     "elo": 1424.3,
      "cle": "malaga"
     },
     "OSA": {
      "nom": "Osasuna",
      "joues": 13,
      "points": 15,
-     "elo": 1500.0,
+     "elo": 1500.4,
      "cle": "osasuna"
     },
     "RAC": {
      "nom": "Racing Santander",
-     "joues": 13,
-     "points": 17,
-     "elo": 1498.3,
+     "joues": 14,
+     "points": 20,
+     "elo": 1508.6,
      "cle": "real racing santander"
     },
     "RAY": {
@@ -1354,7 +1350,7 @@
      "nom": "Real Madrid",
      "joues": 13,
      "points": 33,
-     "elo": 1808.4,
+     "elo": 1808.6,
      "cle": "real madrid"
     },
     "RSO": {
@@ -1368,14 +1364,14 @@
      "nom": "Sevilla",
      "joues": 13,
      "points": 19,
-     "elo": 1540.4,
+     "elo": 1540.1,
      "cle": "sevilla"
     },
     "VAL": {
      "nom": "Valencia",
      "joues": 13,
      "points": 12,
-     "elo": 1544.5,
+     "elo": 1544.8,
      "cle": "valencia"
     },
     "VIL": {
@@ -1862,10 +1858,6 @@
     [
      "LEV",
      "OSA"
-    ],
-    [
-     "LEV",
-     "RAC"
     ],
     [
      "LEV",
@@ -2395,16 +2387,16 @@
    "H": 70.0,
    "p_nul": 0.248,
    "controle": {
-    "matchs_classement": 129,
-    "resultats_lus": 129,
-    "restants": 251,
+    "matchs_classement": 130,
+    "resultats_lus": 130,
+    "restants": 250,
     "attendu_total": 380,
-    "resultats_ajoutes_elo": 72
+    "resultats_ajoutes_elo": 73
    }
   },
   "it.1": {
    "titre": "2026–27 Serie A",
-   "mise_a_jour": "2026-11-23",
+   "mise_a_jour": "2026-11-27",
    "complete": false,
    "equipes": {
     "ATA": {
@@ -2416,16 +2408,16 @@
     },
     "BOL": {
      "nom": "Bologna",
-     "joues": 12,
-     "points": 18,
-     "elo": 1603.8,
+     "joues": 13,
+     "points": 19,
+     "elo": 1600.0,
      "cle": "bologna"
     },
     "CAG": {
      "nom": "Cagliari",
-     "joues": 12,
-     "points": 16,
-     "elo": 1502.3,
+     "joues": 13,
+     "points": 17,
+     "elo": 1501.3,
      "cle": "cagliari"
     },
     "COM": {
@@ -2460,14 +2452,14 @@
      "nom": "Inter Milan",
      "joues": 12,
      "points": 29,
-     "elo": 1794.3,
+     "elo": 1794.6,
      "cle": "inter"
     },
     "JUV": {
      "nom": "Juventus",
      "joues": 12,
-     "points": 21,
-     "elo": 1660.7,
+     "points": 18,
+     "elo": 1641.2,
      "cle": "juventus"
     },
     "LAZ": {
@@ -2481,7 +2473,7 @@
      "nom": "Lecce",
      "joues": 12,
      "points": 10,
-     "elo": 1438.8,
+     "elo": 1438.4,
      "cle": "lecce"
     },
     "MIL": {
@@ -2502,7 +2494,7 @@
      "nom": "Napoli",
      "joues": 12,
      "points": 18,
-     "elo": 1669.8,
+     "elo": 1670.3,
      "cle": "napoli"
     },
     "PAR": {
@@ -2537,14 +2529,14 @@
      "nom": "Udinese",
      "joues": 12,
      "points": 6,
-     "elo": 1465.7,
+     "elo": 1466.4,
      "cle": "udinese"
     },
     "VEN": {
      "nom": "Venezia",
-     "joues": 12,
-     "points": 6,
-     "elo": 1410.4,
+     "joues": 14,
+     "points": 11,
+     "elo": 1433.6,
      "cle": "venezia"
     }
    },
@@ -3543,14 +3535,6 @@
     ],
     [
      "VEN",
-     "BOL"
-    ],
-    [
-     "VEN",
-     "CAG"
-    ],
-    [
-     "VEN",
      "COM"
     ],
     [
@@ -3593,16 +3577,16 @@
    "H": 60.0,
    "p_nul": 0.2408,
    "controle": {
-    "matchs_classement": 120,
-    "resultats_lus": 120,
-    "restants": 260,
+    "matchs_classement": 122,
+    "resultats_lus": 122,
+    "restants": 258,
     "attendu_total": 380,
-    "resultats_ajoutes_elo": 70
+    "resultats_ajoutes_elo": 72
    }
   },
   "de.1": {
    "titre": "2026–27 Bundesliga",
-   "mise_a_jour": "2026-11-22",
+   "mise_a_jour": "2026-11-27",
    "complete": false,
    "equipes": {
     "AUG": {
@@ -3621,16 +3605,16 @@
     },
     "BRE": {
      "nom": "Werder Bremen",
-     "joues": 10,
-     "points": 18,
-     "elo": 1527.9,
+     "joues": 11,
+     "points": 19,
+     "elo": 1525.4,
      "cle": "werder"
     },
     "DOR": {
      "nom": "Borussia Dortmund",
      "joues": 10,
      "points": 24,
-     "elo": 1735.2,
+     "elo": 1735.3,
      "cle": "dortmund"
     },
     "ELV": {
@@ -3658,14 +3642,14 @@
      "nom": "Hamburger SV",
      "joues": 10,
      "points": 12,
-     "elo": 1484.0,
+     "elo": 1484.1,
      "cle": "hamburg"
     },
     "HOF": {
      "nom": "TSG Hoffenheim",
      "joues": 10,
      "points": 12,
-     "elo": 1556.7,
+     "elo": 1556.8,
      "cle": "hoffenheim"
     },
     "KÖL": {
@@ -3693,14 +3677,14 @@
      "nom": "Mainz 05",
      "joues": 10,
      "points": 10,
-     "elo": 1523.8,
+     "elo": 1523.7,
      "cle": "mainz"
     },
     "MÖN": {
      "nom": "Borussia Mönchengladbach",
-     "joues": 10,
-     "points": 4,
-     "elo": 1461.9,
+     "joues": 11,
+     "points": 5,
+     "elo": 1464.3,
      "cle": "gladbach"
     },
     "MUN": {
@@ -3852,10 +3836,6 @@
     [
      "BRE",
      "MAI"
-    ],
-    [
-     "BRE",
-     "MÖN"
     ],
     [
      "BRE",
@@ -4601,23 +4581,23 @@
    "H": 60.0,
    "p_nul": 0.2459,
    "controle": {
-    "matchs_classement": 90,
-    "resultats_lus": 90,
-    "restants": 216,
+    "matchs_classement": 91,
+    "resultats_lus": 91,
+    "restants": 215,
     "attendu_total": 306,
-    "resultats_ajoutes_elo": 54
+    "resultats_ajoutes_elo": 55
    }
   },
   "fr.1": {
    "titre": "2026–27 Ligue 1",
-   "mise_a_jour": "2026-11-22",
+   "mise_a_jour": "2026-11-27",
    "complete": false,
    "equipes": {
     "ANG": {
      "nom": "Angers",
      "joues": 11,
      "points": 8,
-     "elo": 1462.7,
+     "elo": 1462.4,
      "cle": "angers"
     },
     "AUX": {
@@ -4629,9 +4609,9 @@
     },
     "BRE": {
      "nom": "Brest",
-     "joues": 11,
-     "points": 18,
-     "elo": 1577.9,
+     "joues": 12,
+     "points": 21,
+     "elo": 1586.7,
      "cle": "brest"
     },
     "LEH": {
@@ -4652,14 +4632,14 @@
      "nom": "Lens",
      "joues": 11,
      "points": 14,
-     "elo": 1646.0,
+     "elo": 1645.8,
      "cle": "lens"
     },
     "LIL": {
      "nom": "Lille",
      "joues": 11,
      "points": 21,
-     "elo": 1690.5,
+     "elo": 1690.7,
      "cle": "lille"
     },
     "LOR": {
@@ -4687,7 +4667,7 @@
      "nom": "Monaco",
      "joues": 11,
      "points": 17,
-     "elo": 1647.2,
+     "elo": 1647.0,
      "cle": "monaco"
     },
     "NIC": {
@@ -4699,30 +4679,30 @@
     },
     "PFC": {
      "nom": "Paris FC",
-     "joues": 11,
+     "joues": 12,
      "points": 23,
-     "elo": 1598.0,
+     "elo": 1589.9,
      "cle": "paris"
     },
     "PSG": {
      "nom": "Paris Saint-Germain",
      "joues": 11,
      "points": 26,
-     "elo": 1814.4,
+     "elo": 1814.5,
      "cle": "paris sg"
     },
     "REN": {
      "nom": "Rennes",
      "joues": 11,
      "points": 17,
-     "elo": 1621.0,
+     "elo": 1620.8,
      "cle": "rennes"
     },
     "STR": {
      "nom": "Strasbourg",
      "joues": 11,
      "points": 10,
-     "elo": 1587.5,
+     "elo": 1587.7,
      "cle": "strasbourg"
     },
     "TFC": {
@@ -4736,7 +4716,7 @@
      "nom": "Troyes",
      "joues": 11,
      "points": 11,
-     "elo": 1420.2,
+     "elo": 1420.0,
      "cle": "troyes"
     }
    },
@@ -4864,10 +4844,6 @@
     [
      "BRE",
      "ASM"
-    ],
-    [
-     "BRE",
-     "PFC"
     ],
     [
      "BRE",
@@ -5573,11 +5549,11 @@
    "H": 65.0,
    "p_nul": 0.2691,
    "controle": {
-    "matchs_classement": 99,
-    "resultats_lus": 99,
-    "restants": 207,
+    "matchs_classement": 100,
+    "resultats_lus": 100,
+    "restants": 206,
     "attendu_total": 306,
-    "resultats_ajoutes_elo": 59
+    "resultats_ajoutes_elo": 60
    }
   }
  }
