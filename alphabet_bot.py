@@ -582,8 +582,17 @@ class AlphabetBot(FallTemplateBot2026):
         # points au plus, modulée par la force de la preuve ; journal-juge.jsonl.
         texte = (r.commentaire or "") + (sp_["texte"] if sp_ is not None else "")
         p_mesure = float(sp_.get("p_regle", sp_["p"])) if sp_ is not None else r.p_poste
+        # 2026-11-28 (décision de l'auteur, d'après Snowden, « Rule by Nobody » : « posséder l'agrégat ») : une trace par
+        # question, qui suit la probabilité à chaque étape ; registre/trace-questions.jsonl (voir _tracer).
+        trace = {"p_A": a.prediction_value, "essais_A": essais_A or None, "bras": r.bras_poste,
+                 "p_pipeline": r.p_poste, "brique": sp_.get("famille") if sp_ is not None else None,
+                 "brique_de_base": bool(sp_ is not None and "p_regle" in sp_), "p_brique": p_mesure,
+                 "contradicteur": None, "garde_fou": False, "p_avant_juge": None, "juge": None, "p_poste": None}
+        v = None
         if sp_ is not None:   # amendement du 2026-11-26 : contradicteur des briques
             v = await self._contradicteur_brique(question, q, research, r.p_poste, p_mesure, sp_.get("famille"))
+            trace["contradicteur"] = v.get("verdict") if v else None
+            trace["brique_annulee"] = bool(v is not None and v.get("verdict") == "hors_domaine")
             # « hors domaine » admis par le code (citation vérifiée) : la brique est annulée, on reprend la valeur du
             # pipeline (M, B ou A ; le juge peut encore s'en écarter) (décision de l'auteur, 2026-11-26, 11 h 46, après le banc : rappel 8/8, fausses alertes 6/29).
             # « contre le terrain » reste en ombre (E bis.2).
@@ -593,15 +602,43 @@ class AlphabetBot(FallTemplateBot2026):
                 sp_, p_mesure = None, r.p_poste
         if sp_ is not None and "p_regle" in sp_:
             p_mesure, gf = self._garde_fou(q, sp_.get("famille", "?"), p_mesure, a.prediction_value)
+            trace["garde_fou"] = bool(gf)
             if gf:
                 texte += (f"\n\nSafeguard (coded): the coded rule is extreme and the model alone disagrees by more than "
                           f"{GF_DESACCORD:.0%}; the rule is held at {p_mesure:.0%}.")
+        trace["p_avant_juge"] = p_mesure
         j = await self._juge(question, q, research, a.prediction_value, p_mesure)
+        trace["juge"] = j.get("decision") if j is not None else None
         if j is not None and j["decision"] == "ecart":
             texte += (f"\n\nInformed judge (bounded): departure for motive « {j['motif']} », capped at "
                       f"{j['marge']:.0%}: {p_mesure:.1%} -> {j['p_poste']:.1%}.")
+            trace["p_poste"] = j["p_poste"]
+            self._tracer(q, trace)
             return ReasonedPrediction(prediction_value=j["p_poste"], reasoning=texte)
+        trace["p_poste"] = p_mesure
+        self._tracer(q, trace)
         return ReasonedPrediction(prediction_value=p_mesure, reasoning=texte)
+
+    def _tracer(self, q, trace: dict) -> None:
+        """Trace par question (2026-11-28) : toutes les étapes d'une prévision binaire dans une seule ligne, avec l'écart
+        introduit par chacune, pour voir l'effet d'ensemble des briques et repérer les incohérences entre modules. Aucune
+        écriture ne bloque la prévision."""
+        try:
+            # brique annulée par le contradicteur : son effet réel est nul (p_brique garde la valeur proposée, pour mémoire)
+            p_eff = trace["p_pipeline"] if trace.get("brique_annulee") else trace["p_brique"]
+            pas = [("pipeline", trace["p_A"], trace["p_pipeline"]),
+                   ("brique", trace["p_pipeline"], p_eff),
+                   ("contradicteur_garde_fou", p_eff, trace["p_avant_juge"]),
+                   ("juge", trace["p_avant_juge"], trace["p_poste"])]
+            ecarts = {k: round(float(b) - float(a), 4) for k, a, b in pas if a is not None and b is not None}
+            ligne = {"question_id": str(q.id), "url": q.url, "titre": (q.titre or "")[:200],
+                     "jour": datetime.now(timezone.utc).date().isoformat(), "version_bot": ap.VERSION_BOT,
+                     "publie": bool(self.publish_reports_to_metaculus), **trace, "ecarts": ecarts}
+            d = ap.registre_ecrivable()
+            with open(d / "trace-questions.jsonl", "a", encoding="utf-8") as f:
+                f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
+        except Exception as e:
+            logger.warning("trace par question : non écrite (%s)", type(e).__name__)
 
     async def _contradicteur_brique(self, question, q, research: str, p_raisonnement: float, p_mesure: float,
                                    fam_appliquee: str | None = None) -> dict | None:
