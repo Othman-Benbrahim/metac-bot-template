@@ -244,6 +244,18 @@ def principal(argv=None) -> int:
     visibles = traites(a.jour)
     ouverts = compartiments_ouverts(a.jour)
     alertes = montee(rows_jour, histo, a.jour) + isole(rows_jour, ouverts) + inattendue(rows_jour, histo)
+    # 2026-11-28 : alertes de la veille des trêves (treves.py), affichées avec les signaux faibles ; seules celles que
+    # le garde-fou du modèle garde « à vérifier » (ou qu'il n'a pas pu filtrer) sont montrées.
+    try:
+        tr = json.loads((REG / "treves-alertes.json").read_text(encoding="utf-8"))
+        for x in tr.get("alertes", []):
+            if x.get("statut") in ("a_verifier", "non_filtree"):
+                ex = next((t for t in x.get("titres", []) if t.get("classe") == "treve_declaree"), None) or {}
+                alertes.append({"detecteur": "treve", "terme": x["guerre"], "type": "guerre_suivie",
+                                "titre": ex.get("titre") or f"trêve possible ({', '.join(x.get('sources', {}))}) : table des guerres à vérifier",
+                                "lien": ex.get("lien", ""), "source": x["statut"]})
+    except (OSError, ValueError, KeyError):
+        pass
     et = etiquettes()
     deja = {u for k in range(1, 8) for u in traites((j - timedelta(days=k)).isoformat())}
     ombre = classement(rows_jour, ouverts, deja, et, max(len(visibles), 16))
