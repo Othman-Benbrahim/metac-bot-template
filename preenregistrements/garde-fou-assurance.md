@@ -7,11 +7,11 @@ ce rôle**, avant toute issue. Aucun modèle de langue, aucun crédit.
 
 ## Données
 `registre/journal-garde-fou.jsonl` : chaque déclenchement, avec la probabilité de la brique avant (p_brique) et après
-(p_garde) le garde-fou. Issues : `registre/issues.jsonl`. Seules les questions où le garde-fou s'est déclenché comptent.
+(p_garde_fou) le garde-fou. Issues : `registre/issues.jsonl`. Seules les questions où le garde-fou s'est déclenché comptent.
 
 ## Mesures (rapportées, sans critère de branchement : le garde-fou reste en place sauf décision de l'auteur)
 1. **Coût de l'assurance** : somme des pertes logarithmiques supplémentaires quand la brique avait raison
-   (perte(p_garde) − perte(p_brique) > 0).
+   (perte(p_garde_fou) − perte(p_brique) > 0).
 2. **Sinistres évités** : somme des pertes évitées quand la brique avait tort.
 3. **Bilan net** : 2 − 1.
 4. **Pire cas** : la plus grosse perte sur une seule question, avec et sans garde-fou.
