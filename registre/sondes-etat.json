@@ -1,10 +1,10 @@
 {
- "calcule_le": "2026-11-27",
+ "calcule_le": "2026-11-28",
  "fenetre_etalon": [
-  "2026-05-29",
-  "2026-11-27"
+  "2026-05-30",
+  "2026-11-28"
  ],
- "questions_fenetre": 804,
+ "questions_fenetre": 802,
  "sondes": {
   "relations": {
    "actif": true,

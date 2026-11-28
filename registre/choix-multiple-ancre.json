@@ -1,15 +1,27 @@
 {
  "w": 0.15,
- "questions_au_journal": 15,
- "resolues": 0,
- "ecart_moyen": null,
+ "questions_au_journal": 16,
+ "resolues": 1,
+ "ecart_moyen": 0.0253,
  "e_processus": {
   "richesse": 1.0,
   "seuil": 20.0,
   "atteint_a": null,
-  "trajet": []
+  "trajet": [
+   1.0
+  ]
  },
  "verdict": "en cours",
- "detail": [],
+ "detail": [
+  {
+   "question_id": "46873",
+   "titre": "Which party's member will GPS name as its candidate for Sarawak's Bawang Assan seat before",
+   "n_options": 4,
+   "constatee_le": "2026-11-28T09:29:22+00:00",
+   "p_bot_gagnante": 0.3,
+   "p_melange_gagnante": 0.2925,
+   "ecart": 0.0253
+  }
+ ],
  "note": "écart = perte(mélange) − perte(bot) sur l'option gagnante ; négatif : le mélange aide"
 }

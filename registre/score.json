@@ -1,8 +1,9 @@
 {
+  "a_lire_d_abord": "Orientation : voir README.md et README-alphabet.md (« Orientation actuelle »). Ce qui est POSTÉ : bras M ou A, remplacés par une brique mécanique quand une règle testée s'applique (journaux journal-*.jsonl : seuils, competitions, scrutin, banque-centrale, garde-fou, juge…). EN OMBRE, jamais posté : le bras C et ses variantes. Les diagnostics fidelite_plan, diversite_lectures, invariance_lecteur, preselection_ombre, C_*_sur_B et C_*_sur_C portent sur cette ombre, pas sur la prévision postée.",
   "lignes": 38,
   "lignes_essai_exclues": 9,
   "questions": 21,
-  "resolues": 0,
+  "resolues": 1,
   "retouchees": [],
   "dossiers_non_conformes": [
     {
@@ -17,7 +18,12 @@
     "unites": "score_reference_metaculus : 100 × (log2 p + 1) ; gain_log_moyen et gain_pair : 100 × écart de ln p (points de score de pair). Ne pas comparer les deux."
   },
   "bras": {
-    "A": null,
+    "A": {
+      "n": 1,
+      "log": 1.2039728043259361,
+      "score_reference_metaculus": -73.69655941662063,
+      "brier": 0.48999999999999994
+    },
     "B": null,
     "C": null
   },
@@ -104,12 +110,12 @@
     "lecture": "recouvrement haut et stable : la présélection retrouve le choix du planificateur ; bas : le planificateur voit autre chose que le texte de la question"
   },
   "couts": {
-    "total_usd": 16.13,
+    "total_usd": 16.51,
     "par_modele": {
       "azure_ai/gpt-5-mini": {
-        "questions": 47,
-        "total_usd": 16.13,
-        "moyenne_usd": 0.343
+        "questions": 48,
+        "total_usd": 16.51,
+        "moyenne_usd": 0.344
       }
     },
     "par_jour": {
@@ -123,7 +129,7 @@
       "2026-11-24": 1.19,
       "2026-11-25": 1.16,
       "2026-11-26": 0.73,
-      "2026-11-27": 0.65
+      "2026-11-27": 1.03
     }
   },
   "negation_A": {
@@ -176,7 +182,34 @@
     "lecture": "B_moins_A > 0 avec alarme : quand B s'écarte fortement de A, c'est B qui se trompe"
   },
   "C_selon_surprise": null,
-  "plafonnement_etudie": null,
+  "plafonnement_etudie": {
+    "bornes": [
+      0.02,
+      0.98
+    ],
+    "n": 1,
+    "questions_touchees": 0,
+    "gain_moyen": 0.0,
+    "grille": {
+      "0.01–0.99": {
+        "gain_moyen": 0.0,
+        "questions_touchees": 0
+      },
+      "0.02–0.98": {
+        "gain_moyen": 0.0,
+        "questions_touchees": 0
+      },
+      "0.03–0.97": {
+        "gain_moyen": 0.0,
+        "questions_touchees": 0
+      },
+      "0.05–0.95": {
+        "gain_moyen": 0.0,
+        "questions_touchees": 0
+      }
+    },
+    "lecture": "positif = le plafonnement aurait amélioré le score posté. Étude seulement : la décision de plafonner est réservée à Othman."
+  },
   "stabilite_strate": {
     "questions_repetees": 0,
     "accord": null,
@@ -325,11 +358,11 @@
   "C_exploratoire_sur_B": null,
   "exploratoire_non_binaire": {
     "note": "hors verdict ; questions non binaires ramenées à une question binaire dérivée (§29)",
-    "questions": 30,
+    "questions": 31,
     "statuts": {
       "sans_vue": 22,
       "estime": 3,
-      "etat_nul": 3,
+      "etat_nul": 4,
       "refuse": 2
     },
     "resolues_chiffrees": 0,
@@ -388,7 +421,7 @@
   "par_modele": {
     "azure_ai/gpt-5-mini": {
       "questions": 18,
-      "resolues": 0,
+      "resolues": 1,
       "C_sur_B_gain_log_moyen": null,
       "C_sur_B_verdict": null
     },
@@ -411,5 +444,5 @@
       "C_sur_B_verdict": null
     }
   },
-  "calcule_le": "2026-11-27T10:10:11+00:00"
+  "calcule_le": "2026-11-28T09:29:22+00:00"
 }
