@@ -113,7 +113,15 @@ def enregistrer(registre: Path, nouvelles: dict[str, int], score: dict) -> int:
     with open(registre / "issues.jsonl", "a", encoding="utf-8", newline="\n") as f:
         for k, v in sorted(ajout.items()):
             f.write(json.dumps({"question_id": k, "issue": v, "constatee_le": maintenant}, sort_keys=True) + "\n")
-    (registre / "score.json").write_text(json.dumps(dict(score, calcule_le=maintenant), ensure_ascii=False, indent=2) + "\n",
+    # 2026-11-28 (décision de l'auteur, 01 h 11) : une note en tête sépare ce qui est posté de ce qui est en ombre, pour
+    # qu'un lecteur du registre ne prenne pas les diagnostics du bras C (en ombre) pour ceux de la prévision postée.
+    entete = {"a_lire_d_abord": (
+        "Orientation : voir README.md et README-alphabet.md (« Orientation actuelle »). Ce qui est POSTÉ : bras M ou A, "
+        "remplacés par une brique mécanique quand une règle testée s'applique (journaux journal-*.jsonl : seuils, "
+        "competitions, scrutin, banque-centrale, garde-fou, juge…). EN OMBRE, jamais posté : le bras C et ses variantes. "
+        "Les diagnostics fidelite_plan, diversite_lectures, invariance_lecteur, preselection_ombre, C_*_sur_B et "
+        "C_*_sur_C portent sur cette ombre, pas sur la prévision postée.")}
+    (registre / "score.json").write_text(json.dumps(dict(entete, **score, calcule_le=maintenant), ensure_ascii=False, indent=2) + "\n",
                                           encoding="utf-8")
     return len(ajout)
 
